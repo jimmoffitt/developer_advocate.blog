@@ -1,4 +1,4 @@
-Where did that tweet come from?  Sometimes geographic metadata really matters.
+**Where did that tweet come from? ** Sometimes geographic metadata really matters.
 
 The “Tweeting in the Rain” blog series discussed looking for a Twitter “signal” around local rain gauges. When attempting to correlate rain gauge data to Twitter communications, determining where the tweet came from matters. Part 2 of that series focused on a flood in Louisville, KY on August 4-5, 2009.  During that 48-hour period there were approximately 30,000,000 tweets from around the world.  By filtering with domain-specific keywords, we ended up with around 450,000 rain, flood,  and weather related tweets. Our next challenge was to determine which of these were from the Louisville, KY area.
 
