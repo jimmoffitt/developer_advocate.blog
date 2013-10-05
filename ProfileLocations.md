@@ -21,7 +21,7 @@ Having a tweet explicitly tied to a specific location or a Twitter Place is extr
 
 By far the majority of geo-referencing was performed by parsing the words from the Profile location.  For the Louisville event we searched for any tweet that either mentioned “Louisville” in the tweet, or came from an Twitter account with a Profile Location setting including “Louisville.” It’s worth noting that since we live near Louisville, CO, we explicitly excluded account locations that mentioned “CO” or “Colorado.” 
 
-We needed to built our own language-based filters to parse text for hints on specific locations.  Detecting location references in language is inherently a task that benefits from local knowledge.  If we had had these new tools we likely would have done a better job at finding Twitter communications around where these gauges were located.  In Part 2 we looked at a storm in Louisville KY. Since we live near Louisville, CO, we knew we should try to explicitly avoid collecting any Colorado tweets.  While this local knowledge was helpful, we did not even try to filter out Louisville, Tennessee and the other eight (Alabama, Georgia, Illinois, Kansas, Mississippi, Nebraska, New York, and Ohio!). One reason was that this event was from 2009, when Twitter was in its relative infancy.  We figured that, compared four years later, there really were not that many tweeting, and those that were probably lived in Louisville Kentucky, not Tennessee.  If that was a weak assumption for back then, it is a much less safe assumption today.  So it was a calculated risk to simplify our “language processing” algorithm and just focus on the Louisvilles in Kentucky and Colorado only.
+We needed to built our own language-based filters to parse text for hints on specific locations.  Detecting location references in language is inherently a task that benefits from local knowledge.  Since we live near Louisville, CO, we knew we should try to explicitly avoid collecting any Colorado tweets.  While this local knowledge was helpful, we did not even try to filter out Louisville, Tennessee and the other eight (Alabama, Georgia, Illinois, Kansas, Mississippi, Nebraska, New York, and Ohio!). One reason was that this event was from 2009, when Twitter was in its relative infancy.  We figured that, compared four years later, there really were not that many tweeting, and those that were probably lived in Louisville Kentucky, not Tennessee.  If that was a weak assumption for back then, it is a much less safe assumption today.  So it was a calculated risk to simplify our “language processing” algorithm and just focus on the Louisvilles in Kentucky and Colorado only.
 
 
 __PowerTrack Operators for Profile Location__
@@ -46,9 +46,10 @@ Profile Location enrichments
 
 The beautiful thing about the new enhanced Profile Location tools is that it abstracts away advanced algorithms that blend geographic and language processing.  With these new tools, we could have simply specified the City of Louisville and the State of Kentucky and known that we’d optimized our results, knowing that we were easily omitting tweets from towns named Louisville in states other than Kentucky.
 
-NEW WAY:
-profile_locality:louisville 
-profile_region:kentucky
+New rule with Profile Location operators:
+profile_locality:louisville profile_region:kentucky
+
+This rule is much shorter and more effective.  If we had had these new tools we likely would have done a better job at finding Twitter communications around where these gauges were located.  In Part 2 we looked at a storm in Louisville KY.
 
 
 
