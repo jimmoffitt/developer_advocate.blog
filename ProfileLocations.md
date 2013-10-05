@@ -27,13 +27,23 @@ We needed to built our own language-based filters to parse text for hints on spe
 __PowerTrack Operators for Profile Location__
 
 
-OLD WAY (used for Louisville flood analysis):
+PowerTrack rules used for Louisville flood analysis:
 bio_location_contains:”louisville” - (bio_location_contains:colorado OR bio_location_contains:co)
 
-Optimized OLD WAY: bio_location_contains:”louisville” - (bio_location_contains:colorado OR bio_location_contains:”, CO” OR bio_location_contains:ohio OR bio_location_contains:”, OH”) OR 
-bio_location_contains:ohio OR bio_location_contains:”, OH”) O
+Optimized version with bio_location_contains: 
+bio_location_contains:”louisville” 
+- (bio_location_contains:colorado OR bio_location_contains:”, CO” 
+OR bio_location_contains:ohio OR bio_location_contains:”, OH”
+OR bio_location_contains:tennesee OR bio_location_contains:”, TN” OR
+OR bio_location_contains:new york OR bio_location_contains:”, NY”) 
 
-(introduce Profile Location enrichments. ) 
+This version is not that bad in terms of length or complexity, but it potentially has serious drawbacks.  
+
+It required extra research to determine what other states have a town called Louisville.  This rule does not cover the other six states with a Louisville.  For our use-case we didn't think this was a big deal since these were smaller towns and this Louisville flood occurred back in 2009 when Twitter was in its relative infancy.  Based on the results we saw it seems that these assumptions were reasonable. However, as the use of social networks grows the assumption of not much usage in certain areas becomes less safe. Fortunately there is an easier and more effective way to tackle this issue.
+
+
+Profile Location enrichments
+
 The beautiful thing about the new enhanced Profile Location tools is that it abstracts away advanced algorithms that blend geographic and language processing.  With these new tools, we could have simply specified the City of Louisville and the State of Kentucky and known that we’d optimized our results, knowing that we were easily omitting tweets from towns named Louisville in states other than Kentucky.
 
 NEW WAY:
