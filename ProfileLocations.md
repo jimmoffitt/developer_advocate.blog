@@ -39,7 +39,7 @@ OR bio_location_contains:new york OR bio_location_contains:”, NY”)
 
 This version is not that bad in terms of length or complexity, but it potentially has serious drawbacks.  
 
-It required extra research to determine what other states have a town called Louisville.  This rule does not cover the other six states with a Louisville.  For our use-case we didn't think this was a big deal since these were smaller towns and this Louisville flood occurred back in 2009 when Twitter was in its relative infancy.  Based on the results we saw it seems that these assumptions were reasonable. However, as the use of social networks grows the assumption of not much usage in certain areas becomes less safe. Fortunately there is an easier and more effective way to tackle this issue.
+It required extra research to determine what other states have a town called Louisville.  This rule does not cover the other six states with a Louisville.  For our use-case we didn't think this was a big deal since these were smaller towns and this Louisville flood occurred back in 2009 when Twitter was in its relative infancy.  Based on the results [Part 3] (http://blog.gnip.com/tweeting-in-the-rain-part-3/) we saw it seems that these assumptions were reasonable. However, as the use of social networks grows the assumption of not much usage in certain areas becomes less safe. Fortunately there is an easier and more effective way to tackle this issue.
 
 
 Profile Location enrichments
@@ -49,7 +49,7 @@ The beautiful thing about the new enhanced Profile Location tools is that it abs
 New rule with Profile Location operators:
 profile_locality:louisville profile_region:kentucky
 
-This rule is much shorter and more effective.  If we had had these new tools we likely would have done a better job at finding Twitter communications around where these gauges were located.  In Part 2 we looked at a storm in Louisville KY.
+This rule is much shorter and more effective.  If we had had these new tools we likely would have done a better job at finding Twitter communications around where these gauges were located. 
 
 
 
