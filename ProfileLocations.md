@@ -42,7 +42,7 @@ This version is not that bad in terms of length or complexity, but it potentiall
 It required extra research to determine what other states have a town called Louisville.  This rule does not cover the other six states with a Louisville.  For our use-case we didn't think this was a big deal since these were smaller towns and this Louisville flood occurred back in 2009 when Twitter was in its relative infancy.  Based on the results ([Tweeting in the Rain - Part 3] (http://blog.gnip.com/tweeting-in-the-rain-part-3/)) we saw it seems that these assumptions were reasonable. However, as the use of social networks grows the assumption of not much usage in certain areas becomes less safe. Fortunately there is an easier and more effective way to tackle this issue.
 
 
-Profile Location enrichments
+__Profile Location enrichments__
 
 The beautiful thing about the new enhanced Profile Location tools is that it abstracts away advanced algorithms that blend geographic and language processing.  With these new tools, we could have simply specified the City of Louisville and the State of Kentucky and known that we’d optimized our results, knowing that we were easily omitting tweets from towns named Louisville in states other than Kentucky.
 
