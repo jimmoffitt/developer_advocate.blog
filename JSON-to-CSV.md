@@ -1,5 +1,7 @@
 **JSON-to-CSV Conversion notes**
 
+*"Can you deliver the data in CSV?  Sure, sort of."*
+
 We get asked about converting JSON data to CSV very frequently.  This is a very common request for one-time consumers of social data.  A typical scenario is someone conducting research and exploring signals from their domain in social media data.  [tweeting-in-the-rain example]
 
 JSON formatting is dynamic in nature because it readily supports hashes and arrays of variable length. 
