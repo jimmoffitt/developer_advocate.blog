@@ -1,0 +1,31 @@
+**JSON-to-CSV Conversion notes**
+
+We get asked about converting JSON data to CSV very frequently.  This is a very common request for one-time consumers of social data.  A typical scenario is someone conducting research and exploring signals from their domain in social media data.  [tweeting-in-the-rain example]
+
+JSON formatting is dynamic in nature because it readily supports hashes and arrays of variable length. 
+
+The process of converting tweets from JSON to CSV was much more complicated than anticipated. 
+
+*Nominating JSON arrays for 'special' flattening*
+
+config@arrays_to_collapse = 'hashtags,user_mentions,twitter_entities.urls,gnip.urls,matching_rules,topics'
+
+
+
+*Supporting 'special' header mappings*
+
+Default behavior is to use the dot-notation key by default, but some keys get silly-long:
+
+    #twitter_entities.hashtags.0.text               --> hashtags
+    #twitter_entities.urls.0.url                    --> twitter_urls
+    #twitter_entities.urls.0.expanded_url           --> twitter_expanded_urls
+    #twitter_entities.urls.0.display_url            --> twitter_display_urls
+    #twitter_entities.user_mentions.0.screen_name   --> user_mention_screen_names
+    #twitter_entities.user_mentions.0.name          --> user_mention_names
+    #twitter_entities.user_mentions.0.id            --> user_mention_ids
+    #gnip.matching_rules.0.value                    --> rule_values
+    #gnip.matching_rules.0.tag                      --> tag_values
+    
+The above represent the current defaults that are automatically generated. These can be updated in the (YAML) config file.
+
+These are specified at config@header_mappings.
