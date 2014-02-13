@@ -51,4 +51,4 @@ For more information on the power of the Gnip Profile Geo enrichment see these b
 + [Get More Twitter Geodata From Gnip With Our New Profile Geo Enrichment] (http://blog.gnip.com/twitter-geo-data-enrichment/)
 + [Profile Geo: When You Need More Geodata In Your Twitter Data] (http://blog.gnip.com/standard-geo-vs-profile-geo/)
 
-For more details on working with Twitter geographic metadata see [this article]().
+For more details on working with Twitter geographic metadata see [this article](http://support.gnip.com/documentation/geo-intro.html).
