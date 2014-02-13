@@ -31,9 +31,17 @@ These two Operators were used to build language-based filters to identify tweets
 
 However, if the assumption had been that tweets from those other geographic areas could be significant, many more location tokens would have needed. To make sure tweets from other locations were not ‘leaking’ into our data set, the complete rule would have looked like this:
 
-     bio_location:"louisville"
-    -(bio_location:colorado OR bio_location_contains:", CO" OR bio_location:ohio OR bio_location_contains:", OH" OR bio_location:tennessee OR      bio_location_contains:", TN" OR bio_location:"new york" OR bio_location_contains:", NY" OR bio_location:kansas OR bio_location_contains:", KS" OR bio_location:alabama OR bio_location_contains:", AL" OR bio_location:georgia OR bio_location_contains:", GA" OR bio_location:illinois OR  bio_location_contains:", IL" OR bio_location:mississippi OR bio_location_contains:", MS" OR bio_location:nebraska OR bio_location_contains:", NE")
-
+```
+   bio_location:"louisville"
+     -(bio_location:colorado OR bio_location_contains:", CO" OR bio_location:ohio OR
+     bio_location_contains:", OH" OR bio_location:tennessee OR      
+     bio_location_contains:", TN" OR bio_location:"new york" OR bio_location_contains:", NY" 
+     OR bio_location:kansas OR bio_location_contains:", KS" OR bio_location:alabama OR
+     bio_location_contains:", AL" OR bio_location:georgia OR bio_location_contains:", GA" OR
+     bio_location:illinois OR  bio_location_contains:", IL" OR bio_location:mississippi OR    
+     bio_location_contains:", MS" OR bio_location:nebraska OR bio_location_contains:", NE")
+     
+```
 
 This rule syntax is not very complex, but it is a bit long. More importantly, it depended on additional effort to determine what other states have a town called Louisville. Furthermore, it assumes that Twitter Profile Locations contained a very specific state abbreviation format (such as “, KS”), and does not cover other possibilities (such as “, Kan.”).
 
