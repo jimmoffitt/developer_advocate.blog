@@ -25,11 +25,11 @@ Cygwin is a popular Linux emulator and below we discuss how to install it and se
 ##Installing Cygwin with Selected Packages
 
 ###Download and run the appropriate installation executable 
-To install Cygwin go to the http://www.cygwin.com/ website and look for the Install Cygwin link in the upper left corner of the front page. On the “Installing and Updating Cygwin Packages” page your see links to both 32-bit Windows (setup-x86.exe) and 64-bit Windows (setup-x86_64.exe).
+To install Cygwin go to the http://www.cygwin.com/ website and look for the Install Cygwin link in the upper left corner of the front page. On the “Installing and Updating Cygwin Packages” page your see links to both 32-bit Windows ([setup-x86.exe] (http://cygwin.com/setup-x86.exe)) and 64-bit Windows ([setup-x86_64.exe] (http://cygwin.com/setup-x86_64.exe)).
 If you are not sure whether you have a 32-bit or 64-bit operating system, go to the Start button, select the ‘Computer’ link on the right panel, then select ‘System properties’ from the menu bar.
 
 ###Select the install folder  
-The Cygwin installation package will default to installing in the C:\cygwin64 folder. This recipe was based on that default, although Cygwin should work regardless of where you install it.  
+The Cygwin installation package will default to installing in the *C:\cygwin64* folder. This recipe was based on that default, although Cygwin should work regardless of where you install it.  
 
 ###Select Packages
 By default the Cygwin installation deploys a set of ‘Base’ packages, which includes Cygwin itself along with common Unix-like utilities such as *grep*, *gawk*, *gzip*, *sed*, *which* and *bash*. The full list can be viewed under the ‘Base’ treeview of packages. A critical package for running most of Gnip example commands is the ‘curl’ package.  The ‘curl’ package is not deployed by default so you must select it under the ‘Web’ set of packages.  
@@ -94,4 +94,8 @@ curl -o 20140225-20140225_9n7q24hjjg_2014_02_25_00_30_activities.json.gz https:/
 Etc., Etc, Etc.
 ```
 
-##Success!
+###Success!
+
+We have successfully used cURL and Unix commands to download Historical PowerTrack files on Windows 7.
+
+
