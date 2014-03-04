@@ -23,28 +23,33 @@ For 64-bit Windows download the “Win64 - Generic” version that supports SSL 
 Place curl.exe in any folder included in your PATH environmental variable list.  For generating this recipe, this was placed in the *c:\Windows\System32* folder.
 
 ###2) Test basic cURL functionality.
-Run curl from a Command prompt, C:\Windows\System32>curl.  
+Run curl from a Command prompt
+```
+C:\Windows\System32>curl.  
+```
 If you get a message instructing you to use the --help or --manual options then curl is working and you are ready for the next step.
 If you get an error message about MSVCR100.dll, install the MS Visual C++ 2010* Redistributable Package (x64), available at http://www.microsoft.com/en-us/download/details.aspx?id=14632 and retry.
  
 *Note that many on-line recipes for getting curl on Windows make reference to the Microsoft Visual C++ 2008 Redistributable Package.  While that should still work, the updated 2010 version was used here.
 
 ###3) Enable support for SSL.
-Download the latest bundle of Certficate Authority Public Keys from http://curl.haxx.se/ca/cacert.pem.
-Rename this file from cacert.pem to curl-ca-bundle.crt.
-Place curl-ca-bundle.crt in any folder included in your PATH environmental variable list.  Again, for generating this recipe, this was placed in the c:\Windows\System32 folder.
-Test that cURL is working with SSL.  
-You can attempt to cURL any HTTPS website, such as https://google.com or your PowerTrack or Data Collector endpoints.  
-If you do not receive any errors, you should be all set, and you can go to the final step.
-If SSL is still not correctly enabled you will see error messages such as these:
++ Download the latest bundle of Certficate Authority Public Keys from http://curl.haxx.se/ca/cacert.pem.
++ Rename this file from cacert.pem to curl-ca-bundle.crt.
++ Place curl-ca-bundle.crt in any folder included in your PATH environmental variable list.  Again, for generating this recipe, this was placed in the *c:\Windows\System32* folder.
++ Test that cURL is working with SSL.  
+You can attempt to cURL any HTTPS website, such as https://google.com or your PowerTrack or Data Collector endpoints. **If you do not receive any errors, you should be all set, and you can go to the next step.**
+
++ If SSL is still not correctly enabled you will see error messages such as these:
+```
 curl: (60) SSL certificate problem: unable to get local issuer certificate
 curl: (60) SSL certificate problem: self signed certificate in certificate chain
+```
 In these cases, try the following:
-Install a Windows version of OpenSSL.
++ Install a Windows version of OpenSSL.
 Go to http://slproweb.com/products/Win32OpenSSL.html and download the Win64 OpenSSL v1.0.0L Light package (or the 32-bit version if you are on a 32-bit OS) and install it.
-Note that if you can not get cURL SSL enabled, you have the option to run cURL in an insecure mode with the -k (or --insecure) option:
++ Note that if you can not get cURL SSL enabled, you have the option to run cURL in an insecure mode with the -k (or --insecure) option:
 
-###4) Verify with Rules API GET command. 
+###5) Verify with Rules API GET command. 
 
 At this point you should be able to use any of the sample cURL commands to exercise Gnip various APIs.  For example, requesting the list of rules from your Rules API endpoint:
 
@@ -97,6 +102,8 @@ certificates.godaddy.com/repository; CN=Go Daddy Secure Certification Authority;
 "point_radius:[-93.2667 44.9833 10mi]","tag":"mpls"}]}* 
 ```
 
+###Success!
+
 ##Helpful links
 + cURL website
      + http://curl.haxx.se/
@@ -108,6 +115,6 @@ certificates.godaddy.com/repository; CN=Go Daddy Secure Certification Authority;
      + http://www.confusedbycode.com/curl/
      + http://stackoverflow.com/questions/949959/why-do-64-bit-dlls-go-to-system32-and-32-bit-dlls-to-syswow64-on-64-bit-windows
 + Unix Commands on Windows 7
-     + [See this article] ()
+     + [See this article] (https://github.com/jimmoffitt/developer.blog/blob/master/UnixOnWindows_Cygwin.md)
 
 
