@@ -17,12 +17,10 @@ cURL is usually built-in to MacOS and Linux environments, but there is no native
 
 For this recipe the target machine was running 64-bit Window 7 Professional, Service Pack 1.  Several of the components used in this recipe have 32-bit/64-bit variants, so the appropriate ones need to be used for your architecture.
 
-###Steps to install cURL on Windows 7:  
-
 ###1) Install the curl.exe.
 cURL executables can be downloaded from http://curl.haxx.se/download.html.
 For 64-bit Windows download the “Win64 - Generic” version that supports SSL (latest version is curl-7.33.0-win64-ssl-sspi.zip).  This zip file deploys a single curl.exe. For 32-bit Windows, download an appropriate executable.
-Place curl.exe in any folder included in your PATH environmental variable list.  For generating this recipe, this was placed in the c:\Windows\System32 folder.
+Place curl.exe in any folder included in your PATH environmental variable list.  For generating this recipe, this was placed in the *c:\Windows\System32* folder.
 
 ###2) Test basic cURL functionality.
 Run curl from a Command prompt, C:\Windows\System32>curl.  
@@ -99,17 +97,17 @@ certificates.godaddy.com/repository; CN=Go Daddy Secure Certification Authority;
 "point_radius:[-93.2667 44.9833 10mi]","tag":"mpls"}]}* 
 ```
 
-Helpful links
-cURL website
-http://curl.haxx.se/
-http://curl.haxx.se/download.html
-cURL on Windows
-http://stackoverflow.com/questions/9507353/steps-to-setup-curl-in-windows
-http://guides.instructure.com/s/2204/m/4214/l/83393-how-do-i-install-and-use-curl-on-a-windows-machine
-http://superuser.com/questions/134685/run-curl-commands-from-windows-console
-http://www.confusedbycode.com/curl/
-http://stackoverflow.com/questions/949959/why-do-64-bit-dlls-go-to-system32-and-32-bit-dlls-to-syswow64-on-64-bit-windows
-Unix Commands on Windows 7
-See this article
+##Helpful links
++ cURL website
+     + http://curl.haxx.se/
+     + http://curl.haxx.se/download.html
++ cURL on Windows
+     + http://stackoverflow.com/questions/9507353/steps-to-setup-curl-in-windows
+     + http://guides.instructure.com/s/2204/m/4214/l/83393-how-do-i-install-and-use-curl-on-a-windows-machine
+     + http://superuser.com/questions/134685/run-curl-commands-from-windows-console
+     + http://www.confusedbycode.com/curl/
+     + http://stackoverflow.com/questions/949959/why-do-64-bit-dlls-go-to-system32-and-32-bit-dlls-to-syswow64-on-64-bit-windows
++ Unix Commands on Windows 7
+     + [See this article] ()
 
 
