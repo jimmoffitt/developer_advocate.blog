@@ -1,8 +1,17 @@
 **JSON-to-CSV Conversion notes**
 
-*"Can you deliver the data in CSV?  Sure, sort of. Are you sure?"*
+#"Can you deliver the data in CSV?"#
 
-We get asked about converting JSON data to CSV very frequently.  This is a very common request for one-time consumers of social data.  A typical scenario is someone conducting research and exploring signals from their domain in social media data.  Hydrologists, Social Scientists, [tweeting-in-the-rain example]
+We frequently get asked about converting JSON data to CSV. The user-story behind this article comes primarily from working with one-time consumers of historical social media data. A common scenario is a researcher (from a non-computer field) who needs to import hundreds of thousands (if not millions) of tweets into some established data-store. Many of these data warehouses can readily import statically structured data so we often get asked whether we can package the data into comma-separated values (CSV).
+
+
+
+
+
+
+
+
+This is a very common request for one-time consumers of social data.  A typical scenario is someone conducting research and exploring signals from their domain in social media data.  Hydrologists, Social Scientists, [tweeting-in-the-rain example]
 
 
 **Some Background**
