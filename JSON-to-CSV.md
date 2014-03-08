@@ -18,50 +18,78 @@ Comma-Separated-Values (CSV) formating is fundamentally static, a two-dimensiona
 
 JSON formatting is dynamic in nature because it readily supports hashes and arrays of variable length. In this sense JSON can natively represent an additional dimension.  There is essentially a one-to-many relationship between JSON files and (multiple) data tables.
 
-+ CSV = database table
-+ JSON = multiple database tables
-
-## JSON Arrays
++ CSV = 2D = single database table
++ JSON = 3D = multiple database tables
 
 
-**Converting JSON arrays to a single CSV field**
+
+
+<insert tweet graphic>
+```
+With a little luck, my tour next week includes #Vail #Breckenridge #Copper. Too bad I can't get to #AftonAlps.
+```
+</insert tweet graphic>
+
+With all tweets come a large set of metadata. Many of these are 'atomic' in nature, where there is only one instance of many attributes:
+
+The basics:
+
+```
+{
+  "id": "tag:search.twitter.com,2005:403224522679009280",
+  "verb": "post",
+  "postedTime": "2013-11-20T18:13:12.000Z"
+}
+```
+
+Actor object:
+
+```
+"actor": {
+    "preferredUsername": "jimmoffitt",
+    "friendsCount": 92
+    "followersCount": 86,
+    "favoritesCount": 102
+  }
+ }
+```
+
+The above tweet metadata can readily be converted to comma-separated values:
+
+```
+id,verb,postedTime,preferredUsername,friendsCount,followersCount,favoritesCount
+tag:search.twitter.com,2005:403224522679009280,post,2013-11-20T18:13:12.000Z,jimmoffitt,92,86,102
+```
+
+
+**Twitter Hashtags: an example of storing arrays**
+
+Twitter hashtags are fundamental to how Twitter works.  Hashtags make it possible to focus in and filter for topics and resources of interest. Of all the metadata the comes with tweets, hashtags are commonly a primary focus.  Below is an example of a tweet using multiple hashtags:
 
 ```
 {"twitter_entities": {
     "hashtags": [
       {
-        "text": "AftonAlps",
-        "indices": [
-          1,
-          14
-        ]
-      },
+        "text": "AftonAlps"
+       },
       {
-        "text": "Breckenridge",
-        "indices": [
-         17,
-         32
-        ]
-      },
+        "text": "Breckenridge"
+       },
       {
-        "text": "CopperMtn",
-        "indices": [
-          42,
-          65
-        ]
-      },
+        "text": "Copper"
+       },
       {
-        "text": "Vail",
-        "indices": [
-          93,
-          98
-        ]
-      }
-      
-    ]
+        "text": "Vail"
+       }
+     ]
   }
 }
 ```
+
+
+**Converting JSON arrays to a single CSV field**
+
+
 
 **Deciding what JSON attributes to convert: JSON tweet templates**
 
