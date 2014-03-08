@@ -98,7 +98,11 @@ id, actor.id
 403224522679009280,1855784545
 ```
 
-**Twitter Hashtags: an example of storing arrays**
+
+   
+
+
+##Twitter Hashtags: an example of storing arrays##
 
 Twitter hashtags are fundamental to how Twitter works.  Hashtags make it possible to focus in and filter for topics and resources of interest. Of all the metadata the comes with tweets, hashtags are commonly a primary focus.  Below is an example of a tweet using multiple hashtags:
 
@@ -122,6 +126,19 @@ Twitter hashtags are fundamental to how Twitter works.  Hashtags make it possibl
 }
 ```
 
+However, sometimes using dot notation with tweet JSON payloads get a bit too verbose.  For example, here it the JSON markup up for [what tweet field?]:
+
+```
+   twitter_entities.hashtags.0.text = AftonAlps
+   twitter_entities.hashtags.1.text = Breckenridge
+   twitter_entities.hashtags.2.text = Copper
+   twitter_entities.hashtags.3.text = Vail
+   
+```
+
+``` 
+   twitter_entities.hashtags.0.text               --> hashtags
+```
 
 **Converting JSON arrays to a single CSV field**
 
@@ -146,8 +163,6 @@ table: activity field: hashats value:hash_id
 table: hashtags field: hash_id
 
 ```
-
-
 
 
 
