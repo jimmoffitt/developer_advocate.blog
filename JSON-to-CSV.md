@@ -18,11 +18,19 @@ Comma-Separated-Values (CSV) formating is fundamentally static, a two-dimensiona
 
 JSON formatting is dynamic in nature because it readily supports hashes and arrays of variable length. In this sense JSON can natively represent an additional dimension.  There is essentially a one-to-many relationship between JSON files and (multiple) data tables.
 
+JSON is built with key names, often multiple levels deep, while CSV field names are determined by column position.
+
+
+```
 + CSV = 2D = single database table
 + JSON = 3D = multiple database tables
 
++ With CSV, all data is represented by a string, while with JSON there are distinct numeric and string types.
++ With CSV the comma holds all the power.
++ With JSON, double quotes, braces, and commas equally share power.
+```
 
-
+To further the discussion, let's consider the following tweet:
 
 <insert tweet graphic>
 ```
@@ -30,9 +38,9 @@ With a little luck, my tour next week includes #Vail #Breckenridge #Copper. Too 
 ```
 </insert tweet graphic>
 
-With all tweets come a large set of metadata. Many of these are 'atomic' in nature, where there is only one instance of many attributes:
+With all tweets come a large set of metadata. Many of these are 'atomic' in nature, where there is only one instance of many attributes. Here are some examples:
 
-The basics:
+Tweet-specific attributes:
 
 ```
 {
@@ -62,6 +70,34 @@ tag:search.twitter.com,2005:403224522679009280,post,2013-11-20T18:13:12.000Z,jim
 ```
 
 
+Note that with CSV there are a variety of ways to specify the header labels. In the above example, CSV header columns were based on the 'bottom-level' key name. 
+
+
+Ah, but there is a wrinkle here. In JSON there can be duplicate key names. For example, there is an "id" attribute for both the tweet itself, but also for the 'actor' that posted it:
+
+```
+{"id": "tag:search.twitter.com,2005:403224522679009280",
+ "actor": {
+   "id": "id:twitter.com:1855784545"
+  }
+}
+   
+```
+
+Given that, you can't just use the key name paired with the data value or you will end up with CSV headers that duplicate names:
+
+```
+id, id
+tag:search.twitter.com,2005:403224522679009280,id:twitter.com:1855784545
+```
+
+That is a recipe for disaster. Another option would have been to use dot notation, as in 'actor.perferredUsername'. Furthermore, you may want to remove redundant data from fundamental fields like 'id'. 
+
+```
+id, actor.id
+403224522679009280,1855784545
+```
+
 **Twitter Hashtags: an example of storing arrays**
 
 Twitter hashtags are fundamental to how Twitter works.  Hashtags make it possible to focus in and filter for topics and resources of interest. Of all the metadata the comes with tweets, hashtags are commonly a primary focus.  Below is an example of a tweet using multiple hashtags:
@@ -90,18 +126,62 @@ Twitter hashtags are fundamental to how Twitter works.  Hashtags make it possibl
 **Converting JSON arrays to a single CSV field**
 
 
+[discuss in the context of a database field for hashtags?
+
+```
+table: activity field: hashtags  value: AftonAlps,Breckenridge,Copper,Vail
+```
+
+```
+table: activity field: hashtag1 value: AftonAlps
+field: hashtag2 value: Breckenridge
+field: hashtag3 value: Copper
+field: hashtag4 value: Vail
+field: hashtag5 value: 
+field: hashtag6 value: 
+```
+
+```
+table: activity field: hashats value:hash_id
+table: hashtags field: hash_id
+
+```
+
+
+
+
 
 **Deciding what JSON attributes to convert: JSON tweet templates**
 
 One fundamental challenge of converting social media data, regardless of formats, is the sheer size of the datasets. A single activity may consist of over 150 attributes. Even a dataset with 1,000,000 social activities, a relatively small dataset, then results in 150,000,000 attributes names and values.  
 
 
+Going back to the hashtag example, here is the complete hashtag metadata provided:
 
-**Example Use-case**
+```
+{"twitter_entities": {
+    "hashtags": [
+      {
+        "text": "AlftonAlps",
+        "indices": [
+          93,
+          106
+        ]
+      }
+    ]
+  }
+}
+  
+```
+
+
+
+
+
+*Example Use-case: Exploring New Years Eve*
 
 The process of converting tweets from JSON to CSV was much more complicated than anticipated. To help illustrate the path taken for this project, we'll tell a short data story. We'll survey a 24-hour period looking for Twitter signals around New Years Eve 2014 in three different parts of the world.  
 
-Exploring News Year 
 
 
 
