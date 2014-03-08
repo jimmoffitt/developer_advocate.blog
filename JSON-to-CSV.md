@@ -1,5 +1,3 @@
-**JSON-to-CSV Conversion notes**
-
 #"Can you deliver the data in CSV?"#
 
 As a developer advocate at Gnip I often get asked about converting JSON data to CSV. The user-story behind this question comes primarily from one-time consumers of historical social media data. A common scenario is a researcher (likely from a non-computer field) who needs to import hundreds of thousands (if not millions) of tweets into some established data-store. Many of these data warehouses can readily import statically structured data such as CSV. 
@@ -81,7 +79,6 @@ Ah, but there is a wrinkle here. In JSON there can be duplicate key names. For e
    "id": "id:twitter.com:1855784545"
   }
 }
-   
 ```
 
 Given that, you can't just use the key name paired with the data value or you will end up with CSV headers that duplicate names:
@@ -98,9 +95,7 @@ id, actor.id
 403224522679009280,1855784545
 ```
 
-
-   
-
+However, sometimes using dot notation with tweet JSON payloads get a bit too verbose.  For example, next we'll discuss the JSON markup up for an array of metadata, such as Twitter hashtags.
 
 ##Twitter Hashtags: an example of storing arrays##
 
@@ -126,14 +121,12 @@ Twitter hashtags are fundamental to how Twitter works.  Hashtags make it possibl
 }
 ```
 
-However, sometimes using dot notation with tweet JSON payloads get a bit too verbose.  For example, here it the JSON markup up for [what tweet field?]:
 
 ```
    twitter_entities.hashtags.0.text = AftonAlps
    twitter_entities.hashtags.1.text = Breckenridge
    twitter_entities.hashtags.2.text = Copper
    twitter_entities.hashtags.3.text = Vail
-   
 ```
 
 ``` 
@@ -161,7 +154,6 @@ field: hashtag6 value:
 ```
 table: activity field: hashats value:hash_id
 table: hashtags field: hash_id
-
 ```
 
 
