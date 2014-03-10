@@ -88,6 +88,11 @@ id, id
 tag:search.twitter.com,2005:403224522679009280,id:twitter.com:1855784545
 ```
 
+
+| id        | id  |
+| ------------- |:-------------:| -----:|
+| tag:search.twitter.com,2005:403224522679009280     | id:twitter.com:1855784545 |
+
 That is a recipe for disaster. Another option would have been to use dot notation, as in 'actor.perferredUsername'. Furthermore, you may want to remove redundant data from fundamental fields like 'id'. 
 
 ```
