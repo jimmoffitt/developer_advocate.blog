@@ -4,14 +4,27 @@ At Gnip we often get asked about converting [JSON] (http://json.org) data to [CS
 
 Since CSV is probably the most prevalent format for transferring data from one system to another it is not too surprising how often this question comes up. It turns out this short question has a long answer. The main wrinkles are that JSON can readily store variable-length arrays of data and stores data at multiple 'levels' using potentially duplicate names. On the other hand, CSV data needs to have the same number of data fields per record. With CSV files there is an optional header that contains names corresponding to the individual fields in the file.     
 
-We will begin our discussion by comparing and contrasting CSV and JSON, which will highlight the challenges of converting JSON data to CSV. Then we will dive into some Twitter data examples to help illustrate the conversion process. Finally, we will present some code used to tackle this problem.
+We will begin our discussion by describing CSV and JSON encoding in more detail and highlight the challenges of converting JSON data to CSV. Then we will dive into some Twitter data examples to help illustrate the conversion process. Finally, we will present some code used to tackle this problem.
 
 
 ##Some Background##
 
-Comma-Separated-Values (CSV) formating is fundamentally static, a two-dimensional grid of data and information.  All spreadsheet software readily imports CSV-formatted.  CSV data is also easy to import into database as tables. There is essentially a one-to-one relationship between CSV files and data tables.
+Comma-Separated-Values (CSV) formating is fundamentally static, a two-dimensional grid of data and information.  All spreadsheet and database software, as well as most legacy data platforms, readily imports CSV-formatted data. There is essentially a one-to-one relationship between CSV files and database tables and spreadsheets.
 
-JSON formatting is dynamic in nature because it readily supports hashes and arrays of variable length. In this sense JSON can natively represent an additional dimension.  There is essentially a one-to-many relationship between JSON files and (multiple) data tables.
+JSON is based on collections of name/value pairs and is dynamic in nature because it readily supports arrays of variable length. As stated on the JSON.org website:  
+
+```
+JSON is built on two structures:
+
+* A collection of name/value pairs. In various languages, this is realized as an object, record, struct,
+dictionary, hash table, keyed list, or associative array.
+* An ordered list of values. In most languages, this is realized as an array, vector, list, or sequence.
+```
+
+
+
+
+In this sense JSON can natively represent an additional dimension.  There is essentially a one-to-many relationship between JSON files and (multiple) data tables.
 
 JSON is built with key names, often multiple levels deep, while CSV field names are determined by column position.
 
