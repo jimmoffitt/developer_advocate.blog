@@ -1,6 +1,6 @@
 #"Can you deliver the data in CSV?"#
 
-At Gnip we often get asked about converting JSON data to CSV. The user-story behind this question comes primarily from one-time consumers of historical social media data. A common scenario is a researcher (likely from a non-computer field) who needs to import hundreds of thousands (if not millions) of tweets into some established data-store. Many of these data warehouses can readily import statically structured data such as CSV. Since CSV is probably the most prevalent format for transfering data from one system to another it is not too surprising how often this question comes up.
+At Gnip we often get asked about converting [JSON] (http://json.org) data to [CSV] (http://en.wikipedia.org/wiki/Comma-separated_values). The user-story behind this question comes primarily from one-time consumers of historical social media data. A common scenario is a researcher (likely from a non-computer field) who needs to import hundreds of thousands (if not millions) of tweets into some established data-store. Many of these data warehouses can readily import statically structured data such as CSV. Since CSV is probably the most prevalent format for transfering data from one system to another it is not too surprising how often this question comes up.
 
 A common example are customers writing collected social activities to a single database table. CSV data maps easily to database tables, which can be thought of as static two-dimensional data structures. In addition, many users want to work with their data in Excel. 
 
