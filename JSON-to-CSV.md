@@ -1,10 +1,10 @@
 #"Can you deliver the data in CSV?"#
 
-At Gnip we often get asked about converting [JSON] (http://json.org) data to [CSV] (http://en.wikipedia.org/wiki/Comma-separated_values). The user-story behind this question comes primarily from one-time consumers of historical social media data. A common scenario is a researcher (likely from a non-computer field) who needs to import hundreds of thousands (if not millions) of tweets into some established data-store. Many of these data warehouses can readily import statically structured data such as CSV. Since CSV is probably the most prevalent format for transfering data from one system to another it is not too surprising how often this question comes up.
+At Gnip we often get asked about converting [JSON] (http://json.org) data to [CSV] (http://en.wikipedia.org/wiki/Comma-separated_values). The user-story behind this question comes primarily from one-time consumers of historical social media data. A common scenario is a researcher (likely from a non-computer field) who needs to import hundreds of thousands (if not millions) of tweets into some established data-store. Many of these data warehouses can readily import statically structured data such as CSV. The most common examples are database tables and even spreadsheets. 
 
-A common example are customers writing collected social activities to a single database table. CSV data maps easily to database tables, which can be thought of as static two-dimensional data structures. In addition, many users want to work with their data in Excel. 
+Since CSV is probably the most prevalent format for transferring data from one system to another it is not too surprising how often this question comes up. It turns out this short question has a long answer. The main wrinkles are that JSON can readily store variable-length arrays of data and stores data at multiple 'levels' using potentially duplicate names. On the other hand, CSV data needs to have the same number of data fields per record. With CSV files there is an optional header that contains names corresponding to the individual fields in the file.     
 
-It turns out this short question has a long answer. The main wrinkles are that JSON can readily store variable arrays of data, such as hashtags, and stores data at multiple 'levels.'
+We will begin our discussion by comparing and contrasting CSV and JSON, which will highlight the challenges of converting JSON data to CSV. Then we will dive into some Twitter data examples to help illustrate the conversion process. Finally, we will present some code used to tackle this problem.
 
 
 ##Some Background##
