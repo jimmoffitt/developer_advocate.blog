@@ -1,42 +1,26 @@
 #"Can you deliver the data in CSV?"#
 
-At Gnip we often get asked about converting [JSON] (http://json.org) data to [CSV] (http://en.wikipedia.org/wiki/Comma-separated_values). The user-story behind this question comes primarily from one-time consumers of historical social media data. A common scenario is a researcher (likely from a non-computer field) who needs to import hundreds of thousands (if not millions) of tweets into some established data-store. Many of these data warehouses can readily import statically structured data such as CSV. The most common examples are database tables and even spreadsheets. 
+At Gnip we often get asked about converting [JSON] (http://json.org) data to [CSV] (http://en.wikipedia.org/wiki/Comma-separated_values). The user-story behind this question comes primarily from one-time consumers of historical social media data. A common scenario is a researcher (likely from a non-computer field) who needs to import hundreds of thousands (if not millions) of tweets into some established data-store. Many of these data warehouses can readily import statically structured data such as CSV. The most common examples are database tables and spreadsheets. 
 
-Since CSV is probably the most prevalent format for transferring data from one system to another it is not too surprising how often this question comes up. It turns out this short question has a long answer. The main wrinkles are that JSON can readily store variable-length arrays of data and stores data at multiple 'levels' using potentially duplicate names. On the other hand, CSV data needs to have the same number of data fields per record. With CSV files there is an optional header that contains names corresponding to the individual fields in the file.     
+Since CSV is probably the most prevalent format for transferring data from one system to another it is not too surprising how often this question comes up. It turns out this short question has a long answer. The main wrinkles are that JSON can readily store variable-length arrays of data and organizes data at multiple 'levels' using potentially duplicate names. On the other hand, CSV data needs to have the same number of data fields per record. With CSV files there is an optional header that contains names corresponding to the individual fields in the file. These are column headers in a spreadsheet and field names in a database.    
 
-We will begin our discussion by describing CSV and JSON encoding in more detail and highlight the challenges of converting JSON data to CSV. Then we will dive into some Twitter data examples to help illustrate the conversion process. Finally, we will present some code used to tackle this problem.
-
+We will begin our discussion by describing CSV and JSON encoding in more detail and highlight the challenges of converting JSON data to CSV. Then we will dive into some Twitter data examples to help illustrate the conversion process. Finally, we will present some code used to help tackle this problem.
 
 ##Some Background##
 
-Comma-Separated-Values (CSV) formating is fundamentally static, a two-dimensional grid of data and information.  All spreadsheet and database software, as well as most legacy data platforms, readily imports CSV-formatted data. There is essentially a one-to-one relationship between CSV files and database tables and spreadsheets.
+Comma-Separated-Values (CSV) formating is fundamentally a static, two-dimensional grid of data and information. 
 
 JSON is based on collections of name/value pairs and is dynamic in nature because it readily supports arrays of variable length. As stated on the JSON.org website:  
 
-```
-JSON is built on two structures:
-
+With CSV, all data is represented by a string, while with JSON there are distinct numeric and string types.
 * A collection of name/value pairs. In various languages, this is realized as an object, record, struct,
 dictionary, hash table, keyed list, or associative array.
 * An ordered list of values. In most languages, this is realized as an array, vector, list, or sequence.
-```
-
-
-
+JSON is built with key names, often multiple levels deep, while CSV field names are determined by column position.
 
 In this sense JSON can natively represent an additional dimension.  There is essentially a one-to-many relationship between JSON files and (multiple) data tables.
 
-JSON is built with key names, often multiple levels deep, while CSV field names are determined by column position.
-
-
-```
-+ CSV = 2D = single database table
-+ JSON = 3D = multiple database tables
-
-+ With CSV, all data is represented by a string, while with JSON there are distinct numeric and string types.
-+ With CSV the comma holds all the power.
-+ With JSON, double quotes, braces, and commas equally share power.
-```
+##Why Social Metadata is encoded in JSON##
 
 To further the discussion, let's consider the following tweet:
 
@@ -46,7 +30,7 @@ With a little luck, my tour next week includes #Vail #Breckenridge #Copper. Too 
 ```
 </insert tweet graphic>
 
-With all tweets come a large set of metadata. Many of these are 'atomic' in nature, where there is only one instance of many attributes. Here are some examples:
+With all tweets comes metadata, consisting of many attributes. Many of these attributes are 'atomic' in nature, where there is only one instance such as the posted time and information about the author. Here are some examples:
 
 Tweet-specific attributes:
 
@@ -55,6 +39,7 @@ Tweet-specific attributes:
   "id": "tag:search.twitter.com,2005:403224522679009280",
   "verb": "post",
   "postedTime": "2013-11-20T18:13:12.000Z"
+  "body": "With a little luck, my tour next week includes #Vail #Breckenridge #Copper. Too bad I can't get to #AftonAlps."
 }
 ```
 
@@ -77,11 +62,14 @@ id,verb,postedTime,preferredUsername,friendsCount,followersCount,favoritesCount
 tag:search.twitter.com,2005:403224522679009280,post,2013-11-20T18:13:12.000Z,jimmoffitt,92,86,102
 ```
 
+| id     verb  | postedTime | preferredUsername | friendsCount | followersCount| favoritesCount  |
+| ------------- |:-------------:|:-------------:| |:-------------: |:-------------: |:-------------: | -----:|
+| tag:search.twitter.com,2005:403224522679009280 | post | 2013-11-20T18:13:12.000Z | jimmoffitt | 92 |86 | 102 |
 
-Note that with CSV there are a variety of ways to specify the header labels. In the above example, CSV header columns were based on the 'bottom-level' key name. 
 
 
-Ah, but there is a wrinkle here. In JSON there can be duplicate key names. For example, there is an "id" attribute for both the tweet itself, but also for the 'actor' that posted it:
+
+Note that with CSV there are a variety of ways to specify the header labels. In the above example, CSV header columns were based on the 'lowest-level' key name. Ah, but there is a wrinkle here. In JSON there can be duplicate key names. For example, there is an "id" attribute for both the tweet itself, but also for the 'actor' that posted it:
 
 ```
 {"id": "tag:search.twitter.com,2005:403224522679009280",
@@ -91,13 +79,7 @@ Ah, but there is a wrinkle here. In JSON there can be duplicate key names. For e
 }
 ```
 
-Given that, you can't just use the key name paired with the data value or you will end up with CSV headers that duplicate names:
-
-```
-id, id
-tag:search.twitter.com,2005:403224522679009280,id:twitter.com:1855784545
-```
-
+Given that, you probably should not just use the key name paired with the data value or you will end up with CSV headers that duplicate names:
 
 | id        | id  |
 | ------------- |:-------------:| -----:|
