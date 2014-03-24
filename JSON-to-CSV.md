@@ -1,4 +1,4 @@
-#"Can you deliver the data in CSV?"#
+##"Can you deliver the data in CSV?"##
 
 At Gnip we often get asked about converting [JSON] (http://json.org) data to [CSV] (http://en.wikipedia.org/wiki/Comma-separated_values). The user-story behind this question comes primarily from one-time consumers of historical social media data. A common scenario is a researcher (likely from a non-computer field) who needs to import hundreds of thousands (if not millions) of tweets into some established data-store. Many of these data warehouses can readily import statically structured data such as CSV. The most common examples are database tables and spreadsheets. 
 
@@ -6,7 +6,7 @@ Since CSV is probably the most prevalent format for transferring data from one s
 
 We will begin our discussion by describing CSV and JSON encoding in more detail and highlight the challenges of converting JSON data to CSV. Then we will dive into some Twitter data examples to help illustrate the conversion process. Finally, we will present some code used to help tackle this problem.
 
-##Some Background##
+###Some Background###
 
 Comma-Separated-Values (CSV) formating is fundamentally a static, two-dimensional grid of data and information. 
 
@@ -20,7 +20,7 @@ JSON is built with key names, often multiple levels deep, while CSV field names 
 
 In this sense JSON can natively represent an additional dimension.  There is essentially a one-to-many relationship between JSON files and (multiple) data tables.
 
-##Why Social Metadata is encoded in JSON##
+###Why Social Metadata is encoded in JSON###
 
 To further the discussion, let's consider the following tweet:
 
@@ -62,10 +62,9 @@ id,verb,postedTime,preferredUsername,friendsCount,followersCount,favoritesCount
 tag:search.twitter.com,2005:403224522679009280,post,2013-11-20T18:13:12.000Z,jimmoffitt,92,86,102
 ```
 
-| id     verb  | postedTime | preferredUsername | friendsCount | followersCount| favoritesCount  |
-| ------------- |:-------------:|:-------------:| |:-------------: |:-------------: |:-------------: | -----:|
-| tag:search.twitter.com,2005:403224522679009280 | post | 2013-11-20T18:13:12.000Z | jimmoffitt | 92 |86 | 102 |
-
+| id                                             | verb                       | postedTime               | preferredUsername | friendsCount | followersCount | favoritesCount |
+|------------------------------------------------|----------------------------|--------------------------|-------------------|--------------|----------------|----------------|
+| tag:search.twitter.com,2005:403224522679009280 | post | 2013-11-20T18:13:12.000Z | jimmoffitt        | 92           | 86             | 102            |
 
 
 
@@ -87,14 +86,13 @@ Given that, you probably should not just use the key name paired with the data v
 
 That is a recipe for disaster. Another option would have been to use dot notation, as in 'actor.perferredUsername'. Furthermore, you may want to remove redundant data from fundamental fields like 'id'. 
 
-```
-id, actor.id
-403224522679009280,1855784545
-```
+| id                 	|  actor.id  	|
+|--------------------	|:----------:	|
+| 403224522679009280 	| 1855784545 	|
 
 However, sometimes using dot notation with tweet JSON payloads get a bit too verbose.  For example, next we'll discuss the JSON markup up for an array of metadata, such as Twitter hashtags.
 
-##Twitter Hashtags: an example of storing arrays##
+###JSON Supports Metadata Arrays: a hashtag example###
 
 Twitter hashtags are fundamental to how Twitter works.  Hashtags make it possible to focus in and filter for topics and resources of interest. Of all the metadata the comes with tweets, hashtags are commonly a primary focus.  Below is an example of a tweet using multiple hashtags:
 
@@ -155,7 +153,7 @@ table: hashtags field: hash_id
 
 
 
-**Deciding what JSON attributes to convert: JSON tweet templates**
+###Deciding what JSON attributes to convert: JSON tweet templates###
 
 One fundamental challenge of converting social media data, regardless of formats, is the sheer size of the datasets. A single activity may consist of over 150 attributes. Even a dataset with 1,000,000 social activities, a relatively small dataset, then results in 150,000,000 attributes names and values.  
 
