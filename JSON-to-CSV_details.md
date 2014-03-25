@@ -1,6 +1,9 @@
 ##"Can you deliver the data in CSV?"##
 
-At Gnip we often get asked about converting [JSON] (http://json.org) data to [CSV] (http://en.wikipedia.org/wiki/Comma-separated_values). The user-story behind this question comes primarily from one-time consumers of historical social media data. A common scenario is a researcher (likely from a non-computer field) who needs to import hundreds of thousands (if not millions) of tweets into some established data-store. Many of these data warehouses can readily import statically structured data such as CSV. The most common examples are database tables and spreadsheets. 
+At Gnip we often get asked about converting [JSON] (http://json.org) data to [CSV] (http://en.wikipedia.org/wiki/Comma-separated_values). If you are asking that question the short answer is 'yes' and see [HERE] (https://github.com/jimmoffitt/developer.blog/blob/master/JSON-to-CSV_overview.md) if you want a quick overview of the process. And continue reading if you want the longer answer.
+
+
+The user-story behind this question comes primarily from one-time consumers of historical social media data. A common scenario is a researcher (likely from a non-computer field) who needs to import hundreds of thousands (if not millions) of tweets into some established data-store. Many of these data warehouses can readily import statically structured data such as CSV. The most common examples are database tables and spreadsheets. 
 
 Since CSV is probably the most prevalent format for transferring data from one system to another it is not too surprising how often this question comes up. It turns out this short question has a long answer. The main wrinkles are that JSON can readily store variable-length arrays of data and organizes data at multiple 'levels' using potentially duplicate names. On the other hand, CSV data needs to have the same number of data fields per record. With CSV files there is an optional header that contains names corresponding to the individual fields in the file. These are column headers in a spreadsheet and field names in a database.    
 
