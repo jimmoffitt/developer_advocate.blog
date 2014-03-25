@@ -104,9 +104,9 @@ id,actor.id,preferredUsername,verb,postedTime,body,hashtags
 
 A couple things to note about this JSON to CSV conversion:
 
-+ Tweet and User IDs have been stripped down to just the numeric content
++ Tweet and User IDs have been stripped down to just the numeric content.
 + Dot notation is used to preserve hierarchy when needed. In this case it was used to handle the repeated use of ‘id’. 
-+ Dot notation names can be overridden.
++ Dot notation names can be overridden (such as hashtags in this example).
 + Arrays are stored as comma-separated values inside double quotes.
 
 
@@ -115,7 +115,7 @@ A couple things to note about this JSON to CSV conversion:
 It can be difficult and time-consuming to find just the perfect tweet ‘in the wild’, an actual tweet that encapsulates all metadata you care about. So you may need to ‘hand build’ your own template tweet. The means assembling an JSON object by picking and choosing the fields you want and copying them into a JSON file. When doing this, keep the following details in mind:
 
 + Tweet template JSON must be valid for the conversion code to work. If this code can not parse the template JSON then it will exit.
-+ Order does not absolutely matter.  You could have the actor object below the twitter entities object. However, the order will affect the order of the CSV columns in the output.
++ Order of objects does not absolutely matter.  You could have the actor object below the twitter entities object. However, the order will affect the order of the CSV columns in the output.
 + Hierarchy matters. If you skip or add a level in the template, that ‘pattern’ will not be found in the processed tweets. ``` gnip.matching_rules.0.value != gnip.matching_rules.value ``` 
 + Metadata values do not have to be internally consistent since the values of the JSON name/value pairs does not matter. All that matters are the JSON names. With the template tweet examples below you will see inconsistencies. For example the geographic metadata can be inconsistent with an actor location in one place and the Gnip Profile Geo in another. 
 
