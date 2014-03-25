@@ -1,7 +1,7 @@
 ##JSON-to-CSV Conversion Overview##
 
 Below are some frequently asked questions about the JSON-to-CSV conversion process. If 
-you are interested in some technical (philosophical even) background on the JSON and CSV formats, and the conversion process between the two, see [not finished yet].  
+you are interested in some technical (philosophical even) background on the JSON and CSV formats, and the conversion process between the two, see [HERE - not finished yet] (https://github.com/jimmoffitt/developer.blog/blob/master/JSON-to-CSV_details.md).  
 
 #### I need the JSON data converted to CSV. What do you need from me? ####
 We need a [tweet template] (./JSON-to-CSV_overview.md#tweet-templates) which identifies all the tweet attributes that you are interested in. The conversion process uses this template and creates a CSV file with a column for every attribute in the template. The conversion process represents an opportunity to ‘tune’ what you want to export. For example, the standard Twitter metadata includes the numeric character position of hashtags in a tweet message. You may decide that you do not need this information, and therefore can omit those details from your tweet template.
