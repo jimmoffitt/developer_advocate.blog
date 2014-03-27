@@ -14,7 +14,14 @@ We will begin our discussion by describing CSV and JSON encoding in more detail 
 JSON is based on collections of name/value pairs and is dynamic in nature because it supports arrays of variable length. JSON objects readily adjust to fit the amount of metadata available for an individual tweet. Meanwhile, comma-Separated-Values (CSV) formating is fundamentally a static, two-dimensional grid of data and information. With CSV formatting, if you store an attribute of a given tweet, you need to allocate storage space for that attribute for all tweets, even if a small percentage of tweets contain that metadata. For example, about 2% of tweets are tagged with geographic metadata, which can consist of as many as 20 attributes. In JSON, only that small number of tweet ojects contains that metadata. With static data structures, such as CSV files and database tables, 98% of rows can contain up to 20 empty columns or fields.
 
 
-With CSV, all data is represented by a string, while with JSON there are distinct numeric and string types.
+With CSV, all data is represented by a string.
+
+```
+
+```
+
+
+With JSON there are distinct numeric and string types.
 
 ```
 * A collection of name/value pairs. In various languages, this is realized as an object, record, struct,
@@ -23,9 +30,32 @@ dictionary, hash table, keyed list, or associative array.
 JSON is built with key names, often multiple levels deep, while CSV field names are determined by column position.
 ```
 
-In this sense JSON can natively represent an additional dimension.  There is essentially a one-to-many relationship between JSON files and (multiple) data tables.
+Next we'll discuss some example tweet details which illustrate why JSON is a great format for encoding social media data, and identify what challenges there are when converting to CSV.
 
-###Why Social Metadata is encoded in JSON###
+
+###[Tweet Metadata Encoded in JSON   ]###
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 To further the discussion, let's consider the following tweet:
 
