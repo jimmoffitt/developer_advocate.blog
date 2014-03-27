@@ -89,7 +89,7 @@ This example tweet is referred to as the conversion ‘tweet template.’ The co
   "body": "Example tweet #HashTag1 #HashTag2"
    "twitter_entities": {
     "hashtags": [
-      {"text": "HashTag1"},
+      {"text": "HashTag1"}
       {"text": "HashTag2"}
     ]
 }
@@ -116,6 +116,7 @@ It can be difficult and time-consuming to find just the perfect tweet ‘in the 
 
 + Tweet template JSON must be valid for the conversion code to work. If this code can not parse the template JSON then it will exit.
 + Order of objects does not absolutely matter.  You could have the actor object below the twitter entities object. However, the order will affect the order of the CSV columns in the output.
++ Array attributes only need an array length of one. The conversion process knows to export all array elements it finds.
 + Hierarchy matters. If you skip or add a level in the template, that ‘pattern’ will not be found in the processed tweets. ``` gnip.matching_rules.0.value != gnip.matching_rules.value ``` 
 + Metadata values do not have to be internally consistent since the values of the JSON name/value pairs does not matter. All that matters are the JSON names. With the template tweet examples below you will see inconsistencies. For example the geographic metadata can be inconsistent with an actor location in one place and the Gnip Profile Geo in another. 
 
