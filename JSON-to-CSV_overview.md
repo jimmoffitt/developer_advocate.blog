@@ -124,14 +124,14 @@ We have pre-built several examples:
 + ‘Small’ tweet: [HERE] (https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_small.json)
      + Just select basics.
 + ‘Everything’ retweet: [HERE] (https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_everything.json)  
-     + Complete tweet and retweet 
+     + Complete tweet and retweet. 
      + All twitter entities and all attributes (like hashtag indices). 
      + Twitter geo.
      + All Gnip enrichments. 
 + ‘Standard’ tweet: [HERE] (https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_standard.json) 
      + No Twitter geo.
      + All twitter entities with select attributes (i.e., no hashtag indices). 
-     + Retweets are indicated by verb, original tweet id, and author name/id
+     + Retweets are indicated by verb, original tweet id, and author name/id.
      + Standard Gnip enrichments (matching rules, urls, language).
 + ‘Standard Geo‘ tweet: [HERE] (https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_standard_geo.json) 
      + Same as ‘Standard’ with Twitter geo.
