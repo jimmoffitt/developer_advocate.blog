@@ -68,7 +68,7 @@ id,actor.id,hashtags
 #### How long will the conversion process take?####
 It depends on how many files are being processed, how many tweets are being converted, and how many attributes are included in the template tweet. If there are 10 million tweets, and 200 tweet attributes in the template, there are 2 billion attributes to process.
 
-Using a standard template tweet approximately 3 million tweets can be processed per hour. Large datasets can take hours to process. 
+Using a [standard template tweet] (https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_standard.json) approximately 3 million tweets can be processed per hour. Large datasets can take hours to process. 
 
 
 ###Tweet Templates###
