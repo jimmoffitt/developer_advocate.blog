@@ -114,7 +114,7 @@ A couple things to note about this JSON to CSV conversion:
 
 It can be difficult and time-consuming to find just the perfect tweet ‘in the wild’, an actual tweet that encapsulates all metadata you care about. So you may need to ‘hand build’ your own template tweet. The means assembling an JSON object by picking and choosing the fields you want and copying them into a JSON file. When doing this, keep the following details in mind:
 
-+ Tweet template JSON must be valid for the conversion code to work. If this code can not parse the template JSON then it will exit.
++ Tweet template JSON must be valid for the conversion code to work. If the conversion code can not parse the template JSON then it will exit. There are many on-line validators to confirm your JSON is formatted correctly.
 + Order of objects does not absolutely matter.  You could have the actor object below the twitter entities object. However, the order will affect the order of the CSV columns in the output.
 + Array attributes only need an array length of one. The conversion process knows to export all array elements it finds.
 + Hierarchy matters. If you skip or add a level in the template, that ‘pattern’ will not be found in the processed tweets. ``` gnip.matching_rules.0.value != gnip.matching_rules.value ``` 
