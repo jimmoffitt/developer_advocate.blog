@@ -122,7 +122,7 @@ It can be difficult and time-consuming to find just the perfect tweet ‘in the 
 
 We have pre-built several examples:
 + ‘Small’ tweet: [HERE] (https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_small.json)
-Just select basics.
+     + Just select basics.
 + ‘Everything’ retweet: [HERE] (https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_everything.json)  
      + Complete tweet and retweet 
      + All twitter entities and all attributes (like hashtag indices). 
