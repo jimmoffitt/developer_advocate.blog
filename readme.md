@@ -9,8 +9,9 @@ Now
      - CygWin on Windows 7 - Downloadning Historical PowerTrack data.
 
 
-Next
-- Data consolidation.
+Next?
+
 - Writing the client-side code that used Historical PowerTrack to collect data.
-- Storing historical twitter data and mining it.  Generating stats.  
+- Storing historical twitter data and mining it.  Generating stats.  Binning time-series data.
 - Potential Twitter use-cases (with technical details).
+- Data consolidation.
