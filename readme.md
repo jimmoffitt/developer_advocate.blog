@@ -5,8 +5,8 @@ Now
 - JSON-->CSV conversion.
 - Running Ruby/Tk applications as Windows 7 applications. 
 - "Gnip on Windows" articles:
--   cURL on Windoows 7 - Exercising Gnip Streaming and Rules APIs.
--   CygWin on Windows 7 - Downloadning Historical PowerTrack data.
+     - cURL on Windoows 7 - Exercising Gnip Streaming and Rules APIs.
+     - CygWin on Windows 7 - Downloadning Historical PowerTrack data.
 
 
 Next
