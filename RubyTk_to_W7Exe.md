@@ -55,16 +55,18 @@ C:\work\dmApp>\Ruby193\bin\ocra --windows --no-autoload  dmApp.rb
 Perhaps a naive goal was to have the exact code run on each operating system (OS). In the end there were a few areas where this ideal was not met. The good news is the UI code based on Ruby Tk was completely portable between Mac OS and Windows 7. As seen above some of the UI details look slightly different, but that is easy to live with given that the code is the exactly the same (well, actually, the size of the ‘Download Data’ button depends on OS-specific code, but that’s it).  
 
 The bad news is that some fundamental details were not as straightforward.  
-Secure Socket Layer (SSL) Support
-After initial prototyping of the download process on MacOS, I immediately hit a problem with https downloading on Windows. I quickly learned that there is a fundamental issue with the standard Ruby Windows install and it knowing where to look for SSL certificate files ([here](http://ocra.rubyforge.org) and here are some example discussions of the issue).
+
+####Secure Socket Layer (SSL) Support
+After initial prototyping of the download process on MacOS, I immediately hit a problem with https downloading on Windows. I quickly learned that there is a fundamental issue with the standard Ruby Windows install and it knowing where to look for SSL certificate files ([here](http://blog.kabisa.nl/2009/12/04/ruby-and-ssl-certificate-validation/) and [here] (http://notetoself.vrensk.com/2008/09/verified-https-in-ruby/) are some example discussions of the issue).
 
 ```
 OpenSSL::SSL::SSLError: SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed
 ```
 
-Fortunately there are many discussion threads and workaround recipes around this issue, including gems (such as this one) dedicated to solving the problem. Since in an attempt to minimize cross-platform deployment headaches a general goal was to reduce the number of dependencies for this prototype. So a decision was made to do the work in native Ruby by first looking in a local directory for a certificate file, then to pull one down from a trusted source and create the file if needed. See here for a compilation of code written to implement this strategy. 
-Event Programming and Background Tasks  
-A general proof-of-concept goal was to develop a standalone application with a simple user-interface to enable users to manage long-running data processes. The user-interface needed to interact with these background processes, raising events to start them and monitoring their progress. And since it needed to run on both Windows and Mac OS/Linux, I set off to make it as simple (primitive is an appropriate description) and ‘native’ as possible. By native I mean I wanted to rely on Ruby native threads and minimize the use of ‘third-party’ gems that potentially have Windows installation issues. (This goal was driven by having attended a Rails course and witnessing the Windows students struggle to get their environments set-up.) A review of the project’s Gemfile reveals that the required gems are pretty standard for an application based on HTTP, parses JSON, manages GZipped files, and provides a Tk user-interface.  Getting both the Mac OS and Windows environments built up was easy.
+Fortunately there are many discussion threads and workaround recipes around this issue, including gems (such as [this one](https://github.com/wingrunr21/ssl_certifier)) dedicated to solving the problem. Since in an attempt to minimize cross-platform deployment headaches a general goal was to reduce the number of dependencies for this prototype. So a decision was made to do the work in native Ruby by first looking in a local directory for a certificate file, then to pull one down from a trusted source and create the file if needed. See [here](https://github.com/jimmoffitt/dmApp/blob/master/distilled_code/RubySSL_Win7.md) for a compilation of code written to implement this strategy. 
+
+####Event Programming and Background Tasks  
+A general proof-of-concept goal was to develop a standalone application with a simple user-interface to enable users to manage long-running data processes. The user-interface needed to interact with these background processes, raising events to start them and monitoring their progress. And since it needed to run on both Windows and Mac OS/Linux, I set off to make it as simple (primitive is an appropriate description) and ‘native’ as possible. By native I mean I wanted to rely on Ruby native threads and minimize the use of ‘third-party’ gems that potentially have Windows installation issues. (This goal was driven by having attended a Rails course and witnessing the Windows students struggle to get their environments set-up.) A review of the project’s [Gemfile](https://github.com/jimmoffitt/dmApp/blob/master/Gemfile)  reveals that the required gems are pretty standard for an application based on HTTP, parses JSON, manages GZipped files, and provides a Tk user-interface.  Getting both the Mac OS and Windows environments built up was easy.
 
 Development started with a simple design of building the Tk user-interface, binding widgets to the download ‘worker’ class, and invoking the Tk main event loop. That results in essentially a single-threaded application, complete with unwanted event blocking during the downloading process. Instead a responsive user-interface was implemented by hosting both the Tk mainloop and background process in separate threads.  
 
@@ -74,9 +76,9 @@ t_ui = TkRoot.new.mainloop()
 threads << Thread.new { t_ui }
 ```
 
-See HERE for more details on how this simple design was implemented.
+See [HERE] (https://github.com/jimmoffitt/dmApp/blob/master/distilled_code/ui_background_tasks.md) for more details on how this simple design was implemented.
 Cross-Platform Support Means Cross-Platform Development and Testing
-If you target multiple operating systems, the level of effort to develop and test necessarily increases. Given the reality of differences in OS behavior, such as the issues outlined above, the effort to develop and test on Windows more than doubled the effort. Since the hope of ‘write once, run everywhere’ was not realized, that meant setting up Windows virtual machines and development environments (I used the Eclipse-based Aptana on Windows). 
+If you target multiple operating systems, the level of effort to develop and test necessarily increases. Given the reality of differences in OS behavior, such as the issues outlined above, the effort to develop and test on Windows more than doubled the effort. Since the hope of ‘write once, run everywhere’ was not realized, that meant setting up Windows virtual machines and development environments (I used the Eclipse-based [Aptana] (http://aptana.com/) on Windows). 
 
 ###Source Code
 All the Ruby source code for this prototype is available at https://github.com/jimmoffitt/dmApp.
