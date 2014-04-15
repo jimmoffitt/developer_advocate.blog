@@ -9,11 +9,13 @@ The user-story behind this cross-platform adventure came from working with one-t
 The first step was developing an application to download files produced by Gnip’s Historical PowerTrack. I started to prototype with Ruby on Mac OS since I am on that OS most of the time, and I was in the process of learning Ruby. Having experience with Python I had worked with a cross-platform user-interface (UI) package ([wxPython](http://wxpython.org/)) and had dabbled in creating Windows applications from python projects (with [py2exe](http://wxpython.org/)). So the initial steps were deciding on what Ruby UI package to build with, and seeing what support was available for building Windows executables.
 
 I checked out several Ruby UI packages and at first gravitated toward [green-shoes](http://wxpython.org/), but ended up going with [RubyTk](http://wxpython.org/). This package is the Ruby implementation of the ubiquitous [Tk UI](http://wxpython.org/) toolkit. This UI package is ‘baked’ into most (all?) Ruby distributions and seemed readily portable to Windows. Initial Ui prototyping bore this out, while I hit snags with other packages attempting to install on Windows. Next I came across the [OCRA](http://wxpython.org/) (One-Click Ruby Application) gem.  With these tools a ‘hello world’ application was quickly written and deployed on Windows 7 and we were on our way.
-An Example Ruby Tk Application
+
+###An Example Ruby Tk Application
 For this proof-of-concept application, the focus was on automating the downloading of Historical PowerTrack data files with these basic features:
-Account and configuration management.
-‘Look before leap’ logic for picking up where an incomplete download cycle left off.
-Decompressing gzipped files.
+
++ Account and configuration management.
++ ‘Look before leap’ logic for picking up where an incomplete download cycle left off.
++ Decompressing gzipped files.
 
 Based on this set of features, the user-interface was designed using Ruby Tk. Figure 1 shows how Ruby Tk renders it on Mac OS. After developing this application on Mac OS, the next step was using OCRA to create a Windows executable. 
 
@@ -26,7 +28,10 @@ With the help of the [OCRA gem](http://wxpython.org/) building a Windows executa
 OCRA has many options for specifying what gems and code need to be packaged in the executable. The gem README outlines your options and suggests that if your application is complicated enough that a best-practice is to run your application during the OCRA build process. Apparently using ‘require_relative’ includes and/or the Tk user-interface toolkit makes the dmApp complicated enough to require this. Building without a download cycle resulted in an executable that would throw errors when downloading. Therefore, it is recommended to fully ‘exercise’ your application during the OCRA build process. Furthermore, I found that if your application is multithreaded it is critical that when you close your application that it gracefully and cleanly exits those threads. Otherwise, the underlying build process will likely abort. (See below for more details.) 
 
 Even though the dmApp code does not use the Ruby ‘autoload’ mechanism (just-in-time gem loading), apparently something in the Tk toolkit requires use of the ‘--no-autoload’ parameter. Building without this option resulted in an executable that threw errors at start-up. Also, the ‘--windows’ parameter was used to invoke the rubyw.exe interpreter. Accordingly, the OCRA build command used for the dmApp.exe prototype was: 
+
+```
      ocra --windows --no-autoload dmApp.rb
+```
 
 Below is the output from the build process. When the build process starts the user-interface is rendered. While the download cycle is performed there are some application status messages written. After that the actual executable is built, ending with the ‘Finished’ message. If you don’t see this then the application did not exit gracefully and the build process aborted. Figure 2 presents how the interface looks on Windows 7.
 
