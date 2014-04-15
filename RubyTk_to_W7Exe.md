@@ -19,6 +19,9 @@ For this proof-of-concept application, the focus was on automating the downloadi
 
 Based on this set of features, the user-interface was designed using Ruby Tk. Figure 1 shows how Ruby Tk renders it on Mac OS. After developing this application on Mac OS, the next step was using OCRA to create a Windows executable. 
 
+
+
+![MacOS](images/dmApp_ui_MacOS.png)
 #####Figure 1 - Ruby Tk user-interface on Mac OS.
 
 
@@ -53,6 +56,7 @@ C:\work\dmApp>\Ruby193\bin\ocra --windows --no-autoload  dmApp.rb
 === Finished building dmApp.exe (7879008 bytes)
 ```
 
+![win7](images/dmApp_ui_win7.png)
 #####Figure 2 - Ruby Tk user-interface on Windows 7.
 
 
