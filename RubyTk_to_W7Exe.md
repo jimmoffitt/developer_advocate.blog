@@ -56,7 +56,7 @@ Perhaps a naive goal was to have the exact code run on each operating system (OS
 
 The bad news is that some fundamental details were not as straightforward.  
 Secure Socket Layer (SSL) Support
-After initial prototyping of the download process on MacOS, I immediately hit a problem with https downloading on Windows. I quickly learned that there is a fundamental issue with the standard Ruby Windows install and it knowing where to look for SSL certificate files (here and here are some example discussions of the issue).
+After initial prototyping of the download process on MacOS, I immediately hit a problem with https downloading on Windows. I quickly learned that there is a fundamental issue with the standard Ruby Windows install and it knowing where to look for SSL certificate files ([here](http://ocra.rubyforge.org) and here are some example discussions of the issue).
 
 ```
 OpenSSL::SSL::SSLError: SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed
