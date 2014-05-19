@@ -78,6 +78,8 @@ https://historical.gnip.com/accounts/<account_name>/publishers/twitter/historica
 }
 ```
 
+When your HPT job is finished, the API will make available a list of download links to access your data.  This list is referred to as the “Data URL”, and has the following format.
+
 
 ```
 {
@@ -101,6 +103,9 @@ As mentioned above, this list can contain thousands of files. Therefore the down
 
 <Pseudo code>
 
+##Download File with cURL
+
+
 ##Downloading Files with a Bash Script
 This bash script is another option for downloading Historical PowerTrack data files. One advantage of using this script is that it has ‘smarts’ when restarting a download cycle. If your download cycle gets interrupted for any reason, the script will inspect what files it has already downloaded and download only the files that are not available locally. The script writes files to a ‘downloads’ folder so it is important to keep files there until all the files have been downloaded.
 
@@ -111,24 +116,30 @@ This bash script is another option for downloading Historical PowerTrack data fi
 #Technical Details
 
 Here are some high-level details that provide some technical background on the Historical PowerTrack (HPT) product and the data files it generates:
-Each HPT job has an Universally Unique ID (UUID) associated with it, and this UUID referenced when making API requests and is used to name the resulting files.
-HPT generates a set of compressed data files.
-UTF-8 character-set.
-Files are GZip compressed. 
-HPT generates a 10-minute time-series of files. A file is only generated if the ten-minute period it covers has activity. 
-All file and tweet metadata timestamps are in UTC.
-Time periods start and include the ‘top’ unit of time and exclude the next ‘top’ unit of time. For example, the first hour of the day (00:00 - 01:00 UTC) would produce up to 6 files covering these 10-minute time periods:   
+
+* Each HPT job has an Universally Unique ID (UUID) associated with it, and this UUID referenced when making API requests and is used to name the resulting files.
+
+###File Details
+
+* HPT generates a set of compressed data files.
+     * UTF-8 character-set.
+     * Files are GZip compressed. 
+     * HPT generates a 10-minute time-series of files. A file is only generated if the ten-minute period it covers has activity. 
+     * All file and tweet metadata timestamps are in UTC.
+     * Time periods start and include the ‘top’ unit of time and exclude the next ‘top’ unit of time. For example, the first hour of the day (00:00 - 01:00 UTC) would produce up to 6 files covering these 10-minute time periods:   
 00:00:00-00:09:59 UTC
 00:10:00-00:19:59 UTC
 00:20:00-00:29:59 UTC
 00:30:00-00:39:59 UTC
 00:40:00-00:49:59 UTC
 00:50:00-00:59:59 UTC
+
 Some planning numbers:
-6 files per hour.
-144 files per day.
-4,320 per 30-day month.
-52,560 files per year.
+* 6 files per hour.
+* 144 files per day.
+* 4,320 per 30-day month.
+* 52,560 files per year.
+
 Data is encoded in JSON.
 Individual activities are written as ‘atomic’ JSON objects, and are not placed in a JSON array.
 Each file has a single “info” footer: 
