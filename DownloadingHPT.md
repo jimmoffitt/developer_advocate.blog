@@ -20,24 +20,24 @@ https://historical.gnip.com/accounts/<account_name>/publishers/twitter/historica
 ```
 {
     "title": "WorldCup test",
-    "account": "jim",
+    "account": "CustomerName",
     "publisher": "twitter",
     "streamType": "track",
     "format": "activity_streams",
     "fromDate": "201405171800",
     "toDate": "201405171900",
-    "requestedBy": "jmoffitt@twitter.com",
+    "requestedBy": "me@there.com",
     "requestedAt": "2014-05-19T22:12:27Z",
     "status": "running",
     "statusMessage": "Job queued and being processed.",
-    "jobURL": "https://historical.gnip.com:443/accounts/jim/publishers/twitter/historical/track/jobs/kj4r26m0qx.json",
+    "jobURL": "https://historical.gnip.com:443/accounts/CustomerNamejim/publishers/twitter/historical/track/jobs/kj4r26m0qx.json",
     "quote": {
         "estimatedActivityCount": 12000,
         "estimatedDurationHours": "1.0",
         "estimatedFileSizeMb": "5.0",
         "expiresAt": "2014-05-26T22:15:58Z"
     },
-    "acceptedBy": "jmoffitt@twitter.com",
+    "acceptedBy": "me@there.com",
     "acceptedAt": "2014-05-19T22:18:45Z",
     "percentComplete": 95
 }
@@ -47,36 +47,52 @@ https://historical.gnip.com/accounts/<account_name>/publishers/twitter/historica
 ```
 {
     "title": "WorldCup test",
-    "account": "jim",
+    "account": "CustomerName",
     "publisher": "twitter",
     "streamType": "track",
     "format": "activity_streams",
     "fromDate": "201405171800",
     "toDate": "201405171900",
-    "requestedBy": "jmoffitt@twitter.com",
+    "requestedBy": "me@there.com",
     "requestedAt": "2014-05-19T22:12:27Z",
     "status": "delivered",
     "statusMessage": "Job delivered and available for download.",
-    "jobURL": "https://historical.gnip.com:443/accounts/jim/publishers/twitter/historical/track/jobs/kj4r26m0qx.json",
+    "jobURL": "https://historical.gnip.com:443/accounts/CustomerName/publishers/twitter/historical/track/jobs/kj4r26m0qx.json",
     "quote": {
         "estimatedActivityCount": 12000,
         "estimatedDurationHours": "1.0",
         "estimatedFileSizeMb": "5.0",
         "expiresAt": "2014-05-26T22:15:58Z"
     },
-    "acceptedBy": "jmoffitt@twitter.com",
+    "acceptedBy": "me@there.com",
     "acceptedAt": "2014-05-19T22:18:45Z",
     "results": {
         "activityCount": 11860,
         "fileCount": 6,
         "fileSizeMb": "5.07",
         "completedAt": "2014-05-19T22:30:13Z",
-        "dataURL": "https://historical.gnip.com:443/accounts/jim/publishers/twitter/historical/track/jobs/kj4r26m0qx/results.json",
+        "dataURL": "https://historical.gnip.com:443/accounts/CustomerName/publishers/twitter/historical/track/jobs/kj4r26m0qx/results.json",
         "expiresAt": "2014-06-03T22:29:46Z"
     },
     "percentComplete": 100
 }
 ```
 
+
+```
+{
+    "urlCount": 6,
+    "urlList": [
+        "https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/CustomerName/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/00_activities.json.gz?...",
+        "https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/CustomerName/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/10_activities.json.gz?...",
+        "https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/CustomerName/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/20_activities.json.gz?...",
+        "https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/CustomerName/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/30_activities.json.gz?...",
+        "https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/CustomerName/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/40_activities.json.gz?...",
+        "https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/CustomerName/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/50_activities.json.gz?..."
+    ],
+    "expiresAt": "2014-06-03T22:29:46Z",
+    "totalFileSizeBytes": 5324200
+}
+```
 
 
