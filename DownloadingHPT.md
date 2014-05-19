@@ -127,43 +127,47 @@ Here are some high-level details that provide some technical background on the H
      * HPT generates a 10-minute time-series of files. A file is only generated if the ten-minute period it covers has activity. 
      * All file and tweet metadata timestamps are in UTC.
      * Time periods start and include the ‘top’ unit of time and exclude the next ‘top’ unit of time. For example, the first hour of the day (00:00 - 01:00 UTC) would produce up to 6 files covering these 10-minute time periods:   
-00:00:00-00:09:59 UTC
-00:10:00-00:19:59 UTC
-00:20:00-00:29:59 UTC
-00:30:00-00:39:59 UTC
-00:40:00-00:49:59 UTC
-00:50:00-00:59:59 UTC
+     * 00:00:00-00:09:59 UTC
+     * 00:10:00-00:19:59 UTC
+     * 00:20:00-00:29:59 UTC
+     * 00:30:00-00:39:59 UTC
+     * 00:40:00-00:49:59 UTC
+     * 00:50:00-00:59:59 UTC
 
-Some planning numbers:
-* 6 files per hour.
-* 144 files per day.
-* 4,320 per 30-day month.
-* 52,560 files per year.
+* Some planning numbers:
+     * 6 files per hour.
+     * 144 files per day.
+     * 4,320 per 30-day month.
+     * 52,560 files per year.
 
-Data is encoded in JSON.
-Individual activities are written as ‘atomic’ JSON objects, and are not placed in a JSON array.
-Each file has a single “info” footer: 
+* Data is encoded in JSON.
+     * Individual activities are written as ‘atomic’ JSON objects, and are not placed in a JSON array.
+     * Each file has a single “info” footer: 
+```
 {"info":{"message":"Replay Request Completed","sent":"2014-05-15T17:47:27+00:00","activity_count":895}}
-File-naming conventions:
-HPT file names are a composite of the following details:
-Job start date, YYYYMMDD
-Job end date, YYYYMMDD.
-Job UUID
-Starting time of 10-minute period, YYYYMMDDHHMM.
-A static “activities” string.
-File extension of “.json.gz” (gzip-compressed JSON files).
+```
+
+###File-naming conventions:
+* HPT file names are a composite of the following details:
+     * Job start date, YYYYMMDD
+     * Job end date, YYYYMMDD.
+     * Job UUID
+     * Starting time of 10-minute period, YYYYMMDDHHMM.
+     * A static “activities” string.
+     * File extension of “.json.gz” (gzip-compressed JSON files).
+
 <start_date>-<end_date>_<Job_UUID><10-min-starting-time>_activities.json.gz
 
 Given a Job UUID of gv96x96q3a covering a period of 2014-05-16 to 2014-05-20, the first hour of 2014-05-17 would produce the following 6 files:
-20140516-20140520_gv96x96q3a201405170000_activities.json.gz
-20140516-20140520_gv96x96q3a201405170010_activities.json.gz
-20140516-20140520_gv96x96q3a201405170020_activities.json.gz
-20140516-20140520_gv96x96q3a201405170030_activities.json.gz
-20140516-20140520_gv96x96q3a201405170040_activities.json.gz
-20140516-20140520_gv96x96q3a201405170050_activities.json.gz
+     20140516-20140520_gv96x96q3a201405170000_activities.json.gz
+     20140516-20140520_gv96x96q3a201405170010_activities.json.gz
+     20140516-20140520_gv96x96q3a201405170020_activities.json.gz
+     20140516-20140520_gv96x96q3a201405170030_activities.json.gz
+     20140516-20140520_gv96x96q3a201405170040_activities.json.gz
+     20140516-20140520_gv96x96q3a201405170050_activities.json.gz
 
 
-Link-naming conventions:
+###Link-naming conventions:
 https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/AccountName/2014/05/01/20080504-20080524_gv96x96q3a/2008/05/04/02/10_activities.json.gz?AWSAccessKeyId=AKIAJP53EAWYQNQDEFAA&Expires=1401596989&Signature=oMd6deTx6hzREjxDzrpHED7NZa4%3D
 
 
