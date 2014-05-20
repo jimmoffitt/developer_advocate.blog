@@ -204,7 +204,7 @@ You may decide to build your own script/application to manage HPT downloads. Per
          
 ```
 
-##Technical Details - Working with HPT Files. 
+##Technical Details - Working with HPT Files
 
 Here are some high-level details that provide some technical background on the Historical PowerTrack (HPT) product and the data files it generates. This information will help you work with the data files after you have downloaded them or develop your our automation script/application. 
 
@@ -248,7 +248,7 @@ Here are some high-level details that provide some technical background on the H
      <start_date>-<end_date>_<Job_UUID><10-min-starting-time>_activities.json.gz
 ```
 
-Given a Job UUID of gv96x96q3a covering a period of 2014-05-16 to 2014-05-20, the first hour of 2014-05-17 would produce the following 6 files:
+For example, Given a Job UUID of gv96x96q3a covering a period of 2014-05-16 to 2014-05-20, the first hour of 2014-05-17 would produce the following 6 files:
 
      * 20140516-20140520_gv96x96q3a201405170000_activities.json.gz
      * 20140516-20140520_gv96x96q3a201405170010_activities.json.gz
