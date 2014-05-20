@@ -7,7 +7,12 @@ Since each hour of the job’s time-period can generate up to 6 files (10-minute
 
 The data files that are generated are hosted at [Amazon's Simple Storage Service (S3)](http://aws.amazon.com/s3/), and are available for 15 days. When a job is complete, a list of download links is provided via the HPT API. Given that this list can contain thousands of links, some form of download automation is needed to retreive the data.
 
-Below we discuss how to access your download link list, provide some options for automating the downloads, and provide other technical details that will hopefully be helpful when working with HPT data files.  
+Below we discuss how to access your download link list, provide some options for automating the downloads, and provide other technical details that hopefully will be helpful when working with HPT data files.  
+
+
+##Technical Summary of HPT Files
+
+
 
 
 ##Accessing Download Links
@@ -174,7 +179,7 @@ While these cURL commands are very convenient they do have a disadvantage. If th
 
 ###Developing Custom Script/Application
 
-Pseudo-code:
+You may decide to build your own script/application to manage HPT downloads. Perhaps you are moving up to a HPT Subscription and will need to download HPT data on a regular basis.  If that is the case, here is some Ruby-like pseudo-code to illustrate the process, which also serves as a summary of the step for downloading HPT data files:
 
 ```
     //HTTP GET completed job status.
@@ -189,19 +194,22 @@ Pseudo-code:
     //Parse JSON into hash.
     dataURL = JSON.parse(dataURLResponse)
     //Grab the URL download list from the Data URL.
-    downloadList = dataURL['urlList']
+    fileList = dataURL['urlList']
 
     //Iterate through list of download links
-    for item in downloadList do
+    for file in fileList do
          //If you don't have file locally, go get the file.
-         if not dir(item) then 
-             file = http.Get(item)
+         if not dir(file) then 
+             hpt_file = http.Get(file)
          end
     end
          
 ```
 
-##Technical Details
+##Technical Details 
+
+After you have downloaded the 
+
 
 Here are some high-level details that provide some technical background on the Historical PowerTrack (HPT) product and the data files it generates:
 
