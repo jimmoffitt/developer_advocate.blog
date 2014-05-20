@@ -146,7 +146,13 @@ As mentioned above, this list can contain thousands of files. Therefore the down
 
 ###Download File with cURL
 
-cURL is a handy command-line utility for making HTTP requests. cURL is so useful you will notice that we provide sample cURL commands on the “API Help” tab of the console.gnip.com dashboard, as well as many examples in our support.gnip.com documentation. Gnip is an API company and cURL is a great tool for exercising our many API-based products.
+cURL is a handy command-line utility for making HTTP requests. cURL is so useful you will notice that we provide sample cURL commands on the “API Help” tab of the console.gnip.com dashboard, as well as many examples in our support.gnip.com documentation. Gnip is an API company and cURL is a great tool for exercising our many API-based products including Historical PowerTrack.
+
+If you are working with Linux or Mac OS, cURL is most likely already available on your machine. If you are working on Windows, see [HERE](http://support.gnip.com/articles/curl-on-win7.html) for a recipe for getting cURL installed.
+
+
+
+
 
 
 This command downloads all the results files in parallel into a local directory. It downloads an all_files.csv file (silently), and then downloads each file listed in it, printing out the command it will use as it does so. It uses the name column of all_files.csv as the file name.
@@ -166,9 +172,6 @@ When using this command, be sure to use the CSV results file, rather than the JS
 ```
 curl -sS -u<user>:<password> https://historical.gnip.com/accounts/<account_name>/publishers/twitter/historical/track/jobs/<job_uuid>/results.csv | head -1 | xargs -P 8 -t -n2 curl -o
 ```
-
-
-
 
 
 
