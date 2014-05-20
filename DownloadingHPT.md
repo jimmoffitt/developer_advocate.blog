@@ -124,8 +124,10 @@ Note also that the *download list* (not the actual data!) is also available in a
 https://historical.gnip.com:443/accounts/<account_name>/publishers/twitter/historical/track/jobs/<uuid>/results.csv
 ```
 
+When a GET request is made to the CSV endpoint, a file containing the list of download links is downloaded. Each line  contains a file name and the corresponding Amazon S3 link.     
 
 
+<View GET response for CSV version of Data URL>
 ```
 '20140517-20140517_kj4r26m0qx_2014_05_17_18_00_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/jim/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/00_activities.json.gz?...'
 '20140517-20140517_kj4r26m0qx_2014_05_17_18_10_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/jim/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/10_activities.json.gz?...'
@@ -133,21 +135,42 @@ https://historical.gnip.com:443/accounts/<account_name>/publishers/twitter/histo
 '20140517-20140517_kj4r26m0qx_2014_05_17_18_30_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/jim/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/30_activities.json.gz?...'
 '20140517-20140517_kj4r26m0qx_2014_05_17_18_40_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/jim/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/40_activities.json.gz?...'
 '20140517-20140517_kj4r26m0qx_2014_05_17_18_50_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/jim/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/50_activities.json.gz?...'
+```
 
 
 
+##Automating Downloads
+
+As mentioned above, this list can contain thousands of files. Therefore the downloading needs to be automated, and there are several ways to do this. 
+
+
+###Download File with cURL
+
+cURL is a handy command-line utility for making HTTP requests. cURL is so useful you will notice that we provide sample cURL commands on the “API Help” tab of the console.gnip.com dashboard, as well as many examples in our support.gnip.com documentation. Gnip is an API company and cURL is a great tool for exercising our many API-based products.
+
+
+This command downloads all the results files in parallel into a local directory. It downloads an all_files.csv file (silently), and then downloads each file listed in it, printing out the command it will use as it does so. It uses the name column of all_files.csv as the file name.
+
+When using this command, be sure to use the CSV results file, rather than the JSON results file.
+
+```
+curl -sS -u<consoleuser>:<password> https://historical.gnip.com/accounts/<account_name>/publishers/twitter/historical/track/jobs/<job_uuid>/results.csv | xargs -P 8 -t -n2 curl -o
+```
+
+Download First File - Example
+
+This command downloads the first results file. Try this first if you are having permissions issues downloading the files from S3:
+
+When using this command, be sure to use the CSV results file, rather than the JSON results file.
+
+```
+curl -sS -u<user>:<password> https://historical.gnip.com/accounts/<account_name>/publishers/twitter/historical/track/jobs/<job_uuid>/results.csv | head -1 | xargs -P 8 -t -n2 curl -o
 ```
 
 
 
 
 
-##Automating Downloads
-
-As mentioned above, this list can contain thousands of files. Therefore the downloading needs to be automated, and there are several ways to do this.
-
-
-###Download File with cURL
 
 
 ###Downloading Files with a Bash Script
