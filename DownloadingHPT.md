@@ -1,4 +1,4 @@
-#Introduction
+##Introduction
 [Historical PowerTrack (HPT)](http://support.gnip.com/apis/historical_api/) provides an API wrapper around a process that filters and outputs data from a tweet archive. Data are gathered in a multi-step process where the first step is creating a 'job' which specifies what time period to collect from, and what filters to apply to the tweet archive.
 
 The size of data returned by a job can be immense, both in the number of activities and in the storage size of the output payload. Jobs can produce millions of tweets requiring large amounts of storage space. In order to help ensure file sizes that are quick to download, data files are generated as a 10-minute time-series, with each file covering a ten-minute period of time. Depending on the data velocity associated with the job’s filters, even these 10-minute files can contain many thousands of tweets.  
@@ -10,7 +10,7 @@ The data files that are generated are hosted at [Amazon's Simple Storage Service
 Below we discuss how to access your download link list, provide some options for automating the downloads, and provide other technical details that will hopefully be helpful when working with HPT data files.  
 
 
-#Accessing Download Links
+##Accessing Download Links
 
 As discussed [HERE](http://support.gnip.com/apis/historical_api/api_reference.html), the HPT API provides a method to check on the status of a job. When a HPT job is created it is assigned a Universally-Unique ID (UUID), and this UUID is used to check on the status of the job of interest. To get the status of this job you make a GET request to the following HPT end-point, which references your Account name and the UUID of interest:
 
@@ -92,12 +92,15 @@ When a job has completed, the "status" field will be set to "delivered" and the 
 }
 ```
 
-(make GET request to dataURL
+To access the download list a GET request is made to the Data URL endpoint. The form of this Data URL is:
 
-The Data URL 
+```
+https://historical.gnip.com:443/accounts/<account_name>/publishers/twitter/historical/track/jobs/<uuid>/results.json
+```
 
-When your HPT job is finished, the API will make available a list of download links to access your data.  This list is referred to as the “Data URL”, and has the following format.
+The HPT API will respond with a JSON response body that includes a "urlList" field which is a JSON array of all the download links associated with the your job.
 
+<View GET response for a Data URL>
 
 ```
 {
@@ -115,23 +118,48 @@ When your HPT job is finished, the API will make available a list of download li
 }
 ```
 
+Note also that the *download list* (not the actual data!) is also available in a CSV format by replacing the ".json" extension of the Data URL with a ".csv" extension, as in:
+
+```
+https://historical.gnip.com:443/accounts/<account_name>/publishers/twitter/historical/track/jobs/<uuid>/results.csv
+```
+
+
+
+```
+'20140517-20140517_kj4r26m0qx_2014_05_17_18_00_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/jim/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/00_activities.json.gz?...'
+'20140517-20140517_kj4r26m0qx_2014_05_17_18_10_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/jim/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/10_activities.json.gz?...'
+'20140517-20140517_kj4r26m0qx_2014_05_17_18_20_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/jim/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/20_activities.json.gz?...'
+'20140517-20140517_kj4r26m0qx_2014_05_17_18_30_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/jim/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/30_activities.json.gz?...'
+'20140517-20140517_kj4r26m0qx_2014_05_17_18_40_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/jim/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/40_activities.json.gz?...'
+'20140517-20140517_kj4r26m0qx_2014_05_17_18_50_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/jim/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/50_activities.json.gz?...'
+
+
+
+```
+
+
+
+
+
+##Automating Downloads
+
 As mentioned above, this list can contain thousands of files. Therefore the downloading needs to be automated, and there are several ways to do this.
 
-#Automating the Download Process
 
-<Pseudo code>
-
-##Download File with cURL
+###Download File with cURL
 
 
-##Downloading Files with a Bash Script
+###Downloading Files with a Bash Script
 This bash script is another option for downloading Historical PowerTrack data files. One advantage of using this script is that it has ‘smarts’ when restarting a download cycle. If your download cycle gets interrupted for any reason, the script will inspect what files it has already downloaded and download only the files that are not available locally. The script writes files to a ‘downloads’ folder so it is important to keep files there until all the files have been downloaded.
 
-##Downloading Files Using Ruby Application
+###Downloading Files Using Ruby Application
 
 
+###Developing Custom Script/Application
 
-#Technical Details
+
+##Technical Details
 
 Here are some high-level details that provide some technical background on the Historical PowerTrack (HPT) product and the data files it generates:
 
