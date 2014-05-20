@@ -143,31 +143,20 @@ When a GET request is made to the CSV endpoint, a file containing the list of do
 
 As mentioned above, this list can contain thousands of files. Therefore the downloading needs to be automated, and there are several ways to do this. 
 
-###Download File with cURL
+###Download Files with cURL
 
 [cURL](http://curl.haxx.se/) is a handy command-line utility for making HTTP requests. cURL is so useful you will notice that we provide sample cURL commands on the “API Help” tab of the console.gnip.com dashboard, as well as many examples in our support.gnip.com documentation. cURL is a great tool for exercising our many API-based products including Historical PowerTrack.
 
 If you are working with Linux or Mac OS, cURL is most likely already available on your machine. If you are working on Windows, see [HERE](http://support.gnip.com/articles/curl-on-win7.html) for a recipe for getting cURL installed. Also for Windows users, since the cURL examples below are built with Unix/Linux commands see [HERE](http://support.gnip.com/articles/unixonwindows_cygwin.html) for getting a [Linux emulator](http://www.cygwin.com/) set up on your Windows box.  
 
 
-
-
-
-
-This command downloads all the results files in parallel into a local directory. It downloads an all_files.csv file (silently), and then downloads each file listed in it, printing out the command it will use as it does so. It uses the name column of all_files.csv as the file name.
-
-When using this command, be sure to use the CSV results file, rather than the JSON results file.
+The following cURL command downloads all the results files in parallel into a local directory. It downloads an results.csv file (silently), and then downloads each file listed in it, printing out the command it will use as it does so. This command uses the first name column of results.csv as the file name. When using this command, be sure to use the CSV results file, rather than the JSON results file.
 
 ```
 curl -sS -u<consoleuser>:<password> https://historical.gnip.com/accounts/<account_name>/publishers/twitter/historical/track/jobs/<job_uuid>/results.csv | xargs -P 8 -t -n2 curl -o
 ```
 
-Download First File - Example
-
-This command downloads the first results file. Try this first if you are having permissions issues downloading the files from S3:
-
-When using this command, be sure to use the CSV results file, rather than the JSON results file.
-
+If you have any issues with the above command (permission issues for example), it can be helpful to test with the following cURL copmmand which downloads only the first file. 
 ```
 curl -sS -u<user>:<password> https://historical.gnip.com/accounts/<account_name>/publishers/twitter/historical/track/jobs/<job_uuid>/results.csv | head -1 | xargs -P 8 -t -n2 curl -o
 ```
