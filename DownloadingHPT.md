@@ -1,3 +1,5 @@
+#Downloading Historical PowerTrack Files
+
 ##Introduction
 
 [Historical PowerTrack (HPT)](http://support.gnip.com/apis/historical_api/) provides an API wrapper around a process that filters and outputs data from a tweet archive. Data are gathered in a multi-step process where the first step is creating a 'job' which specifies what time period to collect from, and what filters to apply to the tweet archive.
