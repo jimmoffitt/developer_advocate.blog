@@ -252,12 +252,12 @@ Here are some high-level details that provide some technical background on the H
 
 For example, Given a Job UUID of gv96x96q3a covering a period of 2014-05-16 to 2014-05-20, the first hour of 2014-05-17 would produce the following 6 files:
 
-     * 20140516-20140520_gv96x96q3a201405170000_activities.json.gz
-     * 20140516-20140520_gv96x96q3a201405170010_activities.json.gz
-     * 20140516-20140520_gv96x96q3a201405170020_activities.json.gz
-     * 20140516-20140520_gv96x96q3a201405170030_activities.json.gz
-     * 20140516-20140520_gv96x96q3a201405170040_activities.json.gz
-     * 20140516-20140520_gv96x96q3a201405170050_activities.json.gz
+* 20140516-20140520_gv96x96q3a201405170000_activities.json.gz
+* 20140516-20140520_gv96x96q3a201405170010_activities.json.gz
+* 20140516-20140520_gv96x96q3a201405170020_activities.json.gz
+* 20140516-20140520_gv96x96q3a201405170030_activities.json.gz
+* 20140516-20140520_gv96x96q3a201405170040_activities.json.gz
+* 20140516-20140520_gv96x96q3a201405170050_activities.json.gz
 
 
 
