@@ -8,6 +8,11 @@ Since each hour of the job’s time-period can generate up to 6 files (some 10-m
 To download your HPT data you will need to interact with the HPT API (full documentation available [HERE](http://support.gnip.com/apis/historical_api/)); these files are not available via the dashboard. Files are hosted in the cloud for 15 days, after which the files are deleted. 
 
 This article provides suggestions for and technical details needed to automate the downloads and process these files.   
+* Accessing list of download links.
+* Options for automating downloads.
+* Technical details.
+
+
 
 #List of Download Links
 
