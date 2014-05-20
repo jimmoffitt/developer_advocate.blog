@@ -236,13 +236,5 @@ Given a Job UUID of gv96x96q3a covering a period of 2014-05-16 to 2014-05-20, th
      20140516-20140520_gv96x96q3a201405170050_activities.json.gz
 
 
-###Link-naming conventions:
-https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/AccountName/2014/05/01/20080504-20080524_gv96x96q3a/2008/05/04/02/10_activities.json.gz?AWSAccessKeyId=AKIAJP53EAWYQNQDEFAA&Expires=1401596989&Signature=oMd6deTx6hzREjxDzrpHED7NZa4%3D
-
-
-
-
-
-
 
 
