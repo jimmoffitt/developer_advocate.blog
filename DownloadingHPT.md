@@ -161,8 +161,7 @@ If you have any issues with the above command (permission issues for example), i
 curl -sS -u<user>:<password> https://historical.gnip.com/accounts/<account_name>/publishers/twitter/historical/track/jobs/<job_uuid>/results.csv | head -1 | xargs -P 8 -t -n2 curl -o
 ```
 
-
-
+While these cURL commands are very convenient they do have a disadvantage. If the download cycle is interrupted for any reason, these commands have no mechanism to start a new download cycle where the previous one stopped. Therefore, the following download tools may be more appropriate for your situation.
 
 ###Downloading Files with a Bash Script
 This bash script is another option for downloading Historical PowerTrack data files. One advantage of using this script is that it has ‘smarts’ when restarting a download cycle. If your download cycle gets interrupted for any reason, the script will inspect what files it has already downloaded and download only the files that are not available locally. The script writes files to a ‘downloads’ folder so it is important to keep files there until all the files have been downloaded.
