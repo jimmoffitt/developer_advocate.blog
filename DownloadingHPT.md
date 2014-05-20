@@ -143,12 +143,11 @@ When a GET request is made to the CSV endpoint, a file containing the list of do
 
 As mentioned above, this list can contain thousands of files. Therefore the downloading needs to be automated, and there are several ways to do this. 
 
-
 ###Download File with cURL
 
-cURL is a handy command-line utility for making HTTP requests. cURL is so useful you will notice that we provide sample cURL commands on the “API Help” tab of the console.gnip.com dashboard, as well as many examples in our support.gnip.com documentation. Gnip is an API company and cURL is a great tool for exercising our many API-based products including Historical PowerTrack.
+[cURL](http://curl.haxx.se/) is a handy command-line utility for making HTTP requests. cURL is so useful you will notice that we provide sample cURL commands on the “API Help” tab of the console.gnip.com dashboard, as well as many examples in our support.gnip.com documentation. cURL is a great tool for exercising our many API-based products including Historical PowerTrack.
 
-If you are working with Linux or Mac OS, cURL is most likely already available on your machine. If you are working on Windows, see [HERE](http://support.gnip.com/articles/curl-on-win7.html) for a recipe for getting cURL installed.
+If you are working with Linux or Mac OS, cURL is most likely already available on your machine. If you are working on Windows, see [HERE](http://support.gnip.com/articles/curl-on-win7.html) for a recipe for getting cURL installed. Also for Windows users, since the cURL examples below are built with Unix/Linux commands see [HERE](http://support.gnip.com/articles/unixonwindows_cygwin.html) for getting a [Linux emulator](http://www.cygwin.com/) set up on your Windows box.  
 
 
 
