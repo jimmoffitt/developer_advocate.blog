@@ -124,7 +124,7 @@ Note also that the *download list* (not the actual data!) is also available in a
 https://historical.gnip.com:443/accounts/<account_name>/publishers/twitter/historical/track/jobs/<uuid>/results.csv
 ```
 
-When a GET request is made to the CSV endpoint, a file containing the list of download links is downloaded. Each line  contains a file name and the corresponding Amazon S3 link.     
+When a GET request is made to the CSV endpoint, a file containing the list of download links is downloaded. Each line  contains a file name and the corresponding Amazon S3 link. This CSV-formatted link list is used by the example cURL commands provided below.     
 
 
 <View GET response for CSV version of Data URL>
@@ -164,13 +164,42 @@ curl -sS -u<user>:<password> https://historical.gnip.com/accounts/<account_name>
 While these cURL commands are very convenient they do have a disadvantage. If the download cycle is interrupted for any reason, these commands have no mechanism to start a new download cycle where the previous one stopped. Therefore, the following download tools may be more appropriate for your situation.
 
 ###Downloading Files with a Bash Script
-This bash script is another option for downloading Historical PowerTrack data files. One advantage of using this script is that it has ‘smarts’ when restarting a download cycle. If your download cycle gets interrupted for any reason, the script will inspect what files it has already downloaded and download only the files that are not available locally. The script writes files to a ‘downloads’ folder so it is important to keep files there until all the files have been downloaded.
+
+[This bash script](https://github.com/gnip/support/releases) is another option for downloading Historical PowerTrack data files. One advantage of using this script is that it has ‘smarts’ when restarting a download cycle. If your download cycle gets interrupted for any reason, the script will inspect what files it has already downloaded and download only the files that are not available locally. The script writes files to a ‘downloads’ folder so it is important to keep files there until all the files have been downloaded.
 
 ###Downloading Files Using Ruby Application
+
+[HERE](https://github.com/jimmoffitt/dmApp) is an example Ruby application for downloading HPT files. This application features a RubyTK user-interface for entering your credentials, HPT job details and the directory you want to write the files to. For Windows users this application has been converted to a [Windows executable](https://github.com/jimmoffitt/dmApp/releases). 
 
 
 ###Developing Custom Script/Application
 
+Pseudo-code:
+
+```
+    //HTTP GET completed job status.
+    jobStatusResponse = http.GET(https://historical.gnip.com/accounts/<account_name>/publishers/twitter/historical/track/jobs/<uuid>.json)
+    //Parse JSON into hash.
+    jobStatus = JSON.parse(jobStatusResponse)
+    
+    //Grab the Data URL from the completed job status.
+    dataURL = jobStatus['dataURL']
+    //HTTP GET the Data URL
+    dataURLResponse = http.GET(dataURL)
+    //Parse JSON into hash.
+    dataURL = JSON.parse(dataURLResponse)
+    //Grab the URL download list from the Data URL.
+    downloadList = dataURL['urlList']
+
+    //Iterate through list of download links
+    for item in downloadList do
+         //If you don't have file locally, go get the file.
+         if not dir(item) then 
+             file = http.Get(item)
+         end
+    end
+         
+```
 
 ##Technical Details
 
