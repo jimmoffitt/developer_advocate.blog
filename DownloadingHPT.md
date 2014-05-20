@@ -235,7 +235,7 @@ Here are some high-level details that provide some technical background on the H
      * 4,320 per 30-day month.
      * 52,560 files per year.
 
-###File-naming conventions:
+###File-naming Conventions
 * HPT file names are a composite of the following details:
      * Job start date, YYYYMMDD
      * Job end date, YYYYMMDD.
@@ -244,15 +244,18 @@ Here are some high-level details that provide some technical background on the H
      * A static “activities” string.
      * File extension of “.json.gz” (gzip-compressed JSON files).
 
-<start_date>-<end_date>_<Job_UUID><10-min-starting-time>_activities.json.gz
+```
+     <start_date>-<end_date>_<Job_UUID><10-min-starting-time>_activities.json.gz
+```
 
 Given a Job UUID of gv96x96q3a covering a period of 2014-05-16 to 2014-05-20, the first hour of 2014-05-17 would produce the following 6 files:
-     20140516-20140520_gv96x96q3a201405170000_activities.json.gz
-     20140516-20140520_gv96x96q3a201405170010_activities.json.gz
-     20140516-20140520_gv96x96q3a201405170020_activities.json.gz
-     20140516-20140520_gv96x96q3a201405170030_activities.json.gz
-     20140516-20140520_gv96x96q3a201405170040_activities.json.gz
-     20140516-20140520_gv96x96q3a201405170050_activities.json.gz
+
+     * 20140516-20140520_gv96x96q3a201405170000_activities.json.gz
+     * 20140516-20140520_gv96x96q3a201405170010_activities.json.gz
+     * 20140516-20140520_gv96x96q3a201405170020_activities.json.gz
+     * 20140516-20140520_gv96x96q3a201405170030_activities.json.gz
+     * 20140516-20140520_gv96x96q3a201405170040_activities.json.gz
+     * 20140516-20140520_gv96x96q3a201405170050_activities.json.gz
 
 
 
