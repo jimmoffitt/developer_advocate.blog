@@ -1,4 +1,5 @@
 ##Introduction
+
 [Historical PowerTrack (HPT)](http://support.gnip.com/apis/historical_api/) provides an API wrapper around a process that filters and outputs data from a tweet archive. Data are gathered in a multi-step process where the first step is creating a 'job' which specifies what time period to collect from, and what filters to apply to the tweet archive.
 
 The size of data returned by a job can be immense, both in the number of activities and in the storage size of the output payload. Jobs can produce millions of tweets requiring large amounts of storage space. In order to help ensure file sizes that are quick to download, data files are generated as a 10-minute time-series, with each file covering a ten-minute period of time. Depending on the data velocity associated with the job’s filters, even these 10-minute files can contain many thousands of tweets.  
@@ -7,13 +8,16 @@ Since each hour of the job’s time-period can generate up to 6 files (10-minute
 
 The data files that are generated are hosted at [Amazon's Simple Storage Service (S3)](http://aws.amazon.com/s3/), and are available for 15 days. When a job is complete, a list of download links is provided via the HPT API. Given that this list can contain thousands of links, some form of download automation is needed to retreive the data.
 
+####Technical Summary of HPT Files
+* Files are gzip compressed.
+* File contents are marked up in JSON.
+* File contents use the UTF-8 character set.
+* All timestamps in filenames and data are in UTC.
+
 Below we discuss how to access your download link list, provide some options for automating the downloads, and provide other technical details that hopefully will be helpful when working with HPT data files.  
 
 
-##Technical Summary of HPT Files
-
-
-
+     
 
 ##Accessing Download Links
 
@@ -206,10 +210,7 @@ You may decide to build your own script/application to manage HPT downloads. Per
          
 ```
 
-##Technical Details 
-
-After you have downloaded the 
-
+##Technical Details - Working with HPT Files. 
 
 Here are some high-level details that provide some technical background on the Historical PowerTrack (HPT) product and the data files it generates:
 
