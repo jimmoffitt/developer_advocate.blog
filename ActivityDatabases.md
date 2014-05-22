@@ -2,6 +2,13 @@
 
 ###Introduction
 
+Many consumers of social media data decide to store  it in relational databases such as MySQL.  
+
+
+
+In this article we'll discuss some fundamental decisions that need to be made, various options when designing your database schema, and provide some example schemas for getting started.
+
+
 
 Some fundamental questions:
 
