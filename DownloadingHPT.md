@@ -134,12 +134,12 @@ When a GET request is made to the CSV endpoint, a file containing the list of do
 
 <View GET response for CSV version of Data URL>
 ```
-'20140517-20140517_kj4r26m0qx_2014_05_17_18_00_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/jim/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/00_activities.json.gz?...'
-'20140517-20140517_kj4r26m0qx_2014_05_17_18_10_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/jim/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/10_activities.json.gz?...'
-'20140517-20140517_kj4r26m0qx_2014_05_17_18_20_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/jim/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/20_activities.json.gz?...'
-'20140517-20140517_kj4r26m0qx_2014_05_17_18_30_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/jim/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/30_activities.json.gz?...'
-'20140517-20140517_kj4r26m0qx_2014_05_17_18_40_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/jim/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/40_activities.json.gz?...'
-'20140517-20140517_kj4r26m0qx_2014_05_17_18_50_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/jim/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/50_activities.json.gz?...'
+'20140517-20140517_kj4r26m0qx_2014_05_17_18_00_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/CustomerName/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/00_activities.json.gz?...'
+'20140517-20140517_kj4r26m0qx_2014_05_17_18_10_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/CustomerName/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/10_activities.json.gz?...'
+'20140517-20140517_kj4r26m0qx_2014_05_17_18_20_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/CustomerName/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/20_activities.json.gz?...'
+'20140517-20140517_kj4r26m0qx_2014_05_17_18_30_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/CustomerName/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/30_activities.json.gz?...'
+'20140517-20140517_kj4r26m0qx_2014_05_17_18_40_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/CustomerName/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/40_activities.json.gz?...'
+'20140517-20140517_kj4r26m0qx_2014_05_17_18_50_activities.json.gz'	'https://s3-us-west-1.amazonaws.com/archive.replay.snapshots/snapshots/twitter/track/activity_streams/CustomerName/2014/05/19/20140517-20140517_kj4r26m0qx/2014/05/17/18/50_activities.json.gz?...'
 ```
 
 
