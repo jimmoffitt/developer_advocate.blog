@@ -6,26 +6,29 @@ Many consumers of social media data store it in a relational database such as My
 
 There are several key details to ponder as you design your database schema.
 
-One is deciding what information to store and what, if any, to ignore/drop.
-
-One is handling metadata that has a variable amount of members/items.
+* One is deciding what information to store and what, if any, to ignore/drop.
+* One is handling metadata that has a variable amount of members/items. Examples include hashtags, user mentions and URLs.
+* Do you need to track updates to attributes such as a user's profile location and followers count?
+* Do you need to store data from multiple publishers?
+ 
 
 In this article we'll discuss some fundamental decisions that need to be made, various options when designing your database schema, and provide some example schemas for getting started.
 
+###What Metadata do you need to store?
+
+###Handing Metadata with Variable Number of Items
+
+###Tracking Time-series Changes
 
 
-Some fundamental questions:
-
-* The schema below maintains separate activity and actor tables, but there is utility in storing actor metadata in-line with activities, especially if your use-case needs to track changes in actor metadata.  I wonder how many customers need to track those changes...
-
-* This schema mandates that metadata arrays (twitter entities, matching rules, etc) be flattened into a delimited field. An alternative is to have associated tables (such as a hashtag table). How do you guys store metadata arrays?
-
-* In previous schema designs I tried to be Publisher-agnostic, but maybe that isn't such a concern anymore.
-
+###Some Example Schemas
 
 
 
 ###Generating Schemas with Ruby ActiveRecord 
+
+* This schema mandates that metadata arrays (twitter entities, matching rules, etc) be flattened into a delimited field. An alternative is to have associated tables (such as a hashtag table). How do you guys store metadata arrays?
+
 
 ```
 ActiveRecord::Schema.define(:version => 20140517212018) do
