@@ -2,31 +2,43 @@
 
 ###Introduction
 
-Many consumers of social media data store it in a relational database such as MySQL. 
+Many consumers of social media data store it in a relational database. There are several key questions to ponder as you design your database schema.
 
-There are several key details to ponder as you design your database schema.
+* What metadata is provided and what of it is needed for research?
 
-* One is deciding what information to store and what, if any, to ignore/drop.
-* One is handling metadata that has a variable amount of members/items. Examples include hashtags, user mentions and URLs.
-* Do you need to track updates to attributes such as a user's profile location and followers count?
-* Do you need to store data from multiple publishers?
+* Will the 'dynamic' JSON data be stored in a "static" structure, such as database table schemas and the CSV format.
+
+* How should variable-length array of metadata be stored? Examples include hashtags, user mentions and URLs. 
+     * How will these metadata be accessed? 
+     
+* Does metadata that is mostly static need to be analyzed?
+     * attributes such as a user's profile location and followers count?
  
 
 In this article we'll discuss some fundamental decisions that need to be made, various options when designing your database schema, and provide some example schemas for getting started.
 
 ###Getting started.
 
-New to relational database schema design? Here are some resources:
-At the highest level, database schemas consist of tables that are made up of one of more rows.  
-Table rows are made up of one or more fields, and these fields describe the table design.
-Database schemas also involve details such as primary keys and indexes. Primary keys are made up of individual or groups of fields, and provide a mechanism to enforce uniqueness of your table contents. (example here with id = 1, adding another id = 1 will throw an error).
+[New to relational database schema design](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=relational%20database%20schema%20design)? 
+
+
+
+At the highest level, 
+* Database schemas consist of tables that are made up of one of more rows.  
+* Table rows are made up of one or more fields.
+* Field names and types describe the table design.
+* Database schemas also involve details such as primary keys and indexes. 
+     * Primary keys are made up of individual or groups of fields.
+     * Primary keys provide a mechanism to enforce uniqueness of your table contents. (example here with id = 1, adding another id = 1 will throw an error).
 
 Indexes are helpers for searching and selecting data.  When you define an index you are asking your database engine to essentially pre-sort your data, making it faster to search. Indexes come with overhead (storing sort data) and will make your database footprint larger) so should be considered carefully and carefully crafted based on the types of queries database users are making). The following discussion will focus mainly on suggested options for specifying tables and fields, and less on recommendations for defining indexes.
  
-The examples below are based on storing Twitter data in a database. If you are working with data from another social network these examples will still illustrate the type of design considerations and potential techniques for storing your data in a logical and efficient way, based on your particular use-case.
+The examples below are based on storing Twitter data in a database. If you are working with data from another social network these examples will still illustrate the type of design considerations and potential techniques for storing your data in a logical and efficient way, based on your particular use-case. If you are storing data from multiple sources it is likely that there are some fundatmental metadata common to all, and other important details that are very different. 
+
+Take for example, storing both long-form blog posts together wth 140-character tweets. 
 
 <embed a sample tweet>
-    This tweet from @snowman comes with a lot of metadata #whatToStore #database 
+    it seems @snowman is daydreaming of #snow #skiing #boarding #sliding 
 </embed>
 
 ###What Metadata do you need to store?
