@@ -2,7 +2,7 @@
 
 ###Introduction
 
-Many consumers of social media data store it in a relational database. There are several key questions to ponder as you design your database schema.
+Many consumers of social media data store it in a relational database. There are several key questions to ponder as you design your database schema:
 
 * What metadata is provided and what of it is needed for research?
 
@@ -17,19 +17,18 @@ Many consumers of social media data store it in a relational database. There are
 
 In this article we'll discuss some fundamental decisions that need to be made, various options when designing your database schema, and provide some example schemas for getting started.
 
-###Getting started.
+###Getting started. [New to relational database schema design](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=relational%20database%20schema%20design)? 
 
-[New to relational database schema design](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=relational%20database%20schema%20design)? 
-
-
-
-At the highest level, 
+At the highest level: 
 * Database schemas consist of tables that are made up of one of more rows.  
 * Table rows are made up of one or more fields.
 * Field names and types describe the table design.
 * Database schemas also involve details such as primary keys and indexes. 
      * Primary keys are made up of individual or groups of fields.
-     * Primary keys provide a mechanism to enforce uniqueness of your table contents. (example here with id = 1, adding another id = 1 will throw an error).
+     * Primary keys provide a mechanism to enforce uniqueness of your table contents. 
+```
+(example here with id = 1, adding another id = 1 will throw an error)?
+```
 
 Indexes are helpers for searching and selecting data.  When you define an index you are asking your database engine to essentially pre-sort your data, making it faster to search. Indexes come with overhead (storing sort data) and will make your database footprint larger) so should be considered carefully and carefully crafted based on the types of queries database users are making). The following discussion will focus mainly on suggested options for specifying tables and fields, and less on recommendations for defining indexes.
  
@@ -37,9 +36,11 @@ The examples below are based on storing Twitter data in a database. If you are w
 
 Take for example, storing both long-form blog posts together wth 140-character tweets. 
 
+```
 <embed a sample tweet>
-    it seems @snowman is daydreaming of #snow #skiing #boarding #sliding 
+    it seems @snowman is daydreaming of #snow #skiing #boarding #caves
 </embed>
+```
 
 ###What Metadata do you need to store?
 
