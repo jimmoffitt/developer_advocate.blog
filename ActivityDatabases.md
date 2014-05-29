@@ -1,6 +1,6 @@
-##Storing Social Media Data in Relational Databases
+#Storing Social Media Data in Relational Databases
 
-###Introduction
+##Introduction
 
 Many consumers of social media data store it in a relational database. There are several key questions to ponder as you design your database schema:
 
@@ -17,7 +17,8 @@ Many consumers of social media data store it in a relational database. There are
 
 In this article we'll discuss some fundamental decisions that need to be made, various options when designing your database schema, and provide some example schemas for getting started.
 
-###Getting started. [New to relational database schema design](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=relational%20database%20schema%20design)? 
+##Getting started. 
+###[New to relational database schema design](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=relational%20database%20schema%20design)? 
 
 At the highest level: 
 * Database schemas consist of tables that are made up of one of more rows.  
@@ -29,12 +30,19 @@ At the highest level:
 ```
 (example here with id = 1, adding another id = 1 will throw an error)?
 ```
+* Indexes are helpers for searching and selecting data.  
+   * When you define an index you are asking your database engine to essentially pre-sort your data, making it faster to search. 
+   * Indexes come with overhead (storing sort data) and will make your database footprint larger) so should be considered carefully and carefully crafted based on the types of queries database users are making). 
 
-Indexes are helpers for searching and selecting data.  When you define an index you are asking your database engine to essentially pre-sort your data, making it faster to search. Indexes come with overhead (storing sort data) and will make your database footprint larger) so should be considered carefully and carefully crafted based on the types of queries database users are making). The following discussion will focus mainly on suggested options for specifying tables and fields, and less on recommendations for defining indexes.
+
+The following discussion will focus mainly on suggested options for specifying tables and fields, and less on recommendations for defining indexes.
  
 The examples below are based on storing Twitter data in a database. If you are working with data from another social network these examples will still illustrate the type of design considerations and potential techniques for storing your data in a logical and efficient way, based on your particular use-case. If you are storing data from multiple sources it is likely that there are some fundatmental metadata common to all, and other important details that are very different. 
 
 Take for example, storing both long-form blog posts together wth 140-character tweets. 
+
+
+##What metadata is provided??
 
 ```
 <embed a sample tweet>
@@ -42,7 +50,7 @@ Take for example, storing both long-form blog posts together wth 140-character t
 </embed>
 ```
 
-###What Metadata do you need to store?
+##What Metadata do you need to store?
 
 When storing activity data in a database, you are essentially passing the data through a transform where you cherry-pick the data you care about. Inserting social media data into a database provides an opportunity to filter the incoming data, explicitly storing the data you want to keep, and ignoring the data you do not want. 
 
@@ -51,6 +59,11 @@ Every tweet arrives with a large set of supporting metadata. This set can contai
 Given your particular use-case you may only need a subset of this supporting metadata and decide not to store every piece of data provided. For example, the standard Twitter metadata includes the numeric character position of hashtags in a tweet message. You may decide that you do not need this information, and therefore can omit those details from your database schema. 
 
 To filter out such data means simply that you do not have a field in your database to store it, and when parsing the tweet payload you simply ignore the attribute.
+
+
+```
+sidebar here (with below contents)
+```
 
 -----------
 *How can I protect myself from later realizing that there are key metadata that I originally did not store?* 
@@ -66,6 +79,9 @@ and building capabilities to work with these contents are not trivial.
 If you are at all concerned about needing to analyze metadata not included in your schema, a best practice is to store the original JSON objects for future analysis or re-processing. These can be stored in a NoSQL-type system or simply as flatfiles.
 
 -----------
+###Tracking Select Time-series Changes 
+
+Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. One way to do this is to store this type of data at the activity level so things such as actor metadata are stored along with each tweet the actor posts. 
 
 ###Storing Metadata Arrays
 Twitter data is dynamic in nature, and includes several types of metadata that are in arrays of variable length. For example, tweets can consist of multiple hashtags, urls, user mentions, and soon via the firehose, multiple photographs.  JSON readily supports arrays of data, while schemas are static in nature.  The concept of having a database field 'grow' to store dynamic array lengths of data does not exist.  To manage this strutural incongruity, there are three basic schema design strategies:
@@ -87,15 +103,20 @@ This method relies on have separate tables to store multiple items. For example 
 * Pros: Efficiently models the dynamic nature of JSON objects where there is a variable list of metadata attributes. 
 * Cons: (any?)
 
-###Tracking Select Time-series Changes  
-
-Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. One way to do this is to store this type of data at the activity level so things such as actor metadata are stored along with each tweet the actor posts. 
+ 
 
 
 
-###Some Example Schemas
 
-####Generating Schemas with Ruby ActiveRecord 
+
+##Some Example Schemas
+
+(below are some examples of 'creation' scipts. )
+
+
+
+
+###Generating Schemas with Ruby ActiveRecord 
 
 * This schema mandates that metadata arrays (twitter entities, matching rules, etc) be flattened into a delimited field. An alternative is to have associated tables (such as a hashtag table). How do you guys store metadata arrays?
 
@@ -166,7 +187,7 @@ create_table "actors", :force => true do |t|
 ```
 
 
-####Generating Schemas with MySQL Scripts 
+###Generating Schemas with MySQL Scripts 
 
 
 ```
