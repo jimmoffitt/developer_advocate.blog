@@ -17,8 +17,8 @@ Here are some best practices that will help your team prepare for high-volume so
 * Add Built-In Buffering on Your End
      * Building a multi-threaded application is a key strategy for handling high-volume streams. At a high-level, a best practice for managing data streams is to have a separate thread/process that establishes the streaming connection and then writes received JSON activities to a memory structure or a buffered stream reader. This ‘light-weight’ stream processing thread is responsible for handling incoming data, which can be buffered in memory, growing and shrinking as needed. Then a different thread consumes that hash and does the ‘heavy lifting’ of parsing the JSON, preparing database writes, or whatever else your application needs to do.  
 * Optional Streaming Data Recovery Tools
-     * PowerTrack Replay is available to recover missed activities should you experience an extended disconnection.
-     * PowerTrack Backfill automates data recovery if you disconnect briefly. If you disconnect and reconnect within 5 minutes, your data will be buffered by Gnip and delivered automatically.
+     * [PowerTrack Replay](http://support.gnip.com/apis/replay/) is available to recover missed activities should you experience an extended disconnection.
+     * [PowerTrack Backfill](http://support.gnip.com/apis/consuming_streaming_data.html#Backfill) automates data recovery if you disconnect briefly. If you disconnect and reconnect within 5 minutes, your data will be buffered by Gnip and delivered automatically.
      * If you are unsure whether your Gnip package includes these recovery features, be sure to contact your Account Manager to learn more.
 * Considerations for Search API
      * It is possible for data indexing and data availability to become out of sync during a high load event.  If a “next” token is included in your response, it can be used to request additional results until you have sufficient data. This includes cases where the original response includes a “next” token and fewer Tweets than expected.
