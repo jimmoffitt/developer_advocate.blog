@@ -13,7 +13,7 @@ Here are some best practices that will help your team prepare for high-volume so
 * Stress Test Your Application
      * Anticipate that burst volumes may reach 5-10x average daily consumption levels. Depending on your PowerTrack rule set, the increase may be much higher.
 * Optimize to Stay Connected
-     * With realtime streams, staying connected is essential to avoid missing data. Your client application should be able to detect a disconnect and have logic to immediately retry its connection, using an exponential backoff if the reconnect attempt fails. 
+     * With realtime streams, staying connected is essential to avoid missing data. Your client application should be able to detect a disconnect and have logic to immediately retry its connection, using an [exponential backoff](http://support.gnip.com/apis/consuming_streaming_data.html#Reconnecting) if the reconnect attempt fails. 
 * Add Built-In Buffering on Your End
      * Building a multi-threaded application is a key strategy for handling high-volume streams. At a high-level, a best practice for managing data streams is to have a separate thread/process that establishes the streaming connection and then writes received JSON activities to a memory structure or a buffered stream reader. This ‘light-weight’ stream processing thread is responsible for handling incoming data, which can be buffered in memory, growing and shrinking as needed. Then a different thread consumes that hash and does the ‘heavy lifting’ of parsing the JSON, preparing database writes, or whatever else your application needs to do.  
 * Optional Streaming Data Recovery Tools
