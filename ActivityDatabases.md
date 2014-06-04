@@ -4,17 +4,15 @@
 
 Many consumers of social media data store it in a relational database. There are several key questions to ponder as you design your database schema:
 
-* What metadata is provided and what of it is needed for research?
+* What metadata is provided and what of it is needed for analysis and research? How long do I have to store it? 
 
 * Will the 'dynamic' JSON data be stored in a "static" structure, such as database table schemas and the CSV format.
 
-* How should variable-length array of metadata be stored? Examples include hashtags, user mentions and URLs. 
+* How should variable-length arrays of metadata be stored? Examples include hashtags, user mentions and URLs. 
      * How will these metadata be accessed? 
      
-* Does metadata that is mostly static need to be analyzed?
-     * attributes such as a user's profile location and followers count?
- 
-
+* Do you want to track update to fields that change slowly or rarely? The more simple schema designs may result in a large amount of static data, while a more granular design can significantly reduce duplicate metadata while tracking updates...
+    
 In this article we'll discuss some fundamental decisions that need to be made, various options when designing your database schema, and provide some example schemas for getting started.
 
 ##Getting started. 
@@ -35,9 +33,9 @@ At the highest level:
    * Indexes come with overhead (storing sort data) and will make your database footprint larger) so should be considered carefully and carefully crafted based on the types of queries database users are making). 
 
 
-The following discussion will focus mainly on suggested options for specifying tables and fields, and less on recommendations for defining indexes.
+The following discussion will focus mainly on suggested options for specifying tables and fields, and less on recommendations for defining indexes. Creation of indexes should be driven by your data retrieval patterns.
  
-The examples below are based on storing Twitter data in a database. If you are working with data from another social network these examples will still illustrate the type of design considerations and potential techniques for storing your data in a logical and efficient way, based on your particular use-case. If you are storing data from multiple sources it is likely that there are some fundatmental metadata common to all, and other important details that are very different. 
+The examples below are based on storing Twitter data in a database. If you are working with data from another social network, these examples will still illustrate the type of design considerations and potential techniques for storing your data based on your particular use-case. If you are storing data from multiple sources it is likely that there are some fundatmental metadata common to all, and other important details that are very different. 
 
 Take for example, storing both long-form blog posts together wth 140-character tweets. 
 
@@ -46,7 +44,7 @@ Take for example, storing both long-form blog posts together wth 140-character t
 
 ```
 <embed a sample tweet>
-    it seems @snowman is daydreaming of #snow #skiing #boarding #caves
+    @daydreaming of #snow #skiing #boarding #caves
 </embed>
 ```
 
