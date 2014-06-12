@@ -1,6 +1,6 @@
-#Storing Social Media Data in Relational Databases
+##Storing Social Media Data in Relational Databases
 
-##Introduction
+###Introduction
 
 Many consumers of social media data store it in a relational database. There are several key questions to ponder as you design your database schema:
 
@@ -15,8 +15,8 @@ Many consumers of social media data store it in a relational database. There are
     
 In this article we'll discuss some fundamental decisions that need to be made, various options when designing your database schema, and provide some example schemas for getting started.
 
-##Getting started. 
-###[New to relational database schema design](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=relational%20database%20schema%20design)? 
+###Getting started. 
+####[New to relational database schema design](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=relational%20database%20schema%20design)? 
 
 At the highest level: 
 * Database schemas consist of tables that are made up of one of more rows.  
@@ -40,7 +40,7 @@ The examples below are based on storing Twitter data in a database. If you are w
 Take for example, storing both long-form blog posts together wth 140-character tweets. 
 
 
-##What metadata is provided??
+###What metadata is provided??
 
 ```
 <embed a sample tweet>
@@ -48,7 +48,7 @@ Take for example, storing both long-form blog posts together wth 140-character t
 </embed>
 ```
 
-##What Metadata do you need to store?
+###What Metadata do you need to store?
 
 When storing activity data in a database, you are essentially passing the data through a transform where you cherry-pick the data you care about. Inserting social media data into a database provides an opportunity to filter the incoming data, explicitly storing the data you want to keep, and ignoring the data you do not want. 
 
