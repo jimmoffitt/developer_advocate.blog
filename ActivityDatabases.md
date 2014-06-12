@@ -2,18 +2,14 @@
 
 ###Introduction
 
-Many consumers of social media data store it in a relational database. There are several key questions to ponder as you design your database schema:
+There are many ways to store social media data. Consumers of social media data often decide to store the data in relational database. There are several key questions to ponder as you design your database schema:
 
-* What metadata is provided and what of it is needed for analysis and research? How long do I have to store it? 
-
-* Will the 'dynamic' JSON data be stored in a "static" structure, such as database table schemas and the CSV format.
-
-* How should variable-length arrays of metadata be stored? Examples include hashtags, user mentions and URLs. 
-     * How will these metadata be accessed? 
-     
-* Do you want to track update to fields that change slowly or rarely? The more simple schema designs may result in a large amount of static data, while a more granular design can significantly reduce duplicate metadata while tracking updates...
-    
-In this article we'll discuss some fundamental decisions that need to be made, various options when designing your database schema, and provide some example schemas for getting started.
+* What metadata is provided and what of it is needed for analysis and research? 
+* How long will the data be stored? Will the stored data be from a moving windows of time, say 90 days, or will the database continually be added to?
+* Many attributes of social data are delivered as arrays with variable lengths. For Twitter data, these include hashtags, user mentions, and URLs. Given that database schemas are structurally static, how will these arrays be stored?
+* Many attributes of social data do not change very often. For example, tweet data includes metadata about the author that rarely changes, such as their display name, account ID, profile location, and bio description. Other attributes change slowly such as follower, friend, and favorite counts. Does your use-case involve tracking these changes, and what trade-offs are there for doing so?   
+ 
+In this article we'll explore these fundamental decisions, discuss options when designing your database schema, and provide some example schemas for getting started.
 
 ###Getting started. 
 ####[New to relational database schema design](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=relational%20database%20schema%20design)? 
