@@ -24,56 +24,47 @@ At the highest level:
 * Indexes are helpers for searching and selecting data.  
    * When you define an index you are asking your database engine to essentially pre-sort your data, making it faster to search. 
    * Indexes come with overhead since they consist of copies of your data and thus make your database size larger. Therefore they should be created based on the types of queries your use-case needs to support. 
-
-   * Foreign Keys define how one table relates to another table. Foreign keys are made up of one or more fields in one table that uniquely identifies a row in another table. 
+* Foreign Keys define how one table relates to another table. Foreign keys are made up of one or more fields in one table that uniquely identifies a row in another table. 
 
 The following discussion will focus mainly on suggested options for specifying tables and fields, and less on recommendations for defining indexes. Creation of indexes should be driven by your data retrieval patterns.
  
-The examples below are based on storing Twitter data in a database. If you are working with data from another social network, these examples will still illustrate the type of design considerations and potential techniques for storing your data based on your particular use-case. If you are storing data from multiple sources it is likely that there are some fundatmental metadata common to all, and other important details that are very different. 
-
-Take for example, storing both long-form blog posts together wth 140-character tweets. 
-
-
-###What metadata is provided??
-
-```
-<embed a sample tweet>
-    @daydreaming of #snow #skiing #boarding #caves
-</embed>
-```
+The examples below are based on storing Twitter data in a database. If you are working with data from another social network, these examples will still illustrate the type of design considerations and potential techniques for storing your data. If you are storing data from multiple sources it is likely that there are some fundatmental metadata common to all such as posted time, activity IDs and author IDs. Other important details will be source-specific, such as the type of activity (post or 'like') and the length of the activity "body" (short tweet or long blog post). While it is certainly possible to store a mix of sources in a single table, there are many advantages to storing sources in their own unique tables. 
 
 ###What Metadata do you need to store?
 
 When storing activity data in a database, you are essentially passing the data through a transform where you cherry-pick the data you care about. Inserting social media data into a database provides an opportunity to filter the incoming data, explicitly storing the data you want to keep, and ignoring the data you do not want. 
 
-Every tweet arrives with a large set of supporting metadata. This set can contain well over 150 attributes that provide information about the user that posted the tweet, any available geographic information, and other information such as lists of hashtags and user mentions included in the tweet message. The entire JSON associated with the above tweet is [HERE]. For a look of all the potential metadata that can be provided see [HERE](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_everything.json).
+Every tweet arrives with a large set of supporting metadata. This set can contain well over 150 attributes that provide information about the user that posted the tweet, any available geographic information, and other information such as lists of hashtags and user mentions included in the tweet message. 
+
+```
+<embed a sample tweet>
+    hey @lbjonz I am daydreaming of all things #snow: #skiing #boarding #caves
+</embed>
+```
+
+The entire JSON associated with the above tweet is [HERE]. For a look of all the potential metadata that can be provided see [HERE](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_everything.json).
 
 Given your particular use-case you may only need a subset of this supporting metadata and decide not to store every piece of data provided. For example, the standard Twitter metadata includes the numeric character position of hashtags in a tweet message. You may decide that you do not need this information, and therefore can omit those details from your database schema. 
 
 To filter out such data means simply that you do not have a field in your database to store it, and when parsing the tweet payload you simply ignore the attribute.
 
+--------------------------
 
 ```
 sidebar here (with below contents)
 ```
 
------------
-*How can I protect myself from later realizing that there are key metadata that I originally did not store?* 
+*How can I protect myself from later realizing that there are key metadata that I haven't been storing?* 
 
-Note that there is the option to store the entire activity payload in its own text field. This option should be considered carefully since it can essentially double database size. 
+When working with Twitter data for some [flood-related blog posts](http://blog.gnip.com/tweeting-in-the-rain/) I was not originally storing follower counts in its own field. Later I wanted to study how follower counts for public agencies increased during and after flood events. Luckily, I had two options to provide that opportunity. 
 
-More appropriate for finite sets of activities, such as those generated by a Historical PowerTrack job. As opposed to a real-time system when the amount of stored activities is continually growing.
+First, I was working with [Historical PowerTrack](http://support.gnip.com/apis/historical_api/) data and I had saved the time-series data files that that product generates. It is considered a best-practice to store the complete 'raw' data. Complete JSON payloads can be inserted into a NoSQL system, such as MongoDB, or as flat-files. Doing this provides a redundant datastore in case you have database problems. Also, assuming you are not storing every metadata attribute, this provides an 'insurance policy' against discovering that there is metadata needed for analysis that have not been part of your database schema. 
 
-[Example of tweeting in the rain blog data, and wanting to revisit agency follower counts during and after flood events.]
+Second, when I designed the database schema for the flood project I decided to store each JSON payload as a separate field in my "activity" table. For this project I knew going in that I was going to have less than 500,000 activities so the overhead from this extra storage seemed worth it. For many use cases, this type of redundant storage may not scale very well. 
 
-and building capabilities to work with these contents are not trivial. 
+It should be noted that regardless of the method here, it can be a bit painful to parse and load the "missing" JSON data a second time. It is highly recommended to learn from my mistake and get your schema specified correctly the first time!
 
-If you are at all concerned about needing to analyze metadata not included in your schema, a best practice is to store the original JSON objects for future analysis or re-processing. These can be stored in a NoSQL-type system or simply as flatfiles.
-
------------
-###Tracking Select Time-series Changes 
-
-Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. One way to do this is to store this type of data at the activity level so things such as actor metadata are stored along with each tweet the actor posts. 
+--------------------------
 
 ###Storing Metadata Arrays
 Twitter data is dynamic in nature, and includes several types of metadata that are in arrays of variable length. For example, tweets can consist of multiple hashtags, urls, user mentions, and soon via the firehose, multiple photographs.  JSON readily supports arrays of data, while schemas are static in nature.  The concept of having a database field 'grow' to store dynamic array lengths of data does not exist.  To manage this strutural incongruity, there are three basic schema design strategies:
@@ -96,6 +87,10 @@ This method relies on have separate tables to store multiple items. For example 
 * Cons: (any?)
 
  
+-----------
+###Tracking Select Time-series Changes 
+
+Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. One way to do this is to store this type of data at the activity level so things such as actor metadata are stored along with each tweet the actor posts. 
 
 
 
