@@ -12,22 +12,20 @@ There are many ways to store social media data. Consumers of social media data o
 In this article we'll explore these fundamental decisions, discuss options when designing your database schema, and provide some example schemas for getting started.
 
 ###Getting started. 
-####[New to relational database schema design](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=relational%20database%20schema%20design)? 
+#####[New to relational database schema design](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=relational%20database%20schema%20design)? 
 
 At the highest level: 
 * Database schemas consist of tables that are made up of one of more rows.  
 * Table rows are made up of one or more fields.
-* Field names and types describe the table design.
-* Database schemas also involve details such as primary keys and indexes. 
+* Field names and types describe the table schema.
+* Database schemas also involve details such as primary keys, foreign keys, and indexes. 
      * Primary keys are made up of individual or groups of fields.
-     * Primary keys provide a mechanism to enforce uniqueness of your table contents. 
-```
-(example here with id = 1, adding another id = 1 will throw an error)?
-```
+     * Primary keys provide a mechanism to enforce uniqueness of your table contents by preventing duplicates.
 * Indexes are helpers for searching and selecting data.  
    * When you define an index you are asking your database engine to essentially pre-sort your data, making it faster to search. 
-   * Indexes come with overhead (storing sort data) and will make your database footprint larger) so should be considered carefully and carefully crafted based on the types of queries database users are making). 
+   * Indexes come with overhead since they consist of copies of your data and thus make your database size larger. Therefore they should be created based on the types of queries your use-case needs to support. 
 
+   * Foreign Keys define how one table relates to another table. Foreign keys are made up of one or more fields in one table that uniquely identifies a row in another table. 
 
 The following discussion will focus mainly on suggested options for specifying tables and fields, and less on recommendations for defining indexes. Creation of indexes should be driven by your data retrieval patterns.
  
