@@ -67,9 +67,15 @@ It should be noted that regardless of the method here, it can be a bit painful t
 --------------------------
 
 ###Storing Metadata Arrays
-Twitter data is dynamic in nature, and includes several types of metadata that are in arrays of variable length. For example, tweets can consist of multiple hashtags, urls, user mentions, and soon via the firehose, multiple photographs.  JSON readily supports arrays of data, while schemas are static in nature.  The concept of having a database field 'grow' to store dynamic array lengths of data does not exist.  To manage this strutural incongruity, there are three basic schema design strategies:
+Twitter data is dynamic in nature, and includes several types of metadata that are in arrays of variable length. For example, tweets can consist of multiple hashtags, urls, user mentions, and soon via the firehose, multiple photographs. For example the tweet above contains four hashtags: #snow, #skiing, #boarding, #caves. 
+
+JSON readily supports arrays of data, while schemas are static in nature.  The concept of having a database field 'grow' to store dynamic array lengths of data does not exist.  To manage this strutural incongruity, there are three basic schema design strategies: 
 
 1) Store delimited lists in a single field.
+
+| hashtags                  	|  
+|---------------------------	|
+| snow, skiing, boarding, caves |
 
 * Pros: Most compact schema design, simple queries to select data (no joins).
 * Cons: software inserting data needs to create the delimited list of metadata. 
@@ -78,11 +84,33 @@ Twitter data is dynamic in nature, and includes several types of metadata that a
 2) Create a set of fields to hold multiple instances.
 For example, hashtags could be stored in a set of fields such as hashtag_1, hashtag_2, hashtag_3, hashtag_4. For short-content sources like Twitter, limited to 140 characters, there is a good chance that there is a reasonable upper-limit on the number of items you need to support.
 
+| hashtag_1  | hashtag_2   | hashtag_3  | hashtag_4  | hashtag_5  | 
+|-------------|-------------|------------|------------|------------|
+| snow | skiing | boarding | caves        |            | 
+
+
 * Pros: (can't think of any!)
 * Cons: uglier queries, sparse contents (lots of empty fields), hardcodes the number of intenties you can process at the schema level. 
 
 3) Create separate tables to hold multiple instances.
 This method relies on have separate tables to store multiple items. For example you could have 'hashtags' and 'mentions' tables that are tied to your 'activity' table by the activity ID. This design provides for the dynamic and '3-d' nature of JSON objects.
+
+Activity table entry:
+
+|    id    |                body                     |
+|----------|-----------------------------------------|
+|477458225118191616 | hey @lbjonz I am daydreaming of all things #snow: #skiing #boarding #caves |
+
+Hashtag table entries:
+
+| id |    activity_id     |  hashtag  |
+|----|--------------------|-----------|
+| 1  | 477458225118191616 |  snow     |
+| 2  | 477458225118191616 |  skiing   |
+| 3  | 477458225118191616 |  boarding |
+| 4  | 477458225118191616 |  caves    |
+
+
 * Pros: Efficiently models the dynamic nature of JSON objects where there is a variable list of metadata attributes. 
 * Cons: (any?)
 
