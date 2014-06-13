@@ -206,6 +206,7 @@ create_table "actors", :force => true do |t|
 
 
 ```
+
 DROP TABLE IF EXISTS activities;
 CREATE TABLE `activities` (
     `act_table_id` INT(16) NOT NULL AUTO_INCREMENT                      # arb integer
@@ -258,9 +259,166 @@ CREATE TABLE `activities` (
     , `entities_media5_id` BIGINT DEFAULT NULL                         # media (photo) id
     , `entities_media5_url` TEXT DEFAULT NULL                      # media (photo) expanded url
     , PRIMARY KEY (`activityId`)
+    , KEY (`act_table_id`)
+    , INDEX `postedTime_idx` (`postedTime`)
+    , INDEX `verb_idx` (`verb`)
+    , INDEX `actor_id_idx` (`actor_id`)
+    , FULLTEXT INDEX `body_idx` (`body`)                                # will make load/insert slower 
+    , INDEX `twitter_lang_idx` (`twitter_lang`)
+    , INDEX `gnip_lang_idx` (`gnip_lang`)
+    , INDEX `link_idx` (`link`)
+    , INDEX `generator_displayName_idx` (`generator_displayName`)
+    , INDEX `geo_lat_idx` (`geo_lat`)
+    , INDEX `geo_lon_idx` (`geo_lon`)
+    , INDEX `symbol1_idx` (`entities_symbol1`)
+    , INDEX `symbol2_idx` (`entities_symbol2`)
+    , INDEX `symbol3_idx` (`entities_symbol3`)
+    , INDEX `symbol4_idx` (`entities_symbol4`)
+    , INDEX `symbol5_idx` (`entities_symbol5`)
+    , INDEX `mention1_id_idx` (`entities_mention1_id`)
+    , INDEX `mention1_name_idx` (`entities_mention1_name`)
+    , INDEX `mention2_id_idx` (`entities_mention2_id`)
+    , INDEX `mention2_name_idx` (`entities_mention2_name`)
+    , INDEX `mention3_id_idx` (`entities_mention3_id`)
+    , INDEX `mention3_name_idx` (`entities_mention3_name`)
+    , INDEX `mention4_id_idx` (`entities_mention4_id`)
+    , INDEX `mention4_name_idx` (`entities_mention4_name`)
+    , INDEX `mention5_id_idx` (`entities_mention5_id`)
+    , INDEX `mention5_name_idx` (`entities_mention5_name`)
+    , INDEX `url1_short_idx` (`entities_url1_short`)
+    , FULLTEXT INDEX `url1_expanded_idx` (`entities_url1_expanded`)
+    , INDEX `url2_short_idx` (`entities_url2_short`)
+    , FULLTEXT INDEX `url2_expanded_idx` (`entities_url2_expanded`)
+    , INDEX `url3_short_idx` (`entities_url3_short`)
+    , FULLTEXT INDEX `url3_expanded_idx` (`entities_url3_expanded`)
+    , INDEX `url4_short_idx` (`entities_url4_short`)
+    , FULLTEXT INDEX `url4_expanded_idx` (`entities_url4_expanded`)
+    , INDEX `url5_short_idx` (`entities_url5_short`)
+    , FULLTEXT INDEX `url5_expanded_idx` (`entities_url5_expanded`)
+    , INDEX `media1_id_idx` (`entities_media1_id`)
+    , FULLTEXT INDEX `media1_url_idx` (`entities_media1_url`)
+    , INDEX `media2_id_idx` (`entities_media2_id`)
+    , FULLTEXT INDEX `media2_url_idx` (`entities_media2_url`)
+    , INDEX `media3_id_idx` (`entities_media3_id`)
+    , FULLTEXT INDEX `media3_url_idx` (`entities_media3_url`)
+    , INDEX `media4_id_idx` (`entities_media4_id`)
+    , FULLTEXT INDEX `media4_url_idx` (`entities_media4_url`)
+    , INDEX `media5_id_idx` (`entities_media5_id`)
+    , FULLTEXT INDEX `media5_url_idx` (`entities_media5_url`)
 ) 
 ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 ;
+
+
+DROP TABLE IF EXISTS hashtags;
+CREATE TABLE `hashtags` (
+    `hashtag_table_id` INT(16) NOT NULL AUTO_INCREMENT          # arb integer
+    , `activityId` BIGINT UNSIGNED NOT NULL DEFAULT 0           # tweet snowflake  
+    , `text` CHAR(255) DEFAULT NULL                             # hashtag text 
+    , PRIMARY KEY (`activityId`, `text`)
+    , KEY (`hashtag_table_id`)
+    , INDEX `activityId_idx` (`activityId`)
+    , INDEX `text_idx` (`text`)
+) 
+ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+;
+
 ```
 
 
+
+
+
+```
+# this table maintains the user fields which do not change as often. 
+#   when a new record is observed, the fields are replaced and the 
+#   updated_at field is updated accordingly.
+DROP TABLE IF EXISTS users_static;
+CREATE TABLE `users_static` (
+    `us_table_id` INT(16) NOT NULL AUTO_INCREMENT                       	# arb integer
+    , `us_created_at` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'   	# timestamp of table load 
+    , `actor_id` INT(16) UNSIGNED NOT NULL DEFAULT 0                    	# numerical id - doesnt change 
+    , `activityId` BIGINT UNSIGNED NOT NULL DEFAULT 0                   	# activity snowflake of last update 
+    , `us_updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+    , `user_postedTime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' 	# user creation date
+    , `preferredUsername` CHAR(64) NOT NULL DEFAULT ''                  	# account name - can change 
+    , `displayName` CHAR(64) DEFAULT NULL                               	# displayed name - can change 
+    , `link` CHAR(255) DEFAULT NULL                                     	# www link to account profile 
+    , `summary` TEXT DEFAULT NULL                                       	# profile bio 
+    , `links1_href` TEXT DEFAULT NULL                                   	# urls in bio 
+    , `links2_href` TEXT DEFAULT NULL                                   	# urls in bio 
+    , `twitterTimezone` CHAR(255) DEFAULT NULL                          	# text field 
+    , `utcOffset` INT(16) DEFAULT NULL                                  	# timezone offset 
+    , `verified` BOOLEAN NOT NULL DEFAULT False
+    , `languages` CHAR(8) DEFAULT NULL                                  	# users default language 
+    , `profile_geo_lat` DECIMAL(11,8) DEFAULT NULL                      	# profile_geo 
+    , `profile_geo_lon` DECIMAL(11,8) DEFAULT NULL  
+    , `profile_geo_country_code` CHAR(8) DEFAULT NULL
+    , `profile_geo_locality` CHAR(64) DEFAULT NULL
+    , `profile_geo_region` CHAR(64) DEFAULT NULL
+    , `profile_geo_subregion` CHAR(64) DEFAULT NULL
+    , `profile_geo_displayName` CHAR(255) DEFAULT NULL
+    , `klout_user_id` BIGINT UNSIGNED DEFAULT NULL                      	# klout user id only comes with topics 
+    , PRIMARY KEY (`actor_id`)
+    , KEY (`us_table_id`)
+    , INDEX `user_postedTime_idx` (`user_postedTime`)
+    , INDEX `preferredUsername_idx` (`preferredUsername`)
+    , INDEX `displayName_idx` (`displayName`)
+    , INDEX `link_idx` (`link`)
+    , FULLTEXT INDEX `summary_idx` (`summary`)                          	# optional, will slow load/insert a bit
+    , FULLTEXT INDEX `links1_href_idx` (`links1_href`)
+    , FULLTEXT INDEX `links2_href_idx` (`links2_href`)
+    , INDEX `twitterTimezone_idx` (`twitterTimezone`)
+    , INDEX `verified_idx` (`verified`)
+    , INDEX `languages_idx` (`languages`)
+    , INDEX `profile_geo_lat_idx` (`profile_geo_lat`)
+    , INDEX `profile_geo_lon_idx` (`profile_geo_lon`)
+    , INDEX `profile_geo_country_code_idx` (`profile_geo_country_code`)
+    , INDEX `profile_geo_locality_idx` (`profile_geo_locality`)
+    , INDEX `profile_geo_region_idx` (`profile_geo_region`)
+    , INDEX `profile_geo_subregion_idx` (`profile_geo_subregion`)
+    , INDEX `profile_geo_displayName_idx` (`profile_geo_displayName`)
+    , INDEX `klout_user_id_idx` (`klout_user_id`)
+) 
+#ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+;
+
+
+# this table maintains the newest version of fields that are 
+#   expected to change somewhat to very often. In order to have the 
+#   full history of each user (one user table row per activity)
+#   you can basically just combine these two user tables and build 
+#   a primary key on `id` 
+
+DROP TABLE IF EXISTS `users_dynamic`;
+CREATE TABLE `users_dynamic` (
+    `ud_table_id` INT(16) NOT NULL AUTO_INCREMENT                   # arb integer
+    , `actor_id` INT(16) UNSIGNED NOT NULL DEFAULT 0                # numerical id - doesnt change 
+    , `activityId` BIGINT UNSIGNED NOT NULL DEFAULT 0               # activity snowflake of last update 
+    , `ud_updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+    , `klout_score` INT(3) DEFAULT 0                                # should be in every activity? 
+    , `klout_topic1_id` CHAR(32) DEFAULT NULL                       # numerical id from klout topic link 
+    , `klout_topic1_displayName` CHAR(255) DEFAULT NULL             # description of topic (string)
+    , `klout_topic2_id` CHAR(32) DEFAULT NULL                       # numerical id from klout topic link 
+    , `klout_topic2_displayName` CHAR(255) DEFAULT NULL             # description of topic (string)
+    , `statusesCount` INT(16) NOT NULL DEFAULT 0                    # countable things 
+    , `followersCount` INT(16) NOT NULL DEFAULT 0 
+    , `friendsCount` INT(16) NOT NULL DEFAULT 0 
+    , `listedCount` INT(16) NOT NULL DEFAULT 0 
+    , PRIMARY KEY (`actor_id`, `activityId`)
+    , KEY (`ud_table_id`)
+    , INDEX `klout_score_idx` (`klout_score`)
+    , INDEX `klout_topic1_id_idx` (`klout_topic1_id`)
+    , INDEX `klout_topic1_displayName_idx` (`klout_topic1_displayName`)
+    , INDEX `klout_topic2_id_idx` (`klout_topic2_id`)
+    , INDEX `klout_topic2_displayName_idx` (`klout_topic2_displayName`)
+    , INDEX `statusesCount_idx` (`statusesCount`)
+    , INDEX `followersCount_idx` (`followersCount`)
+    , INDEX `friendsCount_idx` (`friendsCount`)
+    , INDEX `listedCount_idx` (`listedCount`)
+) 
+#ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+;
+```
