@@ -84,6 +84,8 @@ JSON readily supports arrays of data, while schemas are static in nature.  The c
 
 One advantage of this schema design is that it results in a simple schema, enabling very simple SQL queries to retreive the data. However, it requires more work for the processing software that is retreiving the data. That code needs to 'split' the field contents using the (mutually agreed on) delimiter and iterate through the results.
 
+SELECT hashtags FROM activities WHERE id = 477458225118191616;
+
 ```
 delimiter = ','
 activity_id = 477458225118191616
@@ -104,6 +106,8 @@ for tag in hashtags {
 With this method hashtags are stored in a set of fields such as hashtag_1, hashtag_2, hashtag_3, hashtag_4, and hashtag_5. For short-content sources like Twitter, limited to 140 characters, there is a good chance that there is a reasonable upper-limit on the number of items you need to support.
 
 One disadvantage with this method is that you are likely to end up with a lot of empty fields since most tweets have just one or two hashtags. Another is that the design 'hard-codes' the number of entities you can store, so you need to decide how many to support. Yet another disadvantage is the SQL you need to write to process these multiple fields. With this method the schema and database client code is tightly coupled. If 
+
+SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 FROM activities WHERE id = 477458225118191616;
 
 ```
 delimiter = ','
@@ -134,18 +138,17 @@ Hashtag table entries:
 | 3  | 477458225118191616 |  boarding |
 | 4  | 477458225118191616 |  caves    |
 
-This method relies on having a separate table to store hashtags. 
+This method relies on having a separate table to store hashtags, with each row containing a single hashtag. So with our example tweet, there are four entries in this table, with the activity ID being the unique link (foreign key) between the two tables. This design readily handles the dynamic and '3-d' nature of JSON objects.
 
+One advantage of this design is that there are not a predetermined number of hashtag fields for each activity and instead the hashtag table dynamically stores as needed.
 
+SELECT ht.* FROM hashtags ht, activities a
+WHERE ht.activity_id = a.id
+AND a.id = 477458225118191616;
 
-For example you could have 'hashtags' and 'mentions' tables that are tied to your 'activity' table by the activity ID. This design provides for the dynamic and '3-d' nature of JSON objects.
+```
 
-
-
-
-* Pros: Efficiently models the dynamic nature of JSON objects where there is a variable list of metadata attributes. 
-* Cons: (any?)
-
+```
  
 -----------
 ###Tracking Select Time-series Changes 
