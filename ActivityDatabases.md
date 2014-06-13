@@ -76,29 +76,48 @@ Twitter data is dynamic in nature, and includes several types of metadata that a
 
 JSON readily supports arrays of data, while schemas are static in nature.  The concept of having a database field 'grow' to store dynamic array lengths of data does not exist.  To manage this strutural incongruity, there are three basic schema design strategies: 
 
-1) Store delimited lists in a single field.
+#### 1) Store delimited lists in a single field:
 
 | hashtags                  	|  
 |---------------------------	|
 | snow, skiing, boarding, caves |
 
-* Pros: Most compact schema design, simple queries to select data (no joins).
-* Cons: software inserting data needs to create the delimited list of metadata. 
-      software selecting data from database needs to have special logic to 'unpack' the delimited lists. 
+One advantage of this schema design is that it results in a simple schema, enabling very simple SQL queries to retreive the data. However, it requires more work for the processing software that is retreiving the data. That code needs to 'split' the field contents using the (mutually agreed on) delimiter and iterate through the results.
 
-2) Create a set of fields to hold multiple instances.
-For example, hashtags could be stored in a set of fields such as hashtag_1, hashtag_2, hashtag_3, hashtag_4. For short-content sources like Twitter, limited to 140 characters, there is a good chance that there is a reasonable upper-limit on the number of items you need to support.
+```
+delimiter = ','
+activity_id = 477458225118191616
+resultSet = db.execute("SELECT hashtags FROM activities WHERE id = #(activity_id};")
+hashtags = resultSet.to_s.split(delimiter)
+for tag in hashtags {
+   #Do something
+   p tag
+}
+```
+
+#### 2) Create a set of fields to hold multiple instances:
 
 | hashtag_1  | hashtag_2   | hashtag_3  | hashtag_4  | hashtag_5  | 
 |-------------|-------------|------------|------------|------------|
 | snow | skiing | boarding | caves        |            | 
 
+With this method hashtags are stored in a set of fields such as hashtag_1, hashtag_2, hashtag_3, hashtag_4, and hashtag_5. For short-content sources like Twitter, limited to 140 characters, there is a good chance that there is a reasonable upper-limit on the number of items you need to support.
 
-* Pros: (can't think of any!)
-* Cons: uglier queries, sparse contents (lots of empty fields), hardcodes the number of intenties you can process at the schema level. 
+One disadvantage with this method is that you are likely to end up with a lot of empty fields since most tweets have just one or two hashtags. Another is that the design 'hard-codes' the number of entities you can store, so you need to decide how many to support. Yet another disadvantage is the SQL you need to write to process these multiple fields. With this method the schema and database client code is tightly coupled. If 
 
-3) Create separate tables to hold multiple instances.
-This method relies on have separate tables to store multiple items. For example you could have 'hashtags' and 'mentions' tables that are tied to your 'activity' table by the activity ID. This design provides for the dynamic and '3-d' nature of JSON objects.
+```
+delimiter = ','
+activity_id = 477458225118191616
+resultSet = db.execute(SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 FROM activities WHERE id = #(activity_id};";)
+hashtags = resultSet.to_s
+for tag in hashtags {
+   #Do something
+   p tag
+}
+```
+
+
+####3) Create separate tables to hold multiple instances:
 
 Activity table entry:
 
@@ -114,6 +133,14 @@ Hashtag table entries:
 | 2  | 477458225118191616 |  skiing   |
 | 3  | 477458225118191616 |  boarding |
 | 4  | 477458225118191616 |  caves    |
+
+This method relies on having a separate table to store hashtags. 
+
+
+
+For example you could have 'hashtags' and 'mentions' tables that are tied to your 'activity' table by the activity ID. This design provides for the dynamic and '3-d' nature of JSON objects.
+
+
 
 
 * Pros: Efficiently models the dynamic nature of JSON objects where there is a variable list of metadata attributes. 
