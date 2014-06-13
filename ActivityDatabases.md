@@ -42,6 +42,11 @@ Every tweet arrives with a large set of supporting metadata. This set can contai
 </embed>
 ```
 
+<blockquote class="twitter-tweet" lang="en"><p>Got off to a great start exploring Big Data and social media w/ <a href="https://twitter.com/snowman">@snowman</a> from Gnip/<a href="https://twitter.com/twitter">@twitter</a> on Monday. Sparked many questions from scholars!</p>&mdash; Dawson Summer In. (@DawsonSummerIn) <a href="https://twitter.com/DawsonSummerIn/statuses/476859675141750784">June 11, 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
 The entire JSON associated with the above tweet is [HERE]. For a look of all the potential metadata that can be provided see [HERE](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_everything.json).
 
 Given your particular use-case you may only need a subset of this supporting metadata and decide not to store every piece of data provided. For example, the standard Twitter metadata includes the numeric character position of hashtags in a tweet message. You may decide that you do not need this information, and therefore can omit those details from your database schema. 
