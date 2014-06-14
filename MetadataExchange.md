@@ -1,5 +1,5 @@
 
-System Actor
+###System Actor
 
 
 ```
@@ -37,7 +37,7 @@ System Actor
   
 ```
  
-Site Actor
+###Site Actor
 
 
 ```
@@ -74,13 +74,24 @@ Site Actor
   }
 ```
 
-Sensor reports:
+###Sensor reports:
 
+
+Temperature 
 ```
 Temp: 70F 
 Temp: 28C
 ID: 1560
 2014-07-11 09:45:00 MDT
+```
+
+Rain 
+```
+Rain: 0.04 in increment 
+0.78 in 15-min | 1.45 1-hour | 2.56 3-hour
+ID: 1500
+2014-07-11 09:34:17 MDT
+Count: 78
 ```
 
 
