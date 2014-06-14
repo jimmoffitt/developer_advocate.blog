@@ -21,9 +21,9 @@ System Actor
     "followersCount": 0,
     "listedCount": 0,
     "statusesCount": 0,
-    "twitterTimeZone": "Mountain Time, UTC-6,
     "verified": true,
-    "utcOffset": -6,
+    "utcOffset": "-25200",
+    "twitterTimeZone": "Mountain Time (US & Canada)",
     "preferredUsername": "LakeCountyFCD",
     "languages": [
       "en"
@@ -41,7 +41,37 @@ Site Actor
 
 
 ```
-
+"actor": {
+    "objectType": "site",
+    "id": "id:twitter.com:12400000",
+    "link": "http:\/\/www.twitter.com\/LCFCD-LakeHarriet",
+    "displayName": "BLake Harriet Weather Station",
+    "postedTime": "2014-07-01T00:00:00.000Z",
+    "image": "https:\/\/pbs.twimg.com\/profile_images\/378800000646150423\/83090ccb95a60def923c674e7bd002a0_normal.jpeg",
+    "summary": "Temperature, Rain, Stage, Wind Speed, Wind Direction.",
+    "links": [
+      {
+        "href": null,
+        "rel": "me"
+      }
+    ],
+    "friendsCount": 0,
+    "followersCount": 0,
+    "listedCount": 0,
+    "statusesCount": 0,
+    "verified": true,
+    "utcOffset": "-25200",
+    "twitterTimeZone": "Mountain Time (US & Canada)",
+    "preferredUsername": "LakeHarriet",
+    "languages": [
+      "en"
+    ],
+    "location": {
+      "objectType": "place",
+      "displayName": "Lake Harriet, CO, -105.5689, 45.4598"
+    },
+    "favoritesCount": 0
+  }
 ```
 
 Sensor reports:
