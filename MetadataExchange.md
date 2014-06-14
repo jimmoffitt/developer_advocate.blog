@@ -12,6 +12,8 @@ Hashtags:
 #NewSensor
 #SiteMaintenance
 #SensorMaintenance
+#SendSiteSummary
+#SendSensorSummary #Temp #Rain
 ```
 
 
