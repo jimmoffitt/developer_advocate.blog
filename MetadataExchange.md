@@ -1,6 +1,20 @@
 
 Audience? Human readable? Finished Values? Counts?
 
+Systems could tweet any time there are metadata updates (new sites, new sensors).
+
+Interested systems could request updates once a day.
+
+
+Hashtags:
+```
+#NewSite
+#NewSensor
+#SiteMaintenance
+#SensorMaintenance
+```
+
+
 
 ###System Actor
 
@@ -110,6 +124,17 @@ ID: 1500
 2014-07-11 09:34:17 MDT
 Count: 78
 ```
+
+Stage
+```
+Stage: 6.5 ft
+Flow: 4590 CFS (measured)
+ID: 1510
+2014-07-11 09:42:44 MDT
+```
+
+
+
 
 
 
