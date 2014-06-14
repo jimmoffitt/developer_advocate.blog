@@ -1,4 +1,7 @@
 
+Audience? Human readable? Finished Values? Counts?
+
+
 ###System Actor
 
 
@@ -72,6 +75,20 @@
     },
     "favoritesCount": 0
   }
+```
+
+
+
+###Site Metadata Tweet
+
+```
+Name: Lake Harriet
+ID: 1500
+Lat: 45.4598
+Long: -105.5689
+Sensor Names: Rain, Count, Stage, Flow, Temp, WindDir, WindVel
+Sensor Types: 10, 11
+Sensor ID: 1500, 1510, 1520, 1560, 1570, 1571
 ```
 
 ###Sensor reports:
