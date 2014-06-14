@@ -1,5 +1,6 @@
 
-Audience? Human readable? Finished Values? Counts?
+Audience? Human readable? Finished Values? Counts? Use of Direct Messages?
+Systems will poll every 10 minutes, then defined triggers will start streaming.
 
 Systems could tweet any time there are metadata updates (new sites, new sensors).
 
