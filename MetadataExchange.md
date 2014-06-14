@@ -2,6 +2,8 @@
 Audience? Human readable? Finished Values? Counts? Use of Direct Messages?
 Systems will poll every 10 minutes, then defined triggers will start streaming.
 
+Public network/internet will provide a primary broadcast channel, but not the only one.
+
 Systems could tweet any time there are metadata updates (new sites, new sensors).
 
 Interested systems could request updates once a day.
