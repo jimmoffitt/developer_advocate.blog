@@ -128,6 +128,23 @@ for tag in hashtags {
 ```
 
 
+
+```
+   res = dbh.query("SELECT name, category FROM animal")
+
+   res.each do |row|
+     printf "%s, %s\n", row[0], row[1]
+   end
+   puts "Number of rows returned: #{res.num_rows}"
+
+   res.free
+   
+```   
+
+
+
+
+
 ####3) Create separate tables to hold multiple instances:
 
 Activity table entry:
