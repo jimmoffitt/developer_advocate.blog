@@ -166,8 +166,18 @@ This design readily handles the dynamic and '3-d' nature of JSON objects. Indeed
 
 (client-side code:)
 ```
+   activity_id = 477458225118191616
+   hashtags = Array.new 
 
-```
+   result_set = db.query("SELECT ht.* FROM hashtags ht, activities a WHERE ht.activity_id = a.id AND a.id = #(activity_id};";)")
+
+   result_set.each do |row| #Will get one row for each entry in hashtags table... 
+      row.each do |k, v|
+         hashtags << v
+      end
+   end
+
+```   
  
 -----------
 ###Tracking Select Time-series Changes 
