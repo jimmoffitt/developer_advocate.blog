@@ -91,15 +91,22 @@ SELECT hashtags FROM activities WHERE id = 477458225118191616;
 Client code needs to 'split' the field contents using the (mutually agreed on) delimiter and then iterate through the results.
 
 ```
-delimiter = ','
 activity_id = 477458225118191616
-resultSet = db.execute("SELECT hashtags FROM activities WHERE id = #(activity_id};")
-hashtags = resultSet.to_s.split(delimiter)
-for tag in hashtags {
-   #Do something
-   p tag
-}
+hashtags = Array.new
+delimiter = ','
+
+result_set = db.execute("SELECT hashtags FROM activities WHERE id = #(activity_id};")
+
+result_set.each do |row| #Should be getting only one row... 
+   row.each do |k, v|  #Our query specified a single field...
+      hashtags_delimited << v
+   end
+end
+
+hashtags = hashtags_delimited.split(delimiter)
 ```
+
+---------------------------------------
 
 #### 2) Create a set of fields to hold multiple instances:
 
@@ -117,33 +124,20 @@ SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 FROM activities WHE
 (Comments on client-side code:)
 
 ```
-delimiter = ','
-activity_id = 477458225118191616
-resultSet = db.execute(SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 FROM activities WHERE id = #(activity_id};";)
-hashtags = resultSet.to_s
-for tag in hashtags {
-   #Do something
-   p tag
-}
-```
+   activity_id = 477458225118191616
+   hashtags = Array.new 
 
+   result_set = db.query("SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 FROM activities WHERE id = #(activity_id};";)")
 
-
-```
-   res = dbh.query("SELECT name, category FROM animal")
-
-   res.each do |row|
-     printf "%s, %s\n", row[0], row[1]
+   result_set.each do |row| #Should be getting only one row... 
+      row.each do |k, v|
+         hashtags << v
+      end
    end
-   puts "Number of rows returned: #{res.num_rows}"
 
-   res.free
-   
 ```   
 
-
-
-
+---------------------------------------
 
 ####3) Create separate tables to hold multiple instances:
 
