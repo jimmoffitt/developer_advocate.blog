@@ -78,7 +78,7 @@ JSON readily supports arrays of data, while schemas are static in nature.  The c
 
 #### 1) Store delimited lists in a single field:
 
-|   id      | | hashtags                  	|  
+|   id  | hashtags                  	|  
 |---------------------------	|
 |477458225118191616 | | snow, skiing, boarding, caves |
 
@@ -112,7 +112,7 @@ hashtags = hashtags_delimited.split(delimiter) #The joys of Ruby (and Python).
 ---------------------------------------
 #### 2) Create a set of fields to hold multiple instances:
 
-| id  | | hashtag_1  | hashtag_2   | hashtag_3  | hashtag_4  | hashtag_5  | 
+| id  | hashtag_1  | hashtag_2   | hashtag_3  | hashtag_4  | hashtag_5  | 
 |-------------|-------------|------------|------------|------------|
 |477458225118191616 | | snow | skiing | boarding | caves        |            | 
 
