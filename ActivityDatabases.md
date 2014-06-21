@@ -11,7 +11,7 @@ There are many ways to store social media data. Consumers of social media data o
  
 In this article we'll explore these fundamental decisions, discuss options when designing your database schema, and provide some example schemas for getting started.
 
-###Getting started. 
+###Getting started 
 #####[New to relational database schema design](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=relational%20database%20schema%20design)? 
 
 At the highest level: 
@@ -185,15 +185,22 @@ This design readily handles the dynamic '3-d' nature of JSON objects. Indeed, on
 
 [TODO]
 
-Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. One way to do this is to store this type of data at the activity level so things such as actor metadata are stored along with each tweet the actor posts. 
+Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. One way to do this is to store this type of data at the activity level so things such as actor metadata are stored along with each tweet the actor posts. Another strategy is to segregate the metadata into two groups: attributes you want to track over time, and others that you only need to store once.
 
-Another strategy is to segragate the metadata into the attributes you want to track over time, and others that you only need to store once.
+The disadvantage of storing all data at the activity level is that much of this data will be static, so significant storage space is spent on redundant data. Hoever, the required SQL for retrieving data is simple, and client-side code remains simple. 
+
+However, to make your storage requirements most efficient, a more detailed schema is needed.  
+
+
+
 
 ##Some Example Schemas
 
 In this section we present two types of scripts to generate example schemas in a MySQL database. The first type is based on the Ruby on Rails ActiveRecord framework, and the second type can be used directly with the MySQL database engine.
 
 ###Generating Schemas with Ruby ActiveRecord 
+
+The following exmample illustrate the most basic schema, where all metadata is stored at the activity level. This design has an disadvantage of being less efficent with respect to (mostly) static metadata.
 
 
 ```
@@ -230,16 +237,14 @@ ActiveRecord::Schema.define(:version => 20140517212018) do
 
     t.datetime 'created_at'
     t.datetime 'updated_at'
+    
+    ADD ALL THE REDUNDANT ACTOR DATA!!!!!!!!!!!!!
   end
+```
 
+Another option is to store certain metadata in another table...
 
-
-
-
-
-
-
-
+```
 create_table "actors", :force => true do |t|
     t.string 'native_id'
     t.string 'bio'
@@ -269,9 +274,34 @@ create_table "actors", :force => true do |t|
   end
 ```
 
+Here is a schema that segregates metadata into separate "static' and "dynamic" tables:
+
+
+```
+actor.static
+
+
+```
+
+```
+actor.dynamic
+
+```
+
+
+
+
+
+
+
+
+
+
+
 
 ###Generating Schemas with MySQL Scripts 
 
+Here are some example SQL scripts for creating schemas directly with the MySQL engine:
 
 ```
 
