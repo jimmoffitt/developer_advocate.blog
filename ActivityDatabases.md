@@ -83,7 +83,7 @@ JSON readily supports arrays of data, while schemas are static in nature.  The c
 One advantage of this schema design is that it results in a simple schema, enabling very simple SQL queries to retreive the data. 
 
 ```
-SELECT hashtags FROM activities WHERE id = 477458225118191616;
+SELECT hashtags FROM activities WHERE id = 480209697199243264;
 ```
 
 Client code needs to 'split' the field contents using the (mutually agreed on) delimiter and then iterate through the results:
@@ -119,7 +119,7 @@ With this method hashtags are stored in a set of fields such as hashtag_1, hasht
 One disadvantage with this method is that you are likely to end up with a lot of empty fields since most tweets have just one or two hashtags. Another is that the design 'hard-codes' the number of entities you can store, so you need to decide how many to support. Yet another disadvantage is the SQL you need to write to process these multiple fields, where the client code and its query also hard-codes an explicit number of metadata items: 
 
 ```
-SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 FROM activities WHERE id = 477458225118191616;
+SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 FROM activities WHERE id = 480209697199243264;
 ```
 
 Other than the query being completely coupled to the schema details, the client-side code is much the same although it does not need any delimiter metadata.
@@ -161,7 +161,7 @@ This method relies on having a separate table to store hashtags, with each row c
 ```
 SELECT ht.* FROM hashtags ht, activities a
 WHERE ht.activity_id = a.id
-AND a.id = 477458225118191616;
+AND a.id = 480209697199243264;
 ```
 This design readily handles the dynamic '3-d' nature of JSON objects. Indeed, one advantage of this design is that there are not a predetermined number of hashtag fields for each activity and instead the hashtag table dynamically stores the array items as needed.
 
