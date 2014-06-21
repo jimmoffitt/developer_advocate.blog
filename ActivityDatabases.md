@@ -78,9 +78,9 @@ JSON readily supports arrays of data, while schemas are static in nature.  The c
 
 #### 1) Store delimited lists in a single field:
 
-| hashtags                  	|  
+|   id      | | hashtags                  	|  
 |---------------------------	|
-| snow, skiing, boarding, caves |
+|477458225118191616 | | snow, skiing, boarding, caves |
 
 One advantage of this schema design is that it results in a simple schema, enabling very simple SQL queries to retreive the data. 
 
@@ -88,57 +88,59 @@ One advantage of this schema design is that it results in a simple schema, enabl
 SELECT hashtags FROM activities WHERE id = 477458225118191616;
 ```
 
-Client code needs to 'split' the field contents using the (mutually agreed on) delimiter and then iterate through the results.
+Client code needs to 'split' the field contents using the (mutually agreed on) delimiter and then iterate through the results:
 
 ```
-activity_id = 477458225118191616
-hashtags = Array.new
-delimiter = ','
+#SQL query to select a single set of hashtags for a specified tweet ID.
+query = "SELECT hashtags FROM activities WHERE id = #(activity_id};"
 
-result_set = db.execute("SELECT hashtags FROM activities WHERE id = #(activity_id};")
+hashtags = Array.new #Will load hashtags into an array.
 
-result_set.each do |row| #Should be getting only one row... 
-   row.each do |k, v|  #Our query specified a single field...
-      hashtags_delimited << v
+delimiter = ',' #Need to know how hashtags are delimited. Could have self-discovering logic here.
+
+result_set = db.execute(query)
+
+result_set.each do |row|  
+   row.each do |key, value|  #Our query specified a single field, getting back field name, value...
+      hashtags_delimited << value 
    end
 end
 
-hashtags = hashtags_delimited.split(delimiter)
+hashtags = hashtags_delimited.split(delimiter) #The joys of Ruby (and Python).
 ```
 
 ---------------------------------------
-
 #### 2) Create a set of fields to hold multiple instances:
 
-| hashtag_1  | hashtag_2   | hashtag_3  | hashtag_4  | hashtag_5  | 
+| id  | | hashtag_1  | hashtag_2   | hashtag_3  | hashtag_4  | hashtag_5  | 
 |-------------|-------------|------------|------------|------------|
-| snow | skiing | boarding | caves        |            | 
+|477458225118191616 | | snow | skiing | boarding | caves        |            | 
 
 With this method hashtags are stored in a set of fields such as hashtag_1, hashtag_2, hashtag_3, hashtag_4, and hashtag_5. For short-content sources like Twitter, limited to 140 characters, there is a good chance that there is a reasonable upper-limit on the number of items you need to support.
 
-One disadvantage with this method is that you are likely to end up with a lot of empty fields since most tweets have just one or two hashtags. Another is that the design 'hard-codes' the number of entities you can store, so you need to decide how many to support. Yet another disadvantage is the SQL you need to write to process these multiple fields. 
+One disadvantage with this method is that you are likely to end up with a lot of empty fields since most tweets have just one or two hashtags. Another is that the design 'hard-codes' the number of entities you can store, so you need to decide how many to support. Yet another disadvantage is the SQL you need to write to process these multiple fields, where the client code and its query also hard-codes an explicit number of metadata items: 
 
 ```
 SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 FROM activities WHERE id = 477458225118191616;
 ```
-(Comments on client-side code:)
+
 
 ```
-   activity_id = 477458225118191616
-   hashtags = Array.new 
+   #SQL query to select a single set of hashtags for a specified tweet ID.
+   query = "SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 FROM activities WHERE id = #(activity_id};";)"
 
-   result_set = db.query("SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 FROM activities WHERE id = #(activity_id};";)")
+   hashtags = Array.new #Will load hashtags into an array.
 
-   result_set.each do |row| #Should be getting only one row... 
+   result_set = db.execute(query)
+
+   result_set.each do |row|  
       row.each do |k, v|
-         hashtags << v
+         hashtags << v #Just grab hashtag values, can ignore "hashtags" key (field name).
       end
    end
-
 ```   
 
 ---------------------------------------
-
 ####3) Create separate tables to hold multiple instances:
 
 Activity table entry:
