@@ -45,7 +45,7 @@ Every tweet arrives with a large set of supporting metadata. This set can contai
 <blockquote class="twitter-tweet" lang="en"><p>hey <a href="https://twitter.com/lbjonz">@lbjonz</a> on this summer weekend I am daydreaming of all things <a href="https://twitter.com/search?q=%23snow&amp;src=hash">#snow</a>: <a href="https://twitter.com/search?q=%23skiing&amp;src=hash">#skiing</a> <a href="https://twitter.com/search?q=%23boarding&amp;src=hash">#boarding</a> <a href="https://twitter.com/search?q=%23caves&amp;src=hash">#caves</a></p>&mdash; Jim Moffitt (@snowman) <a href="https://twitter.com/snowman/statuses/480209697199243264">June 21, 2014</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-The entire JSON associated with the above tweet is [HERE]. For a look of all the potential metadata that can be provided see [HERE](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_everything.json).
+The entire JSON associated with the above tweet is [HERE](https://github.com/jimmoffitt/pt-dm/blob/master/schema/hashtags.json). For a look of all the potential metadata that can be provided see [HERE](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_everything.json).
 
 Given your particular use-case you may only need a subset of this supporting metadata and decide not to store every piece of data provided. For example, the standard Twitter metadata includes the numeric character position of hashtags in a tweet message. You may decide that you do not need this information, and therefore can omit those details from your database schema. 
 
@@ -72,7 +72,7 @@ It should be noted that regardless of the method here, it can be a bit painful t
 ###Storing Metadata Arrays
 Twitter data is dynamic in nature, and includes several types of metadata that are in arrays of variable length. For example, tweets can consist of multiple hashtags, urls, user mentions, and soon via the firehose, multiple photographs. For example the tweet above contains four hashtags: #snow, #skiing, #boarding, #caves. 
 
-JSON readily supports arrays of data, while schemas are static in nature.  The concept of having a database field 'grow' to store dynamic array lengths of data does not exist.  To manage this strutural incongruity, there are three basic schema design strategies: 
+JSON readily supports arrays of data, while schemas are static in nature.  The concept of having a database field 'grow' to store dynamic array lengths of data does not exist.  To manage this strutural incongruity, below are three basic schema design strategies. For each example some Ruby-based pseudo-code is provided. These code examples illustrate SQL queries and loading the hashtags into an array. 
 
 #### 1) Store delimited lists in a single field:
 
@@ -183,22 +183,17 @@ This design readily handles the dynamic '3-d' nature of JSON objects. Indeed, on
 -----------
 ###Tracking Select Time-series Changes 
 
+[TODO]
+
 Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. One way to do this is to store this type of data at the activity level so things such as actor metadata are stored along with each tweet the actor posts. 
 
-
-
-
+Another strategy is to segragate the metadata into the attributes you want to track over time, and others that you only need to store once.
 
 ##Some Example Schemas
 
-(below are some examples of 'creation' scipts. )
-
-
-
+In this section we present two types of scripts to generate example schemas in a MySQL database. The first type is based on the Ruby on Rails ActiveRecord framework, and the second type can be used directly with the MySQL database engine.
 
 ###Generating Schemas with Ruby ActiveRecord 
-
-* This schema mandates that metadata arrays (twitter entities, matching rules, etc) be flattened into a delimited field. An alternative is to have associated tables (such as a hashtag table). How do you guys store metadata arrays?
 
 
 ```
@@ -236,6 +231,14 @@ ActiveRecord::Schema.define(:version => 20140517212018) do
     t.datetime 'created_at'
     t.datetime 'updated_at'
   end
+
+
+
+
+
+
+
+
 
 create_table "actors", :force => true do |t|
     t.string 'native_id'
