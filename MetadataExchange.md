@@ -1,13 +1,19 @@
 
+###General themes
+
 Audience? Human readable? Finished Values? Counts? Use of Direct Messages?
+
+Data transfer model:
 Systems will poll every 10 minutes, then defined triggers will start streaming.
 
+
 Public network/internet will provide a primary broadcast channel, but not the only one.
+Standard backups still apply: ALERT radio, satellite, celluar
 
 Systems could tweet any time there are metadata updates (new sites, new sensors).
+Request ---> Response mechanism readily available.
 
 Interested systems could request updates once a day.
-
 
 Hashtags:
 ```
@@ -18,6 +24,15 @@ Hashtags:
 #SendSiteSummary
 #SendSensorSummary #Temp #Rain
 ```
+
+###Payload characters
+Sensor type: 16
+Sensor ID: 16
+Sensor time: 23    "YYYY-MM-DD HH:MM:SS TZZ"
+Sensor Data: 16
+Sensor Data 2: 16
+=======================
+Total characters: 87 (Max + whitespace)
 
 
 
@@ -143,9 +158,4 @@ ID: 1510
 
 
 
-  
-  
 
-
-
-```
