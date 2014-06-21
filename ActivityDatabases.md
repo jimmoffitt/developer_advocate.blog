@@ -38,14 +38,12 @@ Every tweet arrives with a large set of supporting metadata. This set can contai
 
 ```
 <embed a sample tweet>
-    hey @lbjonz I am daydreaming of all things #snow: #skiing #boarding #caves
+    hey @lbjonz on this summer weekend I am daydreaming of all things #snow: #skiing #boarding #caves
 </embed>
 ```
 
-<blockquote class="twitter-tweet" lang="en"><p>Got off to a great start exploring Big Data and social media w/ <a href="https://twitter.com/snowman">@snowman</a> from Gnip/<a href="https://twitter.com/twitter">@twitter</a> on Monday. Sparked many questions from scholars!</p>&mdash; Dawson Summer In. (@DawsonSummerIn) <a href="https://twitter.com/DawsonSummerIn/statuses/476859675141750784">June 11, 2014</a></blockquote>
+<blockquote class="twitter-tweet" lang="en"><p>hey <a href="https://twitter.com/lbjonz">@lbjonz</a> on this summer weekend I am daydreaming of all things <a href="https://twitter.com/search?q=%23snow&amp;src=hash">#snow</a>: <a href="https://twitter.com/search?q=%23skiing&amp;src=hash">#skiing</a> <a href="https://twitter.com/search?q=%23boarding&amp;src=hash">#boarding</a> <a href="https://twitter.com/search?q=%23caves&amp;src=hash">#caves</a></p>&mdash; Jim Moffitt (@snowman) <a href="https://twitter.com/snowman/statuses/480209697199243264">June 21, 2014</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
 
 The entire JSON associated with the above tweet is [HERE]. For a look of all the potential metadata that can be provided see [HERE](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_everything.json).
 
@@ -80,7 +78,7 @@ JSON readily supports arrays of data, while schemas are static in nature.  The c
 
 |  id  | hashtags                  	|  
 |---------------------	| ---------|
-|477458225118191616 | snow, skiing, boarding, caves |
+|480209697199243264 | snow, skiing, boarding, caves |
 
 One advantage of this schema design is that it results in a simple schema, enabling very simple SQL queries to retreive the data. 
 
@@ -114,7 +112,7 @@ hashtags = hashtags_delimited.split(delimiter) #The joys of Ruby (and Python).
 
 | id  | hashtag_1  | hashtag_2   | hashtag_3  | hashtag_4  | hashtag_5  | 
 |----------|----------|------------|------------|------------|----------|
-|477458225118191616 |  snow | skiing | boarding | caves        |            | 
+|480209697199243264 |  snow | skiing | boarding | caves        |            | 
 
 With this method hashtags are stored in a set of fields such as hashtag_1, hashtag_2, hashtag_3, hashtag_4, and hashtag_5. For short-content sources like Twitter, limited to 140 characters, there is a good chance that there is a reasonable upper-limit on the number of items you need to support.
 
@@ -124,6 +122,7 @@ One disadvantage with this method is that you are likely to end up with a lot of
 SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 FROM activities WHERE id = 477458225118191616;
 ```
 
+Other than the query being completely coupled to the schema details, the client-side code is much the same although it does not need any delimiter metadata.
 
 ```
    #SQL query to select a single set of hashtags for a specified tweet ID.
@@ -147,16 +146,16 @@ Activity table entry:
 
 |    id    |                body                     |
 |----------|-----------------------------------------|
-|477458225118191616 | hey @lbjonz I am daydreaming of all things #snow: #skiing #boarding #caves |
+|480209697199243264 | hey @lbjonz on this summer weekend I am daydreaming of all things #snow: #skiing #boarding #caves |
 
 Hashtag table entries:
 
 | id |    activity_id     |  hashtag  |
 |----|--------------------|-----------|
-| 1  | 477458225118191616 |  snow     |
-| 2  | 477458225118191616 |  skiing   |
-| 3  | 477458225118191616 |  boarding |
-| 4  | 477458225118191616 |  caves    |
+| 1  | 480209697199243264 |  snow     |
+| 2  | 480209697199243264 |  skiing   |
+| 3  | 480209697199243264 |  boarding |
+| 4  | 480209697199243264 |  caves    |
 
 This method relies on having a separate table to store hashtags, with each row containing a single hashtag. So with our example tweet, there are four entries in this table, with the activity ID being the unique link (foreign key) between the two tables. 
 ```
@@ -164,21 +163,21 @@ SELECT ht.* FROM hashtags ht, activities a
 WHERE ht.activity_id = a.id
 AND a.id = 477458225118191616;
 ```
-This design readily handles the dynamic and '3-d' nature of JSON objects. Indeed, one advantage of this design is that there are not a predetermined number of hashtag fields for each activity and instead the hashtag table dynamically stores as needed.
+This design readily handles the dynamic '3-d' nature of JSON objects. Indeed, one advantage of this design is that there are not a predetermined number of hashtag fields for each activity and instead the hashtag table dynamically stores the array items as needed.
 
-(client-side code:)
 ```
-   activity_id = 477458225118191616
-   hashtags = Array.new 
+   #SQL query to select a single set of hashtags for a specified tweet ID.
+   query = "SELECT ht.* FROM hashtags ht, activities a WHERE ht.activity_id = a.id AND a.id = #(activity_id};"
 
-   result_set = db.query("SELECT ht.* FROM hashtags ht, activities a WHERE ht.activity_id = a.id AND a.id = #(activity_id};";)")
+   hashtags = Array.new #Will load hashtags into an array.
+
+   result_set = db.execute(query)
 
    result_set.each do |row| #Will get one row for each entry in hashtags table... 
       row.each do |k, v|
          hashtags << v
       end
    end
-
 ```   
  
 -----------
