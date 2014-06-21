@@ -26,11 +26,13 @@ Hashtags:
 ```
 
 ###Payload characters
-Sensor type: 16
-Sensor ID: 16
-Sensor time: 23    "YYYY-MM-DD HH:MM:SS TZZ"
-Sensor Data: 16
-Sensor Data 2: 16
+
++ Sensor type: 16
++ Sensor ID: 16
++ Sensor time: 23    "YYYY-MM-DD HH:MM:SS TZZ"
++ Sensor Data: 16
++ Sensor Data 2: 16
+
 =======================
 Total characters: 87 (Max + whitespace)
 
