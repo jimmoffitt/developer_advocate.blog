@@ -78,9 +78,9 @@ JSON readily supports arrays of data, while schemas are static in nature.  The c
 
 #### 1) Store delimited lists in a single field:
 
-|   id  | hashtags                  	|  
-|---------------------------	|
-|477458225118191616 | | snow, skiing, boarding, caves |
+|  id  | hashtags                  	|  
+|---------------------	| ---------|
+|477458225118191616 | snow, skiing, boarding, caves |
 
 One advantage of this schema design is that it results in a simple schema, enabling very simple SQL queries to retreive the data. 
 
@@ -113,8 +113,8 @@ hashtags = hashtags_delimited.split(delimiter) #The joys of Ruby (and Python).
 #### 2) Create a set of fields to hold multiple instances:
 
 | id  | hashtag_1  | hashtag_2   | hashtag_3  | hashtag_4  | hashtag_5  | 
-|-------------|-------------|------------|------------|------------|
-|477458225118191616 | | snow | skiing | boarding | caves        |            | 
+|----------|----------|------------|------------|------------|----------|
+|477458225118191616 |  snow | skiing | boarding | caves        |            | 
 
 With this method hashtags are stored in a set of fields such as hashtag_1, hashtag_2, hashtag_3, hashtag_4, and hashtag_5. For short-content sources like Twitter, limited to 140 characters, there is a good chance that there is a reasonable upper-limit on the number of items you need to support.
 
