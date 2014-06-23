@@ -183,13 +183,13 @@ This design readily handles the dynamic '3-d' nature of JSON objects. Indeed, on
 -----------
 ###Tracking Select Time-series Changes 
 
-[TODO]
+Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. One way to do this is to store this type of data at the activity level so things such as actor metadata are stored along with each tweet the actor posts. The disadvantage of storing all data at the activity level is that much of this data will be static, so significant storage space is spent on redundant data. However, the required SQL for retrieving data is simple, and client-side code remains simple. 
 
-Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. One way to do this is to store this type of data at the activity level so things such as actor metadata are stored along with each tweet the actor posts. Another strategy is to segregate the metadata into two groups: attributes you want to track over time, and others that you only need to store once.
+Another strategy is to segregate the metadata into two groups: attributes you want to track over time, and others that you only need to store once (if at all). 
 
-The disadvantage of storing all data at the activity level is that much of this data will be static, so significant storage space is spent on redundant data. Hoever, the required SQL for retrieving data is simple, and client-side code remains simple. 
 
-However, to make your storage requirements most efficient, a more detailed schema is needed.  
+
+
 
 
 
@@ -197,6 +197,13 @@ However, to make your storage requirements most efficient, a more detailed schem
 ##Some Example Schemas
 
 In this section we present two types of scripts to generate example schemas in a MySQL database. The first type is based on the Ruby on Rails ActiveRecord framework, and the second type can be used directly with the MySQL database engine.
+
+[What schemas are we presenting]
+
+[Most simple: one table]
+
+[activity table with dynamic actor data with activities, with separate hashtag and actor_static tables]
+
 
 ###Generating Schemas with Ruby ActiveRecord 
 
