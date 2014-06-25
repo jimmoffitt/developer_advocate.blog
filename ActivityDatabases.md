@@ -185,29 +185,36 @@ This design readily handles the dynamic '3-d' nature of JSON objects. Indeed, on
 
 Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. One way to do this is to store this type of data at the activity level so things such as actor metadata are stored along with each tweet the actor posts. The disadvantage of storing all data at the activity level is that much of this data will be static, so significant storage space is spent on redundant data. However, the required SQL for retrieving data is simple, and client-side code remains simple. 
 
-Another strategy is to segregate the metadata into two groups: attributes you want to track over time, and others that you only need to store once (if at all). With this design the more dynamic data is stored either at the activity level, or in a separate "dynamic" table, with more static data being written to another "static" table.
+Another strategy is to segregate the metadata into two groups: attributes you want to track over time, and others that you only need to store one value for. With this design the more dynamic data is stored either at the activity level, or in a separate "dynamic" table, with more static data being written to another "static" table.
 
-
-
-
-
-
+In the example schemas presented below, the "user_static" table illustrates this design. 
 
 
 ##Some Example Schemas
 
-In this section we present two types of scripts to generate example schemas in a MySQL database. The first type is based on the Ruby on Rails ActiveRecord framework, and the second type can be used directly with the MySQL database engine.
+Below are some example schemas that provide a starting place for specifying your database schema. We start with a  single-table schema that represents the most simple option. Then we present examples of schemas comprised of separate tables for metadata arrays (such as hashtags) and storing static metadata in a separate table.
 
-[What schemas are we presenting]
-
-[Most simple: one table]
-
-[activity table with dynamic actor data with activities, with separate hashtag and actor_static tables]
+We present two types of scripts to generate the example schemas in a MySQL database. The first type is based on the Ruby on Rails ActiveRecord framework, and the second type can be used directly with the MySQL database engine.
 
 
-###Generating Schemas with Ruby ActiveRecord 
+###Single table
+
+As discussed above, this design has the disadvantage of ineffeciently storing redundant data, but it should be adequate for many use-cases such as datasets from Historical PowerTrack jobs with a finite amount of data.
 
 The following exmample illustrate the most basic schema, where all metadata is stored at the activity level. This design has an disadvantage of being less efficent with respect to (mostly) static metadata.
+
+
+####Creating with Ruby ActiveRecord
+
+
+####MySQL creation script
+
+
+
+
+
+
+
 
 
 ```
