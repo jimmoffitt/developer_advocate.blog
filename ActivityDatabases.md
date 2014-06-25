@@ -1,3 +1,10 @@
+[] add notes about schemas here are twitter specific
+[] if mixing publishers/products may need to add fields for tracking those.
+[] Link to ActiveRecord types
+[] Link to MySQL types  http://dev.mysql.com/doc/refman/5.0/en/numeric-type-overview.html
+[] Unified field comments for all "one table" contents
+
+
 ##Storing Social Media Data in Relational Databases
 
 ###Introduction
