@@ -59,6 +59,8 @@ sidebar here (with below contents)
 
 *How can I protect myself from later realizing that there are key metadata that I haven't been storing?* 
 
+When you design your database schema you are explicitly saving selected data, and anything not selected is ignored and not available for future use. Given this, it pays to carefully identify what data you need the first time.
+
 When working with Twitter data for some [flood-related blog posts](http://blog.gnip.com/tweeting-in-the-rain/) I was not originally storing follower counts in its own field. Later I wanted to study how follower counts for public agencies increased during and after flood events. Luckily, I had two options to provide that opportunity. 
 
 First, I was working with [Historical PowerTrack](http://support.gnip.com/apis/historical_api/) data and I had saved the time-series data files that that product generates. It is considered a best-practice to store the complete 'raw' data. Complete JSON payloads can be inserted into a NoSQL system, such as MongoDB, or as flat-files. Doing this provides a redundant datastore in case you have database problems. Also, assuming you are not storing every metadata attribute, this provides an 'insurance policy' against discovering that there is metadata needed for analysis that have not been part of your database schema. 
@@ -189,13 +191,11 @@ Another strategy is to segregate the metadata into two groups: attributes you wa
 
 In the example schemas presented below, the "user_static" table illustrates this design. 
 
-
 ##Some Example Schemas
 
-Below are some example schemas that provide a starting place for specifying your database schema. We start with a  single-table schema that represents the most simple option. Then we present examples of schemas comprised of separate tables for metadata arrays (such as hashtags) and storing static metadata in a separate table.
+Below are some example schemas that provide a starting place for specifying your database schema. We start with a single-table schema that represents the most simple option. Then we present schema examples comprised of separate tables for metadata arrays (such as hashtags) and storing static metadata in a separate table.
 
 We present two types of scripts to generate the example schemas in a MySQL database. The first type is based on the Ruby on Rails ActiveRecord framework, and the second type can be used directly with the MySQL database engine.
-
 
 ###Single table
 
@@ -205,6 +205,9 @@ The following exmample illustrate the most basic schema, where all metadata is s
 
 
 ####Creating with Ruby ActiveRecord
+
+
+
 
 
 ####MySQL creation script
