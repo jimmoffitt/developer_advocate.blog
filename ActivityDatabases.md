@@ -9,7 +9,7 @@
 
 ###Introduction
 
-There are many ways to store social media data. Consumers of social media data often decide to store the data in relational database. There are several key questions to ponder as you design your database schema:
+There are many ways to store social media data, in flat-files, in NoSQL-type datastores, and in relational database. This article focuses on storing in relational databases. There are several key questions to ponder as you design your database schema:
 
 * What metadata is provided and what of it is needed for analysis and research? 
 * How long will the data be stored? Will the stored data be from a moving windows of time, say 90 days, or will the database continually be added to?
@@ -394,12 +394,12 @@ create_table "actors", :force => true do |t|
 Metadata arrays
 
 ```
-
+create_table "hashtags", :force => true do |t|
+    t.string 'activity_id'
+    t.string 'hashtags'
 ```
 
-
 Here is a schema that segregates metadata into separate "static' and "dynamic" tables:
-
 
 ```
 actor.static
