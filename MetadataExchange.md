@@ -1,13 +1,10 @@
 
 ###General themes
 
-Audience? anyone interested in metadata exchange. use-case: Hydrology community.
-Fundamental issues: data privacy, data interpretation, public safety
-Fundamental concepts: leveraging network, lack of latency, global reach
-
-Privacy issues drive these questions: Human readable?  Use of Direct Messages?
-
-
++ Audience? anyone interested in metadata exchange. use-case: Hydrology community.
++ Fundamental issues: data privacy, data interpretation, public safety
+     + Privacy issues drive these questions: Human readable?  Use of Direct Messages?
++ Fundamental concepts: leveraging network, lack of latency, global reach
 
 
 ####Data transfer model
