@@ -3,6 +3,7 @@
 * [] Link to ActiveRecord types
 * [] Link to MySQL types  http://dev.mysql.com/doc/refman/5.0/en/numeric-type-overview.html
 * [] Unified field comments for all "one table" contents
+* [] Generate more ActiveRecord/Model example code.
 
 
 ##Storing Social Media Data in Relational Databases
@@ -422,8 +423,7 @@ create_table "actors", :force => true do |t|
 ```
 actor.dynamic
 
-```
-create_table "actors", :force => true do |t|
+create_table "actor_dynamic", :force => true do |t|
     t.string 'id'
     t.integer 'followers_count'
     t.integer 'friends_count'
