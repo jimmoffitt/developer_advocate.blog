@@ -15,7 +15,13 @@ Request ---> Response mechanism readily available.
 
 Interested systems could request updates once a day.
 
-Hashtags:
+Step 1: posting of data
+Step 2: requesting cross-system metadata (public)
+Step 3: requesting cross-system data (private/public)
+
+
+
+Data Request Hashtags:
 ```
 #NewSite
 #NewSensor
