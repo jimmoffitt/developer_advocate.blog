@@ -1,14 +1,20 @@
 
 ###General themes
 
-Audience? Human readable? Finished Values? Counts? Use of Direct Messages?
+Audience? anyone interested in metadata exchange. use-case: Hydrology community.
+Fundamental issues: data privacy, data interpretation, public safety
+Fundamental concepts: leveraging network, lack of latency, global reach
 
-Data transfer model:
+Privacy issues drive these questions: Human readable?  Use of Direct Messages?
+
+
+
+
+####Data transfer model
 Systems will poll every 10 minutes, then defined triggers will start streaming.
 
-
-Public network/internet will provide a primary broadcast channel, but not the only one.
-Standard backups still apply: ALERT radio, satellite, celluar
+Twitter public network/internet will provide a primary broadcast channel, but not the only one.
+Standard and mission-critical backups still apply: ALERT radio, satellite, celluar
 
 Systems could tweet any time there are metadata updates (new sites, new sensors).
 Request ---> Response mechanism readily available.
