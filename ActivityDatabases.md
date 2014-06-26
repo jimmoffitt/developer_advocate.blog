@@ -405,8 +405,16 @@ Here is a schema that segregates metadata into separate "static' and "dynamic" t
 actor.static
 
 create_table "actors", :force => true do |t|
-    t.string 'activity_id'
+    t.string 'id'
+    
+    #Actor geo metadata
+    t.string 'location'
+    t.integer 'utc_offset'
+    #These really are flattened arrays, but currently will only have one item.
+    t.string 'profile_geo_name'
 
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
 
 ```
 
@@ -415,20 +423,13 @@ actor.dynamic
 
 ```
 create_table "actors", :force => true do |t|
-    t.string 'actor_id'
+    t.string 'id'
     t.integer 'followers_count'
     t.integer 'friends_count'
     t.integer 'statuses_count'
     t.integer 'klout_score'
     t.text 'topics'   #klout topics   #flattened array
-    
 
-    #Actor geo metadata
-    t.string 'location'
-    t.integer 'utc_offset'
-    #These really are flattened arrays, but currently will only have one item.
-    t.string 'profile_geo_name'
-    
     t.datetime 'created_at'
     t.datetime 'updated_at'
   end
@@ -436,7 +437,7 @@ create_table "actors", :force => true do |t|
 
 
 
-```
+
 
 
 
