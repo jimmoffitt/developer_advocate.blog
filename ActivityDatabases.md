@@ -10,12 +10,12 @@
 
 ###Introduction
 
-There are many ways to store social media data, in flat-files, in NoSQL-type datastores, and in relational database. This article focuses on storing in relational databases. There are several key questions to ponder as you design your database schema:
+There are many ways to store social media data, in flat-files, in NoSQL-type datastores, and in relational database. This article focuses on storing Twitter data in relational databases. There are several key questions to ponder as you design your database schema:
 
 * What metadata is provided and what of it is needed for analysis and research? 
 * How long will the data be stored? Will the stored data be from a moving windows of time, say 90 days, or will the database continually be added to?
 * Many attributes of social data are delivered as arrays with variable lengths. For Twitter data, these include hashtags, user mentions, and URLs. Given that database schemas are structurally static, how will these arrays be stored?
-* Many attributes of social data do not change very often. For example, tweet data includes metadata about the author that rarely changes, such as their display name, account ID, profile location, and bio description. Other attributes change slowly such as follower, friend, and favorite counts. Does your use-case involve tracking these changes, and what trade-offs are there for doing so?   
+* Many attributes of social data do not change very often. For example, tweet data includes metadata about the author that rarely changes, such as their display name, account ID, profile location, and bio description. Other attributes change less slowly such as follower, friend, and favorite counts. Does your use-case involve tracking these changes, and what trade-offs are there for doing so?   
  
 In this article we'll explore these fundamental decisions, discuss options when designing your database schema, and provide some example schemas for getting started.
 
