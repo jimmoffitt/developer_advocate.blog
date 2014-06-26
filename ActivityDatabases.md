@@ -81,7 +81,7 @@ It should be noted that regardless of the method here, it can be a bit painful t
 ###Storing Metadata Arrays
 Twitter data is dynamic in nature, and includes several types of metadata that are in arrays of variable length. For example, tweets can consist of multiple hashtags, urls, user mentions, and soon via the firehose, multiple photographs. For example the tweet above contains four hashtags: #snow, #skiing, #boarding, #caves. 
 
-JSON readily supports arrays of data, while schemas are static in nature.  The concept of having a database field 'grow' to store dynamic array lengths of data does not exist.  To manage this strutural incongruity, below are three basic schema design strategies. For each example some Ruby-based pseudo-code is provided. These code examples illustrate SQL queries and loading the hashtags into an array. 
+JSON readily supports arrays of data, while schemas are static in nature.  The concept of having a database field 'grow' to store dynamic array lengths of data does not exist.  To manage this strutural incongruity, below are three basic schema design strategies. For each example some pseudo-code, with a strong Ruby ascent, is provided. These code examples illustrate SQL queries and loading the hashtags into an array. 
 
 #### 1) Store delimited lists in a single field:
 
@@ -99,13 +99,12 @@ Client code needs to 'split' the field contents using the (mutually agreed on) d
 
 ```
 #SQL query to select a single set of hashtags for a specified tweet ID.
-query = "SELECT hashtags FROM activities WHERE id = #(activity_id};"
+query = "SELECT hashtags FROM activities WHERE id = #{activity_id};"
+db.connect if not db.active
+result_set = db.execute(query)
 
 hashtags = Array.new #Will load hashtags into an array.
-
 delimiter = ',' #Need to know how hashtags are delimited. Could have self-discovering logic here.
-
-result_set = db.execute(query)
 
 result_set.each do |row|  
    row.each do |key, value|  #Our query specified a single field, getting back field name, value...
@@ -128,7 +127,7 @@ With this method hashtags are stored in a set of fields such as hashtag_1, hasht
 One disadvantage with this method is that you are likely to end up with a lot of empty fields since most tweets have just one or two hashtags. Another is that the design 'hard-codes' the number of entities you can store, so you need to decide how many to support. Yet another disadvantage is the SQL you need to write to process these multiple fields, where the client code and its query also hard-codes an explicit number of metadata items: 
 
 ```
-SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 FROM activities WHERE id = 480209697199243264;
+SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 FROM activities WHERE id = #{activity_id};
 ```
 
 Other than the query being completely coupled to the schema details, the client-side code is much the same although it does not need any delimiter metadata.
@@ -136,14 +135,15 @@ Other than the query being completely coupled to the schema details, the client-
 ```
    #SQL query to select a single set of hashtags for a specified tweet ID.
    query = "SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 FROM activities WHERE id = #(activity_id};";)"
-
+   db.connect if not db.active
+   
    hashtags = Array.new #Will load hashtags into an array.
 
    result_set = db.execute(query)
 
    result_set.each do |row|  
       row.each do |k, v|
-         hashtags << v #Just grab hashtag values, can ignore "hashtags" key (field name).
+         hashtags << v #Just grab hashtag values, ignoring "hashtags" key (field name).
       end
    end
 ```   
@@ -177,14 +177,15 @@ This design readily handles the dynamic '3-d' nature of JSON objects. Indeed, on
 ```
    #SQL query to select a single set of hashtags for a specified tweet ID.
    query = "SELECT ht.* FROM hashtags ht, activities a WHERE ht.activity_id = a.id AND a.id = #(activity_id};"
-
+   db.connect if not db.active
+   
    hashtags = Array.new #Will load hashtags into an array.
 
    result_set = db.execute(query)
 
    result_set.each do |row| #Will get one row for each entry in hashtags table... 
       row.each do |k, v|
-         hashtags << v
+         hashtags << v  
       end
    end
 ```   
@@ -206,9 +207,9 @@ We present two types of scripts to generate the example schemas in a MySQL datab
 
 ###Single table
 
-As discussed above, this design has the disadvantage of ineffeciently storing redundant data, but it should be adequate for many use-cases such as datasets from Historical PowerTrack jobs with a finite amount of data.
+As discussed above, this design has the disadvantage of inefficiently storing redundant data, but it should be adequate for many use-cases such as datasets from Historical PowerTrack jobs with a finite amount of data.
 
-The following exmample illustrate the most basic schema, where all metadata is stored at the activity level. This design has an disadvantage of being less efficent with respect to (mostly) static metadata.
+The following exmaple illustrate the most basic schema, where all metadata is stored at the activity level. This design has an disadvantage of being less efficient with respect to (mostly) static metadata.
 
 
 ####Creating with Ruby ActiveRecord
