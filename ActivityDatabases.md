@@ -357,26 +357,37 @@ ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 
 ```
 
+###Storing Metadata Arrays
 
-
-Another option is to store certain metadata in another table...
-
-Actor objects
+Here is a possible schema for storing metadata arrays. 
 
 ```
-create_table "actors", :force => true do |t|
-    t.string 'native_id'
+  create_table "activities", :force => true do |t|
+    t.integer 'activity_id'
+    #As above except no hashtag fields in table. 
+  end
+
+  create_table "hashtags", :force => true do |t|
+    #id #internal, auto-increment, unique ID
+    t.integer 'activity_id' #foreign_key back to  
+    t.string  'hashtag'
+    end
+```
+
+###Dynamic and Static Object attributes
+
+
+Metadata that is mostly static, where there is one entry maintained.
+
+```
+create_table "static_actors", :force => true do |t|
+    t.integer 'active_id'
     t.string 'bio'
-    t.integer 'followers_count'
-    t.integer 'friends_count'
-    t.integer 'statuses_count'
-    t.integer 'klout_score'
-    t.text 'topics'   #klout topics   #flattened array
     t.string 'lang'
     t.string 'time_zone'
     t.integer 'utc_offset'
     t.datetime 'posted_at'
-
+    
     #Actor geo metadata
     t.string 'location'
     #These really are flattened arrays, but currently will only have one item.
@@ -390,6 +401,30 @@ create_table "actors", :force => true do |t|
     
     t.datetime 'created_at'
     t.datetime 'updated_at'
+end    
+
+```
+
+Metadata that is dynamic and tracked on a tweet-by-tweet basis.
+
+```
+create_table "activity", :force => true do |t|
+
+
+    t.integer 'followers_count'
+    t.integer 'friends_count'
+    t.integer 'statuses_count'
+    t.integer 'klout_score'
+    t.text 'topics'   #klout topics   #flattened array
+
+
+ ```    
+    
+   
+
+    
+    
+    
   end
 ```
 
