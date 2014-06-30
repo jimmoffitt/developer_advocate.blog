@@ -214,6 +214,12 @@ The following exmaple illustrate the most basic schema, where all metadata is st
 
 
 ####Creating with Ruby ActiveRecord
+
+
+
+:primary_key, :string, :text, :integer, :float, :decimal, :datetime, :timestamp, :time, :date, :binary, :boolean.
+
+
 ```
 ActiveRecord::Schema.define(:version => 20140624212018) do
 
