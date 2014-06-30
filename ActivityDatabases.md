@@ -466,9 +466,6 @@ create_table "actor_dynamic", :force => true do |t|
 
 ####Flood Project schema 
 
-```
-
-```
 
 
 ```
@@ -486,8 +483,9 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
     t.string 'generator'
     t.string 'link'
 
+    
+    #'hash_tags' --> stored in separate hashtags table by activity ID.
     #These are flattened arrays, comma delimited (?)
-    #t.string 'hash_tags' --> stored in separate hashtags table by activity ID.
     t.string 'mentions' 
     t.text 'urls'         #Expanded URLs when available.
     t.string 'media'
@@ -522,7 +520,6 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
   create_table "hashtags", :force => true do |t|
 
     t.integer 'id'
-    
     t.string 'hashtag'
 
     t.datetime 'created_at'
@@ -537,7 +534,6 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
   create_table actor", :force => true do |t|
 
     t.integer 'id'
-
     t.integer 'actor_id'
     t.string 'preferredUsername'
     t.string 'displayName'
