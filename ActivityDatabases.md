@@ -9,6 +9,13 @@
 
 ##Storing Social Media Data in Relational Databases
 
+   - Getting started - What Metadata do you need to store?
+   - Storing Metadata Arrays
+   - Tracking Select Time-series Changes 
+   - Some Example Schemas
+   - Ruby/Rails examples
+   - Java examples
+ 
 ###Introduction
 
 There are many ways to store social media data, in flat-files, in NoSQL-type datastores, and in relational database. This article focuses on storing Twitter data in relational databases. There are several key questions to ponder as you design your database schema:
