@@ -6,10 +6,20 @@
 
 Storying Activities
 
+Activity table with dynamic actor attributes.
 
 + Activities table persists Activity obejects.
 + Storing 'dynamic' actor attributes on a activity-by-activity basis.
-+ 
++ Metadata arrays are handled in two ways:
++     Separate metadata table with a many-to-one activity relationship.
++     Stored as a 'flattened' array with a specified delimiter.
+
+Version summary:
+hashtags and rules have own table.
+mentions, URLs, and media do not.
+
+Based on the assumption that this project dataset will consist of less that 5,000,000 tweets there will be a field for holding the entire JSON payload (which can average in 3KB uncompressed per tweet (retweets are bigger).
+
 ```
 ActiveRecord::Schema.define(:version => 20140624212018) do
 
@@ -25,7 +35,6 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
     t.string 'generator'
     t.string 'link'
 
-    
     #'hash_tags' --> stored in separate hashtags table by activity ID.
     #These are flattened arrays, comma delimited (?)
     t.string 'mentions' 
