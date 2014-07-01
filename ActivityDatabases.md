@@ -386,7 +386,8 @@ Here is a possible schema for storing metadata arrays.
 Metadata that is mostly static, where there is one entry maintained.
 
 ```
-create_table "static_actors", :force => true do |t|
+create_table "actors", :force => true do |t|
+    t.integer 'id'
     t.integer 'active_id'
     t.string 'bio'
     t.string 'lang'
@@ -416,12 +417,13 @@ Metadata that is dynamic and tracked on a tweet-by-tweet basis.
 ```
 create_table "activity", :force => true do |t|
 
-
+    #Dynamic actor metadata is stored on a tweet-by-tweet basis. 
     t.integer 'followers_count'
     t.integer 'friends_count'
     t.integer 'statuses_count'
     t.integer 'klout_score'
     t.text 'topics'   #klout topics   #flattened array
+    
   end
 ```
 
@@ -430,7 +432,8 @@ Metadata arrays
 ```
 create_table "hashtags", :force => true do |t|
     t.string 'activity_id'
-    t.string 'hashtags'
+    t.string 'hashtag'
+end
 ```
 
 Here is a schema that segregates metadata into separate "static' and "dynamic" tables:
@@ -449,7 +452,7 @@ create_table "actors", :force => true do |t|
 
     t.datetime 'created_at'
     t.datetime 'updated_at'
-
+end
 ```
 
 ```
