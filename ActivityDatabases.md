@@ -386,7 +386,7 @@ create_table "actor_dynamic", :force => true do |t|
 
 
 
-[Example Project Schema](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/project_schema.md)
+[###Example Project Schema](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/project_schema.md)
 
 
 
