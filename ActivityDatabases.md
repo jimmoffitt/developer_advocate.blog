@@ -1,10 +1,25 @@
+A series of posts/articles with a general theme collecting, storing and analyzing Twitter data.
+
+* Data stories
+* Getting data
+*   Historical PowerTrack client
+*   Search API client
+*   Streaming data with Java and Ruby
+* Storing data
+*   MySQL
+*   MongoDB
+* Data Analysis
+* Simple Rails Demo App
+
+------------------------------------------------------------------
+
 * [] add notes about schemas here are twitter specific
 * [] if mixing publishers/products may need to add fields for tracking those.
 * [] Link to ActiveRecord types
 * [] Link to MySQL types  http://dev.mysql.com/doc/refman/5.0/en/numeric-type-overview.html
 * [] Unified field comments for all "one table" contents
-* [] Generate more ActiveRecord/Model example code.
-
+* [] Generate more ActiveRecord/Model example code
+*      [] has_many
 
 ##Storing Social Media Data in Relational Databases
 
