@@ -3,8 +3,7 @@
 
 ##Flood Project schema 
 
-
-Storying Activities
+Tables: activities, hashtags, actors, rules
 
 Activity table with dynamic actor attributes.
 
@@ -21,30 +20,42 @@ mentions, URLs, and media do not.
 Based on the assumption that this project dataset will consist of less that 5,000,000 tweets there will be a field for holding the entire JSON payload (which can average in 3KB uncompressed per tweet (retweets are bigger).
 
 ```
-ActiveRecord::Schema.define(:version => 20140624212018) do
+Activity model
+
+ has many hashtags
+ has many rules
+ has one actor
+
+```
+
+
+Creation migration:
+
+```
+ActiveRecord::Schema.define(:version => 20140701000000) do
 
   create_table "activities", :force => true do |t|
-    t.integer 'id'
-    t.integer 'activity_id'   #Primary Key
-    t.datetime 'posted_at'
-    t.text 'payload'          #Entire content of JSON activity...? 
-    t.string 'body'
-    t.string 'verb'
-    t.integer 'repost_of'
-    t.string 'twitter_lang'
-    t.string 'generator'
-    t.string 'link'
+    #t.integer 'id'               #ActiveRecord auto-incrementer
+    t.integer 'activity_id'       #Business-logic Primary Key - no duplicate tweets.
+    t.datetime 'posted_at'        #Always UTC.
+    #t.text 'payload'             #Entire content of JSON activity...? 
+    t.string 'body'               #140 (or more) characters. Tweet body, blog post?
+    t.string 'verb'               #post,share, etc.
+    t.integer 'repost_of_id'      #Points to original tweet.
+    t.string 'lang'               #twitter_lang
+    t.string 'generator'          #What platform did activity come from?
+    t.string 'link'               #[Link to the activity](https://twitter.com/snowman/status/480209697199243264)
 
-    #'hash_tags' --> stored in separate hashtags table by activity ID.
-    #These are flattened arrays, comma delimited (?)
-    t.string 'mentions' 
-    t.text 'urls'         #Expanded URLs when available.
-    t.string 'media'
+    #PowerTrack rules and associated tags are stored in a separate table.
+    #'rules'                      #--> stored in separate hashtags table by activity ID.
     
-    #How do we want to do this?
-    t.text 'rule_values'  #Gnip PowerTrack matching rules. 
-    t.text 'rule_tags'        
-                            
+    #These are twitter entities:
+    #'hashtags'                   #--> stored in separate hashtags table by activity ID.
+    #Flattened arrays, comma delimited for this project.
+    t.string 'mentions'           # @mentions
+    t.text 'urls'                 #Expanded URLs when available.
+    t.string 'media'              #photos, vines, etc.
+                             
     #Activity geo details - Geo-tagged tweets only.
     t.string 'place'
     t.string 'country_code'
@@ -59,8 +70,9 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
     t.integer 'statuses_count'
     t.integer 'klout_score'
  
-    t.datetime 'created_at'
-    t.datetime 'updated_at'
+    #Standard ActiveRecord row metadata.
+    #t.datetime 'created_at'
+    #t.datetime 'updated_at'
   end
 ```
 
@@ -70,12 +82,12 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
 
   create_table "hashtags", :force => true do |t|
 
-    t.integer 'id'
-    t.integer 'activity_id' 
+    #t.integer 'id'               #ActiveRecord auto-incrementer.
+    t.integer 'activity_id'  
     t.string 'hashtag'
 
-    t.datetime 'created_at'
-    t.datetime 'updated_at'
+    #t.datetime 'created_at'
+    #t.datetime 'updated_at'
 ```
 
 ###Rules (and tags)
@@ -84,12 +96,14 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
 
   create_table "rules", :force => true do |t|
 
-    t.integer 'id'
-    t.integer 'activity_id' 
+    #t.integer 'id'               #ActiveRecord auto-incrementer.
+    t.integer 'activity_id'       #Duplicates expected.
     t.string 'value'
     t.string 'tag'
-    t.datetime 'created_at'
-    t.datetime 'updated_at'
+    
+    #Standard ActiveRecord row metadata.
+    #t.datetime 'created_at'
+    #t.datetime 'updated_at'
 ```
 
 ###Actor metadata
@@ -104,8 +118,8 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
     t.string 'displayName'
     t.string 'actor_link'
     t.string 'bio'
-    t.text 'klout_topics'   #klout topics #flattened array.
-    
+    t.text 'klout_topics'         #klout topics #flattened array.
+      
     t.string 'actor_lang'
     t.string 'time_zone'
     t.integer 'utc_offset'
@@ -123,9 +137,9 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
     t.string 'profile_geo_subregion'
     t.string 'profile_geo_locality' 
     
-    t.datetime 'created_at'
-    t.datetime 'updated_at'
-
+    #Standard ActiveRecord row metadata.
+    #t.datetime 'created_at'
+    #t.datetime 'updated_at'
 ```
 
 
