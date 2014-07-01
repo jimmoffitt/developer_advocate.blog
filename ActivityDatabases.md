@@ -1,15 +1,16 @@
 A series of posts/articles with a general theme collecting, storing and analyzing Twitter data.
 
-* Data stories
+* Data stories http://blog.gnip.com/tweeting-in-the-rain/
 * Getting data
-*   Historical PowerTrack client
-*   Search API client
-*   Streaming data with Java and Ruby
-* Storing data
-*   MySQL
-*   MongoDB
-* Data Analysis
-* Simple Rails Demo App
+     *   Historical PowerTrack Ruby client https://github.com/jimmoffitt/rbHistoricalPT
+     *   Search API Ruby client https://github.com/jimmoffitt/rbSearchAPI
+     *   Streaming data with Java and Ruby 
+* Storing data 
+     *   ActiveRecord  (in proress)
+     *   MySQL  (in proress)
+     *   MongoDB (next)
+* Data Analysis (August)
+* Simple Rails Demo App (September)
 
 ------------------------------------------------------------------
 
