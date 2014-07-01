@@ -14,19 +14,15 @@ __Developer Advocate blog__ ...from the client-side prespective
 
 Previous posts:
 - Geo-referencing with the Profile Location enrichments. 
-     - http://support.gnip.com/articles/geo-intro.html
-     - http://support.gnip.com/articles/twitter-geo-referencing.html
-- JSON-->CSV conversion http://support.gnip.com/articles/json-to-csv-conversion-overview.html
-- Running Ruby/Tk applications as Windows 7 applications. 
-- http://support.gnip.com/articles/rubytk-to-win7exe.html
-- http://support.gnip.com/articles/downloading-hpt-files.html
+     - [Twitter Geographical Metadata](http://support.gnip.com/articles/geo-intro.html)
+     - [Profile Geo use-case](http://support.gnip.com/articles/twitter-geo-referencing.html)
+- [JSON-->CSV conversion](http://support.gnip.com/articles/json-to-csv-conversion-overview.html)
+- [Running Ruby/Tk applications as Windows 7 applications](http://support.gnip.com/articles/rubytk-to-win7exe.html)
+- [Downloading Historical PowerTrack files](http://support.gnip.com/articles/downloading-hpt-files.html)
 - "Gnip on Windows" articles:
-     - cURL on Windoows 7 - Exercising Gnip Streaming and Rules APIs.
-     - http://support.gnip.com/articles/curl-on-win7.html
-     - CygWin on Windows 7 - Downloadning Historical PowerTrack data.
-     - http://support.gnip.com/articles/unixonwindows_cygwin.html
-
-http://support.gnip.com/articles/high-volume-events.html
+     - [cURL on Windoows 7 - Exercising Gnip Streaming and Rules APIs.](http://support.gnip.com/articles/curl-on-win7.html)
+     - [CygWin on Windows 7 - Downloading Historical PowerTrack data.](http://support.gnip.com/articles/unixonwindows_cygwin.html)
+- [Preparing for High Volume Events](http://support.gnip.com/articles/high-volume-events.html)
 
 Next?
 
