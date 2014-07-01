@@ -204,7 +204,14 @@ In the example schemas presented below, the "user_static" table illustrates this
 
 Below are some example schemas that provide a starting place for specifying your database schema. We start with a single-table schema that represents the most simple option. Then we present schema examples comprised of separate tables for metadata arrays (such as hashtags) and storing static metadata in a separate table.
 
+
+###Creating Databases
+
 We present two types of scripts to generate the example schemas in a MySQL database. The first type is based on the Ruby on Rails ActiveRecord framework, and the second type can be used directly with the MySQL database engine.
+
+
+
+
 
 ###Single table
 
@@ -212,9 +219,7 @@ As discussed above, this design has the disadvantage of inefficiently storing re
 
 The following exmaple illustrate the most basic schema, where all metadata is stored at the activity level. This design has an disadvantage of being less efficient with respect to (mostly) static metadata.
 
-
-####Creating with Ruby ActiveRecord
-
+[Creating with Ruby ActiveRecord]
 
 
 :primary_key, :string, :text, :integer, :float, :decimal, :datetime, :timestamp, :time, :date, :binary, :boolean.
@@ -258,6 +263,13 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
     t.datetime 'updated_at'
   end
 ```
+
+
+
+[Creating with MySQL script.]
+
+
+
 
 
 
@@ -371,11 +383,17 @@ create_table "actor_dynamic", :force => true do |t|
 ```
 
 
+-------------------------------------------------
 
-####Flood Project schema 
+##Flood Project schema 
 
 
+Storying Activities
 
+
++ Activities table persists Activity obejects.
++ Storing 'dynamic' actor attributes on a activity-by-activity basis.
++ 
 ```
 ActiveRecord::Schema.define(:version => 20140624212018) do
 
@@ -443,7 +461,7 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
 
     t.integer 'id'
     t.integer 'activity_id' 
-    t.string 'rule'
+    t.string 'value'
     t.string 'tag'
     t.datetime 'created_at'
     t.datetime 'updated_at'
