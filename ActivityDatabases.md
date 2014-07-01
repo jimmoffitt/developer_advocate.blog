@@ -519,19 +519,33 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
   end
 ```
 
-###hashtags
+###Hashtags
 ```
 ActiveRecord::Schema.define(:version => 20140624212018) do
 
   create_table "hashtags", :force => true do |t|
 
     t.integer 'id'
+    t.integer 'activity_id' 
     t.string 'hashtag'
 
     t.datetime 'created_at'
     t.datetime 'updated_at'
 ```
 
+###Rules (and tags)
+```
+ActiveRecord::Schema.define(:version => 20140624212018) do
+
+  create_table "rules", :force => true do |t|
+
+    t.integer 'id'
+    t.integer 'activity_id' 
+    t.string 'rule'
+    t.string 'tag'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
+```
 
 ###Actor metadata
 ```
