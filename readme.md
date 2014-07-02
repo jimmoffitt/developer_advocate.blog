@@ -12,7 +12,7 @@ __Developer Advocate blog__ ...from the client-side prespective
 * Data Analysis (August)
 * Simple Rails Demo App (September)
 
-Previous posts:
+####Previous posts:
 - Geo-referencing with the Profile Location enrichments. 
      - [Twitter Geographical Metadata](http://support.gnip.com/articles/geo-intro.html)
      - [Profile Geo use-case](http://support.gnip.com/articles/twitter-geo-referencing.html)
@@ -24,8 +24,7 @@ Previous posts:
      - [CygWin on Windows 7 - Downloading Historical PowerTrack data.](http://support.gnip.com/articles/unixonwindows_cygwin.html)
 - [Preparing for High Volume Events](http://support.gnip.com/articles/high-volume-events.html)
 
-Next?
-
+####Next?
 - Writing the client-side code that used Historical PowerTrack to collect data.
 - Storing historical twitter data and mining it.  Generating stats.  Binning time-series data.
 - Potential Twitter use-cases (with technical details).
