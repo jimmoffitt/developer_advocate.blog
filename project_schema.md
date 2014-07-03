@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20140701000000) do
   create_table "activities", :force => true do |t|
     #t.integer 'id'               #ActiveRecord auto-incrementer
     t.integer 'activity_id'       #Business-logic Primary Key - no duplicate tweets.
+    t.integer 'actor_id'          #User ID
     t.datetime 'posted_at'        #Always UTC.
     #t.text 'payload'             #Entire content of JSON activity...? 
     t.string 'body'               #140 (or more) characters. Tweet body, blog post?
