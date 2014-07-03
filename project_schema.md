@@ -147,19 +147,19 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
 
 
 ####Activity table
-Generator statement:
+
 activity activity_id:integer posted_at:datetime body:string verb:string repost_of_id:integer actor_id:integer lang:string generator:string link:string mentions:string urls:text media:text place:string country_code:string long:float lat:float long_box:float lat_box:float followers_count:integer friends_count:integer statuses_count:integer klout_source:integer payload:text
 
 ####Actor table
-Generator statement:
+
 actor actor_id:integer handle:string display_name:string actor_link:string bio:string lang:string time_zone:string utc_offset:integer posted_at:datetime location:string profile_geo_name:string profile_geo_long:float profile_geo_lat:float profile_country_code:string profile_geo_region:string profile_geo_subregion:string profile_geo_locality:string
 
 ####Hashtag table
-Generator statement:
+
 hashtag activity_id:integer hashtag:string
 
 ####Rules table
-Generator statement:
+
 rule activity_id:integer value:string tag:string
 
 
