@@ -1,14 +1,16 @@
 ------------------------------------------------------------------
-
-* [] add note about schemas here are twitter specific
-*      [] if mixing publishers/products may need to add fields for tracking those.
+To-dos:
+* [x] add note about schemas here are twitter specific
+*      [x] if mixing publishers/products may need to add fields for tracking those.
+* [] check pseudo-code for 'multiple field' example.
 * [] Link to ActiveRecord types
 * [] Link to MySQL types  http://dev.mysql.com/doc/refman/5.0/en/numeric-type-overview.html
 * [] Generate more ActiveRecord/Model example code
-*      [] has_many
+*      [] has_many, uniqueness, etc.
 
 ##Storing Social Media Data in Relational Databases
 
+Table of contents:
    - Getting started - What Metadata do you need to store?
    - Storing Metadata Arrays
    - Tracking Select Time-series Changes 
@@ -18,12 +20,12 @@
  
 ###Introduction
 
-There are many ways to store social media data, in flat-files, in NoSQL-type datastores, and in relational database. This article focuses on storing Twitter data in relational databases. There are several key questions to ponder as you design your database schema:
+There are many ways to store social media data, such as flat-files, NoSQL-type datastores, and relational databases. This article focuses on storing Twitter data in relational databases. There are several key questions to ponder as you design your database schema:
 
 * What metadata is provided and what of it is needed for analysis and research? 
 * How long will the data be stored? Will the stored data be from a moving windows of time, say 90 days, or will the database continually be added to?
 * Many attributes of social data are delivered as arrays with variable lengths. For Twitter data, these include hashtags, user mentions, and URLs. Given that database schemas are structurally static, how will these arrays be stored?
-* Many attributes of social data do not change very often. For example, tweet data includes metadata about the author that rarely changes, such as their display name, account ID, profile location, and bio description. Other attributes change less slowly such as follower, friend, and favorite counts. Does your use-case involve tracking these changes, and what trade-offs are there for doing so?   
+* Many attributes of social data do not change very often. For example, tweet data includes metadata about the author that rarely changes, such as their display name, account ID, profile location, and bio description. Other attributes change slowly, such as follower, friend, and favorite counts. Does your use-case involve tracking these changes, and what trade-offs are there for doing so?   
  
 In this article we'll explore these fundamental decisions, discuss options when designing your database schema, and provide some example schemas for getting started.
 
@@ -48,7 +50,7 @@ The examples below are based on storing Twitter data in a database. If you are w
 
 ###What Metadata do you need to store?
 
-When storing activity data in a database, you are essentially passing the data through a transform where you cherry-pick the data you care about. Inserting social media data into a database provides an opportunity to filter the incoming data, explicitly storing the data you want to keep, and ignoring the data you do not want. 
+When storing activity data (in this case tweets) in a database, you are essentially passing the data through a transform where you cherry-pick the data you care about. Inserting social media data into a database provides an opportunity to filter the incoming data, explicitly storing the data you want to keep, and ignoring the data you do not want. 
 
 Every tweet arrives with a large set of supporting metadata. This set can contain well over 150 attributes that provide information about the user that posted the tweet, any available geographic information, and other information such as lists of hashtags and user mentions included in the tweet message. 
 
@@ -81,16 +83,16 @@ When working with Twitter data for some [flood-related blog posts](http://blog.g
 
 First, I was working with [Historical PowerTrack](http://support.gnip.com/apis/historical_api/) data and I had saved the time-series data files that that product generates. It is considered a best-practice to store the complete 'raw' data. Complete JSON payloads can be inserted into a NoSQL system, such as MongoDB, or as flat-files. Doing this provides a redundant datastore in case you have database problems. Also, assuming you are not storing every metadata attribute, this provides an 'insurance policy' against discovering that there is metadata needed for analysis that have not been part of your database schema. 
 
-Second, when I designed the database schema for the flood project I decided to store each JSON payload as a separate field in my "activity" table. For this project I knew going in that I was going to have less than 500,000 activities so the overhead from this extra storage seemed worth it. For many use cases, this type of redundant storage may not scale very well. 
+Second, when I designed the database schema for the flood project I decided to store each JSON payload as a separate field in my "activity" table. For this project I knew going in that I was going to have less than 500,000 activities so the overhead from this extra storage seemed worth it. For many common use cases, this type of redundant storage will not scale very well. 
 
 It should be noted that regardless of the method here, it can be a bit painful to parse and load the "missing" JSON data a second time. It is highly recommended to learn from my mistake and get your schema specified correctly the first time!
 
 --------------------------
 
 ###Storing Metadata Arrays
-Twitter data is dynamic in nature, and includes several types of metadata that are in arrays of variable length. For example, tweets can consist of multiple hashtags, urls, user mentions, and soon via the firehose, multiple photographs. For example the tweet above contains four hashtags: #snow, #skiing, #boarding, #caves. 
+Twitter data is dynamic in nature, and includes several types of metadata that are in arrays of variable length. For example, tweets can consist of multiple hashtags, urls, user mentions, and photographs. For example the tweet above contains four hashtags: #snow, #skiing, #boarding, #caves. 
 
-JSON readily supports arrays of data, while schemas are static in nature.  The concept of having a database field 'grow' to store dynamic array lengths of data does not exist.  To manage this strutural incongruity, below are three basic schema design strategies. For each example some pseudo-code, with a strong Ruby ascent, is provided. These code examples illustrate SQL queries and loading the hashtags into an array. 
+JSON readily supports arrays of data, while schemas are static in nature.  The concept of having a database field 'grow' to store dynamic array lengths of data does not exist in realtional databases.  To manage this strutural incongruity, below are three basic schema design strategies. For each example some pseudo-code, with a strong Ruby ascent, is provided. These code examples illustrate SQL queries and loading the hashtags into an array. 
 
 #### 1) Store delimited lists in a single field:
 
@@ -101,7 +103,9 @@ JSON readily supports arrays of data, while schemas are static in nature.  The c
 One advantage of this schema design is that it results in a simple schema, enabling very simple SQL queries to retreive the data. 
 
 ```
-SELECT hashtags FROM activities WHERE id = 480209697199243264;
+SELECT hashtags 
+FROM activities 
+WHERE id = 480209697199243264;
 ```
 
 Client code needs to 'split' the field contents using the (mutually agreed on) delimiter and then iterate through the results:
@@ -136,14 +140,16 @@ With this method hashtags are stored in a set of fields such as hashtag_1, hasht
 One disadvantage with this method is that you are likely to end up with a lot of empty fields since most tweets have just one or two hashtags. Another is that the design 'hard-codes' the number of entities you can store, so you need to decide how many to support. Yet another disadvantage is the SQL you need to write to process these multiple fields, where the client code and its query also hard-codes an explicit number of metadata items: 
 
 ```
-SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 FROM activities WHERE id = #{activity_id};
+SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 
+FROM activities 
+WHERE id = 480209697199243264;
 ```
 
 Other than the query being completely coupled to the schema details, the client-side code is much the same although it does not need any delimiter metadata.
 
 ```
    #SQL query to select a single set of hashtags for a specified tweet ID.
-   query = "SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 FROM activities WHERE id = #(activity_id};";)"
+   query = "SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 FROM activities WHERE id = #{activity_id};";)"
    db.connect if not db.active
    
    hashtags = Array.new #Will load hashtags into an array.
@@ -202,11 +208,15 @@ This design readily handles the dynamic '3-d' nature of JSON objects. Indeed, on
 -----------
 ###Tracking Select Time-series Changes 
 
-Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. One way to do this is to store this type of data at the activity level so things such as actor metadata are stored along with each tweet the actor posts. The disadvantage of storing all data at the activity level is that much of this data will be static, so significant storage space is spent on redundant data. However, the required SQL for retrieving data is simple, and client-side code remains simple. 
+Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign.
+
+One way to do this is to store this type of data at the activity level so things such as actor metadata are stored along with each tweet the actor posts. The disadvantage of storing all data at the activity level is that much of this data will be static, so significant storage space is spent on redundant data. However, the required SQL for retrieving data is simple, and client-side code remains simple. 
 
 Another strategy is to segregate the metadata into two groups: attributes you want to track over time, and others that you only need to store one value for. With this design the more dynamic data is stored either at the activity level, or in a separate "dynamic" table, with more static data being written to another "static" table.
 
 In the example schemas presented below, the "user_static" table illustrates this design. 
+
+
 
 ##Some Example Schemas
 
