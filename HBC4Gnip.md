@@ -1,4 +1,5 @@
 [] Re-do all steps via command-line (without IDE)
+[] Install Maven and compile code: $mvn compile
 [] Package com.thinksnow.hbc
 [] Command-line example run 
 
