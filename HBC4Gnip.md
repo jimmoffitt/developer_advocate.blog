@@ -1,3 +1,8 @@
+[] Re-do all steps via command-line (without IDE)
+[] Package com.thinksnow.hbc
+[] Command-line example run 
+
+
 ###Setting up Twitter Hosebird Client for Gnip Accounts
 
 [intro]
