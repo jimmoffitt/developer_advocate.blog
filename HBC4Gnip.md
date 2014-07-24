@@ -10,7 +10,7 @@
 
 https://github.com/twitter/hbc
 
-####Referencing the HoseBird Library
+####Referencing the Hosebird Library Using Maven
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
