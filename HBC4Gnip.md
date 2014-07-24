@@ -8,13 +8,19 @@
 
 [intro]
 
+https://github.com/twitter/hbc
+
 (what is the Hosebird Client and why it is the Java way to go)
 
-(
+Features: reconnection logic with backoff, handles gzip compression
+
+
+(HBC has been updated to support Gnip PowerTrack
+    Basic Authentication
+    Need: username password account product label
 
 
 
-https://github.com/twitter/hbc
 
 ####Referencing the Hosebird Library Using Maven
 
