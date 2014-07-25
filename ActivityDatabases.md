@@ -6,6 +6,8 @@ To-dos:
 * [] Link to ActiveRecord types
 * [] Link to MySQL types  http://dev.mysql.com/doc/refman/5.0/en/numeric-type-overview.html
 * [] Generate more ActiveRecord/Model example code
+*      [] Introduce ActiveRecord fundamentals (separately)
+*            [] auto-increment ID primary key, created_at, updated_at, migrations, schema.rb 
 *      [] has_many, uniqueness, etc.
 
 ##Storing Social Media Data in Relational Databases
@@ -208,9 +210,24 @@ This design readily handles the dynamic '3-d' nature of JSON objects. Indeed, on
 -----------
 ###Tracking Select Time-series Changes 
 
-Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign.
+Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. The number of followers is an attribute of the "actor" object. Many actor attributes rarely change, while others do change, albeit slowly. There are several schema design strategies for storing less dynamic metadata such as actor attributes. The correct strategy for you depends on your specific use-case and its data analysis requirements.  
 
-One way to do this is to store this type of data at the activity level so things such as actor metadata are stored along with each tweet the actor posts. The disadvantage of storing all data at the activity level is that much of this data will be static, so significant storage space is spent on redundant data. However, the required SQL for retrieving data is simple, and client-side code remains simple. 
+(all at activity level)
+
+
+(single actor records)
+
+
+(hybrid model, dynamic content at activity level, static stored in single record)
+
+
+(all in separate tables, actor static and actor activity)
+
+
+
+
+
+One way to do this is to store this type of metadata at the activity level so things such as actor metadata are stored along with each tweet the actor posts. The disadvantage of storing all data at the activity level is that much of this data will be static, so significant storage space is spent on redundant data. However, the required SQL for retrieving data is simple, and client-side code remains simple. 
 
 Another strategy is to segregate the metadata into two groups: attributes you want to track over time, and others that you only need to store one value for. With this design the more dynamic data is stored either at the activity level, or in a separate "dynamic" table, with more static data being written to another "static" table.
 
@@ -318,7 +335,7 @@ Metadata that is mostly static, where there is one entry maintained.
 ```
 create_table "actors", :force => true do |t|
     t.integer 'id'
-    t.integer 'active_id'
+    t.integer 'activity_id'
     t.string 'bio'
     t.string 'lang'
     t.string 'time_zone'
@@ -361,7 +378,7 @@ Metadata arrays
 
 ```
 create_table "hashtags", :force => true do |t|
-    t.string 'activity_id'
+    t.integer 'activity_id'
     t.string 'hashtag'
 end
 ```
@@ -388,8 +405,9 @@ end
 ```
 actor.dynamic
 
-create_table "actor_dynamic", :force => true do |t|
-    t.string 'id'
+create_table "actor_activity", :force => true do |t|
+    t.integer 'id'
+    t.integer 'activity_id'
     t.integer 'followers_count'
     t.integer 'friends_count'
     t.integer 'statuses_count'
