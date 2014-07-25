@@ -4,7 +4,8 @@ __Developer Advocate blog__ ...from the client-side prespective
 * Getting data
      *   Historical PowerTrack Ruby client https://github.com/jimmoffitt/rbHistoricalPT
      *   Search API Ruby client https://github.com/jimmoffitt/rbSearchAPI
-     *   Streaming data with Java and Ruby 
+     *   Streaming data with Java HBC
+     *   Streaming with Ruby 
 * Storing data (in proress)
      *   ActiveRecord  
      *   MySQL
