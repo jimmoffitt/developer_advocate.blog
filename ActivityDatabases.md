@@ -22,7 +22,6 @@ To-dos:
       -     Example questions --> queries --> schema (started)
    - Storing Metadata Arrays
    - Tracking Select Time-series Changes (started)
-
    - Example Schemas
    - Ruby/Rails examples (started)
    - Java examples (not started, have sample code ready)
@@ -79,13 +78,20 @@ To filter out such data means simply that you do not have a field in your databa
 
 ###What data questions do you want to explore?
 
-In the end database schemas are driven by the type of questions you want to explore with social data. Given my background and interest in flood-warning systems the questions I wanted to explore were:
+In the end database schemas are driven by the type of questions you want to explore with social data. 
+
+
+Given my background and interest in flood-warning systems the questions I wanted to explore were:
 
 * How did the Twitter signal track with local rain gauge data?
+     * Previous analysis of most less intense events revealed a strong signal. How would the comparison of rain gauge data and Twitter data differ for a 1000-year flood?
 * How did the Twitter signal track with local stage gauge data? 
+     * How did that signal attenuate as the flood waters moved downstream?  
 * How did the followers of local agencies change during the 2013 flood?
 * How did the local media cover the event?
 * What are the social media lessons learned from this event?
+
+So these types of questions guided the design of the database schema at the heart of my look at the 2013 Boulder flood.
 
 --------------------------
 
@@ -107,7 +113,7 @@ It should be noted that regardless of the method here, it can be a bit painful t
 
 --------------------------
 
-###Storing Metadata Arrays
+##Storing Metadata Arrays
 Twitter data is dynamic in nature, and includes several types of metadata that are in arrays of variable length. For example, tweets can consist of multiple hashtags, urls, user mentions, and photographs. For example the tweet above contains four hashtags: #snow, #skiing, #boarding, #caves. 
 
 JSON readily supports arrays of data, while schemas are static in nature.  The concept of having a database field 'grow' to store dynamic array lengths of data does not exist in realtional databases.  To manage this strutural incongruity, below are three basic schema design strategies. For each example some pseudo-code, with a strong Ruby ascent, is provided. These code examples illustrate SQL queries and loading the hashtags into an array. 
@@ -224,7 +230,7 @@ This design readily handles the dynamic '3-d' nature of JSON objects. Indeed, on
 ```   
  
 -----------
-###Tracking Select Time-series Changes 
+##Tracking Select Time-series Changes 
 
 Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. The number of followers is an attribute of the "actor" object. Many actor attributes rarely change, while others do change, albeit slowly. There are several schema design strategies for storing less dynamic metadata such as actor attributes. The correct strategy for you depends on your specific use-case and its data analysis requirements.  
 
@@ -259,8 +265,6 @@ Below are some example schemas that provide a starting place for specifying your
 ###Creating Databases
 
 We present two types of scripts to generate the example schemas in a MySQL database. The first type is based on the Ruby on Rails ActiveRecord framework, and the second type can be used directly with the MySQL database engine.
-
-
 
 
 
