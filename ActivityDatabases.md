@@ -1,24 +1,31 @@
 ------------------------------------------------------------------
 To-dos:
-* [x] add note about schemas here are twitter specific
-*      [x] if mixing publishers/products may need to add fields for tracking those.
+
 * [] check pseudo-code for 'multiple field' example.
+* [] Update ActiveRecord schema.rb
 * [] Link to ActiveRecord types
 * [] Link to MySQL types  http://dev.mysql.com/doc/refman/5.0/en/numeric-type-overview.html
 * [] Generate more ActiveRecord/Model example code
 *      [] Introduce ActiveRecord fundamentals (separately)
 *            [] auto-increment ID primary key, created_at, updated_at, migrations, schema.rb 
 *      [] has_many, uniqueness, etc.
-
+* [] Add section on "example data questions."
+* [x] Add pseudo-code for accessing data.
+* [x] Add link to MySQL schema creation script.
+* [x] add note about schemas here are twitter specific
+*      [x] if mixing publishers/products may need to add fields for tracking those.
 ##Storing Social Media Data in Relational Databases
 
-Table of contents:
+Table of contents (sections/articles):
    - Getting started - What Metadata do you need to store?
+      -     What data questions to you want to explore?
+      -     Example questions --> queries --> schema
    - Storing Metadata Arrays
-   - Tracking Select Time-series Changes 
-   - Some Example Schemas
-   - Ruby/Rails examples
-   - Java examples
+   - Tracking Select Time-series Changes (started)
+   - 
+   - Example Schemas
+   - Ruby/Rails examples (started)
+   - Java examples (not started, have sample code ready)
  
 ###Introduction
 
@@ -50,7 +57,7 @@ The following discussion will focus mainly on suggested options for specifying t
  
 The examples below are based on storing Twitter data in a database. If you are working with data from another social network, these examples will still illustrate the type of design considerations and potential techniques for storing your data. If you are storing data from multiple sources it is likely that there are some fundatmental metadata common to all such as posted time, activity IDs and author IDs. Other important details will be source-specific, such as the type of activity (post or 'like') and the length of the activity "body" (short tweet or long blog post). While it is certainly possible to store a mix of sources in a single table, there are many advantages to storing sources in their own unique tables. 
 
-###What Metadata do you need to store?
+###What activity metadata do you need to store?
 
 When storing activity data (in this case tweets) in a database, you are essentially passing the data through a transform where you cherry-pick the data you care about. Inserting social media data into a database provides an opportunity to filter the incoming data, explicitly storing the data you want to keep, and ignoring the data you do not want. 
 
