@@ -76,22 +76,6 @@ Given your particular use-case you may only need a subset of this supporting met
 
 To filter out such data means simply that you do not have a field in your database to store it, and when parsing the tweet payload you simply ignore the attribute.
 
-###What data questions do you want to explore?
-
-In the end database schemas are driven by the type of questions you want to explore with social data. 
-
-
-Given my background and interest in flood-warning systems the questions I wanted to explore were:
-
-* How did the Twitter signal track with local rain gauge data?
-     * Previous analysis of most less intense events revealed a strong signal. How would the comparison of rain gauge data and Twitter data differ for a 1000-year flood?
-* How did the Twitter signal track with local stage gauge data? 
-     * How did that signal attenuate as the flood waters moved downstream?  
-* How did the followers of local agencies change during the 2013 flood?
-* How did the local media cover the event?
-* What are the social media lessons learned from this event?
-
-So these types of questions guided the design of the database schema at the heart of my look at the 2013 Boulder flood.
 
 --------------------------
 
@@ -267,6 +251,9 @@ Below are some example schemas that provide a starting place for specifying your
 We present two types of scripts to generate the example schemas in a MySQL database. The first type is based on the Ruby on Rails ActiveRecord framework, and the second type can be used directly with the MySQL database engine.
 
 
+###Example Project Schema
+(https://github.com/jimmoffitt/developer_advocate.blog/blob/master/project_schema.md)
+
 
 ###Single table
 
@@ -441,12 +428,30 @@ create_table "actor_activity", :force => true do |t|
 
 
 
-[###Example Project Schema](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/project_schema.md)
 
 
 
 
 
+[NEW SECTION, probably will go before 'what metadata' section.]
+
+
+###What data questions do you want to explore?
+
+In the end database schemas are driven by the type of questions you want to explore with social data. 
+
+
+Given my background and interest in flood-warning systems the questions I wanted to explore were:
+
+* How did the Twitter signal track with local rain gauge data?
+     * Previous analysis of most less intense events revealed a strong signal. How would the comparison of rain gauge data and Twitter data differ for a 1000-year flood?
+* How did the Twitter signal track with local stage gauge data? 
+     * How did that signal attenuate as the flood waters moved downstream?  
+* How did the followers of local agencies change during the 2013 flood?
+* How did the local media cover the event?
+* What are the social media lessons learned from this event?
+
+So these types of questions guided the design of the database schema at the heart of my look at the 2013 Boulder flood.
 
 
 
