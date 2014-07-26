@@ -16,14 +16,13 @@ To-dos:
 *      [x] if mixing publishers/products may need to add fields for tracking those.
 ##Storing Social Media Data in Relational Databases
 
-Sections/Articles:
+###Sections/Articles:
    - Getting started - What Metadata do you need to store?
-      -     What data questions to you want to explore?
-      -     Example questions --> queries --> schema
+      -     What data questions to you want to explore? (started)
+      -     Example questions --> queries --> schema (started)
    - Storing Metadata Arrays
    - Tracking Select Time-series Changes (started)
-   
-Resources/Appendices:
+
    - Example Schemas
    - Ruby/Rails examples (started)
    - Java examples (not started, have sample code ready)
@@ -33,6 +32,7 @@ Resources/Appendices:
 There are many ways to store social media data, such as flat-files, NoSQL-type datastores, and relational databases. This article focuses on storing Twitter data in relational databases. There are several key questions to ponder as you design your database schema:
 
 * What metadata is provided and what of it is needed for analysis and research? 
+* How big will your database get? Are you continually filling your data store from a 24/7 stream of data? Or are you working with a historical and static dataset?
 * How long will the data be stored? Will the stored data be from a moving windows of time, say 90 days, or will the database continually be added to?
 * Many attributes of social data are delivered as arrays with variable lengths. For Twitter data, these include hashtags, user mentions, and URLs. Given that database schemas are structurally static, how will these arrays be stored?
 * Many attributes of social data do not change very often. For example, tweet data includes metadata about the author that rarely changes, such as their display name, account ID, profile location, and bio description. Other attributes change slowly, such as follower, friend, and favorite counts. Does your use-case involve tracking these changes, and what trade-offs are there for doing so?   
@@ -64,20 +64,28 @@ When storing activity data (in this case tweets) in a database, you are essentia
 
 Every tweet arrives with a large set of supporting metadata. This set can contain well over 150 attributes that provide information about the user that posted the tweet, any available geographic information, and other information such as lists of hashtags and user mentions included in the tweet message. 
 
-```
-<embed a sample tweet>
-    hey @lbjonz on this summer weekend I am daydreaming of all things #snow: #skiing #boarding #caves
-</embed>
-```
+-------------
 
 <blockquote class="twitter-tweet" lang="en"><p>hey <a href="https://twitter.com/lbjonz">@lbjonz</a> on this summer weekend I am daydreaming of all things <a href="https://twitter.com/search?q=%23snow&amp;src=hash">#snow</a>: <a href="https://twitter.com/search?q=%23skiing&amp;src=hash">#skiing</a> <a href="https://twitter.com/search?q=%23boarding&amp;src=hash">#boarding</a> <a href="https://twitter.com/search?q=%23caves&amp;src=hash">#caves</a></p>&mdash; Jim Moffitt (@snowman) <a href="https://twitter.com/snowman/statuses/480209697199243264">June 21, 2014</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+--------------
+
 
 The entire JSON associated with the above tweet is [HERE](https://github.com/jimmoffitt/pt-dm/blob/master/schema/hashtags.json). For a look of all the potential metadata that can be provided see [HERE](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_everything.json).
 
 Given your particular use-case you may only need a subset of this supporting metadata and decide not to store every piece of data provided. For example, the standard Twitter metadata includes the numeric character position of hashtags in a tweet message. You may decide that you do not need this information, and therefore can omit those details from your database schema. 
 
 To filter out such data means simply that you do not have a field in your database to store it, and when parsing the tweet payload you simply ignore the attribute.
+
+###What data questions do you want to explore?
+
+In the end database schemas are driven by the type of questions you want to explore with social data. Given my background and interest in flood-warning systems the questions I wanted to explore were:
+
+* How did the Twitter signal track with local rain gauge data?
+* How did the Twitter signal track with local stage gauge data? 
+* How did the followers of local agencies change during the 2013 flood?
+* How did the local media cover the event?
+* What are the social media lessons learned from this event?
 
 --------------------------
 
