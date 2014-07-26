@@ -16,13 +16,14 @@ To-dos:
 *      [x] if mixing publishers/products may need to add fields for tracking those.
 ##Storing Social Media Data in Relational Databases
 
-Table of contents (sections/articles):
+Sections/Articles:
    - Getting started - What Metadata do you need to store?
       -     What data questions to you want to explore?
       -     Example questions --> queries --> schema
    - Storing Metadata Arrays
    - Tracking Select Time-series Changes (started)
-   - 
+   
+Resources/Appendices:
    - Example Schemas
    - Ruby/Rails examples (started)
    - Java examples (not started, have sample code ready)
