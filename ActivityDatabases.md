@@ -6,9 +6,9 @@ To-dos:
 * [] Link to ActiveRecord types
 * [] Link to MySQL types  http://dev.mysql.com/doc/refman/5.0/en/numeric-type-overview.html
 * [] Generate more ActiveRecord/Model example code
-*      [] Introduce ActiveRecord fundamentals (separately)
-*            [] auto-increment ID primary key, created_at, updated_at, migrations, schema.rb 
-*      [] has_many, uniqueness, etc.
+   *      [] Introduce ActiveRecord fundamentals (separately)
+   *      [] auto-increment ID primary key, created_at, updated_at, migrations, schema.rb 
+   *      [] has_many, uniqueness, etc.
 * [] Add section on "example data questions."
 * [x] Add pseudo-code for accessing data.
 * [x] Add link to MySQL schema creation script.
