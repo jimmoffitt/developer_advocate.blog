@@ -212,28 +212,24 @@ This design readily handles the dynamic '3-d' nature of JSON objects. Indeed, on
 -----------
 ##Tracking Select Time-series Changes 
 
-Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. The number of followers is an attribute of the "actor" object. Many actor attributes rarely change, while others do change, albeit slowly. There are several schema design strategies for storing less dynamic metadata such as actor attributes. The correct strategy for you depends on your specific use-case and its data analysis requirements.  
+Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. The number of followers is an attribute of the "actor" object. Many actor attributes rarely change, while others do change, albeit slowly. There are several schema design strategies for storing less dynamic metadata such as actor attributes. The correct strategy for you depends on your specific use-case and its data analysis requirements. 
 
-(all at activity level)
+####Store all metadata at the activity level
 
+One method is to store all metadata at the activity (tweet) level so all attributes such as actor metadata are stored along with each tweet the actor posts. While this is the most simple design, it has a fundamental disadvantage. Much of these data will be static, so significant storage space is spent on redundant data. However, the required SQL for retrieving data is simple, and client-side code remains simple. See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/ActivityDatabases.md#single-table) for an example schema for storing all tweet metadata in a single table.
 
-(single actor records)
+####Store metadata in separate tables
 
+(single Actor table)
 
-(hybrid model, dynamic content at activity level, static stored in single record)
-
-
-(all in separate tables, actor static and actor activity)
-
-
-
-
-
-One way to do this is to store this type of metadata at the activity level so things such as actor metadata are stored along with each tweet the actor posts. The disadvantage of storing all data at the activity level is that much of this data will be static, so significant storage space is spent on redundant data. However, the required SQL for retrieving data is simple, and client-side code remains simple. 
+In the example schemas presented below, the "user_static" table illustrates this design. 
 
 Another strategy is to segregate the metadata into two groups: attributes you want to track over time, and others that you only need to store one value for. With this design the more dynamic data is stored either at the activity level, or in a separate "dynamic" table, with more static data being written to another "static" table.
 
-In the example schemas presented below, the "user_static" table illustrates this design. 
+####Store dynamic metadata at activity level and static data in its own table(s)
+(hybrid model, dynamic content at activity level, static stored in single record)
+
+(all in separate tables, actor static and actor activity)
 
 
 
