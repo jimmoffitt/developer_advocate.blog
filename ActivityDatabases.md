@@ -63,12 +63,8 @@ When storing activity data (in this case tweets) in a database, you are essentia
 
 Every tweet arrives with a large set of supporting metadata. This set can contain well over 150 attributes that provide information about the user that posted the tweet, any available geographic information, and other information such as lists of hashtags and user mentions included in the tweet message. 
 
--------------
-
 <blockquote class="twitter-tweet" lang="en"><p>hey <a href="https://twitter.com/lbjonz">@lbjonz</a> on this summer weekend I am daydreaming of all things <a href="https://twitter.com/search?q=%23snow&amp;src=hash">#snow</a>: <a href="https://twitter.com/search?q=%23skiing&amp;src=hash">#skiing</a> <a href="https://twitter.com/search?q=%23boarding&amp;src=hash">#boarding</a> <a href="https://twitter.com/search?q=%23caves&amp;src=hash">#caves</a></p>&mdash; Jim Moffitt (@snowman) <a href="https://twitter.com/snowman/statuses/480209697199243264">June 21, 2014</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
---------------
-
 
 The entire JSON associated with the above tweet is [HERE](https://github.com/jimmoffitt/pt-dm/blob/master/schema/hashtags.json). For a look of all the potential metadata that can be provided see [HERE](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_everything.json).
 
@@ -77,7 +73,7 @@ Given your particular use-case you may only need a subset of this supporting met
 To filter out such data means simply that you do not have a field in your database to store it, and when parsing the tweet payload you simply ignore the attribute.
 
 
---------------------------
+*************************************
 
 ```
 sidebar here (with below contents)
@@ -95,7 +91,7 @@ Second, when I designed the database schema for the flood project I decided to s
 
 It should be noted that regardless of the method here, it can be a bit painful to parse and load the "missing" JSON data a second time. It is highly recommended to learn from my mistake and get your schema specified correctly the first time!
 
---------------------------
+*************************************
 
 ##Storing Metadata Arrays
 Twitter data is dynamic in nature, and includes several types of metadata that are in arrays of variable length. For example, tweets can consist of multiple hashtags, urls, user mentions, and photographs. For example the tweet above contains four hashtags: #snow, #skiing, #boarding, #caves. 
