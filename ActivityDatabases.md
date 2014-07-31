@@ -210,15 +210,17 @@ This design readily handles the dynamic '3-d' nature of JSON objects. Indeed, on
 ```   
  
 -----------
-##Tracking Select Time-series Changes 
+##Handling Actor Attributes
 
-Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. The number of followers is an attribute of the "actor" object. Many actor attributes rarely change, while others do change, albeit slowly. There are several schema design strategies for storing less dynamic metadata such as actor attributes. The correct strategy for you depends on your specific use-case and its data analysis requirements. 
+Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. The number of followers is an attribute of the "actor" object. Many actor attributes rarely change, while others do change, albeit slowly. There are several schema design strategies for storing less dynamic actor attributes. The correct strategy for you depends on your specific use-case and its data analysis requirements. 
 
-####Store all metadata at the activity level
+####Store all actor metadata at the activity level
 
 One method is to store all metadata at the activity (tweet) level so all attributes such as actor metadata are stored along with each tweet the actor posts. While this is the most simple design, it has a fundamental disadvantage. Much of these data will be static, so significant storage space is spent on redundant data. However, the required SQL for retrieving data is simple, and client-side code remains simple. See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/ActivityDatabases.md#single-table) for an example schema for storing all tweet metadata in a single table.
 
-####Store metadata in separate tables
+####Store actor metadata in separate tables
+
+Another option is to segregate dynamic and static attributes and store them in separate tables. For example, you could define a 'user_static' table that contains fields such as 'preferredUsername', 'link', 'postedTime', 'languages', and 'twitterTimeZone'. Then for fields that are more likely to change you can define a 'user_activity' table that stores fields such as 'followers_count' and 'favoritesCount'.
 
 (single Actor table)
 
@@ -226,7 +228,9 @@ In the example schemas presented below, the "user_static" table illustrates this
 
 Another strategy is to segregate the metadata into two groups: attributes you want to track over time, and others that you only need to store one value for. With this design the more dynamic data is stored either at the activity level, or in a separate "dynamic" table, with more static data being written to another "static" table.
 
-####Store dynamic metadata at activity level and static data in its own table(s)
+See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/ActivityDatabases.md#dynamic-and-static-object-attributes) for two example tables for storing static and dynamic attributes separately.
+
+####Store dynamic actor metadata at activity level and static data in its own table
 (hybrid model, dynamic content at activity level, static stored in single record)
 
 (all in separate tables, actor static and actor activity)
@@ -385,16 +389,18 @@ end
 Here is a schema that segregates metadata into separate "static' and "dynamic" tables:
 
 ```
-actor.static
-
-create_table "actors", :force => true do |t|
+create_table "actors_static", :force => true do |t|
     t.string 'id'
+    t.string 'bio'
+    t.string 'lang'
+    t.string 'time_zone'
+    t.integer 'utc_offset'
+    t.datetime 'posted_at'
     
     #Actor geo metadata
     t.string 'location'
-    t.integer 'utc_offset'
-    #These really are flattened arrays, but currently will only have one item.
-    t.string 'profile_geo_name'
+    
+    t.string 'profile_geo_name' #These are arrays, but currently will only have one item.
 
     t.datetime 'created_at'
     t.datetime 'updated_at'
@@ -402,8 +408,6 @@ end
 ```
 
 ```
-actor.dynamic
-
 create_table "actor_activity", :force => true do |t|
     t.integer 'id'
     t.integer 'activity_id'
