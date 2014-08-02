@@ -220,13 +220,7 @@ One method is to store all metadata at the activity (tweet) level so all attribu
 
 ####Store actor metadata in separate tables
 
-Another option is to segregate dynamic and static attributes and store them in separate tables. For example, you could define a 'user_static' table that contains fields such as 'preferredUsername', 'link', 'postedTime', 'languages', and 'twitterTimeZone'. Then for fields that are more likely to change you can define a 'user_activity' table that stores fields such as 'followers_count' and 'favoritesCount'.
-
-(single Actor table)
-
-In the example schemas presented below, the "user_static" table illustrates this design. 
-
-Another strategy is to segregate the metadata into two groups: attributes you want to track over time, and others that you only need to store one value for. With this design the more dynamic data is stored either at the activity level, or in a separate "dynamic" table, with more static data being written to another "static" table.
+Another option is to segregate the metadata into two groups: attributes you want to track over time, and others that you only need to store one value for. With this design the more dynamic data is stored either at the activity level, or in a separate "dynamic" table, with more static data being written to another "static" table. For example, you could define a 'user_static' table that contains fields such as 'preferredUsername', 'link', 'postedTime', 'languages', and 'twitterTimeZone'. Then for fields that are more likely to change you can define a 'user_activity' table that stores fields such as 'followersCount' and 'favoritesCount'.
 
 See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/ActivityDatabases.md#dynamic-and-static-object-attributes) for two example tables for storing static and dynamic attributes separately.
 
