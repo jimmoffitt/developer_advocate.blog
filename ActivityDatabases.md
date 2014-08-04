@@ -210,7 +210,30 @@ This design readily handles the dynamic '3-d' nature of JSON objects. Indeed, on
 ```   
  
 -----------
-##Handling Actor Attributes
+##Storing Dynamic and Static Metadata
+
+While much of Twitter metadata is dynamic in nature, changing tweet-by-tweet, other metdata can change more slowly or stay completely static for long periods of time. Twitter user accounts (stored in the 'Actor' object in the Activity Stream format) provides good examples of both 'static' and 'slow' metadata. An actor's numeric ID and account creation time will never change. Their account-level language, timezone, location, display and handle names may rarely change. Meanwhile their status, followers and friends counts will surely change over time.    
+
+Here are some examples that generally fall into these three categories:
+
+* Mostly Dynamic:
+     * Tweet body
+     * Tweet posted time
+     * Hashtags, Mentions, URLs and other Twitter "entities"
+     * Gnip matching rules and expanded URLs
+     * Geo-tagged tweet geographic location (if available)
+
+* Change more slowly:
+     * User/Actor follower, friend, status counts. 
+
+* Mostly Static:
+      * User/Actor account ID, display and handle names, language, timezone   
+
+
+
+
+
+
 
 Many use-cases benefit from tracking changes to certain metadata that changes over time. For example, perhaps you want to track the amount of followers an account has during a on-line campaign. The number of followers is an attribute of the "actor" object. Many actor attributes rarely change, while others do change, albeit slowly. There are several schema design strategies for storing less dynamic actor attributes. The correct strategy for you depends on your specific use-case and its data analysis requirements. 
 
