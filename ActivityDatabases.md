@@ -222,10 +222,12 @@ Here are some example attributes that generally fall into these three categories
      * Hashtags, Mentions, URLs, media and other Twitter "entities".
      * Gnip matching rules and expanded URLs.
      * Tweet geographic location (if geo-tagged).
+     * 
 
 * Change more slowly:
      * User/Actor follower, friend, status counts.
      * Klout score and topics.
+
 
 * Mostly Static:
       * User/Actor account ID, display and handle names, language, timezone.  
@@ -278,11 +280,29 @@ One of the great things about Ruby-on-Rails is its reliance on 'Convention over 
 
 First, there is a convention of every table having an "id" (auto-increment) primary key that is not explicitly shown in the 'create_table' method. Another convention is that the 'created_at' and 'updated_at' attributes are automatically added by default (and explicitly shown in the schema definition).
 
-Also, another convention is that if there is a _id field (like actor_id) that references the singular name of another table it is a foreign key into that separate table. For example, consider a schema with Activities and Actors tables. Both these tables will contain a "id" primary id and that by convention serves as a foreign key when joining tables. If you are storing tweet authors in an Actor table, the Activity table will contain an actor_id field used to match the appropriate entry in the Actor table, or:
+Also, another convention is that if there is a '*_id' field (like 'actor_id') that references the singular name of another table it is a foreign key into that separate table. For example, consider a schema with Activities and Actors tables. Both these tables will contain a 'id' primary key and that by convention serves as a foreign key when joining tables. If you are storing tweet authors in an Actor table, the Activity table will contain an actor_id field used to match the appropriate entry in the Actor table, or:
 
 ```
 Actor.id = Activity.actor_id
 ```
+
+Finally, you will certainly want to retain the 'native' user and tweet IDs (at least the numeric section, dropping the string versioning metadata), or the numeric IDs provided by Twitter. Accordingly, you may be storing two IDs, the 'native' versions along with the auto-increment IDs provided by ActiveRecord.
+
+
+Activity table entry:
+
+|    id      |   native_id    |   actor_native_id    |        body               |
+|----------|-----------------------|-------------|------------------|
+|    1000        | 480209697199243264 |       17200003       |    hey @lbjonz on this summer weekend I am daydreaming of all things #snow: #skiing #boarding #caves |
+
+Actor table entry:
+
+| id |    native_id     |  handle  |
+|-----------|--------------------|-----------|
+| 123  | 17200003    |  snowman     |
+
+
+
 
 ###Single table
 
@@ -366,6 +386,8 @@ Below are two example table definitions that split Actor attributes into separat
 ```
 create_table "actors_static", :force => true do |t|
     t.string 'native_id'
+    t.string 'handle'
+    t.string 'display_name'
     t.string 'bio'
     t.string 'lang'
     t.string 'time_zone'
