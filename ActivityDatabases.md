@@ -282,24 +282,36 @@ First, there is a convention of every table having an "id" (auto-increment) prim
 
 Also, another convention is that if there is a '*_id' field (like 'actor_id') that references the singular name of another table it is a foreign key into that separate table. For example, consider a schema with Activities and Actors tables. Both these tables will contain a 'id' primary key and that by convention serves as a foreign key when joining tables. If you are storing tweet authors in an Actor table, the Activity table will contain an actor_id field used to match the appropriate entry in the Actor table, or:
 
-```
-Actor.id = Activity.actor_id
-```
-
 Finally, you will certainly want to retain the 'native' user and tweet IDs (at least the numeric section, dropping the string versioning metadata), or the numeric IDs provided by Twitter. Accordingly, you may be storing two IDs, the 'native' versions along with the auto-increment IDs provided by ActiveRecord.
 
 
 Activity table entry:
 
-|    id      |   native_id    |   actor_native_id    |        body               |
-|----------|-----------------------|-------------|------------------|
-|    1000        | 480209697199243264 |       17200003       |    hey @lbjonz on this summer weekend I am daydreaming of all things #snow: #skiing #boarding #caves |
+|    id      |   native_id    |   actor_id          |     actor_native_id    |        body               |
+|----------|--------------|---------|-------------|------------------|
+|    1000        | 480209697199243264 |    123   |     17200003       |    hey @lbjonz on this summer weekend I am daydreaming of all things #snow: #skiing #boarding #caves |
 
 Actor table entry:
 
 | id |    native_id     |  handle  |
 |-----------|--------------------|-----------|
 | 123  | 17200003    |  snowman     |
+
+
+So to join these two tables you can rely on the default 'id' foreign key:
+
+```
+Actor.id = Activity.actor_id
+```
+
+And write some SQL such as:
+```
+SELECT 
+
+```
+
+
+
 
 
 
