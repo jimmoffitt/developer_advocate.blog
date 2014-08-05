@@ -57,6 +57,7 @@ The following discussion will focus mainly on suggested options for specifying t
  
 The examples below are based on storing Twitter data in a database. If you are working with data from another social network, these examples will still illustrate the type of design considerations and potential techniques for storing your data. If you are storing data from multiple sources it is likely that there are some fundatmental metadata common to all such as posted time, activity IDs and author IDs. Other important details will be source-specific, such as the type of activity (post or 'like') and the length of the activity "body" (short tweet or long blog post). While it is certainly possible to store a mix of sources in a single table, there are many advantages to storing sources in their own unique tables. 
 
+
 ###What activity metadata do you need to store?
 
 When storing activity data (in this case tweets) in a database, you are essentially passing the data through a transform where you cherry-pick the data you care about. Inserting social media data into a database provides an opportunity to filter the incoming data, explicitly storing the data you want to keep, and ignoring the data you do not want. 
@@ -72,8 +73,26 @@ Given your particular use-case you may only need a subset of this supporting met
 
 To filter out such data means simply that you do not have a field in your database to store it, and when parsing the tweet payload you simply ignore the attribute.
 
-###An Example Use-case
-(new section)
+
+###An Example Use-Case
+
+In the end database schemas are driven by the type of questions you want to explore with social data. Given my background and interest in flood-warning systems I wanted to explore the role Twitter data played in the 2013 Boulder Flood -- an historic rain and flood event that occurred September 12-15 and had lasting affects across the Boulder region.  The questions I wanted to explore were:
+
+* How did the Twitter signal track with local rain gauge data?
+     * [Previous analysis of most less intense events revealed a strong signal](http://blog.gnip.com/tweeting-in-the-rain/). How would the comparison of rain gauge data and Twitter data differ for a 1000-year flood?
+* How did the Twitter signal track with local stage gauge data? 
+     * How did that signal attenuate as the flood waters moved downstream?  
+* How many unique users posted during the event?
+* What was the precentage of tweets were geo-tagged during the event?
+* How many real-time photos and video were coming out on Twitter during the event?
+* How did the local media cover the event?
+* How did the followers of local agencies change during and after the 2013 flood?
+* What are the social media lessons learned from this event?
+
+So these types of questions guided the design of the database schema at the heart of my look at the 2013 Boulder flood.
+
+
+
 
 
 *************************************
@@ -517,27 +536,6 @@ end
 ```
 
 
-
-
-[NEW SECTION, probably will go before 'what metadata' section.]
-
-
-###What data questions do you want to explore?
-
-In the end database schemas are driven by the type of questions you want to explore with social data. 
-
-
-Given my background and interest in flood-warning systems the questions I wanted to explore were:
-
-* How did the Twitter signal track with local rain gauge data?
-     * Previous analysis of most less intense events revealed a strong signal. How would the comparison of rain gauge data and Twitter data differ for a 1000-year flood?
-* How did the Twitter signal track with local stage gauge data? 
-     * How did that signal attenuate as the flood waters moved downstream?  
-* How did the followers of local agencies change during the 2013 flood?
-* How did the local media cover the event?
-* What are the social media lessons learned from this event?
-
-So these types of questions guided the design of the database schema at the heart of my look at the 2013 Boulder flood.
 
 
 
