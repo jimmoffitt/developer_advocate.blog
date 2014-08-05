@@ -1,6 +1,3 @@
-MySQL creation script.
-
-
 
 
 ####MySQL creation script
