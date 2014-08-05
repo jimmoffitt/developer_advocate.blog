@@ -270,11 +270,19 @@ We present two types of scripts to generate the example schemas in a MySQL datab
 rake db:schema:load
 ```
 
-Another database creation method is using a MySQL 'create table' script.  [outline steps here]
+Another database creation method is using a MySQL 'create table' script. These scripts can be executed with the interactive MySQL client on its command-line, or with applications such as the MySQL Workbench or Sequel Pro. [HERE](script.](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/single_table_schema_mysql.md) is an example set of SQL statements for creating a single table schema.
 
-[Creating with MySQL script.](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/single_table_schema_mysql.md)
+###ActiveRecord Conventions
 
+One of the great things about Ruby-on-Rails is its reliance on 'Convention over Configuration. Accordingly, ActiveRecord has its own conventions which should be considered when working with the schema definitions below.
 
+First, there is a convention of every table having an "id" (auto-increment) primary key that is not explicitly shown in the 'create_table' method. Another convention is that the 'created_at' and 'updated_at' attributes are automatically added by default (and explicitly shown in the schema definition).
+
+Also, another convention is that if there is a _id field (like actor_id) that references the singular name of another table it is a foreign key into that separate table. For example, consider a schema with Activities and Actors tables. Both these tables will contain a "id" primary id and that by convention serves as a foreign key when joining tables. If you are storing tweet authors in an Actor table, the Activity table will contain an actor_id field used to match the appropriate entry in the Actor table, or:
+
+```
+Actor.id = Activity.actor_id
+```
 
 ###Single table
 
@@ -289,37 +297,63 @@ The following example illustrates the most basic schema, where all metadata is s
 ActiveRecord::Schema.define(:version => 20140624212018) do
 
   create_table "activities", :force => true do |t|
-   
-    t.integer 'activity_id'  #business-logic primary key.
-    t.datetime 'posted_at' #UTC, all the time.
+
+    #t.integer 'id'           #auto-increment field that other tables' activity_id foreign keys refer to.      
+    t.string 'tweet_id'
+    t.datetime 'posted_at'
+    t.text 'payload'          #Entire content of JSON activity...? 
     t.string 'body'
-   
-    #These are flattened arrays, with a comma delimited (?)
+    t.string 'verb'
+    t.integer 'repost_of'
+    t.string 'gnip_lang'            
+    t.string 'twitter_lang'
+    t.string 'generator'
+    t.string 'link'
+
+    #These are flattened arrays, comma delimited (?)
     t.string 'hash_tags'
     t.string 'mentions'
     t.text 'urls'         #Expanded URLs when available.
     t.string 'media'
-    
     t.text 'rule_values'  #Gnip PowerTrack matching rules. 
     t.text 'rule_tags'        
-                            
+
     #Activity geo details - Geo-tagged tweets only.
+    t.string 'place'
+    t.string 'country_code'
     t.float 'long'
     t.float 'lat'
-    t.float 'long_box'    #Twitter place.
-    t.float 'lat_box'     #Twitter place.
+    t.float 'long_box' #If storing place bounding box.
+    t.float 'lat_box'  
 
     #Actor metadata
-    t.integer 'actor_id'
+    t.integer 'actor_native_id'  
+    t.string 'preferredUsername'
+    t.string 'displayName'
+    t.string 'actor_link'
+    t.string 'bio'
     t.integer 'followers_count'
+    t.integer 'friends_count'
+    t.integer 'statuses_count'
+    t.integer 'klout_score'
+    t.text 'klout_topics'   #klout topics #flattened array.
+    t.string 'actor_lang'
+    t.string 'time_zone'
     t.integer 'utc_offset'
-   
+    t.datetime 'posted_at'
+
     #Actor geo metadata
     t.string 'actor_location' #Twitter Profile location.
     #Only needed if Gnip Profile Geo enabled.
     #These really are flattened arrays, but currently will only have one item.
     t.string 'profile_geo_name'
-   
+    t.float 'profile_geo_long'
+    t.float 'profile_geo_lat'
+    t.string 'profile_geo_country_code'
+    t.string 'profile_geo_region'
+    t.string 'profile_geo_subregion'
+    t.string 'profile_geo_locality' 
+
     t.datetime 'created_at'
     t.datetime 'updated_at'
   end
@@ -356,7 +390,9 @@ create_table "actors_static", :force => true do |t|
 end
 
 create_table "actor_active", :force => true do |t|
-    t.integer 'activity_id'
+
+    t.string  'native_id'
+    t.integer 'activity_id'      #key into activities table
     t.integer 'followers_count'
     t.integer 'friends_count'
     t.integer 'statuses_count'
