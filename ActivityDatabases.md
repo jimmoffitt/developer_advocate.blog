@@ -77,12 +77,10 @@ To filter out such data means simply that you do not have a field in your databa
 
 
 *************************************
-
 ```
 sidebar here (with below contents)
 ```
-
-*How can I protect myself from later realizing that there are key metadata that I haven't been storing?* 
+##### *How can I protect myself from later realizing that there are key metadata that I haven't been storing?*
 
 When you design your database schema you are explicitly saving selected data, and anything not selected is ignored and not available for future use. Given this, it pays to carefully identify what data you need the first time.
 
@@ -219,7 +217,7 @@ While much of Twitter metadata is dynamic in nature, changing tweet-by-tweet, ot
 
 Here are some example attributes that generally fall into these three categories:
 
-* Mostly Dynamic:
+* Mostly Dynamic/Active:
      * Tweet body, published time and link.
      * Hashtags, Mentions, URLs, media and other Twitter "entities".
      * Gnip matching rules and expanded URLs.
@@ -248,7 +246,7 @@ See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Act
 
 ####Store select dynamic and static metadata in separate tables
 
-Another option is to segregate the metadata into two groups: attributes you want to track over time, and others that you only need to store one value for, such as the most recent value. For example, you could define a 'user_static' table that contains fields such as 'preferredUsername', 'link', 'postedTime', 'languages', and 'twitterTimeZone'. Then for fields that are more likely to change you can define a 'user_activity' table that stores fields such as 'followersCount' and 'favoritesCount'.
+Another option is to segregate the metadata into two groups: attributes you want to track over time, and others that you only need to store one value for, such as the most recent value. For example, you could define a 'user_static' table that contains fields such as 'preferredUsername', 'link', 'postedTime', 'languages', and 'twitterTimeZone'. Then for fields that are more likely to change you can define a 'user_active' table that stores fields such as 'followersCount' and 'favoritesCount'.
 
 See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/ActivityDatabases.md#dynamic-and-static-object-attributes) for two example tables for storing static and dynamic attributes separately.
 
@@ -262,7 +260,7 @@ This is the schema design selected for the flood project mentioned above. See [H
 
 ##Some Example Schemas
 
-Below are some example schemas that provide a starting place for specifying your database schema. We start with a single-table schema that represents the most simple option. Then we provide example tables for segregating Actor attributes into seperate 'static' and 'dynamic' tables. Finally, we present the schema selected for our example flood use-case, one that stores dynamic Actor attributes at the tweet level, stores more static Actor attributes in a separate Actor table, and has separate tablles for select metadata arrays such as hashtags and matching rules.
+Below are some example schemas that provide a starting place for specifying your database schema. We start with a single-table schema that represents the most simple option. Then we provide example tables for segregating Actor attributes into separate 'static' and 'active' tables. Finally, we present the schema selected for our example flood use-case, one that stores dynamic Actor attributes at the tweet level, stores more static Actor attributes in a separate Actor table, and has separate tablles for select metadata arrays such as hashtags and matching rules.
 
 ###Creating Databases
 
@@ -292,8 +290,6 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
 
   create_table "activities", :force => true do |t|
    
-    #t.integer 'id'   #database primary key
-  
     t.integer 'activity_id'  #business-logic primary key.
     t.datetime 'posted_at' #UTC, all the time.
     t.string 'body'
@@ -331,10 +327,11 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
 
 #### Tables for Separating Static and Dynamic Metadata
 
+Below are two example table definitions that split Actor attributes into separate 'static' and 'active' tables. 
 
 ```
 create_table "actors_static", :force => true do |t|
-    t.string 'id'
+    t.string 'native_id'
     t.string 'bio'
     t.string 'lang'
     t.string 'time_zone'
@@ -358,8 +355,7 @@ create_table "actors_static", :force => true do |t|
     t.datetime 'updated_at'
 end
 
-create_table "actor_activity", :force => true do |t|
-    t.integer 'id'
+create_table "actor_active", :force => true do |t|
     t.integer 'activity_id'
     t.integer 'followers_count'
     t.integer 'friends_count'
