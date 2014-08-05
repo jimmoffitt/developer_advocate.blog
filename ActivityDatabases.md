@@ -72,6 +72,9 @@ Given your particular use-case you may only need a subset of this supporting met
 
 To filter out such data means simply that you do not have a field in your database to store it, and when parsing the tweet payload you simply ignore the attribute.
 
+###An Example Use-case
+(new section)
+
 
 *************************************
 
@@ -214,7 +217,7 @@ This design readily handles the dynamic '3-d' nature of JSON objects. Indeed, on
 
 While much of Twitter metadata is dynamic in nature, changing tweet-by-tweet, other metdata can change more slowly or stay completely static for long periods of time. Twitter user accounts (stored in the 'Actor' object in the Activity Stream format) provides good examples of both 'static' and 'slow' metadata. An actor's numeric ID and account creation time will never change. Their account-level language, timezone, location, display and handle names may rarely change. Meanwhile their status, followers and friends counts will surely change over time.    
 
-Here are some examples that generally fall into these three categories:
+Here are some example attributes that generally fall into these three categories:
 
 * Mostly Dynamic:
      * Tweet body, published time and link.
@@ -238,46 +241,50 @@ Here are a few schema options to consider:
 
 ####Store all metadata at the activity level
 
-One method is to store all metadata at the activity (tweet) level so all attributes such as actor metadata are stored along with each tweet the actor posts. While this is the most simple design, it has a fundamental disadvantage. Much of these data will be static, so significant storage space is spent on redundant data. However, the required SQL for retrieving data is simple, and client-side code remains simple. See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/ActivityDatabases.md#single-table) for an example schema for storing all tweet metadata in a single table.
+One method is to store all metadata at the activity (tweet) level so all attributes such as actor metadata are stored along with each tweet the actor posts. While this is the most simple design, it has a fundamental disadvantage. Much of these data will be static, so significant storage space is spent on redundant data. However, the required SQL for retrieving data is simple, and client-side code remains simple. If you are working with a finite dataset, such as a "one-off" from Gnip's Historical PowerTrack product, this simple design may be adequate. However, if your dataset is continually growing you may want to condider the others below.
 
-####Store metadata in separate tables
+See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/ActivityDatabases.md#single-table) for an example (ActiveRecord) schema for storing all tweet metadata in a single table.
 
-Another option is to segregate the metadata into two groups: attributes you want to track over time, and others that you only need to store one value for. With this design the more dynamic data is stored either at the activity level, or in a separate "dynamic" table, with more static data being written to another "static" table. For example, you could define a 'user_static' table that contains fields such as 'preferredUsername', 'link', 'postedTime', 'languages', and 'twitterTimeZone'. Then for fields that are more likely to change you can define a 'user_activity' table that stores fields such as 'followersCount' and 'favoritesCount'.
+
+####Store select dynamic and static metadata in separate tables
+
+Another option is to segregate the metadata into two groups: attributes you want to track over time, and others that you only need to store one value for, such as the most recent value. For example, you could define a 'user_static' table that contains fields such as 'preferredUsername', 'link', 'postedTime', 'languages', and 'twitterTimeZone'. Then for fields that are more likely to change you can define a 'user_activity' table that stores fields such as 'followersCount' and 'favoritesCount'.
 
 See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/ActivityDatabases.md#dynamic-and-static-object-attributes) for two example tables for storing static and dynamic attributes separately.
 
+
 ####Store dynamic metadata at activity level and static data in its own tables
-(hybrid model, dynamic content at activity level, static stored in single record)
 
-(all in separate tables, actor static and actor activity)
+With this design the more dynamic data is stored at the activity level table, with more constant data being written to a "static" table. This is sort of a hybrid design that offers some efficiencies for storing static data along with simplicity for storing dynamic data. 
 
+This is the schema design selected for the flood project mentioned above. See [HERE] for that schema design.
 
 
 ##Some Example Schemas
 
-Below are some example schemas that provide a starting place for specifying your database schema. We start with a single-table schema that represents the most simple option. Then we present schema examples comprised of separate tables for metadata arrays (such as hashtags) and storing static metadata in a separate table.
-
+Below are some example schemas that provide a starting place for specifying your database schema. We start with a single-table schema that represents the most simple option. Then we provide example tables for segregating Actor attributes into seperate 'static' and 'dynamic' tables. Finally, we present the schema selected for our example flood use-case, one that stores dynamic Actor attributes at the tweet level, stores more static Actor attributes in a separate Actor table, and has separate tablles for select metadata arrays such as hashtags and matching rules.
 
 ###Creating Databases
 
-We present two types of scripts to generate the example schemas in a MySQL database. The first type is based on the Ruby on Rails ActiveRecord framework, and the second type can be used directly with the MySQL database engine.
+We present two types of scripts to generate the example schemas in a MySQL database. The first type is based on the Ruby on Rails ActiveRecord framework. To create these databases, the 'rake' engine can be used by pointing it to the schema.rb file with the following command:
 
+```
+rake db:schema:load
+```
 
-###Example Project Schema
-(https://github.com/jimmoffitt/developer_advocate.blog/blob/master/project_schema.md)
+Another database creation method is using a MySQL 'create table' script.  [outline steps here]
+
+[Creating with MySQL script.](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/single_table_schema_mysql.md)
+
 
 
 ###Single table
 
 As discussed above, this design has the disadvantage of inefficiently storing redundant data, but it should be adequate for many use-cases such as datasets from Historical PowerTrack jobs with a finite amount of data.
 
-The following exmaple illustrate the most basic schema, where all metadata is stored at the activity level. This design has an disadvantage of being less efficient with respect to (mostly) static metadata.
+The following example illustrates the most basic schema, where all metadata is stored at the activity level. This design has an disadvantage of being less efficient with respect to (mostly) static metadata. Also, metadata arrays, such as hashtags and mentions, are stored in a single field.
 
 [Creating with Ruby ActiveRecord](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/single_table_schema.md)
-
-
-
-:primary_key, :string, :text, :integer, :float, :decimal, :datetime, :timestamp, :time, :date, :binary, :boolean.
 
 
 ```
@@ -293,6 +300,7 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
    
     #These are flattened arrays, with a comma delimited (?)
     t.string 'hash_tags'
+    t.string 'mentions'
     t.text 'urls'         #Expanded URLs when available.
     t.string 'media'
     
@@ -302,6 +310,8 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
     #Activity geo details - Geo-tagged tweets only.
     t.float 'long'
     t.float 'lat'
+    t.float 'long_box'    #Twitter place.
+    t.float 'lat_box'     #Twitter place.
 
     #Actor metadata
     t.integer 'actor_id'
@@ -319,90 +329,8 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
   end
 ```
 
+#### Tables for Separating Static and Dynamic Metadata
 
-
-[Creating with MySQL script.](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/single_table_schema_mysql.md)
-
-
-
-
-
-
-
-###Storing Metadata Arrays
-
-Here is a possible schema for storing metadata arrays. 
-
-```
-  create_table "activities", :force => true do |t|
-    t.integer 'activity_id'
-    #As above except no hashtag fields in table. 
-  end
-
-  create_table "hashtags", :force => true do |t|
-    #id #internal, auto-increment, unique ID
-    t.integer 'activity_id' #foreign_key back to  
-    t.string  'hashtag'
-    end
-```
-
-###Dynamic and Static Object attributes
-
-
-Metadata that is mostly static, where there is one entry maintained.
-
-```
-create_table "actors", :force => true do |t|
-    t.integer 'id'
-    t.integer 'activity_id'
-    t.string 'bio'
-    t.string 'lang'
-    t.string 'time_zone'
-    t.integer 'utc_offset'
-    t.datetime 'posted_at'
-    
-    #Actor geo metadata
-    t.string 'location'
-    #These really are flattened arrays, but currently will only have one item.
-    t.string 'profile_geo_name'
-    t.float 'profile_geo_long'
-    t.float 'profile_geo_lat'
-    t.string 'profile_geo_country_code'
-    t.string 'profile_geo_region'
-    t.string 'profile_geo_subregion'
-    t.string 'profile_geo_locality'
-    
-    t.datetime 'created_at'
-    t.datetime 'updated_at'
-end    
-
-```
-
-Metadata that is dynamic and tracked on a tweet-by-tweet basis.
-
-```
-create_table "activity", :force => true do |t|
-
-    #Dynamic actor metadata is stored on a tweet-by-tweet basis. 
-    t.integer 'followers_count'
-    t.integer 'friends_count'
-    t.integer 'statuses_count'
-    t.integer 'klout_score'
-    t.text 'topics'   #klout topics   #flattened array
-    
-  end
-```
-
-Metadata arrays
-
-```
-create_table "hashtags", :force => true do |t|
-    t.integer 'activity_id'
-    t.string 'hashtag'
-end
-```
-
-Here is a schema that segregates metadata into separate "static' and "dynamic" tables:
 
 ```
 create_table "actors_static", :force => true do |t|
@@ -415,15 +343,21 @@ create_table "actors_static", :force => true do |t|
     
     #Actor geo metadata
     t.string 'location'
+    #These really are flattened arrays, but currently will only have one item.
+    t.string 'profile_geo_name'
+    t.float  'profile_geo_long'
+    t.float  'profile_geo_lat'
+    t.string 'profile_geo_country_code'
+    t.string 'profile_geo_region'
+    t.string 'profile_geo_subregion'
+    t.string 'profile_geo_locality'
     
     t.string 'profile_geo_name' #These are arrays, but currently will only have one item.
 
     t.datetime 'created_at'
     t.datetime 'updated_at'
 end
-```
 
-```
 create_table "actor_activity", :force => true do |t|
     t.integer 'id'
     t.integer 'activity_id'
@@ -431,16 +365,86 @@ create_table "actor_activity", :force => true do |t|
     t.integer 'friends_count'
     t.integer 'statuses_count'
     t.integer 'klout_score'
-    t.text 'topics'   #klout topics   #flattened array
+    t.text    'topics'   #klout topics   #flattened array
 
     t.datetime 'created_at'
     t.datetime 'updated_at'
   end
 ```
 
+###Storing Dynamic Metadata at Tweet Level with Select Metadata Array Tables
 
 
+```
+ActiveRecord::Schema.define(:version => 20140703221601) do
 
+  create_table "activities", :force => true do |t|
+    t.integer  "activity_id",     :limit => 8
+    t.datetime "posted_at"
+    t.text     "body"
+    t.string   "verb"
+    t.integer  "repost_of_id",    :limit => 8
+    t.integer  "actor_id",        :limit => 8
+    t.string   "lang"
+    t.string   "generator"
+    t.string   "link"
+    t.string   "mentions"
+    t.text     "urls"
+    t.text     "media"
+    t.string   "place"
+    t.string   "country_code"
+    t.float    "long"
+    t.float    "lat"
+    t.float    "long_box"
+    t.float    "lat_box"
+    t.integer  "followers_count"
+    t.integer  "friends_count"
+    t.integer  "statuses_count"
+    t.integer  "klout_score"
+    t.text     "payload"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  create_table "actors", :force => true do |t|
+    t.integer  "actor_id",                 :limit => 8
+    t.string   "handle"
+    t.string   "display_name"
+    t.string   "actor_link"
+    t.string   "bio"
+    t.string   "lang"
+    t.string   "time_zone"
+    t.integer  "utc_offset"
+    t.datetime "posted_at"
+    t.string   "location"
+    t.string   "profile_geo_name"
+    t.float    "profile_geo_long"
+    t.float    "profile_geo_lat"
+    t.string   "profile_geo_country_code"
+    t.string   "profile_geo_region"
+    t.string   "profile_geo_subregion"
+    t.string   "profile_geo_locality"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+  end
+
+  create_table "hashtags", :force => true do |t|
+    t.integer  "activity_id", :limit => 8
+    t.string   "hashtag"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  create_table "rules", :force => true do |t|
+    t.integer  "activity_id", :limit => 8
+    t.text     "value"
+    t.string   "tag"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+end
+```
 
 
 
