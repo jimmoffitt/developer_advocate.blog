@@ -280,10 +280,11 @@ One of the great things about Ruby-on-Rails is its reliance on 'Convention over 
 
 First, there is a convention of every table having an "id" (auto-increment) primary key that is not explicitly shown in the 'create_table' method. Another convention is that the 'created_at' and 'updated_at' attributes are automatically added by default (and explicitly shown in the schema definition).
 
-Also, another convention is that if there is a '*_id' field (like 'actor_id') that references the singular name of another table it is a foreign key into that separate table. For example, consider a schema with Activities and Actors tables. Both these tables will contain a 'id' primary key and that by convention serves as a foreign key when joining tables. If you are storing tweet authors in an Actor table, the Activity table will contain an actor_id field used to match the appropriate entry in the Actor table, or:
+Also, another convention is that if there is a '*_id' field (like 'actor_id') that references the singular name of another table it is a foreign key into that separate table. This convention is the foundation of [Rails Associations](http://guides.rubyonrails.org/association_basics.html) that provides a lot of power and convenience if you are building a Rails application. For example, consider a schema with Activities and Actors tables. Both these tables will contain a 'id' primary key and that by convention serves as a foreign key when joining tables. If you are storing tweet authors in an Actor table, the Activity table will contain an actor_id field used to match the appropriate entry in the Actor table. 
 
 Finally, you will certainly want to retain the 'native' user and tweet IDs (at least the numeric section, dropping the string versioning metadata), or the numeric IDs provided by Twitter. Accordingly, you may be storing two IDs, the 'native' versions along with the auto-increment IDs provided by ActiveRecord.
 
+[OK, need some Rails advice here... only need ActiveRecord ids if building Rails code. otherwise, not]
 
 Activity table entry:
 
@@ -305,9 +306,12 @@ Actor.id = Activity.actor_id
 ```
 
 And write some SQL such as:
-```
-SELECT 
 
+```
+SELECT * 
+FROM activities a, actors act
+WHERE a.actor_id = act.id
+AND act.handle = 'snowman';
 ```
 
 
