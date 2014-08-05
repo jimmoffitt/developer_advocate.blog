@@ -1,6 +1,6 @@
-Note that with Ruby-on-Rails' ActiveRecord that there is a convention of every table having an "id" (auto-increment) field that is not explicitly shown in the 'create_table' method. Another convention is that the 'created_at' and 'updated_at' attributes are automatically added by default (and explicitly shown).  
+Note that with Ruby-on-Rails' ActiveRecord there is a convention of every table having an "id" (auto-increment) field that is not explicitly shown in the 'create_table' method. Another convention is that the 'created_at' and 'updated_at' attributes are automatically added by default (and explicitly shown in the schema definition).  
 
-(Also, another convention is that if there is a _id field (like actor_id) that references the singular name of another table it is a foreign key into that separate table. Since this is single table example, this convention doesn't really come into place here. However, with schemas with an Actors table, an actor_id would by default/convention would be a foreign key into the Actors table.) 
+(Also, another convention is that if there is a _id field (like actor_id) that references the singular name of another table it is a foreign key into that separate table. Since this is single table example, this convention doesn't really come into play here. However, with schemas with an Actors table, an actor_id would by default/convention would be a foreign key into the Actors table.) 
 
 
 ```
