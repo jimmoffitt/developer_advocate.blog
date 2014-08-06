@@ -92,9 +92,6 @@ In the end database schemas are driven by the type of questions you want to expl
 So these types of questions guided the design of the database schema at the heart of my look at the 2013 Boulder flood.
 
 
-
-
-
 *************************************
 ```
 sidebar here (with below contents)
