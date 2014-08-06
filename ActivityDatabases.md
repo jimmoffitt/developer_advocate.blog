@@ -273,7 +273,7 @@ See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Act
 
 With this design the more dynamic data is stored at the activity level table, with more constant data being written to a "static" table. This is sort of a hybrid design that offers some efficiencies for storing static data along with simplicity for storing dynamic data. 
 
-This is the schema design selected for the flood project mentioned above. See [HERE] for that schema design.
+This is the schema design selected for the flood project mentioned above. See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/project_schema.md) for that schema design.
 
 
 ##Some Example Schemas
