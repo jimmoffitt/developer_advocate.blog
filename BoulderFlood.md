@@ -1,0 +1,1 @@
+<iframe height=376 width=681 src="//docs.google.com/a/twitter.com/spreadsheets/d/1sM7JwVGyMz9zPCQidXBvg_mvokibVHRp0uGEhGLiYAs/gviz/chartiframe?oid=1240741620" seamless frameborder=0 scrolling=no></iframe>
