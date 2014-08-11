@@ -32,114 +32,75 @@ Activity model
 Creation migration:
 
 ```
-ActiveRecord::Schema.define(:version => 20140701000000) do
+ActiveRecord::Schema.define(:version => 20140703221601) do
 
   create_table "activities", :force => true do |t|
-    #t.integer 'id'               #ActiveRecord auto-incrementer
-    t.integer 'activity_id'       #Business-logic Primary Key - no duplicate tweets.
-    t.integer 'actor_id'          #User ID
-    t.datetime 'posted_at'        #Always UTC.
-    #t.text 'payload'             #Entire content of JSON activity...? 
-    t.string 'body'               #140 (or more) characters. Tweet body, blog post?
-    t.string 'verb'               #post,share, etc.
-    t.integer 'repost_of_id'      #Points to original tweet.
-    t.string 'lang'               #twitter_lang
-    t.string 'generator'          #What platform did activity come from?
-    t.string 'link'               #[Link to the activity](https://twitter.com/snowman/status/480209697199243264)
-
-    #PowerTrack rules and associated tags are stored in a separate table.
-    #'rules'                      #--> stored in separate hashtags table by activity ID.
-    
-    #These are twitter entities:
-    #'hashtags'                   #--> stored in separate hashtags table by activity ID.
-    #Flattened arrays, comma delimited for this project.
-    t.string 'mentions'           # @mentions
-    t.text 'urls'                 #Expanded URLs when available.
-    t.string 'media'              #photos, vines, etc.
-                             
-    #Activity geo details - Geo-tagged tweets only.
-    t.string 'place'
-    t.string 'country_code'
-    t.float 'long'
-    t.float 'lat'
-    t.float 'long_box' #If storing place bounding box.
-    t.float 'lat_box'  
-
-    #Dynamic 'actor' details.
-    t.integer 'followers_count'
-    t.integer 'friends_count'
-    t.integer 'statuses_count'
-    t.integer 'klout_score'
- 
-    #Standard ActiveRecord row metadata.
-    #t.datetime 'created_at'
-    #t.datetime 'updated_at'
+    t.integer  "tweet_id",     :limit => 8
+    t.datetime "posted_at"
+    t.text     "body"
+    t.string   "verb"
+    t.integer  "repost_of_id",    :limit => 8
+    t.integer  "user_id",        :limit => 8
+    t.string   "lang"
+    t.string   "generator"
+    t.string   "link"
+    t.string   "mentions"
+    t.text     "urls"
+    t.text     "media"
+    t.string   "place"
+    t.string   "country_code"
+    t.float    "long"
+    t.float    "lat"
+    t.float    "long_box"
+    t.float    "lat_box"
+    t.integer  "followers_count"
+    t.integer  "friends_count"
+    t.integer  "statuses_count"
+    t.integer  "klout_score"
+    t.text     "payload"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
-```
 
-###Hashtags
-```
-ActiveRecord::Schema.define(:version => 20140624212018) do
+  create_table "actors", :force => true do |t|
+    t.integer  "user_id",                 :limit => 8
+    t.string   "handle"
+    t.string   "display_name"
+    t.string   "actor_link"
+    t.string   "bio"
+    t.string   "lang"
+    t.string   "time_zone"
+    t.integer  "utc_offset"
+    t.datetime "posted_at"
+    t.string   "location"
+    t.string   "profile_geo_name"
+    t.float    "profile_geo_long"
+    t.float    "profile_geo_lat"
+    t.string   "profile_geo_country_code"
+    t.string   "profile_geo_region"
+    t.string   "profile_geo_subregion"
+    t.string   "profile_geo_locality"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+  end
 
   create_table "hashtags", :force => true do |t|
-
-    #t.integer 'id'               #ActiveRecord auto-incrementer.
-    t.integer 'activity_id'  
-    t.string 'hashtag'
-
-    #t.datetime 'created_at'
-    #t.datetime 'updated_at'
-```
-
-###Rules (and tags)
-```
-ActiveRecord::Schema.define(:version => 20140624212018) do
+    t.integer  "tweet_id", :limit => 8
+    t.string   "hashtag"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
 
   create_table "rules", :force => true do |t|
+    t.integer  "tweet_id", :limit => 8
+    t.text     "value"
+    t.string   "tag"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
 
-    #t.integer 'id'               #ActiveRecord auto-incrementer.
-    t.integer 'activity_id'       #Duplicates expected.
-    t.string 'value'
-    t.string 'tag'
-    
-    #Standard ActiveRecord row metadata.
-    #t.datetime 'created_at'
-    #t.datetime 'updated_at'
-```
+end
 
-###Actor metadata
-```
-ActiveRecord::Schema.define(:version => 20140624212018) do
-
-  create_table actor", :force => true do |t|
-
-    t.integer 'id'
-    t.integer 'actor_id'
-    t.string 'handle'
-    t.string 'display_name'
-    t.string 'link'
-    t.string 'bio'
-   
-    t.string 'lang'
-    t.string 'time_zone'
-    t.integer 'utc_offset'
-    t.datetime 'posted_at'
-
-    #Actor geo metadata
-    t.string 'actor_location' #Twitter Profile location.
-    #Only needed if Gnip Profile Geo enabled.
-    #These really are flattened arrays, but currently will only have one item.
-    t.string 'profile_geo_name'
-    t.float 'profile_geo_long'
-    t.float 'profile_geo_lat'
-    t.string 'profile_geo_country_code'
-    t.string 'profile_geo_region'
-    t.string 'profile_geo_subregion'
-    t.string 'profile_geo_locality' 
-    
-    #Standard ActiveRecord row metadata.
-    #t.datetime 'created_at'
-    #t.datetime 'updated_at'
 ```
 
 
@@ -148,19 +109,19 @@ ActiveRecord::Schema.define(:version => 20140624212018) do
 
 ####Activity table
 
-activity activity_id:integer posted_at:datetime body:string verb:string repost_of_id:integer actor_id:integer lang:string generator:string link:string mentions:string urls:text media:text place:string country_code:string long:float lat:float long_box:float lat_box:float followers_count:integer friends_count:integer statuses_count:integer klout_source:integer payload:text
+activity tweet_id:integer posted_at:datetime body:string verb:string repost_of_id:integer user_id:integer lang:string generator:string link:string mentions:string urls:text media:text place:string country_code:string long:float lat:float long_box:float lat_box:float followers_count:integer friends_count:integer statuses_count:integer klout_source:integer payload:text
 
 ####Actor table
 
-actor actor_id:integer handle:string display_name:string actor_link:string bio:string lang:string time_zone:string utc_offset:integer posted_at:datetime location:string profile_geo_name:string profile_geo_long:float profile_geo_lat:float profile_country_code:string profile_geo_region:string profile_geo_subregion:string profile_geo_locality:string
+actor user_id:integer handle:string display_name:string actor_link:string bio:string lang:string time_zone:string utc_offset:integer posted_at:datetime location:string profile_geo_name:string profile_geo_long:float profile_geo_lat:float profile_country_code:string profile_geo_region:string profile_geo_subregion:string profile_geo_locality:string
 
 ####Hashtag table
 
-hashtag activity_id:integer hashtag:string
+hashtag tweet_id:integer hashtag:string
 
 ####Rules table
 
-rule activity_id:integer value:string tag:string
+rule tweet_id:integer value:string tag:string
 
 
 
