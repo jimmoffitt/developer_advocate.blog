@@ -64,7 +64,7 @@ When storing activity data (in this case tweets) in a database, you are essentia
 
 Every tweet arrives with a large set of supporting metadata. This set can contain well over 150 attributes that provide information about the user that posted the tweet, any available geographic information, and other information such as lists of hashtags and user mentions included in the tweet message. 
 
-<blockquote class="twitter-tweet" lang="en"><p>hey <a href="https://twitter.com/lbjonz">@lbjonz</a> on this summer weekend I am daydreaming of all things <a href="https://twitter.com/search?q=%23snow&amp;src=hash">#snow</a>: <a href="https://twitter.com/search?q=%23skiing&amp;src=hash">#skiing</a> <a href="https://twitter.com/search?q=%23boarding&amp;src=hash">#boarding</a> <a href="https://twitter.com/search?q=%23caves&amp;src=hash">#caves</a></p>&mdash; Jim Moffitt (@snowman) <a href="https://twitter.com/snowman/statuses/480209697199243264">June 21, 2014</a></blockquote>
+<blockquote class="twitter-tweet" lang="en"><p>Flash Flood Warning for <a href="https://twitter.com/hashtag/Boulder?src=hash">#Boulder</a> extended to 4:15AM. <a href="https://twitter.com/hashtag/boulderflood?src=hash">#boulderflood</a> <a href="https://twitter.com/hashtag/cuboulder?src=hash">#cuboulder</a> <a href="https://twitter.com/hashtag/cowx?src=hash">#cowx</a></p>&mdash; CU-Boulder Police (@CUBoulderPolice) <a href="https://twitter.com/CUBoulderPolice/statuses/378025418353573888">September 12, 2013</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 The entire JSON associated with the above tweet is [HERE](https://github.com/jimmoffitt/pt-dm/blob/master/schema/hashtags.json). For a look of all the potential metadata that can be provided see [HERE](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_everything.json).
@@ -119,14 +119,14 @@ JSON readily supports arrays of data, while schemas are static in nature.  The c
 
 |  id  | hashtags                  	|  
 |---------------------	| ---------|
-|480209697199243264 | snow, skiing, boarding, caves |
+|378025418353573888 | Boulder, boulderflood, cuboulder, cowx |
 
 One advantage of this schema design is that it results in a simple schema, enabling very simple SQL queries to retreive the data. 
 
 ```
 SELECT hashtags 
 FROM activities 
-WHERE id = 480209697199243264;
+WHERE id = 378025418353573888;
 ```
 
 Client code needs to 'split' the field contents using the (mutually agreed on) delimiter and then iterate through the results:
@@ -154,7 +154,7 @@ hashtags = hashtags_delimited.split(delimiter) #The joys of Ruby (and Python).
 
 | id  | hashtag_1  | hashtag_2   | hashtag_3  | hashtag_4  | hashtag_5  | 
 |----------|----------|------------|------------|------------|----------|
-|480209697199243264 |  snow | skiing | boarding | caves        |            | 
+|378025418353573888 |  Boulder | boulderflood | cubolder | cowx        |            | 
 
 With this method hashtags are stored in a set of fields such as hashtag_1, hashtag_2, hashtag_3, hashtag_4, and hashtag_5. For short-content sources like Twitter, limited to 140 characters, there is a good chance that there is a reasonable upper-limit on the number of items you need to support.
 
@@ -163,7 +163,7 @@ One disadvantage with this method is that you are likely to end up with a lot of
 ```
 SELECT hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5 
 FROM activities 
-WHERE id = 480209697199243264;
+WHERE id = 378025418353573888;
 ```
 
 Other than the query being completely coupled to the schema details, the client-side code is much the same although it does not need any delimiter metadata.
@@ -191,22 +191,22 @@ Activity table entry:
 
 |    id    |                body                     |
 |----------|-----------------------------------------|
-|480209697199243264 | hey @lbjonz on this summer weekend I am daydreaming of all things #snow: #skiing #boarding #caves |
+|378025418353573888 | Flash Flood Warning for #Boulder extended to 4:15AM. #boulderflood #cuboulder #cowx |
 
 Hashtag table entries:
 
 | id |    activity_id     |  hashtag  |
 |----|--------------------|-----------|
-| 1  | 480209697199243264 |  snow     |
-| 2  | 480209697199243264 |  skiing   |
-| 3  | 480209697199243264 |  boarding |
-| 4  | 480209697199243264 |  caves    |
+| 1  | 378025418353573888 |  Boulder     |
+| 2  | 378025418353573888 |  boulderflood   |
+| 3  | 378025418353573888 |  cuboulder |
+| 4  | 378025418353573888 |  cowx    |
 
 This method relies on having a separate table to store hashtags, with each row containing a single hashtag. So with our example tweet, there are four entries in this table, with the activity ID being the unique link (foreign key) between the two tables. 
 ```
 SELECT ht.* FROM hashtags ht, activities a
 WHERE ht.activity_id = a.id
-AND a.id = 480209697199243264;
+AND a.id = 378025418353573888;
 ```
 This design readily handles the dynamic '3-d' nature of JSON objects. Indeed, one advantage of this design is that there are not a predetermined number of hashtag fields for each activity and instead the hashtag table dynamically stores the array items as needed.
 
@@ -306,7 +306,7 @@ Activity table entry:
 
 |    id      |   native_id    |   actor_id          |     actor_native_id    |        body               |
 |----------|--------------|---------|-------------|------------------|
-|    1000        | 480209697199243264 |    123   |     17200003       |    hey @lbjonz on this summer weekend I am daydreaming of all things #snow: #skiing #boarding #caves |
+|    1000        | 480209697199243264 |    123   |     17200003       |    Tweeting in the Rain, Part 3 http://t.co/qCtH3ZucAT via @gnip |
 
 Actor table entry:
 
@@ -417,7 +417,7 @@ Below are two example table definitions that split Actor attributes into separat
 
 ```
 create_table "actors_static", :force => true do |t|
-    t.string 'native_id'
+    t.string 'user_id'
     t.string 'handle'
     t.string 'display_name'
     t.string 'bio'
@@ -445,7 +445,7 @@ end
 
 create_table "actor_active", :force => true do |t|
 
-    t.string  'native_id'
+    t.string  'user_id'
     t.integer 'activity_id'      #key into activities table
     t.integer 'followers_count'
     t.integer 'friends_count'
@@ -465,12 +465,12 @@ create_table "actor_active", :force => true do |t|
 ActiveRecord::Schema.define(:version => 20140703221601) do
 
   create_table "activities", :force => true do |t|
-    t.integer  "activity_id",     :limit => 8
+    t.integer  "tweet_id",     :limit => 8
     t.datetime "posted_at"
     t.text     "body"
     t.string   "verb"
     t.integer  "repost_of_id",    :limit => 8
-    t.integer  "actor_id",        :limit => 8
+    t.integer  "user_id",        :limit => 8
     t.string   "lang"
     t.string   "generator"
     t.string   "link"
@@ -493,7 +493,7 @@ ActiveRecord::Schema.define(:version => 20140703221601) do
   end
 
   create_table "actors", :force => true do |t|
-    t.integer  "actor_id",                 :limit => 8
+    t.integer  "user_id",                 :limit => 8
     t.string   "handle"
     t.string   "display_name"
     t.string   "actor_link"
@@ -515,14 +515,14 @@ ActiveRecord::Schema.define(:version => 20140703221601) do
   end
 
   create_table "hashtags", :force => true do |t|
-    t.integer  "activity_id", :limit => 8
+    t.integer  "tweet_id", :limit => 8
     t.string   "hashtag"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
 
   create_table "rules", :force => true do |t|
-    t.integer  "activity_id", :limit => 8
+    t.integer  "tweet_id", :limit => 8
     t.text     "value"
     t.string   "tag"
     t.datetime "created_at",               :null => false
