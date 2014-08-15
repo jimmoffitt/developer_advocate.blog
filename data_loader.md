@@ -63,3 +63,89 @@ def getHashes(file)
     hash
 end
 ```
+
+Some code for writing to an existing MySQL database.
+
+```
+require 'active_record'
+require "yaml"
+
+class Site < ActiveRecord::Base
+    validates_uniqueness_of :site_id
+end
+
+class DataStore
+    attr_accessor :data_store, :database_adapter, :db_host, :db_port, :schema, :db_username, :db_password
+
+    def getSystemConfig(config_file)
+
+        config = YAML.load_file(config_file)
+
+        @db_host = config["database"]["host"]
+        @db_port = config["database"]["port"]
+        @db_schema = config["database"]["schema"]
+        @db_user_name = config["database"]["user_name"]
+        @db_password  = config["database"]["password"]
+    end
+
+    def establish_connection
+        begin
+            ActiveRecord::Base.establish_connection(
+                :adapter => @database_adapter,
+                :host => @db_host,
+                :username => @db_user_name,
+                :password => @db_password,
+                :database => @db_schema,
+                :pool => 20,
+                :timeout => 100000
+            )
+        rescue Exception => e
+            p "Could not connect!: " + e.message
+        end
+    end
+
+    def initialize(host=nil, port=nil, database=nil, user_name=nil, password=nil)
+        #local database for storing activity data...
+
+        @database_adapter = 'mysql'
+
+        if host.nil? then
+            @db_host = "127.0.0.1" #Local host is default.
+        else
+            @db_host = host
+        end
+
+        if port.nil? then
+            @db_port = 3306 #MySQL post is default.
+        else
+            @db_port = port
+        end
+
+        if not user_name.nil?  #No default for this setting.
+            @db_username = user_name
+        end
+
+        if not password.nil? #No default for this setting.
+            @db_password = password
+        end
+
+        if not database.nil? #No default for this setting.
+            @db_schema = database
+        end
+    end
+
+    def storeSite site_id, site
+        begin
+            #Reflects the sites schema: (you also get an auto-increment int via ActiveRecord.
+            Site.create(:site_id => site_id,
+                        :lat => site[:lat],
+                        :long => site[:long],
+                        :altitude => site[:altitude]
+                       )
+                #p "Site #{site_id} created."
+        rescue Exception => e
+            p e.message
+        end
+    end
+end
+```
