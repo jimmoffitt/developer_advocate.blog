@@ -144,6 +144,7 @@ Time-series weather data was in the following format.
 
 ####Rain data
 
+* Rain measures in inches.
 * 15-minute rain increments.
 * Event accumulation totals (zeroed at 00:00 MDT September 9) 
 
@@ -167,6 +168,7 @@ timestamp,1110,1920,4050,4070,4090,4110,4140,4170,4220,4240,4360,4470,4490,4550,
 
 ###Processing time-series stage data
 
+* River levels in feet.
 * 15-minute stage maximums and averages.
 
 #####stage maximums
