@@ -1,6 +1,9 @@
 __Developer Advocate blog__ ...from the client-side prespective
 
-* Data stories http://blog.gnip.com/tweeting-in-the-rain/
+* Data stories 
+     * http://blog.gnip.com/tweeting-in-the-rain/
+     * http://blog.gnip.com/tweeting-in-the-rain-part-2/
+     * http://blog.gnip.com/tweeting-in-the-rain-part-3/
 * Getting data
      *   Historical PowerTrack Ruby client https://github.com/jimmoffitt/rbHistoricalPT
      *   Search API Ruby client https://github.com/jimmoffitt/rbSearchAPI
