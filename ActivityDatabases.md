@@ -306,7 +306,7 @@ Activity table entry:
 
 |    id      |   native_id    |   actor_id          |     actor_native_id    |        body               |
 |----------|--------------|---------|-------------|------------------|
-|    1000        | 480209697199243264 |    123   |     17200003       |    Tweeting in the Rain, Part 3 http://t.co/qCtH3ZucAT via @gnip |
+|    1000        | 377853980170141696 |    123   |     17200003       |    Tweeting in the Rain, Part 3 http://t.co/qCtH3ZucAT via @gnip |
 
 Actor table entry:
 
