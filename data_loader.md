@@ -24,6 +24,42 @@ site_id,name,lat,long,altitude
 
 ####Ruby code for loading into MySQL database:
 
+```
 
 
+require_relative './data_store.rb'
+require 'csv'
 
+    #Make a database connection.
+    oDS = DataStore.new
+    oDS.getSystemConfig('./config.yaml') #<--- schema, host, port, authentication
+    oDS.establish_connection
+
+    #Import CSV data as hashes
+    sites = {}
+    sites = getHashes(FILE_ROOT + "/BoulderFlood/WeatherData/SiteMetadata.csv")
+   
+    sites.each do |item|
+        #oDS.storeSite item[0], item[1]
+    end
+```
+
+```
+#
+#Builds an array of hashes...
+#{10017=>{:name=>"James Creek", :lat=>40.11, :long=>-105.38, :altitude=>5842}, 10018=>{:name=>"Lower Lefthand", :lat=>40.126, :long=>-105.30, :altitude=>6230}}
+#
+def getHashes(file)
+    #Create sites hash
+    hash = {}
+    p "Reading #{file}..."
+    csv = CSV.read(file, :headers => true, :header_converters => :symbol, :converters => :all)
+
+    p "Creating hash for  #{file}..."
+    csv.each do |row|
+        hash[row.fields[0]] = Hash[row.headers[1..-1].zip(row.fields[1..-1])]
+    end
+
+    hash
+end
+```
