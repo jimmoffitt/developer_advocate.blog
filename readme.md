@@ -1,5 +1,7 @@
 __Developer Advocate blog__ ...from the client-side prespective
 
+A somewhat random collection of articles written with Gnip customers in mind...  
+
 * Data stories 
      * http://blog.gnip.com/tweeting-in-the-rain/
      * http://blog.gnip.com/tweeting-in-the-rain-part-2/
@@ -16,7 +18,7 @@ __Developer Advocate blog__ ...from the client-side prespective
 * Data Analysis (August)
 * Simple Rails Demo App (September)
 
-####Previous posts:
+####Articles up at http://support.gnip.com/articles:
 - Geo-referencing with the Profile Location enrichments. 
      - [Twitter Geographical Metadata](http://support.gnip.com/articles/geo-intro.html)
      - [Profile Geo use-case](http://support.gnip.com/articles/twitter-geo-referencing.html)
