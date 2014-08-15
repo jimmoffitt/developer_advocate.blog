@@ -3,9 +3,14 @@
 
 Notes mainly.
 
+Site Metadata in a simple CSV format: site_id, name, lat, long, altitude
 
 
 
+
+###Loading weather station site metadata
+
+Data processed was produced by OneRain's Insight app.
 
 SiteMetadata.csv
 
@@ -22,11 +27,7 @@ site_id,name,lat,long,altitude
 ```
 
 
-####Ruby code for loading into MySQL database:
-
 ```
-
-
 require_relative './data_store.rb'
 require 'csv'
 
@@ -44,18 +45,32 @@ require 'csv'
     end
 ```
 
+This method takes a CSV file and builds an array of site hashes:
+
+Turns
 ```
-#
+site_id,name,lat,long,altitude
+10018,Lower Lefthand,40.1264,-105.3045,6230
+4050,Walker Ranch,39.9520,-105.3390,7320
+```
+
+Into this JSON:
+```
+{
+  10018=>{:name=>"Lower Lefthand", :lat=>40.1264, :long=>-105.3045, :altitude=>6230}
+  4050=>{:name=>"Walker Ranch", :lat=39.9520, :long=>-105.3390, :altitude=>7320}
+}
+```
+
+
+
+
+```
 #Builds an array of hashes...
-#{10017=>{:name=>"James Creek", :lat=>40.11, :long=>-105.38, :altitude=>5842}, 10018=>{:name=>"Lower Lefthand", :lat=>40.126, :long=>-105.30, :altitude=>6230}}
-#
 def getHashes(file)
-    #Create sites hash
     hash = {}
-    p "Reading #{file}..."
     csv = CSV.read(file, :headers => true, :header_converters => :symbol, :converters => :all)
 
-    p "Creating hash for  #{file}..."
     csv.each do |row|
         hash[row.fields[0]] = Hash[row.headers[1..-1].zip(row.fields[1..-1])]
     end
@@ -63,6 +78,8 @@ def getHashes(file)
     hash
 end
 ```
+
+####Ruby code for loading into MySQL database:
 
 Some code for writing to an existing MySQL database.
 
