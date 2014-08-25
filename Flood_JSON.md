@@ -37,7 +37,7 @@
             "interval_minutes": 15,
             "time_format": " YYYY-MM-DD HH:mm:ss",
             "time_zone": " UTC",
-            "'tz_offset": 0
+            "tz_offset": 0
         },
         "interval_data": {
             "2013-09-11 06:15": {
