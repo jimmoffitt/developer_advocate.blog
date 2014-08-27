@@ -2,18 +2,18 @@
 Two JSON formats: 'Standard', GeoJSON
 Two time-series intervals: 15-minute, 60-minute
 
-[Standard 60-minute]()
-[Standard 15-minute]()
+* [Standard 60-minute]()
+* [Standard 15-minute]()
 
-[GeoJSON 60-minute]()
-[GeoJSON 15-minute]()
+* [GeoJSON 60-minute]()
+* [GeoJSON 15-minute]()
 
 
 
 
 ##Standard
 
-###60-minute interval
+###Standard 60-minute interval
 
 ```
 {
@@ -255,7 +255,7 @@ Two time-series intervals: 15-minute, 60-minute
 }
 ```
 
-###15-minute interval
+###Standard 15-minute interval
 
 ```
 {
@@ -383,7 +383,7 @@ Two time-series intervals: 15-minute, 60-minute
 
 ##GeoJSON
 
-###60-minute interval
+###GeoJSON 60-minute interval
 
 ```
 {
@@ -767,7 +767,7 @@ Two time-series intervals: 15-minute, 60-minute
 
 ```
 
-###15-minute interval
+###GeoJSON 15-minute interval
 
 ```
 {
