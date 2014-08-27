@@ -1,8 +1,8 @@
 
 Two JSON formats so far:
 
-+Standard
-+GeoJSON
+* Standard
+* GeoJSON
 
 ###Standard
 
