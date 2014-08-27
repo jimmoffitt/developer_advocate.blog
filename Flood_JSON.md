@@ -1,5 +1,6 @@
 
 Two JSON formats: 'Standard', GeoJSON
+
 Two time-series intervals: 15-minute, 60-minute
 
 * [Standard 60-minute](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Flood_JSON.md#standard-60-minute-interval)
