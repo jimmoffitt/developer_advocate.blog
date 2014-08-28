@@ -1,3 +1,20 @@
+Exploring different JSON schemas to 'host' data-viz data store.
+
+* small foot-print? What's small? less < 500k.
+* Includes both statc metadata and time-series interval data.
+* Ths example compiles two fundamentally different types of data:
+  * Twitter tweet data.
+  * 15-minute and hourly weather data:
+    * rain gauges.
+    * Stage gauges.
+  
+Time details:
+ * Everything here is in UTC, GMT, Zulu.  tz_offset = 0
+ * YYYY-MM-DD HH:MM:SS
+ * Supported intervals: 15-minutes, 60-minutes
+ 
+
+---------------------------
 
 Two JSON formats: 'Standard', GeoJSON
 
