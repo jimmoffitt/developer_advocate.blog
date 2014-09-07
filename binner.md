@@ -1,3 +1,31 @@
+
+Taking event data and 'binning' into regular-interval time-series data.
+
+* Fundamental details:
+* Interval markers: beginning or end?
+* Event data will be averaged, max/min, count
+* All timestamps are UTC.
+* 
+
+
+
+```
+def getFollowersCountTS(params, handle)
+        #Custom SQL
+        sSQL = "SELECT a.posted_at, a.followers_count
+                  FROM SocialFlood_development.activities a,
+                    SocialFlood_development.actors u
+                  WHERE u.handle LIKE \"%#{handle}%\"
+                        AND a.user_id = u.user_id
+                        AND a.posted_at > '#{params[:start_date]}'
+                        AND a.posted_at <= '#{params[:end_date]}';
+      "
+
+        tweetCount = Activity.connection.select_all(sSQL)
+    end
+```
+
+
 ```
 def getInterval(time_string, interval, specifies)
 
