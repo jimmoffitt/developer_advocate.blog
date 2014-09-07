@@ -8,8 +8,11 @@ Taking event data and 'binning' into regular-interval time-series data.
 * 
 
 
-
+DB Class method:
+This class encapsulates specifying SQL, pulling data from DB.
 ```
+require 'active_record'
+
 def getFollowersCountTS(params, handle)
         #Custom SQL
         sSQL = "SELECT a.posted_at, a.followers_count
@@ -25,6 +28,8 @@ def getFollowersCountTS(params, handle)
     end
 ```
 
+
+Fundamental method that enables a timestamp to self-discover its 'bin.
 
 ```
 def getInterval(time_string, interval, specifies)
