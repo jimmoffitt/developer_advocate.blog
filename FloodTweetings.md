@@ -1,4 +1,5 @@
-Tweeting During a Flood
+###Tweeting During a Flood
+
 Back in August 2013 we posted two “tweeting in the rain” (Part 1 & Part 2) articles that explored potential roles social-media data could play in flood early-warning systems. These posts focused on investigating the use of twitter during seven significant rain events. Around noon on Wednesday, September 11, 2013 we posted Part 3, which discussed the opportunities and challenges social networks provide to the early warning community.  
  
 It turned out that even early in its history, the Twitter network had become an important broadcast channel during natural disasters. 
@@ -34,10 +35,15 @@ Having just focused on how Twitter could play a critical role as a public broadc
 The Boulder County region was getting hammered with rain,  Early concerns about foothill creeks and canyons.
       large tracts of canyon land burnt
 
+
+
 Flood waters in Boulder, Jamestown, Lyons, Longmont
 
 <blockquote class="twitter-tweet" lang="en"><p>Only road into/out of Longmont is at I-25 &amp; Highway 66 to Main Street. All north-south travel in Longmont is cut off by the <a href="https://twitter.com/hashtag/stvrainflood?src=hash">#stvrainflood</a></p>&mdash; Boulder OEM (@BoulderOEM) <a href="https://twitter.com/BoulderOEM/status/378464736511553536">September 13, 2013</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+http://blog.gnip.com/how-social-media-is-used-in-natural-disasters/
 
 Regional infrastructure
 Recovery
@@ -55,6 +61,5 @@ http://www.dailycamera.com/colorado-flood-2013-one-year-later/ci_26429015/colora
 http://www.denverpost.com/2013coloradofloods
 
 
-http://blog.gnip.com/how-social-media-is-used-in-natural-disasters/
 
 
