@@ -3,7 +3,10 @@ Back in August 2013 we posted two “tweeting in the rain” (Part 1 & Part 2) a
  
 It turned out that even early in its history, the Twitter network had become an important broadcast channel during natural disasters. 
 
-As that day unfolded the rainfall steadily intensified enough that it was becoming more clear that this weather event was getting dangerous. ByXX:XX there was already X inches of rainfall, and [THESE warning came out].  
+As that day unfolded the rainfall steadily intensified enough that it was becoming more clear that this weather event was getting dangerous. ByXX:XX there was already X inches of rainfall, and [THESE warning came out]. 
+
+<blockquote class="twitter-tweet" lang="en"><p>Very Heavy rain moving NNW through Platteville &amp; Johnstown areas in Weld county, Expect 1&quot; in 20 minutes &amp; flooded streets/intersecs. <a href="https://twitter.com/hashtag/COwx?src=hash">#COwx</a></p>&mdash; NWS Boulder (@NWSBoulder) <a href="https://twitter.com/NWSBoulder/status/377888065986891776">September 11, 2013</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <blockquote class="twitter-tweet" lang="en"><p><a href="https://twitter.com/hashtag/Boulder?src=hash">#Boulder</a> officers reporting street flooding at 17/18th on the Hill, Baseline &amp; Foothills, 28th u&#39;passes, 9th &amp; Alpine, Manhattan &amp; Baseline.</p>&mdash; Boulder OEM (@BoulderOEM) <a href="https://twitter.com/BoulderOEM/status/377987811531452416">September 12, 2013</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -20,6 +23,9 @@ That night  I stayed up late watching the flood and its aftermath unfold on Twit
 
 
 <blockquote class="twitter-tweet" lang="en"><p>Large wall of water passed Logan Mill in Fourmile Creek around 10:55 a.m., residents downstream should climb to higher ground. <a href="https://twitter.com/hashtag/boulderflood?src=hash">#boulderflood</a></p>&mdash; Boulder OEM (@BoulderOEM) <a href="https://twitter.com/BoulderOEM/status/378209151203426304">September 12, 2013</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" lang="en"><p>295 people being airlifted out of Jamestown, first group now on buses en route to evacuation center. <a href="https://twitter.com/hashtag/boulderflood?src=hash">#boulderflood</a></p>&mdash; Boulder OEM (@BoulderOEM) <a href="https://twitter.com/BoulderOEM/status/378621984550420480">September 13, 2013</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
