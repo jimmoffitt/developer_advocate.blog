@@ -4,15 +4,21 @@ Exploring different JSON schemas to 'host' data-viz data store.
 * Includes both statc metadata and time-series interval data.
 * Ths example compiles two fundamentally different types of data:
   * Twitter tweet data.
-  * 15-minute and hourly weather data:
-    * rain gauges.
-    * Stage gauges.
+  * A non-twitter dataset that also has static metadata and time-series data.
+    * Example use-case is the 2013 Colorado Flood.    
+    * 15-minute and hourly weather data:
+         * rain gauges.
+         * Stage gauges.
   
 Time details:
  * Everything here is in UTC, GMT, Zulu.  tz_offset = 0
  * YYYY-MM-DD HH:MM:SS
  * Supported intervals: 15-minutes, 60-minutes
  
+ Time "helper functions":
+       * Casting between time strings and time objects.
+       * Rolling event timestamps into interval bins.
+            * intervals values are produced different ways: totals/counts, averages, first, last.   
 
 ---------------------------
 
@@ -941,3 +947,85 @@ Two time-series intervals: 15-minute, 60-minute
 }
 
 ```
+
+###Sample Ruby code for generating "web-replay" JSON files
+
+Some basic imports:
+```ruby
+require 'active_record' #SELECTing data from a MySQL database. You can use other db engines, easy to change with Rails ActiveRecord.
+require "yaml"          #Only for getting/setting Config details.  
+require 'csv'           
+require 'json'
+```
+
+```ruby
+#Time Helper functions.
+def get_date_string(time)
+    begin
+        return time.year.to_s + '-' + sprintf('%02i', time.month) + '-' +  sprintf('%02i', time.day) + ' ' + sprintf('%02i', time.hour) + ':' + sprintf('%02i', time.min) + ':' + sprintf('%02i', time.sec)
+    rescue
+        p 'Error parsing date object.'
+    end
+end
+
+def get_date_object(time_string)
+    time = Time.now.utc
+    time = Time.parse(time_string)
+    return time
+end
+
+def getInterval(time_string, interval, specifies)
+
+    #p time_string
+
+    #Create Time object to use its methods.
+    time = get_date_object(time_string)
+
+    minutes = time.min
+    hours = time.hour
+
+    time_updated = Time.new
+
+    #'2013-09-11 18:32:23'
+    if specifies == 'begin' then   #TODO: contains 'begin'
+
+        #if interval = 15
+        #--> '2013-09-11 18:30:00'
+        p 'Warning: not implemented yet.'
+
+        #if interval = 60
+        #--> '2013-09-11 18:00:00'
+        #.ago.beginning_of_hour
+        p 'Warning: not implemented yet.'
+
+    else
+        #if interval = 15 --> '2013-09-11 18:45:00'
+        if minutes >= 0 and minutes < 15 then
+            time_updated =time.change(:min => 15, :sec => 0)
+        end
+        if minutes >= 15 and minutes < 30 then
+            time_updated =time.change(:min => 30, :sec => 0)
+        end
+
+        if minutes >= 30 and minutes < 45 then
+            time_updated = time.change(:min => 45, :sec => 0)
+        end
+
+        if minutes >= 45 and minutes <= 59 then
+            time_updated =time.change(:hour => (hours + 1), :min => 0, :sec => 0)
+        end
+
+        #if interval = 60
+        #--> '2013-09-11 19:00:00'
+        #p 'Warning: not implemented yet.'
+    end
+
+    interval =  get_date_string(time_updated)
+end
+
+```
+
+
+
+
+
