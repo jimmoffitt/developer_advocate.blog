@@ -20,6 +20,103 @@ Time details:
        * Rolling event timestamps into interval bins.
             * intervals values are produced different ways: totals/counts, averages, first, last.   
 
+```
+{
+    "description": "JSON time-series data consisting of Twitter and an 'external' dataset",
+    "static": {
+        "time_series": {
+            "metadata": {
+                "time_start": "2013-09-14 00:00:00",
+                "time_end": "2013-09-14 02:00:00",
+                "interval_minutes": 60,
+                "time_format": "YYYY-MM-DD HH:mm:ss",
+                "tz": "UTC",
+                "tz_offset": 0
+            }
+        },
+        "twitter": {},
+        "external": {
+            "sites": {
+                "stage": [
+                    {
+                        "site_id": "4410",
+                        "name": "Fourmile",
+                        "lat": "40.05",
+                        "long": "-105.369",
+                        "altitude": "6520",
+                        "stage1": 5.5,
+                        "stage2": 7,
+                        "stage3": 8
+                    }
+                ],
+                "rain": [
+                    {
+                        "site_id": "4050",
+                        "name": "Walker Ranch",
+                        "lat": "39.952",
+                        "long": "-105.339",
+                        "altitude": "7320"
+                    }
+                ]
+            }
+        },
+        "interval_data": {
+            "2013-09-14 01:00:00": {
+                "external": {
+                    "stage": {
+                        "Fourmile": "2.02"
+                    },
+                    "rain": {
+                        "Walker Ranch": {
+                            "increment": "0.000",
+                            "accumulation": "8.44"
+                        }
+                    }
+                },
+                "tweets": [
+                    {
+                        "id": "378670195101147136",
+                        "user_id": "29768489",
+                        "body": "It's not raining for now...\\nBut those clouds... #scary #flood #rain #colorado #weather @ Discount Tire http://t.co/EzHJg0Lv6K",
+                        "lat": "39.5584",
+                        "long": "-104.885",
+                        "media": null,
+                        "urls": "http://instagram.com/p/eOFANYQpBY/"
+                    }
+                ]
+            },
+            "2013-09-14 02:00:00": {
+                "external": {
+                    "stage": {
+                        "Fourmile": "1.99"
+                    },
+                    "rain": {
+                        "Walker Ranch": {
+                            "increment": "0.000",
+                            "accumulation": "8.44"
+                        }
+                    }
+                },
+                "tweets": [
+                    {
+                        "id": "378688365635567616",
+                        "user_id": "16343091",
+                        "body": "#clouds #sky #boulderflood @ Boulder, Colorado http://t.co/XaXtcWRDpk",
+                        "lat": "39.9641",
+                        "long": "-105.302",
+                        "media": null,
+                        "urls": "http://instagram.com/p/eONS1ymDIi/"
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+
+
+
+
 ---------------------------
 
 Two JSON formats: 'Standard', GeoJSON
