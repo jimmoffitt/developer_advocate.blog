@@ -5,10 +5,26 @@
 + Fundamental issues: data privacy, data interpretation, public safety
      + Privacy issues drive these questions: Human readable?  Use of Direct Messages?
 + Fundamental concepts: leveraging network, lack of latency, global reach
++ Fundamental methods: getMetaData(SourceSystem,Sites,Sensors), sendData(TargetSystem,Data)
++                      getRealtimeData(SourceSystem,Sites,Sensors)
 
+
+
+Fundamental models:
+
+* System has its own (master) Twitter account.
+     * Attributes: Name, ID, Sites, Sensors, Net, DataStore, etc.
+
+
+* Each site has its own Twitter account.
+     * Attributes: Name, ID, Sensors, Lat, Long
+     * Site Actor object = site metadata (static attributes with current values).
+     * Tweets out own metadata, and reports from its sensors.
 
 ####Data transfer model
-Systems will poll every 10 minutes, then defined triggers will start streaming.
+#Systems will poll every 10 minutes
+#Defined triggers will start and stop streaming.
+#Streaming can always be manually started and stopped.
 
 Twitter public network/internet will provide a primary broadcast channel, but not the only one.
 Standard and mission-critical backups still apply: ALERT radio, satellite, celluar
@@ -139,10 +155,11 @@ Sensor ID: 1500, 1510, 1520, 1560, 1570, 1571
 ###Sensor reports:
 
 
-Temperature 
+Temperature (Example of public, readily readable content)
+
 ```
-Temp: 70F 
-Temp: 28C
+Site: Brighton
+Temp: 70F / 28C
 ID: 1560
 2014-07-11 09:45:00 MDT
 ```
