@@ -22,9 +22,9 @@ Fundamental models:
      * Tweets out own metadata, and reports from its sensors.
 
 ####Data transfer model
-#Systems will poll every 10 minutes
-#Defined triggers will start and stop streaming.
-#Streaming can always be manually started and stopped.
+* Systems will poll every 10 minutes
+* Defined triggers will start and stop streaming.
+* Streaming can always be manually started and stopped.
 
 Twitter public network/internet will provide a primary broadcast channel, but not the only one.
 Standard and mission-critical backups still apply: ALERT radio, satellite, celluar
@@ -155,14 +155,35 @@ Sensor ID: 1500, 1510, 1520, 1560, 1570, 1571
 ###Sensor reports:
 
 
-Temperature (Example of public, readily readable content)
+Tweeting Temperature (Example of public, readily readable content)
+
+From System
+* Supports list of Sites with metadata updates
+```
+Updated sites: Brighton, Four Mile Canyon
 
 ```
-Site: Brighton
-Temp: 70F / 28C
-ID: 1560
-2014-07-11 09:45:00 MDT
+
 ```
+#ALERT
+{Message}
+{URL}
+{media}
+
+```
+
+2014-07-11 09:45:00 MDT from posted_at timestamp.
+
+
+From Brighton Site
+```
+Temperature is 70 F (28 C)  
+Small plot 
+
+```
+2014-07-11 09:45:00 MDT from posted_at timestamp.
+
+
 
 Rain 
 ```
