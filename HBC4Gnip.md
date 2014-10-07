@@ -50,7 +50,9 @@ Features: reconnection logic with backoff, handles gzip compression
 ####Example Java Client
 
 
-```
+```java
+package com.twitter.data.client;
+
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -61,7 +63,10 @@ import com.twitter.hbc.core.Constants;
 import com.twitter.hbc.core.endpoint.RealTimeEnterpriseStreamingEndpoint;
 import com.twitter.hbc.core.processor.LineStringProcessor;
 
-public class hbcClient {
+import com.twitter.hbc.datastore.db; //.no_sql //.queue
+
+
+public class hbcClient4Gnip {
 
     public static void main(String[] args) {
         try {
@@ -83,6 +88,9 @@ public class hbcClient {
 
         // NEW LineStringProcessor to handle Gnip formatted streaming HTTP
         LineStringProcessor processor = new LineStringProcessor(queue);
+        
+        // NEW (mysql) database object based on CLIENT schema.
+        Database db = new Datastore('MySQL', config)
 
         // Build a hosebird client just like before
         ClientBuilder builder = new ClientBuilder()
@@ -100,7 +108,8 @@ public class hbcClient {
         while (!client.isDone()) {
             try {
                 String message = queue.take();
-                System.out.println(message); // Here is where you could put it on a queue for another thread to come in and take care of the message
+                //System.out.println(message); // Here is where you could put it on a queue for another thread to come in and take care of the message
+                db.handleActivity(message)
             } catch (InterruptedException e) {
                 System.out.println(e);
             }
@@ -127,6 +136,9 @@ package com.twitter.data.client
 import com.twitter.hbc.datastore.db
 
 class database
+    public boolean handleActivity(String activity) {
+    
+    }
 
 end
 
