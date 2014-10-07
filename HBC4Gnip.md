@@ -115,11 +115,20 @@ public class hbcClient {
 http://maven.apache.org/download.cgi
 
 
-
-
 ```
 me$ java hbcClient "username" "password" "account" "product" "label"
 
 ```
+
+####Writing data to a Client database.
+package com.twitter.data.client
+
+
+import com.twitter.hbc.datastore.db
+
+class database
+
+end
+
 
 
