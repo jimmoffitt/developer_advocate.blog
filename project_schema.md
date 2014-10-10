@@ -7,8 +7,9 @@ Tables: activities, hashtags, actors, rules
 
 Activity table with dynamic actor attributes.
 
-+ Activities table persists Activity obejects.
-+ Storing 'dynamic' actor attributes on a activity-by-activity basis.
++ Activities table persists Activity objects.
+     + Storing 'dynamic' actor attributes on a activity-by-activity basis.
++ More static actor atributes are in Actor table.
 + Metadata arrays are handled in two ways:
 +     Separate metadata table with a many-to-one activity relationship.
 +     Stored as a 'flattened' array with a specified delimiter.
