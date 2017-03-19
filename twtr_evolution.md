@@ -2,14 +2,18 @@
 
 Billions of Tweets have been posted since 2006. These Tweets encapsulate an amazing amount of human communications. This archive can be an indispensable research tool for an amazing number of use-cases. 
 
-### New user conventions and use-patterns driving product development
-
-### New features being added to Platform
-
-
-
-
 [Set-up the reason the following details are useful]
+
+#### New user conventions and use-patterns driving product development
+
+Hashtags, Repies, Mentions, Retweets, adding links, sharing photos.
+
+
+#### New features being added to Platform
+
+Private messages, Ads platform, Polls.
+
+
 
 ### Twitter Historical Products
 
