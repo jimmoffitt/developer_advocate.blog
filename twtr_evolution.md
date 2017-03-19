@@ -1,6 +1,15 @@
 ## Introduction
 
-Billions of Tweets have been posted since 2006. These Tweets encapsulate an amazing amount of human communications. This archive can be an indispensable research tool for an amazing number of use-cases. [Set-up the reason the following details are useful]
+Billions of Tweets have been posted since 2006. These Tweets encapsulate an amazing amount of human communications. This archive can be an indispensable research tool for an amazing number of use-cases. 
+
+### New user conventions and use-patterns driving product development
+
+### New features being added to Platform
+
+
+
+
+[Set-up the reason the following details are useful]
 
 ### Twitter Historical Products
 
