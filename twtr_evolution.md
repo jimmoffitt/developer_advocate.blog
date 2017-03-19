@@ -9,9 +9,11 @@ In 2012, Historical PowerTrack (HPT) was introduced and quickly because a widely
 In 201#, the 30-Day Search API was released. [Product description. ] Next Twitter indexed the entire Tweet archive and in 2015 released Full-Archive Search (FAS). 
 
 
-What follows is a set of articles that address how these Twitter changes affected the effort to find and analyze Twitter data.
+What follows is a set of articles that address how these Twitter changes affect the effort to find and analyze Twitter data.
 
-We'll start with a review of Twitter Plaform updates that somehow affected the JSON generated with HPT and FAS. Then we'll dig into the many product-specific details that affect how this stored JSON matches PowerTrack Operators. At the architectural level, the HPT and FAS archives are significantly different. [two slightly different list of available PowerTrack Operators.] 
+[Intro narrative on the evolution of hashtags and retweets, and how new twitter features affected user-behavior.]
+
+We'll start with a review of Twitter Plaform updates that in some way affected the JSON generated with HPT and FAS. Then we'll dig into the many product-specific details that affect how this stored JSON matches PowerTrack Operators. At the architectural level, the HPT and FAS archives are significantly different. [two slightly different list of available PowerTrack Operators.] 
 
 
 
