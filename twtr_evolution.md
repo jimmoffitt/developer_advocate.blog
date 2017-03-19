@@ -1,4 +1,12 @@
-## Introduction
+
++ [Introduction](#introduction)
++ [Twitter Platform Timeline](#twitterTimeline)
+
+### tl;dr
+
+
+
+## Introduction <a id="introduction" class="tall">&nbsp;</a>
 
 Billions of Tweets have been posted since 2006. These Tweets encapsulate an amazing amount of human communications. This archive can be an indispensable research tool for an amazing number of use-cases. 
 
@@ -45,7 +53,7 @@ We'll start with a review of Twitter Plaform updates that in some way affected t
 
 # Articles
 
-## Twitter timeline
+## Twitter timeline <a id="twitterTimeline" class="tall">&nbsp;</a>  
 
 User-driven conventions and new features.
 
