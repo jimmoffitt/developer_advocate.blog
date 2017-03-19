@@ -1,8 +1,13 @@
 
 + [Introduction](#introduction)
++ [Twitter Historical Products](#historicalProducts)
++ [Twitter JSON objects 101](#twitterJsonIntro)
++ [Upcoming articles:](#articleList)
 + [Twitter Platform Timeline](#twitterTimeline)
 
+
 ### tl;dr
+“As someone doing historical research with Twitter Data, I need to understand how the platform has evolved, how that evolution affected user behavior, how it affected the Tweet JSON payloads, and how to effectively search the Twitter archive. “
 
 
 
@@ -16,23 +21,20 @@ Billions of Tweets have been posted since 2006. These Tweets encapsulate an amaz
 
 Hashtags, Repies, Mentions, Retweets, adding links, sharing photos.
 
-
 #### New features being added to Platform
 
 Private messages, Ads platform, Polls.
 
+### Twitter Historical Products <a id="historicalProducts" class="tall">&nbsp;</a>
 
-
-### Twitter Historical Products
-
-Twitter offers two products that provide access to every publicly available Tweet. These APIs able users to build queries using a set of [PowerTrack Operators](http://support.gnip.com/apis/search_full_archive_api/rules.html#Operators). 
+Twitter offers two products that provide access to every publicly available Tweet; [Historical PowerTrack](http://support.gnip.com/apis/historical_api2.0/) and [Full-Archive Search](http://support.gnip.com/apis/search_full_archive_api/). These APIs able users to build queries using a set of [PowerTrack Operators](http://support.gnip.com/apis/search_full_archive_api/rules.html#Operators). 
 
 In 2012, Historical PowerTrack (HPT) was introduced and quickly because a widely utilized Twitter research tool. HPT enables users to associate a time period of interest and a set of 1,000 PowerTrack rules/filters to an historical ```Job```. HPT offers the same Operators as real-time PowerTrack and is built to deliver Tweets at scale. In fact, this product is used to generate and share the entire public archive of Tweets to the Library of Congress (LOC). HPT generates a time-series of 10-minute data files for download. These Jobs can result in thousands of large files that take many hours to both generate and download. The HPT API provides a variety of methods to create and monitor a Job's process. Essentially the API is used to manage a Job's lifecycle. 
 
 In 201#, the 30-Day Search API was released. [Product description. ] Next Twitter indexed the entire Tweet archive and in 2015 released Full-Archive Search (FAS). FAS also provides access to the entire Twitter archive, but does it in a much different way. With FAS you submit a single query and receive a response in classic RESTful fashion. FAS implements 500-Tweets-per-response pagination, and defaults to a 120-requests-per-minute rate-limit. Given these details, FAS can be used to rapidly retrieve Tweets, and at large scale using concurrent requests. FAS also provide the ability to count the number of Tweets matching your query before requesting the corresponding data. Counts are avaialable in arrays with minute, hour, and day periods. This ability to 'look before you leap' is an amazing tool in itself. With many use-cases, matching volumes is of primary interest. Since the Counts endpoint provides fast feedback on the matching behavior of a rule, it can be used to assess filtering behavior before pulling the data. For this reason, the Search API is a great complement to real-time and Historical PowerTrack. 
 
 
-### Twitter JSON objects 101
+### Twitter JSON Objects 101 <a id="twitterJsonIntro" class="tall">&nbsp;</a>
 
 Tweets are made up of a Tweet message, a posted time, a set of User (or Author or Actor) attributes, a collection of engagement metadata, and sometimes geographical metadata.
 
@@ -51,7 +53,7 @@ What follows is a set of articles that address how these Twitter changes affect 
 We'll start with a review of Twitter Plaform updates that in some way affected the JSON generated with HPT and FAS. Then we'll dig into the many product-specific details that affect how this stored JSON matches PowerTrack Operators. At the architectural level, the HPT and FAS archives are significantly different. [two slightly different list of available PowerTrack Operators.] 
 
 
-# Articles
+# Articles <a id="articleList" class="tall">&nbsp;</a>
 
 ## Twitter timeline <a id="twitterTimeline" class="tall">&nbsp;</a>  
 
