@@ -26,6 +26,11 @@ A somewhat random collection of articles written with Gnip customers in mind...
 *  Adventures in (Raspberry) Pi: https://github.com/jimmoffitt/pi-adventures 
      
 ### Articles up at http://support.gnip.com/articles:
+
+- [Updating Twitter Hosebird Client for PowerTrack 2.0](http://support.gnip.com/articles/updating-hbc-for-ptv2.html)
+- [Consuming Streaming Data](http://support.gnip.com/articles/consuming-streaming-data.html)
+- [Migrating PowerTrack Rules from Version 1.0 to 2.0](http://support.gnip.com/articles/migrating-powertrack-rules.html)
+- [Migrating Code to Gnip 2.0](http://support.gnip.com/articles/migrating-gnip-code.html)
 - Geo-referencing with the Profile Location enrichments. 
      - [Twitter Geographical Metadata](http://support.gnip.com/articles/geo-intro.html)
      - [Profile Geo use-case](http://support.gnip.com/articles/twitter-geo-referencing.html)
