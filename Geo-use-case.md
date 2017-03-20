@@ -1,5 +1,5 @@
 # Twitter Geo-Referencing: An Example Use-case
-####Twitter signals around local rain events
+#### Twitter signals around local rain events
 
 The [Tweeting in the Rain] (http://blog.gnip.com/tweeting-in-the-rain/) blog series discussed looking for a Twitter “signal" around rain gauges in six areas of the US including San Diego, Las Vegas, Boulder and Louisville. Rain gauge data was compiled from ten significant storms and compared with hourly volumes of Twitter traffic.
 
@@ -15,7 +15,7 @@ Across the ten rain events analyzed, here is the breakdown of the geographic met
 By far the majority of geo-referencing was performed by parsing the words from the Profile Location. These numbers help illustrate the importance of Profile Locations when attempting to determine where tweets come from. Next the power of the Profile Location enrichment will be demonstrated by comparing filtering with and without Profile Geo metadata.
 
 
-###Life before the Profile Geo Enrichment
+### Life before the Profile Geo Enrichment
 
 Data for the study was collected and analyzed in February 2013, before the Profile Geo beta enrichment was released. Before the Profile Geo enrichment there were two PowerTrack Operators available for filtering on Profile Locations:
 + bio_location
@@ -48,7 +48,7 @@ This rule syntax is not very complex, but it is a bit long. More importantly, it
 Since we saw good correlations between Louisville rainfall and our attempts to geo-reference tweets from that area, we choose not to further refine our rules with respect to Profile Locations. However, as the use of social networks grows the chances of collecting “false positives” increases and such assumptions become more suspect.
 Fortunately there is an easier and more effective way to tackle this issue.
 
-###Easier filtering with the Profile Geo enrichment
+### Easier filtering with the Profile Geo enrichment
 A powerful thing about the new enhanced Profile Location tools is that it abstracts away techniques that blend geographic and language processing. With these new tools, we could have simply specified the City of Louisville and the State of Kentucky and known that we’d optimized our results.  With the following simple rule we would have known that we were omitting tweets from towns named Louisville in states other than Kentucky:
 
     profile_locality:louisville profile_region:kentucky
