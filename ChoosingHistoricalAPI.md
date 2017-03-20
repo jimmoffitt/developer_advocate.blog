@@ -1,4 +1,6 @@
 + [Introduction](#introduction)
+    + [Historical PowerTrack](#hpt)
+    + [Full-Archvie Search API](#search)
 + [Fundamental Differences](#differences)
 
 
@@ -9,14 +11,17 @@
 
 Both Historical PowerTrack (HPT) and Full-Archive Search (FAS) can serve any publicly available Tweet from the entire archive, starting with the first Tweet from March 2006. To better understand ideal uses for Full-Archive Search versus those for Historical PowerTrack, it is important to have a clear understanding of the underlying technologies.
 
-FAS is most analogous to Google, obviously another search-based tool. When you search for a particular term, Google doesn’t return or display the millions of matching results all at once. Rather, it delivers 10 results at a time per scrollable page and allows you to click “Next” for the subsequent page of 10 results… and so on, through all of the matching items returned. Like Google, the FAS tool is best-suited for delivering smaller datasets at a time with the ability to paginate for more data as needed. It is also the best solution for those situations where expediency in returns is needed. Thanks to having an index of every Tweet since the beginning of time, it offers near-immediate responses to these smaller data queries. Using FAS, the more data that matches your query the longer it will take you to retrieve all of that data through the product. This is because you will need to stitch together the paginated groups of results, one after the other, to create the complete file of all returned data. 
-
-So FAS is designed using the classic request/response pattern, where a single PowerTrack rule is submitted and a response with matching Tweets is immediately provided. FAS can provide a maximum of 500 Tweets per response, and a ‘next’ token is provided to paginate until all Tweets  for a query are received. FAS also supports ‘count’ requests, where only the number of matching Tweets is provided, These counts are returned in a time-series of minute-by-minute, hourly, or daily totals.
+#### Historical PowerTrack <a id="hpt" class="tall">&nbsp;</a>  
 
 Historical PowerTrack, on the other hand, can be compared to a library with copies of all the books that have been published in human existence. If you want to find every mention of a particular keyword or rule, you need to search through every page of every book to find them.  You may know the section of the library, the aisle, the shelf or even the specific book, but you still have to skim every page to find the exact matches of the search. 
 
 HPT is built to deliver Tweets at scale using a batch, Job-based design where the API is used to move a HPT Job through multiple phases. These phases include volume estimation, Job acceptance/rejection, getting Job status, and downloading potentially many thousands of data files. Depending on the length of the request time period, Jobs can take hours or days to generate.
 
+#### Full-Archive Search <a id="search" class="tall">&nbsp;</a>  
+
+FAS is most analogous to Google, obviously another search-based tool. When you search for a particular term, Google doesn’t return or display the millions of matching results all at once. Rather, it delivers 10 results at a time per scrollable page and allows you to click “Next” for the subsequent page of 10 results… and so on, through all of the matching items returned. Like Google, the FAS tool is best-suited for delivering smaller datasets at a time with the ability to paginate for more data as needed. It is also the best solution for those situations where expediency in returns is needed. Thanks to having an index of every Tweet since the beginning of time, it offers near-immediate responses to these smaller data queries. Using FAS, the more data that matches your query the longer it will take you to retrieve all of that data through the product. This is because you will need to stitch together the paginated groups of results, one after the other, to create the complete file of all returned data. 
+
+So FAS is designed using the classic request/response pattern, where a single PowerTrack rule is submitted and a response with matching Tweets is immediately provided. FAS can provide a maximum of 500 Tweets per response, and a ‘next’ token is provided to paginate until all Tweets  for a query are received. FAS also supports ‘count’ requests, where only the number of matching Tweets is provided, These counts are returned in a time-series of minute-by-minute, hourly, or daily totals.
 
 ### Fundamental Differences <a id="differences" class="tall">&nbsp;</a>  
 
