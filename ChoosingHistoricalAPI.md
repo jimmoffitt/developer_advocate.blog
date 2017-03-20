@@ -77,6 +77,7 @@ Here are the fundamental differences between Historical PowerTrack (HPT) and Ful
     <td class="tg-yw4l">url_title:</td>
   </tr>
 </table>
+    + See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/HistoricalOperatorsTable.md) for a side-by-side comparison of available Operators.
     + For a complete list of Operators for each product see here:
         + [Search Operator List](http://support.gnip.com/apis/search_full_archive_api/rules.html#Operators)
         + [Historical PowerTrack Operator List](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators)
