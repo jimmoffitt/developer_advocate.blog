@@ -1,4 +1,4 @@
-# Evolution of the Twitter platform, Tweet metadata, and related details for effectively querying historical data
+# Evolution of the Tweet metadata, and details for effectively querying historical data
 + [Introduction](#introduction)
 + [Twitter Historical Products](#historicalProducts)
 + [Twitter JSON Objects 101](#twitterJsonIntro)
@@ -7,12 +7,8 @@
 + [Historical PowerTrack: metadata and filtering timelines](#hptTimeline)
 + [Full-Archive Search API: metadata and filtering timelines](#fasTimeline)
 
-
-
 ### tl;dr
 “As someone doing historical research with Twitter Data, I need to understand how the platform has evolved, how that evolution affected user behavior, how it affected the Tweet JSON payloads, and how to effectively search the Twitter archive. “
-
-
 
 ## Introduction <a id="introduction" class="tall">&nbsp;</a>
 
