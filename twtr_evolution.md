@@ -86,6 +86,288 @@ Other important platform updates:
 
 
 
+
+
+## Choosing an historical API 
+
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-f3f0{font-weight:bold;background-color:#90d679;vertical-align:top}
+.tg .tg-nhkk{font-weight:bold;background-color:#86baf4;vertical-align:top}
+.tg .tg-yw4l{vertical-align:top}
+.tg .tg-4qcj{background-color:#90d679;vertical-align:top}
+.tg .tg-3we0{background-color:#ffffff;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-nhkk">Operator</th>
+    <th class="tg-nhkk">PowerTrack (real-time and Historical)</th>
+    <th class="tg-nhkk">Search APIs (30-Day and Full-Archive)</th>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">"exact phrase match"</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">@</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-f3f0">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">#</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">$</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">bio:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">bio_location:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">bio_name:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">bounding_box:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">contains:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">&lt;emoji&gt;</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">followers_count:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">friends_count:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">from:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">has:geo</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">has:hashtags</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">has:images</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">has:lang</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">has:links</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">has:media</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">has:mentions</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">has:profile_geo</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">has:symbols</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">has:videos</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">in_reply_to_status_id:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">is:quote</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">is:retweet</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">is:verified</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">keyword</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">lang:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">listed_count:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">place_country:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">place:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">point_radius:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">profile_bounding_box</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">profile_country:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">profile_locality:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">profile_point_radius</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">profile_region:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">profile_subregion:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">proximity~N</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">retweets_of_status_id:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">retweets_of:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">sample:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-3we0"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">source:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">statuses_count:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">time_zone:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">to:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">url_contains:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">url_description:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">url_title:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">url:</td>
+    <td class="tg-4qcj">✔</td>
+    <td class="tg-4qcj">✔</td>
+  </tr>
+</table>
+
+
+
+
+
 ## Historical API: metadata and filtering timeline  <a id="hptTimeline" class="tall">&nbsp;</a>
 
 ### Product timeline
@@ -99,9 +381,9 @@ Other important platform updates:
 + September 1 - Tweet Geo starts. Matching for *has:geo, place_country:, bounding_box: point_radius:*.
 #### 2012
 + March 26 
- - Gnip Language - ```gnip.lang``` language metadata. No longer filtered for. ```lang:``` Operator now based solely on root level Twitter language classification. 
- - Expanded URLs - URL metadata from this date until launch of HPT 2.0 will contain ```gnip.expanded_url``` fully unwound URL. 
- - Klout Scores - Klout scores from this date until launch of HPT 2.0 will contain ```gnip.klout_score``` data.
+    - Gnip Language - ```gnip.lang``` language metadata. No longer filtered for. ```lang:``` Operator now based solely on root level Twitter language classification. 
+    - Expanded URLs - URL metadata from this date until launch of HPT 2.0 will contain ```gnip.expanded_url``` fully unwound URL. 
+    - Klout Scores - Klout scores from this date until launch of HPT 2.0 will contain ```gnip.klout_score``` data.
 #### 2013
 + March 26 - Twitter language classifiction added. 
 + June 4 - Profile Geo launched.
@@ -111,8 +393,6 @@ Other important platform updates:
 + February 22 - Poll metadata is available in *original* format. 
 
 
-
-## Choosing an historical API 
 
 ## Search API and metadata timeline
 
