@@ -1,4 +1,4 @@
-# Evolution of the Twitter platform, Tweet metadata, and effectively querying historical data
+# Evolution of the Twitter platform, Tweet metadata, and related details for effectively querying historical data
 + [Introduction](#introduction)
 + [Twitter Historical Products](#historicalProducts)
 + [Twitter JSON Objects 101](#twitterJsonIntro)
