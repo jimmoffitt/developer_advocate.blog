@@ -6,7 +6,7 @@ A somewhat random collection of articles written with Gnip customers in mind...
 + Tweeting in the Rain series:
     + [Finding Data Signal of Interest: Do Tweet volumes correlate with **local** rain gauges?](http://blog.gnip.com/tweeting-in-the-rain/)
     + [Social Data as an Early-Warning System](http://blog.gnip.com/tweeting-in-the-rain-part-2/)
-    + [Opportunities Social Networks Bring to Early-Warning Systems](http://blog.gnip.com/tweeting-in-the-rain-part-3/)
+    + [Opportunities Social Networks Bring to Early-Warning Systems: geo-referencing Tweets](http://blog.gnip.com/tweeting-in-the-rain-part-3/)
     + [How the 2013 Colorado Flood Unfolded on Twitter](https://blog.gnip.com/tweeting-rain-part-4-tweets-2013-colorado-flood/)
      
 + [Using Twitter as a Go-to Communication Channel During Severe Weather Events](https://blog.twitter.com/2016/using-twitter-as-a-go-to-communication-channel-during-severe-weather-events)
