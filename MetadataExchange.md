@@ -1,5 +1,5 @@
 
-###General themes
+### General themes
 
 + Audience? anyone interested in metadata exchange. use-case: Hydrology community.
 + Fundamental issues: data privacy, data interpretation, public safety
@@ -9,19 +9,17 @@
 +                      getRealtimeData(SourceSystem,Sites,Sensors)
 
 
-
 Fundamental models:
 
 * System has its own (master) Twitter account.
      * Attributes: Name, ID, Sites, Sensors, Net, DataStore, etc.
-
 
 * Each site has its own Twitter account.
      * Attributes: Name, ID, Sensors, Lat, Long
      * Site Actor object = site metadata (static attributes with current values).
      * Tweets out own metadata, and reports from its sensors.
 
-####Data transfer model
+#### Data transfer model
 * Systems will poll every 10 minutes
 * Defined triggers will start and stop streaming.
 * Streaming can always be manually started and stopped.
@@ -50,7 +48,7 @@ Data Request Hashtags:
 #SendSensorSummary #Temp #Rain
 ```
 
-###Payload characters
+### Payload characters
 
 + Sensor type: 16
 + Sensor ID: 16
@@ -63,7 +61,7 @@ Total characters: 87 (Max + whitespace)
 
 
 
-###System Actor
+### System Actor
 
 
 ```
@@ -101,7 +99,7 @@ Total characters: 87 (Max + whitespace)
   
 ```
  
-###Site Actor
+### Site Actor
 
 
 ```
@@ -140,7 +138,7 @@ Total characters: 87 (Max + whitespace)
 
 
 
-###Site Metadata Tweet
+### Site Metadata Tweet
 
 ```
 Name: Lake Harriet
@@ -152,7 +150,7 @@ Sensor Types: 10, 11
 Sensor ID: 1500, 1510, 1520, 1560, 1570, 1571
 ```
 
-###Sensor reports:
+### Sensor reports:
 
 
 Tweeting Temperature (Example of public, readily readable content)
