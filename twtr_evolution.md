@@ -4,6 +4,7 @@
 + [Twitter JSON Objects 101](#twitterJsonIntro)
 + [Upcoming articles:](#articleList)
 + [Twitter Platform Timeline](#twitterTimeline)
++ [Choosing an historical API](#selectingHistoricalProduct)  
 + [Historical PowerTrack: metadata and filtering timelines](#hptTimeline)
 + [Full-Archive Search API: metadata and filtering timelines](#fasTimeline)
 
@@ -88,8 +89,31 @@ Other important platform updates:
 
 
 
-## Choosing an historical API <a id="twitterTimeline" class="tall">&nbsp;</a>  
+## Choosing an historical API <a id="selectingHistoricalProduct" class="tall">&nbsp;</a>  
 
+
+### Overview
+
+Both Historical PowerTrack (HPT) and Full-Archive Search (FAS) can serve any publicly available Tweet from the entire archive, starting with the first Tweet from March 2006. 
+
+HPT is built to deliver Tweets at scale using a batch, Job-based design where the API is used to move a HPT Job through multiple phases. These phases include volume estimation, Job acceptance/rejection, getting Job status, and downloading potentially many thousands of data files. Depending on the length of the request time period, Jobs can take hours or days to generate.
+
+FAS is designed using the classic request/response pattern, where a single PowerTrack rule is submitted and a response with matching Tweets is immediately provided. FAS can provide a maximum of 500 Tweets per response, and a ‘next’ token is provided to paginate until all Tweets  for a query are received. FAS also supports ‘count’ requests, where only the number of matching Tweets is provided, These counts are returned in a time-series of minute-by-minute, hourly, or daily totals.
+
+### Fundamental Differences
+
+Here are the fundamental differences between Historical PowerTrack (HPT) and Full-Archive Search (FAS):
+
++ Number of rules supported per request.
+    + Full-Archive Search accepts a single rule per request. Each rule can be up to 2,048 characters. A Historical PowerTrack Job can support up to 1,000 rules. 
++ Supported PowerTrack Operators.
+    + While the majority of Operators supported by HPT are also supported by FAS, there are a set of Operators not available in FAS:
+    + For a complete list of Operators for each product see here:
+        + [Search Operator List](http://support.gnip.com/apis/search_full_archive_api/rules.html#Operators)
+        + [Historical PowerTrack Operator List](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators)
+ + API Data Response.
+     + HPT generates a time-series of data files, each covering a ten-minute period. For example, each hour of data is provided in six 10-minute data files. Inside each HPT file, the JSON Tweet payloads are written in an atomic fashion, and are not presented in an JSON array. File contents need to be parsed using newline characters as a delimiter.
+     + With FAS, Tweets in each response are arranged in a “results” array. A maximum of 500 Tweets are available per response and a ‘next’ token is provided if more Tweets are available. For example, if a 60-day request for a single PowerTrack rule matches 10,000 Tweets, at least 20 requests must be made of the Search API.
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
@@ -101,6 +125,7 @@ Other important platform updates:
 .tg .tg-4qcj{background-color:#90d679;vertical-align:top}
 .tg .tg-3we0{background-color:#ffffff;vertical-align:top}
 </style>
+
 <table class="tg">
   <tr>
     <th class="tg-nhkk">Operator</th>
@@ -364,6 +389,23 @@ Other important platform updates:
   </tr>
 </table>
 
+### Switching between products
+
+#### Steps for converting a HPT Job to Full-Archive Search:
+
+Integrate the Full-Archive Search API.
+FAS product documentation is available HERE.
+FAS API documentation is available HERE.
+If already using 30-Day Search, the same code used for 30-Day Search can be used for Full-Archive Search.
+Example client code in Python and Ruby are available HERE.
+Review HPT rules and confirm all Operators are supported by Search API.
+Multiple rules associated with a HPT Job need to be split up into individual Search requests. Each rule will be individually requested from the FAS API.
+When receiving API responses:
+Tweets are returned in a “results” array, starting with most recent Tweets.
+A maximum of 500 Tweets are provided per response.
+A ‘next’ token is provided if more requests are needed to complete request. The ‘next’ token should be parsed from the response and added to the next API request.
+
+#### Steps for converting FAS requests to a HPT Job:
 
 
 
