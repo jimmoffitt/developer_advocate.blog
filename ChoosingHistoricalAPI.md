@@ -33,8 +33,8 @@ Here are the fundamental differences between Historical PowerTrack (HPT) and Ful
        
 <table class="tg">
   <tr>
-    <th class="tg-yw4l">bio:</th>
-    <th class="tg-yw4l">profile_bounding_box</th>
+    <td class="tg-yw4l">bio:</td>
+    <td class="tg-yw4l">profile_bounding_box</td>
   </tr>
   <tr>
     <td class="tg-yw4l">bio_location:</td>
