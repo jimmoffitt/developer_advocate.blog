@@ -3,27 +3,27 @@ __Developer Advocate blog__ ...from the client-side prespective
 A somewhat random collection of articles written with Gnip customers in mind...  
 
 ### Twitter Blog Posts - Data stories 
-    + Tweeting in the Rain series:
-        + http://blog.gnip.com/tweeting-in-the-rain/
-        + http://blog.gnip.com/tweeting-in-the-rain-part-2/ 
-        + http://blog.gnip.com/tweeting-in-the-rain-part-3/
-        + https://blog.gnip.com/tweeting-rain-part-4-tweets-2013-colorado-flood/
++ Tweeting in the Rain series:
+    + http://blog.gnip.com/tweeting-in-the-rain/
+    + http://blog.gnip.com/tweeting-in-the-rain-part-2/ 
+    + http://blog.gnip.com/tweeting-in-the-rain-part-3/
+    + https://blog.gnip.com/tweeting-rain-part-4-tweets-2013-colorado-flood/
      
-     * [Using Twitter as a Go-to Communication Channel During Severe Weather Events](https://blog.twitter.com/2016/using-twitter-as-a-go-to-communication-channel-during-severe-weather-events)
-     * [USA Today article on Twitter-based system deployed by the USGS Water Science Center](http://www.usatoday.com/story/tech/2016/06/01/federal-flood-officials-texas-use-twitter-alert/85265520/)
++ [Using Twitter as a Go-to Communication Channel During Severe Weather Events](https://blog.twitter.com/2016/using-twitter-as-a-go-to-communication-channel-during-severe-weather-events)
+    + [USA Today article on Twitter-based system deployed by the USGS Water Science Center](http://www.usatoday.com/story/tech/2016/06/01/federal-flood-officials-texas-use-twitter-alert/85265520/)
           
-     * [Measuring campaign success with the International Committee of the Red Cross](https://blog.twitter.com/2016/measuring-campaign-success-with-the-international-committee-of-the-red-cross)
++ [Measuring campaign success with the International Committee of the Red Cross](https://blog.twitter.com/2016/measuring-campaign-success-with-the-international-committee-of-the-red-cross)
      
 ### Twitter Dev repositories
-    + [Ruby client for Twitter Engagement API](https://github.com/twitterdev/engagement-api-client-ruby)
-    + [Ruby client for Twitter Audience API](https://github.com/twitterdev/audience-api-client-ruby)
++ [Ruby client for Twitter Engagement API](https://github.com/twitterdev/engagement-api-client-ruby)
++ [Ruby client for Twitter Audience API](https://github.com/twitterdev/audience-api-client-ruby)
           
 ### Other projects
-     *  Historical PowerTrack Ruby client: https://github.com/jimmoffitt/rbHistoricalPT
-     *  (Gnip) Search API Ruby client: https://github.com/jimmoffitt/rbSearchAPI
-     *  PowerTrack Rules Migrator: https://github.com/jimmoffitt/rules-migrator
-     *  JSON to CSV convertor: https://github.com/jimmoffitt/json2csv
-     *  Adventures in (Raspberry) Pi: https://github.com/jimmoffitt/pi-adventures 
+*  Historical PowerTrack Ruby client: https://github.com/jimmoffitt/rbHistoricalPT
+*  (Gnip) Search API Ruby client: https://github.com/jimmoffitt/rbSearchAPI
+*  PowerTrack Rules Migrator: https://github.com/jimmoffitt/rules-migrator
+*  JSON to CSV convertor: https://github.com/jimmoffitt/json2csv
+*  Adventures in (Raspberry) Pi: https://github.com/jimmoffitt/pi-adventures 
      
 ### Articles up at http://support.gnip.com/articles:
 - Geo-referencing with the Profile Location enrichments. 
