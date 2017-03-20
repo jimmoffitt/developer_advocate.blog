@@ -9,7 +9,7 @@
 
 Both Historical PowerTrack (HPT) and Full-Archive Search (FAS) can serve any publicly available Tweet from the entire archive, starting with the first Tweet from March 2006. To better understand ideal uses for Full-Archive Search versus those for Historical PowerTrack, it is important to have a clear understanding of the underlying technologies.
 
-Full-Archive Search is most analogous to Google, obviously another search-based tool. When you search for a particular term, Google doesn’t return or display the millions of matching results all at once. Rather, it delivers 10 results at a time per scrollable page and allows you to click “Next” for the subsequent page of 10 results… and so on, through all of the matching items returned. Like Google, the Full-Archive Search tool is best-suited for delivering smaller datasets at a time with the ability to paginate for more data as needed. It is also the best solution for those situations where expediency in returns is needed. Thanks to our having indexed every Tweet since the beginning of time, it offers near-immediate responses to these smaller data queries.
+FAS is most analogous to Google, obviously another search-based tool. When you search for a particular term, Google doesn’t return or display the millions of matching results all at once. Rather, it delivers 10 results at a time per scrollable page and allows you to click “Next” for the subsequent page of 10 results… and so on, through all of the matching items returned. Like Google, the Full-Archive Search tool is best-suited for delivering smaller datasets at a time with the ability to paginate for more data as needed. It is also the best solution for those situations where expediency in returns is needed. Thanks to our having indexed every Tweet since the beginning of time, it offers near-immediate responses to these smaller data queries. Using FAS, the more data that matches your query the longer it will take you to retrieve all of that data through the product. This is because you will need to stitch together the paginated groups of results, one after the other, to create the complete file of all returned data. 
 
 FAS is designed using the classic request/response pattern, where a single PowerTrack rule is submitted and a response with matching Tweets is immediately provided. FAS can provide a maximum of 500 Tweets per response, and a ‘next’ token is provided to paginate until all Tweets  for a query are received. FAS also supports ‘count’ requests, where only the number of matching Tweets is provided, These counts are returned in a time-series of minute-by-minute, hourly, or daily totals.
 
@@ -77,15 +77,12 @@ Here are the fundamental differences between Historical PowerTrack (HPT) and Ful
     <td class="tg-yw4l">url_title:</td>
   </tr>
 </table>
-    + See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/HistoricalOperatorsTable.md) for a side-by-side comparison of available Operators.
-    + For a complete list of Operators for each product see here:
-        + [Search Operator List](http://support.gnip.com/apis/search_full_archive_api/rules.html#Operators)
-        + [Historical PowerTrack Operator List](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators)
+
++ See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/HistoricalOperatorsTable.md) for a side-by-side comparison of available Operators.
++ For a complete list of Operators for each product see here:
+    + [Search Operator List](http://support.gnip.com/apis/search_full_archive_api/rules.html#Operators)
+    + [Historical PowerTrack Operator List](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators)
         
-
-
-### So what does that mean?
-Put another way, Full-Archive Search is data-constrained, while Historical PowerTrack is time or work-constrained. Using Full-Archive Search, the more data that matches your query the longer it will take you to retrieve all of that data through the product. This is because you will need to stitch together the paginated groups of results, one after the other, to create the complete file of all returned data. Using Historical PowerTrack, the more data you are asking to process or “amount of hay in the haystack”, the longer it will take to retrieve all of the data you are looking for, regardless of the number of needles in said haystack. We still have to look at every straw of hay to decide whether it is indeed hay or a needle described in the query. Think of the hay as the Twitter Firehose and the volume of hay that needs to be searched through is akin to the number of historical days requested.
 
 ### How do I choose one over the other?
 A general assumption to be made here is that Full-Archive Search is better-suited for lower-volume jobs, while Historical PowerTrack is more appropriate for higher-volume jobs and use cases. We’ve intentionally left those descriptions relatively vague, though, as there is no real technical reason why Full-Archive Search could not be used for large data requests. It is just not necessarily practical or efficient, so HPT should be your first choice.
@@ -100,19 +97,21 @@ Historical PowerTrack is also a better solution for large, complex rules sets an
 
 ### Switching between products
 
+Many of our customers use both HPT and FAS. If you are new to both, or one of these, below are checklists that describe steps to migrate a historical request from one product to that other. 
+
 #### Steps for converting a HPT Job to Full-Archive Search:
 
-Integrate the Full-Archive Search API.
-FAS product documentation is available HERE.
-FAS API documentation is available HERE.
-If already using 30-Day Search, the same code used for 30-Day Search can be used for Full-Archive Search.
-Example client code in Python and Ruby are available HERE.
-Review HPT rules and confirm all Operators are supported by Search API.
-Multiple rules associated with a HPT Job need to be split up into individual Search requests. Each rule will be individually requested from the FAS API.
-When receiving API responses:
-Tweets are returned in a “results” array, starting with most recent Tweets.
-A maximum of 500 Tweets are provided per response.
-A ‘next’ token is provided if more requests are needed to complete request. The ‘next’ token should be parsed from the response and added to the next API request.
++ Integrate the Full-Archive Search API.
+    + FAS product documentation is available HERE.
+    + FAS API documentation is available HERE.
+    + If already using 30-Day Search, the same code used for 30-Day Search can be used for Full-Archive Search.
+    + Example client code in Python and Ruby are available HERE.
++ Review HPT rules and confirm all Operators are supported by Search API.
++ Multiple rules associated with a HPT Job need to be split up into individual Search requests. Each rule will be individually requested from the FAS API.
++ When receiving API responses:
+    + Tweets are returned in a “results” array, starting with most recent Tweets.
+    + A maximum of 500 Tweets are provided per response.
+    + A ‘next’ token is provided if more requests are needed to complete request. The ‘next’ token should be parsed from the response and added to the next API request.
 
 #### Steps for converting FAS requests to a HPT Job:
 
