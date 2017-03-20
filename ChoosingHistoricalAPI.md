@@ -23,12 +23,60 @@ HPT is built to deliver Tweets at scale using a batch, Job-based design where th
 Here are the fundamental differences between Historical PowerTrack (HPT) and Full-Archive Search (FAS):
 
 + Number of rules supported per request.
-    + Full-Archive Search accepts a single rule per request. Each rule can be up to 2,048 characters. A Historical PowerTrack Job can support up to 1,000 rules. 
+    + Full-Archive Search accepts a single rule per request. Each rule can be up to 2,048 characters. 
+    + A Historical PowerTrack Job can support up to 1,000 rules. 
 + API Data Response.
      + HPT generates a time-series of data files, each covering a ten-minute period. For example, each hour of data is provided in six 10-minute data files. Inside each HPT file, the JSON Tweet payloads are written in an atomic fashion, and are not presented in an JSON array. File contents need to be parsed using newline characters as a delimiter.
      + With FAS, Tweets in each response are arranged in a “results” array. A maximum of 500 Tweets are available per response and a ‘next’ token is provided if more Tweets are available. For example, if a 60-day request for a single PowerTrack rule matches 10,000 Tweets, at least 20 requests must be made of the Search API.
 + Supported PowerTrack Operators.
     + While the majority of Operators supported by HPT are also supported by FAS, there are a set of Operators not available in FAS:
+       
+<table class="tg">
+  <tr>
+    <th class="tg-yw4l">bio:</th>
+    <th class="tg-yw4l">profile_bounding_box</th>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">bio_location:</td>
+    <td class="tg-yw4l">profile_point_radius</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">bio_name:</td>
+    <td class="tg-yw4l">profile_subregion:</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">contains:</td>
+    <td class="tg-yw4l">retweets_of_status_id:</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">emoji</td>
+    <td class="tg-yw4l">sample:</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">followers_count:</td>
+    <td class="tg-yw4l">source:</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">friends_count:</td>
+    <td class="tg-yw4l">statuses_count:</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">has:lang</td>
+    <td class="tg-yw4l">time_zone:</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">in_reply_to_status_id:</td>
+    <td class="tg-yw4l">url_contains:</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">is:quote</td>
+    <td class="tg-yw4l">url_description:</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">listed_count:</td>
+    <td class="tg-yw4l">url_title:</td>
+  </tr>
+</table>
     + For a complete list of Operators for each product see here:
         + [Search Operator List](http://support.gnip.com/apis/search_full_archive_api/rules.html#Operators)
         + [Historical PowerTrack Operator List](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators)
