@@ -104,10 +104,10 @@ Many of our customers use both HPT and FAS. If you are new to both, or one of th
 #### Steps for converting a HPT Job to Full-Archive Search:
 
 + Integrate the Full-Archive Search (FAS) API.
-    + FAS product documentation is available HERE.
-    + FAS API documentation is available HERE.
+    + FAS product documentation is available [HERE](http://support.gnip.com/apis/search_full_archive_api/).
+    + FAS API documentation is available [HERE](http://support.gnip.com/apis/search_full_archive_api/api_reference.html).
     + If already using 30-Day Search, the same code used for 30-Day Search can be used for Full-Archive Search.
-    + Example client code in Python and Ruby are available HERE.
+    + Example client code is available [HERE](http://support.gnip.com/code/search_api.html).
 + Review HPT rules and confirm all Operators are supported by Search API.
 + Multiple rules associated with a HPT Job need to be split up into individual Search requests. Each rule will be individually requested from the FAS API.
 + When receiving API responses:
@@ -118,13 +118,13 @@ Many of our customers use both HPT and FAS. If you are new to both, or one of th
 #### Steps for converting FAS requests to a HPT Job:
 
 + Integrate the Historical PowerTrack (HPT) API.
-    + HPT product documentation is available HERE.
-    + HPT API documentation is available HERE.
-    + Example client code in Python and Ruby are available HERE.
-+ All FAS Operators are supported with HPT, so all rules should migrate over with revisions.
+    + HPT product documentation is available [HERE](http://support.gnip.com/apis/historical_api2.0/).
+    + HPT API documentation is available [HERE](http://support.gnip.com/apis/historical_api2.0/api_reference.html).
+    + Example client code is available [HERE](http://support.gnip.com/code/historical_powertrack.html).
++ All FAS Operators are supported with HPT, so all rules should migrate over without revisions.
     + [Note any changes in matching behavior...]    
 + If you have a use-pattern where you query a common time period with multiple queries, these queries should be combined into a single HPT Job. 
-+ The HPT API is used to advance a JOB through its life cycle. 
++ The HPT API is used to advance a Job through its life cycle. 
     + When the Job is completed, a *Data URL* is generated taht provides an array of files to download. 
     + A data file is created for each 10-minute period with a matching Tweet. 
     + Tweets are written to these files in an atomic fashion, and are not placed in a JSON array. Tweets are delimited with new line characaters. 
