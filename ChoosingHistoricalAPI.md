@@ -1,7 +1,9 @@
 + [Introduction](#introduction)
-    + [Historical PowerTrack](#hpt)
     + [Full-Archvie Search API](#search)
+    + [Historical PowerTrack](#hpt)
 + [Fundamental Differences](#differences)
++ [Selecting between historical products](#choosing)
++ [Switching between products: development checklists](#switchin)
 
 
 
@@ -13,7 +15,7 @@ Both Historical PowerTrack (HPT) and Full-Archive Search (FAS) can serve any pub
 
 While both products provide access to the entire Twitter archive of publicly available Tweets, Search is analogous to going to the library and finding a book by looking up its index in a catalog. That index provides a select, smaller set of metadata about the book, attributes like its author, a short description and when it was published. Since this data is provided via an indexed catalog, confirming the book is of interest is fast. 
 
-Since Historical PowerTrack enables matching on a fuller set of metadata, 
+Since Historical PowerTrack enables matching on a fuller set of metadata, [including substrings and other metadata that is not indexed, finding books of interested in more like walking around the library and examining each book by hand, compiling books of interest.]
 
 
 
@@ -101,7 +103,8 @@ Here are the fundamental differences between Historical PowerTrack (HPT) and Ful
         
 
 
-### How do I choose one over the other?
+### Selecting between historical products <a id="choosing" class="tall">&nbsp;</a>  
+
 A general assumption to be made here is that Full-Archive Search is better-suited for lower-volume jobs, while Historical PowerTrack is more appropriate for higher-volume jobs and use cases. We’ve intentionally left those descriptions relatively vague, though, as there is no real technical reason why Full-Archive Search could not be used for large data requests. It is just not necessarily practical or efficient, so Historical PowerTrack is a good first choice for retrieving Tweets at scale, where a result set is in the millions of Tweets.
 
 Depending on how you plan to retrieve the data and utilize rate limits, there actually is a threshold where Historical PowerTrack actually processes the data faster that Full-Archive Search. HPT typically processes a 30-day duration job in about 4 hours, regardless of the volume of matching data returns. To pull 3.5M Tweets via Full-Archive Search, it would require a minimum of 7000 search requests. If you also assume 2 second response times and the need to serially paginate through the data, it would actually take Full-Archive Search longer to pull all of the Tweets.
@@ -112,7 +115,7 @@ Historical PowerTrack is also better suited for large query rulesets, as the Sea
 
 Historical PowerTrack is also a better solution for large, complex rules sets and/or when Operators from its expanded list of Operators is needed. Historical PowerTrack supports up to 1000 complex rules per job whereas Search is limited to a single rule per request.  That means to pull data for 1000 rules via search for 6 months, I'd have to send a minimum of 6000 requests to the Full-Archive Search API as opposed to a single HPT job.  Doing so becomes complex, costly and time consuming.  There are also a number of operators that are supported by Historical PowerTrack that are not currently or may never be supported by our search products. Some operators supported by PowerTrack and Historical PowerTrack are extremely expensive or difficult to support in a search product, they simply aren't well suited for the underlying Search technologies.  
 
-### Switching between products
+### Switching between products: development checklists <a id="switching" class="tall">&nbsp;</a>  
 
 Many of our customers use both HPT and FAS. If you are new to both, or one of these, below are checklists that describe steps to migrate a historical request from one product to that other. 
 
