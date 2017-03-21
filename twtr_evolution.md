@@ -1,4 +1,4 @@
-# Evolution of the Tweet metadata, and details for effectively querying historical data
+# Evolution of Tweet Metadata
 + [Introduction](#introduction)
 + [Twitter Historical Products](#historicalProducts)
 + [Twitter JSON Objects 101](#twitterJsonIntro)
@@ -17,13 +17,24 @@ Billions of Tweets have been posted since 2006. These Tweets encapsulate an amaz
 
 [Set-up the reason the following details are useful]
 
+IF you are here to learn more about doing historical research with Twitter data, there are three fundamentally different topics to dig into:
+
+ + 1) Evolution of the Twitter Plaform, and the timeline of when new features and enhancements were rolled out. 
+ + 2) How Tweets are 'marked up' in JSON and how those encoded attritubes have changed due to new features.
+ + 3) How to effectively match those Tweet and User metadata with the PowerTrack querying language that is common to Historical PowerTrack and the Search API. 
+ 
+Understanding the Twitter evolution is helpful since new features map directly to JSON 'objects' and their attributes. Take the Retweet for available. Twitter has always been a place to share information and early in its history users organically started to 'forward', or 'retweet' Tweets they enjoyed and wanted to share. The convention became to prepend the Tweet message with a "RT @" notication to indicate original author. Retweeting became so common, in 2009 Twitter built the functionality into a new button and promoted retweeting to a first-class Retweet object. Along with that came new metadata in Tweet JSON payloads: a new verb of 'share', select Retweet metrics, and eventually the entire JSON payload of the original Tweet. With these new JSON attributes in place, along came PowerTrack Operators to help efficiently and effectively match on Retweets. 
+
+These details, which we'll dig into soon, are critical for effective Twitter data filtering. For example, if you are doing research that only needs original Tweets, and you need to filter out Retweets, the most effectively method depends on your period of interest. If you need Tweets from before 
+
 #### New user conventions and use-patterns driving product development
 
 Hashtags, Repies, Mentions, Retweets, adding links, sharing photos.
 
-#### New features being added to Platform
+#### New features being added to Platform 
 
-Private messages, Ads platform, Polls.
+Polls, dwm140 p1, p2.  (no need to go into other Platform features, e.g. DMs and Ads)
+
 
 ### Twitter Historical Products <a id="historicalProducts" class="tall">&nbsp;</a>
 
@@ -41,23 +52,35 @@ Tweets are made up of a Tweet message, a posted time, a set of User (or Author o
 + Tweet body
 + User object
 + Twitter entities
-+ Data enrichments
+
 + Geo 
++ Data Enrichments
 
 
 ### Next Steps 
 What follows is a set of articles that address how these Twitter changes affect the effort to find and analyze Twitter data.
 
-[Intro narrative on the evolution of hashtags and retweets, and how new twitter features affected user-behavior.]
++ Wondering how to decide which historical API to use? --> See [article]
++ Want to learn more about the JSON metadata that defines Tweets? --> [article]
++ Using Full-Archive Search and need to better understand Tweet JSON and filtering timelines? --> [article]
++ Using Historical PowerTrack and need to better understand Tweet JSON and filtering timelines? --> [article]
 
-We'll start with a review of Twitter Plaform updates that in some way affected the JSON generated with HPT and FAS. Then we'll dig into the many product-specific details that affect how this stored JSON matches PowerTrack Operators. At the architectural level, the HPT and FAS archives are significantly different. [two slightly different list of available PowerTrack Operators.] 
+
+First we'll a review of Twitter Plaform updates that in some way affected the JSON generated with HPT and FAS. Then we'll dig into the many product-specific details that affect how this stored JSON matches PowerTrack Operators.
 
 
 # Articles <a id="articleList" class="tall">&nbsp;</a>
 
 ## Twitter timeline <a id="twitterTimeline" class="tall">&nbsp;</a>  
 
-User-driven conventions and new features.
+User-driven conventions and new features. [Intro narrative on the evolution of hashtags and retweets, and how new twitter features affected user-behavior.]
+
+### Retweets
+
+Retweets have an interesting history on Twitter. 
+user convention/uproar --> UI features --> JSON affects --> filtering details. 
+
+### Twitter Entities
 
 Looking at Twitter as a platform, the following events somehow affected the JSON payloads that are used to encode Tweets. This Tweet JSON is a set of Tweet attributes, and these metadata provide the values that PowerTrack Operators match. 
 
