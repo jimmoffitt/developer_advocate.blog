@@ -16,9 +16,7 @@ A timeline of when Historical PowerTrack Operators begin matching.
 #### 2008
 + February 27 - ```has:mentions``` and ```@``` Operator 
 + February 27 - ```has:links``` and ```url:``` 
-#### 2009 
-#### 2010
-+ March 6 - ```has:geo```  
+
 #### 2011
 + January 1 - ```is:retweet``` and ```retweet_of_status_id:``` 
 + June 2 - ```has:images```
