@@ -1,12 +1,13 @@
 # Evolution of Tweet Metadata
 + [Introduction](#introduction)
-+ [Twitter JSON Objects 101](#twitterJsonIntro)
+
 + [Twitter Historical Products](#historicalProducts)
 
 + [Upcoming articles:](#articleList)
 + [Twitter Platform Timeline](#twitterTimeline)
++ [Twitter JSON Objects 101](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/TweetJSON_intro.md)
 + [Choosing an historical API](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/ChoosingHistoricalAPI.md)  
-+ [Historical PowerTrack: metadata and filtering timelines](#hptTimeline)
++ [Historical PowerTrack: metadata and filtering timelines](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/hpt_timeline.md)
 + [Full-Archive Search API: metadata and filtering timelines](#fasTimeline)
 
 ### tl;dr
@@ -36,10 +37,6 @@ In 2012, Historical PowerTrack (HPT) was introduced and quickly because a widely
 
 In 201#, the 30-Day Search API was released. [Product description. ] Next Twitter indexed the entire Tweet archive and in 2015 released Full-Archive Search (FAS). FAS also provides access to the entire Twitter archive, but does it in a much different way. With FAS you submit a single query and receive a response in classic RESTful fashion. FAS implements 500-Tweets-per-response pagination, and defaults to a 120-requests-per-minute rate-limit. Given these details, FAS can be used to rapidly retrieve Tweets, and at large scale using concurrent requests. FAS also provide the ability to count the number of Tweets matching your query before requesting the corresponding data. Counts are avaialable in arrays with minute, hour, and day periods. This ability to 'look before you leap' is an amazing tool in itself. With many use-cases, matching volumes is of primary interest. Since the Counts endpoint provides fast feedback on the matching behavior of a rule, it can be used to assess filtering behavior before pulling the data. For this reason, the Search API is a great complement to real-time and Historical PowerTrack. 
 
-
-
-
-
 ### Next Steps 
 What follows is a set of articles that address how these Twitter changes affect the effort to find and analyze Twitter data.
 
@@ -53,11 +50,19 @@ First we'll a review of Twitter Plaform updates that in some way affected the JS
 
 =====================================================
 
-# Articles <a id="articleList" class="tall">&nbsp;</a>
-
 ## Twitter timeline <a id="twitterTimeline" class="tall">&nbsp;</a>  
 
-User-driven conventions and new features. [Intro narrative on the evolution of hashtags and retweets, and how new twitter features affected user-behavior.]
+At its core, Twitter is a real-time, global communication network. How Twitter is used to communicate has evolved since 2006. 
+
+There are many examples where this evolution was driven by new user conventions and behaviors. [Intro narrative on the evolution of hashtags and retweets, and how new twitter features affected user-behavior.]
+
+Other changes were driven by 
+
+
+
+Understanding how Twitter evolved is helpful since new features map directly to JSON 'objects' and their attributes. 
+
+User-driven conventions and new features. 
 
 #### New user conventions and use-patterns driving product development
 
@@ -101,6 +106,7 @@ Other important platform updates:
 + dmw140, part 2 
 
 
+=======================================
 
 
 
