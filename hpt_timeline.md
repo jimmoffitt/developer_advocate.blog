@@ -27,11 +27,11 @@ A timeline of when Historical PowerTrack Operators begin matching.
     - Gnip Language - ```gnip.lang``` language metadata. No longer filtered for. ```lang:``` Operator now based solely on root level Twitter language classification. 
     - Expanded URLs - URL metadata from this date until launch of HPT 2.0 will contain ```gnip.expanded_url``` fully unwound URL. 
     - Klout Scores - Klout scores from this date until launch of HPT 2.0 will contain ```gnip.klout_score``` data.
++ November - ```lang:``` Operator (matching on Twitter language classification).
 
 #### 2013
-+ March 26 - Twitter language classifiction added. 
 + June 4 - ```has:profile_geo``` 
-+ August 20 - ```has:symbols``` 
++ August 20 - ```has:symbols``` and ```$``` Operator 
 
 #### 2015
 + February 10 - ```has:videos```  
