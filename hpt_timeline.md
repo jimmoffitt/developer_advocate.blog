@@ -32,7 +32,7 @@ A timeline of when Historical PowerTrack Operators begin matching.
 
 #### 2013
 + March 26 - Twitter language classifiction added. 
-+ June 4 - Profile Geo launched.
++ June 4 - ```has:profile_geo``` 
 + August 20 - ```has:symbols``` 
 
 #### 2015
