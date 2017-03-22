@@ -1,7 +1,8 @@
 # Evolution of Tweet Metadata
 + [Introduction](#introduction)
-+ [Twitter Historical Products](#historicalProducts)
 + [Twitter JSON Objects 101](#twitterJsonIntro)
++ [Twitter Historical Products](#historicalProducts)
+
 + [Upcoming articles:](#articleList)
 + [Twitter Platform Timeline](#twitterTimeline)
 + [Choosing an historical API](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/ChoosingHistoricalAPI.md)  
@@ -13,27 +14,18 @@
 
 ## Introduction <a id="introduction" class="tall">&nbsp;</a>
 
-Billions of Tweets have been posted since 2006. These Tweets encapsulate an amazing amount of human communications. This archive can be an indispensable research tool for an amazing number of use-cases. 
-
-[Set-up the reason the following details are useful]
-
-IF you are here to learn more about doing historical research with Twitter data, there are three fundamentally different topics to dig into:
+Billions of Tweets have been posted since 2006. These Tweets encapsulate an amazing amount of human communications. This archive can be an indispensable research tool for an incredible number of use-cases. If you are here to learn more about doing historical research with Twitter data, there are three fundamentally different topics to dig into:
 
  + 1) Evolution of the Twitter Plaform, and the timeline of when new features and enhancements were rolled out. 
  + 2) How Tweets are 'marked up' in JSON and how those encoded attritubes have changed due to new features.
- + 3) How to effectively match those Tweet and User metadata with the PowerTrack querying language that is common to Historical PowerTrack and the Search API. 
+ + 3) How to effectively match those Tweet and User metadata with the PowerTrack querying language that is common to Historical PowerTrack and the Search API. Understanding key differences between these products is key to getting the data you need when you need it. 
  
-Understanding the Twitter evolution is helpful since new features map directly to JSON 'objects' and their attributes. Take the Retweet for available. Twitter has always been a place to share information and early in its history users organically started to 'forward', or 'retweet' Tweets they enjoyed and wanted to share. The convention became to prepend the Tweet message with a "RT @" notication to indicate original author. Retweeting became so common, in 2009 Twitter built the functionality into a new button and promoted retweeting to a first-class Retweet object. Along with that came new metadata in Tweet JSON payloads: a new verb of 'share', select Retweet metrics, and eventually the entire JSON payload of the original Tweet. With these new JSON attributes in place, along came PowerTrack Operators to help efficiently and effectively match on Retweets. 
+Understanding the Twitter evolution is helpful since new features map directly to JSON 'objects' and their attributes. Take the Retweet for available. Twitter has always been a place to share information and early in its history users organically started to 'forward', or 'retweet' Tweets they enjoyed and wanted to share. The convention became to prepend the Tweet message with a "RT @user" pattern to indicate original author. Retweeting became so common, in 2009 Twitter built the functionality into a new button and promoted retweeting to a first-class Retweet object. Along with that came new metadata in Tweet JSON payloads: a new verb of 'share', select Retweet metrics, and eventually the entire JSON payload of the original Tweet. With these new JSON attributes in place, along came PowerTrack Operators to help efficiently and effectively match on Retweets. 
 
-These details, which we'll dig into soon, are critical for effective Twitter data filtering. For example, if you are doing research that only needs original Tweets, and you need to filter out Retweets, the most effectively method depends on your period of interest. If you need Tweets from before 
+These details, which we'll dig into soon, are critical for effective Twitter data filtering. For example, say you are doing research based only on Retweets, and you need to filter out all original Tweets. The easiest way to match on Retweets is to use the PowerTrack ```is:retweet``` Operator. However, that Operator depends on the first-class Retweet metadata that was introduced in April 2009. So if you include a ```is:retweet``` rule clause for before that time, it will not match anything. Instead you would have to build a rule clause that matches on the "RT @" pattern. For more information on how the Twitter platform has evolved see [HERE].
 
-#### New user conventions and use-patterns driving product development
+Being familiar with how Tweets are encoded in JSON, and how those encodings changed over the years, is also important. [As in the Retweet example above, many PowerTrack Operators work directly with this JSON metadata. So it's important to know when PowerTrack Operators will result in false-negatives with searching for Tweets. It can be also important to 
 
-Hashtags, Repies, Mentions, Retweets, adding links, sharing photos.
-
-#### New features being added to Platform 
-
-Polls, dwm140 p1, p2.  (no need to go into other Platform features, e.g. DMs and Ads)
 
 
 ### Twitter Historical Products <a id="historicalProducts" class="tall">&nbsp;</a>
@@ -45,16 +37,7 @@ In 2012, Historical PowerTrack (HPT) was introduced and quickly because a widely
 In 201#, the 30-Day Search API was released. [Product description. ] Next Twitter indexed the entire Tweet archive and in 2015 released Full-Archive Search (FAS). FAS also provides access to the entire Twitter archive, but does it in a much different way. With FAS you submit a single query and receive a response in classic RESTful fashion. FAS implements 500-Tweets-per-response pagination, and defaults to a 120-requests-per-minute rate-limit. Given these details, FAS can be used to rapidly retrieve Tweets, and at large scale using concurrent requests. FAS also provide the ability to count the number of Tweets matching your query before requesting the corresponding data. Counts are avaialable in arrays with minute, hour, and day periods. This ability to 'look before you leap' is an amazing tool in itself. With many use-cases, matching volumes is of primary interest. Since the Counts endpoint provides fast feedback on the matching behavior of a rule, it can be used to assess filtering behavior before pulling the data. For this reason, the Search API is a great complement to real-time and Historical PowerTrack. 
 
 
-### Twitter JSON Objects 101 <a id="twitterJsonIntro" class="tall">&nbsp;</a>
 
-Tweets are made up of a Tweet message, a posted time, a set of User (or Author or Actor) attributes, a collection of engagement metadata, and sometimes geographical metadata.
-
-+ Tweet body
-+ User object
-+ Twitter entities
-
-+ Geo 
-+ Data Enrichments
 
 
 ### Next Steps 
@@ -68,12 +51,21 @@ What follows is a set of articles that address how these Twitter changes affect 
 
 First we'll a review of Twitter Plaform updates that in some way affected the JSON generated with HPT and FAS. Then we'll dig into the many product-specific details that affect how this stored JSON matches PowerTrack Operators.
 
+=====================================================
 
 # Articles <a id="articleList" class="tall">&nbsp;</a>
 
 ## Twitter timeline <a id="twitterTimeline" class="tall">&nbsp;</a>  
 
 User-driven conventions and new features. [Intro narrative on the evolution of hashtags and retweets, and how new twitter features affected user-behavior.]
+
+#### New user conventions and use-patterns driving product development
+
+Hashtags, Repies, Mentions, Retweets, adding links, sharing photos.
+
+#### New features being added to Platform 
+
+Polls, dwm140 p1, p2.  (no need to go into other Platform features, e.g. DMs and Ads)
 
 ### Retweets
 
@@ -109,30 +101,6 @@ Other important platform updates:
 + dmw140, part 2 
 
 
-
-## Historical API: metadata and filtering timeline  <a id="hptTimeline" class="tall">&nbsp;</a>
-
-### Product timeline
-
-### Metadata timelines
-#### 2007
-+ January 3 - is:verified begins matching.
-#### 2008
-+ February 27 - ```has:mentions``` and ```has:links``` begins matching.
-#### 2011
-+ September 1 - Tweet Geo starts. Matching for *has:geo, place_country:, bounding_box: point_radius:*.
-#### 2012
-+ March 26 
-    - Gnip Language - ```gnip.lang``` language metadata. No longer filtered for. ```lang:``` Operator now based solely on root level Twitter language classification. 
-    - Expanded URLs - URL metadata from this date until launch of HPT 2.0 will contain ```gnip.expanded_url``` fully unwound URL. 
-    - Klout Scores - Klout scores from this date until launch of HPT 2.0 will contain ```gnip.klout_score``` data.
-#### 2013
-+ March 26 - Twitter language classifiction added. 
-+ June 4 - Profile Geo launched.
-#### 2015
-+ September 28 - is:quote begins matching. 
-#### 2017
-+ February 22 - Poll metadata is available in *original* format. 
 
 
 
