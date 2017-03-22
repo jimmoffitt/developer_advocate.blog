@@ -10,23 +10,19 @@ Historical PowerTrack was launched in July 2012 by Gnip.
 A timeline of when Historical PowerTrack Operators begin matching. 
 
 #### 2007
-+ January 3 - ```is:verified``` begins matching.
-+ January 30 - ```to:``` and ```In_reply_to_status_id:``` begin matching.
-+ April 1 - ```has:hashtags``` and ```#``` Operator begin matching.
-
-
++ January 3 - ```is:verified``` 
++ January 30 - ```to:``` and ```In_reply_to_status_id:``` 
++ April 1 - ```has:hashtags``` and ```#``` Operator 
 #### 2008
-+ February 27 - ```has:mentions``` and ```@``` Operator begin matching.
-+ February 27 - ```has:links``` and ```url:``` Operatoe begins matching.
-
++ February 27 - ```has:mentions``` and ```@``` Operator 
++ February 27 - ```has:links``` and ```url:``` 
 #### 2009 
-
 #### 2010
-+ March 6 - ```has:geo``` begins matching. 
-
++ March 6 - ```has:geo```  
 #### 2011
-+ January 1 - ```is:retweet``` and ```retweet_of_status_id:``` begins matching.
-+ September 1 - Tweet Geo starts. Matching for *has:geo, place_country:, bounding_box: point_radius:*.
++ January 1 - ```is:retweet``` and ```retweet_of_status_id:``` 
++ June 2 - ```has:images```
++ September 1 - ```has:geo```, ```place_country:```, ```bounding_box:``` and ```point_radius:```
 
 #### 2012
 + March 26 
@@ -37,11 +33,11 @@ A timeline of when Historical PowerTrack Operators begin matching.
 #### 2013
 + March 26 - Twitter language classifiction added. 
 + June 4 - Profile Geo launched.
-+ August 20 - ```has:symbols``` begins matching.
++ August 20 - ```has:symbols``` 
 
 #### 2015
-+ February 10 - ```has:videos``` begins matching. 
-+ September 28 - ```is:quote``` begins matching. 
++ February 10 - ```has:videos```  
++ September 28 - ```is:quote``` 
 
 #### 2017
 + February 22 - Poll metadata is available in *original* format. 
