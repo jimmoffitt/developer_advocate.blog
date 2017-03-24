@@ -1,15 +1,38 @@
 ## Historical PowerTrack API: metadata and filtering timeline  <a id="hptTimeline" class="tall">&nbsp;</a>
 
+--------------------------------------------
 tl;dr
 
-“As someone using Historical PowerTrack to access Tweets of interest, I need to understand when query Operators first started matching Tweet JSON attributes."
+*“As someone using Historical PowerTrack to access Tweets of interest, I need to understand when query Operators first started matching Tweet JSON attributes."*
+--------------------------------------------
 
-### Product overview
++ [Product Overview](#overview)
++ [Matching Metadata Timelines](#metadataTimelines)
++ [Filtering Examples](#filteringExamples)
++ [Next Steps](#nextSteps)
 
-Historical PowerTrack (HPT) was launched in July 2012 by Gnip. HPT brought the same filtering capabilites developed for real-time streaming to the entire archive of public Tweets. [] 
+
+### Product Overview <a id="overview" class="tall">&nbsp;</a>
+
+Historical PowerTrack (HPT) was launched in July 2012 by Gnip. HPT brought the same filtering capabilites developed for real-time streaming to the entire archive of public Tweets. [Built on the first Tweet archive, made up of flat-files.  Built to deliver Tweet volumes at scale. HPT API is used to manage the life-cycle of a Job. A Job is first cerated with up to 1000 filtering rules, covering a time period as long as needed. Next a rough estimate of associated Tweets is provided. If the Job is accepted, every single Tweet posted during the period of interest is examined for a match to one or more of of .  
 
 
-### Metadata timelines
+[Reference to this exisiting documentation:]
+
+As mentioned [HERE](http://support.gnip.com/apis/historical_api2.0/overview.html#Caveats), 
+
++ URLs: The url_contains operator will still function prior to 3/26/2012, but will only match against URLs as they are entered by a user into a Tweet and not the fully resolved URL (i.e. if a bit.ly URL is entered in the Tweet it can only match against the bit.ly and not the URL that has been shortened by bit.ly)
++ Geo: Native geo data prior to 9/1/2011 is not available in Historical Powertrack. As a result, all operators reliant on this geo data will not be supported for jobs with a timeframe prior to this date.
++ User Profile Data: All data prior to 1/1/2011 contains user profile information as it appeared in that user’s profile in September 2011. (e.g @jack’s very first Tweet in March 2006 contains his bio data from September 2011 that references his position as CEO at Square, which was not in existence at the time of the Tweet)
++ Followers and Friends Counts: All data prior to 1/1/2011 contains followers and friends counts equal to zero. As a result, any rules based on non-zero counts for these metadata will not return any results for a timeframe prior to this date.
+
+[Contradictions:]
++ 
+
+
+
+
+### Metadata timelines <a id="metadataTimelines" class="tall">&nbsp;</a>
 
 Below is a timeline of when Historical PowerTrack Operators begin matching. In some cases Operator matching begins well after a 'communciation convention' becomes common place on Twitter. For example, @Replies emerged as a conventon in 2006, but did not become a 'first-class' object or event with 'supporting' JSON until early 2007. Accordingly, matching on @Replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
 
@@ -47,4 +70,13 @@ Below is a timeline of when Historical PowerTrack Operators begin matching. In s
 
 #### 2017
 + February 22 - Poll metadata is available in *original* format. 
+
+### Filtering Examples <a id="filteringExamples" class="tall">&nbsp;</a>
+
+
+### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
+[] Search API: metadata and filtering timeline
+[] Choosing between Historical PowerTrack and Search API 
+
+
 
