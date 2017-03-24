@@ -20,7 +20,7 @@ Other drafts in the works:
 
 ## Introduction <a id="introduction" class="tall">&nbsp;</a>
 
-Billions of Tweets have been posted since 2006. These Tweets encapsulate an amazing amount of human communications and shared information. This archive can be an indispensable research tool for an incredible number of use-cases. [cite examples]
+Hundreds of billions of Tweets have been posted since 2006. These Tweets encapsulate an amazing amount of human communications and shared information. This archive can be an indispensable research tool for an incredible number of use-cases. [cite examples]
 
 If you are here to learn more about doing historical research with Twitter data, there are three fundamentally different topics to dig into:
 
