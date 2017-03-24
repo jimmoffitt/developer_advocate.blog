@@ -103,7 +103,7 @@ Below you will find a *timeline* of Twitter (as a Product and Platform). Most of
 
 #### 2006
 + October 
-    - @replies becomes a convention. 
+    - @replies becomes a convention.  
     - $cashtags first emerge, but using for stock ticker mentions does not become common until early 2009.
 + November - Favorites introduced. 
 
@@ -129,11 +129,11 @@ Below you will find a *timeline* of Twitter (as a Product and Platform). Most of
 + August - Native photos introduced. 
 
 #### 2016
-+ June - Quoted Retweets generally available. 
++ June - Quoted Retweets generally available. ```is:quote``` 
 + September - 'Native attachments' introduced with trailing URL not counted towards 140 characters ("dwm140, part 1").
 
 #### 2017
-+ dmw140, part 2 
++ April - 'Simplified Replies' introduced with replied to accounts not counted towards 140 characters ("dmw140, part 2"). 
 
 
 ### Next Steps
