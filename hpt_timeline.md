@@ -1,9 +1,9 @@
 ## Historical PowerTrack API: metadata and filtering timeline  <a id="hptTimeline" class="tall">&nbsp;</a>
 
---------------------------------------------
 tl;dr
 
 *“As someone using Historical PowerTrack to access Tweets of interest, I need to understand when query Operators first started matching Tweet JSON attributes."*
+
 --------------------------------------------
 
 + [Product Overview](#overview)
@@ -35,6 +35,8 @@ As mentioned [HERE](http://support.gnip.com/apis/historical_api2.0/overview.html
 ### Metadata timelines <a id="metadataTimelines" class="tall">&nbsp;</a>
 
 Below is a timeline of when Historical PowerTrack Operators begin matching. In some cases Operator matching begins well after a 'communciation convention' becomes common place on Twitter. For example, @Replies emerged as a conventon in 2006, but did not become a 'first-class' object or event with 'supporting' JSON until early 2007. Accordingly, matching on @Replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
+
+The details provided here were generated using HPT, and were informed by the Twitter timeline provided [HERE]().  
 
 #### 2007
 + January 3 - ```is:verified``` [this one makes no sense -- [] recheck]
