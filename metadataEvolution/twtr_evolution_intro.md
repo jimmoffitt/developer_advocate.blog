@@ -7,16 +7,13 @@
 + [Twitter Historical Products](#historicalProducts)
 + [Next Steps](#nextSteps)
 
-
 Other drafts in the works:
 + [Twitter Data Timeline](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md)
-+ [Choosing an historical API](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/ChoosingHistoricalAPI.md)  
-    + [Related Operator table](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/HistoricalOperatorsTable.md) 
 + [Historical PowerTrack: metadata and filtering timelines](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/hpt_timeline.md)
 + [Full-Archive Search API: metadata and filtering timelines](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/search_timeline.md)
++ [Choosing an historical API](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/ChoosingHistoricalAPI.md)  
+    + [Related Operator table](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/HistoricalOperatorsTable.md) 
 + [Twitter JSON Objects 101](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/TweetJSON_GettingStarted.md)
-
-
 
 ## Introduction <a id="introduction" class="tall">&nbsp;</a>
 
