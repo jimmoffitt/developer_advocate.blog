@@ -1,8 +1,8 @@
 
 [
 
-core details are here: http://support.gnip.com/sources/twitter/data_format.html#TweetActivities
-How can this Getting Started Guide build on top of that?
++ core details are here: http://support.gnip.com/sources/twitter/data_format.html#TweetActivities
++ How can this Getting Started Guide build on top of that?
 
 ]
 
