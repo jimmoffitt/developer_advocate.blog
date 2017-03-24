@@ -14,9 +14,11 @@ tl;dr
 
 ### Product Overview <a id="overview" class="tall">&nbsp;</a>
 
-+ User/Actor object metadata updated at query time. 
- 
-+ Tweet engagement metadata updated at query time.
+Full-Archive Search (FAS) was launched in August 2015 and enables customers to immediately access any publicly available Tweet. With FAS you submit a single query and receive a response in classic RESTful fashion. FAS implements 500-Tweets-per-response pagination, and defaults to a 120-requests-per-minute rate-limit. Given these details, FAS can be used to rapidly retrieve Tweets, and at large scale using concurrent requests.
+
+Unlike Historical PowerTrack, whose archive is based on a set of Tweet files on disk, the FAS Tweet archive is all in memory. This archive is analogous to having the entire history of Tweets in a massive database. And as with all databases, it was now possible to execute queries on the contents and build an index to enable high-performance data retrieval. With Full-Archive Search, the querying language is made up of PowerTrack Operators, and these Operators each correspond to a Tweet attribute that is indexed.
+
+Also, unlike HPT, there are Tweet attributes that are updated at the time a query is made (see [HERE](http://support.gnip.com/apis/search_full_archive_api/overview.html#DataUpdates) for more details). For example, if you are accessing a Tweet posted in 2010 today, user details such as Profile bio and location will be updated to today's values and not what they were in 2010. This is true also for Tweet metrics for Favorites and Retweet counts.
 
 ### Metadata timelines <a id="metadataTimelines" class="tall">&nbsp;</a>
 
@@ -25,6 +27,7 @@ Below is a timeline of when Search API PowerTrack Operators begin matching. In s
 The details provided here were generated using Full-Archive Search, and were informed by the Twitter timeline provided [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md).  
 
 #### 2006
+ + March 26 - ```lang:```
  + July 13 - ```has:mentions```
  + October 6 - ```has:symbols```. $cashtags for discussing stock symbols does not become common until early 2009.
  + October 26 - ```has:links``` 
@@ -51,11 +54,9 @@ The details provided here were generated using Full-Archive Search, and were inf
 + February 17 - ```has:profile_geo```, ```profile_country:```, ```profile_region:```, ```profile_locality:```
 + February 17 - ```place_country:``` and ```place:``` 
 
-### Filtering
+### Filtering Tips
+  [] To-do: Needed?
 
 + geo operators
 + User/Actor metadata
 + URL matching
-
-[] is:verified support throughout Search archive. 
-[] is:quote not available - strategies for matching in Search?
