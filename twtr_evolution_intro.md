@@ -71,6 +71,8 @@ tl;dr
 "Understanding how Twitter evolved is helpful since new features map directly to JSON 'objects' and their attributes. Queries composed of PowerTrack Operators enable you to find Tweets of interest." 
 
 
+### Introduction <a id="=introduction" class="tall">&nbsp;</a>
+
 [a fine place to introduce how PowerTrack Operators **match** JSON attributes. ] 
 
 At its core, Twitter is a public, real-time, and global communication network. Since 2006, Twitter's evolution has been driven by both user use-patterns [ or conventions? ] and new product features and enhancements. If you are using Twitter data for historical research, understanding these evolutions is important for building effective queries of the Tweet archive. Twitter makes available two historical APIs that provide access to every publicly available Tweet: Historical PowerTrack and the Full-Archive API. These APIs offer *operators* that are used to identify Tweets of interest. 
@@ -89,18 +91,28 @@ Since 2006, Twitter has also evolved as a *Platform*. APIs have always been a pi
 * Then a twitter timeline, along with comments on affects on JSON and query Operators. 
 ]
 
+### Fundamental Metadata 
 
-### Retweets
+#### Retweets
 
 Retweets have an interesting history on Twitter. 
+
 user convention/uproar --> UI features --> JSON affects --> filtering details. 
 
-### Twitter Entities
+Beta period --> Official Retweet object with verb, original payload, and select metrics. 
 
-Looking at Twitter as a platform, the following events somehow affected the JSON payloads that are used to encode Tweets. This Tweet JSON is a set of Tweet attributes, and these metadata provide the values that PowerTrack Operators match. 
+#### Twitter Entities
+
+Hashtags, mentions, urls, media
+
+As these entities became first-class objects they became members of the *entities* collection of Tweet JSON attributes. Providing these entities 
+
 
 ### Twitter timeline
-Below you will find a *timeline* of Twitter (as a Product and Platform). Most of these Twitter updates in some way fundamental affected either user behavior, Tweet JSON contents, query Operators, or all three.   Included below are comments indicating any JSON and/or filteirng affects. 
+Below you will find a *timeline* of Twitter (as a Product and Platform). Most of these Twitter updates in some way fundamental affected either user behavior, Tweet JSON contents, query Operators, or all three.  Looking at Twitter as a platform, the following events somehow affected the JSON payloads that are used to encode Tweets.
+
+[Included below are comments indicating any JSON and/or filteirng affects?] 
+[]
 
 #### 2006
 + October 
@@ -130,7 +142,7 @@ Below you will find a *timeline* of Twitter (as a Product and Platform). Most of
 + August - Native photos introduced. 
 
 #### 2016
-+ June - Quoted Retweets generally available. ```is:quote``` 
++ June - Quoted Retweets generally available. 
 + September - 'Native attachments' introduced with trailing URL not counted towards 140 characters ("dwm140, part 1").
 
 #### 2017
