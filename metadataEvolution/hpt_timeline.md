@@ -16,27 +16,23 @@ tl;dr
 
 Historical PowerTrack (HPT) was launched in July 2012 by Gnip. HPT brought the same filtering capabilites developed for real-time streaming to the entire archive of public Tweets. [Built on the first Tweet archive, made up of flat-files.  Built to deliver Tweet volumes at scale. HPT API is used to manage the life-cycle of a Job. A Job is first cerated with up to 1000 filtering rules, covering a time period as long as needed. Next a rough estimate of associated Tweets is provided. If the Job is accepted, every single Tweet posted during the period of interest is examined for a match to one or more of of .  
 
+As mentioned [HERE](http://support.gnip.com/apis/historical_api2.0/overview.html#Caveats), here are important metadata details of the Historical PowerTrack archive: 
 
-[Reference to this exisiting documentation:]
-
-As mentioned [HERE](http://support.gnip.com/apis/historical_api2.0/overview.html#Caveats), 
-
-+ URLs: The url_contains operator will still function prior to 3/26/2012, but will only match against URLs as they are entered by a user into a Tweet and not the fully resolved URL (i.e. if a bit.ly URL is entered in the Tweet it can only match against the bit.ly and not the URL that has been shortened by bit.ly)
-+ Geo: Native geo data prior to 9/1/2011 is not available in Historical Powertrack. As a result, all operators reliant on this geo data will not be supported for jobs with a timeframe prior to this date.
-+ User Profile Data: All data prior to 1/1/2011 contains user profile information as it appeared in that user’s profile in September 2011. (e.g @jack’s very first Tweet in March 2006 contains his bio data from September 2011 that references his position as CEO at Square, which was not in existence at the time of the Tweet)
-+ Followers and Friends Counts: All data prior to 1/1/2011 contains followers and friends counts equal to zero. As a result, any rules based on non-zero counts for these metadata will not return any results for a timeframe prior to this date.
++ **URLs**: The url_contains operator will still function prior to 3/26/2012, but will only match against URLs as they are entered by a user into a Tweet and not the fully resolved URL (i.e. if a bit.ly URL is entered in the Tweet it can only match against the bit.ly and not the URL that has been shortened by bit.ly)
++ **Geo**: Native geo data prior to 9/1/2011 is not available in Historical Powertrack. As a result, all operators reliant on this geo data will not be supported for jobs with a timeframe prior to this date.
++ **User Profile Data**: All data prior to 1/1/2011 contains user profile information as it appeared in that user’s profile in September 2011. (e.g @jack’s very first Tweet in March 2006 contains his bio data from September 2011 that references his position as CEO at Square, which was not in existence at the time of the Tweet)
++ **Followers and Friends Counts**: All data prior to 1/1/2011 contains followers and friends counts equal to zero. As a result, any rules based on non-zero counts for these metadata will not return any results for a timeframe prior to this date.
 
 [Contradictions:]
-+ 
-
-
++ Docs say Twitter lang starts on March 26, 2013, testing shows it starts November 2012.
++ Docs say Profile Geo starts August 1, 2013, testing shows it starts June 4, 2013.
 
 
 ### Metadata timelines <a id="metadataTimelines" class="tall">&nbsp;</a>
 
 Below is a timeline of when Historical PowerTrack Operators begin matching. In some cases Operator matching begins well after a 'communciation convention' becomes common place on Twitter. For example, @Replies emerged as a conventon in 2006, but did not become a 'first-class' object or event with 'supporting' JSON until early 2007. Accordingly, matching on @Replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
 
-The details provided here were generated using HPT, and were informed by the Twitter timeline provided [HERE]().  
+The details provided here were generated using HPT, and were informed by the Twitter timeline provided [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md).  
 
 #### 2007
 + January 3 - ```is:verified``` [this one makes no sense -- [] recheck]
@@ -48,8 +44,8 @@ The details provided here were generated using HPT, and were informed by the Twi
 + February 27 - ```has:links``` and ```url:``` [] confirm url
 
 #### 2011
-+ January 1 - ```is:retweet``` and ```retweet_of_status_id:``` 
-+ June 2 - ```has:images```
++ January 1 - ```is:retweet``` and ```retweet_of_status_id:```. Retweets became a convention as early as April 2007, but matching before this date depends on search for "RT @" or "Via @" patterns.  
++ June 2 - ```has:images``` and ```has:media```
 + September 1 - ```has:geo```, ```place_country:```, ```bounding_box:``` and ```point_radius:```
 
 #### 2012
@@ -69,9 +65,11 @@ The details provided here were generated using HPT, and were informed by the Twi
 
 #### 2016
 + July 28 - ```url_title:``` and ```url_description:```
++ July 28 - Klout 2.0 metadata in payloads. No Operators match on metadata.
 
 #### 2017
-+ February 22 - Poll metadata is available in *original* format. 
++ January 17 - 'quote_count' and 'reply_count' available in *original* format. No Operators match on metadata.
++ February 22 - Poll metadata become available in *original* format. No Operators match on metadata.
 
 ### Filtering tips <a id="filteringExamples" class="tall">&nbsp;</a>
 
