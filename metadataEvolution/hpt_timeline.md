@@ -14,7 +14,9 @@ tl;dr
 
 ### Product Overview <a id="overview" class="tall">&nbsp;</a>
 
-Historical PowerTrack (HPT) was launched in July 2012 by Gnip. HPT brought the same filtering capabilites developed for real-time streaming to the entire archive of public Tweets. [Built on the first Tweet archive, made up of flat-files.  Built to deliver Tweet volumes at scale. HPT API is used to manage the life-cycle of a Job. A Job is first cerated with up to 1000 filtering rules, covering a time period as long as needed. Next a rough estimate of associated Tweets is provided. If the Job is accepted, every single Tweet posted during the period of interest is examined for a match to one or more of of .  
+Historical PowerTrack (HPT) was launched in July 2012 by Gnip. HPT brings the same filtering capabilites developed for real-time streaming to the entire archive of public Tweets. [Built on the first Tweet archive, made up of flat-files.  Built to deliver Tweet volumes at scale. HPT API is used to manage the life-cycle of a Job. A Job is first created with up to 1000 filtering rules, covering a time period as long as needed. Next a rough estimate of associated Tweets is provided. If the Job is accepted, every single Tweet posted during the period of interest is examined for a match to any included rules, and the matched Tweets are written to a 10-minute time-series of data file for download.
+
+With Historical PowerTrack, Tweets are written to the archive as they are posted. However, when the archive was built in 2012 the Tweet JSON was normalized and backfilled to some extent. For example, the "entities" structure that contains hashtags, mentions, and symbols was built out for periods before those entities existed. Furthermore, some metadata, such as whether an account is verified, was backfilled. Accordingly, if you query for early @Jack Tweets from 2006, you'll find that his user profile is marked as verified, even though account verification did not begin until 2009.    
 
 As mentioned [HERE](http://support.gnip.com/apis/historical_api2.0/overview.html#Caveats), here are important metadata details of the Historical PowerTrack archive: 
 
@@ -72,6 +74,8 @@ The details provided here were generated using HPT, and were informed by the Twi
 + February 22 - Poll metadata become available in *original* format. No Operators match on metadata.
 
 ### Filtering tips <a id="filteringExamples" class="tall">&nbsp;</a>
+
+[] To-do: Needed?
 
 + Retweet example
 + Geo example
