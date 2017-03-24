@@ -23,10 +23,9 @@ Retweets are another example. Retweeting emerged as a way of 'forwarding' conten
 
 Since 2006, Twitter has also evolved as a *Platform*. APIs have always been a pillar of the Twitter network. The first APIs hit the streets soon after Twitter was launched. Today, Twitter's APIs drive the two-way communication network that has become the source of breaking news. The opportunities to build on top of this global, real-time communication channel are endless.  
 
-(no need to go into other Platform features, e.g. DMs and Ads)
-
 ```
 [] TODO
+No need to go into other Platform features, e.g. DMs and Ads.
 So, what are we covering next?
 * We'll start off with more background about the evolution of fundamental Twitter characteristics, starting with Retweets and then collections of Twitter **entities**.
 * Then a twitter timeline, along with comments on effects on JSON and query Operators. 
