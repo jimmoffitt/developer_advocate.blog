@@ -1,14 +1,15 @@
 # Evolution of Tweet Metadata
 + [Introduction](#introduction)
-
 + [Twitter Historical Products](#historicalProducts)
++ [Next Steps](#nextSteps)
 
-+ [Upcoming articles:](#articleList)
 + [Twitter Platform Timeline](#twitterTimeline)
+
+Other drafts in the works:
 + [Twitter JSON Objects 101](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/TweetJSON_intro.md)
 + [Choosing an historical API](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/ChoosingHistoricalAPI.md)  
 + [Historical PowerTrack: metadata and filtering timelines](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/hpt_timeline.md)
-+ [Full-Archive Search API: metadata and filtering timelines](#fasTimeline)
++ [Full-Archive Search API: metadata and filtering timelines](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/search_timeline.md)
 
 ### tl;dr
 “As someone doing historical research with Twitter Data, I need to understand how the platform has evolved, how that evolution affected user behavior, how it affected the Tweet JSON payloads, and how to effectively search the Twitter archive. “
@@ -43,7 +44,7 @@ In 2012, Historical PowerTrack (HPT) was introduced and quickly because a widely
 
 In 201#, the 30-Day Search API was released. [Product description. ] Next Twitter indexed the entire Tweet archive and in 2015 released Full-Archive Search (FAS). FAS also provides access to the entire Twitter archive, but does it in a much different way. With FAS you submit a single query and receive a response in classic RESTful fashion. FAS implements 500-Tweets-per-response pagination, and defaults to a 120-requests-per-minute rate-limit. Given these details, FAS can be used to rapidly retrieve Tweets, and at large scale using concurrent requests. FAS also provide the ability to count the number of Tweets matching your query before requesting the corresponding data. Counts are avaialable in arrays with minute, hour, and day periods. This ability to 'look before you leap' is an amazing tool in itself. With many use-cases, matching volumes is of primary interest. Since the Counts endpoint provides fast feedback on the matching behavior of a rule, it can be used to assess filtering behavior before pulling the data. For this reason, the Search API is a great complement to real-time and Historical PowerTrack. 
 
-### Next Steps 
+### Next Steps  <a id="nextSteps" class="tall">&nbsp;</a>
 What follows is a set of articles that address how these Twitter changes affect the effort to find and analyze Twitter data.
 
 + Wondering how to decide which historical API to use? --> See [article]
@@ -55,7 +56,7 @@ What follows is a set of articles that address how these Twitter changes affect 
 First we'll a review of Twitter Plaform updates that in some way affected the JSON generated with HPT and FAS. Then we'll dig into the many product-specific details that affect how this stored JSON matches PowerTrack Operators.
 
 =====================================================
-[atomic] Articles/Blog Posts/Getting Started Guides
+    Standalone but related  Articles/Blog Posts/Getting Started Guides
 =====================================================
 
 ## Twitter timeline <a id="twitterTimeline" class="tall">&nbsp;</a>  
@@ -124,52 +125,11 @@ Other important platform updates:
 
 ### Next Steps
 
-
-
+[] Choosing between Historical PowerTrack and Search API
+[] Historical PowerTrack API: metadata and filtering timeline  
+[] Search API: metadata and filtering timeline  
 
 =======================================
 
 
-
-## Search API and metadata timeline
-
-## Full-Archive Search API: metadata and filtering timeline  <a id="d=fasTimeline" class="tall">&nbsp;</a>
-
-+ User/Actor object metadata updated at query time. 
- 
-+ Tweet engagement metadata updated at query time.
-
-
-
-### Product timeline
-
-
-### Metadata JSON timelines
-
-Below are details about when Operator behavior changed. 
-
-#### 2006
- + July 13 - ```has:mentions``` begins matching.
- + October 6 - ```has:symbols``` begins matching (Search). $cashtags for discussing stock symbols does not become common until early 2009.
- + October 26 - ```has:links``` begins matching.
- + November 23 - ```has:hashtags``` begins matching.
-
-#### 2007
- + January 30 - First first-class @reply (in_reply_to_user_id), ```reply_to_status_id:``` begins matching. 
- + August 23 - “hashtag invented” according to internal history. First real use a week later.
-
-#### 2009
-+ May 15 - ```is:retweet``` begins matching.  
-
-#### 2010
-+ March 6 - ```has:geo``` starts matching. 
-
-### Filtering
-
-+ geo operators
-+ User/Actor metadata
-+ URL matching
-
-[] is:verified support throughout Search archive. 
-[] is:quote not available - strategies for matching in Search?
 
