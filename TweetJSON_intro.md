@@ -8,15 +8,17 @@ Tweets are made up of a Tweet message, a posted time, a set of User (also refere
 
 ``` 
 {
+ "id": 831569219296882688,
  "created_at": "Tue Feb 14 18:22:06 +0000 2017",
-	"id": 831569219296882688,
-	"text": "",
+ "text": "",
  "user": {},
  "entities": {},
  "place": {}
 }
 ```
++ Unique Tweet ID
 
++ Time Posted
 
 + Tweet body
  
@@ -26,7 +28,8 @@ Tweets are made up of a Tweet message, a posted time, a set of User (also refere
     + Bio
     + Location
     + URL
-
+    + Enrichments
+    
 + Twitter entities
    + hashtags
    + mentions
@@ -38,5 +41,5 @@ Tweets are made up of a Tweet message, a posted time, a set of User (also refere
    + Tweet Geo
    + Profile Geo
 
-+ Other Data Enrichments
++ Other Enrichments
     
