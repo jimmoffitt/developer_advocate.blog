@@ -1,4 +1,8 @@
 # Evolution of Tweet Metadata
+
+### tl;dr
+“As someone doing historical research with Twitter Data, I need to understand how the platform has evolved, how that evolution affected user behavior, how it affected the Tweet JSON payloads, and how to effectively search the Twitter archive. “
+
 + [Introduction](#introduction)
 + [Twitter Historical Products](#historicalProducts)
 + [Next Steps](#nextSteps)
@@ -12,9 +16,6 @@ Other drafts in the works:
     + [Related Operator table](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/HistoricalOperatorsTable.md) 
 + [Historical PowerTrack: metadata and filtering timelines](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/hpt_timeline.md)
 + [Full-Archive Search API: metadata and filtering timelines](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/search_timeline.md)
-
-### tl;dr
-“As someone doing historical research with Twitter Data, I need to understand how the platform has evolved, how that evolution affected user behavior, how it affected the Tweet JSON payloads, and how to effectively search the Twitter archive. “
 
 ## Introduction <a id="introduction" class="tall">&nbsp;</a>
 
