@@ -10,11 +10,11 @@
 
 Other drafts in the works:
 + [Twitter Data Timeline](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md)
-+ [Choosing an historical API](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/ChoosingHistoricalAPI.md)  
-    + [Related Operator table](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/HistoricalOperatorsTable.md) 
-+ [Historical PowerTrack: metadata and filtering timelines](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/hpt_timeline.md)
-+ [Full-Archive Search API: metadata and filtering timelines](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/search_timeline.md)
-+ [Twitter JSON Objects 101](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/TweetJSON_intro.md)
++ [Choosing an historical API](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/ChoosingHistoricalAPI.md)  
+    + [Related Operator table](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/HistoricalOperatorsTable.md) 
++ [Historical PowerTrack: metadata and filtering timelines](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/hpt_timeline.md)
++ [Full-Archive Search API: metadata and filtering timelines](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/search_timeline.md)
++ [Twitter JSON Objects 101](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/TweetJSON_GettingStarted.md)
 
 
 
