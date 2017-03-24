@@ -92,8 +92,8 @@ ay - Follow button introduced, making it easier to follow accounts associated wi
 
 ### Next Steps
 
-[] Choosing between Historical PowerTrack and Search API
-[] Historical PowerTrack API: metadata and filtering timeline  
-[] Search API: metadata and filtering timeline  
++ Choosing between Historical PowerTrack and Search API
++ Historical PowerTrack API: metadata and filtering timeline  
++ Search API: metadata and filtering timeline  
 
 =======================================
