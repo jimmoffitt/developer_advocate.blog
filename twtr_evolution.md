@@ -102,31 +102,36 @@ Looking at Twitter as a platform, the following events somehow affected the JSON
 Below you will find a *timeline* of Twitter (as a Product and Platform). Most of these Twitter updates in some way fundamental affected either user behavior, Tweet JSON contents, query Operators, or all three.   Included below are comments indicating any JSON and/or filteirng affects. 
 
 #### 2006
-+ October - @replies becomes a convention. 
++ October 
+    - @replies becomes a convention. 
+    - $cashtags first emerge, but using for stock ticker mentions does not become common until early 2009.
 + November - Favorites introduced. 
 
 #### 2007
 + January - @replies become a first-class object with a UI reply button with ```in_reply_to``` metadata. 
-+ April - Retweets become a convention.
++ April - Retweets become a convention. 
 + August - #hashtags emerge as a primary tool for searching and organizing Tweets. 
 
 #### 2009
-+ February - $cashtags become a convention for discussing stock ticker symbols. 
-+ May - Twitter begins making Retweets a first-class object with ```retweet_status``` metadata. 
-+ 
++ February - $cashtags become a common convention for discussing stock ticker symbols. 
++ May - Retweet 'beta' is introduced with "Via @" prepended to Tweet body.
++ June - Verified accounts introduced. 
++ August - Retweets a first-class object with "RT @" pattern and new ```retweet_status``` metadata. 
++ October - List feature launched. 
++ November - Tweet Geotagging API is launched, providing first method for users to share location via third-party apps. 
 
 #### 2010
 + June - Twitter Places introduced for geo-tagging Tweets. 
++ August - Tweet button for web sites is launched. Made sharing links easier.  
 
-#### 2016
-
-Other important platform updates:
-#### 2010
-+ Tweet button launched. This made sharing links easier, so likely increased the number of URLs being shared.
 #### 2011
-+ Native photos introduced. 
++ May - Follow button introduced, making it easier to follow accounts associated with web sites.  
++ August - Native photos introduced. 
+
 #### 2016
-+ dwm140, part 1
++ June - Quoted Retweets generally available. 
++ September - 'Native attachments' introduced with trailing URL not counted towards 140 characters ("dwm140, part 1").
+
 #### 2017
 + dmw140, part 2 
 
