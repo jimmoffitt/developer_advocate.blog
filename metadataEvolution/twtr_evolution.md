@@ -5,6 +5,11 @@ tl;dr
 
 "Understanding how Twitter evolved is helpful since new features map directly to JSON 'objects' and their attributes. Queries composed of PowerTrack Operators enable you to find Tweets of interest." 
 
++ [Introduction](#introduction)
++ [Fundamental Metadata](#fundamentalMetadata)
++ [Twitter timeline](#twitterTimeline)
++ [Next Steps](#nextSteps)
+
 
 ### Introduction <a id="=introduction" class="tall">&nbsp;</a>
 
@@ -26,7 +31,7 @@ Since 2006, Twitter has also evolved as a *Platform*. APIs have always been a pi
 * Then a twitter timeline, along with comments on affects on JSON and query Operators. 
 ]
 
-### Fundamental Metadata 
+### Fundamental Metadata <a id="=fundamentalMetadata" class="tall">&nbsp;</a>
 
 #### Retweets
 
@@ -43,7 +48,7 @@ Hashtags, mentions, urls, media
 As these entities became first-class objects they became members of the *entities* collection of Tweet JSON attributes. Providing these entities 
 
 
-### Twitter timeline
+### Twitter timeline <a id="=twitterTimeline" class="tall">&nbsp;</a>
 Below you will find a *timeline* of Twitter (as a Product and Platform). Most of these Twitter updates in some way fundamental affected either user behavior, Tweet JSON contents, query Operators, or all three.  Looking at Twitter as a platform, the following events somehow affected the JSON payloads that are used to encode Tweets.
 
 [Included below are comments indicating any JSON and/or filteirng affects?] 
