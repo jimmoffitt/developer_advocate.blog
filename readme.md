@@ -4,10 +4,10 @@ A somewhat random collection of articles written with Gnip customers in mind...
 
 ### Twitter Blog Posts - Data stories 
 + Tweeting in the Rain series:
-    + [Finding Data Signal of Interest: Do Tweet volumes correlate with **local** rain gauges?](http://blog.gnip.com/tweeting-in-the-rain/)
-    + [Social Data as an Early-Warning System](http://blog.gnip.com/tweeting-in-the-rain-part-2/)
-    + [Opportunities Social Networks Bring to Early-Warning Systems: geo-referencing Tweets](http://blog.gnip.com/tweeting-in-the-rain-part-3/)
-    + [How the 2013 Colorado Flood Unfolded on Twitter](https://blog.gnip.com/tweeting-rain-part-4-tweets-2013-colorado-flood/)
+    + [Part 1: Finding Data Signal of Interest: Do Tweet volumes correlate with **local** rain gauges?](http://blog.gnip.com/tweeting-in-the-rain/)
+    + [Part 2: Social Data as an Early-Warning System](http://blog.gnip.com/tweeting-in-the-rain-part-2/)
+    + [Part 3: Opportunities Social Networks Bring to Early-Warning Systems: geo-referencing Tweets](http://blog.gnip.com/tweeting-in-the-rain-part-3/)
+    + [Part 4: How the 2013 Colorado Flood Unfolded on Twitter](https://blog.gnip.com/tweeting-rain-part-4-tweets-2013-colorado-flood/)
      
 + [Using Twitter as a Go-to Communication Channel During Severe Weather Events](https://blog.twitter.com/2016/using-twitter-as-a-go-to-communication-channel-during-severe-weather-events)
     + [USA Today article on Twitter-based system deployed by the USGS Water Science Center](http://www.usatoday.com/story/tech/2016/06/01/federal-flood-officials-texas-use-twitter-alert/85265520/)
@@ -18,7 +18,7 @@ A somewhat random collection of articles written with Gnip customers in mind...
 + [Ruby client for Twitter Engagement API](https://github.com/twitterdev/engagement-api-client-ruby)
 + [Ruby client for Twitter Audience API](https://github.com/twitterdev/audience-api-client-ruby)
           
-### Other projects
+### Other repositories
 *  Historical PowerTrack Ruby client: https://github.com/jimmoffitt/rbHistoricalPT
 *  (Gnip) Search API Ruby client: https://github.com/jimmoffitt/rbSearchAPI
 *  PowerTrack Rules Migrator: https://github.com/jimmoffitt/rules-migrator
