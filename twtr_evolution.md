@@ -9,6 +9,7 @@ Twitter Data timeline:
 Other drafts in the works:
 + [Twitter JSON Objects 101](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/TweetJSON_intro.md)
 + [Choosing an historical API](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/ChoosingHistoricalAPI.md)  
+    + [Related Operator table](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/HistoricalOperatorsTable.md) 
 + [Historical PowerTrack: metadata and filtering timelines](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/hpt_timeline.md)
 + [Full-Archive Search API: metadata and filtering timelines](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/search_timeline.md)
 
@@ -43,9 +44,11 @@ Twitter offers two products that provide access to every publicly available Twee
 
 In 2012, Historical PowerTrack (HPT) was introduced and quickly because a widely utilized Twitter research tool. HPT enables users to associate a time period of interest and a set of 1,000 PowerTrack rules/filters to an historical ```Job```. HPT offers the same Operators as real-time PowerTrack and is built to deliver Tweets at scale. In fact, this product is used to generate and share the entire public archive of Tweets to the Library of Congress (LOC). HPT generates a time-series of 10-minute data files for download. These Jobs can result in thousands of large files that take many hours to both generate and download. The HPT API provides a variety of methods to create and monitor a Job's process. Essentially the API is used to manage a Job's lifecycle. 
 
-In 201#, the 30-Day Search API was released. [Product description. ] Next Twitter indexed the entire Tweet archive and in 2015 released Full-Archive Search (FAS). FAS also provides access to the entire Twitter archive, but does it in a much different way. With FAS you submit a single query and receive a response in classic RESTful fashion. FAS implements 500-Tweets-per-response pagination, and defaults to a 120-requests-per-minute rate-limit. Given these details, FAS can be used to rapidly retrieve Tweets, and at large scale using concurrent requests. FAS also provide the ability to count the number of Tweets matching your query before requesting the corresponding data. Counts are avaialable in arrays with minute, hour, and day periods. This ability to 'look before you leap' is an amazing tool in itself. With many use-cases, matching volumes is of primary interest. Since the Counts endpoint provides fast feedback on the matching behavior of a rule, it can be used to assess filtering behavior before pulling the data. For this reason, the Search API is a great complement to real-time and Historical PowerTrack. 
+In 2013 (?), the 30-Day Search API was released. [Product description. ] Next Twitter indexed the entire Tweet archive and in 2015 released Full-Archive Search (FAS). FAS also provides access to the entire Twitter archive, but does it in a much different way. With FAS you submit a single query and receive a response in classic RESTful fashion. FAS implements 500-Tweets-per-response pagination, and defaults to a 120-requests-per-minute rate-limit. Given these details, FAS can be used to rapidly retrieve Tweets, and at large scale using concurrent requests. FAS also provide the ability to count the number of Tweets matching your query before requesting the corresponding data. Counts are avaialable in arrays with minute, hour, and day periods. This ability to 'look before you leap' is an amazing tool in itself. With many use-cases, matching volumes is of primary interest. Since the Counts endpoint provides fast feedback on the matching behavior of a rule, it can be used to assess filtering behavior before pulling the data. For this reason, the Search API is a great complement to real-time and Historical PowerTrack. 
 
 ### Next Steps  <a id="nextSteps" class="tall">&nbsp;</a>
+First we'll a review of Twitter Plaform updates that in some way affected the JSON generated with HPT and FAS. Then we'll dig into the many product-specific details that affect how this stored JSON matches PowerTrack Operators.
+
 What follows is a set of articles that address how these Twitter changes affect the effort to find and analyze Twitter data.
 
 + Wondering how to decide which historical API to use? --> See [article]
@@ -53,18 +56,14 @@ What follows is a set of articles that address how these Twitter changes affect 
 + Using Full-Archive Search and need to better understand Tweet JSON and filtering timelines? --> [article]
 + Using Historical PowerTrack and need to better understand Tweet JSON and filtering timelines? --> [article]
 
-
-First we'll a review of Twitter Plaform updates that in some way affected the JSON generated with HPT and FAS. Then we'll dig into the many product-specific details that affect how this stored JSON matches PowerTrack Operators.
-
 ------------------------
 
-    Standalone but related  Articles/Blog Posts/Getting Started Guides
+    Standalone but related articles/blog posts/getting-started-guides
 
 --------------------------
 
-=====================================================
 
-## Twitter timeline <a id="twitterTimeline" class="tall">&nbsp;</a>  
+## Twitter Data timeline <a id="twitterTimeline" class="tall">&nbsp;</a>  
 
 tl;dr
 
@@ -100,21 +99,25 @@ user convention/uproar --> UI features --> JSON affects --> filtering details.
 Looking at Twitter as a platform, the following events somehow affected the JSON payloads that are used to encode Tweets. This Tweet JSON is a set of Tweet attributes, and these metadata provide the values that PowerTrack Operators match. 
 
 ### Twitter timeline
-Below you will find a *timeline* of Twitter (as a Product and Platform) 
-
+Below you will find a *timeline* of Twitter (as a Product and Platform). Most of these Twitter updates in some way fundamental affected either user behavior, Tweet JSON contents, query Operators, or all three.   Included below are comments indicating any JSON and/or filteirng affects. 
 
 #### 2006
 + October - @replies becomes a convention. 
-+ November - Favorites introduced.
++ November - Favorites introduced. 
+
 #### 2007
 + January - @replies become a first-class object with a UI reply button with ```in_reply_to``` metadata. 
 + April - Retweets become a convention.
-+ August #hashtags becomes a tool for searching and organizing Tweets. 
++ August - #hashtags emerge as a primary tool for searching and organizing Tweets. 
+
 #### 2009
 + February - $cashtags become a convention for discussing stock ticker symbols. 
 + May - Twitter begins making Retweets a first-class object with ```retweet_status``` metadata. 
++ 
+
 #### 2010
 + June - Twitter Places introduced for geo-tagging Tweets. 
+
 #### 2016
 
 Other important platform updates:
