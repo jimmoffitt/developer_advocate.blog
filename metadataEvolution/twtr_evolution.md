@@ -26,6 +26,7 @@ Since 2006, Twitter has also evolved as a *Platform*. APIs have always been a pi
 (no need to go into other Platform features, e.g. DMs and Ads)
 
 ```
+[] TODO
 So, what are we covering next?
 * We'll start off with more background about the evolution of fundamental Twitter characteristics, starting with Retweets and then collections of Twitter **entities**.
 * Then a twitter timeline, along with comments on effects on JSON and query Operators. 
@@ -36,24 +37,22 @@ So, what are we covering next?
 #### Retweets
 
 ```
-Retweets have an interesting history on Twitter. 
-user convention --> UI features --> JSON affects --> filtering details. 
-Beta period --> Official Retweet object with verb, original payload, and select metrics. 
+[] TODO
+* Retweets have an interesting history on Twitter. 
+* user convention --> UI features --> JSON affects --> filtering details. 
+* Beta period --> Official Retweet object with verb, original payload, and select metrics. 
 ```
 
 #### Twitter Entities
 
 ```
-Hashtags, mentions, urls, media
-
-As these entities became first-class objects they became members of the *entities* collection of Tweet JSON attributes. Providing these entities 
+[] TODO
+* Hashtags, mentions, urls, media
+* As these entities became first-class objects they became members of the *entities* collection of Tweet JSON attributes. Providing these arrays make it easier for JSON parsers to load these common Tweet entities by not requiring elaborate string parsing and extraction.  
 ```
 
 ### Twitter timeline <a id="=twitterTimeline" class="tall">&nbsp;</a>
-Below you will find a *timeline* of Twitter (as a Product and Platform). Most of these Twitter updates in some way fundamental affected either user behavior, Tweet JSON contents, query Operators, or all three.  Looking at Twitter as a platform, the following events somehow affected the JSON payloads that are used to encode Tweets.
-
-[Included below are comments indicating any JSON and/or filteirng affects?] 
-[]
+Below you will find a *timeline* of Twitter (as a Product and Platform). Most of these Twitter updates in some way fundamental affected either user behavior, Tweet JSON contents, query Operators, or all three.  Looking at Twitter as a platform, the following events in some way affected the JSON payloads that are used to encode Tweets.
 
 #### 2006
 + October 
