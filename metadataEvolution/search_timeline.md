@@ -55,7 +55,10 @@ The details provided here were generated using Full-Archive Search, and were inf
 + February 17 - ```place_country:``` and ```place:``` 
 
 ### Filtering Tips
+
+```
   [] To-do: Needed?
+```
 
 + geo operators
 + User/Actor metadata
