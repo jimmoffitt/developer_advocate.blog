@@ -73,10 +73,14 @@ The details provided here were generated using HPT, and were informed by the Twi
 #### 2017
 + February 22 - Poll metadata is available in *original* format. 
 
-### Filtering Examples <a id="filteringExamples" class="tall">&nbsp;</a>
+### Filtering tips <a id="filteringExamples" class="tall">&nbsp;</a>
 
++ Retweet example
++ Geo example
++ URL example
++ Others
 
 ### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
-[] Search API: metadata and filtering timeline
-[] Choosing between Historical PowerTrack and Search API 
++ Search API: metadata and filtering timeline
++ Choosing between Historical PowerTrack and Search API 
 
