@@ -25,7 +25,7 @@ As mentioned [HERE](http://support.gnip.com/apis/historical_api2.0/overview.html
 + **User Profile Data**: All data prior to 1/1/2011 contains user profile information as it appeared in that user’s profile in September 2011. (e.g @jack’s very first Tweet in March 2006 contains his bio data from September 2011 that references his position as CEO at Square, which was not in existence at the time of the Tweet)
 + **Followers and Friends Counts**: All data prior to 1/1/2011 contains followers and friends counts equal to zero. As a result, any rules based on non-zero counts for these metadata will not return any results for a timeframe prior to this date.
 
-[Contradictions:]
+[Contradictions --> doc updates? others?]
 + Docs say Twitter lang starts on March 26, 2013, testing shows it starts November 2012.
 + Docs say Profile Geo starts August 1, 2013, testing shows it starts June 4, 2013.
 
