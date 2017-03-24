@@ -17,7 +17,7 @@ tl;dr
 
 At its core, Twitter is a public, real-time, and global communication network. Since 2006, Twitter's evolution has been driven by both user use-patterns [ or conventions? ] and new product features and enhancements. If you are using Twitter data for historical research, understanding these evolutions is important for building effective queries of the Tweet archive. Twitter makes available two historical APIs that provide access to every publicly available Tweet: Historical PowerTrack and the Full-Archive API. These APIs offer *operators* that are used to identify Tweets of interest. 
 
-Twitter users organically introducted fundamental communication patterns to the Twitter network. A seminal example is the hashtag, now nearly universally used on social networks. Hashtags were introduced as a way to organize conversations and topics. On a network with hundreds of million messages a day, tools to find Tweets of interest are key, and hashtags have become a critical method. 
+Twitter users organically introduced fundamental communication patterns to the Twitter network. A seminal example is the hashtag, now nearly universally used on social networks. Hashtags were introduced as a way to organize conversations and topics. On a network with hundreds of million messages a day, tools to find Tweets of interest are key, and hashtags have become a critical method. 
 
 Retweets are another example. Retweeting emerged as a way of 'forwarding' content to others, started as a manual process of Tweet copy/paste prepended with a "RT @" pattern. This process was eventually automated via a new button, complete with new JSON metadata. The 'official' Retweet was born. Other examples include 'mentions', and sharing of media and web links. Each of these use-patterns resulted in new [twitter.com](https://twitter.com/) user-interface features, new supporting JSON, and thus new ways to match on Tweets. 
 
@@ -25,28 +25,29 @@ Since 2006, Twitter has also evolved as a *Platform*. APIs have always been a pi
 
 (no need to go into other Platform features, e.g. DMs and Ads)
 
-[So, what are we covering next?
+```
+So, what are we covering next?
 * We'll start off with more background about the evolution of fundamental Twitter characteristics, starting with Retweets and then collections of Twitter **entities**.
-
-* Then a twitter timeline, along with comments on affects on JSON and query Operators. 
-]
+* Then a twitter timeline, along with comments on effects on JSON and query Operators. 
+```
 
 ### Fundamental Metadata <a id="=fundamentalMetadata" class="tall">&nbsp;</a>
 
 #### Retweets
 
+```
 Retweets have an interesting history on Twitter. 
-
-user convention/uproar --> UI features --> JSON affects --> filtering details. 
-
+user convention --> UI features --> JSON affects --> filtering details. 
 Beta period --> Official Retweet object with verb, original payload, and select metrics. 
+```
 
 #### Twitter Entities
 
+```
 Hashtags, mentions, urls, media
 
 As these entities became first-class objects they became members of the *entities* collection of Tweet JSON attributes. Providing these entities 
-
+```
 
 ### Twitter timeline <a id="=twitterTimeline" class="tall">&nbsp;</a>
 Below you will find a *timeline* of Twitter (as a Product and Platform). Most of these Twitter updates in some way fundamental affected either user behavior, Tweet JSON contents, query Operators, or all three.  Looking at Twitter as a platform, the following events somehow affected the JSON payloads that are used to encode Tweets.
