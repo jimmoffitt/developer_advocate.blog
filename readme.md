@@ -2,7 +2,7 @@ __Developer Advocate blog__ ...from the client-side prespective
 
 A somewhat random collection of articles written with Gnip customers in mind...  
 
-### Twitter Blog Posts - Data stories 
+### Twitter/Gnip Blog Posts - Data stories 
 + Tweeting in the Rain series:
     + [Part 1: Finding Data Signal of Interest: Do Tweet volumes correlate with **local** rain gauges?](http://blog.gnip.com/tweeting-in-the-rain/)
     + [Part 2: Social Data as an Early-Warning System](http://blog.gnip.com/tweeting-in-the-rain-part-2/)
@@ -38,7 +38,7 @@ A somewhat random collection of articles written with Gnip customers in mind...
 - [Running Ruby/Tk applications as Windows 7 applications](http://support.gnip.com/articles/rubytk-to-win7exe.html)
 - [Downloading Historical PowerTrack files](http://support.gnip.com/articles/downloading-hpt-files.html)
 - "Gnip on Windows" articles:
-     - [cURL on Windoows 7 - Exercising Gnip Streaming and Rules APIs.](http://support.gnip.com/articles/curl-on-win7.html)
+     - [cURL on Windows 7 - Exercising Gnip Streaming and Rules APIs.](http://support.gnip.com/articles/curl-on-win7.html)
      - [CygWin on Windows 7 - Downloading Historical PowerTrack data.](http://support.gnip.com/articles/unixonwindows_cygwin.html)
 - [Preparing for High Volume Events](http://support.gnip.com/articles/high-volume-events.html)
 - Storing Tweets in Database articles:
