@@ -15,19 +15,25 @@
 
 ## Introduction <a id="introduction" class="tall">&nbsp;</a>
 
-Billions of Tweets have been posted since 2006. These Tweets encapsulate an amazing amount of human communications. This archive can be an indispensable research tool for an incredible number of use-cases. If you are here to learn more about doing historical research with Twitter data, there are three fundamentally different topics to dig into:
+Billions of Tweets have been posted since 2006. These Tweets encapsulate an amazing amount of human communications and shared information. This archive can be an indispensable research tool for an incredible number of use-cases. [cite examples]
+
+If you are here to learn more about doing historical research with Twitter data, there are three fundamentally different topics to dig into:
 
  + 1) Evolution of the Twitter Plaform, and the timeline of when new features and enhancements were rolled out. 
- + 2) How Tweets are 'marked up' in JSON and how those encoded attritubes have changed due to new features.
+ + 2) How Tweets are 'marked up' in JSON and how those encoded attritubes have changed due to new features. New JSON attributes often kead to new filtering options.  
  + 3) How to effectively match those Tweet and User metadata with the PowerTrack querying language that is common to Historical PowerTrack and the Search API. Understanding key differences between these products is key to getting the data you need when you need it. 
  
 Understanding the Twitter evolution is helpful since new features map directly to JSON 'objects' and their attributes. Take the Retweet for available. Twitter has always been a place to share information and early in its history users organically started to 'forward', or 'retweet' Tweets they enjoyed and wanted to share. The convention became to prepend the Tweet message with a "RT @user" pattern to indicate original author. Retweeting became so common, in 2009 Twitter built the functionality into a new button and promoted retweeting to a first-class Retweet object. Along with that came new metadata in Tweet JSON payloads: a new verb of 'share', select Retweet metrics, and eventually the entire JSON payload of the original Tweet. With these new JSON attributes in place, along came PowerTrack Operators to help efficiently and effectively match on Retweets. 
 
 These details, which we'll dig into soon, are critical for effective Twitter data filtering. For example, say you are doing research based only on Retweets, and you need to filter out all original Tweets. The easiest way to match on Retweets is to use the PowerTrack ```is:retweet``` Operator. However, that Operator depends on the first-class Retweet metadata that was introduced in April 2009. So if you include a ```is:retweet``` rule clause for before that time, it will not match anything. Instead you would have to build a rule clause that matches on the "RT @" pattern. For more information on how the Twitter platform has evolved see [HERE].
 
-Being familiar with how Tweets are encoded in JSON, and how those encodings changed over the years, is also important. [As in the Retweet example above, many PowerTrack Operators work directly with this JSON metadata. So it's important to know when PowerTrack Operators will result in false-negatives with searching for Tweets. It can be also important to 
+Being familiar with how Tweets are encoded in JSON, and how those encodings changed over the years, is also important. [
 
+As in the Retweet example above, many PowerTrack Operators work directly with this JSON metadata. 
 
+So it's important to know when PowerTrack Operators will result in false-negatives with searching for Tweets. 
+
+]
 
 ### Twitter Historical Products <a id="historicalProducts" class="tall">&nbsp;</a>
 
@@ -52,11 +58,15 @@ First we'll a review of Twitter Plaform updates that in some way affected the JS
 
 ## Twitter timeline <a id="twitterTimeline" class="tall">&nbsp;</a>  
 
-At its core, Twitter is a real-time, global communication network. How Twitter is used to communicate has evolved since 2006. 
+At its core, Twitter is a public, real-time, and global communication network. Since 2006, Twitter's evolution has been driven by both user use-patterns [ or conventions? ] and new product features and enhancements. 
 
-There are many examples where this evolution was driven by new user conventions and behaviors. [Intro narrative on the evolution of hashtags and retweets, and how new twitter features affected user-behavior.]
+Twitter users organically introducted fundamental communication patterns to the Twitter network. A seminal example is the hashtag, now nearly universally used on social networks. Hashtags were introduced as a way to organize conversations and topics. On a network with hundreds of million messages a day, tools to find Tweets of interest are key, and hashtags have become a critical method. 
 
-Other changes were driven by 
+Retweets are another example. Retweeting emerged as a way of 'forwarding' content to others, started as a manual process of Tweet copy/paste prepended with a "RT @" pattern. This process was eventually automated via a new button, complete with new JSON metadata. The 'official' Retweet was born. Other examples include 'mentions', and sharing of media and web links. Each of these use-patterns resulted in new [twitter.com](https://twitter.com/) user-interface features, new supporting JSON, and thus new ways to match on Tweets. 
+
+[a fine place to introduce how PowerTrack Operators **match** JSON attributes. ] 
+
+
 
 
 
