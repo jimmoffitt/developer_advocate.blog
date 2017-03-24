@@ -67,11 +67,11 @@ The details provided here were generated using HPT, and were informed by the Twi
 
 #### 2016
 + July 28 - ```url_title:``` and ```url_description:```
-+ July 28 - Klout 2.0 metadata in payloads. No Operators match on metadata.
++ July 28 - Klout 2.0 metadata in payloads. No associated Operators for these metadata.
 
 #### 2017
-+ January 17 - 'quote_count' and 'reply_count' available in *original* format. No Operators match on metadata.
-+ February 22 - Poll metadata become available in *original* format. No Operators match on metadata.
++ January 17 - 'quote_count' and 'reply_count' available in *original* format. No associated Operators for these metadata.
++ February 22 - Poll metadata become available in *original* format. No associated Operators for these metadata.
 
 ### Filtering tips <a id="filteringExamples" class="tall">&nbsp;</a>
 
