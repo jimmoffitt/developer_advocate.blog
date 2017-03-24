@@ -3,6 +3,7 @@
 + [Twitter Historical Products](#historicalProducts)
 + [Next Steps](#nextSteps)
 
+Twitter Data timeline: 
 + [Twitter Platform Timeline](#twitterTimeline)
 
 Other drafts in the works:
@@ -55,8 +56,12 @@ What follows is a set of articles that address how these Twitter changes affect 
 
 First we'll a review of Twitter Plaform updates that in some way affected the JSON generated with HPT and FAS. Then we'll dig into the many product-specific details that affect how this stored JSON matches PowerTrack Operators.
 
-=====================================================
+------------------------
+
     Standalone but related  Articles/Blog Posts/Getting Started Guides
+
+--------------------------
+
 =====================================================
 
 ## Twitter timeline <a id="twitterTimeline" class="tall">&nbsp;</a>  
