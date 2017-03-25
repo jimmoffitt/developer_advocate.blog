@@ -49,3 +49,12 @@ Tweets are made up of a Tweet message, a posted time, a set of User (also refere
 
 + Other Enrichments
     
+### JSON Examples
+
+#### Example Tweet JSON
+
+#### Example User JSON
+
+#### Example Geo JSON
+
+
