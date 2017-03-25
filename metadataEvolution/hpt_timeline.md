@@ -60,7 +60,7 @@ The details provided here were generated using HPT, and were informed by the Twi
 + November - ```lang:``` Operator (matching on Twitter language classification).
 
 #### 2013
-+ June 4 - ```has:profile_geo``` 
++ June 4 - ```has:profile_geo```, ```profile_point_radius:```, ```profile_bounding_box:```, ```profile_country:```, ```profile_region:```, ```profile_subregion:```, and ```profile_locality:```
 + August 20 - ```has:symbols``` and ```$``` Operator 
 
 #### 2015
