@@ -3,6 +3,9 @@
 + core details are here: http://support.gnip.com/sources/twitter/data_format.html#TweetActivities
 + How can this Getting Started Guide build on top of that?
 
++ Focus on 'original' format, the format native to Twitter. (e.g. not Activity Streams as designed by Gnip)
+
+
 ]
 
 ### Twitter JSON Objects 101 <a id="twitterJsonIntro" class="tall">&nbsp;</a>
