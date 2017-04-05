@@ -14,9 +14,9 @@ tl;dr
 
 ### Product Overview <a id="overview" class="tall">&nbsp;</a>
 
-Historical PowerTrack (HPT) was launched in July 2012 by Gnip. HPT brings the same filtering capabilites developed for real-time streaming to the entire archive of public Tweets. The HPT product was built on the first Tweet archive, made up of flat-files,a nd was designed to deliver Tweet volumes at scale. The HPT API is used to manage the life-cycle of a Job. A Job is first created with up to 1000 filtering rules, covering a time period as long as needed. Next a rough estimate of associated Tweets is provided. If the Job is accepted, every single Tweet posted during the period of interest is examined for a match to any included rules, and the matched Tweets are written to a 10-minute time-series of datafiles for download.
+Historical PowerTrack (HPT) was launched in July 2012 by Gnip. HPT brings the same filtering capabilites developed for real-time streaming to the entire archive of public Tweets. The HPT product was built on the first Tweet archive, made up of flat-files, and was designed to deliver Tweet volumes at scale. The HPT API is used to manage the life-cycle of a *Job*. A Job is first created with up to 1,000 filtering rules, covering a time period as long as needed. Next a rough estimate of associated Tweets is provided. If the Job is accepted, every single Tweet posted during the period of interest is examined for a match to any included rules, and the matched Tweets are written to a 10-minute time-series of datafiles for download.
 
-With Historical PowerTrack, Tweets are written to the archive as they are posted. However, when the archive was built in 2012 the Tweet JSON was normalized and backfilled to some extent. For example, the "entities" structure that contains hashtags, mentions, and symbols was built out for periods before those entities existed. Furthermore, some metadata, such as whether an account is verified, was backfilled. Accordingly, if you query for early Tweets from 2007, you'll find user profiles that are marked as verified, even though account verification did not begin until 2009.    
+With Historical PowerTrack, Tweets are written to the archive as they are posted. However, when the archive was built in 2012 it included Tweet JSON that had been normalized and backfilled to some extent. For example, the "entities" structure that contains hashtags, mentions, and symbols was built out for periods before those entities existed. Furthermore, some metadata, such as whether an account is verified, was backfilled. Accordingly, if you query for early Tweets from 2007, you'll find user profiles that are marked as verified, even though account verification did not begin until 2009.    
 
 As mentioned [HERE](http://support.gnip.com/apis/historical_api2.0/overview.html#Caveats), here are important metadata details of the Historical PowerTrack archive: 
 
@@ -26,7 +26,7 @@ As mentioned [HERE](http://support.gnip.com/apis/historical_api2.0/overview.html
 + **Followers and Friends Counts**: All data prior to 1/1/2011 contains followers and friends counts equal to zero. As a result, any rules based on non-zero counts for these metadata will not return any results for a timeframe prior to this date.
 
 ```
-[] To-do:
+[] To-do: Doc/Product questions
 [Contradictions --> doc updates? others?]
 + Docs say Twitter lang starts on March 26, 2013, testing shows it starts November 2012.
 + Docs say Profile Geo starts August 1, 2013, testing shows it starts June 4, 2013.
@@ -34,7 +34,7 @@ As mentioned [HERE](http://support.gnip.com/apis/historical_api2.0/overview.html
 
 ### Metadata timelines <a id="metadataTimelines" class="tall">&nbsp;</a>
 
-Below is a timeline of when Historical PowerTrack Operators begin matching. In some cases Operator matching begins well after a 'communciation convention' becomes common place on Twitter. For example, @Replies emerged as a conventon in 2006, but did not become a 'first-class' object or event with 'supporting' JSON until early 2007. Accordingly, matching on @Replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
+Below is a timeline of when Historical PowerTrack Operators begin matching. In some cases Operator matching begins well *after* a 'communication convention' becomes commonplace on Twitter. For example, @replies emerged as a user convention in 2006, but did not become a 'first-class' *object* or *event* with 'supporting' JSON until early 2007. Accordingly, matching on @replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
 
 The details provided here were generated using HPT, and were informed by the Twitter timeline provided [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md).  
 
@@ -88,4 +88,5 @@ The details provided here were generated using HPT, and were informed by the Twi
 ### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
 + Search API: metadata and filtering timeline
 + Choosing between Historical PowerTrack and Search API 
++ Getting Started with Tweet JSON
 
