@@ -26,10 +26,6 @@ Below is a timeline of when Search API PowerTrack Operators begin matching. In s
 
 The details provided here were generated using Full-Archive Search, and were informed by the Twitter timeline provided [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md).  
 
-```
-  [] To-do: enhanced URL metadata? 
-```
-
 #### 2006
  + March 26 - ```lang:```
  + July 13 - ```has:mentions```
@@ -76,5 +72,6 @@ The details provided here were generated using Full-Archive Search, and were inf
     
 
 ### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
-+ Historical PowerTracl API: metadata and filtering timeline
++ Historical PowerTrack API: metadata and filtering timeline
 + Choosing between Historical PowerTrack and Search API 
++ Getting Started with Tweet JSON
