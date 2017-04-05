@@ -42,6 +42,10 @@ The details provided here were generated using Full-Archive Search, and were inf
 + August 13 - Final version of official Retweets is released with "RT @" pattern, a verb set to 'share', and the 'retweet_status' attribute containing the original Tweet (thus approximately doubling the JSON payload size).
 + November 20 - ```has:geo```, ```place_country:```, ```bounding_box:``` and ```point_radius:```
 
+```
+  [] To-do: When does has:videos -#video start matching?
+```
+
 #### 2010
 + March 6 - ```has:geo```  
 + August 28 - ```has:videos``` (Until 2015, this Operator matches on #video).
@@ -56,9 +60,14 @@ The details provided here were generated using Full-Archive Search, and were inf
 ### Filtering Tips
 
 ```
-  [] To-do: Needed?
+  [] To-do: Needed? More narratives around "OK, so what?" Maybe a FAQ structure?
 ```
++ User/Actor metadata
+
++ URL matching
 
 + geo operators
-+ User/Actor metadata
-+ URL matching
+  + Profile geo: Metadata is in payload Tweets starting when it was introducted. However, the Search index on this metadata goes back until 2015-02-17. For example, searches for before this date with the ```profile_country:us``` rule clause will not match anything.
+  + Any Tweet-geo search for before March 6, 2010 will have no matches. 
+    
+
