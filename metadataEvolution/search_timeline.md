@@ -22,9 +22,13 @@ Also, unlike HPT, there are Tweet attributes that are updated at the time a quer
 
 ### Metadata timelines <a id="metadataTimelines" class="tall">&nbsp;</a>
 
-Below is a timeline of when Search API PowerTrack Operators begin matching. In some cases Operator matching begins well *after* a 'communication convention' becomes commonplace on Twitter. For example, @Replies emerged as a convention in 2006, but did not become a 'first-class' *object* or *event* with 'supporting' JSON until early 2007. Accordingly, matching on @Replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
+Below is a timeline of when Search API PowerTrack Operators begin matching. In some cases Operator matching begins well *after* a 'communication convention' becomes commonplace on Twitter. For example, @Replies emerged as a user convention in 2006, but did not become a 'first-class' *object* or *event* with 'supporting' JSON until early 2007. Accordingly, matching on @Replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
 
 The details provided here were generated using Full-Archive Search, and were informed by the Twitter timeline provided [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md).  
+
+```
+  [] To-do: enhanced URL metadata? 
+```
 
 #### 2006
  + March 26 - ```lang:```
@@ -60,7 +64,7 @@ The details provided here were generated using Full-Archive Search, and were inf
 ### Filtering Tips
 
 ```
-  [] To-do: Needed? More narratives around "OK, so what?" Maybe a FAQ structure?
+  [] To-do: Needed? More narratives around "OK, so what?" Maybe a FAQ structure? Or wrap into timeline above?
 ```
 + User/Actor metadata
 
@@ -71,3 +75,6 @@ The details provided here were generated using Full-Archive Search, and were inf
   + Any Tweet-geo search for before March 6, 2010 will have no matches. 
     
 
+### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
++ Historical PowerTracl API: metadata and filtering timeline
++ Choosing between Historical PowerTrack and Search API 
