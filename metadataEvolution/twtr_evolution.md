@@ -3,7 +3,7 @@
 
 tl;dr
 
-"Understanding how Twitter evolved is helpful since new features map directly to JSON 'objects' and their attributes. Queries composed of PowerTrack Operators enable you to find Tweets of interest." 
+"Understanding how Twitter evolved is helpful since new features map directly to JSON 'objects' and their attributes. Queries composed of PowerTrack Operators enable you to find Tweets of interest by matching on these attributes." 
 
 + [Introduction](#introduction)
 + [Fundamental Metadata](#fundamentalMetadata)
@@ -13,13 +13,24 @@ tl;dr
 
 ### Introduction <a id="=introduction" class="tall">&nbsp;</a>
 
+At its core, Twitter is a public, real-time, and global communication network. Since 2006, Twitter's evolution has been driven by both user use-patterns [ or conventions? ] and new product features and enhancements. If you are using Twitter data for historical research, understanding these evolutions is important for building effective queries of the Tweet archive. Twitter makes available two historical APIs that provide access to every publicly available Tweet: Historical PowerTrack and the Full-Archive Search API. 
+
+#### From a Tweet to JSON to matching *Operators*
+
 [a fine place to introduce how PowerTrack Operators **match** JSON attributes. ] 
+Both of these APIs provide a querying syntax used to find Tweets of interest. 
 
-At its core, Twitter is a public, real-time, and global communication network. Since 2006, Twitter's evolution has been driven by both user use-patterns [ or conventions? ] and new product features and enhancements. If you are using Twitter data for historical research, understanding these evolutions is important for building effective queries of the Tweet archive. Twitter makes available two historical APIs that provide access to every publicly available Tweet: Historical PowerTrack and the Full-Archive API. These APIs offer *operators* that are used to identify Tweets of interest. 
 
-Twitter users organically introduced fundamental communication patterns to the Twitter network. A seminal example is the hashtag, now nearly universally used on social networks. Hashtags were introduced as a way to organize conversations and topics. On a network with hundreds of million messages a day, tools to find Tweets of interest are key, and hashtags have become a critical method. 
+match on Tweets and their supporting metadata. Queries are built with *operators* that enable you to find Tweets of interest based on Tweet message text, language, location, language, 
 
-Retweets are another example. Retweeting emerged as a way of 'forwarding' content to others, started as a manual process of Tweet copy/paste prepended with a "RT @" pattern. This process was eventually automated via a new button, complete with new JSON metadata. The 'official' Retweet was born. Other examples include 'mentions', and sharing of media and web links. Each of these use-patterns resulted in new [twitter.com](https://twitter.com/) user-interface features, new supporting JSON, and thus new ways to match on Tweets. 
+
+#### From new user conventions to official Twitter features 
+
+Twitter users organically introduced new and now fundamental communication patterns to the Twitter network. A seminal example is the hashtag, now nearly universally used across all social networks. Hashtags were introduced as a way to organize conversations and topics. On a network with hundreds of million messages a day, tools to find Tweets of interest are key, and hashtags have become a critical method. (more)
+
+Retweets are another example. Retweeting emerged as a way of 'forwarding' content to others. It started as a manual process of copying/pasting a Tweet and prepending it with a "RT @" pattern. This process was eventually automated via a new Retweet button, complete with new JSON metadata. The 'official' Retweet was born. Other examples include 'mentions', sharing of media and web links, and sharing a location with your Tweet. Each of these use-patterns resulted in new [twitter.com](https://twitter.com/) user-interface features, new supporting JSON, and thus new ways to match on Tweets. 
+
+#### From a SMS mobile app to a communication platform
 
 Since 2006, Twitter has also evolved as a *Platform*. APIs have always been a pillar of the Twitter network. The first APIs hit the streets soon after Twitter was launched. Today, Twitter's APIs drive the two-way communication network that has become the source of breaking news. The opportunities to build on top of this global, real-time communication channel are endless.  
 
@@ -51,7 +62,7 @@ So, what are we covering next?
 ```
 
 ### Twitter timeline <a id="=twitterTimeline" class="tall">&nbsp;</a>
-Below you will find a *timeline* of Twitter (as a Product and Platform). Most of these Twitter updates in some way fundamental affected either user behavior, Tweet JSON contents, query Operators, or all three.  Looking at Twitter as a platform, the following events in some way affected the JSON payloads that are used to encode Tweets.
+Below you will find a *timeline* of Twitter (as a Product and Platform). Most of these Twitter updates in some way fundamental affected either user behavior, Tweet JSON contents, query Operators, or all three.  Looking at Twitter as a platform, the following events in some way affected the JSON payloads that are used to encode Tweets. In turn, those JSON details affect how Twitter historical API match on them. If you want to dig into those Twitter product details, see our documentation for [Full-Archive Search](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/search_timeline.md) and [Historical PowerTrack](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/hpt_timeline.md). 
 
 #### 2006
 + October 
@@ -77,8 +88,7 @@ Below you will find a *timeline* of Twitter (as a Product and Platform). Most of
 + August - Tweet button for web sites is launched. Made sharing links easier.  
 
 #### 2011
-+ M
-ay - Follow button introduced, making it easier to follow accounts associated with web sites.  
++ May - Follow button introduced, making it easier to follow accounts associated with web sites.  
 + August - Native photos introduced. 
 
 #### 2016
@@ -94,5 +104,6 @@ ay - Follow button introduced, making it easier to follow accounts associated wi
 + Choosing between Historical PowerTrack and Search API
 + Historical PowerTrack API: metadata and filtering timeline  
 + Search API: metadata and filtering timeline  
++ Getting Started with Tweet JSON
 
 =======================================
