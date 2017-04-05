@@ -15,7 +15,23 @@ tl;dr
 
 At its core, Twitter is a public, real-time, and global communication network. Since 2006, Twitter's evolution has been driven by both user use-patterns [ or conventions? ] and new product features and enhancements. If you are using Twitter data for historical research, understanding these evolutions is important for building effective queries of the Tweet archive. Twitter makes available two historical APIs that provide access to every publicly available Tweet: Historical PowerTrack and the Full-Archive Search API. 
 
+
+
+#### From new user conventions to official Twitter features 
+
+Twitter users organically introduced new, and now fundamental, communication patterns to the Twitter network. A seminal example is the hashtag, now nearly universally used across all social networks. Hashtags were introduced as a way to organize conversations and topics. On a network with hundreds of million messages a day, tools to find Tweets of interest are key, and hashtags have become a fundamental to find Tweets of interest. Soon after the use of hashtags grew, they recieved official status and support from Twitter. As hashtags became a 'first-class' *object*, this meant many things. It meant hashtags became clickable/searchable in the Twitter.com user interface. It also meant hashtags became a member of the Twitter *entities* family, along with @mentions, attached media, stock symbols, and shared links. These entities are conveniently encoded in a pre-parsed JSON array, making it easier for developers to process, scan, and store them. 
+
+Retweets are another example of user-driven conventions becoming official objects. Retweeting emerged as a way of 'forwarding' content to others. It started as a manual process of copying/pasting a Tweet and prepending it with a "RT @" pattern. This process was eventually automated via a new Retweet button, complete with new JSON metadata. The 'official' Retweet was born. Other examples include 'mentions', sharing of media and web links, and sharing a location with your Tweet. Each of these use-patterns resulted in new [twitter.com](https://twitter.com/) user-interface features, new supporting JSON, and thus new ways to match on Tweets. All of these fundamental Tweet attributes have resulted in PowerTrack Operators used to match on them.
+
+#### From a SMS mobile app to a communication platform
+
+Since 2006, Twitter has also evolved as a *Platform*, complete with a rich set of APIs. APIs have always been a pillar of the Twitter network. The first APIs hit the streets soon after Twitter was launched [Link]. When geo-tagging Tweets was first introduced, it was made available through a Geo API (and later became a 'first-class' Twitter.com user-interface feature). 
+
+
+
 #### From a Tweet to JSON to matching *Operators*
+
+Today, Twitter's APIs drive the two-way communication network that has become the source of breaking news. The opportunities to build on top of this global, real-time communication channel are endless. If your use-case includes a need to *listen* to what the world is saying on Twitter, it is key to be able to find your Tweets of interest. it is important to understand how Twitter APIs match on the Tweet metadata. 
 
 [a fine place to introduce how PowerTrack Operators **match** JSON attributes. ] 
 Both of these APIs provide a querying syntax used to find Tweets of interest. 
@@ -23,16 +39,6 @@ Both of these APIs provide a querying syntax used to find Tweets of interest.
 
 match on Tweets and their supporting metadata. Queries are built with *operators* that enable you to find Tweets of interest based on Tweet message text, language, location, language, 
 
-
-#### From new user conventions to official Twitter features 
-
-Twitter users organically introduced new and now fundamental communication patterns to the Twitter network. A seminal example is the hashtag, now nearly universally used across all social networks. Hashtags were introduced as a way to organize conversations and topics. On a network with hundreds of million messages a day, tools to find Tweets of interest are key, and hashtags have become a critical method. (more)
-
-Retweets are another example. Retweeting emerged as a way of 'forwarding' content to others. It started as a manual process of copying/pasting a Tweet and prepending it with a "RT @" pattern. This process was eventually automated via a new Retweet button, complete with new JSON metadata. The 'official' Retweet was born. Other examples include 'mentions', sharing of media and web links, and sharing a location with your Tweet. Each of these use-patterns resulted in new [twitter.com](https://twitter.com/) user-interface features, new supporting JSON, and thus new ways to match on Tweets. 
-
-#### From a SMS mobile app to a communication platform
-
-Since 2006, Twitter has also evolved as a *Platform*. APIs have always been a pillar of the Twitter network. The first APIs hit the streets soon after Twitter was launched. Today, Twitter's APIs drive the two-way communication network that has become the source of breaking news. The opportunities to build on top of this global, real-time communication channel are endless.  
 
 ```
 [] TODO
