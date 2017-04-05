@@ -16,7 +16,7 @@ tl;dr
 
 Full-Archive Search (FAS) was launched in August 2015 and enables customers to immediately access any publicly available Tweet. With FAS you submit a single query and receive a response in classic RESTful fashion. FAS implements 500-Tweets-per-response pagination, and defaults to a 120-requests-per-minute rate-limit. Given these details, FAS can be used to rapidly retrieve Tweets, and at large scale using concurrent requests.
 
-Unlike Historical PowerTrack, whose archive is based on a set of Tweet files on disk, the FAS Tweet archive is all in memory. This archive is analogous to having the entire history of Tweets in a massive database. And as with all databases, it was now possible to execute queries on the contents and build an index to enable high-performance data retrieval. With Full-Archive Search, the querying language is made up of PowerTrack Operators, and these Operators each correspond to a Tweet attribute that is indexed.
+Unlike Historical PowerTrack, whose archive is based on a set of Tweet flat-files on disk, the FAS Tweet archive is much like an on-line database. And as with all databases, it supports making queries on its contents. It also enables the maintenance of an *index* to enable high-performance data retrieval. With Full-Archive Search, the querying language is made up of PowerTrack Operators, and these Operators each correspond to a Tweet attribute that is indexed.
 
 Also, unlike HPT, there are Tweet attributes that are updated at the time a query is made (see [HERE](http://support.gnip.com/apis/search_full_archive_api/overview.html#DataUpdates) for more details). For example, if you are accessing a Tweet posted in 2010 today, user details such as Profile bio and location will be updated to today's values and not what they were in 2010. This is true also for Tweet metrics for Favorites and Retweet counts.
 
@@ -44,11 +44,10 @@ The details provided here were generated using Full-Archive Search, and were inf
 
 #### 2010
 + March 6 - ```has:geo```  
-+ June 2 - ```has:media``` and ```has:images```. Native photos officially announced August 9.
 + August 28 - ```has:videos``` (Until 2015, this Operator matches on #video).
 
 #### 2011
-+ July 20 - ```has:images``` 
++ July 20 -  ```has:media``` and ```has:images```. Native photos officially announced August 9, 2010.
 
 #### 2015
 + February 17 - ```has:profile_geo```, ```profile_country:```, ```profile_region:```, ```profile_locality:```
