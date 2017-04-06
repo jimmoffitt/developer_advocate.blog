@@ -25,7 +25,7 @@ Retweets are another example of user-driven conventions becoming official object
 
 #### From a SMS mobile app to a communication platform
 
-Since 2006, Twitter has also evolved as a *Platform*, complete with a rich set of APIs. APIs have always been a pillar of the Twitter network. The first APIs hit the streets soon after Twitter was launched [Link]. When geo-tagging Tweets was first introduced, it was made available through a Geo API (and later became a 'first-class' Twitter.com user-interface feature). 
+Since 2006, Twitter has also evolved as a *Platform*, complete with a rich set of APIs. APIs have always been a pillar of the Twitter network. The [first API hit the streets soon after Twitter was launched](https://blog.twitter.com/2006/introducing-the-twitter-api). When geo-tagging Tweets was first introduced, it was made available through a Geo API (and later became a 'first-class' Twitter.com user-interface feature). 
 
 
 
@@ -87,7 +87,7 @@ Below you will find a *timeline* of Twitter (as a Product and Platform). Most of
 + June - Verified accounts introduced. 
 + August - Retweets a first-class object with "RT @" pattern and new ```retweet_status``` metadata. 
 + October - List feature launched. 
-+ November - Tweet Geotagging API is launched, providing first method for users to share location via third-party apps. 
++ November - [Tweet Geotagging API is launched](https://blog.twitter.com/2009/think-globally-tweet-locally), providing first method for users to share location via third-party apps. 
 
 #### 2010
 + June - Twitter Places introduced for geo-tagging Tweets. 
