@@ -42,13 +42,9 @@ The details provided here were generated using Full-Archive Search, and were inf
 + August 13 - Final version of official Retweets is released with "RT @" pattern, a verb set to 'share', and the 'retweet_status' attribute containing the original Tweet (thus approximately doubling the JSON payload size).
 + November 20 - ```has:geo```, ```place_country:```, ```bounding_box:``` and ```point_radius:```
 
-```
-  [] To-do: When does has:videos -#video start matching?
-```
-
 #### 2010
 + March 6 - ```has:geo```  
-+ August 28 - ```has:videos``` (Until 2015, this Operator matches on #video).
++ August 28 - ```has:videos``` (Until 2015, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com).
 
 #### 2011
 + July 20 -  ```has:media``` and ```has:images```. Native photos officially announced August 9, 2010.
