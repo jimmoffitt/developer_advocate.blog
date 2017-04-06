@@ -25,7 +25,7 @@ Retweets are another example of user-driven conventions becoming official object
 
 #### From a SMS mobile app to a communication platform
 
-Since 2006, Twitter has also evolved as a *Platform*, complete with a rich set of APIs. APIs have always been a pillar of the Twitter network. The [first API hit the streets soon after Twitter was launched](https://blog.twitter.com/2006/introducing-the-twitter-api). When geo-tagging Tweets was first introduced, it was made available through a Geo API (and later became a 'first-class' Twitter.com user-interface feature). 
+Since 2006, Twitter has also evolved as a *Platform*, complete with a rich set of APIs. APIs have always been a pillar of the Twitter network. The [first API hit the streets soon after Twitter was launched](https://blog.twitter.com/2006/introducing-the-twitter-api). When geo-tagging Tweets was first introduced in 2009, it was made available through a [Geo API](https://blog.twitter.com/2009/think-globally-tweet-locally) (and later became a 'first-class' Twitter.com user-interface feature). 
 
 
 
