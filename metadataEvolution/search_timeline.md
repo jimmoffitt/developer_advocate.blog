@@ -44,12 +44,13 @@ The details provided here were generated using Full-Archive Search, and were inf
 
 #### 2010
 + March 6 - ```has:geo```  
-+ August 28 - ```has:videos``` (Until 2015, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com).
++ August 28 - ```has:videos``` (Until February 2015, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com).
 
 #### 2011
 + July 20 -  ```has:media``` and ```has:images```. Native photos officially announced August 9, 2010.
 
 #### 2015
++ February 10 - ```has:videos``` matches on 'native' Twitter videos.
 + February 17 - ```has:profile_geo```, ```profile_country:```, ```profile_region:```, ```profile_locality:```
 + February 17 - ```place_country:``` and ```place:``` 
 
