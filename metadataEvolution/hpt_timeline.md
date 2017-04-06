@@ -34,7 +34,7 @@ As mentioned [HERE](http://support.gnip.com/apis/historical_api2.0/overview.html
 
 ### Metadata timelines <a id="metadataTimelines" class="tall">&nbsp;</a>
 
-Below is a timeline of when Historical PowerTrack Operators begin matching. In some cases Operator matching begins well *after* a 'communication convention' becomes commonplace on Twitter. For example, @replies emerged as a user convention in 2006, but did not become a 'first-class' *object* or *event* with 'supporting' JSON until early 2007. Accordingly, matching on @replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
+Below is a timeline of when [Historical PowerTrack Operators](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators) begin matching. In some cases Operator matching begins well *after* a 'communication convention' becomes commonplace on Twitter. For example, @replies emerged as a user convention in 2006, but did not become a 'first-class' *object* or *event* with 'supporting' JSON until early 2007. Accordingly, matching on @replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
 
 The details provided here were generated using HPT, and were informed by the Twitter timeline provided [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md).  
 
