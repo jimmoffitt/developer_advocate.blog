@@ -23,8 +23,10 @@ Twitter users organically introduced new, and now fundamental, communication pat
 
 Retweets are another example of user-driven conventions becoming official objects. Retweeting emerged as a way of 'forwarding' content to others. It started as a manual process of copying/pasting a Tweet and prepending it with a "RT @" pattern. This process was eventually automated via a new Retweet button, complete with new JSON metadata. The 'official' Retweet was born. Other examples include 'mentions', sharing of media and web links, and sharing a location with your Tweet. Each of these use-patterns resulted in new [twitter.com](https://twitter.com/) user-interface features, new supporting JSON, and thus new ways to match on Tweets. All of these fundamental Tweet attributes have resulted in PowerTrack Operators used to match on them.
 
+So, before we dig into the Historical PowerTrack and Full-Archive Search product details, let's take a tour of how Twitter, as a product and platform, evolved over time. 
+
 ### Twitter timeline <a id="=twitterTimeline" class="tall">&nbsp;</a>
-Below you will find a *timeline* of Twitter (as a Product and Platform). Most of these Twitter updates in some way fundamental affected either user behavior, Tweet JSON contents, query Operators, or all three.  Looking at Twitter as a platform, the following events in some way affected the JSON payloads that are used to encode Tweets. In turn, those JSON details affect how Twitter historical API match on them. If you want to dig into those Twitter product details, see our documentation for [Full-Archive Search](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/search_timeline.md) and [Historical PowerTrack](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/hpt_timeline.md). 
+Below you will find a select *timeline* of Twitter. Most of these Twitter updates in some way fundamental affected either user behavior, Tweet JSON contents, query Operators, or all three.  Looking at Twitter as a platform, the following events in some way affected the JSON payloads that are used to encode Tweets. In turn, those JSON details affect how Twitter historical API match on them. If you want to dig into those Twitter product details, see our documentation for [Full-Archive Search](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/search_timeline.md) and [Historical PowerTrack](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/hpt_timeline.md). 
 
 #### 2006
 + October 
@@ -58,19 +60,20 @@ Below you will find a *timeline* of Twitter (as a Product and Platform). Most of
 
 #### 2016
 + Febuary - Searchable GIFs natively hosted in Tweet compose. 
++ May - ["Doing More with 140"](https://blog.twitter.com/express-even-more-in-140-characters) (dmw140) first announced. 
 + June - Quoted Retweets generally available. 
 + June - Stickers introduced for adding to photos.
-+ September - 'Native attachments' introduced with trailing URL not counted towards 140 characters ("dwm140, part 1").
++ September - ['Native attachments' introduced](https://twitter.com/Twitter/status/777915304261193728) with trailing URL not counted towards 140 characters ("dwm140, part 1").
 
 #### 2017
-+ April - 'Simplified Replies' introduced with replied to accounts not counted towards 140 characters ("dmw140, part 2"). 
++ April - ['Simplified Replies'](https://blog.twitter.com/2017/now-on-twitter-140-characters-for-your-replies) introduced with replied to accounts not counted towards 140 characters ("dmw140, part 2"). 
 
 
 ### Next Steps
 
-+ Choosing between Historical PowerTrack and Search API
 + Historical PowerTrack API: metadata and filtering timeline  
 + Search API: metadata and filtering timeline  
++ Choosing between Historical PowerTrack and Search API
 + Getting Started with Tweet JSON
 
 =======================================
