@@ -5,6 +5,8 @@ tl;dr
 
 "Understanding how Twitter evolved is helpful since new features map directly to JSON 'objects' and their attributes. In most cases the introduction of these attributes led to PowerTrack Operators used to query for Tweets of interest using two Twitter historical APIs: Historical PowerTrack and Full-Archive Search."
 
+---------------------------------------------
+
 + [Introduction](#introduction)
 + [Fundamental Metadata](#fundamentalMetadata)
 + [Twitter timeline](#twitterTimeline)
@@ -58,11 +60,15 @@ Below you will find a select *timeline* of Twitter. Most of these Twitter update
 #### 2012
 + June - $Cashtags become a clickable/searchable link.
 
+#### 2014
++ March - [Photo tagging and up to four photos supported](https://blog.twitter.com/2014/photos-just-got-more-social). 
+
 #### 2016
-+ Febuary - Searchable GIFs natively hosted in Tweet compose. 
++ Febuary - [Searchable GIFs natively hosted in Tweet compose](https://blog.twitter.com/2016/introducing-gif-search-on-twitter). 
 + May - ["Doing More with 140"](https://blog.twitter.com/express-even-more-in-140-characters) (dmw140) first announced. 
++ June - Native video 
 + June - Quoted Retweets generally available. 
-+ June - Stickers introduced for adding to photos.
++ June - [Stickers introduced for adding to photos](https://blog.twitter.com/2016/introducing-stickers-on-twitter).
 + September - ['Native attachments' introduced](https://twitter.com/Twitter/status/777915304261193728) with trailing URL not counted towards 140 characters ("dwm140, part 1").
 
 #### 2017
@@ -71,8 +77,12 @@ Below you will find a select *timeline* of Twitter. Most of these Twitter update
 
 ### Next Steps
 
+Now that we've explored the timeline of when key Twitter features were introduced, the next step is to get into the many details of how these events affected matching on Tweets of interest. These two articles 
+
 + Historical PowerTrack API: metadata and filtering timeline  
-+ Search API: metadata and filtering timeline  
++ Full-Archive Search API: metadata and filtering timeline  
+
+
 + Choosing between Historical PowerTrack and Search API
 + Getting Started with Tweet JSON
 
