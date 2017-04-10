@@ -49,10 +49,21 @@ The details provided here were generated using Full-Archive Search, and were inf
 #### 2011
 + July 20 -  ```has:media``` and ```has:images```. Native photos officially announced August 9, 2010.
 
+#### 2014
++ December 3 - (Approximately) *Some* [Enhanced URL metadata](http://support.gnip.com/enrichments/enhanced_urls.html) with HTML title and description begins in payloads. Enhanced metadata more fully emeraged in May 2016.
+
 #### 2015
 + February 10 - ```has:videos``` matches on 'native' Twitter videos.
 + February 17 - ```has:profile_geo```, ```profile_country:```, ```profile_region:```, ```profile_locality:```
-+ February 17 - ```place_country:``` and ```place:``` 
++ February 17 - ```place_country:``` and ```place:```
+
+#### 2016
++ May 1 - [Enhanced URL metadata](http://support.gnip.com/enrichments/enhanced_urls.html) more fully available, and was officially announced as part of the [Gnip 2.0 launch in August 2016](https://blog.twitter.com/2016/gnip-2-is-here). No associated Operators for these metadata with Search APIs.
+
+#### 2017 
++ February 22 - Poll metadata become available in original format. No associated Operators for these metadata.
+
+
 
 ### Filtering Tips
 
