@@ -64,7 +64,7 @@ Below you will find a select *timeline* of Twitter. Most of these Twitter update
 + March - [Photo tagging and up to four photos supported](https://blog.twitter.com/2014/photos-just-got-more-social). 
 
 #### 2015
-+ October - [Twitter Polls introduced](https://blog.twitter.com/2015/introducing-twitter-polls). Poll metadata made available ('original' format only) in February 2017.
++ October - [Twitter Polls introduced](https://blog.twitter.com/2015/introducing-twitter-polls). Polls originally supported two choices with a 24-hour voting period. In November, Polls started supporting four choices with voting periods from 5 minutes to seven days. Poll metadata made available ('original' format only) in February 2017.
 
 #### 2016
 + Febuary - [Searchable GIFs natively hosted in Tweet compose](https://blog.twitter.com/2016/introducing-gif-search-on-twitter). 
