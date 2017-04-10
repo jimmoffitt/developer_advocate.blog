@@ -63,6 +63,9 @@ Below you will find a select *timeline* of Twitter. Most of these Twitter update
 #### 2014
 + March - [Photo tagging and up to four photos supported](https://blog.twitter.com/2014/photos-just-got-more-social). 
 
+#### 2015
++ October - [Twitter Polls introduced](https://blog.twitter.com/2015/introducing-twitter-polls). Poll metadata made available ('original' format only) in February 2017.
+
 #### 2016
 + Febuary - [Searchable GIFs natively hosted in Tweet compose](https://blog.twitter.com/2016/introducing-gif-search-on-twitter). 
 + May - ["Doing More with 140"](https://blog.twitter.com/express-even-more-in-140-characters) (dmw140) first announced. 
@@ -72,6 +75,7 @@ Below you will find a select *timeline* of Twitter. Most of these Twitter update
 + September - ['Native attachments' introduced](https://twitter.com/Twitter/status/777915304261193728) with trailing URL not counted towards 140 characters ("dwm140, part 1").
 
 #### 2017
++ February - Twitter Poll metadata included in Tweet metadata ('original' format only).
 + April - ['Simplified Replies'](https://blog.twitter.com/2017/now-on-twitter-140-characters-for-your-replies) introduced with replied to accounts not counted towards 140 characters ("dmw140, part 2"). 
 
 
