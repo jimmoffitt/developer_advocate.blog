@@ -46,7 +46,7 @@ The details provided here were generated using HPT, and were informed by the Twi
 #### 2008
 + February 27 - ```has:mentions``` and ```@``` Operator  
 + February 27 - ```has:links``` and ```url:``` [] confirm url
-+ September - ```emoji``` 
++ September - ```emoji``` signal ramps up. 
 
 #### 2011
 + January 1 - ```is:retweet``` and ```retweet_of_status_id:```. Retweets became a convention as early as April 2007, but matching before this date depends on search for "RT @" or "Via @" patterns.  
