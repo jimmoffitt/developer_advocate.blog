@@ -36,7 +36,7 @@ As mentioned [HERE](http://support.gnip.com/apis/historical_api2.0/overview.html
 
 Below is a timeline of when [Historical PowerTrack Operators](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators) begin matching. In some cases Operator matching begins well *after* a 'communication convention' becomes commonplace on Twitter. For example, @replies emerged as a user convention in 2006, but did not become a 'first-class' *object* or *event* with 'supporting' JSON until early 2007. Accordingly, matching on @replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
 
-The details provided here were generated using HPT, and were informed by the Twitter timeline provided [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md).  
+The details provided here were generated using HPT, and were informed by the Twitter timeline provided [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md). This timeline is not 100% complete. If you identify another filtering/metadata "born on date", please let us know.  
 
 #### 2007
 + January 3 - ```is:verified``` 
@@ -46,6 +46,7 @@ The details provided here were generated using HPT, and were informed by the Twi
 #### 2008
 + February 27 - ```has:mentions``` and ```@``` Operator  
 + February 27 - ```has:links``` and ```url:``` [] confirm url
++ September - ```emoji``` 
 
 #### 2011
 + January 1 - ```is:retweet``` and ```retweet_of_status_id:```. Retweets became a convention as early as April 2007, but matching before this date depends on search for "RT @" or "Via @" patterns.  
@@ -84,6 +85,9 @@ The details provided here were generated using HPT, and were informed by the Twi
 + Geo example
 + URL example
 + Others
+
+
+
 
 ### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
 + Search API: metadata and filtering timeline
