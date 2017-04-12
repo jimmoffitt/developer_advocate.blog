@@ -62,6 +62,7 @@ Below you will find a select *timeline* of Twitter. Most of these Twitter update
 
 #### 2014
 + March - [Photo tagging and up to four photos supported](https://blog.twitter.com/2014/photos-just-got-more-social). 
++ April - Emojis are natively supported in Twitter UI. Emojis were commonly used in Tweets since at least 2008.
 
 #### 2015
 + October - [Twitter Polls introduced](https://blog.twitter.com/2015/introducing-twitter-polls). Polls originally supported two choices with a 24-hour voting period. In November, Polls started supporting four choices with voting periods from 5 minutes to seven days. Poll metadata made available ('original' format only) in February 2017.
@@ -81,7 +82,7 @@ Below you will find a select *timeline* of Twitter. Most of these Twitter update
 
 ### Next Steps
 
-Now that we've explored the timeline of when key Twitter features were introduced, the next step is to get into the many details of how these events affected matching on Tweets of interest. These two articles 
+Now that we've explored the timeline of when key Twitter features were introduced, the next step is to get into the many details of how these events affected matching on Tweets of interest. These two articles dig into the many details of two Twitter APIs provided for accessing historical data:
 
 + Historical PowerTrack API: metadata and filtering timeline  
 + Full-Archive Search API: metadata and filtering timeline  
