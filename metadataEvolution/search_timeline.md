@@ -40,10 +40,10 @@ The details provided here were generated using Full-Archive Search, and were inf
 #### 2009
 + May 15 - ```is:retweet```. Note that this Operator starts matching with the 'beta' release of official Retweets and its "Via @' pattern. During this beta period, the Tweet verb is 'post' and the original Tweet is not included in the payload.
 + August 13 - Final version of official Retweets is released with "RT @" pattern, a verb set to 'share', and the 'retweet_status' attribute containing the original Tweet (thus approximately doubling the JSON payload size).
-+ November 20 - ```has:geo```, ```place_country:```, ```bounding_box:``` and ```point_radius:```
++ November 20 - [internal note: non-zero counts, but geo scrubbed at some point] ```has:geo```, ```place_country:```, ```bounding_box:``` and ```point_radius:```
 
 #### 2010
-+ March 6 - ```has:geo```  
++ March 6 - ```has:geo```, ```place_country:```, ```bounding_box:``` and ```point_radius:```
 + August 28 - ```has:videos``` (Until February 2015, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com).
 
 #### 2011
