@@ -80,6 +80,12 @@ The details provided here were generated using HPT, and were informed by the Twi
 
 ### Filtering tips <a id="filteringExamples" class="tall">&nbsp;</a>
 
+Given all the above information, it is clear that there are a lot of details to consider when generating historical Tweet datasets. There are two key things to consider:
+
++ Some metadata have 'born-on' dates so filters can result in *false negatives*. Such searches include Operators reliant on metadata that did not exist for all of part of the search period. For example, if you are searching for Tweets with the ```has:videos``` Operator, you will not have any matches for periods before February 10, 2015. That is because that Operator matches on *native* videos (attached to a Tweet using the Twitter.com user-interface). For a more complete data set of video sharing on Twitter, filters for before Febuary 10, 2015 would need to contain rule clauses that match on URLs common for video hosting.
++ Some metadata has been backfilled with metadata from a time *after* the Tweet was posted. 
+
+
 + Account profiles
 + Retweet example
 + Geo example
