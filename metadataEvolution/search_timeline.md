@@ -43,7 +43,7 @@ The details provided here were generated using Full-Archive Search, and were inf
 + November 20 - [internal note: non-zero counts, but geo scrubbed at some point] ```has:geo```, ```place_country:```, ```bounding_box:``` and ```point_radius:```
 
 #### 2010
-+ March 6 - ```has:geo```, ```place_country:```, ```bounding_box:``` and ```point_radius:```
++ March 6 - ```has:geo```, ```bounding_box:``` and ```point_radius:```
 + August 28 - ```has:videos``` (Until February 2015, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com).
 
 #### 2011
