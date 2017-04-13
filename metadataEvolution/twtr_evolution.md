@@ -82,7 +82,7 @@ Below you will find a select *timeline* of Twitter. Most of these Twitter update
 
 ### Next Steps
 
-Now that we've explored the timeline of when key Twitter features were introduced, the next step is to get into the many details of how these events affected matching on Tweets of interest. These two articles dig into the many details of two Twitter APIs provided for accessing historical data:
+Now that we've explored the timeline of when key Twitter features were introduced, the next step is to get into the many details of how these events affected matching on Tweets of interest. These two articles focus on two Twitter APIs provided for accessing historical data:
 
 + Historical PowerTrack API: metadata and filtering timeline  
 + Full-Archive Search API: metadata and filtering timeline  
