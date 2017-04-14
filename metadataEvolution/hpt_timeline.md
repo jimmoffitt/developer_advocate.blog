@@ -53,7 +53,7 @@ The details provided here were generated using HPT, and were informed by the Twi
 + January 1 - Followers and friends counts begin to be non-zero. ```followers_count:``` and ```friends_count:``` start having non-zero values to match on. 
 + January 1 - User profiles begin to match profiles as they were when Tweet posted. Tweets before this date are set to user profile as they existed in September 2011. 
 + June 2 - ```has:images``` and ```has:media```
-+ September 1 - ```has:geo```, ```place_country:```, ```bounding_box:``` and ```point_radius:```
++ September 1 - ```has:geo```, ```place:```, ```place_country:```, ```bounding_box:``` and ```point_radius:```
 
 #### 2012
 + March 26 - Gnip introduces new data enrichments. 
