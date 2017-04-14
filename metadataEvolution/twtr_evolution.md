@@ -8,8 +8,10 @@ tl;dr
 ---------------------------------------------
 
 + [Introduction](#introduction)
-+ [Fundamental Metadata](#fundamentalMetadata)
++ [From user-conventions to first-class Tweet objects](#firstclass)
 + [Twitter timeline](#twitterTimeline)
++ [Filtering tips for Tweet Data](#filteringTips)
++ [Identifying which Tweet attributes are important to your use-case](#useCases)
 + [Next Steps](#nextSteps)
 
 
@@ -21,7 +23,7 @@ Twitter was launched as a simple SMS mobile app, and has grown into a comprehens
 
 Twitter now makes available two historical APIs that provide access to every publicly available Tweet: Historical PowerTrack and the Full-Archive Search API. Both APIs provide a set of *operators* used to query and collect Tweets of interest. These operators match on a variety of attributes associated with every Tweet, hundreds of attributes such as the Tweet's 140-character message, the author's account name, and links shared in the Tweet. Tweets and their attributes are encoded in JSON, a common text-based data-interchange format. So as new features were introduced, new JSON attributes appeared, and typically new API operators were introduced to match on those attributes.  If your use-case includes a need to *listen* to what the world has said on Twitter, the better you understand when operators started having JSON metadata to match on, the more effective your historical PowerTrack filters can be. 
 
-### From user convention to first-class Tweet object
+### From user-conventions to first-class Tweet objects <a id="=firstclass" class="tall">&nbsp;</a>
 
 Twitter users organically introduced new, and now fundamental, communication patterns to the Twitter network. A seminal example is the hashtag, now nearly universally used across all social networks. Hashtags were introduced as a way to organize conversations and topics. On a network with hundreds of million messages a day, tools to find Tweets of interest are key, and hashtags have become a fundamental to find Tweets of interest. Soon after the use of hashtags grew, they received official status and support from Twitter. As hashtags became a 'first-class' *object*, this meant many things. It meant hashtags became clickable/searchable in the Twitter.com user interface. It also meant hashtags became a member of the Twitter *entities* family, along with @mentions, attached media, stock symbols, and shared links. These entities are conveniently encoded in a pre-parsed JSON array, making it easier for developers to process, scan, and store them. 
 
@@ -83,12 +85,15 @@ Below you will find a select *timeline* of Twitter. Most of these Twitter update
 + February - Twitter Poll metadata included in Tweet metadata ('original' format only).
 + April - ['Simplified Replies'](https://blog.twitter.com/2017/now-on-twitter-140-characters-for-your-replies) introduced with replied to accounts not counted towards 140 characters ("dmw140, part 2"). 
 
-
-### Filtering tips for Twitter Data
+### Filtering tips for Tweet Data <a id="=filteringTips" class="tall">&nbsp;</a>
 
 [New material for introductory concepts]
 
-### Next Steps
+### Identifying which Tweet attributes are important to your use-case <a id="useCases" class="tall">&nbsp;</a>
+
+[New material for use-case discussion]
+
+### Next Steps <a id="=nextSteps" class="tall">&nbsp;</a>
 
 Now that we've explored the timeline of when key Twitter features were introduced, the next step is to get into the many details of how these events affected matching on Tweets of interest. These two articles focus on two Twitter APIs provided for accessing historical data:
 
