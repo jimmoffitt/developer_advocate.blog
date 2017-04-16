@@ -109,6 +109,18 @@ Here are the fundamental differences between Historical PowerTrack (HPT) and Ful
 
 ### Selecting a historical product <a id="choosing" class="tall">&nbsp;</a>  
 
+
+
+Search:
+Dashboards, quick estimates, "first 500" tweets that a rule, single query
+
+HPT: 
+Batch of rules to apply to a common time period
+Need filtering Operators not available in Search APIs
+Many millions of Tweets
+
+
+
 A general assumption to be made here is that Full-Archive Search is better-suited for lower-volume jobs, while Historical PowerTrack is more appropriate for higher-volume jobs and use cases. We’ve intentionally left those descriptions relatively vague, though, as there is no real technical reason why Full-Archive Search could not be used for large data requests. It is just not necessarily practical or efficient, so Historical PowerTrack is a good first choice for retrieving Tweets at scale, where a result set is more than a few million Tweets.  
 
 Depending on how you plan to retrieve the data and utilize rate limits, there actually is a threshold where Historical PowerTrack actually processes the data faster that Full-Archive Search. Historical PowerTrack typically processes a 30-day duration job in about 3 hours, regardless of the volume of matching data returns. To pull 2.7M Tweets via Full-Archive Search, it would require a minimum of 5,400 search requests. If you also assume 2 second response times and the need to serially paginate through the data, it would actually take Full-Archive Search longer to pull all of the Tweets. There are optimizations you can make to retrieve the data faster via Full-Archive Search through parallel requests, but we can discuss those separately.
@@ -116,6 +128,9 @@ Depending on how you plan to retrieve the data and utilize rate limits, there ac
 Historical PowerTrack is also the right product if you require certain operators that aren’t currently supported in Full-Archive Search (see above). Historical PowerTrack is also a better solution for large, complex rules sets and/or when Operators from its expanded list of Operators is needed.
 
 Historical PowerTrack is also better suited for large query rulesets, as the Search API products only support a single PowerTrack rule per request. Historical PowerTrack, on the other hand, supports up to one thousand (1,000) rules. 
+
+
+
 
 
 
