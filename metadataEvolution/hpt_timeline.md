@@ -45,7 +45,7 @@ The details provided here were generated using HPT, and were informed by the Twi
 
 #### 2008
 + February 27 - ```has:mentions``` and ```@``` Operator  
-+ February 27 - ```has:links``` and ```url:``` [] confirm url
++ February 27 - ```has:links``` and ```url:``` 
 + September - ```emoji``` signal begins appears in HPT estimates  
 
 #### 2011
