@@ -90,6 +90,14 @@ Given all the above information, it is clear that there are a lot of details to 
 + Retweet example
 + Geo example
 + URL example
+HPT: 
+     2006 November 1 - has:links
+     2011 June 2 - has:images and has:media
+     2012 March 26 - Expanded URLs
+     2015 February 10 - has:videos
+     2016 July 28 - Enhanced URL expansion
+
+
 + Others
 
 
