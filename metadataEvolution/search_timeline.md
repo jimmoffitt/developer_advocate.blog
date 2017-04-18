@@ -73,6 +73,15 @@ The details provided here were generated using Full-Archive Search, and were inf
 + User/Actor metadata
 
 + URL matching
+[] Expanded URLs?
+
+     2006: October 26 has:links
+     2010: August 28 has:videos (tweets with links to select video hosting sites)
+     2011: July 20 has:media, has:images
+     2014: December Enhanced metadata emerges
+     2016: May 1 - Enhanced URL metadata more fully available
+
+
 
 + geo operators
   + Profile geo: Metadata is in payload Tweets starting when it was introducted. However, the Search index on this metadata goes back until 2015-02-17. For example, searches for before this date with the ```profile_country:us``` rule clause will not match anything.
