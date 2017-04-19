@@ -1,5 +1,5 @@
 
-## Twitter Data timeline <a id="twitterTimeline" class="tall">&nbsp;</a>  
+## Twitter Metadata timeline <a id="twitterTimeline" class="tall">&nbsp;</a>  
 
 tl;dr
 
@@ -121,11 +121,7 @@ Note that this timeline list is generally precise and not exhaustive.
 
 Some metadata, such as Twitter account IDs, were hatched on day one, and have never changed. Other metadata was not introduced until well after Twitter started in 2006. Important areas of new metadata being introduced include account profile attributes, geo-referencing, and  shared links and media. Below are some of the most common areas of Tweet attributes that are fundamentally affected by these Twitter platform updates. 
 
-Filtering/matching behavior for these depends, in most cases, on which historical Tweet API is used. For a deeper dive into how these products compare and constrast, see these [articles]:
-+ [title](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/hpt_timeline.md)
-+ [title](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/search_timeline.md)
-
-To help determine which product is the best fit for your research and use-case, these attribute details provide some high-level product information.
+Filtering/matching behavior for these depends, in most cases, on which historical Tweet API is used. To help determine which product is the best fit for your research and use-case, these attribute details provide some high-level product information.
 
 ### Twitter Profiles  <a id="=twitterProfiles" class="tall">&nbsp;</a>
 
@@ -200,11 +196,9 @@ For other URL product-specific details on URL filtering, see the corresponding a
 ### Next Steps <a id="=nextSteps" class="tall">&nbsp;</a>
 
 Now that we've explored the timeline of when key Twitter features were introduced, and learned how these metadata changes affect filtering at a high-level, the next step is to get into the many product-specific details:
-
-+ Historical PowerTrack API: metadata and filtering timeline  
-+ Full-Archive Search API: metadata and filtering timeline  
-
++ [Historical PowerTrack API: metadata and filtering timeline](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/hpt_timeline.md)
++ [Full-Archive Search API: metadata and filtering timeline](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/search_timeline.md)
+ 
 Here are other resources that may be of interest:
-
 + Choosing between Historical PowerTrack and Search API
 + Getting Started with Tweet JSON
