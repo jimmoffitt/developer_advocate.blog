@@ -42,6 +42,7 @@ Twitter users organically introduced new, and now fundamental, communication pat
 Retweets are another example of user-driven conventions becoming official objects. Retweeting emerged as a way of 'forwarding' content to others. It started as a manual process of copying/pasting a Tweet and prepending it with a "RT @" pattern. This process was eventually automated via a new Retweet button, complete with new JSON metadata. The 'official' Retweet was born. Other examples include 'mentions', sharing of media and web links, and sharing a location with your Tweet. Each of these use-patterns resulted in new [twitter.com](https://twitter.com/) user-interface features, new supporting JSON, and thus new ways to match on Tweets. All of these fundamental Tweet attributes have resulted in PowerTrack Operators used to match on them.
 
 ### Tweet metadata, mutability, updates, and currency <a id="=metadataMutability" class="tall">&nbsp;</a>
+
 While Tweet messages can be up to 140 characters long, the JSON description of a Tweet consists of over 100 attributes. Attributes such as who posted, at what time, whether it’s an original Tweet or a Retweet, and an array of first-class objects such as hashtags, mentions, and shared links. For the account that posted, there is a User (or Actor) object with a variety of attributes that provide the user’s Profile and other account metadata. Profiles include a short biographical description, a home locations, preferred language, display time zone, and a web site link.
 
 Most account metadata is static, but most change slowly over time. People change jobs and move. Companies updates their information. When you are collecting historical Tweets, it is important to understand how some metadata is as it was when first Tweeted, and other metadata is as it is when the query is made. The metadata that is potentially updated depends on the historical API.
@@ -49,7 +50,6 @@ Most account metadata is static, but most change slowly over time. People change
 With the Search APIs, the user profile metadata reflects the current values at the time of query. If you request a Tweet posted by @jack in 2006, you’ll see that the encapsulated user bio mentions @square which did not exist in 2006.
 
 If you pull those same Tweets with Historical PowerTrack you’ll see @jack account metadata as it was in September 2011, when the HPT archive was first constructed. Note that all Tweets since September 2011 contain the user profile as it was at the time the Tweet was posted. So if you really wanted to you could reconstruct the morphing of @jack’s bio since then to now. 
-
 
 ### “Native” media <a id="=nativeMedia" class="tall">&nbsp;</a>
 
@@ -60,7 +60,11 @@ Many querying Operators work with these ‘native’ resources, including has:vi
 So, before we dig into the Historical PowerTrack and Full-Archive Search product details, let's take a tour of how Twitter, as a product and platform, evolved over time. 
 
 ## Twitter timeline <a id="=twitterTimeline" class="tall">&nbsp;</a>
-Below you will find a select *timeline* of Twitter. Most of these Twitter updates in some way fundamental affected either user behavior, Tweet JSON contents, query Operators, or all three.  Looking at Twitter as a platform, the following events in some way affected the JSON payloads that are used to encode Tweets. In turn, those JSON details affect how Twitter historical API match on them. If you want to dig into those Twitter product details, see our documentation for [Full-Archive Search](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/search_timeline.md) and [Historical PowerTrack](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/hpt_timeline.md). 
+Below you will find a select *timeline* of Twitter. Most of these Twitter updates in some way fundamentally affected either user behavior, Tweet JSON contents, query Operators, or all three.  Looking at Twitter as a API platform, the following events in some way affected the JSON payloads that are used to encode Tweets. In turn, those JSON details affect how Twitter historical API match on them. 
+
+-- If you want to dig into those Twitter product details, see our documentation for [Full-Archive Search](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/search_timeline.md) and [Historical PowerTrack](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/hpt_timeline.md). 
+
+Note that this timeline list is generally precise and not exhaustive. 
 
 #### 2006
 + October 
