@@ -7,7 +7,7 @@ tl;dr
 --------------------------------------------
 
 + [Product Overview](#overview)
-+ [Matching Metadata Timelines](#metadataTimelines)
++ [Metadata and Matching Timelines](#metadataTimelines)
 + [Filtering Tips](#filteringTips)
 + [Next Steps](#nextSteps)
 
@@ -95,7 +95,8 @@ As discussed [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/m
 Some of these have product-specific behavior while others have identical behavior. 
 
 #### Twitter Profiles
-    Profile is as it was at the time the Tweet was posted, except for data before 2011. For Tweets older than 2011, the profile metadata reflects the profile as it was in September 2011.
+
+The Search APIs serve up historical Tweets with the profile settings as it is at the time of retrieval. 
 
 #### Original Tweets and Retweets
 
@@ -104,7 +105,9 @@ The PowerTrack ```is:retweet``` Operator enables users to filter accordingly. Us
 
 #### Tweet language classifications  
 
-Twitter’s language classification metadata is available in the archive beginning on March 26, 2013. Note that the Gnip Language classification metadata is in the Activity Stream payload between March 2012. However, with the release of Gnip 2.0 there is no longer an Operator available to match on the Gnip language classification.
+For filtering on a Tweet’s language classification, Twitter’s historical products are quite different. When the Search archive was built, all Tweets were backfilled with the Twitter language classification. Therefore the lang: Operator is available for the entire Tweet archive. 
+[] Is Gnip classification metadata still in Search Archive?
+Note that the Gnip Language classification metadata is in the Activity Stream payload between March 2012. However, with the release of Gnip 2.0 there is no longer an Operator available to match on the Gnip language classification.
 
 #### Geo-referencing Tweets  
 
@@ -112,10 +115,10 @@ As discussed HERE there are three primary ways to geo-reference Tweets:
 
    + **Geographical references in Tweet message.** Matching on geographic references in the Tweet message, while often the most challenging method since it depends on local knowledge, is an option for the entire Tweet archive. Here is an example geo-referenced match from 2006 for the San Francisco area based on a ‘golden gate’ filter: https://twitter.com/biz/statuses/28311
 
-   + **Tweets geo-tagged by the user.** If you are using Historical PowerTrack, geo-referencing starts on September 1, 2011. When the Historical PowerTrack archive was built, all geo-tagging before this date was not included.
+   + **Tweets geo-tagged by the user.** The available geo-tagging history is dependent on the Historical API you are using. With the Search APIs the ability to start matching on Tweets with some Geo Operators started in March 2010, and with others on February 2015. 
 
-   + **Account profile ‘home’ location set by user.**  Historical PowerTrack enables you to attempt your own custom matching on these metadata. Profile Geo metadata is available starting in June 2014. 
-
+   + **Account profile ‘home’ location set by user.**  As with Tweet geo, the methods to match and the time periods available depends on the Historical API you are using. Profile Geo Operators are available in both Historical PowerTrack and the Search APIs. With Historical PowerTrack, these Profile Geo metadata is available starting in June 2014. 
+   
 #### Shared links and media 
 
 In March 2012, the expanded URL enrichment was introduced. Before this time, the Tweet payloads included only the URL as provided by the user. So, if the user included a shortened URL it can be challenging to match on (expanded) URLs of interest. With Historical PowerTrack  these metadata are available starting in March 2012.
