@@ -14,8 +14,12 @@ tl;dr
     + [Metadata Mutability](#metadataMutability)
     + [Native Media](#nativeMedia)
 + [Twitter timeline](#twitterTimeline)
-+ [Filtering tips for Tweet Data](#filteringTips)
-+ [Identifying which Tweet attributes are important to your use-case](#useCases)
++ [Filtering tips](#filteringTips)
+    + [Twitter Profiles](#twitterProfiles)
+    + [Original Tweets and Retweets](#tweetsRetweets)
+    + [Tweet language clasification](#language)
+    + [Geo-referencing Tweets](#tweetGeo)
+    + [Shared Media](#sharedMedia)
 + [Next Steps](#nextSteps)
     + [HPT details]()
     + [Search API details]()
@@ -115,7 +119,7 @@ Filtering/matching behavior for these depends, in most cases, on which historica
 + [title](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/hpt_timeline.md)
 + [title](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/search_timeline.md)
 
-### Twitter Profiles
+### Twitter Profiles  <a id="=twitterProfiles" class="tall">&nbsp;</a>
 
 Since at its core Twitter is a global real-time communication channel, research with Tweet data commonly has some emphasis on who is communicating. Often it is helpful to know where a Twitter user calls home. Often knowing the account description with mentions of interests and hobbies can lead you to Tweets of interest. It is very common to want to listen for Tweets from accounts of interest.  Profile attributes are key to all of these use-cases. 
 
@@ -125,7 +129,7 @@ The JSON payload for every Tweet includes *account profile* metadata for the Twe
 
 The mutability of a Tweet’s profile metadata depends entirely on the historical product used. The Search APIs serve up historical Tweets with the profile settings as it is at the time of retrieval. For Historical PowerTrack, the profile is as it was at the time the Tweet was posted, except for data before 2011. For Tweets older than 2011, the profile metadata reflects the profile as it was in September 2011.  
 
-### Original Tweets and Retweets
+### Original Tweets and Retweets <a id="=tweetsRetweets" class="tall">&nbsp;</a>
 
 Retweets are another example of user-driven conventions becoming official objects. Retweeting emerged as a way of 'forwarding' content to others. It started as a manual process of copying/pasting a Tweet and prepending it with a "RT @" pattern. This process was eventually automated via a new Retweet button, complete with new JSON metadata. The 'official' Retweet was born. When the action of retweeting became a first-class Tweet event. Along with the new Retweet button, but new metadata such as [verb, complete payload of original]. 
 
@@ -133,7 +137,7 @@ Whether a Tweet is original or shared is a common filtering ‘switch.’ In som
 
 The PowerTrack ```is:retweet``` Operator enables users to filter accordingly. Users of this Operator need to have two strategies for Retweet matching (or not) if data before August 2009 is needed. Before August 2009, the Tweet message itself needs to be checked, using exact phrase matching, for matches on “@RT ”. For periods after August 2009, the ```is:retweet``` Operator is available. 
 
-### Language classifications
+### Tweet language classifications <a id="=language" class="tall">&nbsp;</a>
 
 [begs the introduction of JSON formats, which brings up Gnip/Twitter history]
 
@@ -143,7 +147,7 @@ Tweet language classification was introduced as a Gnip data enrichment in March 
 
 For filtering on a Tweet’s language classification, Twitter’s historical products are quite different. When the Search archive was built, all Tweets were backfilled with the Twitter language classification. Therefore the ```lang:``` Operator is available for the entire Tweet archive. With Historical PowerTrack, Twitter’s language classification metadata is available in the archive beginning on March 26, 2013. Note that the Gnip Language classification metadata is in the Activity Stream payload between March 2012. However, with the release of Gnip 2.0 there is no Operator available to match on that language metadata.
 
-### Geo-referencing Tweets
+### Geo-referencing Tweets <a id="=tweetGeo" class="tall">&nbsp;</a>
 
 Being able to tell where a Tweet was posted (i.e., geo-referencing it) is important to many use-cases. There are three primary methods for geo-referencing Tweets:
 + Geographical references in Tweet message 
@@ -169,7 +173,7 @@ All Twitter users have the opportunity to set their Profile Location, indicating
 
 As with Tweet geo, the methods to match and the time periods available depends on the Historical API you are using. Historical PowerTrack enables you to attempt your own custom matching on these metadata. To help make that process easier, Twitter also provides a [Profile Geo Enrichment](http://support.gnip.com/enrichments/profile_geo.html) that performs the geocoding where possible, providing normalized metadata and corresponding Operators. Profile Geo Operators are available in both Historical PowerTrack and the Search APIs. With Historical PowerTrack, these Profile Geo metadata is available starting in June 2014. With the Search APIs, these metadata is available starting in February 2015.
 
-### Shared links and media
+### Shared links and media <a id="=sharedMedia" class="tall">&nbsp;</a>
 Sharing web page links, photos and video have always been a fundamental action users take on Twitter. Early in its history, all of these actions involved including a URL link in the Tweet message itself. In 2011 Twitter integrated sharing photos directly into its user-interface. In 2016, native videos were added. 
 
 Given this history, there are a variety of filtering Operators used for matching on this content. There are a set of Operators that match on whether Tweets have shared links, photos, and videos. Also, since most URLs shared on Twitter are shortened to conserve character (e.g. generated by a service such as bitly or tinyurl), Twitter provides data enrichments that generate a complete, expanded URL that can be matched on. For example, if you wanted to match on Tweets that included links discussing Twitter and Early-warning systems, a filter that references ```severe weather communication``` would match a Tweet containing this  ```http://bit.ly/1XV1tG4``` URL.
