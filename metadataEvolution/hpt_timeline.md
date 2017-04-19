@@ -80,8 +80,6 @@ The details provided here were generated using HPT, and were informed by the Twi
 
 ### Filtering tips <a id="filteringTips" class="tall">&nbsp;</a>
 
-
-
 Given all the above timeline information, it is clear that there are a lot of details to consider when generating historical Tweet datasets. There are two key things to consider:
 
 + Some metadata have 'born-on' dates so filters can result in *false negatives*. Such searches include Operators reliant on metadata that did not exist for all of part of the search period. For example, if you are searching for Tweets with the ```has:videos``` Operator, you will not have any matches for periods before February 10, 2015. That is because that Operator matches on *native* videos (attached to a Tweet using the Twitter.com user-interface). For a more complete data set of video sharing on Twitter, filters for before Febuary 10, 2015 would need to contain rule clauses that match on URLs common for video hosting.
@@ -96,19 +94,19 @@ As discussed [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/m
 
 Some of these have product-specific behavior while others have identical behavior. 
 
-+ Twitter Profiles
-    + Profile is as it was at the time the Tweet was posted, except for data before 2011. For Tweets older than 2011, the profile metadata reflects the profile as it was in September 2011.
+#### Twitter Profiles
+    Profile is as it was at the time the Tweet was posted, except for data before 2011. For Tweets older than 2011, the profile metadata reflects the profile as it was in September 2011.
 
-+ Original Tweets and Retweets
+#### Original Tweets and Retweets
 
 [rephrase]
 The PowerTrack ```is:retweet``` Operator enables users to filter accordingly. Users of this Operator need to have two strategies for Retweet matching (or not matching) if data before August 2009 is needed. Before August 2009, the Tweet message itself needs to be checked, using exact phrase matching, for matches on “@RT ”. For periods after August 2009, the is:retweet Operator is available.
 
-+ Tweet language classifications  
+#### Tweet language classifications  
 
 Twitter’s language classification metadata is available in the archive beginning on March 26, 2013. Note that the Gnip Language classification metadata is in the Activity Stream payload between March 2012. However, with the release of Gnip 2.0 there is no longer an Operator available to match on the Gnip language classification.
 
-+ Geo-referencing Tweets  
+#### Geo-referencing Tweets  
 
 As discussed HERE there are three primary ways to geo-reference Tweets:
 
@@ -118,7 +116,7 @@ As discussed HERE there are three primary ways to geo-reference Tweets:
 
    + **Account profile ‘home’ location set by user.**  Historical PowerTrack enables you to attempt your own custom matching on these metadata. Profile Geo metadata is available starting in June 2014. 
 
-+ Shared links and media 
+#### Shared links and media 
 
 In March 2012, the expanded URL enrichment was introduced. Before this time, the Tweet payloads included only the URL as provided by the user. So, if the user included a shortened URL it can be challenging to match on (expanded) URLs of interest. With Historical PowerTrack  these metadata are available starting in March 2012.
 
