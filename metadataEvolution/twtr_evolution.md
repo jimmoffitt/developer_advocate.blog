@@ -75,7 +75,7 @@ Below you will find a select *timeline* of Twitter. Most of these Twitter update
 
 #### 2016
 + Febuary - [Searchable GIFs natively hosted in Tweet compose](https://blog.twitter.com/2016/introducing-gif-search-on-twitter). 
-+ May - ["Doing More with 140"](https://blog.twitter.com/express-even-more-in-140-characters) (dmw140) first announced. 
++ May - ["Doing More with 140"](https://blog.twitter.com/express-even-more-in-140-characters) (dmw140) announced, stating plans for new ways of handling Replies and attached media with respect to a Tweet's 140-character message. 
 + June - Native video 
 + June - Quoted Retweets generally available. 
 + June - [Stickers introduced for adding to photos](https://blog.twitter.com/2016/introducing-stickers-on-twitter).
@@ -87,11 +87,100 @@ Below you will find a select *timeline* of Twitter. Most of these Twitter update
 
 ### Filtering tips for Tweet Data <a id="=filteringTips" class="tall">&nbsp;</a>
 
-[New material for introductory concepts]
-
-### Identifying which Tweet attributes are important to your use-case <a id="useCases" class="tall">&nbsp;</a>
-
 [New material for use-case discussion]
+
+### Identifying and filtering on Tweet attributes important to your use-case
+
+Some metadata, such as account IDs, was hatched on day one, and has never changed. Other metadata was not introduced until well after Twitter started in 2006. Important areas of new metadata being introduced include account profile attributes, geo-referencing, and as discussed above, shared links and media. 
+
+Below are some of the most common areas of Tweet attributes that are fundamentally affected by these Tweet evolutions. 
+
+Filtering/matching behavior for these depends, in most cases, on which historical Tweet API is used. Depending on which product you use, see these [articles].
+
+#### Twitter Profiles
+
+Since at its core Twitter is a global real-time communication channel, research with Tweet data commonly has a certain emphasis on who is communicating. Often it is helpful to know where a Twitter user calls home. Often knowing the account description with mentions interests and hobbies can lead you to Tweets of interest. It is very common to want to listen for Tweets from accounts of interest.  Profile attributes are key to all of these. 
+
+Every account on Twitter has a Profile that includes metadata such as Twitter handle, display name, a short bio, home location, number of followers, timezone and many others. Some attributes never change, such as numeric user ID and when the account was created. Others usually change day-to-day, week-to-week, or month-to-month, such as number of Tweets posted and number of account followed and followers. Other account attributes can also change at anytime, but tend to change less frequently: display name, home location, and bio. 
+
+The JSON payload for every Tweet includes *account profile* metadata for the Tweet's author. If it is a Retweet, it also includes profile metadata for the account that posted the original Tweet. 
+
+The mutability of a Tweet’s profile metadata depends entirely on the historical product used. The Search APIs serve up historical Tweets with the profile settings as it is at the time of retrieval. For Historical PowerTrack, the profile is as it was at the time the Tweet was posted, except for data before 2011. For Tweets older than 2011, the profile metadata reflects the profile as it was in September 2011.  
+
+#### Original Tweets and Retweets
+
+Retweets are another example of user-driven conventions becoming official objects. Retweeting emerged as a way of 'forwarding' content to others. It started as a manual process of copying/pasting a Tweet and prepending it with a "RT @" pattern. This process was eventually automated via a new Retweet button, complete with new JSON metadata. The 'official' Retweet was born. When the action of retweeting became a first-class Tweet event. Along with the new Retweet button, but new metadata such as [verb, complete payload of original]. 
+
+Whether a Tweet is original or shared is a common filtering ‘switch.’ In some cases only original content is needed. In other cases, the engagement a Tweet has is of primary importance so Retweets are key.
+
+The PowerTrack ```is:retweet``` Operator enables users to filter accordingly. Users of this Operator need to have two strategies for Retweet matching (or not) if data before August 2009 is needed. Before August 2009, the Tweet message itself needs to be checked, using exact phrase matching, for matches on “@RT ”. For periods after August 2009, the ```is:retweet``` Operator is available. 
+
+#### Language classifications
+
+[begs the introduction of JSON formats, which brings up Gnip/Twitter history]
+
+The language a Tweet is written in is a common interest. Tweet language can help infer a Tweet’s location and often only a specific language is needed for analysis or display. (Twitter accounts also have a language setting that is part of account profile metadata.) 
+
+Tweet language classification was introduced as a Gnip data enrichment in March 2012 (and only in the Gnip Tweet format referred to as Activity Stream). Twitter later introduced its separate, native language classification in March 2013. When the Twitter language classification became available it was available in the original Tweet format, while the Activity Stream format contained both classifications. When [Gnip 2.0 was launched in 2016](https://blog.twitter.com/2016/gnip-2-is-here), the Gnip language classification was deprecated, along with the ```twitter_lang:``` Operator, and the Twitter language classification was made available in both formats. 
+
+For filtering on a Tweet’s language classification, Twitter’s historical products are quite different. When the Search archive was built, all Tweets were backfilled with the Twitter language classification. Therefore the ```lang:``` Operator is available for the entire Tweet archive. With Historical PowerTrack, Twitter’s language classification metadata is available in the archive beginning on March 26, 2013. Note that the Gnip Language classification metadata is in the Activity Stream payload between March 2012. However, with the release of Gnip 2.0 there is no Operator available to match on that language metadata.
+
+#### Geo-referencing Tweets
+
+Being able to tell where a Tweet was posted (i.e., geo-referencing it) is important to many use-cases. There are three primary methods for geo-referencing Tweets:
+Geographical references in Tweet message 
+
+##### Tweets geo-tagged by the user. 
+Account profile ‘home’ location set by user 
+
+If geo-referencing is key to your use-case, be sure to review [these support articles on filtering Twitter data by location](http://support.gnip.com/articles/tags/location.html). 
+Geographical references in Tweet message 
+
+Matching on geographic references in the Tweet message, while often the most challenging method since it depends on local knowledge, is an option for the entire Tweet archive. Here is an example geo-referenced match for the San Francisco area based on a ‘golden gate’ filter: 
+
+https://twitter.com/biz/statuses/28311
+
+##### Tweets geo-tagged by the user 
+
+In November 2009 Twitter introduced its Tweet Geotagging API that enabled Tweets to be geo-tagged with an exact location. In June 2010 Twitter introduced Twitter Places that represent a geographic area on the venue, neighborhood, or town scale.  Approximately 1-2% of Tweets are geo-tagged. 
+
+The available geo-tagging history is dependent on the Historical API you are using. With the Search APIs the ability to start matching on Tweet with some Geo Operators started in March 2010, and on with others on February 2015. If you are using Historical PowerTrack, geo-referencing starts on September 1, 2011. When the Historical PowerTrack archive was built, all geo-tagging before this date was not included.  
+
+##### Account profile ‘home’ location set by user 
+All Twitter users have the opportunity to set their Profile Location, indicating their home location. Millions of Twitter users provide this information, and it significantly increases the amount of geodata in the Twitter Firehose. This location metadata is a non-normalized, user-generated, free-form string. 
+
+As with Tweet geo, the methods to match and the time periods available depends on the Historical API you are using. Historical PowerTrack enables you to attempt your own custom matching on these metadata. To help make that process easier, Twitter also provides a [Profile Geo Enrichment](http://support.gnip.com/enrichments/profile_geo.html) that performs the geocoding where possible, providing normalized metadata and corresponding Operators. Profile Geo Operators are available in both Historical PowerTrack and the Search APIs. With Historical PowerTrack, these Profile Geo metadata is available starting in June 2014. With the Search APIs, these metadata is available starting in February 2015.
+
+#### Shared links and media
+Sharing web page links, photos and video have always been a fundamental action users take on Twitter. Early in its history, all of these actions involved including a URL link in the Tweet message itself. In 2011 Twitter integrated sharing photos directly into its user-interface. In 2016, native videos were added. 
+
+Given this history, there are a variety of filtering Operators used for matching on this content. There are a set of Operators that match on whether Tweets have shared links, photos, and videos. Also, since most URLs shared on Twitter are shortened to conserve character (e.g. generated by a service such as bitly or tinyurl), Twitter provides data enrichments that generate a complete, expanded URL that can be matched on. For example, if you wanted to match on Tweets that included links discussing Twitter and Early-warning systems, a filter that references ```severe weather communication``` would match a Tweet containing this  ```http://bit.ly/1XV1tG4``` URL.
+
+In March 2012, the [expanded URL enrichment](http://support.gnip.com/enrichments/expanded_urls.html) was introduced. Before this time, the Tweet payloads included only the URL as provided by the user. So, if the user included a shortened URL it can be challenging to match on (expanded) URLs of interest. With both Historical PowerTrack and the Search APIs, these metadata are available starting in March 2012. 
+
+In July 2016, the [enhanced URL enrichment](http://support.gnip.com/enrichments/enhanced_urls.html) was introduced. This enhanced version provides a web site’s HTML title and description in the Tweet payload, along with Operators for matching on those. With Historical PowerTrack, these metadata become available in July 2016. With the Search APIs, these metadata begin emerging in December 2014. 
+
+For other URL product-specific details on URL filtering, see the corresponding article for more information. 
+
+
+-----------------------------------------
+
+
+Filtering before and after the introduction of ‘first-class’ Tweet objects
+
+As with the Tweets sharing videos example above, there are many common Tweet attributes used for filtering that require two strategies, one for the period when select attributes reflect a user-convention, and another for when the attributes encapsulates a first-class user-action integrated into the Twitter interface. 
+
+Examples of user-conventions that resulted in new Twitter features that will be discussed in the next section:
+
+Posting Retweet or Quote Tweet
+Sharing geographic locations when Tweeting
+Sharing an account ‘home’ location
+Sharing photos
+Sharing videos
+Sharing links
+
+
+
 
 ### Next Steps <a id="=nextSteps" class="tall">&nbsp;</a>
 
