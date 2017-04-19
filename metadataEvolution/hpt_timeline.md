@@ -8,7 +8,7 @@ tl;dr
 
 + [Product Overview](#overview)
 + [Matching Metadata Timelines](#metadataTimelines)
-+ [Filtering Examples](#filteringExamples)
++ [Filtering Tips](#filteringTips)
 + [Next Steps](#nextSteps)
 
 
@@ -36,7 +36,7 @@ As mentioned [in our documentation](http://support.gnip.com/apis/historical_api2
 
 Below is a timeline of when [Historical PowerTrack Operators](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators) begin matching. In some cases Operator matching begins well *after* a 'communication convention' becomes commonplace on Twitter. For example, @replies emerged as a user convention in 2006, but did not become a 'first-class' *object* or *event* with 'supporting' JSON until early 2007. Accordingly, matching on @replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
 
-The details provided here were generated using HPT, and were informed by the Twitter timeline provided [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md). This timeline is not 100% complete. If you identify another filtering/metadata "born on date", please let us know.  
+The details provided here were generated using HPT, and were informed by the Twitter timeline provided [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md). This timeline is not 100% complete or precise. If you identify another filtering/metadata "born on date" fundamental to your use-case, please let us know.  
 
 #### 2007
 + January 3 - ```is:verified``` 
@@ -78,30 +78,61 @@ The details provided here were generated using HPT, and were informed by the Twi
 + January 17 - 'quote_count' and 'reply_count' available in *original* format. No associated Operators for these metadata.
 + February 22 - Poll metadata become available in *original* format. No associated Operators for these metadata.
 
-### Filtering tips <a id="filteringExamples" class="tall">&nbsp;</a>
+### Filtering tips <a id="filteringTips" class="tall">&nbsp;</a>
 
-Given all the above information, it is clear that there are a lot of details to consider when generating historical Tweet datasets. There are two key things to consider:
+
+
+Given all the above timeline information, it is clear that there are a lot of details to consider when generating historical Tweet datasets. There are two key things to consider:
 
 + Some metadata have 'born-on' dates so filters can result in *false negatives*. Such searches include Operators reliant on metadata that did not exist for all of part of the search period. For example, if you are searching for Tweets with the ```has:videos``` Operator, you will not have any matches for periods before February 10, 2015. That is because that Operator matches on *native* videos (attached to a Tweet using the Twitter.com user-interface). For a more complete data set of video sharing on Twitter, filters for before Febuary 10, 2015 would need to contain rule clauses that match on URLs common for video hosting.
 + Some metadata has been backfilled with metadata from a time *after* the Tweet was posted. 
 
+As discussed [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md#filtering-tips-identifying-and-filtering-on-tweet-attributes-important-to-your-use-case-) there are several commonly attribute types that commonly focused on when matching on Tweet JSON:
++ Twitter Profiles
++ Original or shared Tweets
++ Tweet language classification
++ Geo-referencing Tweets
++ Shared links media
 
-+ Account profiles
-+ Retweet example
-+ Geo example
-+ URL example
-HPT: 
-     2006 November 1 - has:links
-     2011 June 2 - has:images and has:media
-     2012 March 26 - Expanded URLs
-     2015 February 10 - has:videos
-     2016 July 28 - Enhanced URL expansion
+Some of these have product-specific behavior while others have identical behavior. 
 
++ Twitter Profiles
+    + Profile is as it was at the time the Tweet was posted, except for data before 2011. For Tweets older than 2011, the profile metadata reflects the profile as it was in September 2011.
 
-+ Others
++ Original Tweets and Retweets
 
+[rephrase]
+The PowerTrack ```is:retweet``` Operator enables users to filter accordingly. Users of this Operator need to have two strategies for Retweet matching (or not matching) if data before August 2009 is needed. Before August 2009, the Tweet message itself needs to be checked, using exact phrase matching, for matches on “@RT ”. For periods after August 2009, the is:retweet Operator is available.
 
++ Tweet language classifications  
 
+Twitter’s language classification metadata is available in the archive beginning on March 26, 2013. Note that the Gnip Language classification metadata is in the Activity Stream payload between March 2012. However, with the release of Gnip 2.0 there is no longer an Operator available to match on the Gnip language classification.
+
++ Geo-referencing Tweets  
+
+As discussed HERE there are three primary ways to geo-reference Tweets:
+
+   + **Geographical references in Tweet message.** Matching on geographic references in the Tweet message, while often the most challenging method since it depends on local knowledge, is an option for the entire Tweet archive. Here is an example geo-referenced match from 2006 for the San Francisco area based on a ‘golden gate’ filter: https://twitter.com/biz/statuses/28311
+
+   + **Tweets geo-tagged by the user.** If you are using Historical PowerTrack, geo-referencing starts on September 1, 2011. When the Historical PowerTrack archive was built, all geo-tagging before this date was not included.
+
+   + **Account profile ‘home’ location set by user.**  Historical PowerTrack enables you to attempt your own custom matching on these metadata. Profile Geo metadata is available starting in June 2014. 
+
++ Shared links and media 
+
+In March 2012, the expanded URL enrichment was introduced. Before this time, the Tweet payloads included only the URL as provided by the user. So, if the user included a shortened URL it can be challenging to match on (expanded) URLs of interest. With Historical PowerTrack  these metadata are available starting in March 2012.
+
+In July 2016, the enhanced URL enrichment was introduced. This enhanced version provides a web site’s HTML title and description in the Tweet payload, along with Operators for matching on those. With Historical PowerTrack, these metadata become available in July 2016. 
+
+In September 2016 Twitter introduced 'native attachments' where a trailing shared link is not counted against the 140 Tweet character limit. Both URL enrichments still apply to these shared links.
+
+Here are when related PowerTrack Operators begin matching:
+
++ 2006 November 1 - has:links
++ 2011 June 2 - has:images and has:media
++ 2012 March 26 - Expanded URLs
++ 2015 February 10 - has:videos
++ 2016 July 28 - Enhanced URL expansion
 
 ### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
 + Search API: metadata and filtering timeline
