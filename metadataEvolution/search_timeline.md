@@ -24,7 +24,7 @@ Also, unlike HPT, there are Tweet attributes that are updated at the time a quer
 
 Below is a timeline of when [Full-Archive Search API Operators](http://support.gnip.com/apis/search_full_archive_api/rules.html#Operators) begin matching. In some cases Operator matching begins well *after* a 'communication convention' becomes commonplace on Twitter. For example, @Replies emerged as a user convention in 2006, but did not become a 'first-class' *object* or *event* with 'supporting' JSON until early 2007. Accordingly, matching on @Replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
 
-The details provided here were generated using Full-Archive Search, and were informed by the Twitter timeline provided [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md).  
+The details provided here were generated using Full-Archive Search, and were informed by the Twitter timeline provided [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md). This timeline is not 100% complete or precise. If you identify another filtering/metadata "born on date" fundamental to your use-case, please let us know.
 
 #### 2006
  + March 26 - ```lang:```
@@ -63,8 +63,6 @@ The details provided here were generated using Full-Archive Search, and were inf
 #### 2017 
 + February 22 - Poll metadata become available in original format. No associated Operators for these metadata.
 
-
-
 ### Filtering tips <a id="filteringTips" class="tall">&nbsp;</a>
 
 Given all the above timeline information, it is clear that there are a lot of details to consider when generating historical Tweet datasets. There are two key things to consider:
@@ -72,22 +70,22 @@ Given all the above timeline information, it is clear that there are a lot of de
 + Some metadata have 'born-on' dates so filters can result in *false negatives*. Such searches include Operators reliant on metadata that did not exist for all of part of the search period. For example, if you are searching for Tweets with the ```has:videos``` Operator, you will not have any matches for periods before February 10, 2015. That is because that Operator matches on *native* videos (attached to a Tweet using the Twitter.com user-interface). For a more complete data set of video sharing on Twitter, filters for before Febuary 10, 2015 would need to contain rule clauses that match on URLs common for video hosting.
 + Some metadata has been backfilled with metadata from a time *after* the Tweet was posted. 
 
-As discussed [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md#filtering-tips-identifying-and-filtering-on-tweet-attributes-important-to-your-use-case-) there are several commonly attribute types that commonly focused on when matching on Tweet JSON:
+As discussed [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md#filtering-tips-identifying-and-filtering-on-tweet-attributes-important-to-your-use-case-) there are several attribute types that are commonly focused on when creating PowerTrack queries:
 + Twitter Profiles
 + Original or shared Tweets
 + Tweet language classification
 + Geo-referencing Tweets
 + Shared links media
 
-Some of these have product-specific behavior while others have identical behavior. 
+Some of these have product-specific behavior while others have identical behavior. See below for more details. 
 
 #### Twitter Profiles
-    Profile is as it was at the time the Tweet was posted, except for data before 2011. For Tweets older than 2011, the profile metadata reflects the profile as it was in September 2011.
+
+Profile is as it was at the time the Tweet was posted, except for data before 2011. For Tweets older than 2011, the profile metadata reflects the profile as it was in September 2011.
 
 #### Original Tweets and Retweets
 
-[rephrase]
-The PowerTrack ```is:retweet``` Operator enables users to filter accordingly. Users of this Operator need to have two strategies for Retweet matching (or not matching) if data before August 2009 is needed. Before August 2009, the Tweet message itself needs to be checked, using exact phrase matching, for matches on “@RT ”. For periods after August 2009, the is:retweet Operator is available.
+The PowerTrack ```is:retweet``` Operator enables users to eitehr include or exclude Retweets. Users of this Operator need to have two strategies for Retweet matching (or not matching) for data before August 2009. Before August 2009, the Tweet message itself needs to be checked, using exact phrase matching, for matches on the “@RT ” pattern. For periods after August 2009, the is:retweet Operator is available.
 
 #### Tweet language classifications  
 
