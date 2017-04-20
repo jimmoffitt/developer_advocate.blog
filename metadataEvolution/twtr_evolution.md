@@ -10,7 +10,6 @@ tl;dr
 + [Introduction](#introduction)
 + [Key Concepts](#keyConcepts)
     + [From user-conventions to first-class Tweet objects](#firstClass)
-    + [Building fitlers to match on Tweet metadata](#filteringIntro)
     + [Metadata Mutability](#metadataMutability)
     + [Native Media](#nativeMedia)
 + [Twitter timeline](#twitterTimeline)
@@ -42,10 +41,6 @@ Next we will introduce some key concepts that set the stage for understanding ho
 Twitter users organically introduced new, and now fundamental, communication patterns to the Twitter network. A seminal example is the hashtag, now nearly universally used across all social networks. Hashtags were introduced as a way to organize conversations and topics. On a network with hundreds of millions messages a day, tools to find Tweets of interest are key, and hashtags have become a fundamental method. Soon after the use of hashtags grew, they received official status and support from Twitter. As hashtags became a *'first-class' object*, this meant many things. It meant hashtags became clickable/searchable in the Twitter.com user interface. It also meant hashtags became a member of the Twitter *entities* family, along with @mentions, attached media, stock symbols, and shared links. These entities are conveniently encoded in a pre-parsed JSON array, making it easier for developers to process, scan, and store them. 
 
 Retweets are another example of user-driven conventions becoming official objects. Retweeting emerged as a way of 'forwarding' content to others. It started as a manual process of copying/pasting a Tweet and prepending it with a "RT @" pattern. This process was eventually automated via a new Retweet button, complete with new JSON metadata. The 'official' Retweet was born. Other examples include 'mentions', sharing of media and web links, and sharing a location with your Tweet. Each of these use-patterns resulted in new [twitter.com](https://twitter.com/) user-interface features, new supporting JSON, and thus new ways to match on Tweets. All of these fundamental Tweet attributes have resulted in PowerTrack Operators used to match on them.
-
-### Building Filters with Operators that match on JSON attributes <a id="=filteringIntro" class="tall">&nbsp;</a>
-
-
 
 ### Tweet metadata, mutability, updates, and currency <a id="=metadataMutability" class="tall">&nbsp;</a>
 
