@@ -128,9 +128,9 @@ Here are when related PowerTrack Operators begin matching:
 
 + 2006 November 1 - ```has:links```
 + 2011 June 2 - ```has:images``` and ```has:media```
-+ 2012 March 26 - ```url:``` with Expanded URLs enrichment
++ 2012 March 26 - ```url:``` with [Expanded URLs enrichment](http://support.gnip.com/enrichments/expanded_urls.html)
 + 2015 February 10 - ```has:videos```
-+ 2016 July 28 - ```url_title:``` and ```url_description:``` with Enhanced URL enrichment
++ 2016 July 28 - ```url_title:``` and ```url_description:``` with [Enhanced URL enrichment](http://support.gnip.com/enrichments/enhanced_urls.html)
 
 ### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
 + Search API: metadata and filtering timeline
