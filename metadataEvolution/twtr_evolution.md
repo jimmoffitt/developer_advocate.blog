@@ -38,7 +38,7 @@ Next we will introduce some key concepts that set the stage for understanding ho
 
 ## Key concepts <a id="=keyConcepts" class="tall">&nbsp;</a>
 
-### From user-conventions to first-class Tweet objects <a id="=firstClass" class="tall">&nbsp;</a>
+### From user-conventions to Twitter *first-class objects* <a id="=firstClass" class="tall">&nbsp;</a>
 
 Twitter users organically introduced new, and now fundamental, communication patterns to the Twitter network. A seminal example is the hashtag, now nearly universally used across all social networks. Hashtags were introduced as a way to organize conversations and topics. On a network with hundreds of millions messages a day, tools to find Tweets of interest are key, and hashtags have become a fundamental method. Soon after the use of hashtags grew, they received official status and support from Twitter. As hashtags became a *'first-class' object*, this meant many things. It meant hashtags became clickable/searchable in the Twitter.com user interface. It also meant hashtags became a member of the Twitter *entities* family, along with @mentions, attached media, stock symbols, and shared links. These entities are conveniently encoded in a pre-parsed JSON array, making it easier for developers to process, scan, and store them. 
 
