@@ -9,7 +9,7 @@ tl;dr
 
 + [Introduction](#introduction)
 + [Key Concepts](#keyConcepts)
-    + [From user-conventions to first-class Tweet objects](#firstClass)
+    + [From user-conventions to Twitter *first-class objects*](#firstClass)
     + [Metadata Mutability](#metadataMutability)
     + [Native Media](#nativeMedia)
 + [Twitter timeline](#twitterTimeline)
