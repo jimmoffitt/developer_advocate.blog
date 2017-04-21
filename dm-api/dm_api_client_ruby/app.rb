@@ -1,11 +1,18 @@
-
-
 =begin
 ## Welcome Messages
 
 Welcome to the @FloodSocial notification system! 
 
-This websocket component is used for enrolling subscribers into a Twitter-based notification system. Users are asked to privately share their area of notification interest, along with their email if they want to receive email notifications. 
+This websocket *Enroller* component is used for enrolling subscribers into a Twitter-based notification system. 
+Users are asked to privately share their area of notification interest (along with their email if they 
+want to receive email notifications). 
+
+Fundamental Notification Components
+* Enroller (this)
+* Listener [code here](https://github.com/jimmoffitt/pi-adventures/blob/master/listen/stream/python/py-stream-pi.py)
+* Notifier [code here](https://github.com/jimmoffitt/pi-adventures/blob/master/notify/tweet/post_tweet.rb)
+
+
 
 This component uses the Twitter Direct Message API to  
 
@@ -32,6 +39,6 @@ require 'sinatra'
 
 class EnrollerApp < Sinatra::Base
   get '/' do
-    "Welcome to the @FloodSocial notification system! This websocket component is used for enrolling subscribers into a Twitter-based notification system. \n \n This Twitter DM API client receives events from Twitter, and also sends Direct Messages."
+    "Welcome to the @FloodSocial notification system! This websocket component is used for enrolling subscribers into a Twitter-based notification system."
   end
 end
