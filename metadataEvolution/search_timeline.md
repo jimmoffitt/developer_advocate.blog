@@ -118,7 +118,7 @@ In September 2016 Twitter introduced 'native attachments' where a trailing share
 Here are when related Search Operators begin matching:
 
 + 2011 August - ```url:``` with the [Expanded URLs enrichment](http://support.gnip.com/enrichments/expanded_urls.html)
-> As early as September 2006 ```(url:\"spotify.com\" OR url:gnip OR url:microsoft OR url:google OR url:youtube)``` matches http://twitter.com/Adam/statuses/16602, even though there is not urls[] metadata in twitter_entities and gnip objects. "youtube.com" is an example of message content, along with no urls[] metadata, matches url:youtube. 
+> As early as September 2006 ```(url:\"spotify.com\" OR url:gnip OR url:microsoft OR url:google OR url:youtube)``` matches http://twitter.com/Adam/statuses/16602, even though there is no urls[] metadata in twitter_entities and gnip objects. "youtube.com" is an example of message content that, without any urls[] metadata, matches url:youtube. 
 >
 >
 + 2006 October 26 - ```has:links```
