@@ -107,7 +107,6 @@ As discussed [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/m
 
    + **Account profile ‘home’ location set by user.**  As with Tweet geo, the methods to match and the time periods available depends on the Historical API you are using. Profile Geo Operators are available in both Historical PowerTrack and the Search APIs. With the Search APIs, these Profile Geo metadata is available starting in February 2015. 
 
-
 #### Shared links and media 
 
 In March 2012, the expanded URL enrichment was introduced. Before this time, the Tweet payloads included only the URL as provided by the user. So, if the user included a shortened URL it can be challenging to match on (expanded) URLs of interest. With the Search APIs, these metadata are available starting in March 2012.
@@ -118,9 +117,13 @@ In September 2016 Twitter introduced 'native attachments' where a trailing share
 
 Here are when related Search Operators begin matching:
 
++ 2011 August - ```url:``` with the [Expanded URLs enrichment](http://support.gnip.com/enrichments/expanded_urls.html)
+> As early as September 2006 ```(url:\"spotify.com\" OR url:gnip OR url:microsoft OR url:google OR url:youtube)``` matches http://twitter.com/Adam/statuses/16602, even though there is not urls[] metadata in twitter_entities and gnip objects. "youtube.com" is an example of message content, along with no urls[] metadata, matches url:youtube. 
+>
+>
 + 2006 October 26 - ```has:links```
 + 2011 July 20 - ```has:images``` and ```has:media```
-+ ???????????? - ```url:``` with the [Expanded URLs enrichment](http://support.gnip.com/enrichments/expanded_urls.html)
+
 + 2015 February 10 - ```has:videos``` for native videos. Between 2010/08/28 and 2015/02/10, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com. 
 + 2016 May 1 - ```url_title:``` and ```url_description:```, based on the [Enhanced URLs enrichment](http://support.gnip.com/enrichments/enhanced_urls.html), generally available. First Enhanced URL metadata began appearing in December 2014. 
 
