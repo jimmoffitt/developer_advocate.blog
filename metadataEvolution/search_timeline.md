@@ -9,7 +9,7 @@ tl;dr
 + [Introduction](#intro)
 + [Product Overview](#overview)
 + [Matching Metadata Timelines](#metadataTimelines)
-+ [Filtering Examples](#filteringExamples)
++ [Filtering Tips](#filteringTips)
 + [Next Steps](#nextSteps)
 
 ### Introduction  <a id="intro" class="tall">&nbsp;</a>
