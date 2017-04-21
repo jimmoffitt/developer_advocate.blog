@@ -6,11 +6,15 @@ tl;dr
 
 --------------------------------------------
 
++ [Introduction](#intro)
 + [Product Overview](#overview)
 + [Metadata and Matching Timelines](#metadataTimelines)
 + [Filtering Tips](#filteringTips)
 + [Next Steps](#nextSteps)
 
+### Introduction  <a id="intro" class="tall">&nbsp;</a>
+
+How Twitter evolved as a platform, and how that affected the JSON used to encode Tweets, is discussed [here](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md). That article also begins the discussion of how these JSON details affect creating the filters needed to find your historical signal of interest. This article continues that discussion by exploring how these details affect writing filters for Historical PowerTrack. 
 
 ### Product Overview <a id="overview" class="tall">&nbsp;</a>
 
