@@ -90,9 +90,9 @@ Here are the fundamental differences between Historical PowerTrack and Full-Arch
     <td class="tg-yw4l">time_zone:</td>
     <td class="tg-yw4l"></td>
   </tr>
-</table>
-
-    + See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/historicalOperatorsTable.md) for a side-by-side comparison of available Operators.
+</table> 
+    
++ See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/historicalOperatorsTable.md) for a side-by-side comparison of available Operators.
     + For a complete list of Operators for each product see here:
         + [Search Operator List](http://support.gnip.com/apis/search_full_archive_api/rules.html#Operators)
         + [Historical PowerTrack Operator List](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators)
