@@ -9,17 +9,22 @@
 
 ### Introduction <a id="introduction" class="tall">&nbsp;</a>  
 
-Both Historical PowerTrack and Full-Archive Search provide access to any publicly available Tweet, starting with [the first Tweet from March 2006](https://twitter.com/jack/status/20). Deciding which product better suits your use case can be key in getting the data you want when you need it. This article highlights the differences between the two and will hopefully help you determine which product to use for producing your next historical Tweet dataset.
+Both Historical PowerTrack and Full-Archive Search provide access to any publicly available Tweet, starting with [the first Tweet from March 2006](https://twitter.com/jack/status/20). Deciding which product better suits your use case can be key in getting the data you want when you need it. This article highlights the differences between the two historical products, with a goal of helping you determine which one to use for generating your next historical Tweet dataset.
 
-Architecturally, Historical PowerTrack and Full-Archive Search are significantly different. Both products scan a Tweet archive of your period of interest, examine each Tweet posted during that time, and generate a set of matching results. The product differences begin with the datastore each product serves data from. 
+Both historical products scan a Tweet archive, examine each Tweet posted during the time of interest, and generate a set of Tweets matching your query. However, Historical PowerTrack and Full-Archive Search are based on significantly different archive architectures, resulting in fundamental product differences. These differences include supported PowerTrack Operators, the number of rules/filters per request, and how the data is delivered.
+
+We'll start off by providing an overview of Historical PowerTrack and the Search APIs, then discuss these differences in detail. We'll wrap up the discussion with general guidance for selecting a historical product.
 
 #### Historical PowerTrack <a id="hpt" class="tall">&nbsp;</a>  
 
-Historical PowerTrack is built to deliver Tweets at scale using a batch, Job-based design where the API is used to move a Job through multiple phases. These phases include volume estimation, Job acceptance/rejection, getting Job status, and downloading potentially many thousands of data files. Depending on the length of the request time period, Jobs can take hours or days to generate.
+Historical PowerTrack is built to deliver Tweets at scale using a batch, Job-based design where the API is used to move a Job through multiple phases. These phases include volume estimation, Job acceptance/rejection, getting Job status, and downloading potentially many thousands of data files. Depending on the length of the request time period, Jobs can take hours or days to generate. A data file is generated for each 10-minute period that contains at least one Tweet. Therefore, a 30-day datasets will commonly consists of approximately 4,300 files regardless of the number of matched Tweets. 
 
-The first Twitter archive was a file-based system, with each file containing a short duration of the real-time Tweet firehose. Historical PowerTrack, launched in 2012 by Gnip, was built on top of the file-based archive. As HPT generates your dataset, it performs file operations as it opens each file, and examines each Tweet in the file. During this process, HPT access all sections of the JSON payload that have an associated PowerTrack Operator. This set of fifty-some Operators includes the ```contains:``` Operator, meaning HPT even performs substring matching of historical Tweets.
+The first Twitter archive was a file-based system, with each file containing a short duration of the real-time Tweet firehose. Historical PowerTrack, launched in 2012 by Gnip, was built on top of the file-based archive. As Historical PowerTrack generates your dataset, it performs file operations as it opens each file, and examines each Tweet in the file. During this process, Historical PowerTrack accesses all sections of the JSON payload that have an associated PowerTrack Operator. Historical PowerTrack supports the full set of PowerTrack Operators supported by real-time PowerTrack. 
 
-[More: create Job, estimate provided, accept job, 10-minute data files are compiled, user downloads.]
+
+This set of fifty-some Operators includes the ```contains:``` Operator, meaning Historical PowerTrack is capable of matching substrings HPT even performs substring matching of historical Tweets.
+
+
 
 
 #### Full-Archive Search <a id="search" class="tall">&nbsp;</a>  
@@ -71,7 +76,7 @@ Here are the fundamental differences between Historical PowerTrack (HPT) and Ful
     <td class="tg-yw4l">retweets_of_status_id:</td>
   </tr>
   <tr>
-    <td class="tg-yw4l">emoji</td>
+    <td class="tg-yw4l">is:quote</td>
     <td class="tg-yw4l">sample:</td>
   </tr>
   <tr>
@@ -91,11 +96,11 @@ Here are the fundamental differences between Historical PowerTrack (HPT) and Ful
     <td class="tg-yw4l">url_contains:</td>
   </tr>
   <tr>
-    <td class="tg-yw4l">is:quote</td>
+    <td class="tg-yw4l">listed_count:</td>
     <td class="tg-yw4l">url_description:</td>
   </tr>
   <tr>
-    <td class="tg-yw4l">listed_count:</td>
+    <td class="tg-yw4l"></td>
     <td class="tg-yw4l">url_title:</td>
   </tr>
 </table>
@@ -117,7 +122,7 @@ Search:
 
 HPT: 
 + Batch of rules to apply to a common time period
-+ Need filtering Operators not available in Search APIs
++ Need filtering Operators not available in Search APIs, full-parity with real-time PT.
 + Many millions of Tweets
 
 
