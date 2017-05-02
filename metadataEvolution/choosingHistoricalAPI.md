@@ -1,9 +1,8 @@
 + [Introduction](#introduction)
-    + [Full-Archvie Search API](#search)
     + [Historical PowerTrack](#hpt)
+    + [Full-Archive Search API](#search)
 + [Fundamental Differences](#differences)
 + [Selecting a historical product](#choosing)
-+ [Switching between products: development checklists](#switchin)
 
 ## Choosing an Historical API 
 
@@ -13,7 +12,7 @@ Both Historical PowerTrack and Full-Archive Search provide access to any publicl
 
 Both historical products scan a Tweet archive, examine each Tweet posted during the time of interest, and generate a set of Tweets matching your query. However, Historical PowerTrack and Full-Archive Search are based on significantly different archive architectures, resulting in fundamental product differences. These differences include supported PowerTrack Operators, the number of rules/filters per request, how estimates are provided, and how the data is delivered.
 
-We'll start off by providing an overview of Historical PowerTrack and the Search APIs, then discuss these differences in detail. We'll wrap up the discussion with general guidance for selecting a historical product.
+We'll start off by providing an overview of Historical PowerTrack and the Full-Archive Search API, then discuss these differences in detail. We'll wrap up the discussion with general guidance for selecting a historical product.
 
 #### Historical PowerTrack <a id="hpt" class="tall">&nbsp;</a>  
 
@@ -29,20 +28,25 @@ Full-Archive Search is designed using the classic RESTful request/response patte
 
 Many use cases focus on data volumes, rather than the actual Tweet messages themselves. Full-Archive Search supports a ‘counts’ endpoint that returns a time-series of the number of matched Tweets. These Tweet counts are returned in a time-series of minute-by-minute, hourly, or daily totals.
 
+Note that Twitter also provides a 30-Day Search API. If you only need data from the last 30 days, this API may be the best match for your use case.
+
 ### Fundamental Differences <a id="differences" class="tall">&nbsp;</a>  
 
 Here are the fundamental differences between Historical PowerTrack and Full-Archive Search:
 
 + **Number of rules supported per request**
+
     + Full-Archive Search accepts a single rule per request. 
     + A Historical PowerTrack Job can support up to 1,000 rules. 
     Note: With each product a single rule can contain up to 2,048 characters.
     
 + **How data is delivered**
+
      + Historical PowerTrack generates a time-series of data files, each covering a ten-minute period. For example, each hour of data is provided in six 10-minute data files (assuming each 10-minute period has at least one Tweet. If not, no file is generated). Inside each Historical PowerTrack file, the JSON Tweet payloads are written in an atomic fashion, and are not presented in an JSON array. File contents need to be parsed using newline characters as a delimiter.
      + With Full-Archive Search, Tweets in each response are arranged in a “results” array. A maximum of 500 Tweets are available per response and a ‘next’ token is provided if more Tweets are available. For example, if a 60-day request for a single PowerTrack rule matches 10,000 Tweets, at least 20 requests must be made of the Search API.
      
 + **Supported PowerTrack Operators**
+
     + While the majority of Operators supported by HPT are also supported by FAS, there are a set of Operators not available in FAS:
  
 <table class="tg">
@@ -101,34 +105,20 @@ Here are the fundamental differences between Historical PowerTrack and Full-Arch
     + Full-Archive Search provides a 'counts' endpoint that is used to generate a minutely, hourly, or daily time-series of matching Tweets. For use cases that benefit from knowing about data *volumes*, in addtion to the actual data, the Full-Archive Search 'counts' endpoint is the tool of choice. Note that the 'counts' endpoint is a measure of *pre-compliant* matched Tweets. Pre-compliant means the Tweet totals do not take into account deleted and protected Tweets. So the 'counts' total includes every matched Tweet ever posted, but data requests will not include those unavailable deleted or private Tweets. 
     + The Historical PowerTrack API provides an *order of magnitude* estimate for the number of Tweets a Job will match. These estimates are based on a sampling of the time period to be covered, and should be treated a directionally accurate guide to the amount of data a historical Job will return. An Historical PowerTrack estimate will help answer whether a Job will match 100,000 or 1,000,000 Tweets. The goal is to provide reasonable expectations around the amount of data a request will return, and the Historical PowerTrack API should not be used as an estimate tool. 
     
++ **Product licensing and pricing**   
+
+Both the Full-Archive Search and Historical PowerTrack APIs are available with 12-month subscriptions. In addition, Historical PowerTrack is available on a *'one-off'* basis. So if you need historical Tweet data for a one-time project or ad hoc research, Historical PowerTrack will be better suited to your needs. 
+
+Also, the infrastructure and processing requirements to support Full-Archive Search are significantly higher than Historical PowerTrack. Accordingly, the licensing fees are higher for Full-Archive Search are higher than Historical PowerTrack and the 30-Day Search API. If you only need data from the last 30 days, the 30-Day Search API may be the best match for your use case.
+
+    
 ### Selecting a historical product <a id="choosing" class="tall">&nbsp;</a>  
 
+Our general recommendation is that Full-Archive Search is best suited for datasets of a few million Tweets or less. In other words, Full-Archive Search is best for collecting lower-volume datasets, while Historical PowerTrack is more appropriate for higher-volume datasets.  
 
+This recommendation is intentionally vague as there is no real technical reason why Full-Archive Search could not be used for very large data requests. However, depending on how you plan to retrieve the data and utilize API rate limits, there actually is a threshold where Historical PowerTrack actually processes the data faster that Full-Archive Search. Historical PowerTrack typically processes a 30-day duration job in about 6 hours, regardless of the volume of matching data returns. To pull 6 million Tweets via Full-Archive Search, it would require a minimum of 12,000 search requests. If you also assume 2-second response times and an app that paginates with a single thread, it would actually take Full-Archive Search longer to retrieve the entire Tweet dataset.
 
-Search:
-+ Dashboards, quick estimates
-+ "first 500" tweets that a rule, single query matches
+Beyond data volume considerations and comparing completion times, there are other reasons why one historical product is best suited for your use case. Historical PowerTrack is the right product if you require any of the Operators that are not currently supported in Full-Archive Search (see above). Historical PowerTrack is also better suited for large query rulesets, as the Search API products only support a single PowerTrack rule per request. Historical PowerTrack, on the other hand, supports up to one thousand (1,000) rules. Finally, Historical PowerTrack is a great choice for use cases where receiving, in real-time, new Tweet attributes of interest (e.g. hashtags, mentions and URLs) trigger a historical request. Since Historical PowerTrack supports the same full set of Operators as real-time PowerTrack, you can always 'plug in' the corresponding real-time rules into a Historical PowerTrack Job. 
 
-HPT: 
-+ Batch of rules to apply to a common time period
-+ Need filtering Operators not available in Search APIs, full-parity with real-time PT.
-+ Many millions of Tweets
-
-
-
-A general assumption to be made here is that Full-Archive Search is better-suited for lower-volume jobs, while Historical PowerTrack is more appropriate for higher-volume jobs and use cases. We’ve intentionally left those descriptions relatively vague, though, as there is no real technical reason why Full-Archive Search could not be used for large data requests. 
-
-Historical PowerTrack is a good first choice for retrieving Tweets at scale, where a result set is more than a few million Tweets.  
-
-Depending on how you plan to retrieve the data and utilize rate limits, there actually is a threshold where Historical PowerTrack actually processes the data faster that Full-Archive Search. Historical PowerTrack typically processes a 30-day duration job in about 3 hours [CONFIRM, CURRENT PERFORMANCE?], regardless of the volume of matching data returns. To pull 2.7M Tweets via Full-Archive Search, it would require a minimum of 5,400 search requests. If you also assume 2 second response times and the need to serially paginate through the data, it would actually take Full-Archive Search longer to pull all of the Tweets. {-There are optimizations you can make to retrieve the data faster via Full-Archive Search through parallel requests, but we can discuss those separately}.
-
-Historical PowerTrack is also the right product if you require certain operators that aren’t currently supported in Full-Archive Search (see above). Historical PowerTrack is also a better solution for large, complex rules sets and/or when Operators from its expanded list of Operators is needed.
-
-Historical PowerTrack is also better suited for large query rulesets, as the Search API products only support a single PowerTrack rule per request. Historical PowerTrack, on the other hand, supports up to one thousand (1,000) rules. 
-
-
-
-
-
-
+On the otherhand, the Full-Archive Search is a better choice if you are building tools that depend on near-instance results and data volume estimates.  
 
