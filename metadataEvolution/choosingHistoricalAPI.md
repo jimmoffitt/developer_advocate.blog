@@ -111,7 +111,7 @@ Here are the fundamental differences between Historical PowerTrack and Full-Arch
 
 Both the Full-Archive Search and Historical PowerTrack APIs are available with 12-month subscriptions. In addition, Historical PowerTrack is available on a *'one-off'* basis. So if you need historical Tweet data for a one-time project or ad hoc research, Historical PowerTrack will be better suited to your needs. 
 
-Also, the infrastructure and processing requirements to support Full-Archive Search are significantly higher than Historical PowerTrack. Accordingly, the licensing fees are higher for Full-Archive Search are higher than Historical PowerTrack and the 30-Day Search API. If you only need data from the last 30 days, the 30-Day Search API may be the best match for your use case.
+Also, the infrastructure and processing requirements to support Full-Archive Search are significantly higher than Historical PowerTrack. Accordingly, the licensing fees for Full-Archive Search are higher than Historical PowerTrack and the 30-Day Search API. If you only need data from the last 30 days, the 30-Day Search API is probably the best match for your use case.
 
     
 ### Selecting a Historical Product <a id="choosing" class="tall">&nbsp;</a>  
