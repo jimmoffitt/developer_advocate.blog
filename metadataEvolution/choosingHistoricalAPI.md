@@ -44,7 +44,7 @@ Here are the fundamental differences between Historical PowerTrack and Full-Arch
      
 + Supported PowerTrack Operators.
     + While the majority of Operators supported by HPT are also supported by FAS, there are a set of Operators not available in FAS:
-       
+ 
 <table class="tg">
   <tr>
     <td class="tg-yw4l">bio:</td>
@@ -98,9 +98,9 @@ Here are the fundamental differences between Historical PowerTrack and Full-Arch
     + [Historical PowerTrack Operator List](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators)
         
 + Data Volume Estimates.
-
-
-
+    + Full-Archive Search provides a 'counts' endpoint that is used to generate a minutely, hourly, or daily time-series of matching Tweets. For use cases that benefit from knowing about data *volumes*, in addtion to the actual data, the Full-Archive Search 'counts' endpoint is the tool of choice. Note that the 'counts' endpoint is a measure of *pre-compliant* matched Tweets. Pre-compliant means the Tweet totals do not take into account deleted and protected Tweets. So the 'counts' total includes every matched Tweet ever posted, but data requests will not include those unavailable deleted or private Tweets. 
+    + The Historical PowerTrack API provides an *order of magnitude* estimate for the number of Tweets a Job will match. These estimates are based on a sampling of the time period to be covered, and should be treated a directionally accurate guide to the amount of data a historical Job will return. An Historical PowerTrack estimate will help answer whether a Job will match 100,000 or 1,000,000 Tweets. The goal is to provide reasonable expectations around the amount of data a request will return, and the Historical PowerTrack API should not be used as an estimate tool. 
+    
 ### Selecting a historical product <a id="choosing" class="tall">&nbsp;</a>  
 
 
