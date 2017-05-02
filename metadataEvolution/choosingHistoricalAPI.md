@@ -33,16 +33,16 @@ Many use cases focus on data volumes, rather than the actual Tweet messages them
 
 Here are the fundamental differences between Historical PowerTrack and Full-Archive Search:
 
-+ Number of rules supported per request.
++ **Number of rules supported per request**
     + Full-Archive Search accepts a single rule per request. 
     + A Historical PowerTrack Job can support up to 1,000 rules. 
     Note: With each product a single rule can contain up to 2,048 characters.
     
-+ API Data Response.
++ **How data is delivered**
      + Historical PowerTrack generates a time-series of data files, each covering a ten-minute period. For example, each hour of data is provided in six 10-minute data files (assuming each 10-minute period has at least one Tweet. If not, no file is generated). Inside each Historical PowerTrack file, the JSON Tweet payloads are written in an atomic fashion, and are not presented in an JSON array. File contents need to be parsed using newline characters as a delimiter.
      + With Full-Archive Search, Tweets in each response are arranged in a “results” array. A maximum of 500 Tweets are available per response and a ‘next’ token is provided if more Tweets are available. For example, if a 60-day request for a single PowerTrack rule matches 10,000 Tweets, at least 20 requests must be made of the Search API.
      
-+ Supported PowerTrack Operators.
++ **Supported PowerTrack Operators**
     + While the majority of Operators supported by HPT are also supported by FAS, there are a set of Operators not available in FAS:
  
 <table class="tg">
@@ -92,12 +92,12 @@ Here are the fundamental differences between Historical PowerTrack and Full-Arch
   </tr>
 </table>
 
-+ See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/historicalOperatorsTable.md) for a side-by-side comparison of available Operators.
-+ For a complete list of Operators for each product see here:
-    + [Search Operator List](http://support.gnip.com/apis/search_full_archive_api/rules.html#Operators)
-    + [Historical PowerTrack Operator List](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators)
+    + See [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/historicalOperatorsTable.md) for a side-by-side comparison of available Operators.
+    + For a complete list of Operators for each product see here:
+        + [Search Operator List](http://support.gnip.com/apis/search_full_archive_api/rules.html#Operators)
+        + [Historical PowerTrack Operator List](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators)
         
-+ Data Volume Estimates.
++ **Data Volume Estimates**
     + Full-Archive Search provides a 'counts' endpoint that is used to generate a minutely, hourly, or daily time-series of matching Tweets. For use cases that benefit from knowing about data *volumes*, in addtion to the actual data, the Full-Archive Search 'counts' endpoint is the tool of choice. Note that the 'counts' endpoint is a measure of *pre-compliant* matched Tweets. Pre-compliant means the Tweet totals do not take into account deleted and protected Tweets. So the 'counts' total includes every matched Tweet ever posted, but data requests will not include those unavailable deleted or private Tweets. 
     + The Historical PowerTrack API provides an *order of magnitude* estimate for the number of Tweets a Job will match. These estimates are based on a sampling of the time period to be covered, and should be treated a directionally accurate guide to the amount of data a historical Job will return. An Historical PowerTrack estimate will help answer whether a Job will match 100,000 or 1,000,000 Tweets. The goal is to provide reasonable expectations around the amount of data a request will return, and the Historical PowerTrack API should not be used as an estimate tool. 
     
