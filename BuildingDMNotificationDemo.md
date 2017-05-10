@@ -2,9 +2,10 @@
 
 # Introduction
 
-
-
-
+  [] Twitter Webhook consumer
+  [] Rule manager: takes user submissions and converts those to PowerTrack rules and adds to stream.
+  [] Alarm listener: monitors real-time stream for Tweets of (geo) interest,
+  [] Notifier: send DM Notifications to subscribers. 
 
 
 # Details
@@ -29,6 +30,7 @@
 [] Deploy Webhook consusumer.
     [] Developing with localhost
         [] ngrok and pagekite experiments.
+           ./ngrok http -subdomain=customdomain 9393
     [] Deploying to cloud host
         [] heroku notes:
     [] Consumer data transfers to other components? Data stores?
@@ -69,25 +71,20 @@ user_dm['direct_message_events']['message_create']['message_data']['entities']['
 -->  "https://twitter.com/i/location?lat=32.71790004525148&long=-97.32473787097997"
 
 
-user_dm['direct_message_events']['message_create']['message_data']['attachment']['location']['shared_coordinates']['coordiantes']['coordinates'] --> array --> 
+user_dm['direct_message_events']['message_create']['message_data']['attachment']['location']['shared_coordinates']['coordinates']['coordinates'] --> array --> 
 ['coordinates'][0] --> -97.032########  
 ['coordinates'][1] --> 32.7179000##### 
 
 
+## From subscriptions to real-time PowerTrack 
 
 
 
 
 
+## Example JSON
 
-
-
-
-
-
-* Example JSON
-
-** User picked 'share location' method:
+### User picked 'share location' method:
 
 
 ```
@@ -162,7 +159,7 @@ user_dm['direct_message_events']['message_create']['message_data']['attachment']
 ```
 
 
-** User picked area of interest from location list:
+### User picked area of interest from location list:
 
 ```
 {
@@ -237,7 +234,7 @@ user_dm['direct_message_events']['message_create']['message_data']['attachment']
 
 ```
 
-** User picked area of interest from map:
+### User picked area of interest from map:
 
 ```
 
