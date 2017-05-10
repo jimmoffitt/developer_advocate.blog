@@ -16,12 +16,13 @@ __Developer Advocate blog__ ...from the client-side perspective.
      
 ### Twitter Dev repositories
 + [Ruby client for Twitter Engagement API](https://github.com/twitterdev/engagement-api-client-ruby)
-+ [Ruby client for Twitter Audience API](https://github.com/twitterdev/audience-api-client-ruby)
+
           
 ### Other repositories
 *  Historical PowerTrack Ruby client: https://github.com/jimmoffitt/rbHistoricalPT
 *  (Gnip) Search API Ruby client: https://github.com/jimmoffitt/rbSearchAPI
 *  PowerTrack Rules Migrator: https://github.com/jimmoffitt/rules-migrator
+*  Ruby client for Twitter Audience API: https://github.com/jimmoffitt/audience-api-client-ruby)
 *  JSON to CSV convertor: https://github.com/jimmoffitt/json2csv
 *  Adventures in (Raspberry) Pi: https://github.com/jimmoffitt/pi-adventures 
      
