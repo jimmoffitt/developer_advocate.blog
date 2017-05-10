@@ -31,6 +31,16 @@
         [] ngrok and pagekite experiments.
     [] Deploying to cloud host
         [] heroku notes:
+    [] Consumer data transfers to other components? Data stores?
+        [] Maintain simple text file?
+        [] Write to database?
+        [X] Sneakers and thumbdrives? 
+
+[] Other concerns outside of the webhook component:
+  [] Rule manager: takes user submissions and converts those to PowerTrack rules and adds to stream.
+  [] Alarm listener: monitors real-time stream for Tweets of (geo) interest,
+  [] Notifier: send DM Notifications to subscribers. 
+
 
 ## Having users share their location.
 
@@ -47,6 +57,23 @@ The prototye gives users two options for sharing their location of intertest:
 
 When a user pick from the list, 
 
+answer = user_dm['direct_message_events']['message_create']['message_data']['quick_reply_response']
+if answer == 'list'
+if answer == 'map'
+if answer == 'unsubscribe'
+
+user_id = user_dm['direct_message_events']['message_create']['sender_id']
+
+
+user_dm['direct_message_events']['message_create']['message_data']['entities']['urls']['expanded_url']
+-->  "https://twitter.com/i/location?lat=32.71790004525148&long=-97.32473787097997"
+
+
+user_dm['direct_message_events']['message_create']['message_data']['attachment']['location']['shared_coordinates']['coordiantes']['coordinates'] --> array --> 
+['coordinates'][0] --> -97.032########  
+['coordinates'][1] --> 32.7179000##### 
+
+
 
 
 
@@ -60,8 +87,8 @@ When a user pick from the list,
 
 * Example JSON
 
+** User picked 'share location' method:
 
-** User picked location list:
 
 ```
 "direct_message_events": [
@@ -135,8 +162,179 @@ When a user pick from the list,
 ```
 
 
+** User picked area of interest from location list:
+
+```
+{
+  "direct_message_events": [
+    {
+      "type": "message_create",
+      "id": "862160427215712260",
+      "created_timestamp": "1494390038671",
+      "message_create": {
+        "target": {
+          "recipient_id": "17200003"
+        },
+        "sender_id": "944480690",
+        "message_data": {
+          "text": "Austin",
+          "entities": {
+            "hashtags": [
+              
+            ],
+            "symbols": [
+              
+            ],
+            "user_mentions": [
+              
+            ],
+            "urls": [
+              
+            ]
+          },
+          "quick_reply_response": {
+            "type": "options"
+          }
+        }
+      }
+    }
+  ],
+  "users": {
+    "17200003": {
+      "id": "17200003",
+      "created_timestamp": "1225926397000",
+      "name": "Think Snow \u2744\ufe0f\u2603\ud83d\udca7\ud83c\udf0e",
+      "screen_name": "snowman",
+      "location": "Longmont, Colorado",
+      "description": "family, travel, music, snow, urban farming, photography, coding, weather, hydrology, early-warning systems. From Minnesota, live in Colorado,",
+      "protected": false,
+      "verified": false,
+      "followers_count": 675,
+      "friends_count": 408,
+      "statuses_count": 1380,
+      "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/697445972402540546\/2CYK3PWX_normal.jpg",
+      "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/697445972402540546\/2CYK3PWX_normal.jpg"
+    },
+    "944480690": {
+      "id": "944480690",
+      "created_timestamp": "1352750395000",
+      "name": "demo account",
+      "screen_name": "FloodSocial",
+      "location": "Burlington, MA USA",
+      "description": "Testing, testing, 1, 2, 3, testing. Used for testing, but also for demoing the Twitter platform... Coming soon?",
+      "url": "https:\/\/t.co\/iTHxRCia2w",
+      "protected": false,
+      "verified": false,
+      "followers_count": 29,
+      "friends_count": 10,
+      "statuses_count": 68,
+      "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/2880307445\/a6de07ce4053d93d9dd8db5f56f210ec_normal.png",
+      "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/2880307445\/a6de07ce4053d93d9dd8db5f56f210ec_normal.png"
+    }
+  }
+}
 
 
+```
+
+** User picked area of interest from map:
+
+```
+
+{
+  "direct_message_events": [
+    {
+      "type": "message_create",
+      "id": "862154965623689219",
+      "created_timestamp": "1494388736526",
+      "message_create": {
+        "target": {
+          "recipient_id": "17200003"
+        },
+        "sender_id": "944480690",
+        "message_data": {
+          "text": " https:\/\/t.co\/JyjKciQmnt",
+          "entities": {
+            "hashtags": [
+              
+            ],
+            "symbols": [
+              
+            ],
+            "user_mentions": [
+              
+            ],
+            "urls": [
+              {
+                "url": "https:\/\/t.co\/JyjKciQmnt",
+                "expanded_url": "https:\/\/twitter.com\/i\/location?lat=32.71790004525148&long=-97.32473787097997",
+                "display_url": "twitter.com\/i\/location?lat\u2026",
+                "indices": [
+                  1,
+                  24
+                ]
+              }
+            ]
+          },
+          "attachment": {
+            "type": "location",
+            "location": {
+              "type": "shared_coordinate",
+              "shared_coordinate": {
+                "coordinates": {
+                  "type": "Point",
+                  "coordinates": [
+                    -97.32473787098,
+                    32.717900045251
+                  ]
+                }
+              }
+            }
+          },
+          "quick_reply_response": {
+            "type": "location",
+            "metadata": "not used, useful?"
+          }
+        }
+      }
+    }
+  ],
+  "users": {
+    "17200003": {
+      "id": "17200003",
+      "created_timestamp": "1225926397000",
+      "name": "Think Snow \u2744\ufe0f\u2603\ud83d\udca7\ud83c\udf0e",
+      "screen_name": "snowman",
+      "location": "Longmont, Colorado",
+      "description": "family, travel, music, snow, urban farming, photography, coding, weather, hydrology, early-warning systems. From Minnesota, live in Colorado,",
+      "protected": false,
+      "verified": false,
+      "followers_count": 675,
+      "friends_count": 408,
+      "statuses_count": 1380,
+      "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/697445972402540546\/2CYK3PWX_normal.jpg",
+      "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/697445972402540546\/2CYK3PWX_normal.jpg"
+    },
+    "944480690": {
+      "id": "944480690",
+      "created_timestamp": "1352750395000",
+      "name": "demo account",
+      "screen_name": "FloodSocial",
+      "location": "Burlington, MA USA",
+      "description": "Testing, testing, 1, 2, 3, testing. Used for testing, but also for demoing the Twitter platform... Coming soon?",
+      "url": "https:\/\/t.co\/iTHxRCia2w",
+      "protected": false,
+      "verified": false,
+      "followers_count": 29,
+      "friends_count": 10,
+      "statuses_count": 68,
+      "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/2880307445\/a6de07ce4053d93d9dd8db5f56f210ec_normal.png",
+      "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/2880307445\/a6de07ce4053d93d9dd8db5f56f210ec_normal.png"
+    }
+  }
+}
+
+```
 
 
 
