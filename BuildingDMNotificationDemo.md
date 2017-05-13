@@ -9,6 +9,17 @@
 
 Demo Design
 
+A notification system that enables subscribers to privately share their location of interest, and receive private Direct Message notifications When geo-tagged Tweets with select attributes are posted within an area of interest.
+
+This particular demo will use an existing Twitter-based data exchange system deployed in 2016 by the USGS Texas Water Science Center. 
+
+Although this demo is using the USGS Texas-based system, the techniques and APIs demonstrated here are agnostic beyond working with geo-tagged Tweets. (Other listening and user interest criteria is equally applicable. )
+
+
+when rivers and/or rain gauges within the area(s) of interest enters flood conditions. 
+
+This demo will demonstrate 
+
 
 Demo Details:
 
@@ -40,6 +51,11 @@ Demo Details:
   + Implement GET method to support CRC.
   + Implement POST method to receive webhook events from Twitter.
   + Build webhook event processor, forking conversations and building Direct Message content (welcome messages and quick replies).
+  
+  Fundamental pieces:
+    + Configuration tools.
+    + Event Manager - listening for responses and commands.
+    + DM Sender - Asking questions and answering questions. 
     
 
 [] Deploy Webhook consusumer.
