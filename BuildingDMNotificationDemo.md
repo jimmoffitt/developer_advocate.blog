@@ -7,6 +7,21 @@
   [] Alarm listener: monitors real-time stream for Tweets of (geo) interest,
   [] Notifier: send DM Notifications to subscribers. 
 
+Demo Design
+
+
+Demo Details:
+
++ Webhook consumer - Subscription Manager, private user data
++ Real-time PowerTrack with Rules API
+  + Real-time PT stream consumer   
+  + PowerTrack Rules Manager
++ DM Notifier
+  
+
+
+
+
 
 # Details
 
