@@ -2,16 +2,24 @@
 
 # Introduction
 
-  [] Twitter Webhook consumer
-  [] Rule manager: takes user submissions and converts those to PowerTrack rules and adds to stream.
-  [] Alarm listener: monitors real-time stream for Tweets of (geo) interest,
-  [] Notifier: send DM Notifications to subscribers. 
+  + [] Twitter Webhook consumer
+  + [] Rule manager: takes user submissions and converts those to PowerTrack rules and adds to stream.
+  
+  Related components:
+  + [] Alarm listener: monitors real-time stream for Tweets of (geo) interest,
+  + [] Notifier: send DM Notifications to subscribers. 
 
 Demo Design
 
-A notification system that enables subscribers to privately share their location of interest, and receive private Direct Message notifications When geo-tagged Tweets with select attributes are posted within an area of interest.
+A notification system that enables subscribers to privately share their location of interest, and receive private Direct Message notifications When geo-tagged Tweets with select attributes are posted within area(s) of interest.
 
 This particular demo will use an existing Twitter-based data exchange system deployed in 2016 by the USGS Texas Water Science Center. 
+
+In late 2015 the USGS Texas Water Science Center began exploring new ways to share real-time observation data on the Twitter platform. As a result two fully-autonomous Twitter accounts were created: @USGS_TexasFlood and @USGS_TexasRain. These Twitter accounts disseminate real-time rain and river sensor data that exceed flood-stage and rainfall thresholds.  
+
+https://blog.twitter.com/2016/using-twitter-as-a-go-to-communication-channel-during-severe-weather-events
+
+
 
 Although this demo is using the USGS Texas-based system, the techniques and APIs demonstrated here are agnostic beyond working with geo-tagged Tweets. (Other listening and user interest criteria is equally applicable. )
 
