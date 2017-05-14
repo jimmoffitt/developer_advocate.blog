@@ -1,4 +1,4 @@
-# Enrolling subscribers to a notification service with the Twitter DM API
+# Enrolling subscribers to a geo-based notification service with the Twitter DM API
 
 # Introduction
 
