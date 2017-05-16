@@ -3,6 +3,7 @@
 + [Introduction](#intro)
 + [Getting Started](#getting_started)
 + [Demo Design](#demo_design)
++ [Sample Code](#sample_code)
 
 ## Introduction <a id="intro" class="tall">&nbsp;</a>
 
@@ -46,48 +47,125 @@ Developing Webhook Consumer
 
 Before we dig more into those steps, we'll describe the demo design that drove the development of this tutorial.
 
-## Demo Design <a id="design" class="tall">&nbsp;</a>
+## Enroller Design <a id="design" class="tall">&nbsp;</a>
 
 For this tutorial, a more specific user-story goes like:
 
    _"I would like to receive a Twitter Direct Message if there are official flood-related Tweets within my area of internet"_
 
-In 2016 the USGS Water Science Center launched two autonomus Twitter accounts that broadcast Tweets when any of ~750 sites around Texas record potential and current flood conditions. You can read more about this system at https://blog.twitter.com/2016/using-twitter-as-a-go-to-communication-channel-during-severe-weather-events. Each Tweet is geo-tagged with an exact location (long/lat point).
-
-
-
-
 A notification system that enables subscribers to privately share their location of interest, and receive private Direct Message notifications When geo-tagged Tweets with select attributes are posted within area(s) of interest.
 
-This particular demo will use an existing Twitter-based data exchange system deployed in 2016 by the USGS Texas Water Science Center. 
+This particular demo will use an existing Twitter-based data exchange system deployed by the USGS Texas Water Science Center (TXWSC). In 2016 two autonomous Twitter accounts were launched: @USGS_TexasFlood and @USGS_TexasRain. These accounts broadcast geo-tagged Tweets when any of ~750 sites around Texas record potential and current flood conditions. You can read more about this system at https://blog.twitter.com/2016/using-twitter-as-a-go-to-communication-channel-during-severe-weather-events. Although this demo is using the USGS Texas-based system, the techniques and APIs demonstrated here are agnostic beyond working with geo-tagged Tweets. This particular demo is based on geographical information, but other listening and user interest criteria is equally applicable. 
 
-In late 2015 the USGS Texas Water Science Center began exploring new ways to share real-time observation data on the Twitter platform. As a result two fully-autonomous Twitter accounts were created: @USGS_TexasFlood and @USGS_TexasRain. These Twitter accounts disseminate real-time rain and river sensor data that exceed flood-stage and rainfall thresholds.  
+The main purposes of the Enroller are:
 
-https://blog.twitter.com/2016/using-twitter-as-a-go-to-communication-channel-during-severe-weather-events
++ Introduce the user to the system.
++ Provide two ways to share locations of interest: 
+  + Using a map.
+  + Picking from a list of locations.
++ Enable subscribers to add multiple locations.   
++ Enable subscribers to review their current areas of interest.
++ Enable subscribers to unsubscribe.
+
+From a developer's prespective, other desirable features included:
++ Ability to import a list of locations to display to user.
++ Provide Direct Message commands to use system.
+    + DM 'Add' to add a new area of interest.
+    + DM 'List' to review current areas of interest.
+    + DM 'About' to learn more about system.
++ Abstract subscription details (user id and locations) into PowerTrack Rules.
+    + This design was picked to keep the enroller light-weight by not implementing native data persistence. All user enrollments are stored remotely as a real-time PowerTrack ruleset. 
 
 
 
-Although this demo is using the USGS Texas-based system, the techniques and APIs demonstrated here are agnostic beyond working with geo-tagged Tweets. (Other listening and user interest criteria is equally applicable. )
+## Sample Code <a id="sample_code" class="tall">&nbsp;</a>
 
-
-when rivers and/or rain gauges within the area(s) of interest enters flood conditions. 
+### Enroller helper objects
+  + Scripts for configuration webhooks
+  + Direct Message Event Manager 
+  + Direct Message Content Manager
+  + Direct Message Sender
+  + Rule manager: takes user submissions and converts those to PowerTrack rules and adds to stream.
 
 ### Scripts for configuration webhooks
 
+    + Using AA API, Assign webhook URL, generate webhook ID. 
+    + Using DM API, create Default Welcome Message
+    + Using AA API, add subscriber (webhook ID).
 
-### Enroller helper objects
-  + [] Direct Message Event Manager 
-  + [] Direct Message Sender
-  + [] Rule manager: takes user submissions and converts those to PowerTrack rules and adds to stream.
-  
+#### CRC Method 
 
-
-
+As described [HERE](https://dev.twitter.com/webhooks/securing), Twitter will issue periodic Challenge Response Checks (CRC) and confirm the client app possesses the correct app secret. 
 
 
+ + Implement GET method to support CRC.
+
+``` ruby
+require 'base64'
+
+def generate_crc_response(consumer_secret, crc_token)
+  hash = OpenSSL::HMAC.digest('sha256', consumer_secret, crc_token)
+  return Base64.encode64(hash).strip!
+end
+
+# Receives challenge response check (CRC).
+get '/webhooks/twitter' do
+  crc_token = params['crc_token']
+  response = {}
+  response['response_token'] = "sha256=#{generate_crc_response(settings.dm_api_consumer_secret, crc_token)}"
+  status 200
+end
+
+```
+
+If not, webhook events will cease. While you are developing your webhook consumer you will need a tool that initiates a CRC check. During development it is likely that your web app will not be running during a Twitter challenge, and you'll need to trigger a challenge so you can re-establish webhook connectivity.
+
+### Direct Message Event Manager 
+
+```ruby
+
+def handle_event(events)
+  events = JSON.parse(events)
+  if events.key? ('direct_message_events')
+	  dm_events = events['direct_message_events']
+		dm_events.each do | dm_event |
+		  if dm_event['type'] == 'message_create'
+ 				#Is this a response? Test for the 'quick_reply_response' key.
+				is_response = dm_event['message_create'] && dm_event['message_create']['message_data'] && dm_event['message_create']['message_data']['quick_reply_response']
+				
+				if is_response 
+					response = dm_event['message_create']['message_data']['quick_reply_response']['metadata']
+					user_id = dm_event['message_create']['sender_id']	  
+					puts "User #{user_id} answered with #{response}"
+          #Handle event
+				else
+				  #Since this DM is not a response to a QR, let's check for other 'action' commands
+				  request = dm_event['message_create']['message_data']['text']
+				  user_id = dm_event['message_create']['sender_id']
+          #Handle request/command
+ 			  end  
+     end   
+  end
+end
+```
 
 
-Demo Details:
+
+#### Webhook Event Receiver
+
+### Direct Message Content Manager
+
+### Direct Message Sender
+
+### Rule Manager
+
+
+
+
+
+
+================================================
+Demo Notes:
 
 + Webhook consumer - Subscription Manager, private user data
 + Real-time PowerTrack with Rules API
@@ -96,22 +174,7 @@ Demo Details:
 + DM Notifier
   
 
-# Getting Started with the Direct Message and Account Activity APIs. 
 
-
-
-# Details
-
-# Set-up steps
-
-
-+ Set-up Twitter details
-  + Get access to Account Activity API (AA API)
-  + Get access to Direct Message API
-  + Set up Webhooks configuration
-    + Using AA API, Assign webhook URL, generate webhook ID. 
-    + Using DM API, create Default Welcome Message
-    + Using AA API, add subscriber (webhook ID).
   
  + Develop Webhook (event) consumer.
   + Implement GET method to support CRC.
@@ -145,9 +208,7 @@ Demo Details:
 
 In order to prototype a geo-aware notification system, knowing subscriber locations of interest is key metadata. 
 
-This system is being deployed on the Twitter platform, which is a unique social media network since it has an emphasis on public communications. At the same time, Twitter has a fundamental and core value of defending and respecting the user's voice. This includes protecting details that user's want to keep private, such as their email addresses and private messages. It also includes only sharing their current locations when they want to. Subscribers to this system should not have to share their locations in a public matter. And with new platform udpates, it is now easy to enable users to share their location of interest using private Direct Messages.
-
-A key word here is "of interest." This notification system does not know the user's *current* and *precise* location, but rather it knows a more general area of interest. These areas of interest are (currently) circles with a 25-mile radius. 
+This system is being deployed on the Twitter platform, which is a unique social media network since it has an emphasis on public communications. At the same time, Twitter offers private communcation with Direct Messages. These private messages enable subscribers to privately share their areas of interest. A key phrase here is "of interest." This notification system does not know the user's *current* and *precise* location, but rather it knows a more general area of interest. These areas of interest are (currently) circles with a 25-mile radius. 
 
 The prototye gives users two options for sharing their location of intertest:
 
