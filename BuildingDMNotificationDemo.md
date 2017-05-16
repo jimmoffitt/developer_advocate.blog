@@ -1,4 +1,4 @@
-# Enrolling subscribers to a geo-based notification service with the Twitter DM API
+# Enrolling subscribers to a geo-based notification service with the Twitter Direct Message API
 
 + [Introduction](#intro)
 + [Getting Started](#getting_started)
@@ -12,7 +12,7 @@ In this tutorial we are going to build a geo-enabled notification system based o
 
 Notifications will come in the form of Twitter Direct Messages, the Twitter account of interest will post Tweets associated with an exact location, and areas of interest will be defined as a 25-mile circle centered on a location shared by the Twitter user. Users will be given two methods to *privately share* their location: select a point on a map, or chose from a list of locations. For this tutorial the location lists will consist of city names, and the corresponding areas will be based on the geographic center of those cities.
 
-The fundamental goal of this tutorial is to demonstrate how to enable Twitter users to share their location of interest via a private Direct Message. The component we are building here is based on the Twitter Direct Message and Account Activity APIs. We will be referring to an *Enroller*, a webhook-based component that enables Twitter users to subscribe to the notification system. This *Enroller* is one of three components that make up the complete notification system:
+The fundamental goal of this tutorial is to demonstrate how to enable Twitter users to share their location of interest via a private Direct Message. The component we are building here is based on the Twitter Direct Message (DM) and Account Activity (AA) APIs. We will be referring to an *Enroller*, a webhook-based component that enables Twitter users to subscribe to the notification system. This *Enroller* is one of three components that make up the complete notification system:
 
   + Enroller - Webhook consumer that manages Direct Message events, both receiving messages from Twitter and also sending messages.
   + Alarm listener: monitors real-time stream for Tweets of (geo) interest, triggers notification when there is a location-of-interest match.
@@ -48,14 +48,12 @@ Before we dig more into those steps, we'll describe the demo design that drove t
 
 ## Demo Design <a id="design" class="tall">&nbsp;</a>
 
-
 For this tutorial, a more specific user-story goes like:
 
    _"I would like to receive a Twitter Direct Message if there are official flood-related Tweets within my area of internet"_
 
-In 2016 the USGS Water Science Center launched two autonomus Twitter accounts that broadcast Tweets when any of ~750 sites around Texas record potential and current flood conditions. 
+In 2016 the USGS Water Science Center launched two autonomus Twitter accounts that broadcast Tweets when any of ~750 sites around Texas record potential and current flood conditions. You can read more about this system at https://blog.twitter.com/2016/using-twitter-as-a-go-to-communication-channel-during-severe-weather-events. Each Tweet is geo-tagged with an exact location (long/lat point).
 
-You can read more about this system at https://blog.twitter.com/2016/using-twitter-as-a-go-to-communication-channel-during-severe-weather-events
 
 
 
