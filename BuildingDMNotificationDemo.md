@@ -14,9 +14,9 @@ Notifications will come in the form of Twitter Direct Messages, the Twitter acco
 
 The fundamental goal of this tutorial is to demonstrate how to enable Twitter users to share their location of interest via a private Direct Message. The component we are building here is based on the Twitter Direct Message and Account Activity APIs. We will be referring to an *Enroller*, a webhook-based component that enables Twitter users to subscribe to the notification system. This *Enroller* is one of three components that make up the complete notification system:
 
-  + [] Enroller - Webhook consumer that manages Direct Message events, both receiving messages from Twitter and also sending messages.
-  + [] Alarm listener: monitors real-time stream for Tweets of (geo) interest, triggers notification when there is a location-of-interest match.
-  + [] Notifier: send Direct Message notifications to subscribers. 
+  + Enroller - Webhook consumer that manages Direct Message events, both receiving messages from Twitter and also sending messages.
+  + Alarm listener: monitors real-time stream for Tweets of (geo) interest, triggers notification when there is a location-of-interest match.
+  + Notifier: send Direct Message notifications to subscribers. 
   
 See [HERE] if you are interested in the other two components.
   
@@ -30,23 +30,24 @@ A great place to start is our API documentation:
 + Account Activity API documentation https://dev.twitter.com/webhooks/account-activity
 + Direct Message API methods: https://dev.twitter.com/rest/direct-messages
 
+To help you put all that information together, check out our [Twitter Direct Message API Playbook].
+
 As a developer, here are the steps you'll take:
 
+Configuring Twitter Webhooks
 + Create a Twitter Application, and have it enabled with the Account Activity API 
 + Subscribe your consumer web app using the Account Activity API
 + Create a default Welcome Message 
 
+Developing Webhook Consumer
 + Stand-up a web application that will be your webhook consumer 
 + Implement a consumer Challenge Response Check (CRC) method
 + Implement a consumer webhook event manager
 
-
-
-
-
-### Twitter webhook configuration
+Before we dig more into those steps, we'll describe the demo design that drove the development of this tutorial.
 
 ## Demo Design <a id="design" class="tall">&nbsp;</a>
+
 
 For this tutorial, a more specific user-story goes like:
 
