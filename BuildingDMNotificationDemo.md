@@ -8,38 +8,49 @@
 
 In this tutorial we are going to build a geo-enabled notification system based on Twitter Direct Messages. The fundamental user-story is 
 
-*"As a Twitter user I want to receive notifications when a Twitter account of interest posts a geo-tagged Tweet that is in an area of interest." *
+  _"As a Twitter user I want to receive notifications when a Twitter account of interest posts a geo-tagged Tweet that is in an area of interest."_ 
 
-Notifications will come in the form of Twitter Direct Messages, the Twitter account of interest will post Tweets associated with an exact location, and areas of interests will be defined as a 25-mile circle centered on a location shared by the Twitter user. Users will be given two methods to *privately share* their location: select a point on a map, or chose from a list of locations. For this tutorial the location lists will consist of city names, and the corresponding areas will be based on the geographic center of those cities.
+Notifications will come in the form of Twitter Direct Messages, the Twitter account of interest will post Tweets associated with an exact location, and areas of interest will be defined as a 25-mile circle centered on a location shared by the Twitter user. Users will be given two methods to *privately share* their location: select a point on a map, or chose from a list of locations. For this tutorial the location lists will consist of city names, and the corresponding areas will be based on the geographic center of those cities.
 
-The fundamental goal of this tutorial is to demonstrate how to enable Twitter users to share their location of interest via a private Direct Message. The component we are building here is based on the Twitter Direct Message and Account Activity APIs. We will be referring to this component as an *Enroller*, that Twitter users use to subscribe to the notification system. This *Enroller* is one of three components that make up the complete notification system:
+The fundamental goal of this tutorial is to demonstrate how to enable Twitter users to share their location of interest via a private Direct Message. The component we are building here is based on the Twitter Direct Message and Account Activity APIs. We will be referring to an *Enroller*, a webhook-based component that enables Twitter users to subscribe to the notification system. This *Enroller* is one of three components that make up the complete notification system:
 
   + [] Enroller - Webhook consumer that manages Direct Message events, both receiving messages from Twitter and also sending messages.
   + [] Alarm listener: monitors real-time stream for Tweets of (geo) interest, triggers notification when there is a location-of-interest match.
   + [] Notifier: send Direct Message notifications to subscribers. 
+  
+See [HERE] if you are interested in the other two components.
+  
+We'll start off with a discussion on how to get started with the Twitter Direct Message and Account Activity APIs. While the Direct Message API provides the communication method, the webhook-based Account Activity API enables real-time conversations between Twitter accounts. 
+      
+## Getting started with the Direct Message and Account Activity APIs <a id="getting_started" class="tall">&nbsp;</a>
+
+A great place to start is our API documentation:
+
++ Twitter Webhook APIs https://dev.twitter.com/webhooks
++ Account Activity API documentation https://dev.twitter.com/webhooks/account-activity
++ Direct Message API methods: https://dev.twitter.com/rest/direct-messages
+
+As a developer, here are the steps you'll take:
+
++ Create a Twitter Application, and have it enabled with the Account Activity API 
++ Subscribe your consumer web app using the Account Activity API
++ Create a default Welcome Message 
+
++ Stand-up a web application that will be your webhook consumer 
++ Implement a consumer Challenge Response Check (CRC) method
++ Implement a consumer webhook event manager
 
 
 
 
-
-  + [] Twitter Webhook consumer
 
 ### Twitter webhook configuration
-
-### Enroller helper objects
-  + [] Direct Message Event Manager 
-  + [] Direct Message Sender
-  + [] Rule manager: takes user submissions and converts those to PowerTrack rules and adds to stream.
-  
-  
-## Getting starter with the DirectMessage and Account Activity APIs <a id="getting_started" class="tall">&nbsp;</a>
-
 
 ## Demo Design <a id="design" class="tall">&nbsp;</a>
 
 For this tutorial, a more specific user-story goes like:
 
-*"I would like to receive a Twitter Direct Message if there are official flood-related Tweets within my area of internet"*
+   _"I would like to receive a Twitter Direct Message if there are official flood-related Tweets within my area of internet"_
 
 In 2016 the USGS Water Science Center launched two autonomus Twitter accounts that broadcast Tweets when any of ~750 sites around Texas record potential and current flood conditions. 
 
@@ -62,7 +73,19 @@ Although this demo is using the USGS Texas-based system, the techniques and APIs
 
 when rivers and/or rain gauges within the area(s) of interest enters flood conditions. 
 
-This demo will demonstrate 
+### Scripts for configuration webhooks
+
+
+### Enroller helper objects
+  + [] Direct Message Event Manager 
+  + [] Direct Message Sender
+  + [] Rule manager: takes user submissions and converts those to PowerTrack rules and adds to stream.
+  
+
+
+
+
+
 
 
 Demo Details:
