@@ -46,7 +46,7 @@ Retweets are another example of user-driven conventions becoming official object
 
 ### Tweet metadata, mutability, updates, and currency <a id="=metadataMutability" class="tall">&nbsp;</a>
 
-While Tweet messages can be up to 140 characters long, the JSON description of a Tweet consists of over 100 attributes. Attributes such as who posted, at what time, whether it’s an original Tweet or a Retweet, and an array of first-class objects such as hashtags, mentions, and shared links. For the account that posted, there is a User (or Actor) object with a variety of attributes that provide the user’s Profile and other account metadata. Profiles include a short biographical description, a home locations, preferred language, display time zone, and an optional web site link.
+While Tweet messages can be up to 140 characters long, the JSON description of a Tweet consists of over 100 attributes. Attributes such as who posted, at what time, whether it’s an original Tweet or a Retweet, and an array of first-class objects such as hashtags, mentions, and shared links. For the account that posted, there is a User (or Actor) object with a variety of attributes that provide the user’s Profile and other account metadata. Profiles include a short biographical description, a home location (freeform text), preferred language, display time zone, and an optional web site link.
 
 Most account metadata is static, but some change slowly over time. People change jobs and move. Companies updates their information. When you are collecting historical Tweets, it is important to understand how some metadata is *as it was when Tweeted*, and other metadata is *as it is when the query is submitted*. The metadata that is potentially updated depends on the historical API.
 
@@ -104,10 +104,11 @@ Note that this timeline list is generally precise and not exhaustive.
 + April - Emojis are natively supported in Twitter UI. Emojis were commonly used in Tweets since at least 2008.
 
 #### 2015
++ April - A change in Twitter’s ‘post Tweet’ user-interface design results in fewer Tweets being geo-tagged. 
 + October - [Twitter Polls introduced](https://blog.twitter.com/2015/introducing-twitter-polls). Polls originally supported two choices with a 24-hour voting period. In November, Polls started supporting four choices with voting periods from 5 minutes to seven days. Poll metadata made available ('original' format only) in February 2017.
 
 #### 2016
-+ Febuary - [Searchable GIFs natively hosted in Tweet compose](https://blog.twitter.com/2016/introducing-gif-search-on-twitter). 
++ February - [Searchable GIFs natively hosted in Tweet compose](https://blog.twitter.com/2016/introducing-gif-search-on-twitter). 
 + May - ["Doing More with 140"](https://blog.twitter.com/express-even-more-in-140-characters) (dmw140) announced, stating plans for new ways of handling Replies and attached media with respect to a Tweet's 140-character message. 
 + June - Native video 
 + June - Quoted Retweets generally available. 
@@ -132,6 +133,9 @@ When it comes to writing filters, one important takeaway is that the metadata Op
 
 However, sharing of videos has been common on Twitter long before 2015. Before then users shared links to videos hosted elsewhere, but in 2015, Twitter built new ‘sharing video’ features directly into the platform. For finding these earlier Tweets of interest, you would include a rule clause such as ```url:”youtube.com”```. 
 
+Note, with the Search APIs, there are some examples of metadata being ‘backfilled’ as its index was rebuilt. One good example are $cashtags, which became widely used to discuss stock symbols in 2009. After the $cashtag operator was introduced in 2015, the Search index was rebuilt, and in the process the symbol entity was extracted from all Tweet bodies, including early 2006 when ```$``` was used mainly for slang; "I hope it $now$ $oon!".
+
+
 ### Identifying and filtering on Tweet attributes important to your use-case <a id="=attributeTypes" class="tall">&nbsp;</a> 
 
 Some metadata, such as Twitter account numeric IDs, have existed since day one (and are an example of account metadata that never changes). Other metadata was not introduced until well after Twitter started in 2006. Examples of new metadata being introduced include Retweets metadata, Tweet locations, URL titles and descriptions, and 'native' media. Below are some of the most common types of Tweet attributes that have been fundamentally affected by these Twitter platform updates. 
@@ -142,7 +146,7 @@ Filtering/matching behavior for these depends, in most cases, on which historica
 
 Since at its core Twitter is a global real-time communication channel, research with Tweet data commonly has an emphasis on who is communicating. Often it is helpful to know where a Twitter user calls home. Often knowing that an account bio includes mentions of interests and hobbies can lead you to Tweets of interest. It is very common to want to listen for Tweets from accounts of interest.  Profile attributes are key to all of these use-cases.
 
-Every account on Twitter has a Profile that includes metadata such as Twitter @handle, display name, a short bio, home location, number of followers, timezone and many others. Some attributes never change, such as numeric user ID and when the account was created. Others usually change day-to-day, week-to-week, or month-to-month, such as number of Tweets posted and number of accounts followed and followers. Other account attributes can also change at anytime, but tend to change less frequently: display name, home location, and bio. 
+Every account on Twitter has a Profile that includes metadata such as Twitter @handle, display name, a short bio, home location (freeform text entered by user), number of followers, timezone and many others. Some attributes never change, such as numeric user ID and when the account was created. Others usually change day-to-day, week-to-week, or month-to-month, such as number of Tweets posted and number of accounts followed and followers. Other account attributes can also change at anytime, but tend to change less frequently: display name, home location, and bio. 
 
 The JSON payload for every Tweet includes *account profile* metadata for the Tweet's author. If it is a Retweet, it also includes profile metadata for the account that posted the original Tweet. 
 
@@ -205,10 +209,8 @@ For other URL product-specific details on URL filtering, see the corresponding a
 
 ### Next Steps <a id="=nextSteps" class="tall">&nbsp;</a>
 
-Now that we've explored the timeline of when key Twitter features were introduced, and learned how these metadata changes affect filtering at a high-level, the next step is to get into the many product-specific details:
-+ [Historical PowerTrack API: metadata and filtering timeline](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/hpt_timeline.md)
-+ [Full-Archive Search API: metadata and filtering timeline](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/search_timeline.md)
- 
-Here are other resources that may be of interest:
-+ Choosing between Historical PowerTrack and Search API
-+ Getting Started with Tweet JSON
+Now that we've explored the timeline of when key Twitter features were introduced, and learned how these metadata changes affect filtering at a high-level, the next step is to get into the many product-specific details. Stay tuned for upcoming articles:
+Historical PowerTrack API: metadata and filtering timeline
+Full-Archive Search API: metadata and filtering timeline
+Choosing between Historical PowerTrack and Search APIs
+
