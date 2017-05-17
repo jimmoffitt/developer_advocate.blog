@@ -30,6 +30,9 @@ Below is a timeline of when [Full-Archive Search API Operators](http://support.g
 
 The details provided here were generated using Full-Archive Search, and were informed by the Twitter timeline provided [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md). This timeline is not 100% complete or precise. If you identify another filtering/metadata "born on date" fundamental to your use-case, please let us know.
 
+Note that the underlying Search index is subject to being rebuilt. Accordingly, these timeline details are subject to change.
+
+
 #### 2006
  + March 26 - ```lang:```
  + July 13 - ```has:mentions```
@@ -105,7 +108,7 @@ As discussed [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/m
       + March 6, 2010:  ```has:geo```, ```bounding_box:``` and ```point_radius:```
       + February 17, 2015:  ```place_country:``` and ```place:```
 
-   + **Account profile ‘home’ location set by user.**  As with Tweet geo, the methods to match and the time periods available depends on the Historical API you are using. Profile Geo Operators are available in both Historical PowerTrack and the Search APIs. With the Search APIs, these Profile Geo metadata is available starting in February 2015. 
+   + **Account profile ‘home’ location set by user.**  As with Tweet geo, the methods to match and the time periods available depends on the Historical API you are using. Profile Geo Operators are available in both Historical PowerTrack and the Search APIs. With the Search APIs, these Profile Geo metadata is available starting in February 2015. For Tweets posted before the Profile Geo metadata, the bio_location: Operator is available which can be used to match on non-normalized user input. 
 
 #### Shared links and media 
 
@@ -127,8 +130,8 @@ Here are when related Search Operators begin matching:
 + 2015 February 10 - ```has:videos``` for native videos. Between 2010/08/28 and 2015/02/10, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com. 
 + 2016 May 1 - ```url_title:``` and ```url_description:```, based on the [Enhanced URLs enrichment](http://support.gnip.com/enrichments/enhanced_urls.html), generally available. First Enhanced URL metadata began appearing in December 2014. 
 
+#### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
++ [Learn more about the Full-Archive Search API](http://support.gnip.com/apis/search_full_archive_api/)
++ [Learn more about the evolution of Tweet metadata]()
++ [Choosing between Historical PowerTrack and Search API]()
 
-### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
-+ [Historical PowerTrack API: metadata and filtering timeline](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/hpt_timeline.md)
-+ Choosing between Historical PowerTrack and Search API 
-+ Getting Started with Tweet JSON
