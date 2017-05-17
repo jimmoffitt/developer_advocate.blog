@@ -36,7 +36,7 @@ As mentioned [in our documentation](http://support.gnip.com/apis/historical_api2
 + Docs say Profile Geo starts August 1, 2013, testing shows it starts June 4, 2013.
 ```
 
-### Metadata timelines <a id="metadataTimelines" class="tall">&nbsp;</a>
+### Metadata timeline <a id="metadataTimeline" class="tall">&nbsp;</a>
 
 Below is a timeline of when [Historical PowerTrack Operators](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators) begin matching. In some cases Operator matching begins well *after* a 'communication convention' becomes commonplace on Twitter. For example, @replies emerged as a user convention in 2006, but did not become a 'first-class' *object* or *event* with 'supporting' JSON until early 2007. Accordingly, matching on @replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
 
@@ -118,7 +118,7 @@ As discussed HERE there are three primary ways to geo-reference Tweets:
 
    + **Tweets geo-tagged by the user.** The available geo-tagging history is dependent on the Historical API you are using. With Historical PowerTrack, geo-referencing starts on September 1, 2011. When the Historical PowerTrack archive was built, all geo-tagging before this date was not included. 
 
-   + **Account profile ‘home’ location set by user.**  As with Tweet geo, the methods to match and the time periods available depends on the Historical API you are using. With Historical PowerTrack, these Profile Geo metadata is available starting in June 2014. 
+   + **Account profile ‘home’ location set by user.**  As with Tweet geo, the methods to match and the time periods available depends on the Historical API you are using. With Historical PowerTrack, these Profile Geo metadata is available starting in June 2014. For Tweets posted before the Profile Geo metadata, the bio_location: Operator is available which can be used to match on non-normalized user input. 
    
 #### Shared links and media 
 
@@ -137,7 +137,8 @@ Here are when related PowerTrack Operators begin matching:
 + 2016 July 28 - ```url_title:``` and ```url_description:``` with the [Enhanced URLs enrichment](http://support.gnip.com/enrichments/enhanced_urls.html)
 
 ### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
-+ Search API: metadata and filtering timeline
-+ Choosing between Historical PowerTrack and Search API 
-+ Getting Started with Tweet JSON
++ [Learn more about Historical PowerTrack API](http://support.gnip.com/apis/historical_api2.0/)
++ [Learn more about the evolution of Tweet metadata]()
++ [Choosing between Historical PowerTrack and Search API]()
+
 
