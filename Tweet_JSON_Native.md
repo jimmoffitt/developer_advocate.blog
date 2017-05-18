@@ -158,34 +158,10 @@ Example:</p>
 </td>
 </tr>
 
-
-
-
-
-
-
-
-
-
-
-<td>Collection of Contributors</td>
-<td><p class="first"><strong>Deprecated</strong> <em>Nullable</em> A collection of brief user objects (usually only one) indicating users who contributed to the
-authorship of the tweet, on behalf of the official tweet author. This is a legacy value and is not actively used.</p>
-<p>Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;contributors&quot;:
-[
-    {
-        &quot;id&quot;:819797,
-        &quot;id_str&quot;:&quot;819797&quot;,
-        &quot;screen_name&quot;:&quot;episod&quot;
-    }
-]
-</pre></div>
-</div>
-</td>
+<tr class="row-even"><td>geo</td>
+<td>Object</td>
+<td><strong>Deprecated</strong> <em>Nullable</em> Use the <code class="docutils literal"><span class="pre">coordinates</span></code> field instead.</td>
 </tr>
-
-
 
 <tr class="row-odd"><td>coordinates</td>
 <td><a class="reference external" href="#obj-coordinates">Coordinates</a></td>
@@ -206,9 +182,88 @@ Example:</p>
 </td>
 </tr>
 
+<tr class="row-odd"><td>place</td>
+<td><a class="reference external" href="/overview/api/places">Places</a></td>
+<td><p class="first"><em>Nullable</em> When present, indicates that the tweet is associated (but not necessarily originating from) a
+<a class="reference external" href="/overview/api/places">Place</a> .
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;place&quot;:
+{
+    &quot;attributes&quot;:{},
+     &quot;bounding_box&quot;:
+    {
+        &quot;coordinates&quot;:
+        [[
+                [-77.119759,38.791645],
+                [-76.909393,38.791645],
+                [-76.909393,38.995548],
+                [-77.119759,38.995548]
+        ]],
+        &quot;type&quot;:&quot;Polygon&quot;
+    },
+     &quot;country&quot;:&quot;United States&quot;,
+     &quot;country_code&quot;:&quot;US&quot;,
+     &quot;full_name&quot;:&quot;Washington, DC&quot;,
+     &quot;id&quot;:&quot;01fbe706f872cb32&quot;,
+     &quot;name&quot;:&quot;Washington&quot;,
+     &quot;place_type&quot;:&quot;city&quot;,
+     &quot;url&quot;: &quot;http://api.twitter.com/1/geo/id/01fbe706f872cb32.json&quot;
+}
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>is_quote_status</td>
+<td>Boolean</td>
+<td><p class="first">Indicates whether this is a Quoted Tweet.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;is_quote_status&quot;:false
+</pre></div>
+</div>
+</td>
+</tr>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DEPRECATED ---------------------
+
+
+<tr class="row-odd"><td>contributors</td>
+<td>Collection of Contributors</td>
+<td><p class="first"><strong>Deprecated</strong> <em>Nullable</em> A collection of brief user objects (usually only one) indicating users who contributed to the
+authorship of the tweet, on behalf of the official tweet author. This is a legacy value and is not actively used.</p>
+<p>Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;contributors&quot;:
+[
+    {
+        &quot;id&quot;:819797,
+        &quot;id_str&quot;:&quot;819797&quot;,
+        &quot;screen_name&quot;:&quot;episod&quot;
+    }
+]
+</pre></div>
+</div>
+</td>
+</tr>
+
+
+
+PERSPECTIVAL ---------------------------
 
 <tr class="row-odd"><td>current_user_retweet</td>
 <td>Object</td>
@@ -258,6 +313,8 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
 <tr class="row-even"><td>favorited</td>
 <td>Boolean</td>
 <td><p class="first"><em>Nullable</em> <em>Perspectival</em> Indicates whether this Tweet has been liked by the authenticating user.
@@ -283,10 +340,7 @@ and <code class="docutils literal"><span class="pre">medium</span></code> stream
 </div>
 </td>
 </tr>
-<tr class="row-even"><td>geo</td>
-<td>Object</td>
-<td><strong>Deprecated</strong> <em>Nullable</em> Use the <code class="docutils literal"><span class="pre">coordinates</span></code> field instead.</td>
-</tr>
+
 
 
 
@@ -308,37 +362,7 @@ Example:</p>
 
 
 
-<tr class="row-odd"><td>place</td>
-<td><a class="reference external" href="/overview/api/places">Places</a></td>
-<td><p class="first"><em>Nullable</em> When present, indicates that the tweet is associated (but not necessarily originating from) a
-<a class="reference external" href="/overview/api/places">Place</a> .
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;place&quot;:
-{
-    &quot;attributes&quot;:{},
-     &quot;bounding_box&quot;:
-    {
-        &quot;coordinates&quot;:
-        [[
-                [-77.119759,38.791645],
-                [-76.909393,38.791645],
-                [-76.909393,38.995548],
-                [-77.119759,38.995548]
-        ]],
-        &quot;type&quot;:&quot;Polygon&quot;
-    },
-     &quot;country&quot;:&quot;United States&quot;,
-     &quot;country_code&quot;:&quot;US&quot;,
-     &quot;full_name&quot;:&quot;Washington, DC&quot;,
-     &quot;id&quot;:&quot;01fbe706f872cb32&quot;,
-     &quot;name&quot;:&quot;Washington&quot;,
-     &quot;place_type&quot;:&quot;city&quot;,
-     &quot;url&quot;: &quot;http://api.twitter.com/1/geo/id/01fbe706f872cb32.json&quot;
-}
-</pre></div>
-</div>
-</td>
-</tr>
+
 
 
 
