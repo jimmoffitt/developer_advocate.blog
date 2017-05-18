@@ -15,7 +15,6 @@
 <tbody valign="top">
 <tr class="row-even"><td>contributors</td>
 
-
 <tr class="row-even"><td>created_at</td>
 <td>String</td>
 <td><p class="first">UTC time when this Tweet was created.
@@ -39,10 +38,6 @@ Example:</p>
 </td>
 </tr>
 
-
-
-
-
 <tr class="row-even"><td>id_str</td>
 <td>String</td>
 <td><p class="first">The string representation of the unique identifier for this Tweet. Implementations should use this rather than the large integer in
@@ -53,6 +48,117 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+<tr class="row-odd"><td>text</td>
+<td>String</td>
+<td><p class="first">The actual UTF-8 text of the status update. See
+<a class="reference external" href="https://github.com/twitter/twitter-text/blob/master/rb/lib/twitter-text/regex.rb">twitter-text</a> for details on what is currently
+considered valid characters.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;text&quot;:&quot;Tweet Button, Follow Button, and Web Intents javascript now support SSL http:\/\/t.co\/9fbA0oYy ^TS&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>source</td>
+<td>String</td>
+<td><p class="first">Utility used to post the Tweet, as an HTML-formatted string. Tweets from the Twitter website have a source value of <code class="docutils literal"><span class="pre">web</span></code>.</p>
+<p>Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;source&quot;:&quot;\u003Ca href=\&quot;http:\/\/itunes.apple.com\/us\/app\/twitter\/id409789998?mt=12\&quot; \u003ETwitter for Mac\u003C\/a\u003E&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>truncated</td>
+<td>Boolean</td>
+<td><p class="first">Indicates whether the value of the      <code class="docutils literal"><span class="pre">text</span></code>     parameter was truncated, for example, as a result of a retweet exceeding the 140
+character Tweet length. Truncated text will end in ellipsis, like this      <code class="docutils literal"><span class="pre">...</span></code>     Since Twitter now rejects long Tweets vs
+truncating them, the large majority of Tweets will have this set to      <code class="docutils literal"><span class="pre">false</span></code>     .
+Note that while native retweets may have their toplevel      <code class="docutils literal"><span class="pre">text</span></code>     property shortened, the original text will be available
+under the      <code class="docutils literal"><span class="pre">retweeted_status</span></code>     object and the      <code class="docutils literal"><span class="pre">truncated</span></code>     parameter will be set to the value of the original
+status (in most cases,      <code class="docutils literal"><span class="pre">false</span></code>     ).
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;truncated&quot;:true
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>in_reply_to_status_id</td>
+<td>Int64</td>
+<td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the integer representation of the original Tweet&#8217;s ID.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;in_reply_to_status_id&quot;:114749583439036416
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>in_reply_to_status_id_str</td>
+<td>String</td>
+<td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the string representation of the original Tweet&#8217;s ID.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;in_reply_to_status_id_str&quot;:&quot;114749583439036416&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>in_reply_to_user_id</td>
+<td>Int64</td>
+<td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the integer representation of the original Tweet&#8217;s author
+ID. This will not necessarily always be the user directly mentioned in the Tweet.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;in_reply_to_user_id&quot;:819797
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>in_reply_to_user_id_str</td>
+<td>String</td>
+<td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the string representation of the original Tweet&#8217;s author ID.
+This will not necessarily always be the user directly mentioned in the Tweet.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;in_reply_to_user_id_str&quot;:&quot;819797&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>in_reply_to_screen_name</td>
+<td>String</td>
+<td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the screen name of the original Tweet&#8217;s author.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;in_reply_to_screen_name&quot;:&quot;twitterapi&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>user</td>
+<td><a class="reference external" href="/overview/api/users">Users</a></td>
+<td><p class="first">The user who posted this Tweet. Perspectival attributes embedded within this object are unreliable.</p>
+<p>Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;user&quot;:{&quot;statuses_count&quot;:3080, &quot;favourites_count&quot;:22, &quot;protected&quot;:false, &quot;profile_text_color&quot;:&quot;437792&quot;, &quot;profile_image_url&quot;:&quot;...&quot;
+&quot;profile_image_url&quot;:&quot;...&quot;, &quot;name&quot;:&quot;Twitter API&quot;, &quot;profile_sidebar_fill_color&quot;:&quot;a9d9f1&quot;, &quot;listed_count&quot;:9252, &quot;following&quot;:true,
+&quot;profile_background_tile&quot;:false, &quot;utc_offset&quot;:-28800,
+&quot;description&quot;:&quot;The Real Twitter API. I tweet about API changes. Don&#39;t get an answer? It&#39;s on my website.&quot;,
+&quot;location&quot;:&quot;San Francisco, CA&quot;, &quot;contributors_enabled&quot;:true, &quot;verified&quot;:true, &quot;profile_link_color&quot;:&quot;0094C2&quot;,
+&quot;followers_count&quot;:665829, &quot;url&quot;:&quot;http:\/\/dev.twitter.com&quot;, &quot;default_profile&quot;:false, &quot;profile_sidebar_border_color&quot;:&quot;0094C2&quot;,
+&quot;screen_name&quot;:&quot;twitterapi&quot;, &quot;default_profile_image&quot;:false, &quot;notifications&quot;:false, &quot;display_url&quot;:null,
+&quot;show_all_inline_media&quot;:false, &quot;geo_enabled&quot;:true, &quot;profile_use_background_image&quot;:true, &quot;friends_count&quot;:32, &quot;id_str&quot;:&quot;6253282&quot;,
+&quot;entities&quot;:{&quot;hashtags&quot;:[], &quot;urls&quot;:[], &quot;user_mentions&quot;:[]}, &quot;expanded_url&quot;:null, &quot;is_translator&quot;:false, &quot;lang&quot;:&quot;en&quot;,
+&quot;time_zone&quot;:&quot;Pacific Time (US &amp; Canada)&quot;, &quot;created_at&quot;:&quot;Wed May 23 06:01:13 +0000 2007&quot;, &quot;profile_background_color&quot;:&quot;e8f2f7&quot;,
+&quot;id&quot;:6253282, &quot;follow_request_sent&quot;:false, &quot;profile_background_image_url_https&quot;:&quot;...&quot;, &quot;profile_background_image_url&quot;:&quot;...&quot;,}
+</pre></div>
+</div>
+</td>
+</tr>
+
+
 
 
 
@@ -185,72 +291,6 @@ and <code class="docutils literal"><span class="pre">medium</span></code> stream
 
 
 
-
-
-
-<tr class="row-odd"><td>in_reply_to_screen_name</td>
-<td>String</td>
-<td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the screen name of the original Tweet&#8217;s author.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;in_reply_to_screen_name&quot;:&quot;twitterapi&quot;
-</pre></div>
-</div>
-</td>
-</tr>
-
-
-
-
-
-
-<tr class="row-even"><td>in_reply_to_status_id</td>
-<td>Int64</td>
-<td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the integer representation of the original Tweet&#8217;s ID.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;in_reply_to_status_id&quot;:114749583439036416
-</pre></div>
-</div>
-</td>
-</tr>
-
-
-
-<tr class="row-odd"><td>in_reply_to_status_id_str</td>
-<td>String</td>
-<td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the string representation of the original Tweet&#8217;s ID.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;in_reply_to_status_id_str&quot;:&quot;114749583439036416&quot;
-</pre></div>
-</div>
-</td>
-</tr>
-
-
-
-<tr class="row-even"><td>in_reply_to_user_id</td>
-<td>Int64</td>
-<td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the integer representation of the original Tweet&#8217;s author
-ID. This will not necessarily always be the user directly mentioned in the Tweet.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;in_reply_to_user_id&quot;:819797
-</pre></div>
-</div>
-</td>
-</tr>
-
-
-
-
-<tr class="row-odd"><td>in_reply_to_user_id_str</td>
-<td>String</td>
-<td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the string representation of the original Tweet&#8217;s author ID.
-This will not necessarily always be the user directly mentioned in the Tweet.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;in_reply_to_user_id_str&quot;:&quot;819797&quot;
-</pre></div>
-</div>
-</td>
-</tr>
 
 
 
@@ -408,71 +448,20 @@ retweet they created by deleting their retweet.)</td>
 
 
 
-<tr class="row-even"><td>source</td>
-<td>String</td>
-<td><p class="first">Utility used to post the Tweet, as an HTML-formatted string. Tweets from the Twitter website have a source value of <code class="docutils literal"><span class="pre">web</span></code>.</p>
-<p>Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;source&quot;:&quot;\u003Ca href=\&quot;http:\/\/itunes.apple.com\/us\/app\/twitter\/id409789998?mt=12\&quot; \u003ETwitter for Mac\u003C\/a\u003E&quot;
-</pre></div>
-</div>
-</td>
-</tr>
 
 
 
 
-<tr class="row-odd"><td>text</td>
-<td>String</td>
-<td><p class="first">The actual UTF-8 text of the status update. See
-<a class="reference external" href="https://github.com/twitter/twitter-text/blob/master/rb/lib/twitter-text/regex.rb">twitter-text</a> for details on what is currently
-considered valid characters.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;text&quot;:&quot;Tweet Button, Follow Button, and Web Intents javascript now support SSL http:\/\/t.co\/9fbA0oYy ^TS&quot;
-</pre></div>
-</div>
-</td>
-</tr>
 
 
 
 
-<tr class="row-even"><td>truncated</td>
-<td>Boolean</td>
-<td><p class="first">Indicates whether the value of the      <code class="docutils literal"><span class="pre">text</span></code>     parameter was truncated, for example, as a result of a retweet exceeding the 140
-character Tweet length. Truncated text will end in ellipsis, like this      <code class="docutils literal"><span class="pre">...</span></code>     Since Twitter now rejects long Tweets vs
-truncating them, the large majority of Tweets will have this set to      <code class="docutils literal"><span class="pre">false</span></code>     .
-Note that while native retweets may have their toplevel      <code class="docutils literal"><span class="pre">text</span></code>     property shortened, the original text will be available
-under the      <code class="docutils literal"><span class="pre">retweeted_status</span></code>     object and the      <code class="docutils literal"><span class="pre">truncated</span></code>     parameter will be set to the value of the original
-status (in most cases,      <code class="docutils literal"><span class="pre">false</span></code>     ).
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;truncated&quot;:true
-</pre></div>
-</div>
-</td>
-</tr>
 
 
 
 
-<tr class="row-odd"><td>user</td>
-<td><a class="reference external" href="/overview/api/users">Users</a></td>
-<td><p class="first">The user who posted this Tweet. Perspectival attributes embedded within this object are unreliable.</p>
-<p>Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;user&quot;:{&quot;statuses_count&quot;:3080, &quot;favourites_count&quot;:22, &quot;protected&quot;:false, &quot;profile_text_color&quot;:&quot;437792&quot;, &quot;profile_image_url&quot;:&quot;...&quot;
-&quot;profile_image_url&quot;:&quot;...&quot;, &quot;name&quot;:&quot;Twitter API&quot;, &quot;profile_sidebar_fill_color&quot;:&quot;a9d9f1&quot;, &quot;listed_count&quot;:9252, &quot;following&quot;:true,
-&quot;profile_background_tile&quot;:false, &quot;utc_offset&quot;:-28800,
-&quot;description&quot;:&quot;The Real Twitter API. I tweet about API changes. Don&#39;t get an answer? It&#39;s on my website.&quot;,
-&quot;location&quot;:&quot;San Francisco, CA&quot;, &quot;contributors_enabled&quot;:true, &quot;verified&quot;:true, &quot;profile_link_color&quot;:&quot;0094C2&quot;,
-&quot;followers_count&quot;:665829, &quot;url&quot;:&quot;http:\/\/dev.twitter.com&quot;, &quot;default_profile&quot;:false, &quot;profile_sidebar_border_color&quot;:&quot;0094C2&quot;,
-&quot;screen_name&quot;:&quot;twitterapi&quot;, &quot;default_profile_image&quot;:false, &quot;notifications&quot;:false, &quot;display_url&quot;:null,
-&quot;show_all_inline_media&quot;:false, &quot;geo_enabled&quot;:true, &quot;profile_use_background_image&quot;:true, &quot;friends_count&quot;:32, &quot;id_str&quot;:&quot;6253282&quot;,
-&quot;entities&quot;:{&quot;hashtags&quot;:[], &quot;urls&quot;:[], &quot;user_mentions&quot;:[]}, &quot;expanded_url&quot;:null, &quot;is_translator&quot;:false, &quot;lang&quot;:&quot;en&quot;,
-&quot;time_zone&quot;:&quot;Pacific Time (US &amp; Canada)&quot;, &quot;created_at&quot;:&quot;Wed May 23 06:01:13 +0000 2007&quot;, &quot;profile_background_color&quot;:&quot;e8f2f7&quot;,
-&quot;id&quot;:6253282, &quot;follow_request_sent&quot;:false, &quot;profile_background_image_url_https&quot;:&quot;...&quot;, &quot;profile_background_image_url&quot;:&quot;...&quot;,}
-</pre></div>
-</div>
-</td>
-</tr>
+
+
 
 
 
