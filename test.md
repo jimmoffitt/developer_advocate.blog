@@ -14,6 +14,8 @@
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>contributors</td>
+
+
 <td>Collection of Contributors</td>
 <td><p class="first"><strong>Deprecated</strong> <em>Nullable</em> A collection of brief user objects (usually only one) indicating users who contributed to the
 authorship of the tweet, on behalf of the official tweet author. This is a legacy value and is not actively used.</p>
@@ -30,6 +32,9 @@ authorship of the tweet, on behalf of the official tweet author. This is a legac
 </div>
 </td>
 </tr>
+
+
+
 <tr class="row-odd"><td>coordinates</td>
 <td><a class="reference external" href="#obj-coordinates">Coordinates</a></td>
 <td><p class="first"><em>Nullable</em> Represents the geographic location of this Tweet as reported by the user or client application. The inner coordinates
@@ -57,6 +62,10 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
+
 <tr class="row-odd"><td>current_user_retweet</td>
 <td>Object</td>
 <td><p class="first"><em>Perspectival</em> Only surfaces on methods supporting the      <code class="docutils literal"><span class="pre">include_my_retweet</span></code>     parameter, when set to true. Details the
@@ -70,6 +79,10 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
+
 <tr class="row-even"><td>entities</td>
 <td><a class="reference external" href="/overview/api/entities">Entities</a></td>
 <td><p class="first">Entities which have been parsed out of the text of the Tweet. Additionally see <a class="reference external" href="/overview/api/entities-in-twitter-objects">Entities in Twitter
@@ -85,6 +98,12 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
+
+
+
 <tr class="row-odd"><td>favorite_count</td>
 <td>Integer</td>
 <td><p class="first"><em>Nullable</em> Indicates approximately how many times this Tweet has been  <a class="reference external" href="/rest/reference/post/favorites/create">liked</a>  by
@@ -104,6 +123,11 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
+
+
 <tr class="row-odd"><td>filter_level</td>
 <td>String</td>
 <td><p class="first">Indicates the maximum value of the <a class="reference external" href="/streaming/overview/request-parameters#filter_level">filter_level</a> parameter which may be
@@ -131,6 +155,11 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
+
+
 <tr class="row-even"><td>id_str</td>
 <td>String</td>
 <td><p class="first">The string representation of the unique identifier for this Tweet. Implementations should use this rather than the large integer in
