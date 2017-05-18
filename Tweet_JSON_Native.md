@@ -194,6 +194,9 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
 <tr class="row-odd"><td>in_reply_to_status_id_str</td>
 <td>String</td>
 <td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the string representation of the original Tweet&#8217;s ID.
@@ -203,6 +206,9 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
 <tr class="row-even"><td>in_reply_to_user_id</td>
 <td>Int64</td>
 <td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the integer representation of the original Tweet&#8217;s author
@@ -213,6 +219,10 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
+
 <tr class="row-odd"><td>in_reply_to_user_id_str</td>
 <td>String</td>
 <td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the string representation of the original Tweet&#8217;s author ID.
@@ -223,6 +233,10 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
+
 <tr class="row-even"><td>lang</td>
 <td>String</td>
 <td><p class="first"><em>Nullable</em> When present, indicates a <a class="reference external" href="http://tools.ietf.org/html/bcp47">BCP 47</a> language identifier corresponding to the
@@ -233,6 +247,9 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
 <tr class="row-odd"><td>place</td>
 <td><a class="reference external" href="/overview/api/places">Places</a></td>
 <td><p class="first"><em>Nullable</em> When present, indicates that the tweet is associated (but not necessarily originating from) a
@@ -280,6 +297,9 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
 <tr class="row-odd"><td>quoted_status_id</td>
 <td>Int64</td>
 <td><p class="first">This field only surfaces when the Tweet is a quote Tweet. This field contains the integer value Tweet ID of the quoted Tweet.
@@ -289,6 +309,11 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
+
+
 <tr class="row-even"><td>quoted_status_id_str</td>
 <td>String</td>
 <td><p class="first">This field only surfaces when the Tweet is a quote Tweet. This is the string representation Tweet ID of the quoted Tweet.
@@ -298,11 +323,20 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
+
+
 <tr class="row-odd"><td>quoted_status</td>
 <td><a class="reference external" href="/overview/api/tweets">Tweet</a></td>
 <td>This field only surfaces when the Tweet is a quote Tweet. This attribute contains the Tweet object of the original Tweet that was
 quoted.</td>
 </tr>
+
+
+
+
 <tr class="row-even"><td>scopes</td>
 <td>Object</td>
 <td><p class="first">A set of key-value pairs indicating the intended contextual delivery of the containing Tweet. Currently used by Twitter&#8217;s Promoted
@@ -313,6 +347,11 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
+
+
 <tr class="row-odd"><td>retweet_count</td>
 <td>Int</td>
 <td><p class="first">Number of times this Tweet has been retweeted.
@@ -322,6 +361,11 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
+
+
 <tr class="row-even"><td>retweeted</td>
 <td>Boolean</td>
 <td><p class="first"><em>Perspectival</em> Indicates whether this Tweet has been retweeted by the authenticating user.
@@ -331,6 +375,9 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
 <tr class="row-odd"><td>retweeted_status</td>
 <td><a class="reference external" href="/overview/api/tweets">Tweet</a></td>
 <td>Users can amplify the broadcast of Tweets authored by other users by <a class="reference external" href="/rest/reference/post/statuses/retweet/%3Aid">retweeting</a> .
@@ -339,6 +386,10 @@ contains a representation of the <em>original</em> Tweet that was retweeted. Not
 the intermediary retweet, but only the original Tweet. (Users can also <a class="reference external" href="/rest/reference/post/statuses/destroy/%3Aid">unretweet</a> a
 retweet they created by deleting their retweet.)</td>
 </tr>
+
+
+
+
 <tr class="row-even"><td>source</td>
 <td>String</td>
 <td><p class="first">Utility used to post the Tweet, as an HTML-formatted string. Tweets from the Twitter website have a source value of <code class="docutils literal"><span class="pre">web</span></code>.</p>
@@ -348,6 +399,10 @@ retweet they created by deleting their retweet.)</td>
 </div>
 </td>
 </tr>
+
+
+
+
 <tr class="row-odd"><td>text</td>
 <td>String</td>
 <td><p class="first">The actual UTF-8 text of the status update. See
@@ -359,6 +414,10 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
+
 <tr class="row-even"><td>truncated</td>
 <td>Boolean</td>
 <td><p class="first">Indicates whether the value of the      <code class="docutils literal"><span class="pre">text</span></code>     parameter was truncated, for example, as a result of a retweet exceeding the 140
@@ -373,6 +432,10 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
+
 <tr class="row-odd"><td>user</td>
 <td><a class="reference external" href="/overview/api/users">Users</a></td>
 <td><p class="first">The user who posted this Tweet. Perspectival attributes embedded within this object are unreliable.</p>
@@ -392,6 +455,9 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
 <tr class="row-even"><td>withheld_copyright</td>
 <td>Boolean</td>
 <td><p class="first">When present and set to &#8220;true&#8221;, it indicates that this piece of content has been withheld due to a <a class="reference external" href="http://en.wikipedia.org/wiki/Digital_Millennium_Copyright_Act">DMCA
@@ -402,6 +468,10 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
+
 <tr class="row-odd"><td>withheld_in_countries</td>
 <td>Array of String</td>
 <td><p class="first">When present, indicates a list of uppercase <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">two-letter country codes</a> this
@@ -414,6 +484,10 @@ content is withheld from. Twitter supports the following non-country values for 
 </div>
 </td>
 </tr>
+
+
+
+
 <tr class="row-even"><td>withheld_scope</td>
 <td>String</td>
 <td><p class="first">When present, indicates whether the content being withheld is the &#8220;status&#8221; or a &#8220;user.&#8221;</p>
