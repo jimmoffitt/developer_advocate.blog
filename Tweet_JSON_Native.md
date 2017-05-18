@@ -16,6 +16,52 @@
 <tr class="row-even"><td>contributors</td>
 
 
+<tr class="row-even"><td>created_at</td>
+<td>String</td>
+<td><p class="first">UTC time when this Tweet was created.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;created_at&quot;:&quot;Wed Aug 27 13:08:45 +0000 2008&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>id</td>
+<td>Int64</td>
+<td><p class="first">The integer representation of the unique identifier for this Tweet. This number is greater than 53 bits and some programming
+languages may have difficulty/silent defects in interpreting it. Using a signed 64 bit integer for storing this identifier is safe.
+Use      <code class="docutils literal"><span class="pre">id_str</span></code>     for fetching the identifier to stay on the safe side. See <a class="reference external" href="/overview/api/twitter-ids-json-and-snowflake">Twitter IDs, JSON and
+Snowflake</a> .
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;id&quot;:114749583439036416
+</pre></div>
+</div>
+</td>
+</tr>
+
+
+
+
+
+<tr class="row-even"><td>id_str</td>
+<td>String</td>
+<td><p class="first">The string representation of the unique identifier for this Tweet. Implementations should use this rather than the large integer in
+<code class="docutils literal"><span class="pre">id</span></code>.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;id_str&quot;:&quot;114749583439036416&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+
+
+
+
+
+
+
+
 <td>Collection of Contributors</td>
 <td><p class="first"><strong>Deprecated</strong> <em>Nullable</em> A collection of brief user objects (usually only one) indicating users who contributed to the
 authorship of the tweet, on behalf of the official tweet author. This is a legacy value and is not actively used.</p>
@@ -53,15 +99,7 @@ Example:</p>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td>created_at</td>
-<td>String</td>
-<td><p class="first">UTC time when this Tweet was created.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;created_at&quot;:&quot;Wed Aug 27 13:08:45 +0000 2008&quot;
-</pre></div>
-</div>
-</td>
-</tr>
+
 
 
 
@@ -143,33 +181,13 @@ and <code class="docutils literal"><span class="pre">medium</span></code> stream
 <td>Object</td>
 <td><strong>Deprecated</strong> <em>Nullable</em> Use the <code class="docutils literal"><span class="pre">coordinates</span></code> field instead.</td>
 </tr>
-<tr class="row-odd"><td>id</td>
-<td>Int64</td>
-<td><p class="first">The integer representation of the unique identifier for this Tweet. This number is greater than 53 bits and some programming
-languages may have difficulty/silent defects in interpreting it. Using a signed 64 bit integer for storing this identifier is safe.
-Use      <code class="docutils literal"><span class="pre">id_str</span></code>     for fetching the identifier to stay on the safe side. See <a class="reference external" href="/overview/api/twitter-ids-json-and-snowflake">Twitter IDs, JSON and
-Snowflake</a> .
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;id&quot;:114749583439036416
-</pre></div>
-</div>
-</td>
-</tr>
 
 
 
 
 
-<tr class="row-even"><td>id_str</td>
-<td>String</td>
-<td><p class="first">The string representation of the unique identifier for this Tweet. Implementations should use this rather than the large integer in
-<code class="docutils literal"><span class="pre">id</span></code>.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;id_str&quot;:&quot;114749583439036416&quot;
-</pre></div>
-</div>
-</td>
-</tr>
+
+
 <tr class="row-odd"><td>in_reply_to_screen_name</td>
 <td>String</td>
 <td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the screen name of the original Tweet&#8217;s author.
