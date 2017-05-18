@@ -1,4 +1,4 @@
-<h2>Field Guide<a class="headerlink" href="#field-guide" title="Permalink to this headline">¶</a></h2>
+<h2>Native Format Data Dictionary<a class="headerlink" href="#field-guide" title="Permalink to this headline">¶</a></h2>
 <p>Consumers of Tweets should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing. Please note that Tweets found in Search results vary somewhat in structure from this document.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -179,6 +179,12 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
+
+
+
 <tr class="row-even"><td>in_reply_to_status_id</td>
 <td>Int64</td>
 <td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the integer representation of the original Tweet&#8217;s ID.
@@ -258,6 +264,11 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+
+
+
 <tr class="row-even"><td>possibly_sensitive</td>
 <td>Boolean</td>
 <td><p class="first"><em>Nullable</em> This field only surfaces when a Tweet contains a link. The meaning of the field doesn&#8217;t pertain to the Tweet content
