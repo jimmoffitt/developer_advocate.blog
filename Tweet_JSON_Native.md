@@ -1,7 +1,13 @@
-<h2>Native Format Data Dictionary<a class="headerlink" href="#field-guide" title="Permalink to this headline"></a></h2>
+<h2>Native Format Data Dictionaries<a class="headerlink" href="#field-guide" title="Permalink to this headline"></a></h2>
 <p>Consumers of Tweets should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing. Please note that Tweets found in Search results vary somewhat in structure from this document.</p>
 
 For a detailed introduction to how Tweets are encoded in JSON, see [HERE](). 
+
+These JSON attribute dictionaries are specifically for the Tweets delivered by the following Twitter products:
++ Twitter Firehose
++ Real-time PowerTrack
++ Historical PowerTrack
++ Twitter Search APIs (Full-Archive Search and 30-Day Search)
 
 Below you will find Data Dictionaries for fundamental Twitter objects that make up a Tweet:
 
@@ -26,7 +32,6 @@ Below you will find Data Dictionaries for fundamental Twitter objects that make 
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>contributors</td>
 
 <tr class="row-even"><td>created_at</td>
 <td>String</td>
@@ -247,7 +252,6 @@ Example:</p>
 </td>
 </tr>
 
-
 <tr class="row-even"><td>is_quote_status</td>
 <td>Boolean</td>
 <td><p class="first">Indicates whether this is a Quoted Tweet.
@@ -262,6 +266,15 @@ Example:</p>
 <td><a class="reference external" href="/overview/api/tweets">Tweet</a></td>
 <td>This field only surfaces when the Tweet is a quote Tweet. This attribute contains the Tweet object of the original Tweet that was
 quoted.</td>
+</tr>
+
+<tr class="row-odd"><td>retweeted_status</td>
+<td><a class="reference external" href="/overview/api/tweets">Tweet</a></td>
+<td>Users can amplify the broadcast of Tweets authored by other users by <a class="reference external" href="/rest/reference/post/statuses/retweet/%3Aid">retweeting</a> .
+Retweets can be distinguished from typical Tweets by the existence of a      <code class="docutils literal"><span class="pre">retweeted_status</span></code>     attribute. This attribute
+contains a representation of the <em>original</em> Tweet that was retweeted. Note that retweets of retweets do not show representations of
+the intermediary retweet, but only the original Tweet. (Users can also <a class="reference external" href="/rest/reference/post/statuses/destroy/%3Aid">unretweet</a> a
+retweet they created by deleting their retweet.)</td>
 </tr>
 
 <tr class="row-odd"><td>quote_count</td>
@@ -396,6 +409,7 @@ Example:</p>
 </table>
 
 
+
 Other attributes served by Public API (?):
 
 
@@ -462,6 +476,9 @@ content is withheld from. Twitter supports the following non-country values for 
 </td>
 </tr>
 
+</tbody>
+</table>
+
 
 
 <table border="1" class="docutils">
@@ -489,8 +506,22 @@ content is withheld from. Twitter supports the following non-country values for 
 
 
 
-Other Objects ---------------------
+<h2> Other Objects --------------------- </h2>
 
+
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
 
 <tr class="row-odd"><td>contributors</td>
 <td>Collection of Contributors</td>
@@ -544,14 +575,6 @@ Example:</p>
 
 
 
-<tr class="row-odd"><td>retweeted_status</td>
-<td><a class="reference external" href="/overview/api/tweets">Tweet</a></td>
-<td>Users can amplify the broadcast of Tweets authored by other users by <a class="reference external" href="/rest/reference/post/statuses/retweet/%3Aid">retweeting</a> .
-Retweets can be distinguished from typical Tweets by the existence of a      <code class="docutils literal"><span class="pre">retweeted_status</span></code>     attribute. This attribute
-contains a representation of the <em>original</em> Tweet that was retweeted. Note that retweets of retweets do not show representations of
-the intermediary retweet, but only the original Tweet. (Users can also <a class="reference external" href="/rest/reference/post/statuses/destroy/%3Aid">unretweet</a> a
-retweet they created by deleting their retweet.)</td>
-</tr>
 
 
 
@@ -575,6 +598,10 @@ retweet they created by deleting their retweet.)</td>
 
 </tbody>
 </table>
+
+
+
+
 
 
 
