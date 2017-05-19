@@ -227,6 +227,27 @@ Example:</p>
 </td>
 </tr>
 
+<tr class="row-odd"><td>quoted_status_id</td>
+<td>Int64</td>
+<td><p class="first">This field only surfaces when the Tweet is a quote Tweet. This field contains the integer value Tweet ID of the quoted Tweet.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;quoted_status_id&quot;:114749583439036416
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>quoted_status_id_str</td>
+<td>String</td>
+<td><p class="first">This field only surfaces when the Tweet is a quote Tweet. This is the string representation Tweet ID of the quoted Tweet.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;quoted_status_id_str&quot;:&quot;114749583439036416&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+
 <tr class="row-even"><td>is_quote_status</td>
 <td>Boolean</td>
 <td><p class="first">Indicates whether this is a Quoted Tweet.
@@ -235,6 +256,12 @@ Example:</p>
 </pre></div>
 </div>
 </td>
+</tr>
+
+<tr class="row-odd"><td>quoted_status</td>
+<td><a class="reference external" href="/overview/api/tweets">Tweet</a></td>
+<td>This field only surfaces when the Tweet is a quote Tweet. This attribute contains the Tweet object of the original Tweet that was
+quoted.</td>
 </tr>
 
 <tr class="row-odd"><td>quote_count</td>
@@ -369,26 +396,71 @@ Example:</p>
 </table>
 
 
-Other attributes served by Public API:
+Other attributes served by Public API (?):
 
 
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>contributors</td>
 
+<tr class="row-odd"><td>current_user_retweet</td>
+<td>Object</td>
+<td><p class="first"><em>Perspectival</em> Only surfaces on methods supporting the      <code class="docutils literal"><span class="pre">include_my_retweet</span></code>     parameter, when set to true. Details the
+Tweet ID of the user&#8217;s own retweet (if existent) of this Tweet.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;current_user_retweet&quot;: {
+  &quot;id&quot;: 26815871309,
+  &quot;id_str&quot;: &quot;26815871309&quot;
+}
+</pre></div>
+</div>
+</td>
+</tr>
 
+<tr class="row-even"><td>withheld_copyright</td>
+<td>Boolean</td>
+<td><p class="first">When present and set to &#8220;true&#8221;, it indicates that this piece of content has been withheld due to a <a class="reference external" href="http://en.wikipedia.org/wiki/Digital_Millennium_Copyright_Act">DMCA
+complaint</a> .
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;withheld_copyright&quot;: true
+</pre></div>
+</div>
+</td>
+</tr>
 
+<tr class="row-odd"><td>withheld_in_countries</td>
+<td>Array of String</td>
+<td><p class="first">When present, indicates a list of uppercase <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">two-letter country codes</a> this
+content is withheld from. Twitter supports the following non-country values for this field:</p>
+<p>&#8220;XX&#8221; - Content is withheld in all countries
+&#8220;XY&#8221; - Content is withheld due to a DMCA request.</p>
+<p>Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;withheld_in_countries&quot;: [&quot;GR&quot;, &quot;HK&quot;, &quot;MY&quot;]
+</pre></div>
+</div>
+</td>
+</tr>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+<tr class="row-even"><td>withheld_scope</td>
+<td>String</td>
+<td><p class="first">When present, indicates whether the content being withheld is the &#8220;status&#8221; or a &#8220;user.&#8221;</p>
+<p>Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;withheld_scope&quot;: &quot;status&quot;
+</pre></div>
+</div>
+</td>
+</tr>
 
 
 
@@ -407,6 +479,8 @@ Other attributes served by Public API:
 <tbody valign="top">
 <tr class="row-even"><td>contributors</td>
 
+</tbody>
+</table>
 
 
 
@@ -415,8 +489,7 @@ Other attributes served by Public API:
 
 
 
-
-DEPRECATED ---------------------
+Other Objects ---------------------
 
 
 <tr class="row-odd"><td>contributors</td>
@@ -441,87 +514,9 @@ authorship of the tweet, on behalf of the official tweet author. This is a legac
 
 PERSPECTIVAL ---------------------------
 
-<tr class="row-odd"><td>current_user_retweet</td>
-<td>Object</td>
-<td><p class="first"><em>Perspectival</em> Only surfaces on methods supporting the      <code class="docutils literal"><span class="pre">include_my_retweet</span></code>     parameter, when set to true. Details the
-Tweet ID of the user&#8217;s own retweet (if existent) of this Tweet.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;current_user_retweet&quot;: {
-  &quot;id&quot;: 26815871309,
-  &quot;id_str&quot;: &quot;26815871309&quot;
-}
-</pre></div>
-</div>
-</td>
-</tr>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<tr class="row-odd"><td>quoted_status_id</td>
-<td>Int64</td>
-<td><p class="first">This field only surfaces when the Tweet is a quote Tweet. This field contains the integer value Tweet ID of the quoted Tweet.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;quoted_status_id&quot;:114749583439036416
-</pre></div>
-</div>
-</td>
-</tr>
-
-
-
-
-
-<tr class="row-even"><td>quoted_status_id_str</td>
-<td>String</td>
-<td><p class="first">This field only surfaces when the Tweet is a quote Tweet. This is the string representation Tweet ID of the quoted Tweet.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;quoted_status_id_str&quot;:&quot;114749583439036416&quot;
-</pre></div>
-</div>
-</td>
-</tr>
-
-
-
-
-
-<tr class="row-odd"><td>quoted_status</td>
-<td><a class="reference external" href="/overview/api/tweets">Tweet</a></td>
-<td>This field only surfaces when the Tweet is a quote Tweet. This attribute contains the Tweet object of the original Tweet that was
-quoted.</td>
-</tr>
 
 
 
@@ -578,45 +573,6 @@ retweet they created by deleting their retweet.)</td>
 
 
 
-<tr class="row-even"><td>withheld_copyright</td>
-<td>Boolean</td>
-<td><p class="first">When present and set to &#8220;true&#8221;, it indicates that this piece of content has been withheld due to a <a class="reference external" href="http://en.wikipedia.org/wiki/Digital_Millennium_Copyright_Act">DMCA
-complaint</a> .
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;withheld_copyright&quot;: true
-</pre></div>
-</div>
-</td>
-</tr>
-
-
-
-
-<tr class="row-odd"><td>withheld_in_countries</td>
-<td>Array of String</td>
-<td><p class="first">When present, indicates a list of uppercase <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">two-letter country codes</a> this
-content is withheld from. Twitter supports the following non-country values for this field:</p>
-<p>&#8220;XX&#8221; - Content is withheld in all countries
-&#8220;XY&#8221; - Content is withheld due to a DMCA request.</p>
-<p>Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;withheld_in_countries&quot;: [&quot;GR&quot;, &quot;HK&quot;, &quot;MY&quot;]
-</pre></div>
-</div>
-</td>
-</tr>
-
-
-
-
-<tr class="row-even"><td>withheld_scope</td>
-<td>String</td>
-<td><p class="first">When present, indicates whether the content being withheld is the &#8220;status&#8221; or a &#8220;user.&#8221;</p>
-<p>Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;withheld_scope&quot;: &quot;status&quot;
-</pre></div>
-</div>
-</td>
-</tr>
 </tbody>
 </table>
 
