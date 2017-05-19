@@ -393,7 +393,7 @@ Example:</p>
 
 <tr class="row-even"><td>matching_rules</td>
 <td>Array of Rule Objects</td>
-<td><p class="first">Present in <em>filtered</em> products such as Twitter Search and PowerTrtack. Provides the <em>ID</em> and <em>tag</em> associated with the filter that matched the Tweet. See more documentation <a class="reference external" href="http://support.gnip.com/enrichments/matching_rules.html">HERE</a>.
+<td><p class="first">Present in <em>filtered</em> products such as Twitter Search and PowerTrack. Provides the <em>ID</em> and <em>tag</em> associated with the filter that matched the Tweet. See more documentation <a class="reference external" href="http://support.gnip.com/enrichments/matching_rules.html">HERE</a>.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;matching_rules&quot;: &quot; [{
 		&quot;tag&quot;: &quot;rain Tweets&quot;,
