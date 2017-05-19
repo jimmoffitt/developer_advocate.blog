@@ -349,16 +349,24 @@ Example:</p>
 </td>
 </tr>
 
-
 <tr class="row-even"><td>matching_rules</td>
-<td>String</td>
-<td><p class="first"><em>Array of Rule Objects</em> Present in filtered products such as Twitter Search and PowerTrtack. Provides the ID and tag associated with the filter that matched the Tweet.See more documentation <a class="reference external" href="http://support.gnip.com/enrichments/matching_rules.html">HERE</a>.
+<td>Array of Rule Objects</td>
+<td><p class="first">Present in <em>filtered</em> products such as Twitter Search and PowerTrtack. Provides the <em>ID</em> and <em>tag</em> associated with the filter that matched the Tweet. See more documentation <a class="reference external" href="http://support.gnip.com/enrichments/matching_rules.html">HERE</a>.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;matching_rules&quot;: &quot;[]&quot;
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;matching_rules&quot;: &quot; [{
+		&quot;tag&quot;: &quot;rain Tweets&quot;,
+		&quot;id&quot;: 831566737246023680
+	}, {
+		&quot;tag&quot;: &quot;snow Tweet&quot;,
+		&quot;id&quot;: 831567402366218240
+	}]&quot;
 </pre></div>
 </div>
 </td>
 </tr>
+
+</tbody>
+</table>
 
 
 Other attributes served by Public API:
@@ -380,8 +388,7 @@ Other attributes served by Public API:
 
 
 
-</tbody>
-</table>
+
 
 
 
