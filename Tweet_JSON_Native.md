@@ -1,5 +1,16 @@
 <h2>Native Format Data Dictionary<a class="headerlink" href="#field-guide" title="Permalink to this headline">¶</a></h2>
 <p>Consumers of Tweets should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing. Please note that Tweets found in Search results vary somewhat in structure from this document.</p>
+
+For a detailed introduction to how Tweets are encoded in JSON, see [HERE](). Below you will find Data Dictionaries for fundamental Twitter objects that make up a Tweet:
+
++ Tweet (also referred to as a 'Status' object, 'root-level' attributes, _parent_ of other objects)
+  + User
+  + Entities
+  + Extended Entities
+  + Retweeted Status
+  + Quoted Status
+  
+
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
