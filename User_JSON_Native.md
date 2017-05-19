@@ -1,6 +1,8 @@
 [] TODOS
-[] profile attributes not in order
-[] Keep Public API only attributes?
++ [] profile attributes not in order
++ [] Keep Public API only attributes?
++ [] Narratives: ignoring deprecated fields. Any others static/constant/useless? 
+
 
 # Twitter User Object Data Dictionary
 
