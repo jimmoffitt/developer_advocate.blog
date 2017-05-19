@@ -1,5 +1,193 @@
-h2>Field Guide<a class="headerlink" href="#field-guide" title="Permalink to this headline">¶</a></h2>
-<p>Consumers of User objects should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.</p>
+# Twitter User Object Data Dictionary
+
+Consumers of User objects should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.</p>
+
+## User Object
+
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attribute</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+
+<tr class="row-even"><td>id</td>
+<td>Int64</td>
+<td><p class="first">The integer representation of the unique identifier for this User. This number is greater than 53 bits and some programming languages
+may have difficulty/silent defects in interpreting it. Using a signed 64 bit integer for storing this identifier is safe. Use
+<code class="docutils literal"><span class="pre">id_str</span></code> for fetching the identifier to stay on the safe side.
+See <a class="reference external" href="/overview/api/twitter-ids-json-and-snowflake">Twitter IDs, JSON and Snowflake</a> .
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;id&quot;: 6253282
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>id_str</td>
+<td>String</td>
+<td><p class="first">The string representation of the unique identifier for this User. Implementations should use this rather than the large, possibly
+un-consumable integer in <code class="docutils literal"><span class="pre">id</span></code>.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;id_str&quot;: &quot;6253282&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>name</td>
+<td>String</td>
+<td><p class="first">The name of the user, as they&#8217;ve defined it. Not necessarily a person&#8217;s name. Typically capped at 20 characters, but subject to
+change.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;name&quot;: &quot;Twitter API&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>screen_name</td>
+<td>String</td>
+<td><p class="first">The screen name, handle, or alias that this user identifies themselves with. screen_names are unique but subject to change. Use
+<code class="docutils literal"><span class="pre">id_str</span></code> as a user identifier whenever possible. Typically a maximum of 15 characters long, but some historical accounts
+may exist with longer names.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;screen_name&quot;: &quot;twitterapi&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>location</td>
+<td>String</td>
+<td><p class="first"><em>Nullable</em> . The user-defined location for this account&#8217;s profile. Not necessarily a location, nor machine-parseable.
+This field will occasionally be fuzzily interpreted by the Search service.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;location&quot;: &quot;San Francisco, CA&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>url</td>
+<td>String</td>
+<td><p class="first"><em>Nullable</em> . A URL provided by the user in association with their profile.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;url&quot;: &quot;https://dev.twitter.com&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>description</td>
+<td>String</td>
+<td><p class="first"><em>Nullable</em> . The user-defined UTF-8 string describing their account.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;description&quot;: &quot;The Real Twitter API.&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>derived</td>
+<td>Array of Rule Objects</td>
+<td><p class="first">Collection of Enrichment metadata derived for user. Provides the <em>Profile Geo</em> and <em>Klout</em> Enrichment metadata. See more documentation <a class="reference external" href="http://support.gnip.com/enrichments/">HERE</a>.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;derived;: &quot; {
+		&quot;locations&quot;: [{}],
+    &quot;klout&quot;: [{}}
+   }quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>protected</td>
+<td>Boolean</td>
+<td><p class="first">When true, indicates that this user has chosen to protect their Tweets. See <a class="reference external" href="https://support.twitter.com/articles/14016-about-public-and-protected-tweets">About Public and Protected
+Tweets</a> .
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;protected&quot;: true
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>verified</td>
+<td>Boolean</td>
+<td><p class="first">When true, indicates that the user has a verified account. See <a class="reference external" href="https://support.twitter.com/articles/119135-faqs-about-verified-accounts">Verified
+Accounts</a> .
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;verified&quot;: false
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>followers_count</td>
+<td>Int</td>
+<td><p class="first">The number of followers this account currently has. Under certain conditions of duress, this field will temporarily indicate &#8220;0&#8221;.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;followers_count&quot;: 21
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>friends_count</td>
+<td>Int</td>
+<td><p class="first">The number of users this account is following (AKA their &#8220;followings&#8221;). Under certain conditions of duress, this field will
+temporarily indicate &#8220;0&#8221;.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;friends_count&quot;: 32
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>listed_count</td>
+<td>Int</td>
+<td><p class="first">The number of public lists that this user is a member of.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;listed_count&quot;: 9274
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>favourites_count</td>
+<td>Int</td>
+<td><p class="first">The number of Tweets this user has liked in the account&#8217;s lifetime. British spelling used in the field name for historical
+reasons.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;favourites_count&quot;: 13
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>statuses_count</td>
+<td>Int</td>
+<td><p class="first">The number of Tweets (including retweets) issued by the user.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;statuses_count&quot;: 42
+</pre></div>
+</div>
+</td>
+</tr>
+
+</tbody>
+</table>
+
+## Other Attributes Provided with Other Endpoints
+
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
@@ -13,6 +201,7 @@ h2>Field Guide<a class="headerlink" href="#field-guide" title="Permalink to this
 </tr>
 </thead>
 <tbody valign="top">
+
 <tr class="row-even"><td>contributors_enabled</td>
 <td>Boolean</td>
 <td><p class="first">Indicates that the user has an account with &#8220;contributor mode&#8221; enabled, allowing for Tweets issued by the user to be co-authored by
@@ -32,6 +221,67 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+<tr class="row-even"><td>withheld_in_countries</td>
+<td>String</td>
+<td><p class="first">When present, indicates a textual representation of the two-letter country codes this user is withheld from.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;withheld_in_countries&quot;: &quot;GR, HK, MY&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>withheld_scope</td>
+<td>String</td>
+<td><p class="first">When present, indicates whether the content being withheld is the &#8220;status&#8221; or a &#8220;user.&#8221;
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;withheld_scope&quot;: &quot;user&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+</tbody>
+</table>
+
+
+
+## Deprecated Attributes
+
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+
+<tr class="row-even"><td>is_translator</td>
+<td>Boolean</td>
+<td><p class="first">When true, indicates that the user is a participant in Twitter&#8217;s <a class="reference external" href="http://translate.twitter.com">translator community</a> .
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;is_translator&quot;: false
+</pre></div>
+</div>
+</td>
+</tr>
+
+
+</tbody>
+</table>
+
+
+
+
+
+
+
 <tr class="row-even"><td>default_profile</td>
 <td>Boolean</td>
 <td><p class="first">When true, indicates that the user has not altered the theme or background of their user profile.
@@ -50,15 +300,7 @@ Example:</p>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td>description</td>
-<td>String</td>
-<td><p class="first"><em>Nullable</em> . The user-defined UTF-8 string describing their account.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;description&quot;: &quot;The Real Twitter API.&quot;
-</pre></div>
-</div>
-</td>
-</tr>
+
 <tr class="row-odd"><td>entities</td>
 <td><a class="reference external" href="/overview/api/entities">Entities</a></td>
 <td><p class="first">Entities which have been parsed out of the <code class="docutils literal"><span class="pre">url</span></code> or <code class="docutils literal"><span class="pre">description</span></code> fields defined by the user. Read more
@@ -80,16 +322,7 @@ about <a class="reference external" href="/overview/api/entities">User Entities<
 </div>
 </td>
 </tr>
-<tr class="row-even"><td>favourites_count</td>
-<td>Int</td>
-<td><p class="first">The number of Tweets this user has liked in the account&#8217;s lifetime. British spelling used in the field name for historical
-reasons.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;favourites_count&quot;: 13
-</pre></div>
-</div>
-</td>
-</tr>
+
 <tr class="row-odd"><td>follow_request_sent</td>
 <td>Type</td>
 <td><p class="first"><em>Nullable</em> . <em>Perspectival</em> . When true, indicates that the authenticating user has issued a follow request to this protected user
@@ -111,25 +344,8 @@ Example:</p>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td>followers_count</td>
-<td>Int</td>
-<td><p class="first">The number of followers this account currently has. Under certain conditions of duress, this field will temporarily indicate &#8220;0&#8221;.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;followers_count&quot;: 21
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td>friends_count</td>
-<td>Int</td>
-<td><p class="first">The number of users this account is following (AKA their &#8220;followings&#8221;). Under certain conditions of duress, this field will
-temporarily indicate &#8220;0&#8221;.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;friends_count&quot;: 32
-</pre></div>
-</div>
-</td>
-</tr>
+
+
 <tr class="row-odd"><td>geo_enabled</td>
 <td>Boolean</td>
 <td><p class="first">When true, indicates that the user has enabled the possibility of geotagging their Tweets. This field must be true for the current
@@ -140,37 +356,8 @@ Example:</p>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td>id</td>
-<td>Int64</td>
-<td><p class="first">The integer representation of the unique identifier for this User. This number is greater than 53 bits and some programming languages
-may have difficulty/silent defects in interpreting it. Using a signed 64 bit integer for storing this identifier is safe. Use
-<code class="docutils literal"><span class="pre">id_str</span></code> for fetching the identifier to stay on the safe side.
-See <a class="reference external" href="/overview/api/twitter-ids-json-and-snowflake">Twitter IDs, JSON and Snowflake</a> .
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;id&quot;: 6253282
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td>id_str</td>
-<td>String</td>
-<td><p class="first">The string representation of the unique identifier for this User. Implementations should use this rather than the large, possibly
-un-consumable integer in <code class="docutils literal"><span class="pre">id</span></code>.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;id_str&quot;: &quot;6253282&quot;
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td>is_translator</td>
-<td>Boolean</td>
-<td><p class="first">When true, indicates that the user is a participant in Twitter&#8217;s <a class="reference external" href="http://translate.twitter.com">translator community</a> .
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;is_translator&quot;: false
-</pre></div>
-</div>
-</td>
-</tr>
+
+
 <tr class="row-odd"><td>lang</td>
 <td>String</td>
 <td><p class="first">The <a class="reference external" href="http://tools.ietf.org/html/bcp47">BCP 47</a> code for the user&#8217;s self-declared user interface language. May or may not have
@@ -183,35 +370,9 @@ Examples:</p>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td>listed_count</td>
-<td>Int</td>
-<td><p class="first">The number of public lists that this user is a member of.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;listed_count&quot;: 9274
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td>location</td>
-<td>String</td>
-<td><p class="first"><em>Nullable</em> . The user-defined location for this account&#8217;s profile. Not necessarily a location, nor machine-parseable.
-This field will occasionally be fuzzily interpreted by the Search service.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;location&quot;: &quot;San Francisco, CA&quot;
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td>name</td>
-<td>String</td>
-<td><p class="first">The name of the user, as they&#8217;ve defined it. Not necessarily a person&#8217;s name. Typically capped at 20 characters, but subject to
-change.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;name&quot;: &quot;Twitter API&quot;
-</pre></div>
-</div>
-</td>
-</tr>
+
+
+
 <tr class="row-odd"><td>notifications</td>
 <td>Boolean</td>
 <td><em>Nullable</em> . <em>Deprecated.</em> May incorrectly report &#8220;false&#8221; at times. Indicates whether the authenticated user has chosen to receive
@@ -341,27 +502,8 @@ Example:</p>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td>protected</td>
-<td>Boolean</td>
-<td><p class="first">When true, indicates that this user has chosen to protect their Tweets. See <a class="reference external" href="https://support.twitter.com/articles/14016-about-public-and-protected-tweets">About Public and Protected
-Tweets</a> .
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;protected&quot;: true
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td>screen_name</td>
-<td>String</td>
-<td><p class="first">The screen name, handle, or alias that this user identifies themselves with. screen_names are unique but subject to change. Use
-<code class="docutils literal"><span class="pre">id_str</span></code> as a user identifier whenever possible. Typically a maximum of 15 characters long, but some historical accounts
-may exist with longer names.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;screen_name&quot;: &quot;twitterapi&quot;
-</pre></div>
-</div>
-</td>
-</tr>
+
+
 <tr class="row-even"><td>status</td>
 <td><a class="reference external" href="/overview/api/tweets">Tweets</a></td>
 <td><p class="first"><em>Nullable</em> . If possible, the user&#8217;s most recent Tweet or retweet. In some circumstances, this data cannot be provided and this field
@@ -411,15 +553,7 @@ Example:</p>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td>statuses_count</td>
-<td>Int</td>
-<td><p class="first">The number of Tweets (including retweets) issued by the user.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;statuses_count&quot;: 42
-</pre></div>
-</div>
-</td>
-</tr>
+
 <tr class="row-even"><td>time_zone</td>
 <td>String</td>
 <td><p class="first"><em>Nullable</em> . A string describing the Time Zone this user declares themselves within.
@@ -429,15 +563,7 @@ Example:</p>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td>url</td>
-<td>String</td>
-<td><p class="first"><em>Nullable</em> . A URL provided by the user in association with their profile.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;url&quot;: &quot;https://dev.twitter.com&quot;
-</pre></div>
-</div>
-</td>
-</tr>
+
 <tr class="row-even"><td>utc_offset</td>
 <td>Int</td>
 <td><p class="first"><em>Nullable</em> . The offset from GMT/UTC in seconds.
@@ -447,34 +573,8 @@ Example:</p>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td>verified</td>
-<td>Boolean</td>
-<td><p class="first">When true, indicates that the user has a verified account. See <a class="reference external" href="https://support.twitter.com/articles/119135-faqs-about-verified-accounts">Verified
-Accounts</a> .
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;verified&quot;: false
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td>withheld_in_countries</td>
-<td>String</td>
-<td><p class="first">When present, indicates a textual representation of the two-letter country codes this user is withheld from.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;withheld_in_countries&quot;: &quot;GR, HK, MY&quot;
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td>withheld_scope</td>
-<td>String</td>
-<td><p class="first">When present, indicates whether the content being withheld is the &#8220;status&#8221; or a &#8220;user.&#8221;
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;withheld_scope&quot;: &quot;user&quot;
-</pre></div>
-</div>
-</td>
-</tr>
+
+
 </tbody>
 </table>
 </div>
