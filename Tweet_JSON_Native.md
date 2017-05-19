@@ -1,7 +1,9 @@
 <h2>Native Format Data Dictionary<a class="headerlink" href="#field-guide" title="Permalink to this headline">¶</a></h2>
 <p>Consumers of Tweets should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing. Please note that Tweets found in Search results vary somewhat in structure from this document.</p>
 
-For a detailed introduction to how Tweets are encoded in JSON, see [HERE](). Below you will find Data Dictionaries for fundamental Twitter objects that make up a Tweet:
+For a detailed introduction to how Tweets are encoded in JSON, see [HERE](). 
+
+Below you will find Data Dictionaries for fundamental Twitter objects that make up a Tweet:
 
 + Tweet (also referred to as a 'Status' object, 'root-level' attributes, _parent_ of other objects)
   + User
@@ -346,6 +348,23 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+
+<tr class="row-even"><td>matching_rules</td>
+<td>String</td>
+<td><p class="first"><em>Array of Rule Objects</em> Present in filtered products such as Twitter Search and PowerTrtack. Provides the ID and tag associated with the filter that matched the Tweet.See more documentation <a class="reference external" href="http://support.gnip.com/enrichments/matching_rules.html">HERE</a>.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;matching_rules&quot;: &quot;[]&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+
+Other attributes served by Public API:
+
+
+
 
 
 
