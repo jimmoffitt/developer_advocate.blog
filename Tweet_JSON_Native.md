@@ -28,7 +28,7 @@ Below you will find Data Dictionaries for fundamental Twitter objects that make 
 <col width="33%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
+<tr class="row-odd"><th class="head">Attribute</th>
 <th class="head">Type</th>
 <th class="head">Description</th>
 </tr>
@@ -422,7 +422,7 @@ Other attributes served by Public API (?):
 <col width="33%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
+<tr class="row-odd"><th class="head">Attribute</th>
 <th class="head">Type</th>
 <th class="head">Description</th>
 </tr>
