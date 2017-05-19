@@ -314,6 +314,34 @@ Example:</p>
 </td>
 </tr>
 
+<tr class="row-odd"><td>filter_level</td>
+<td>String</td>
+<td><p class="first">Indicates the maximum value of the <a class="reference external" href="/streaming/overview/request-parameters#filter_level">filter_level</a> parameter which may be
+used and still stream this Tweet. So a value of <code class="docutils literal"><span class="pre">medium</span></code> will be streamed on <code class="docutils literal"><span class="pre">none</span></code>, <code class="docutils literal"><span class="pre">low</span></code>,
+and <code class="docutils literal"><span class="pre">medium</span></code> streams.</p>
+<p>Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;filter_level&quot;: &quot;medium&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>lang</td>
+<td>String</td>
+<td><p class="first"><em>Nullable</em> When present, indicates a <a class="reference external" href="http://tools.ietf.org/html/bcp47">BCP 47</a> language identifier corresponding to the machine-detected language of the Tweet text, or <code class="docutils literal"><span class="pre">und</span></code> if no language could be detected. See more documentation <a class="reference external" href="http://support.gnip.com/apis/powertrack2.0/rules.html#Operators">HERE</a>.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;lang&quot;: &quot;en&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+
+
+
+
+
+
 
 
 
@@ -341,9 +369,6 @@ Example:</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>contributors</td>
-
-
-
 
 
 
@@ -408,36 +433,12 @@ Example:</p>
 
 
 
-<tr class="row-odd"><td>filter_level</td>
-<td>String</td>
-<td><p class="first">Indicates the maximum value of the <a class="reference external" href="/streaming/overview/request-parameters#filter_level">filter_level</a> parameter which may be
-used and still stream this Tweet. So a value of <code class="docutils literal"><span class="pre">medium</span></code> will be streamed on <code class="docutils literal"><span class="pre">none</span></code>, <code class="docutils literal"><span class="pre">low</span></code>,
-and <code class="docutils literal"><span class="pre">medium</span></code> streams.</p>
-<p>Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;filter_level&quot;: &quot;medium&quot;
-</pre></div>
-</div>
-</td>
-</tr>
 
 
 
 
 
 
-
-
-
-<tr class="row-even"><td>lang</td>
-<td>String</td>
-<td><p class="first"><em>Nullable</em> When present, indicates a <a class="reference external" href="http://tools.ietf.org/html/bcp47">BCP 47</a> language identifier corresponding to the
-machine-detected language of the Tweet text, or <code class="docutils literal"><span class="pre">und</span></code> if no language could be detected.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;lang&quot;: &quot;en&quot;
-</pre></div>
-</div>
-</td>
-</tr>
 
 
 
