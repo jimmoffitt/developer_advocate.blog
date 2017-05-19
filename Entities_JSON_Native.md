@@ -1,4 +1,7 @@
-<h1>Entities<a class="headerlink" href="#entities" title="Permalink to this headline">¶</a></h1>
+[] TODOS
++ [] Add symbols
+
+<h1>Entities<a class="headerlink" href="#entities" title="Permalink to this headline"></a></h1>
 <div class="toctree-wrapper compound" id="id1">
 </div>
 <p>Entities provide metadata and additional contextual information about content posted on Twitter. Entities are never divorced from the content they describe. Entities are returned wherever <a class="reference external" href="/overview/api/tweets">Tweets</a> are found in the API. Entities are instrumental in <a class="reference external" href="/basics/tco">resolving URLs</a>.</p>
