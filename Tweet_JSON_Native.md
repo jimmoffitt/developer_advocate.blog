@@ -1,5 +1,4 @@
-<h2>Native Format Data Dictionaries<a class="headerlink" href="#field-guide" title="Permalink to this headline"></a></h2>
-<p>Consumers of Tweets should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing. Please note that Tweets found in Search results vary somewhat in structure from this document.</p>
+# Native Format Data Dictionaries
 
 For a detailed introduction to how Tweets are encoded in JSON, see [HERE](). 
 
@@ -8,6 +7,8 @@ These JSON attribute dictionaries are specifically for the Tweets delivered by t
 + Real-time PowerTrack
 + Historical PowerTrack
 + Twitter Search APIs (Full-Archive Search and 30-Day Search)
+
+Consumers of Tweets should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing. Please note that Tweets found in Search results vary somewhat in structure from this document.
 
 Below you will find Data Dictionaries for fundamental Twitter objects that make up a Tweet:
 
@@ -18,6 +19,7 @@ Below you will find Data Dictionaries for fundamental Twitter objects that make 
   + Retweeted Status
   + Quoted Status
   
+## Tweet Object
 
 <table border="1" class="docutils">
 <colgroup>
