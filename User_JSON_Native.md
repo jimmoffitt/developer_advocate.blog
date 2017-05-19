@@ -1,3 +1,7 @@
+[] TODOS
+[] profile attributes not in order
+[] Keep Public API only attributes?
+
 # Twitter User Object Data Dictionary
 
 Consumers of User objects should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.</p>
@@ -97,13 +101,13 @@ Example:</p>
 </tr>
 
 <tr class="row-even"><td>derived</td>
-<td>Array of Rule Objects</td>
+<td>Arrays of Enrichment Objects</td>
 <td><p class="first">Collection of Enrichment metadata derived for user. Provides the <em>Profile Geo</em> and <em>Klout</em> Enrichment metadata. See more documentation <a class="reference external" href="http://support.gnip.com/enrichments/">HERE</a>.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;derived;: &quot; {
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;derived&quot;: {
 		&quot;locations&quot;: [{}],
-    &quot;klout&quot;: [{}}
-   }quot;
+                &quot;klout&quot;: [{}]
+          }
 </pre></div>
 </div>
 </td>
@@ -183,35 +187,6 @@ Example:</p>
 </td>
 </tr>
 
-</tbody>
-</table>
-
-## Other Attributes Provided with Other Endpoints
-
-<table border="1" class="docutils">
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-
-<tr class="row-even"><td>contributors_enabled</td>
-<td>Boolean</td>
-<td><p class="first">Indicates that the user has an account with &#8220;contributor mode&#8221; enabled, allowing for Tweets issued by the user to be co-authored by
-another account. Rarely <code class="docutils literal"><span class="pre">true</span></code> (this is a legacy field)
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;contributors_enabled&quot;: false
-</pre></div>
-</div>
-</td>
-</tr>
 <tr class="row-odd"><td>created_at</td>
 <td>String</td>
 <td><p class="first">The UTC datetime that the user account was created on Twitter.
@@ -222,129 +197,25 @@ Example:</p>
 </td>
 </tr>
 
-<tr class="row-even"><td>withheld_in_countries</td>
+<tr class="row-even"><td>utc_offset</td>
+<td>Int</td>
+<td><p class="first"><em>Nullable</em> . The offset from GMT/UTC in seconds.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;utc_offset&quot;: -18000
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>time_zone</td>
 <td>String</td>
-<td><p class="first">When present, indicates a textual representation of the two-letter country codes this user is withheld from.
+<td><p class="first"><em>Nullable</em> . A string describing the Time Zone this user declares themselves within.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;withheld_in_countries&quot;: &quot;GR, HK, MY&quot;
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;time_zone&quot;: &quot;Pacific Time (US &amp; Canada)&quot;
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td>withheld_scope</td>
-<td>String</td>
-<td><p class="first">When present, indicates whether the content being withheld is the &#8220;status&#8221; or a &#8220;user.&#8221;
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;withheld_scope&quot;: &quot;user&quot;
-</pre></div>
-</div>
-</td>
-</tr>
-
-</tbody>
-</table>
-
-
-
-## Deprecated Attributes
-
-<table border="1" class="docutils">
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-
-<tr class="row-even"><td>is_translator</td>
-<td>Boolean</td>
-<td><p class="first">When true, indicates that the user is a participant in Twitter&#8217;s <a class="reference external" href="http://translate.twitter.com">translator community</a> .
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;is_translator&quot;: false
-</pre></div>
-</div>
-</td>
-</tr>
-
-
-</tbody>
-</table>
-
-
-
-
-
-
-
-<tr class="row-even"><td>default_profile</td>
-<td>Boolean</td>
-<td><p class="first">When true, indicates that the user has not altered the theme or background of their user profile.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;default_profile&quot;: false
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td>default_profile_image</td>
-<td>Boolean</td>
-<td><p class="first">When true, indicates that the user has not uploaded their own profile image and a default image is used instead.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;default_profile_image&quot;: false
-</pre></div>
-</div>
-</td>
-</tr>
-
-<tr class="row-odd"><td>entities</td>
-<td><a class="reference external" href="/overview/api/entities">Entities</a></td>
-<td><p class="first">Entities which have been parsed out of the <code class="docutils literal"><span class="pre">url</span></code> or <code class="docutils literal"><span class="pre">description</span></code> fields defined by the user. Read more
-about <a class="reference external" href="/overview/api/entities">User Entities</a> .</p>
-<p>Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;entities&quot;: {
-  &quot;url&quot;: {
-    &quot;urls&quot;: [
-      {
-        &quot;url&quot;: &quot;http://dev.twitter.com&quot;,
-        &quot;expanded_url&quot;: null,
-        &quot;indices&quot;: [0, 22]
-      }
-    ]
-  },
-  &quot;description&quot;: {&quot;urls&quot;:[] }
-}
-</pre></div>
-</div>
-</td>
-</tr>
-
-<tr class="row-odd"><td>follow_request_sent</td>
-<td>Type</td>
-<td><p class="first"><em>Nullable</em> . <em>Perspectival</em> . When true, indicates that the authenticating user has issued a follow request to this protected user
-account.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;follow_request_sent&quot;: false
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td>following</td>
-<td>Type</td>
-<td><p class="first"><em>Nullable</em> . <em>Perspectival</em> . <em>Deprecated.</em> When true, indicates that the authenticating user is following this user. Some false
-negatives are possible when set to &#8220;false,&#8221; but these false negatives are increasingly being represented as &#8220;null&#8221; instead. See
-<a class="reference external" href="http://groups.google.com/group/twitter-development-talk/browse_thread/thread/42ba883b9f8e3c6e?tvc=2">Discussion</a> .
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;following&quot;: true
-</pre></div>
-</div>
-</td>
-</tr>
-
 
 <tr class="row-odd"><td>geo_enabled</td>
 <td>Boolean</td>
@@ -356,7 +227,6 @@ Example:</p>
 </div>
 </td>
 </tr>
-
 
 <tr class="row-odd"><td>lang</td>
 <td>String</td>
@@ -371,14 +241,17 @@ Examples:</p>
 </td>
 </tr>
 
-
-
-<tr class="row-odd"><td>notifications</td>
+<tr class="row-even"><td>contributors_enabled</td>
 <td>Boolean</td>
-<td><em>Nullable</em> . <em>Deprecated.</em> May incorrectly report &#8220;false&#8221; at times. Indicates whether the authenticated user has chosen to receive
-this user&#8217;s Tweets by SMS.
-<a class="reference external" href="http://groups.google.com/group/twitter-development-talk/browse_thread/thread/42ba883b9f8e3c6e?tvc=2">Discussion</a></td>
+<td><p class="first">Indicates that the user has an account with &#8220;contributor mode&#8221; enabled, allowing for Tweets issued by the user to be co-authored by
+another account. Rarely <code class="docutils literal"><span class="pre">true</span></code> (this is a legacy field)
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;contributors_enabled&quot;: false
+</pre></div>
+</div>
+</td>
 </tr>
+
 <tr class="row-even"><td>profile_background_color</td>
 <td>String</td>
 <td><p class="first">The hexadecimal color chosen by the user for their background.
@@ -503,6 +376,83 @@ Example:</p>
 </td>
 </tr>
 
+<tr class="row-even"><td>default_profile</td>
+<td>Boolean</td>
+<td><p class="first">When true, indicates that the user has not altered the theme or background of their user profile.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;default_profile&quot;: false
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>default_profile_image</td>
+<td>Boolean</td>
+<td><p class="first">When true, indicates that the user has not uploaded their own profile image and a default image is used instead.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;default_profile_image&quot;: false
+</pre></div>
+</div>
+</td>
+</tr>
+
+
+
+
+</tbody>
+</table>
+
+## Other Attributes Provided with Other Endpoints?
+
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attribute</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+
+<tr class="row-odd"><td>entities</td>
+<td><a class="reference external" href="/overview/api/entities">Entities</a></td>
+<td><p class="first">Entities which have been parsed out of the <code class="docutils literal"><span class="pre">url</span></code> or <code class="docutils literal"><span class="pre">description</span></code> fields defined by the user. Read more
+about <a class="reference external" href="/overview/api/entities">User Entities</a> .</p>
+<p>Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;entities&quot;: {
+  &quot;url&quot;: {
+    &quot;urls&quot;: [
+      {
+        &quot;url&quot;: &quot;http://dev.twitter.com&quot;,
+        &quot;expanded_url&quot;: null,
+        &quot;indices&quot;: [0, 22]
+      }
+    ]
+  },
+  &quot;description&quot;: {&quot;urls&quot;:[] }
+}
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>follow_request_sent</td>
+<td>Type</td>
+<td><p class="first"><em>Nullable</em> . <em>Perspectival</em> . When true, indicates that the authenticating user has issued a follow request to this protected user
+account.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;follow_request_sent&quot;: false
+</pre></div>
+</div>
+</td>
+</tr>
+
+
+
+
 
 <tr class="row-even"><td>status</td>
 <td><a class="reference external" href="/overview/api/tweets">Tweets</a></td>
@@ -554,28 +504,80 @@ Example:</p>
 </td>
 </tr>
 
-<tr class="row-even"><td>time_zone</td>
+<tr class="row-even"><td>withheld_in_countries</td>
 <td>String</td>
-<td><p class="first"><em>Nullable</em> . A string describing the Time Zone this user declares themselves within.
+<td><p class="first">When present, indicates a textual representation of the two-letter country codes this user is withheld from.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;time_zone&quot;: &quot;Pacific Time (US &amp; Canada)&quot;
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;withheld_in_countries&quot;: &quot;GR, HK, MY&quot;
 </pre></div>
 </div>
 </td>
 </tr>
 
-<tr class="row-even"><td>utc_offset</td>
-<td>Int</td>
-<td><p class="first"><em>Nullable</em> . The offset from GMT/UTC in seconds.
+<tr class="row-odd"><td>withheld_scope</td>
+<td>String</td>
+<td><p class="first">When present, indicates whether the content being withheld is the &#8220;status&#8221; or a &#8220;user.&#8221;
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;utc_offset&quot;: -18000
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;withheld_scope&quot;: &quot;user&quot;
 </pre></div>
 </div>
 </td>
+</tr>
+
+
+
+</tbody>
+</table>
+
+
+
+## Deprecated Attributes
+
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+
+<tr class="row-even"><td>is_translator</td>
+<td>Boolean</td>
+<td><p class="first">When true, indicates that the user is a participant in Twitter&#8217;s <a class="reference external" href="http://translate.twitter.com">translator community</a> .
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;is_translator&quot;: false
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>following</td>
+<td>Type</td>
+<td><p class="first"><em>Nullable</em> . <em>Perspectival</em> . <em>Deprecated.</em> When true, indicates that the authenticating user is following this user. Some false
+negatives are possible when set to &#8220;false,&#8221; but these false negatives are increasingly being represented as &#8220;null&#8221; instead. See
+<a class="reference external" href="http://groups.google.com/group/twitter-development-talk/browse_thread/thread/42ba883b9f8e3c6e?tvc=2">Discussion</a> .
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;following&quot;: true
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>notifications</td>
+<td>Boolean</td>
+<td><em>Nullable</em> . <em>Deprecated.</em> May incorrectly report &#8220;false&#8221; at times. Indicates whether the authenticated user has chosen to receive
+this user&#8217;s Tweets by SMS.
+<a class="reference external" href="http://groups.google.com/group/twitter-development-talk/browse_thread/thread/42ba883b9f8e3c6e?tvc=2">Discussion</a></td>
 </tr>
 
 
 </tbody>
 </table>
-</div>
-</div>
+
+
