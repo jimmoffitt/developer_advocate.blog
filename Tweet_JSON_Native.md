@@ -224,9 +224,123 @@ Example:</p>
 </td>
 </tr>
 
+<tr class="row-odd"><td>quote_count</td>
+<td>Integer</td>
+<td><p class="first"><em>Nullable</em> Indicates approximately how many times this Tweet has been quoted by Twitter users.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;quote_count&quot;:1138
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>reply_count</td>
+<td>Int</td>
+<td><p class="first">Number of times this Tweet has been replied to.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;reply_count&quot;:1585
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>retweet_count</td>
+<td>Int</td>
+<td><p class="first">Number of times this Tweet has been retweeted.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;retweet_count&quot;:1585
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>favorite_count</td>
+<td>Integer</td>
+<td><p class="first"><em>Nullable</em> Indicates approximately how many times this Tweet has been  <a class="reference external" href="/rest/reference/post/favorites/create">liked</a>  by
+Twitter users.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;favorite_count&quot;:1138
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>entities</td>
+<td><a class="reference external" href="/overview/api/entities">Entities</a></td>
+<td><p class="first">Entities which have been parsed out of the text of the Tweet. Additionally see <a class="reference external" href="/overview/api/entities-in-twitter-objects">Entities in Twitter
+Objects</a> .
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;entities&quot;:
+{
+    &quot;hashtags&quot;:[],
+    &quot;urls&quot;:[],
+    &quot;user_mentions&quot;:[],
+    &quot;symbols&quot;:[]
+}
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>favorited</td>
+<td>Boolean</td>
+<td><p class="first"><em>Nullable</em> <em>Perspectival</em> Indicates whether this Tweet has been liked by the authenticating user.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;favorited&quot;:true
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>retweeted</td>
+<td>Boolean</td>
+<td><p class="first"><em>Perspectival</em> Indicates whether this Tweet has been Retweeted by the authenticating user.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;retweeted&quot;:false
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>possibly_sensitive</td>
+<td>Boolean</td>
+<td><p class="first"><em>Nullable</em> This field only surfaces when a Tweet contains a link. The meaning of the field doesn&#8217;t pertain to the Tweet content
+itself, but instead it is an indicator that the URL contained in the Tweet may contain content or media identified as sensitive
+content.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;possibly_sensitive&quot;:true
+</pre></div>
+</div>
+</td>
+</tr>
 
 
 
+
+
+
+
+
+
+</tbody>
+</table>
+
+
+
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>contributors</td>
 
 
 
@@ -282,48 +396,13 @@ Example:</p>
 
 
 
-<tr class="row-even"><td>entities</td>
-<td><a class="reference external" href="/overview/api/entities">Entities</a></td>
-<td><p class="first">Entities which have been parsed out of the text of the Tweet. Additionally see <a class="reference external" href="/overview/api/entities-in-twitter-objects">Entities in Twitter
-Objects</a> .
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;entities&quot;:
-{
-    &quot;hashtags&quot;:[],
-    &quot;urls&quot;:[],
-    &quot;user_mentions&quot;:[]
-}
-</pre></div>
-</div>
-</td>
-</tr>
 
 
 
 
 
 
-<tr class="row-odd"><td>favorite_count</td>
-<td>Integer</td>
-<td><p class="first"><em>Nullable</em> Indicates approximately how many times this Tweet has been  <a class="reference external" href="/rest/reference/post/favorites/create">liked</a>  by
-Twitter users.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;favorite_count&quot;:1138
-</pre></div>
-</div>
-</td>
-</tr>
 
-
-<tr class="row-even"><td>favorited</td>
-<td>Boolean</td>
-<td><p class="first"><em>Nullable</em> <em>Perspectival</em> Indicates whether this Tweet has been liked by the authenticating user.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;favorited&quot;:true
-</pre></div>
-</div>
-</td>
-</tr>
 
 
 
@@ -368,17 +447,7 @@ Example:</p>
 
 
 
-<tr class="row-even"><td>possibly_sensitive</td>
-<td>Boolean</td>
-<td><p class="first"><em>Nullable</em> This field only surfaces when a Tweet contains a link. The meaning of the field doesn&#8217;t pertain to the Tweet content
-itself, but instead it is an indicator that the URL contained in the Tweet may contain content or media identified as sensitive
-content.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;possibly_sensitive&quot;:true
-</pre></div>
-</div>
-</td>
-</tr>
+
 
 
 
@@ -434,29 +503,11 @@ Example:</p>
 
 
 
-<tr class="row-odd"><td>retweet_count</td>
-<td>Int</td>
-<td><p class="first">Number of times this Tweet has been retweeted.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;retweet_count&quot;:1585
-</pre></div>
-</div>
-</td>
-</tr>
 
 
 
 
 
-<tr class="row-even"><td>retweeted</td>
-<td>Boolean</td>
-<td><p class="first"><em>Perspectival</em> Indicates whether this Tweet has been retweeted by the authenticating user.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;retweeted&quot;:false
-</pre></div>
-</div>
-</td>
-</tr>
 
 
 
@@ -556,6 +607,7 @@ Example:</p>
 </div>
 </td>
 </tr>
+
 <tr class="row-odd"><td>type</td>
 <td>String</td>
 <td><p class="first">The type of data encoded in the coordinates property. This will be &#8220;Point&#8221; for Tweet coordinates fields.
