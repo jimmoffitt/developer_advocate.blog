@@ -1,9 +1,9 @@
 # Native Format Data Dictionaries
 
-For a detailed introduction to how Tweets are encoded in JSON, see [HERE](). 
+For a detailed introduction to how Tweets are encoded in JSON, see [HERE]().  <-- arriving soon?
 
 These JSON attribute dictionaries are specifically for the Tweets delivered by the following Twitter products:
-+ Twitter Firehose
++ Twitter Firehose 
 + Real-time PowerTrack
 + Historical PowerTrack
 + Twitter Search APIs (Full-Archive Search and 30-Day Search)
