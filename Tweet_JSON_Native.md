@@ -428,7 +428,6 @@ Other attributes served by Public API (?):
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>contributors</td>
 
 <tr class="row-odd"><td>current_user_retweet</td>
 <td>Object</td>
@@ -480,32 +479,6 @@ content is withheld from. Twitter supports the following non-country values for 
 
 </tbody>
 </table>
-
-
-
-<table border="1" class="docutils">
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>contributors</td>
-
-</tbody>
-</table>
-
-
-
-
-
-
 
 
 <h2> Other Objects --------------------- </h2>
