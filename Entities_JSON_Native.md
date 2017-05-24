@@ -4,6 +4,7 @@
 + [Twitter Entities](#entities)
 + [Entities Data Dictionary](#entities-data-dictionary)
 + [Extended Entities Data Dictionary](#extended-entities-data-dictionary)
++ [Example Native JSON](#example-json)
 
 ## Twitter Entities <a id="entities" class="tall">&nbsp;</a>
 
@@ -524,3 +525,250 @@ Example:</p>
 
 ## Extended Entities Data Dictionary <a id="extended-entities-data-dictionary" class="tall">&nbsp;</a>
 
+## Native JSON Examples <a id="example-json" class="tall">&nbsp;</a>
+
+```json
+{
+  "entities": {
+    "hashtags": [
+      {
+        "text": "hashtag",
+        "indices": [
+          59,
+          67
+        ]
+      }
+    ],
+    "urls": [
+      {
+        "url": "https:\/\/t.co\/RzmrQ6wAzD",
+        "expanded_url": "http:\/\/bit.ly\/2pUk4be",
+        "display_url": "bit.ly\/2pUk4be",
+        "unwound": {
+          "url": "https:\/\/blog.gnip.com\/tweeting-in-the-rain\/",
+          "status": 200,
+          "title": "Tweeting in the Rain, Part 1 - Gnip Blog - Social Data and Data Science Blog",
+          "description": "If you would have told me a few years ago that one day I\u2019d be comparing precipitation and social media time-series data, I would have assumed you were joking. \u00a0For 13 years at OneRain I helped develop software and monitoring \u2026 Continue reading \u2192"
+        },
+        "indices": [
+          35,
+          58
+        ]
+      }
+    ],
+    "user_mentions": [
+      {
+        "screen_name": "MentionThis",
+        "name": "Just Me",
+        "id": 50247739,
+        "id_str": "50247739",
+        "indices": [
+          16,
+          28
+        ]
+      }
+    ],
+    "symbols": [
+      {
+        "text": "twtr",
+        "indices": [
+          29,
+          34
+        ]
+      }
+    ],
+    "media": [
+      {
+        "id": 8.6162747224416e+17,
+        "id_str": "861627472244162561",
+        "indices": [
+          68,
+          91
+        ],
+        "media_url": "http:\/\/pbs.twimg.com\/media\/C_UdnvPUwAE3Dnn.jpg",
+        "media_url_https": "https:\/\/pbs.twimg.com\/media\/C_UdnvPUwAE3Dnn.jpg",
+        "url": "https:\/\/t.co\/9r69akA484",
+        "display_url": "pic.twitter.com\/9r69akA484",
+        "expanded_url": "https:\/\/twitter.com\/FloodSocial\/status\/861627479294746624\/photo\/1",
+        "type": "photo",
+        "sizes": {
+          "medium": {
+            "w": 1200,
+            "h": 900,
+            "resize": "fit"
+          },
+          "small": {
+            "w": 680,
+            "h": 510,
+            "resize": "fit"
+          },
+          "thumb": {
+            "w": 150,
+            "h": 150,
+            "resize": "crop"
+          },
+          "large": {
+            "w": 2048,
+            "h": 1536,
+            "resize": "fit"
+          }
+        }
+      }
+    ]
+  }
+}
+```
+
+
+```json
+{
+  "extended_entities": {
+    "media": [
+      {
+        "id": 8.6162747224416e+17,
+        "id_str": "861627472244162561",
+        "indices": [
+          68,
+          91
+        ],
+        "media_url": "http:\/\/pbs.twimg.com\/media\/C_UdnvPUwAE3Dnn.jpg",
+        "media_url_https": "https:\/\/pbs.twimg.com\/media\/C_UdnvPUwAE3Dnn.jpg",
+        "url": "https:\/\/t.co\/9r69akA484",
+        "display_url": "pic.twitter.com\/9r69akA484",
+        "expanded_url": "https:\/\/twitter.com\/FloodSocial\/status\/861627479294746624\/photo\/1",
+        "type": "photo",
+        "sizes": {
+          "medium": {
+            "w": 1200,
+            "h": 900,
+            "resize": "fit"
+          },
+          "small": {
+            "w": 680,
+            "h": 510,
+            "resize": "fit"
+          },
+          "thumb": {
+            "w": 150,
+            "h": 150,
+            "resize": "crop"
+          },
+          "large": {
+            "w": 2048,
+            "h": 1536,
+            "resize": "fit"
+          }
+        }
+      },
+      {
+        "id": 8.616274722442e+17,
+        "id_str": "861627472244203520",
+        "indices": [
+          68,
+          91
+        ],
+        "media_url": "http:\/\/pbs.twimg.com\/media\/C_UdnvPVYAAZbEs.jpg",
+        "media_url_https": "https:\/\/pbs.twimg.com\/media\/C_UdnvPVYAAZbEs.jpg",
+        "url": "https:\/\/t.co\/9r69akA484",
+        "display_url": "pic.twitter.com\/9r69akA484",
+        "expanded_url": "https:\/\/twitter.com\/FloodSocial\/status\/861627479294746624\/photo\/1",
+        "type": "photo",
+        "sizes": {
+          "small": {
+            "w": 680,
+            "h": 680,
+            "resize": "fit"
+          },
+          "thumb": {
+            "w": 150,
+            "h": 150,
+            "resize": "crop"
+          },
+          "medium": {
+            "w": 1200,
+            "h": 1200,
+            "resize": "fit"
+          },
+          "large": {
+            "w": 2048,
+            "h": 2048,
+            "resize": "fit"
+          }
+        }
+      },
+      {
+        "id": 8.6162747414415e+17,
+        "id_str": "861627474144149504",
+        "indices": [
+          68,
+          91
+        ],
+        "media_url": "http:\/\/pbs.twimg.com\/media\/C_Udn2UUQAADZIS.jpg",
+        "media_url_https": "https:\/\/pbs.twimg.com\/media\/C_Udn2UUQAADZIS.jpg",
+        "url": "https:\/\/t.co\/9r69akA484",
+        "display_url": "pic.twitter.com\/9r69akA484",
+        "expanded_url": "https:\/\/twitter.com\/FloodSocial\/status\/861627479294746624\/photo\/1",
+        "type": "photo",
+        "sizes": {
+          "medium": {
+            "w": 1200,
+            "h": 900,
+            "resize": "fit"
+          },
+          "small": {
+            "w": 680,
+            "h": 510,
+            "resize": "fit"
+          },
+          "thumb": {
+            "w": 150,
+            "h": 150,
+            "resize": "crop"
+          },
+          "large": {
+            "w": 2048,
+            "h": 1536,
+            "resize": "fit"
+          }
+        }
+      },
+      {
+        "id": 8.6162747476071e+17,
+        "id_str": "861627474760708096",
+        "indices": [
+          68,
+          91
+        ],
+        "media_url": "http:\/\/pbs.twimg.com\/media\/C_Udn4nUMAAgcIa.jpg",
+        "media_url_https": "https:\/\/pbs.twimg.com\/media\/C_Udn4nUMAAgcIa.jpg",
+        "url": "https:\/\/t.co\/9r69akA484",
+        "display_url": "pic.twitter.com\/9r69akA484",
+        "expanded_url": "https:\/\/twitter.com\/FloodSocial\/status\/861627479294746624\/photo\/1",
+        "type": "photo",
+        "sizes": {
+          "small": {
+            "w": 680,
+            "h": 680,
+            "resize": "fit"
+          },
+          "thumb": {
+            "w": 150,
+            "h": 150,
+            "resize": "crop"
+          },
+          "medium": {
+            "w": 1200,
+            "h": 1200,
+            "resize": "fit"
+          },
+          "large": {
+            "w": 2048,
+            "h": 2048,
+            "resize": "fit"
+          }
+        }
+      }
+    ]
+  }
+}
+```
