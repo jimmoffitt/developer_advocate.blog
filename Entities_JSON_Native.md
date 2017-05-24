@@ -1,10 +1,9 @@
 [] TODOS
-+ [] Add symbols
+[] Add symbols
 
 + [Twitter Entities](#entities)
 + [Entities Data Dictionary](#entities-data-dictionary)
 + [Extended Entities Data Dictionary](#extended-entities-data-dictionary)
-
 
 ## Twitter Entities <a id="entities" class="tall">&nbsp;</a>
 
