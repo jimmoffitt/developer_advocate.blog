@@ -7,7 +7,7 @@ Below you will find Data Dictionaries for fundamental Twitter objects that make 
   + Entities - Contains arrays of #hashtags, @mentions, $symbols, URLs, and media.
   + Extended Entities - Contains up to four native photos.
   + Retweeted Status - Contains the original Tweet, the one that was Retweeted.
-  + Quoted Status - <?> 
+  + Quoted Status - Contains the original Tweet, the one that was Quoted.
   
 For a detailed introduction to how Tweets are encoded in JSON, see [HERE]().  <-- arriving soon?
 
@@ -79,10 +79,6 @@ considered valid characters.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;text&quot;:&quot;Tweet Button, Follow Button, and Web Intents javascript now support SSL http:\/\/t.co\/9fbA0oYy ^TS&quot;
 </pre></div>
-
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>PowerTrack Operators: most 
-</pre></div>
-
 
 </div>
 </td>
