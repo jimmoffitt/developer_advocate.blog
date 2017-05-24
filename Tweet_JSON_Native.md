@@ -2,23 +2,20 @@
 
 ## Introduction
 
-Below you will find Data Dictionaries for fundamental Twitter objects that make up a Tweet:
+Below you will find Data Dictionaries for fundamental Twitter objects that make up a Tweet. For a detailed introduction to how Tweets are encoded in JSON, see [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/introToTweetJSON.md).  <-- arriving soon?
+
+
 
 + [Tweet](#tweet) - Also referred to as a 'Status' object, 'root-level' attributes, _parent_ of other objects.
   + [User](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/User_JSON_Native.md) - Twitter Account level metadata.
   + [Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains arrays of #hashtags, @mentions, $symbols, URLs, and media.
   + [Extended Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains up to four native photos.  
-  + Places
-    + Coordinates
+  + [Places]()
+    + [Coordinates]()
   
 When a JSON payload represents a Retweet or Quoted Tweet, then there are Tweet objects included, complete with two User objects, with this addtional Tweet metadata provided:
-
  + Retweeted Status - Contains the original Tweet, the one that was Retweeted.
  + Quoted Status - Contains the original Tweet, the one that was Quoted.
-
-  
-For a detailed introduction to how Tweets are encoded in JSON, see [HERE]().  <-- arriving soon?
-For information on what PowerTrack Operators match on what JSON metadata, and what Operators are available in what Twitter products, see [HERE]().
 
 These JSON attribute dictionaries are specifically for the Tweets delivered by the following Twitter products:
 + Twitter Firehose 
@@ -29,6 +26,11 @@ These JSON attribute dictionaries are specifically for the Tweets delivered by t
 Please note that Tweets sourced elsewhere may vary somewhat in structure from this document.
 
 Consumers of Tweets should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing. 
+  
+Other resources:  
++ 
++ For information on what PowerTrack Operators match on what JSON metadata, and what Operators are available in what Twitter products, see [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/operatorJSON.md).
+
   
 ## Tweet Data Dictionary <a id="tweet" class="tall">&nbsp;</a>
 
