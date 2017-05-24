@@ -84,7 +84,7 @@ Example:</p>
 <td>Array of <a class="reference external" href="#obj-usermention">Object</a></td>
 <td><p class="first">Represents $cashtags included in the text of the Tweet.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;hashtags&quot;:[{&quot;indices&quot;:[12,16],&quot;text&quot;:&quot;twtr&quot;}]
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;hashtags&quot;:[{&quot;indices&quot;:[12,17],&quot;text&quot;:&quot;twtr&quot;}]
 </pre></div>
 </div>
 </td>
@@ -502,16 +502,16 @@ Example:</p>
 location of the $ character in the Tweet text string. The second integer represents the location of the first character after the
 cashtag. Therefore the difference between the two numbers will be the length of the hashtag name plus one (for the &#8216;$&#8217; character).
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;indices&quot;:[32,36]
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;indices&quot;:[12,17]
 </pre></div>
 </div>
 </td>
 </tr>
 <tr class="row-odd"><td>text</td>
 <td>String</td>
-<td><p class="first">Name of the hashtag, minus the leading &#8216;#&#8217; character.
+<td><p class="first">Name of the cashhtag, minus the leading &#8216;$&#8217; character.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;text&quot;:&quot;lol&quot;
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;text&quot;:&quot;twtr&quot;
 </pre></div>
 </div>
 </td>
