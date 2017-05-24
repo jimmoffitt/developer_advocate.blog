@@ -1,5 +1,14 @@
 # Native Format Data Dictionaries
 
+Below you will find Data Dictionaries for fundamental Twitter objects that make up a Tweet:
+
++ Tweet - Also referred to as a 'Status' object, 'root-level' attributes, _parent_ of other objects.
+  + User - Twitter Account level metadata.
+  + Entities - Contains arrays of #hashtags, @mentions, $symbols, URLs, and media.
+  + Extended Entities - Contains up to four native photos.
+  + Retweeted Status - Contains the original Tweet, the one that was Retweeted.
+  + Quoted Status - <?> 
+  
 For a detailed introduction to how Tweets are encoded in JSON, see [HERE]().  <-- arriving soon?
 
 These JSON attribute dictionaries are specifically for the Tweets delivered by the following Twitter products:
@@ -8,16 +17,9 @@ These JSON attribute dictionaries are specifically for the Tweets delivered by t
 + Historical PowerTrack
 + Twitter Search APIs (Full-Archive Search and 30-Day Search)
 
-Consumers of Tweets should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing. Please note that Tweets found in Search results vary somewhat in structure from this document.
+Please note that Tweets sourced elsewhere may vary somewhat in structure from this document.
 
-Below you will find Data Dictionaries for fundamental Twitter objects that make up a Tweet:
-
-+ Tweet (also referred to as a 'Status' object, 'root-level' attributes, _parent_ of other objects)
-  + User
-  + Entities
-  + Extended Entities
-  + Retweeted Status
-  + Quoted Status
+Consumers of Tweets should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing. 
   
 ## Tweet Object
 
@@ -77,6 +79,11 @@ considered valid characters.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;text&quot;:&quot;Tweet Button, Follow Button, and Web Intents javascript now support SSL http:\/\/t.co\/9fbA0oYy ^TS&quot;
 </pre></div>
+
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>PowerTrack Operators: most 
+</pre></div>
+
+
 </div>
 </td>
 </tr>
