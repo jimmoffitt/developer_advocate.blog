@@ -337,7 +337,22 @@ Example:</p>
     &quot;hashtags&quot;:[],
     &quot;urls&quot;:[],
     &quot;user_mentions&quot;:[],
+    &quot;media&quot;:[],
     &quot;symbols&quot;:[]
+}
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>extended_entities</td>
+<td><a class="reference external" href="/overview/api/entities">Entities</a></td>
+<td><p class="first">When between one and four native photos are in Tweet, contains an array 'media' metadata. Additionally see <a class="reference external" href="/overview/api/entities-in-twitter-objects">Entities in Twitter
+Objects</a> .
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;entities&quot;:
+{
+    &quot;media&quot;:[]
 }
 </pre></div>
 </div>
