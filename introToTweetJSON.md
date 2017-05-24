@@ -25,12 +25,8 @@ When a JSON payload represents a Retweet or Quoted Tweet, then there are Tweet o
 
   + Retweeted Status - Contains the original Tweet, the one that was Retweeted.
   + Quoted Status - Contains the original Tweet, the one that was Quoted.
-
-    
-+ Retweeted Status - Contains the original Tweet, the one that was Retweeted.
-+ Quoted Status - Contains the original Tweet, the one that was Quoted.
-  
-Check out this article on identifying Retweets.
+ 
+Also, check out [this article on identifying Retweets and Quote Tweets](http://support.gnip.com/articles/identifying-and-understanding-retweets.html).
   
 ## Child objects.
   
