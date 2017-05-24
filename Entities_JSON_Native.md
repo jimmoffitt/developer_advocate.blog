@@ -1,14 +1,21 @@
 [] TODOS
 + [] Add symbols
 
-<h1>Entities<a class="headerlink" href="#entities" title="Permalink to this headline"></a></h1>
-<div class="toctree-wrapper compound" id="id1">
-</div>
-<p>Entities provide metadata and additional contextual information about content posted on Twitter. Entities are never divorced from the content they describe. Entities are returned wherever <a class="reference external" href="/overview/api/tweets">Tweets</a> are found in the API. Entities are instrumental in <a class="reference external" href="/basics/tco">resolving URLs</a>.</p>
-<p>Read <a class="reference external" href="/overview/api/entities-in-twitter-objects">Entities in Objects</a> for a more comprehensive guide to how entities are used throughout Twitter objects.</p>
-<div class="section" id="field-guide">
-<h2>Field Guide<a class="headerlink" href="#field-guide" title="Permalink to this headline">¶</a></h2>
-<p>Consumers of Entities should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.</p>
++ [Twitter Entities](#entities)
++ [Entities Data Dictionary](#entities-data-dictionary)
++ [Extended Entities Data Dictionary](#extended-entities-data-dictionary)
+
+
+## Twitter Entities <a id="entities" class="tall">&nbsp;</a>
+
+Entities provide metadata and additional contextual information about content posted on Twitter. Entities are never divorced from the content they describe. Entities are returned wherever Tweets are found in the API. Entities are instrumental in resolving URLs.
+
+< More about entities > 
+
+## Entities Data Dictionary <a id="entities-data-dictionary" class="tall">&nbsp;</a>
+
+Consumers of Entities should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.</p>
+
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
@@ -459,3 +466,7 @@ Example:</p>
 </div>
 </div>
 </div>
+
+
+## Extended Entities Data Dictionary <a id="extended-entities-data-dictionary" class="tall">&nbsp;</a>
+
