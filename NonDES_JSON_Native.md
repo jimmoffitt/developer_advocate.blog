@@ -102,7 +102,19 @@ content is withheld from. Twitter supports the following non-country values for 
 
 
 
-
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attribute</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
 
 
 
@@ -176,35 +188,3 @@ content is withheld from. Twitter supports the following non-country values for 
 </tbody>
 </table>
 
-
-### Other attributes served by other sources:
-
-[] Include? Remove?
-
-<table border="1" class="docutils">
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Attribute</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-
-<tr class="row-odd"><td>current_user_retweet</td>
-<td>Object</td>
-<td><p class="first"><em>Perspectival</em> Only surfaces on methods supporting the      <code class="docutils literal"><span class="pre">include_my_retweet</span></code>     parameter, when set to true. Details the
-Tweet ID of the user&#8217;s own retweet (if existent) of this Tweet.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;current_user_retweet&quot;: {
-  &quot;id&quot;: 26815871309,
-  &quot;id_str&quot;: &quot;26815871309&quot;
-}
-</pre></div>
-</div>
-</td>
-</tr>
