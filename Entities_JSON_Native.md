@@ -82,9 +82,9 @@ Example:</p>
 
 <tr class="row-odd"><td>symbols</td>
 <td>Array of <a class="reference external" href="#obj-usermention">Object</a></td>
-<td><p class="first">Represents $cashtags included in the text of the Tweet.
+<td><p class="first">Represents symbols, i.e. $cashtags, included in the text of the Tweet.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;hashtags&quot;:[{&quot;indices&quot;:[12,17],&quot;text&quot;:&quot;twtr&quot;}]
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;symbols&quot;:[{&quot;indices&quot;:[12,17],&quot;text&quot;:&quot;twtr&quot;}]
 </pre></div>
 </div>
 </td>
