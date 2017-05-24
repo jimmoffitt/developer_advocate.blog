@@ -12,12 +12,21 @@ text
 user.screen_name
 ```
 
+< Note about Tweet JSON Formats: Native and Activity Stream>
+
 
 ## Tweet Object 
 
 + [Tweet](#tweet) - Also referred to as a 'Status' object, 'root-level' attributes, _parent_ of other objects.
+
+## Retweet and Quoted Tweet Objects
+    
++ Retweeted Status - Contains the original Tweet, the one that was Retweeted.
++ Quoted Status - Contains the original Tweet, the one that was Quoted.
   
- ## Child objects.
+Check out this article on identifying Retweets.
+  
+## Child objects.
   
   + [User](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/User_JSON_Native.md) - Twitter Account level metadata.
   + [Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains arrays of #hashtags, @mentions, $symbols, URLs, and media.
@@ -26,9 +35,13 @@ user.screen_name
   + Places
   + Coordinates
   
+ 
   
-  + Retweeted Status - Contains the original Tweet, the one that was Retweeted.
-  + Quoted Status - Contains the original Tweet, the one that was Quoted.
+## Tweet JSON Examples
   
-  ## Tweet JSON Formats: Native and Activity Stream
+  
+## Next Steps
+
++ Data Dictionaries
++ Learn more about what JSON attribute filters are available in Twitter Products.
   
