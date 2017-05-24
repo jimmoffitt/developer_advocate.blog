@@ -522,8 +522,22 @@ Example:</p>
 </div>
 
 
-
 ## Extended Entities Data Dictionary <a id="extended-entities-data-dictionary" class="tall">&nbsp;</a>
+
+```json
+{
+  "extended_entities": {
+    "media": [
+      
+    ]
+  }
+}
+```
+
+
+Tweet with hashtag, user mention, cashtag, URL, and four native photos: https://twitter.com/FloodSocial/status/861627479294746624
+Quoted Tweet of that one containing new text, hashtag, user mention, and cashtag: https://twitter.com/FloodSocial/status/865604154676432896
+
 
 ## Native JSON Examples <a id="example-json" class="tall">&nbsp;</a>
 
