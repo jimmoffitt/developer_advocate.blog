@@ -3,9 +3,9 @@
 Below you will find Data Dictionaries for fundamental Twitter objects that make up a Tweet:
 
 + Tweet - Also referred to as a 'Status' object, 'root-level' attributes, _parent_ of other objects.
-  + User - Twitter Account level metadata.
-  + Entities - Contains arrays of #hashtags, @mentions, $symbols, URLs, and media.
-  + Extended Entities - Contains up to four native photos.
+  + [User](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/User_JSON_Native.md) - Twitter Account level metadata.
+  + [Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains arrays of #hashtags, @mentions, $symbols, URLs, and media.
+  + [Extended Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains up to four native photos.
   + Retweeted Status - Contains the original Tweet, the one that was Retweeted.
   + Quoted Status - Contains the original Tweet, the one that was Quoted.
   
