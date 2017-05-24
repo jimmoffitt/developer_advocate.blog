@@ -20,6 +20,12 @@ user.screen_name
 + [Tweet](#tweet) - Also referred to as a 'Status' object, 'root-level' attributes, _parent_ of other objects.
 
 ## Retweet and Quoted Tweet Objects
+
+When a JSON payload represents a Retweet or Quoted Tweet, then there are Tweet objects included, complete with two User objects, with this addtional Tweet metadata provided:
+
+  + Retweeted Status - Contains the original Tweet, the one that was Retweeted.
+  + Quoted Status - Contains the original Tweet, the one that was Quoted.
+
     
 + Retweeted Status - Contains the original Tweet, the one that was Retweeted.
 + Quoted Status - Contains the original Tweet, the one that was Quoted.
@@ -32,9 +38,9 @@ Check out this article on identifying Retweets.
   + [Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains arrays of #hashtags, @mentions, $symbols, URLs, and media.
   + [Extended Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains up to four native photos.
   
+When a Tweet has been geo-tagged with either an exact location or a Twitter Place, these objects are of interest:
   + Places
   + Coordinates
-  
  
   
 ## Tweet JSON Examples
