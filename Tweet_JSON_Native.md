@@ -162,7 +162,7 @@ Example:</p>
 </tr>
 
 <tr class="row-odd"><td>user</td>
-<td><a class="reference external" href="/overview/api/users">Users</a></td>
+<td><a class="reference external" href="https://github.com/jimmoffitt/developer_advocate.blog/blob/master/User_JSON_Native.md">Users</a></td>
 <td><p class="first">The user who posted this Tweet. Perspectival attributes embedded within this object are unreliable.</p>
 <p>Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;user&quot;:{&quot;statuses_count&quot;:3080, &quot;favourites_count&quot;:22, &quot;protected&quot;:false, &quot;profile_text_color&quot;:&quot;437792&quot;, &quot;profile_image_url&quot;:&quot;...&quot;
