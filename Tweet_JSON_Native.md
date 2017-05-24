@@ -1,15 +1,29 @@
 # Native Format Data Dictionaries
 
+When ingesting Tweet data the main object is the _Tweet Object_, which is a _parent_ object to many _child_ objects. For example, all Tweets include a User object that describe who authored the Tweet. If you are working with an oject is a Retweet or Quoted Tweet, then that object will contain two Tweet objects, complete with two User objects. If the Tweet is geo-tagged, there will be location and place objects included. Every Tweet includes a _entities_ object that encapsulates arrays of hashtags, user mentions, URLs, cashtags, and native media. If the Tweet has at lease one native photo, then there is an _extended_entities_ object with metadata for up to four photos.
+
+These objects are encoded using JavaScript Object Notation (JSON). JSON describes objects as a hierachy of objects and attributes.
+
 Below you will find Data Dictionaries for fundamental Twitter objects that make up a Tweet:
 
-+ Tweet - Also referred to as a 'Status' object, 'root-level' attributes, _parent_ of other objects.
++ [Tweet](#tweet) - Also referred to as a 'Status' object, 'root-level' attributes, _parent_ of other objects.
   + [User](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/User_JSON_Native.md) - Twitter Account level metadata.
   + [Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains arrays of #hashtags, @mentions, $symbols, URLs, and media.
   + [Extended Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains up to four native photos.
+  
+ 
+  
+  + Places
+  + Coordinates
+  
+  
   + Retweeted Status - Contains the original Tweet, the one that was Retweeted.
   + Quoted Status - Contains the original Tweet, the one that was Quoted.
   
+  
+  
 For a detailed introduction to how Tweets are encoded in JSON, see [HERE]().  <-- arriving soon?
+For information on what PowerTrack Operators match on what JSON metadata, and what Operators are available in what Twitter products, see [HERE]().
 
 These JSON attribute dictionaries are specifically for the Tweets delivered by the following Twitter products:
 + Twitter Firehose 
@@ -21,7 +35,7 @@ Please note that Tweets sourced elsewhere may vary somewhat in structure from th
 
 Consumers of Tweets should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing. 
   
-## Tweet Data Dictionay
+## Tweet Data Dictionay <a id="tweet" class="tall">&nbsp;</a>
 
 <table border="1" class="docutils">
 <colgroup>
