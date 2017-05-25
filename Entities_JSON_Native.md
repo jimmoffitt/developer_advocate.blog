@@ -82,26 +82,6 @@ The one exception is poll data. The 'polls' metadata will only be present when t
 
 The _extended_entities_ metadata is present when any 'native' media is attached using the Twitter user-interface. This includes up to four photos, a single GIF, or a single video. The type of media is specified in the _extended_entities.media[].type_ attribute and is set to either _photo_, _video_, or _animated_gif_.
 
-```json
-
-"extended_entities": {
-    "media": [
-      {
-        "id": 8.678334773576e+17,
-        "id_str": "867833477357604865",
-        "indices": [
-          54,
-          77
-        ],
-        "media_url": "http:\/\/pbs.twimg.com\/tweet_video_thumb\/DAsp8x4XkAEdVoq.jpg",
-        "media_url_https": "https:\/\/pbs.twimg.com\/tweet_video_thumb\/DAsp8x4XkAEdVoq.jpg",
-        "url": "https:\/\/t.co\/jcmbHXdLx5",
-        "display_url": "pic.twitter.com\/jcmbHXdLx5",
-        "expanded_url": "https:\/\/twitter.com\/FloodSocial\/status\/867833485049724929\/photo\/1",
-        "type": "animated_gif",
-
-
-
 ## Entities Data Dictionary <a id="entities-data-dictionary" class="tall">&nbsp;</a>
 
 Consumers of Entities should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.</p>
