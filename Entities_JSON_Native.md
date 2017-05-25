@@ -541,6 +541,9 @@ Quoted Tweet of that one containing new text, hashtag, user mention, and cashtag
 
 ## Native JSON Examples <a id="example-json" class="tall">&nbsp;</a>
 
+
+### Twitter _entities_
+
 ```json
 {
   "entities": {
@@ -632,6 +635,13 @@ Quoted Tweet of that one containing new text, hashtag, user mention, and cashtag
   }
 }
 ```
+
+
+### Twitter _extended_entities_
+Below is the extended entities metadata for this Tweet: https://twitter.com/FloodSocial/status/861627479294746624
+
+Only in this 'extended' payload will you find the four (maximum) native photos. Notice that the first photo in the array is the same as the single photo included in the non-extended Twitter _entities_ section. The _media_ metadata structure for photos is the same for both _entities_ and _extended_entities_ sections. 
+
 
 
 ```json
