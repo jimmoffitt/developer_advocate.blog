@@ -6,11 +6,37 @@
 + [Extended Entities Data Dictionary](#extended-entities-data-dictionary)
 + [Example Native JSON](#example-json)
 
-## Twitter Entities <a id="entities" class="tall">&nbsp;</a>
+## Twitter Entities and Extended Entities<a id="entities" class="tall">&nbsp;</a>
 
-Entities provide metadata and additional contextual information about content posted on Twitter. Entities are never divorced from the content they describe. Entities are returned wherever Tweets are found in the API. Entities are instrumental in resolving URLs.
+Entities provide metadata and additional contextual information about content posted on Twitter. These entities include hashtags, user mentions, URLs, symbols (cashtags), Twitter polls, and native media. 
 
-< More about entities > 
+If a Tweet contains native media, there will also be a _extended_entities_ section. (this metadata should be referenced instead 
+
+
+
+Entities are never divorced from the content they describe. Entities are returned wherever Tweets are found in the API. Entities are instrumental in resolving URLs.
+
+The _extended_entities_ metadata is present when any 'native' media is attached using the Twitter user-interface. This includes up to four photos, a single GIF, or a single video. The type of media is specified in the _extended_entities.media[].type_ attribute and is set to either _photo_, _video_, or _animated_gif_.
+
+```json
+
+"extended_entities": {
+    "media": [
+      {
+        "id": 8.678334773576e+17,
+        "id_str": "867833477357604865",
+        "indices": [
+          54,
+          77
+        ],
+        "media_url": "http:\/\/pbs.twimg.com\/tweet_video_thumb\/DAsp8x4XkAEdVoq.jpg",
+        "media_url_https": "https:\/\/pbs.twimg.com\/tweet_video_thumb\/DAsp8x4XkAEdVoq.jpg",
+        "url": "https:\/\/t.co\/jcmbHXdLx5",
+        "display_url": "pic.twitter.com\/jcmbHXdLx5",
+        "expanded_url": "https:\/\/twitter.com\/FloodSocial\/status\/867833485049724929\/photo\/1",
+        "type": "animated_gif",
+
+
 
 ## Entities Data Dictionary <a id="entities-data-dictionary" class="tall">&nbsp;</a>
 
@@ -161,6 +187,7 @@ Example:</p>
 </div>
 </td>
 </tr>
+
 <tr class="row-even"><td>id</td>
 <td>Int64</td>
 <td><p class="first">ID of the media expressed as a 64-bit integer.
@@ -170,6 +197,7 @@ Example:</p>
 </div>
 </td>
 </tr>
+
 <tr class="row-odd"><td>id_str</td>
 <td>String</td>
 <td><p class="first">ID of the media expressed as a string.
@@ -179,6 +207,7 @@ Example:</p>
 </div>
 </td>
 </tr>
+
 <tr class="row-even"><td>indices</td>
 <td>Array of Int</td>
 <td><p class="first">An array of integers indicating the offsets within the Tweet text where the URL begins and ends. The first integer represents the
@@ -190,6 +219,7 @@ Example:</p>
 </div>
 </td>
 </tr>
+
 <tr class="row-odd"><td>media_url</td>
 <td>String</td>
 <td><p class="first">An <a class="reference external" href="http://">http://</a> URL pointing directly to the uploaded media file.
@@ -202,6 +232,7 @@ via an authenticated twitter.com session or by signing a request with the user&#
 directly embed these images in a web page.</p>
 </td>
 </tr>
+
 <tr class="row-even"><td>media_url_https</td>
 <td>String</td>
 <td><p class="first">An <a class="reference external" href="https://">https://</a> URL pointing directly to the uploaded media file, for embedding on https pages.
@@ -213,6 +244,7 @@ Example:</p>
 a request with the user&#8217;s access token using OAuth 1.0A. It is not possible to directly embed these images in a web page.</p>
 </td>
 </tr>
+
 <tr class="row-odd"><td>sizes</td>
 <td><a class="reference external" href="#obj-sizes">Object</a></td>
 <td><p class="first">An object showing available sizes for the media file.
@@ -223,33 +255,37 @@ Example:</p>
 </div>
 </td>
 </tr>
+
 <tr class="row-even"><td>source_status_id</td>
 <td><a class="reference external" href="#obj-sizes">Int64</a></td>
-<td><p class="first">For Tweets containing media that was originally associated with a different tweet, this ID points to the original Tweet.
+<td><p class="first">Nullable. For Tweets containing media that was originally associated with a different tweet, this ID points to the original Tweet.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;source_status_id&quot;: 205282515685081088
 </pre></div>
 </div>
 </td>
 </tr>
+
 <tr class="row-odd"><td>source_status_id_str</td>
 <td><a class="reference external" href="#obj-sizes">Int64</a></td>
-<td><p class="first">For Tweets containing media that was originally associated with a different tweet, this string-based ID points to the original Tweet.
+<td><p class="first">Nullable. For Tweets containing media that was originally associated with a different tweet, this string-based ID points to the original Tweet.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;source_status_id_str&quot;: &quot;205282515685081088&quot;
 </pre></div>
 </div>
 </td>
 </tr>
+
 <tr class="row-even"><td>type</td>
 <td>String</td>
-<td><p class="first">Type of uploaded media.
+<td><p class="first">Type of uploaded media. Possible types include photo, video, and animated_gif.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;type&quot;:&quot;photo&quot;
 </pre></div>
 </div>
 </td>
 </tr>
+
 <tr class="row-odd"><td>url</td>
 <td>String</td>
 <td><p class="first">Wrapped URL for the media link. This corresponds with the URL embedded directly into the raw Tweet text, and the values for the
@@ -260,6 +296,7 @@ Example:</p>
 </div>
 </td>
 </tr>
+
 </tbody>
 </table>
 </div>
@@ -638,9 +675,15 @@ Quoted Tweet of that one containing new text, hashtag, user mention, and cashtag
 
 
 ### Twitter _extended_entities_
+
+
+
+
 Below is the extended entities metadata for this Tweet: https://twitter.com/FloodSocial/status/861627479294746624
 
 Only in this 'extended' payload will you find the four (maximum) native photos. Notice that the first photo in the array is the same as the single photo included in the non-extended Twitter _entities_ section. The _media_ metadata structure for photos is the same for both _entities_ and _extended_entities_ sections. 
+
+
 
 
 
