@@ -1,5 +1,64 @@
 [] TODOS
-[] Add symbols
++ [] Add symbols
++ [] Add polling metadata
+
+```json
+"polls": [
+      {
+        "options": [
+          {
+            "position": 1,
+            "text": "Testing is important"
+          },
+          {
+            "position": 2,
+            "text": "who needs it?"
+          },
+          {
+            "position": 3,
+            "text": "my customers test"
+          }
+        ],
+        "end_datetime": "Thu May 25 22:20:27 +0000 2017",
+        "duration_minutes": 60
+      }
+    ]
+  }
+```  
+
++ [] Add Video extended entities details
+
+```json
+"video_info": {
+          "aspect_ratio": [
+            9,
+            16
+          ],
+          "duration_millis": 28243,
+          "variants": [
+            {
+              "bitrate": 832000,
+              "content_type": "video\/mp4",
+              "url": "https:\/\/video.twimg.com\/ext_tw_video\/867833229482635265\/pu\/vid\/360x640\/ESCOjk0Mf6qyb2cH.mp4"
+            },
+            {
+              "bitrate": 320000,
+              "content_type": "video\/mp4",
+              "url": "https:\/\/video.twimg.com\/ext_tw_video\/867833229482635265\/pu\/vid\/180x320\/nKsu8KSwL2lo2ez7.mp4"
+            },
+            {
+              "content_type": "application\/x-mpegURL",
+              "url": "https:\/\/video.twimg.com\/ext_tw_video\/867833229482635265\/pu\/pl\/wCsBDhxFS0Nkakfj.m3u8"
+            },
+            {
+              "bitrate": 2176000,
+              "content_type": "video\/mp4",
+              "url": "https:\/\/video.twimg.com\/ext_tw_video\/867833229482635265\/pu\/vid\/720x1280\/n-apEhXDY81_75bq.mp4"
+            }
+          ]
+        }
+ ```       
+
 
 + [Twitter Entities](#entities)
 + [Entities Data Dictionary](#entities-data-dictionary)
@@ -8,13 +67,18 @@
 
 ## Twitter Entities and Extended Entities<a id="entities" class="tall">&nbsp;</a>
 
-Entities provide metadata and additional contextual information about content posted on Twitter. These entities include hashtags, user mentions, URLs, symbols (cashtags), Twitter polls, and native media. 
+Entities provide metadata and additional contextual information about content posted on Twitter. These entities include hashtags, user mentions, URLs, symbols (cashtags), Twitter polls, and _native_ media (photos, videos, and GIFs shared via the Twitter user-interface). 
 
-If a Tweet contains native media, there will also be a _extended_entities_ section. (this metadata should be referenced instead 
+If a Tweet contains native media, there will also be a _extended_entities_ section. When it comes to native media, the _extended_entities_ is the preferred metadata source for several reasons. Currently, up to four photos can be attached to a Tweet. The  _entities_ metadata will only contain the first photo (until 2014, only one photo could be included), while the _extended_entities_ will include all attached photos. Another deficiency with the _entities.media_ metadata is that the media type will always indicate 'photo', even in cases where the attached media is a video or animated GIF. When it comes to native media, the _extended_entities_ metadata is the way to go.   
 
+Entities are never divorced from the content they describe. Entities are returned wherever Tweets are found in the API. Entities are instrumental in resolving URLs. The core 'top-level' entities array structures are present, even when corresponding entities are not present in the Tweet, with one exception. For example, a Tweet with no hashtags will still have the following JSON structure:
 
-
-Entities are never divorced from the content they describe. Entities are returned wherever Tweets are found in the API. Entities are instrumental in resolving URLs.
+```json
+"entities": {
+    "hashtags": [
+    ],
+```
+The one exception is poll data. The 'polls' metadata will only be present when the Tweet contains a Twitter poll. 
 
 The _extended_entities_ metadata is present when any 'native' media is attached using the Twitter user-interface. This includes up to four photos, a single GIF, or a single video. The type of media is specified in the _extended_entities.media[].type_ attribute and is set to either _photo_, _video_, or _animated_gif_.
 
