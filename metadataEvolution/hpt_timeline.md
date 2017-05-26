@@ -14,7 +14,7 @@ tl;dr
 
 #### Introduction  <a id="intro" class="tall">&nbsp;</a>
 
-How Twitter evolved as a platform, and how that affected the JSON used to encode Tweets, is discussed [here](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md). That article also begins the discussion of how these JSON details affect creating the filters needed to find your historical signal of interest. This article continues that discussion by exploring how these details affect writing filters for Historical PowerTrack. 
+How Twitter evolved as a platform, and how that affected the JSON used to encode Tweets, is discussed [here](http://support.gnip.com/articles/tweet-timeline.html). That article also begins the discussion of how these JSON details affect creating the filters needed to find your historical signal of interest. This article continues that discussion by exploring how these details affect writing filters with the Historical PowerTrack API. 
 
 ### Product Overview <a id="overview" class="tall">&nbsp;</a>
 
