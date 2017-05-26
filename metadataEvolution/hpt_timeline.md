@@ -89,7 +89,7 @@ Given all the above timeline information, it is clear that there are a lot of de
 + Some metadata have 'born-on' dates so filters can result in *false negatives*. Such searches include Operators reliant on metadata that did not exist for all or part of the search period. For example, if you are searching for Tweets with the ```has:videos``` Operator, you will not have any matches for periods before February 10, 2015. That is because that Operator matches on *native* videos (attached to a Tweet using the Twitter user-interface). For a more complete data set of video-sharing Tweets, filters for before Febuary 10, 2015 would need to contain rule clauses that match on common URLs for video hosting.
 + Some metadata, such as user profiles, have been backfilled with metadata from a time *after* the Tweet was posted. 
 
-As discussed [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md#identifying-and-filtering-on-tweet-attributes-important-to-your-use-case-) there are several attribute types that are commonly focused on when creating PowerTrack queries:
+As discussed [HERE](http://support.gnip.com/articles/tweet-timeline.html#filteringTips) there are several attribute types that are commonly focused on when creating PowerTrack queries:
 
 + Twitter Profiles
 + Original or shared Tweets
