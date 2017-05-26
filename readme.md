@@ -27,7 +27,7 @@ __Developer Advocate blog__ ...from the client-side perspective.
 *  Adventures in (Raspberry) Pi: https://github.com/jimmoffitt/pi-adventures 
      
 ### Articles up at http://support.gnip.com/articles:
-
+- [Tweet Metadata Timeline](http://support.gnip.com/articles/tweet-timeline.html)
 - [Updating Twitter Hosebird Client for PowerTrack 2.0](http://support.gnip.com/articles/updating-hbc-for-ptv2.html)
 - [Consuming Streaming Data](http://support.gnip.com/articles/consuming-streaming-data.html)
 - [Migrating PowerTrack Rules from Version 1.0 to 2.0](http://support.gnip.com/articles/migrating-powertrack-rules.html)
