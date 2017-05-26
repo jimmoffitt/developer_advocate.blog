@@ -12,7 +12,7 @@ tl;dr
 + [Filtering Tips](#filteringTips)
 + [Next Steps](#nextSteps)
 
-### Introduction  <a id="intro" class="tall">&nbsp;</a>
+#### Introduction  <a id="intro" class="tall">&nbsp;</a>
 
 How Twitter evolved as a platform, and how that affected the JSON used to encode Tweets, is discussed [here](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md). That article also begins the discussion of how these JSON details affect creating the filters needed to find your historical signal of interest. This article continues that discussion by exploring how these details affect writing filters for Historical PowerTrack. 
 
@@ -36,7 +36,7 @@ As mentioned [in our documentation](http://support.gnip.com/apis/historical_api2
 + Docs say Profile Geo starts August 1, 2013, testing shows it starts June 4, 2013.
 ```
 
-### Metadata timeline <a id="metadataTimeline" class="tall">&nbsp;</a>
+### Metadata timelines <a id="metadataTimeline" class="tall">&nbsp;</a>
 
 Below is a timeline of when [Historical PowerTrack Operators](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators) begin matching. In some cases Operator matching begins well *after* a 'communication convention' becomes commonplace on Twitter. For example, @replies emerged as a user convention in 2006, but did not become a 'first-class' *object* or *event* with 'supporting' JSON until early 2007. Accordingly, matching on @replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
 
@@ -90,6 +90,7 @@ Given all the above timeline information, it is clear that there are a lot of de
 + Some metadata, such as user profiles, have been backfilled with metadata from a time *after* the Tweet was posted. 
 
 As discussed [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md#identifying-and-filtering-on-tweet-attributes-important-to-your-use-case-) there are several attribute types that are commonly focused on when creating PowerTrack queries:
+
 + Twitter Profiles
 + Original or shared Tweets
 + Tweet language classification
@@ -137,8 +138,15 @@ Here are when related PowerTrack Operators begin matching:
 + 2016 July 28 - ```url_title:``` and ```url_description:``` with the [Enhanced URLs enrichment](http://support.gnip.com/enrichments/enhanced_urls.html)
 
 ### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
+
+If you are ready to start digging into Historical PowerTrack API documentation: 
 + [Learn more about Historical PowerTrack API](http://support.gnip.com/apis/historical_api2.0/)
-+ [Learn more about the evolution of Tweet metadata]()
+
++ To learn more general overview of the evolution of Tweet metadata
++ [Learn more about the evolution of Tweet metadata](http://support.gnip.com/articles/tweet-timeline.html)
+
+Stay tuned for these upcoming articles:
++ [Learn more about the Full-Archive Search API and its metadata and filtering timeline]()
 + [Choosing between Historical PowerTrack and Search API]()
 
 
