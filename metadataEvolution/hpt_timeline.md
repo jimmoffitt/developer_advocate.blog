@@ -139,13 +139,11 @@ Here are when related PowerTrack Operators begin matching:
 
 ### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
 
-If you are ready to start digging into Historical PowerTrack API documentation: 
-+ [Learn more about Historical PowerTrack API](http://support.gnip.com/apis/historical_api2.0/)
+If you are ready to start digging into Historical PowerTrack API documentation, see [HERE](http://support.gnip.com/apis/historical_api2.0/). 
 
-+ To learn more general overview of the evolution of Tweet metadata
-+ [Learn more about the evolution of Tweet metadata](http://support.gnip.com/articles/tweet-timeline.html)
+To learn more general overview of the evolution of Tweet metadata, see [HERE](http://support.gnip.com/articles/tweet-timeline.html)
 
-Stay tuned for these upcoming articles:
+Finally, stay tuned for these upcoming articles:
 + [Learn more about the Full-Archive Search API and its metadata and filtering timeline]()
 + [Choosing between Historical PowerTrack and Search API]()
 
