@@ -149,5 +149,4 @@ Here are when related Search Operators begin matching:
 + [Learn more about Historical PowerTrack and its metadata and filtering timeline](http://support.gnip.com/articles/hpt-timeline.html)
 
 **And stayed tuned for this upcoming article:**
-+ [Choosing between Historical PowerTrack and Search API]()
-
++ Choosing between Historical PowerTrack and Search API
