@@ -18,7 +18,7 @@ How Twitter evolved as a platform, and how that affected the JSON used to encode
 
 ### Product Overview <a id="overview" class="tall">&nbsp;</a>
 
-The Historical PowerTrack (HPT) API brings the same filtering capabilites developed for real-time streaming to the entire archive of public Tweets. The HPT API was launched in July 2012 by Gnip, and serves data from an archive first assembled for the HPT launch. HPT makes available every public Tweet ever posted, and was designed to deliver Tweet volumes _at scale_. 
+The Historical PowerTrack (HPT) API brings the same filtering capabilities developed for real-time streaming to the entire archive of public Tweets. The HPT API was launched in July 2012 by Gnip, and serves data from an archive first assembled for the HPT launch. HPT makes available every public Tweet ever posted, and was designed to deliver Tweet volumes _at scale_. 
 
 The HPT API is used to manage the life-cycle of an historical *Job*. Using the API a job is created with up to 1,000 filtering rules (each one up to 2,048 characters), covering a research period as long as needed. Next a rough estimate (order of magnitude accurate, *is there 100M Tweets associated with my filters, or 100,000) of associated Tweets is provided. If the Job is accepted, every single Tweet posted during the period of interest is examined for a match to any included rules. As matching Tweets are found they are written as JSON to a 10-minute time-series of datafiles for download.
 
