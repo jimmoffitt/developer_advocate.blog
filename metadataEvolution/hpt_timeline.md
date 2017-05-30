@@ -25,7 +25,7 @@ nav:
 
 ### Introduction  <a id="intro" class="tall">&nbsp;</a>
 
-How Twitter evolved as a platform, and how that affected the JavaScript Object Notation (JSON) used to encode Tweets, is discussed [here](http://support.gnip.com/articles/tweet-timeline.html). That article also begins the discussion of how these JSON details affect creating the filters needed to find your historical data of interest. This article continues that discussion by exploring how these details affect writing filters for Historical PowerTrack. 
+How Twitter evolved as a platform, and how that affected the JavaScript Object Notation (JSON) used to encode Tweets, is discussed [here](http://support.gnip.com/articles/tweet-timeline.html). That article also begins the discussion of how these JSON details affect creating the filters needed to find your historical data of interest. This article continues that discussion by exploring how these details affect writing filters for Historical PowerTrack. This, and a complementary article about Full-Archive Search, will serve as a 'compare and contrast' discussion of the two Twitter historical products.
 
 ### Product Overview <a id="overview" class="tall">&nbsp;</a>
 
