@@ -1,8 +1,26 @@
-+ [Introduction](#introduction)
-    + [Historical PowerTrack](#hpt)
-    + [Full-Archive Search API](#search)
-+ [Fundamental Differences](#differences)
-+ [Selecting a Historical Product](#choosing)
+---
+layout: help_article_nav
+category: article
+permalink: /articles/choosing-historical-api.html
+title: Choosing a Historical API  
+author: Jim Moffitt
+description: Understanding the similarities and differences between the Historical PowerTrack and Full-Archive Search APIs will help you pick the appropriate tool for your historical research.
+tags: historical twitter rules
+path:
+- name: Articles
+  link: /articles/
+heading: Choosing an Historical API
+nav:
+- name: Introduction
+  link: intro
+- name: Product Differences
+  link: differences
+- name: Selecting a Historical Product
+  link: choosing
+- name: Next Steps
+  link: nextSteps  
+
+---
 
 ## Choosing an Historical API 
 
@@ -123,3 +141,13 @@ This recommendation is intentionally vague as there is no real technical reason 
 Beyond data volume considerations and comparing completion times, there are other reasons why one historical product is best suited for your use case. Historical PowerTrack is the right product if you require any of the Operators that are not currently supported in Full-Archive Search (see above). Historical PowerTrack is also better suited for large query rulesets, as the Search API products only support a single PowerTrack rule per request. Historical PowerTrack, on the other hand, supports up to one thousand (1,000) rules. Finally, Historical PowerTrack is a great choice for use cases where receiving, in real-time, new Tweet attributes of interest (e.g. hashtags, mentions and URLs) trigger a historical request. Since Historical PowerTrack supports the same full set of Operators as real-time PowerTrack, you can always 'plug in' the corresponding real-time rules into a Historical PowerTrack Job. 
 
 On the otherhand, Full-Archive Search is a better choice if you are building tools that depend on near-instance results and data volume estimates. Quick responses are key if you are building historical Tweet results into a dashboard or user application. Full-Archive Search has been built into many systems that enable users to create filters and instantly inspect Tweets that match. Depending on initial responses, users can continue to paginate through the results, or instead revise the filter and retry. Since Full-Archive Search provides more accurate volume estimates with its 'counts' endpoint, another common Search use case is experimenting with filters before adding them to a real-time stream. 
+
+### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
+
++ [Learn more about Historical PowerTrack](http://support.gnip.com/apis/historical_api2.0/)
++ [Learn more about the Full-Archive Search API](http://support.gnip.com/apis/search_full_archive_api/)
++ [Learn more about the evolution of Tweet metadata](http://support.gnip.com/articles/tweet-timeline.html)
++ [Learn more about Historical PowerTrack and its metadata and filtering timeline](http://support.gnip.com/articles/hpt-timeline.html)
++ [Learn more about the Full-Archive Search API and its metadata and filtering timeline](http://support.gnip.com/articles/fas-timeline.html)
+
+
