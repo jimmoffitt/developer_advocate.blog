@@ -150,7 +150,7 @@ Here are when related PowerTrack Operators begin matching:
 + [Learn more about Historical PowerTrack API](http://support.gnip.com/apis/historical_api2.0/)
 + [Learn more about the evolution of Tweet metadata](http://support.gnip.com/articles/tweet-timeline.html)
 
-And stayed tuned for these upcoming articles:
+**And stayed tuned for these upcoming articles:**
 
 + Learn more about the Full-Archive Search API and its metadata and filtering timeline
 + Choosing between Historical PowerTrack and Search API
