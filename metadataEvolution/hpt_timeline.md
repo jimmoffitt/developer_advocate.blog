@@ -41,8 +41,8 @@ As mentioned [in our documentation](http://support.gnip.com/apis/historical_api2
 + **Geo**: Native geo data prior to 9/1/2011 is not available in Historical Powertrack. As a result, all operators reliant on this geo data will not be supported for jobs with a timeframe prior to this date.
 + **User Profile Data**: All data prior to 1/1/2011 contains user profile information as it appeared in that user’s profile in September 2011. (e.g @jack’s very first Tweet in March 2006 contains his bio data from September 2011 that references his position as CEO at Square, which was not in existence at the time of the Tweet)
 + **Followers and Friends Counts**: All data prior to 1/1/2011 contains followers and friends counts equal to zero. As a result, any rules based on non-zero counts for these metadata will not return any results for a timeframe prior to this date.
-+ Twitter language classifications begin appearing in November 2013.
-+ Profile Geo metadata begins appearing on June 4, 2013.
++ **Twitter language** classifications begin appearing in November 2013.
++ **Profile Geo** metadata begins appearing on June 4, 2013.
 
 ### Metadata timelines <a id="metadataTimeline" class="tall">&nbsp;</a>
 
