@@ -1,20 +1,32 @@
 
-## Full-Archive Search API: metadata and filtering timeline
-
-tl;dr
-
-*“As someone using the Full-Archive Search API to access Tweets of interest, I need to understand when query Operators first started matching Tweet JSON attributes."*
-
---------------------------------------------
-+ [Introduction](#intro)
-+ [Product Overview](#overview)
-+ [Matching Metadata Timelines](#metadataTimelines)
-+ [Filtering Tips](#filteringTips)
-+ [Next Steps](#nextSteps)
+---
+layout: help_article_nav
+category: article
+permalink: /articles/fas-timeline.html
+title: Full-Archive Search API: metadata and filtering timeline   
+author: Jim Moffitt
+description: When using Twitter's Full-Archive Search, it is important to understand when query Operators first start matching Tweet JSON attributes.
+tags: historical twitter rules
+path:
+- name: Articles
+  link: /articles/
+heading: Full-Archive Search Metadata Timeline 
+nav:
+- name: Introduction
+  link: intro
+- name: Product Overview
+  link: overview
+- name: Metadata Timeline
+  link: metadataTimeline
+- name: Filtering Tips
+  link: filteringTips
+- name: Next Steps
+  link: nextSteps
+---
 
 ### Introduction  <a id="intro" class="tall">&nbsp;</a>
 
-How Twitter evolved as a platform, and how that affected the JSON used to encode Tweets, is discussed [here](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md). That article also begins the discussion of how these JSON details affect creating the filters needed to find your historical signal of interest. This article continues that discussion by exploring how these details affect writing filters for Full-Archive Search. 
+How Twitter evolved as a platform, and how that affected the JSON used to encode Tweets, is discussed [here](http://support.gnip.com/articles/tweet-timeline.html). That article also begins the discussion of how these JSON details affect creating the filters needed to find your historical signal of interest. This article continues that discussion by exploring how these details affect writing filters for Full-Archive Search. This, and a complementary [article about Historical PowerTrack](http://support.gnip.com/articles/hpt-timeline.html), will serve as a 'compare and contrast' discussion of the two Twitter historical products.
 
 ### Product Overview <a id="overview" class="tall">&nbsp;</a>
 
@@ -26,19 +38,18 @@ Also, unlike HPT, there are Tweet attributes that are updated at the time a quer
 
 ### Metadata timelines <a id="metadataTimelines" class="tall">&nbsp;</a>
 
-Below is a timeline of when [Full-Archive Search API Operators](http://support.gnip.com/apis/search_full_archive_api/rules.html#Operators) begin matching. In some cases Operator matching begins well *after* a 'communication convention' becomes commonplace on Twitter. For example, @Replies emerged as a user convention in 2006, but did not become a *first-class object* or *event* with 'supporting' JSON until early 2007. Accordingly, matching on @Replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
+Below is a timeline of when [Full-Archive Search API Operators](http://support.gnip.com/apis/search_full_archive_api/rules.html#Operators) begin matching. In some cases Operator matching began well *after* a 'communication convention' becomes commonplace on Twitter (see [here](http://support.gnip.com/articles/tweet-timeline.html#keyConcepts) for a discussion of user conventions being integrated into the Twitter platform). For example, @Replies emerged as a user convention in 2006, but did not become a *first-class object* or *event* with 'supporting' JSON until early 2007. Accordingly, matching on @Replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
 
-The details provided here were generated using Full-Archive Search, and were informed by the Twitter timeline provided [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md). This timeline is not 100% complete or precise. If you identify another filtering/metadata "born on date" fundamental to your use-case, please let us know.
+The details provided here were generated using Full-Archive Search (a product of hundreds of searches), and were informed by the Twitter timeline provided [HERE](http://support.gnip.com/articles/tweet-timeline.html). This timeline is not 100% complete or precise. If you identify another filtering/metadata "born on date" fundamental to your use-case, please let us know.
 
 Note that the underlying Search index is subject to being rebuilt. Accordingly, these timeline details are subject to change.
 
-
 #### 2006
- + March 26 - ```lang:```
- + July 13 - ```has:mentions```
+ + March 26 - ```lang:```. An example of Tweet metadata being backfilled while generating the Search index.
+ + July 13 - ```has:mentions``` begins matching.
  + October 6 - ```has:symbols```. $cashtags (or symbols) for discussing stock symbols does not become common until early 2009. Until then most usage was probably slang (e.g., $slang). 
- + October 26 - ```has:links``` 
- + November 23 - ```has:hashtags``` 
+ + October 26 - ```has:links``` begins matching. 
+ + November 23 - ```has:hashtags``` begins matching. 
 
 #### 2007
  + January 30 - First first-class @reply (in_reply_to_user_id), ```reply_to_status_id:``` begins matching. 
@@ -76,7 +87,8 @@ Given all the above timeline information, it is clear that there are a lot of de
 + Some metadata have 'born-on' dates so filters can result in *false negatives*. Such searches include Operators reliant on metadata that did not exist for all of part of the search period. For example, if you are searching for Tweets with the ```has:images``` Operator, you will not have any matches for periods before July 2011. That is because that Operator matches on *native* photos (attached to a Tweet using the Twitter user-interface). For a more complete data set of photo-sharing Tweets, filters for before July 2011 would need to contain rule clauses that match on common URLs for photo hosting.
 + Some metadata has been backfilled with metadata from a time *after* the Tweet was posted. 
 
-As discussed [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md#filtering-tips-identifying-and-filtering-on-tweet-attributes-important-to-your-use-case-) there are several attribute types that are commonly focused on when creating PowerTrack queries:
+As discussed [HERE](http://support.gnip.com/articles/tweet-timeline.html#filteringTips) there are several attribute types that are commonly focused on when creating PowerTrack queries:
+
 + Twitter Profiles
 + Original or shared Tweets
 + Tweet language classification
@@ -87,11 +99,11 @@ Some of these have product-specific behavior while others have identical behavio
 
 #### Twitter Profiles
 
-The mutability of a Tweet’s profile metadata depends entirely on the historical product used. The Search APIs serve up historical Tweets with the profile settings as it is at the time of retrieval. If you request a Tweet from 2014, the user's profile metadata will reflect how it exists at query-time. 
+The mutability of a Tweet’s profile metadata depends entirely on the historical product used. The Search APIs serve up historical Tweets with the profile settings as it is at the _time of retrieval_. If you request a Tweet from 2014, the user's profile metadata will reflect how it exists at query-time. 
 
 #### Original Tweets and Retweets
 
-The PowerTrack ```is:retweet``` Operator enables users to eitehr include or exclude Retweets. Users of this Operator need to have two strategies for Retweet matching (or not matching) for data before August 2009. Before August 2009, the Tweet message itself needs to be checked, using exact phrase matching, for matches on the “@RT ” pattern. For periods after August 2009, the is:retweet Operator is available.
+The PowerTrack ```is:retweet``` Operator enables users to either include or exclude Retweets. Users of this Operator need to have two strategies for Retweet matching (or not matching) for data before August 2009. Before August 2009, the Tweet message itself needs to be checked, using exact phrase matching, for matches on the “@RT ” pattern (Actually, if you are filtering on Retweets from between May-August 2009, the "Via @" pattern should be included). For periods after August 2009, the is:retweet Operator is available.
 
 #### Tweet language classifications  
 
@@ -99,7 +111,7 @@ For filtering on a Tweet’s language classification, Twitter’s historical pro
 
 #### Geo-referencing Tweets  
 
-As discussed [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md) there are three primary ways to geo-reference Tweets:
+As discussed [HERE](http://support.gnip.com/articles/tweet-timeline.html#filteringTips) there are three primary ways to geo-reference Tweets:
 
    + **Geographical references in Tweet message.** Matching on geographic references in the Tweet message, while often the most challenging method since it depends on local knowledge, is an option for the entire Tweet archive. Here is an example geo-referenced match from 2006 for the San Francisco area based on a ‘golden gate’ filter: https://twitter.com/biz/statuses/28311
 
@@ -108,7 +120,7 @@ As discussed [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/m
       + March 6, 2010:  ```has:geo```, ```bounding_box:``` and ```point_radius:```
       + February 17, 2015:  ```place_country:``` and ```place:```
 
-   + **Account profile ‘home’ location set by user.**  As with Tweet geo, the methods to match and the time periods available depends on the Historical API you are using. Profile Geo Operators are available in both Historical PowerTrack and the Search APIs. With the Search APIs, these Profile Geo metadata is available starting in February 2015. For Tweets posted before the Profile Geo metadata, the bio_location: Operator is available which can be used to match on non-normalized user input. 
+   + **Account profile ‘home’ location set by user.**  As with Tweet geo, the methods to match and the time periods available depends on the Historical API you are using. Profile Geo Operators are available in both Historical PowerTrack and the Search APIs. With the Search APIs, these Profile Geo metadata is available starting in February 2015. For Tweets posted before the Profile Geo metadata, the ```bio_location:``` Operator is available which can be used to match on non-normalized user input. 
 
 #### Shared links and media 
 
@@ -130,8 +142,12 @@ Here are when related Search Operators begin matching:
 + 2015 February 10 - ```has:videos``` for native videos. Between 2010/08/28 and 2015/02/10, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com. 
 + 2016 May 1 - ```url_title:``` and ```url_description:```, based on the [Enhanced URLs enrichment](http://support.gnip.com/enrichments/enhanced_urls.html), generally available. First Enhanced URL metadata began appearing in December 2014. 
 
+
 #### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
 + [Learn more about the Full-Archive Search API](http://support.gnip.com/apis/search_full_archive_api/)
-+ [Learn more about the evolution of Tweet metadata]()
++ [Learn more about the evolution of Tweet metadata](http://support.gnip.com/articles/tweet-timeline.html)
++ [Learn more about Historical PowerTrack and its metadata and filtering timeline](http://support.gnip.com/articles/hpt-timeline.html)
+
+**And stayed tuned for this upcoming article:**
 + [Choosing between Historical PowerTrack and Search API]()
 
