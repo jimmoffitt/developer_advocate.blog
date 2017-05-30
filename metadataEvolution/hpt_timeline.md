@@ -113,21 +113,21 @@ With Historical PowerTrack, the profile is as it was at the time the Tweet was p
 
 #### Original Tweets and Retweets
 
-The PowerTrack ```is:retweet``` Operator enables users to eitehr include or exclude Retweets. Users of this Operator need to have two strategies for Retweet matching (or not matching) for data before August 2009. Before August 2009, the Tweet message itself needs to be checked, using exact phrase matching, for matches on the “@RT ” pattern. For periods after August 2009, the is:retweet Operator is available.
+The PowerTrack ```is:retweet``` Operator enables users to either include or exclude Retweets. Users of this Operator need to have two strategies for Retweet matching (or not matching) for data before August 2009. Before August 2009, the Tweet message itself needs to be checked, using exact phrase matching, for matches on the “@RT ” pattern (Actually, if you are filtering on Retweets from between May-August 2009, the "Via @" pattern should be included). For periods after August 2009, the is:retweet Operator is available.
 
 #### Tweet language classifications  
 
-For filtering on a Tweet’s language classification, Twitter’s historical products are quite different. With Historical PowerTrack, Twitter’s language classification metadata is available in the archive beginning on March 26, 2013. Note that the Gnip Language classification metadata is in the Activity Stream payload between March 2012 and launch of PowerTrack 2.0 in 2015. However, with that release there is no longer an Operator available to match on the Gnip language classification.
+For filtering on a Tweet’s language classification, Twitter’s historical products are quite different. With Historical PowerTrack, Twitter’s language classification metadata is available in the archive beginning in November 2012. Note that the Gnip Language classification metadata is in the Activity Stream payload between March 2012 and launch of PowerTrack 2.0 in 2015. However, with that release there is no longer an Operator available to match on the Gnip language classification.
 
 #### Geo-referencing Tweets  
 
-As discussed HERE there are three primary ways to geo-reference Tweets:
+As discussed [HERE](http://support.gnip.com/articles/geo-intro.html) there are three primary ways to geo-reference Tweets:
 
    + **Geographical references in Tweet message.** Matching on geographic references in the Tweet message, while often the most challenging method since it depends on local knowledge, is an option for the entire Tweet archive. Here is an example geo-referenced match from 2006 for the San Francisco area based on a ‘golden gate’ filter: https://twitter.com/biz/statuses/28311
 
    + **Tweets geo-tagged by the user.** The available geo-tagging history is dependent on the Historical API you are using. With Historical PowerTrack, geo-referencing starts on September 1, 2011. When the Historical PowerTrack archive was built, all geo-tagging before this date was not included. 
 
-   + **Account profile ‘home’ location set by user.**  As with Tweet geo, the methods to match and the time periods available depends on the Historical API you are using. With Historical PowerTrack, these Profile Geo metadata is available starting in June 2014. For Tweets posted before the Profile Geo metadata, the bio_location: Operator is available which can be used to match on non-normalized user input. 
+   + **Account profile ‘home’ location set by user.**  As with Tweet geo, the methods to match and the time periods available depends on the Historical API you are using. With Historical PowerTrack, these Profile Geo metadata is available starting in June 2014. For Tweets posted before the Profile Geo metadata, the ```bio_location:``` Operator is available which can be used to match on non-normalized user input. 
    
 #### Shared links and media 
 
@@ -140,9 +140,9 @@ In September 2016 Twitter introduced 'native attachments' where a trailing share
 Here are when related PowerTrack Operators begin matching:
 
 + 2006 November 1 - ```has:links```
-+ 2011 June 2 - ```has:images``` and ```has:media```
++ 2011 June 2 - ```has:images``` and ```has:media``` for native photos.
 + 2012 March 26 - ```url:``` with the [Expanded URLs enrichment](http://support.gnip.com/enrichments/expanded_urls.html)
-+ 2015 February 10 - ```has:videos```
++ 2015 February 10 - ```has:videos``` for native videos.
 + 2016 July 28 - ```url_title:``` and ```url_description:``` with the [Enhanced URLs enrichment](http://support.gnip.com/enrichments/enhanced_urls.html)
 
 ### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
