@@ -1,28 +1,39 @@
-## Historical PowerTrack API: metadata and filtering timeline  <a id="hptTimeline" class="tall">&nbsp;</a>
+---
+layout: help_article_nav
+category: article
+permalink: /articles/hpt-timeline.html
+title: Historical PowerTrack API: metadata and filtering timeline   
+author: Jim Moffitt
+description: When using Twitter's Historical PowerTrack, it is important to understand when PowerTrack Operators first start matching Tweet JSON attributes.
+tags: historical twitter rules
+path:
+- name: Articles
+  link: /articles/
+heading: Historical PowerTrack Metadata Timeline 
+nav:
+- name: Introduction
+  link: intro
+- name: Product Overview
+  link: overview
+- name: Metadata Timeline
+  link: metadataTimeline
+- name: Filtering Tips
+  link: filteringTips
+- name: Next Steps
+  link: nextSteps
+---
 
-tl;dr
+### Introduction  <a id="intro" class="tall">&nbsp;</a>
 
-*“As someone using Historical PowerTrack to access Tweets of interest, I need to understand when query Operators first started matching Tweet JSON attributes."*
-
---------------------------------------------
-
-+ [Introduction](#intro)
-+ [Product Overview](#overview)
-+ [Metadata and Matching Timelines](#metadataTimelines)
-+ [Filtering Tips](#filteringTips)
-+ [Next Steps](#nextSteps)
-
-#### Introduction  <a id="intro" class="tall">&nbsp;</a>
-
-How Twitter evolved as a platform, and how that affected the JSON used to encode Tweets, is discussed [here](http://support.gnip.com/articles/tweet-timeline.html). That article also begins the discussion of how these JSON details affect creating the filters needed to find your historical signal of interest. This article continues that discussion by exploring how these details affect writing filters with the Historical PowerTrack API. This, and a complementary article about Full-Archive Search, will serve as a 'compare and contrast' discussion of the two Twitter historical products.
+How Twitter evolved as a platform, and how that affected the JavaScript Object Notation (JSON) used to encode Tweets, is discussed [here](http://support.gnip.com/articles/tweet-timeline.html). That article also begins the discussion of how these JSON details affect creating the filters needed to find your historical data of interest. This article continues that discussion by exploring how these details affect writing filters for Historical PowerTrack. 
 
 ### Product Overview <a id="overview" class="tall">&nbsp;</a>
 
-The Historical PowerTrack (HPT) API brings the same filtering capabilities developed for real-time streaming to the entire archive of public Tweets. The HPT API was launched in July 2012 by Gnip, and serves data from an archive first assembled for the HPT launch. HPT makes available every public Tweet ever posted, and was designed to deliver Tweet volumes _at scale_. 
+The Historical PowerTrack (HPT) API brings the same filtering capabilities developed for real-time streaming to the entire archive of public Tweets. The HPT API was launched in July 2012 by Gnip, and serves data from an archive first assembled for the HPT launch. HPT makes available every public Tweet ever posted, and was designed to deliver Tweet volumes _at scale_.
 
-The HPT API is used to manage the life-cycle of an historical *Job*. Using the API a job is created with up to 1,000 filtering rules (each one up to 2,048 characters), covering a research period as long as needed. Next a rough estimate (order of magnitude accurate, *is there 100M Tweets associated with my filters, or 100,000) of associated Tweets is provided. If the Job is accepted, every single Tweet posted during the period of interest is examined for a match to any included rules. As matching Tweets are found they are written as JSON to a 10-minute time-series of datafiles for download.
+The HPT API is used to manage the lifecycle of a historical Job. Using the API, a Job is created with up to 1,000 filtering rules (each one up to 2,048 characters), covering a research period as long as needed. Next a rough estimate of associated Tweets is provided. This estimate is 'order of magnitude' accurate: *is there 100M Tweets associated with my filters, or 100,000? If the Job is accepted, _every single Tweet_ posted during the period of interest is examined for a match to any included rules. As matching Tweets are found they are written as JSON to a 10-minute time-series of datafiles for download.
 
-With Historical PowerTrack, Tweets are written to the archive as they are posted, and Tweet metadata is not updated when delivered. This is in constrast to Full-Archive Search, which updates select Tweet metadata during delivery (at _query time_). However, when the archive was built in 2012 it included Tweet JSON that had been normalized and backfilled to some extent. For example, the "entities" structure that contains hashtags, mentions, and symbols was built out for periods before those entities existed. Furthermore, some metadata, such as whether an account is verified, was backfilled. Accordingly, if you query for early Tweets from 2007, you'll find user profiles that are marked as verified, even though account verification did not begin until 2009.    
+With Historical PowerTrack, Tweets are written to the archive as they are posted. However, when the archive was built in 2012 it included Tweet JSON that had been normalized and backfilled to some extent. For example, the "entities" structure that contains hashtags, mentions, and symbols was built out for periods before those entities official existed (see [here](http://support.gnip.com/articles/tweet-timeline.html#keyConcepts) for more background). Furthermore, some metadata, such as whether an account is verified, was backfilled. Accordingly, if you query for early Tweets from 2007, you'll find user profiles that are marked as verified, even though account verification did not begin until 2009.    
 
 As mentioned [in our documentation](http://support.gnip.com/apis/historical_api2.0/overview.html#Caveats), there are important metadata details about the Historical PowerTrack archive: 
 
@@ -30,36 +41,31 @@ As mentioned [in our documentation](http://support.gnip.com/apis/historical_api2
 + **Geo**: Native geo data prior to 9/1/2011 is not available in Historical Powertrack. As a result, all operators reliant on this geo data will not be supported for jobs with a timeframe prior to this date.
 + **User Profile Data**: All data prior to 1/1/2011 contains user profile information as it appeared in that user’s profile in September 2011. (e.g @jack’s very first Tweet in March 2006 contains his bio data from September 2011 that references his position as CEO at Square, which was not in existence at the time of the Tweet)
 + **Followers and Friends Counts**: All data prior to 1/1/2011 contains followers and friends counts equal to zero. As a result, any rules based on non-zero counts for these metadata will not return any results for a timeframe prior to this date.
-
-```
-[] To-do: Doc/Product questions
-[Contradictions --> doc updates? others?]
-+ Docs say Twitter lang starts on March 26, 2013, testing shows it starts November 2012.
-+ Docs say Profile Geo starts August 1, 2013, testing shows it starts June 4, 2013.
-```
++ Twitter language classifications begin appearing in November 2013.
++ Profile Geo metadata begins appearing on June 4, 2013.
 
 ### Metadata timelines <a id="metadataTimeline" class="tall">&nbsp;</a>
 
-Below is a timeline of when [Historical PowerTrack Operators](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators) begin matching. In some cases Operator matching begins well *after* a 'communication convention' becomes commonplace on Twitter. For example, @replies emerged as a user convention in 2006, but did not become a 'first-class' *object* or *event* with 'supporting' JSON until early 2007. Accordingly, matching on @replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
+Below is a timeline of when [Historical PowerTrack Operators](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators) begin matching. In some cases Operator matching begins well *after* a 'communication convention' became commonplace on Twitter. For example, @replies emerged as a user convention in 2006, but did not become a ['first-class' *object* or *event* with 'supporting' JSON](http://support.gnip.com/articles/tweet-timeline.html#keyConcepts) until early 2007. Accordingly, matching on @replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
 
-The details provided here were generated using HPT, and were informed by the Twitter timeline provided [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/twtr_evolution.md). This timeline is not 100% complete or precise. If you identify another filtering/metadata "born on date" fundamental to your use-case, please let us know.  
+The details provided here were generated using HPT (well over 160 HPT Jobs!), and were informed by the Twitter timeline provided [HERE](http://support.gnip.com/articles/tweet-timeline.html). This timeline is not 100% complete or precise. If you identify another filtering/metadata "born on date" fundamental to your use-case, please let us know.  
 
 #### 2007
-+ January 3 - ```is:verified``` 
++ January 3 - ```is:verified``` begins matching.
 + January 30 - ```to:``` and ```in_reply_to_status_id:``` @Replies become a first-class event after becoming a user-convention in October 2006.
 + April 1 - ```has:hashtags``` and ```#``` Operator.  Hashtags become a common 'organizing' tool in August.  
 
 #### 2008
-+ February 27 - ```has:mentions``` and ```@``` Operator  
-+ February 27 - ```has:links``` and ```url:``` 
-+ September - ```emoji``` signal begins appears in HPT estimates  
++ February 27 - ```has:mentions``` and ```@``` Operator begin matching.  
++ February 27 - ```has:links``` and ```url:```  begin matching.
++ September - ```emoji``` signal begins appears in HPT estimates.  
 
 #### 2011
 + January 1 - ```is:retweet``` and ```retweet_of_status_id:```. Retweets became a convention as early as April 2007, but matching before this date depends on search for "RT @" or "Via @" patterns.  
 + January 1 - Followers and friends counts begin to be non-zero. ```followers_count:``` and ```friends_count:``` start having non-zero values to match on. 
-+ January 1 - User profiles begin to match profiles as they were when Tweet posted. Tweets before this date are set to user profile as they existed in September 2011. 
-+ June 2 - ```has:images``` and ```has:media```
-+ September 1 - ```has:geo```, ```place:```, ```place_country:```, ```bounding_box:``` and ```point_radius:```
++ January 1 - User profiles begin to match profiles as they were when Tweet posted. Tweets before this date have their user profiles set to how they existed in September 2011. 
++ June 2 - ```has:images``` and ```has:media``` begin matching.
++ September 1 - ```has:geo```, ```place:```, ```place_country:```, ```bounding_box:``` and ```point_radius:```.
 
 #### 2012
 + March 26 - Gnip introduces new data enrichments. 
@@ -69,15 +75,15 @@ The details provided here were generated using HPT, and were informed by the Twi
 + November - ```lang:``` Operator (matching on Twitter language classification).
 
 #### 2013
-+ June 4 - ```has:profile_geo```, ```profile_point_radius:```, ```profile_bounding_box:```, ```profile_country:```, ```profile_region:```, ```profile_subregion:```, and ```profile_locality:```
-+ August 20 - ```has:symbols``` and ```$``` Operator 
++ June 4 - ```has:profile_geo```, ```profile_point_radius:```, ```profile_bounding_box:```, ```profile_country:```, ```profile_region:```, ```profile_subregion:```, and ```profile_locality:```.
++ August 20 - ```has:symbols``` and ```$``` Operator. 
 
 #### 2015
-+ February 10 - ```has:videos```  
-+ September 28 - ```is:quote```
++ February 10 - ```has:videos``` begins matching on videos shared through Twitter's user-interface ('native' videos). 
++ September 28 - ```is:quote``` matching on Quoted Tweets. 
 
 #### 2016
-+ July 28 - ```url_title:``` and ```url_description:```
++ July 28 - ```url_title:``` and ```url_description:``` supported via [Enchanced URLs enrichment](http://support.gnip.com/enrichments/enhanced_urls.html).
 + July 28 - Klout 2.0 metadata in payloads. No associated Operators for these metadata.
 
 #### 2017
@@ -141,12 +147,11 @@ Here are when related PowerTrack Operators begin matching:
 
 ### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
 
-If you are ready to start digging into Historical PowerTrack API documentation, see [HERE](http://support.gnip.com/apis/historical_api2.0/). 
++ [Learn more about Historical PowerTrack API](http://support.gnip.com/apis/historical_api2.0/)
++ [Learn more about the evolution of Tweet metadata](http://support.gnip.com/articles/tweet-timeline.html)
 
-To learn more general overview of the evolution of Tweet metadata, see [HERE](http://support.gnip.com/articles/tweet-timeline.html)
+And stayed tuned for these upcoming articles:
 
-Finally, stay tuned for these upcoming articles:
-+ [Learn more about the Full-Archive Search API and its metadata and filtering timeline]()
-+ [Choosing between Historical PowerTrack and Search API]()
-
++ Learn more about the Full-Archive Search API and its metadata and filtering timeline
++ Choosing between Historical PowerTrack and Search API
 
