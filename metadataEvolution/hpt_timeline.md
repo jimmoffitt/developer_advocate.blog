@@ -123,7 +123,7 @@ For filtering on a Tweet’s language classification, Twitter’s historical pro
 
 As discussed [HERE](http://support.gnip.com/articles/geo-intro.html) there are three primary ways to geo-reference Tweets:
 
-   + **Geographical references in Tweet message.** Matching on geographic references in the Tweet message, while often the most challenging method since it depends on local knowledge, is an option for the entire Tweet archive. Here is an example geo-referenced match from 2006 for the San Francisco area based on a ‘golden gate’ filter: https://twitter.com/biz/statuses/28311
+   + **Geographical references in Tweet message.** Matching on geographic references in the Tweet message, while often the most challenging method since it depends on local knowledge, is an option for the entire Tweet archive. [Here](https://twitter.com/biz/statuses/28311) is an example geo-referenced match from 2006 for the San Francisco area based on a ‘golden gate’ filter. 
 
    + **Tweets geo-tagged by the user.** The available geo-tagging history is dependent on the Historical API you are using. With Historical PowerTrack, geo-referencing starts on September 1, 2011. When the Historical PowerTrack archive was built, all geo-tagging before this date was not included. 
 
