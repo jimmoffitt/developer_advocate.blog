@@ -74,9 +74,13 @@ If a Tweet contains native media, there will also be a _extended_entities_ secti
 Entities are never divorced from the content they describe. Entities are returned wherever Tweets are found in the API. Entities are instrumental in resolving URLs. The core 'top-level' entities array structures are present, even when corresponding entities are not present in the Tweet, with one exception. For example, a Tweet with no hashtags will still have the following JSON structure:
 
 ```json
-"entities": {
+{
+  "entities": {
     "hashtags": [
-    ],
+      
+    ]
+  }
+}
 ```
 The one exception is poll data. The 'polls' metadata will only be present when the Tweet contains a Twitter poll. 
 
@@ -101,7 +105,7 @@ Consumers of Entities should tolerate the addition of new fields and variance in
 <tbody valign="top">
 
 <tr class="row-even"><td>hashtags</td>
-<td>Array of <a class="reference external" href="#obj-hashtags">Hashtag Objects</a></td>
+<td>Array of <a class="reference external" href="#hashtag">Hashtag Objects</a></td>
 <td><p class="first">Represents hashtags which have been parsed out of the Tweet text.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;hashtags&quot;:[{&quot;indices&quot;:[32,36],&quot;text&quot;:&quot;lol&quot;}]
@@ -174,8 +178,9 @@ Example:</p>
 </tbody>
 </table>
 
+### Hashtag <a id="hashtag" class="tall">&nbsp;</a>
+
 <div class="section" id="hashtags">
-<h3>Hashtags<a class="headerlink" href="#hashtags" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
