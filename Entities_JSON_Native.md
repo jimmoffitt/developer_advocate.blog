@@ -889,6 +889,8 @@ Only in this 'extended' payload will you find the four (maximum) native photos. 
 
 #### Tweet with native video
 
+Below is the extended entities metadata for this Tweet with a video: https://twitter.com/FloodSocial/status/867833312600932352
+
 ```json
 
 {
@@ -964,6 +966,8 @@ Only in this 'extended' payload will you find the four (maximum) native photos. 
 ```
 
 #### Tweet with an animated GIF
+
+Below is the extended entities metadata for this Tweet with an animated GIF: https://twitter.com/FloodSocial/status/867833485049724929
 
 ```json
 {
