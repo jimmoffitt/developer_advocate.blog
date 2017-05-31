@@ -889,25 +889,24 @@ Only in this 'extended' payload will you find the four (maximum) native photos. 
 
 #### Tweet with native video
 
-Below is the extended entities metadata for this Tweet with a video: https://twitter.com/FloodSocial/status/867833312600932352
+Below is the extended entities metadata for this Tweet with a video: https://twitter.com/FloodSocial/status/869318041078820864
 
 ```json
-
 {
   "extended_entities": {
     "media": [
       {
-        "id": 8.6783322948264e+17,
-        "id_str": "867833229482635265",
+        "id": 8.6931798030742e+17,
+        "id_str": "869317980307415040",
         "indices": [
-          11,
-          34
+          31,
+          54
         ],
-        "media_url": "http:\/\/pbs.twimg.com\/ext_tw_video_thumb\/867833229482635265\/pu\/img\/ugKcw5gwMum1OPbm.jpg",
-        "media_url_https": "https:\/\/pbs.twimg.com\/ext_tw_video_thumb\/867833229482635265\/pu\/img\/ugKcw5gwMum1OPbm.jpg",
-        "url": "https:\/\/t.co\/7bk3AFRSZu",
-        "display_url": "pic.twitter.com\/7bk3AFRSZu",
-        "expanded_url": "https:\/\/twitter.com\/FloodSocial\/status\/867833312600932352\/video\/1",
+        "media_url": "http:\/\/pbs.twimg.com\/ext_tw_video_thumb\/869317980307415040\/pu\/img\/t_E6wyADk_PvxuzF.jpg",
+        "media_url_https": "https:\/\/pbs.twimg.com\/ext_tw_video_thumb\/869317980307415040\/pu\/img\/t_E6wyADk_PvxuzF.jpg",
+        "url": "https:\/\/t.co\/TLSTTOvvmP",
+        "display_url": "pic.twitter.com\/TLSTTOvvmP",
+        "expanded_url": "https:\/\/twitter.com\/FloodSocial\/status\/869318041078820864\/video\/1",
         "type": "video",
         "sizes": {
           "small": {
@@ -936,26 +935,26 @@ Below is the extended entities metadata for this Tweet with a video: https://twi
             9,
             16
           ],
-          "duration_millis": 28243,
+          "duration_millis": 10704,
           "variants": [
-            {
-              "bitrate": 832000,
-              "content_type": "video\/mp4",
-              "url": "https:\/\/video.twimg.com\/ext_tw_video\/867833229482635265\/pu\/vid\/360x640\/ESCOjk0Mf6qyb2cH.mp4"
-            },
             {
               "bitrate": 320000,
               "content_type": "video\/mp4",
-              "url": "https:\/\/video.twimg.com\/ext_tw_video\/867833229482635265\/pu\/vid\/180x320\/nKsu8KSwL2lo2ez7.mp4"
-            },
-            {
-              "content_type": "application\/x-mpegURL",
-              "url": "https:\/\/video.twimg.com\/ext_tw_video\/867833229482635265\/pu\/pl\/wCsBDhxFS0Nkakfj.m3u8"
+              "url": "https:\/\/video.twimg.com\/ext_tw_video\/869317980307415040\/pu\/vid\/180x320\/FMei8yCw7yc_Z7e-.mp4"
             },
             {
               "bitrate": 2176000,
               "content_type": "video\/mp4",
-              "url": "https:\/\/video.twimg.com\/ext_tw_video\/867833229482635265\/pu\/vid\/720x1280\/n-apEhXDY81_75bq.mp4"
+              "url": "https:\/\/video.twimg.com\/ext_tw_video\/869317980307415040\/pu\/vid\/720x1280\/octt5pFbISkef8RB.mp4"
+            },
+            {
+              "bitrate": 832000,
+              "content_type": "video\/mp4",
+              "url": "https:\/\/video.twimg.com\/ext_tw_video\/869317980307415040\/pu\/vid\/360x640\/2OmqK74SQ9jNX8mZ.mp4"
+            },
+            {
+              "content_type": "application\/x-mpegURL",
+              "url": "https:\/\/video.twimg.com\/ext_tw_video\/869317980307415040\/pu\/pl\/wcJQJ2nxiFU4ZZng.m3u8"
             }
           ]
         }
@@ -967,57 +966,57 @@ Below is the extended entities metadata for this Tweet with a video: https://twi
 
 #### Tweet with an animated GIF
 
-Below is the extended entities metadata for this Tweet with an animated GIF: https://twitter.com/FloodSocial/status/867833485049724929
+Below is the extended entities metadata for this Tweet with an animated GIF: https://twitter.com/FloodSocial/status/870042717589340160
 
 ```json
 {
   "extended_entities": {
     "media": [
       {
-        "id": 8.678334773576e+17,
-        "id_str": "867833477357604865",
+        "id": 8.7004265421346e+17,
+        "id_str": "870042654213459968",
         "indices": [
-          54,
-          77
+          29,
+          52
         ],
-        "media_url": "http:\/\/pbs.twimg.com\/tweet_video_thumb\/DAsp8x4XkAEdVoq.jpg",
-        "media_url_https": "https:\/\/pbs.twimg.com\/tweet_video_thumb\/DAsp8x4XkAEdVoq.jpg",
-        "url": "https:\/\/t.co\/jcmbHXdLx5",
-        "display_url": "pic.twitter.com\/jcmbHXdLx5",
-        "expanded_url": "https:\/\/twitter.com\/FloodSocial\/status\/867833485049724929\/photo\/1",
+        "media_url": "http:\/\/pbs.twimg.com\/tweet_video_thumb\/DBMDLy_U0AAqUWP.jpg",
+        "media_url_https": "https:\/\/pbs.twimg.com\/tweet_video_thumb\/DBMDLy_U0AAqUWP.jpg",
+        "url": "https:\/\/t.co\/nD6G4bWSKb",
+        "display_url": "pic.twitter.com\/nD6G4bWSKb",
+        "expanded_url": "https:\/\/twitter.com\/FloodSocial\/status\/870042717589340160\/photo\/1",
         "type": "animated_gif",
         "sizes": {
+          "medium": {
+            "w": 350,
+            "h": 262,
+            "resize": "fit"
+          },
+          "small": {
+            "w": 340,
+            "h": 255,
+            "resize": "fit"
+          },
           "thumb": {
             "w": 150,
             "h": 150,
             "resize": "crop"
           },
           "large": {
-            "w": 244,
-            "h": 250,
-            "resize": "fit"
-          },
-          "medium": {
-            "w": 244,
-            "h": 250,
-            "resize": "fit"
-          },
-          "small": {
-            "w": 244,
-            "h": 250,
+            "w": 350,
+            "h": 262,
             "resize": "fit"
           }
         },
         "video_info": {
           "aspect_ratio": [
-            122,
-            125
+            175,
+            131
           ],
           "variants": [
             {
               "bitrate": 0,
               "content_type": "video\/mp4",
-              "url": "https:\/\/video.twimg.com\/tweet_video\/DAsp8x4XkAEdVoq.mp4"
+              "url": "https:\/\/video.twimg.com\/tweet_video\/DBMDLy_U0AAqUWP.mp4"
             }
           ]
         }
