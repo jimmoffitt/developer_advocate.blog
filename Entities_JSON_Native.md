@@ -101,7 +101,7 @@ Consumers of Entities should tolerate the addition of new fields and variance in
 <tbody valign="top">
 
 <tr class="row-even"><td>hashtags</td>
-<td>Array of <a class="reference external" href="#obj-hashtags">Object</a></td>
+<td>Array of <a class="reference external" href="#obj-hashtags">Hashtag Objects</a></td>
 <td><p class="first">Represents hashtags which have been parsed out of the Tweet text.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;hashtags&quot;:[{&quot;indices&quot;:[32,36],&quot;text&quot;:&quot;lol&quot;}]
@@ -126,7 +126,7 @@ Example:</p>
 </tr>
 
 <tr class="row-even"><td>urls</td>
-<td>Array of <a class="reference external" href="#obj-url">Object</a></td>
+<td>Array of <a class="reference external" href="#obj-url">URL Objects</a></td>
 <td><p class="first">Represents URLs included in the text of a Tweet or within textual fields of a <a class="reference external" href="/overview/api/users">user object</a> .
 Tweet Example:</p>
 <div class="code javascript highlight-python"><div class="highlight"><pre><span></span>&quot;urls&quot;:[{&quot;indices&quot;:[32,52], &quot;url&quot;:&quot;http:\/\/t.co\/IOwBrTZR&quot;, &quot;display_url&quot;:&quot;youtube.com\/watch?v=oHg5SJ\u2026&quot;,
@@ -142,7 +142,7 @@ Tweet Example:</p>
 </tr>
 
 <tr class="row-odd"><td>user_mentions</td>
-<td>Array of <a class="reference external" href="#obj-usermention">Object</a></td>
+<td>Array of <a class="reference external" href="#obj-usermention">User Mention Objects</a></td>
 <td><p class="first">Represents other Twitter users mentioned in the text of the Tweet.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;user_mentions&quot;:[{&quot;name&quot;:&quot;Twitter API&quot;, &quot;indices&quot;:[4,15], &quot;screen_name&quot;:&quot;twitterapi&quot;, &quot;id&quot;:6253282, &quot;id_str&quot;:&quot;6253282&quot;}]
@@ -152,7 +152,7 @@ Example:</p>
 </tr>
 
 <tr class="row-odd"><td>symbols</td>
-<td>Array of <a class="reference external" href="#obj-usermention">Object</a></td>
+<td>Array of <a class="reference external" href="#obj-symbols">Symbol Objects</a></td>
 <td><p class="first">Represents symbols, i.e. $cashtags, included in the text of the Tweet.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;symbols&quot;:[{&quot;indices&quot;:[12,17],&quot;text&quot;:&quot;twtr&quot;}]
