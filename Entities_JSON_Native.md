@@ -765,15 +765,11 @@ Quoted Tweet of that one containing new text, hashtag, user mention, and cashtag
 ### Twitter _extended_entities_
 
 
+#### Tweet with four photos
 
-
-Below is the extended entities metadata for this Tweet: https://twitter.com/FloodSocial/status/861627479294746624
+Below is the extended entities metadata for this Tweet with four photos: https://twitter.com/FloodSocial/status/861627479294746624
 
 Only in this 'extended' payload will you find the four (maximum) native photos. Notice that the first photo in the array is the same as the single photo included in the non-extended Twitter _entities_ section. The _media_ metadata structure for photos is the same for both _entities_ and _extended_entities_ sections. 
-
-
-
-
 
 ```json
 {
@@ -921,6 +917,84 @@ Only in this 'extended' payload will you find the four (maximum) native photos. 
             "h": 2048,
             "resize": "fit"
           }
+        }
+      }
+    ]
+  }
+}
+```
+
+#### Tweet with native video
+
+Below is an example Tweet with a native video:
+
+```json
+
+{
+  "extended_entities": {
+    "media": [
+      {
+        "id": 8.6783322948264e+17,
+        "id_str": "867833229482635265",
+        "indices": [
+          11,
+          34
+        ],
+        "media_url": "http:\/\/pbs.twimg.com\/ext_tw_video_thumb\/867833229482635265\/pu\/img\/ugKcw5gwMum1OPbm.jpg",
+        "media_url_https": "https:\/\/pbs.twimg.com\/ext_tw_video_thumb\/867833229482635265\/pu\/img\/ugKcw5gwMum1OPbm.jpg",
+        "url": "https:\/\/t.co\/7bk3AFRSZu",
+        "display_url": "pic.twitter.com\/7bk3AFRSZu",
+        "expanded_url": "https:\/\/twitter.com\/FloodSocial\/status\/867833312600932352\/video\/1",
+        "type": "video",
+        "sizes": {
+          "small": {
+            "w": 340,
+            "h": 604,
+            "resize": "fit"
+          },
+          "large": {
+            "w": 720,
+            "h": 1280,
+            "resize": "fit"
+          },
+          "thumb": {
+            "w": 150,
+            "h": 150,
+            "resize": "crop"
+          },
+          "medium": {
+            "w": 600,
+            "h": 1067,
+            "resize": "fit"
+          }
+        },
+        "video_info": {
+          "aspect_ratio": [
+            9,
+            16
+          ],
+          "duration_millis": 28243,
+          "variants": [
+            {
+              "bitrate": 832000,
+              "content_type": "video\/mp4",
+              "url": "https:\/\/video.twimg.com\/ext_tw_video\/867833229482635265\/pu\/vid\/360x640\/ESCOjk0Mf6qyb2cH.mp4"
+            },
+            {
+              "bitrate": 320000,
+              "content_type": "video\/mp4",
+              "url": "https:\/\/video.twimg.com\/ext_tw_video\/867833229482635265\/pu\/vid\/180x320\/nKsu8KSwL2lo2ez7.mp4"
+            },
+            {
+              "content_type": "application\/x-mpegURL",
+              "url": "https:\/\/video.twimg.com\/ext_tw_video\/867833229482635265\/pu\/pl\/wCsBDhxFS0Nkakfj.m3u8"
+            },
+            {
+              "bitrate": 2176000,
+              "content_type": "video\/mp4",
+              "url": "https:\/\/video.twimg.com\/ext_tw_video\/867833229482635265\/pu\/vid\/720x1280\/n-apEhXDY81_75bq.mp4"
+            }
+          ]
         }
       }
     ]
