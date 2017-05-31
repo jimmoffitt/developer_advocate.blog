@@ -1,31 +1,6 @@
 [] TODOS
 + [] Add symbols
 + [] Add polling metadata
-
-```json
-"polls": [
-      {
-        "options": [
-          {
-            "position": 1,
-            "text": "Testing is important"
-          },
-          {
-            "position": 2,
-            "text": "who needs it?"
-          },
-          {
-            "position": 3,
-            "text": "my customers test"
-          }
-        ],
-        "end_datetime": "Thu May 25 22:20:27 +0000 2017",
-        "duration_minutes": 60
-      }
-    ]
-  }
-```  
-
 + [] Add Video extended entities details
 
 ```json
@@ -130,7 +105,7 @@ Example:</p>
 </tr>
 
 <tr class="row-even"><td>urls</td>
-<td>Array of <a class="reference external" href="#obj-url">URL Objects</a></td>
+<td>Array of <a class="reference external" href="url">URL Objects</a></td>
 <td><p class="first">Represents URLs included in the text of a Tweet or within textual fields of a <a class="reference external" href="/overview/api/users">user object</a> .
 Tweet Example:</p>
 <div class="code javascript highlight-python"><div class="highlight"><pre><span></span>&quot;urls&quot;:[{&quot;indices&quot;:[32,52], &quot;url&quot;:&quot;http:\/\/t.co\/IOwBrTZR&quot;, &quot;display_url&quot;:&quot;youtube.com\/watch?v=oHg5SJ\u2026&quot;,
@@ -146,7 +121,7 @@ Tweet Example:</p>
 </tr>
 
 <tr class="row-odd"><td>user_mentions</td>
-<td>Array of <a class="reference external" href="#obj-usermention">User Mention Objects</a></td>
+<td>Array of <a class="reference external" href="#user-mention">User Mention Objects</a></td>
 <td><p class="first">Represents other Twitter users mentioned in the text of the Tweet.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;user_mentions&quot;:[{&quot;name&quot;:&quot;Twitter API&quot;, &quot;indices&quot;:[4,15], &quot;screen_name&quot;:&quot;twitterapi&quot;, &quot;id&quot;:6253282, &quot;id_str&quot;:&quot;6253282&quot;}]
@@ -156,7 +131,7 @@ Example:</p>
 </tr>
 
 <tr class="row-odd"><td>symbols</td>
-<td>Array of <a class="reference external" href="#obj-symbols">Symbol Objects</a></td>
+<td>Array of <a class="reference external" href="#symbol">Symbol Objects</a></td>
 <td><p class="first">Represents symbols, i.e. $cashtags, included in the text of the Tweet.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;symbols&quot;:[{&quot;indices&quot;:[12,17],&quot;text&quot;:&quot;twtr&quot;}]
@@ -166,10 +141,10 @@ Example:</p>
 </tr>
 
 <tr class="row-odd"><td>polls</td>
-<td>Array of <a class="reference external" href="#obj-symbols">Poll Objects</a></td>
+<td>Array of <a class="reference external" href="#poll">Poll Objects</a></td>
 <td><p class="first">Represents Twitter Pools included in the Tweet.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;symbols&quot;:[{&quot;indices&quot;:[12,17],&quot;text&quot;:&quot;twtr&quot;}]
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>{&#34;polls&#34;: [&#10;      {&#10;        &#34;options&#34;: [&#10;          {&#10;            &#34;position&#34;: 1,&#10;            &#34;text&#34;: &#34;I read documentation once.&#34;&#10;          },&#10;          {&#10;            &#34;position&#34;: 2,&#10;            &#34;text&#34;: &#34;I read documentation twice.&#34;&#10;          },&#10;          {&#10;            &#34;position&#34;: 3,&#10;            &#34;text&#34;: &#34;I read documentation over and over again.&#34;&#10;          }&#10;        ],&#10;        &#34;end_datetime&#34;: &#34;Thu May 25 22:20:27 +0000 2017&#34;,&#10;        &#34;duration_minutes&#34;: 60&#10;      }&#10;    ]&#10;  }
 </pre></div>
 </div>
 </td>
@@ -217,8 +192,8 @@ Example:</p>
 </div>
 
 ### Media <a id="media" class="tall">&nbsp;</a>
-<div class="section" id="media">
-<h3>Media<a class="headerlink" href="#media" title="Permalink to this headline">¶</a></h3>
+
+<div>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
@@ -307,7 +282,7 @@ a request with the user&#8217;s access token using OAuth 1.0A. It is not possibl
 </tr>
 
 <tr class="row-odd"><td>sizes</td>
-<td><a class="reference external" href="#obj-sizes">Object</a></td>
+<td><a class="reference external" href="#sizes">Size Object</a></td>
 <td><p class="first">An object showing available sizes for the media file.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;sizes&quot;:{&quot;thumb&quot;:{&quot;h&quot;:150, &quot;resize&quot;:&quot;crop&quot;, &quot;w&quot;:150}, &quot;large&quot;:{&quot;h&quot;:238, &quot;resize&quot;:&quot;fit&quot;, &quot;w&quot;:226}, &quot;medium&quot;:{&quot;h&quot;:238, &quot;resize&quot;:
@@ -357,12 +332,13 @@ Example:</p>
 </div>
 </td>
 </tr>
-
 </tbody>
 </table>
 </div>
-<div class="section" id="size">
-<h3>Size<a class="headerlink" href="#size" title="Permalink to this headline">¶</a></h3>
+
+### Size <a id="size" class="tall">&nbsp;</a>
+
+<div>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
@@ -405,8 +381,9 @@ Example:</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="sizes">
-<h3>Sizes<a class="headerlink" href="#sizes" title="Permalink to this headline">¶</a></h3>
+
+### Sizes <a id="sizes" class="tall">&nbsp;</a>
+<div>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
@@ -457,8 +434,9 @@ Example:</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="url">
-<h3>URL<a class="headerlink" href="#url" title="Permalink to this headline">¶</a></h3>
+
+### URL <a id="url" class="tall">&nbsp;</a>
+<div>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
@@ -515,8 +493,9 @@ Example:</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="user-mention">
-<h3>User Mention<a class="headerlink" href="#user-mention" title="Permalink to this headline">¶</a></h3>
+
+### User Mention <a id="user-mention" class="tall">&nbsp;</a>
+<div>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
@@ -581,9 +560,8 @@ Example:</p>
 </div>
 </div>
 
-
-<div class="section" id="symbols">
-<h3>Symbols<a class="headerlink" href="#symbols" title="Permalink to this headline">¶</a></h3>
+### Symbols <a id="symbol" class="tall">&nbsp;</a>
+<div>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
