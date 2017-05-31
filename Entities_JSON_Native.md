@@ -2,6 +2,7 @@
 + [] Add symbols
 + [] Add polling metadata
 + [] Add Video extended entities details
++ [] JSON pretty print encoding: https://opinionatedgeek.com/Codecs/HtmlEncoder
 
 ```json
 "video_info": {
@@ -613,10 +614,7 @@ Example:</p>
 </tr>
 <tr class="row-even"><td>options</td>
 <td>Array of Option Object</td>
-<td><p class="first">An array of integers indicating the offsets within the Tweet text where the hashtag begins and ends. The first integer represents the
-location of the # character in the Tweet text string. The second integer represents the location of the first character after the
-hashtag. Therefore the difference between the two numbers will be the length of the hashtag name plus one (for the &#8216;#&#8217; character).
-Example:</p>
+<td><p class="first">An array of options, each having a poll position, and the text for that position. Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>{&#34;options&#34;: [&#10;          {&#10;            &#34;position&#34;: 1,&#10;            &#34;text&#34;: &#34;Testing is important&#34;&#10;          }&#10;      ]&#10;}
 </pre></div>
 </div>
