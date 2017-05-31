@@ -105,7 +105,7 @@ Example:</p>
 </tr>
 
 <tr class="row-even"><td>urls</td>
-<td>Array of <a class="reference external" href="url">URL Objects</a></td>
+<td>Array of <a class="reference external" href="#url">URL Objects</a></td>
 <td><p class="first">Represents URLs included in the text of a Tweet or within textual fields of a <a class="reference external" href="/overview/api/users">user object</a> .
 Tweet Example:</p>
 <div class="code javascript highlight-python"><div class="highlight"><pre><span></span>&quot;urls&quot;:[{&quot;indices&quot;:[32,52], &quot;url&quot;:&quot;http:\/\/t.co\/IOwBrTZR&quot;, &quot;display_url&quot;:&quot;youtube.com\/watch?v=oHg5SJ\u2026&quot;,
@@ -596,6 +596,57 @@ Example:</p>
 </tbody>
 </table>
 </div>
+
+
+### Polls <a id="poll" class="tall">&nbsp;</a>
+<div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Field</td>
+<td>Type</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>options</td>
+<td>Array of Option Object</td>
+<td><p class="first">An array of integers indicating the offsets within the Tweet text where the hashtag begins and ends. The first integer represents the
+location of the # character in the Tweet text string. The second integer represents the location of the first character after the
+hashtag. Therefore the difference between the two numbers will be the length of the hashtag name plus one (for the &#8216;#&#8217; character).
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>{&#34;options&#34;: [&#10;          {&#10;            &#34;position&#34;: 1,&#10;            &#34;text&#34;: &#34;Testing is important&#34;&#10;          }&#10;      ]&#10;}
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>end_datetime</td>
+<td>String</td>
+<td><p class="first">Time stamp (UTC) of when poll ends.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&#34;end_datetime&#34;: &#34;Thu May 25 22:20:27 +0000 2017&#34;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>duration_minutes</td>
+<td>String</td>
+<td><p class="first">Duration of poll in minutes.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&#34;duration_minutes&#34;: 60
+</pre></div>
+</div>
+</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
 
 
 ## Extended Entities Data Dictionary <a id="extended-entities-data-dictionary" class="tall">&nbsp;</a>
