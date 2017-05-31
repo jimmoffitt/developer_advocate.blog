@@ -889,8 +889,6 @@ Only in this 'extended' payload will you find the four (maximum) native photos. 
 
 #### Tweet with native video
 
-Below is an example Tweet with a native video:
-
 ```json
 
 {
@@ -956,6 +954,66 @@ Below is an example Tweet with a native video:
               "bitrate": 2176000,
               "content_type": "video\/mp4",
               "url": "https:\/\/video.twimg.com\/ext_tw_video\/867833229482635265\/pu\/vid\/720x1280\/n-apEhXDY81_75bq.mp4"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+#### Tweet with an animated GIF
+
+```json
+{
+  "extended_entities": {
+    "media": [
+      {
+        "id": 8.678334773576e+17,
+        "id_str": "867833477357604865",
+        "indices": [
+          54,
+          77
+        ],
+        "media_url": "http:\/\/pbs.twimg.com\/tweet_video_thumb\/DAsp8x4XkAEdVoq.jpg",
+        "media_url_https": "https:\/\/pbs.twimg.com\/tweet_video_thumb\/DAsp8x4XkAEdVoq.jpg",
+        "url": "https:\/\/t.co\/jcmbHXdLx5",
+        "display_url": "pic.twitter.com\/jcmbHXdLx5",
+        "expanded_url": "https:\/\/twitter.com\/FloodSocial\/status\/867833485049724929\/photo\/1",
+        "type": "animated_gif",
+        "sizes": {
+          "thumb": {
+            "w": 150,
+            "h": 150,
+            "resize": "crop"
+          },
+          "large": {
+            "w": 244,
+            "h": 250,
+            "resize": "fit"
+          },
+          "medium": {
+            "w": 244,
+            "h": 250,
+            "resize": "fit"
+          },
+          "small": {
+            "w": 244,
+            "h": 250,
+            "resize": "fit"
+          }
+        },
+        "video_info": {
+          "aspect_ratio": [
+            122,
+            125
+          ],
+          "variants": [
+            {
+              "bitrate": 0,
+              "content_type": "video\/mp4",
+              "url": "https:\/\/video.twimg.com\/tweet_video\/DAsp8x4XkAEdVoq.mp4"
             }
           ]
         }
