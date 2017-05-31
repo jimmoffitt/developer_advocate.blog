@@ -180,7 +180,7 @@ Example:</p>
 
 ### Hashtag <a id="hashtag" class="tall">&nbsp;</a>
 
-<div class="section" id="hashtags">
+<div>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
@@ -216,6 +216,7 @@ Example:</p>
 </table>
 </div>
 
+### Media <a id="media" class="tall">&nbsp;</a>
 <div class="section" id="media">
 <h3>Media<a class="headerlink" href="#media" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
