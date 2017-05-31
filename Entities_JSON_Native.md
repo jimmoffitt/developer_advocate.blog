@@ -111,7 +111,7 @@ Example:</p>
 </tr>
 
 <tr class="row-odd"><td>media</td>
-<td>Array of <a class="reference external" href="#obj-media">Object</a></td>
+<td>Array of <a class="reference external" href="#obj-media">Media Objects</a></td>
 <td><p class="first">Represents media elements uploaded with the Tweet.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;media&quot;:[{&quot;type&quot;:&quot;photo&quot;, &quot;sizes&quot;:{&quot;thumb&quot;:{&quot;h&quot;:150, &quot;resize&quot;:&quot;crop&quot;, &quot;w&quot;:150}, &quot;large&quot;:{&quot;h&quot;:238, &quot;resize&quot;:&quot;fit&quot;, &quot;w&quot;:226},
@@ -160,6 +160,17 @@ Example:</p>
 </div>
 </td>
 </tr>
+
+<tr class="row-odd"><td>polls</td>
+<td>Array of <a class="reference external" href="#obj-symbols">Poll Objects</a></td>
+<td><p class="first">Represents Twitter Pools included in the Tweet.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;symbols&quot;:[{&quot;indices&quot;:[12,17],&quot;text&quot;:&quot;twtr&quot;}]
+</pre></div>
+</div>
+</td>
+</tr>
+
 </tbody>
 </table>
 
