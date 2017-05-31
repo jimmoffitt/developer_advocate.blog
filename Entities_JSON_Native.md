@@ -4,38 +4,6 @@
 + [] Add Video extended entities details
 + [] JSON pretty print encoding: https://opinionatedgeek.com/Codecs/HtmlEncoder
 
-```json
-"video_info": {
-          "aspect_ratio": [
-            9,
-            16
-          ],
-          "duration_millis": 28243,
-          "variants": [
-            {
-              "bitrate": 832000,
-              "content_type": "video\/mp4",
-              "url": "https:\/\/video.twimg.com\/ext_tw_video\/867833229482635265\/pu\/vid\/360x640\/ESCOjk0Mf6qyb2cH.mp4"
-            },
-            {
-              "bitrate": 320000,
-              "content_type": "video\/mp4",
-              "url": "https:\/\/video.twimg.com\/ext_tw_video\/867833229482635265\/pu\/vid\/180x320\/nKsu8KSwL2lo2ez7.mp4"
-            },
-            {
-              "content_type": "application\/x-mpegURL",
-              "url": "https:\/\/video.twimg.com\/ext_tw_video\/867833229482635265\/pu\/pl\/wCsBDhxFS0Nkakfj.m3u8"
-            },
-            {
-              "bitrate": 2176000,
-              "content_type": "video\/mp4",
-              "url": "https:\/\/video.twimg.com\/ext_tw_video\/867833229482635265\/pu\/vid\/720x1280\/n-apEhXDY81_75bq.mp4"
-            }
-          ]
-        }
- ```       
-
-
 + [Twitter Entities](#entities)
 + [Entities Data Dictionary](#entities-data-dictionary)
 + [Extended Entities Data Dictionary](#extended-entities-data-dictionary)
@@ -294,7 +262,7 @@ Example:</p>
 </tr>
 
 <tr class="row-even"><td>source_status_id</td>
-<td><a class="reference external" href="#obj-sizes">Int64</a></td>
+<td>Int64</td>
 <td><p class="first">Nullable. For Tweets containing media that was originally associated with a different tweet, this ID points to the original Tweet.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;source_status_id&quot;: 205282515685081088
@@ -304,7 +272,7 @@ Example:</p>
 </tr>
 
 <tr class="row-odd"><td>source_status_id_str</td>
-<td><a class="reference external" href="#obj-sizes">Int64</a></td>
+<td>Int64</td>
 <td><p class="first">Nullable. For Tweets containing media that was originally associated with a different tweet, this string-based ID points to the original Tweet.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;source_status_id_str&quot;: &quot;205282515685081088&quot;
@@ -480,12 +448,7 @@ Example:</p>
 </tr>
 <tr class="row-odd"><td>url</td>
 <td>String</td>
-<td><p class="first">Wrapped URL, corresponding to the value embedded directly into the raw Tweet text, and the values for the
-.. code:: javascript</p>
-<blockquote>
-<div>indices</div></blockquote>
-<p>parameter.
-Example:</p>
+<td><p class="first">Wrapped URL, corresponding to the value embedded directly into the raw Tweet text, and the values for the indices  parameter. Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;url&quot;:&quot;http:\/\/t.co\/IOwBrTZR&quot;
 </pre></div>
 </div>
