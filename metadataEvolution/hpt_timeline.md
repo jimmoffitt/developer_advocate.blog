@@ -37,7 +37,7 @@ With Historical PowerTrack, Tweets are written to the archive as they are posted
 
 As mentioned [in our documentation](http://support.gnip.com/apis/historical_api2.0/overview.html#Caveats), there are important metadata details about the Historical PowerTrack archive: 
 
-+ **URLs**: The url_contains operator will still function prior to 3/26/2012, but will only match against URLs as they are entered by a user into a Tweet and not the fully resolved URL (i.e. if a bit.ly URL is entered in the Tweet it can only match against the bit.ly and not the URL that has been shortened by bit.ly)
++ **URLs**: The ```url_contains:``` operator will still function prior to 3/26/2012, but will only match against URLs as they are entered by a user into a Tweet and not the fully resolved URL (i.e. if a bit.ly URL is entered in the Tweet it can only match against the bit.ly and not the URL that has been shortened by bit.ly)
 + **Geo**: Native geo data prior to 9/1/2011 is not available in Historical Powertrack. As a result, all operators reliant on this geo data will not be supported for jobs with a timeframe prior to this date.
 + **User Profile Data**: All data prior to 1/1/2011 contains user profile information as it appeared in that user’s profile in September 2011. (e.g @jack’s very first Tweet in March 2006 contains his bio data from September 2011 that references his position as CEO at Square, which was not in existence at the time of the Tweet)
 + **Followers and Friends Counts**: All data prior to 1/1/2011 contains followers and friends counts equal to zero. As a result, any rules based on non-zero counts for these metadata will not return any results for a timeframe prior to this date.
@@ -46,7 +46,7 @@ As mentioned [in our documentation](http://support.gnip.com/apis/historical_api2
 
 ### Metadata timelines <a id="metadataTimeline" class="tall">&nbsp;</a>
 
-Below is a timeline of when [Historical PowerTrack Operators](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators) begin matching. In some cases Operator matching begins well *after* a 'communication convention' became commonplace on Twitter. For example, @replies emerged as a user convention in 2006, but did not become a ['first-class' *object* or *event* with 'supporting' JSON](http://support.gnip.com/articles/tweet-timeline.html#keyConcepts) until early 2007. Accordingly, matching on @replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to``` and ```in_reply_to_status_id``` PowerTrack Operators. 
+Below is a timeline of when [Historical PowerTrack Operators](http://support.gnip.com/apis/powertrack2.0/rules.html#Operators) begin matching. In some cases Operator matching begins well *after* a 'communication convention' became commonplace on Twitter. For example, @replies emerged as a user convention in 2006, but did not become a ['first-class' *object* or *event* with 'supporting' JSON](http://support.gnip.com/articles/tweet-timeline.html#keyConcepts) until early 2007. Accordingly, matching on @replies in 2006 requires an examination of the Tweet body, rather than relying on the ```to:``` and ```in_reply_to_status_id``` PowerTrack Operators. 
 
 The details provided here were generated using HPT (well over 160 HPT Jobs!), and were informed by the Twitter timeline provided [HERE](http://support.gnip.com/articles/tweet-timeline.html). This timeline is not 100% complete or precise. If you identify another filtering/metadata "born on date" fundamental to your use-case, please let us know.  
 
