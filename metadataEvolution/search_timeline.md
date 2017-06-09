@@ -131,16 +131,11 @@ In September 2016 Twitter introduced 'native attachments' where a trailing share
 
 Here are when related Search Operators begin matching:
 
-+ 2011 August - ```url:``` with the [Expanded URLs enrichment](http://support.gnip.com/enrichments/expanded_urls.html)
-> As early as September 2006 ```(url:\"spotify.com\" OR url:gnip OR url:microsoft OR url:google OR url:youtube)``` matches http://twitter.com/Adam/statuses/16602, even though there is no urls[] metadata in twitter_entities and gnip objects. "youtube.com" is an example of message content that, without any urls[] metadata, matches url:youtube. 
->
->
 + 2006 October 26 - ```has:links```
 + 2011 July 20 - ```has:images``` and ```has:media```
-
++ 2011 August - ```url:``` with the [Expanded URLs enrichment](http://support.gnip.com/enrichments/expanded_urls.html) As early as September 2006 ```(url:\"spotify.com\" OR url:gnip OR url:microsoft OR url:google OR url:youtube)``` matches http://twitter.com/Adam/statuses/16602, even though there is no urls[] metadata in twitter_entities and gnip objects. "youtube.com" is an example of message content that, without any urls[] metadata, matches url:youtube. 
 + 2015 February 10 - ```has:videos``` for native videos. Between 2010/08/28 and 2015/02/10, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com. 
 + 2016 May 1 - ```url_title:``` and ```url_description:```, based on the [Enhanced URLs enrichment](http://support.gnip.com/enrichments/enhanced_urls.html), generally available. First Enhanced URL metadata began appearing in December 2014. 
-
 
 #### Next Steps <a id="nextSteps" class="tall">&nbsp;</a>
 + [Learn more about the Full-Archive Search API](http://support.gnip.com/apis/search_full_archive_api/)
