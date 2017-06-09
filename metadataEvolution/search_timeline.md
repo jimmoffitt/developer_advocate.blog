@@ -2,7 +2,7 @@
 layout: help_article_nav
 category: article
 permalink: /articles/fas-timeline.html
-title: Full-Archive Search API: metadata and filtering timeline   
+title: Full-Archive Search API - metadata and filtering timeline   
 author: Jim Moffitt
 description: When using Twitter's Full-Archive Search, it is important to understand when query Operators first start matching Tweet JSON attributes.
 tags: historical twitter rules
