@@ -28,6 +28,8 @@ __Developer Advocate blog__ ...from the client-side perspective.
      
 ### Articles up at http://support.gnip.com/articles:
 - [Tweet Metadata Timeline](http://support.gnip.com/articles/tweet-timeline.html)
+- [Historical PowerTrack API - Metadata Timeline](http://support.gnip.com/articles/hpt-timeline.html)
+- [Full-Archive Search API - Metadata Timeline](http://support.gnip.com/articles/fas-timeline.html)
 - [Updating Twitter Hosebird Client for PowerTrack 2.0](http://support.gnip.com/articles/updating-hbc-for-ptv2.html)
 - [Consuming Streaming Data](http://support.gnip.com/articles/consuming-streaming-data.html)
 - [Migrating PowerTrack Rules from Version 1.0 to 2.0](http://support.gnip.com/articles/migrating-powertrack-rules.html)
