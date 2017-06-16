@@ -4,6 +4,8 @@
 + [] Add Video extended entities details
 + [] JSON pretty print encoding: https://opinionatedgeek.com/Codecs/HtmlEncoder
 
+## Sections
+
 + [Twitter Entities](#entities)
 + [Entities Data Dictionary](#entities-data-dictionary)
 + [Extended Entities Data Dictionary](#extended-entities-data-dictionary)
@@ -11,11 +13,34 @@
 
 ## Twitter Entities and Extended Entities<a id="entities" class="tall">&nbsp;</a>
 
-Entities provide metadata and additional contextual information about content posted on Twitter. These entities include hashtags, user mentions, URLs, symbols (cashtags), Twitter polls, and _native_ media (photos, videos, and GIFs shared via the Twitter user-interface). 
+Entities provide metadata and additional contextual information about content posted on Twitter. The ```entities``` section provides  arrays of common things included in Tweets: hashtags, mentions of other Twitter accounts, links, stock ticker symbols, Twitter polls, and attached media. These arrays are convenient for developers when ingesting Tweets, since Twitter has essentially pre-processed, or pre-parsed, the text body. Instead of needing to explicitly search and find these entities in the Tweet body, your parser can go straight to this JSON section and there they are.
 
-If a Tweet contains native media, there will also be a _extended_entities_ section. When it comes to native media, the _extended_entities_ is the preferred metadata source for several reasons. Currently, up to four photos can be attached to a Tweet. The  _entities_ metadata will only contain the first photo (until 2014, only one photo could be included), while the _extended_entities_ will include all attached photos. Another deficiency with the _entities.media_ metadata is that the media type will always indicate 'photo', even in cases where the attached media is a video or animated GIF. When it comes to native media, the _extended_entities_ metadata is the way to go.   
+Every Tweet JSON payload includes an 'entities' section, with the minimum set of ```hashtags```, ```urls```. ```user_mentions```, and ```symbols``` attributes, even if none of those entities are part of the Tweet message. For example, if you examine the JSON for a Tweet with a body of "Hello World!" and no attached media, the Tweet's JSON will include the following content: 
 
-Entities are never divorced from the content they describe. Entities are returned wherever Tweets are found in the API. Entities are instrumental in resolving URLs. The core 'top-level' entities array structures are present, even when corresponding entities are not present in the Tweet, with one exception. For example, a Tweet with no hashtags will still have the following JSON structure:
+```json
+"entities": {
+    "hashtags": [
+    ],
+    "urls": [
+    ],
+    "user_mentions": [
+    ],
+    "symbols": [
+    ]
+  }
+
+```
+
+On the otherhand, the ```media``` and ```polls``` entities will only appear when that type of content is part of the Tweet.  
+
+### Native Tweet media
+
+If a Tweet contains native media (shared with the Tweet user-interface as opposed via a link to elsewhere), there will also be a ```extended_entities``` section. When it comes to native media, the ```extended_entities``` is the preferred metadata source for several reasons. Currently, up to four photos can be attached to a Tweet. The  ```entities``` metadata will only contain the first photo (until 2014, only one photo could be included), while the ```extended_entities``` section will include all attached photos. When it comes to native media, another deficiency with the ```entities.media``` metadata is that the media type will always indicate 'photo', even in cases where the attached media is a video or animated GIF. When it comes to native media, the ```extended_entities``` metadata is the way to go. 
+
+
+
+
+Entities are instrumental in resolving URLs. The core 'top-level' entities array structures are present, even when corresponding entities are not present in the Tweet, with one exception. For example, a Tweet with no hashtags will still have the following JSON structure:
 
 ```json
 {
@@ -28,7 +53,7 @@ Entities are never divorced from the content they describe. Entities are returne
 ```
 The one exception is poll data. The 'polls' metadata will only be present when the Tweet contains a Twitter poll. 
 
-The _extended_entities_ metadata is present when any 'native' media is attached using the Twitter user-interface. This includes up to four photos, a single GIF, or a single video. The type of media is specified in the _extended_entities.media[].type_ attribute and is set to either _photo_, _video_, or _animated_gif_.
+The ```extended_entities``` metadata is present when any 'native' media is attached using the Twitter user-interface. This includes up to four photos, a single GIF, or a single video. The type of media is specified in the ```extended_entities.media[].type``` attribute and is set to either _photo_, _video_, or _animated_gif_.
 
 ## Entities Data Dictionary <a id="entities-data-dictionary" class="tall">&nbsp;</a>
 
