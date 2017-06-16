@@ -70,7 +70,7 @@ The entities pbject is a holder of arrays of other entities sub-objects. After i
 <td>Array of <a class="reference external" href="#hashtag">Hashtag Objects</a></td>
 <td><p class="first">Represents hashtags which have been parsed out of the Tweet text.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;hashtags&quot;:[{&quot;indices&quot;:[32,36],&quot;text&quot;:&quot;lol&quot;}]
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>{&#10;  &#34;hashtags&#34;: [&#10;    {&#10;      &#34;indices&#34;: [&#10;        32,&#10;        38&#10;      ],&#10;      &#34;text&#34;: &#34;nodejs&#34;&#10;    }&#10;  ]&#10;}
 </pre></div>
 </div>
 </td>
@@ -80,12 +80,7 @@ Example:</p>
 <td>Array of <a class="reference external" href="#obj-media">Media Objects</a></td>
 <td><p class="first">Represents media elements uploaded with the Tweet.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;media&quot;:[{&quot;type&quot;:&quot;photo&quot;, &quot;sizes&quot;:{&quot;thumb&quot;:{&quot;h&quot;:150, &quot;resize&quot;:&quot;crop&quot;, &quot;w&quot;:150}, &quot;large&quot;:{&quot;h&quot;:238, &quot;resize&quot;:&quot;fit&quot;, &quot;w&quot;:226},
-&quot;medium&quot;:{&quot;h&quot;:238, &quot;resize&quot;:&quot;fit&quot;, &quot;w&quot;:226}, &quot;small&quot;:{&quot;h&quot;:238, &quot;resize&quot;:&quot;fit&quot;, &quot;w&quot;:226}}, &quot;indices&quot;:[15,35],
-&quot;url&quot;:&quot;http:\/\/t.co\/rJC5Pxsu&quot;, &quot;media_url&quot;:&quot;http:\/\/p.twimg.com\/AZVLmp-CIAAbkyy.jpg&quot;,
-&quot;display_url&quot;:&quot;pic.twitter.com\/rJC5Pxsu&quot;,&quot;id&quot;:114080493040967680, &quot;id_str&quot;:&quot;114080493040967680&quot;, &quot;expanded_url&quot;:
-&quot;http:\/\/twitter.com\/yunorno\/status\/114080493036773378\/photo\/1&quot;,
-&quot;media_url_https&quot;:&quot;https:\/\/p.twimg.com\/AZVLmp-CIAAbkyy.jpg&quot;}]
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>{&#10;  &#34;media&#34;: [&#10;    {&#10;      &#34;type&#34;: &#34;photo&#34;,&#10;      &#34;sizes&#34;: {&#10;        &#34;thumb&#34;: {&#10;          &#34;h&#34;: 150,&#10;          &#34;resize&#34;: &#34;crop&#34;,&#10;          &#34;w&#34;: 150&#10;        },&#10;        &#34;large&#34;: {&#10;          &#34;h&#34;: 238,&#10;          &#34;resize&#34;: &#34;fit&#34;,&#10;          &#34;w&#34;: 226&#10;        },&#10;        &#34;medium&#34;: {&#10;          &#34;h&#34;: 238,&#10;          &#34;resize&#34;: &#34;fit&#34;,&#10;          &#34;w&#34;: 226&#10;        },&#10;        &#34;small&#34;: {&#10;          &#34;h&#34;: 238,&#10;          &#34;resize&#34;: &#34;fit&#34;,&#10;          &#34;w&#34;: 226&#10;        }&#10;      },&#10;      &#34;indices&#34;: [&#10;        15,&#10;        35&#10;      ],&#10;      &#34;url&#34;: &#34;http:\/\/t.co\/rJC5Pxsu&#34;,&#10;      &#34;media_url&#34;: &#34;http:\/\/p.twimg.com\/AZVLmp-CIAAbkyy.jpg&#34;,&#10;      &#34;display_url&#34;: &#34;pic.twitter.com\/rJC5Pxsu&#34;,&#10;      &#34;id&#34;: 1.1408049304097e+17,&#10;      &#34;id_str&#34;: &#34;114080493040967680&#34;,&#10;      &#34;expanded_url&#34;: &#34;http:\/\/twitter.com\/yunorno\/status\/114080493036773378\/photo\/1&#34;,&#10;      &#34;media_url_https&#34;: &#34;https:\/\/p.twimg.com\/AZVLmp-CIAAbkyy.jpg&#34;&#10;    }&#10;  ]&#10;}
 </pre></div>
 </div>
 </td>
@@ -93,14 +88,13 @@ Example:</p>
 
 <tr class="row-even"><td>urls</td>
 <td>Array of <a class="reference external" href="#url">URL Objects</a></td>
-<td><p class="first">Represents URLs included in the text of a Tweet.
-Tweet Example (without Enhanced URLs enrichment enabled):</p>
+<td><p class="first">Represents URLs included in the text of a Tweet.</p>
+<p>Tweet Example (without Enhanced URLs enrichment enabled):</p>
 <div class="code javascript highlight-python"><div class="highlight"><pre><span></span>{&#10;  &#34;urls&#34;: [&#10;    {&#10;      &#34;indices&#34;: [&#10;        32,&#10;        52&#10;      ],&#10;      &#34;url&#34;: &#34;http:\/\/t.co\/IOwBrTZR&#34;,&#10;      &#34;display_url&#34;: &#34;youtube.com\/watch?v=oHg5SJ\u2026&#34;,&#10;      &#34;expanded_url&#34;: &#34;http:\/\/www.youtube.com\/watch?v=oHg5SJYRHA0&#34;&#10;    }&#10;  ]&#10;}
 </pre></div>
 </div>
 <p>Example (with Enhanced URLs enrichment enabled):</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>{&#34;urls&#34;: [&#10;      {&#10;        &#34;url&#34;: &#34;https:\/\/t.co\/D0n7a53c2l&#34;,&#10;        &#34;expanded_url&#34;: &#34;http:\/\/bit.ly\/18gECvy&#34;,&#10;        &#34;display_url&#34;: &#34;bit.ly\/18gECvy&#34;,&#10;        &#34;unwound&#34;: {&#10;          &#34;url&#34;: &#34;https:\/\/www.youtube.com\/watch?v=oHg5SJYRHA0&#34;,&#10;          &#34;status&#34;: 200,&#10;          &#34;title&#34;: &#34;RickRoll'D&#34;,&#10;          &#34;description&#34;: &#34;http:\/\/www.facebook.com\/rickroll548 As long as trolls are still trolling, the Rick will never stop rolling.&#34;&#10;        },&#10;        &#34;indices&#34;: [&#10;          62,&#10;          85&#10;        ]&#10;      }&#10;    ]&#10;}
-:&quot;http:\/\/www.youtube.com\/watch?v=oHg5SJYRHA0&quot;}]
 </pre></div>
 </div>
 </td>
