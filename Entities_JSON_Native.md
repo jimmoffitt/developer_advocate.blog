@@ -630,8 +630,11 @@ Example:</p>
 </div>
 
 
-
 ## Extended Entities Data Dictionary <a id="extended-entities-data-dictionary" class="tall">&nbsp;</a>
+
+All Tweets with attached photos, videos and animated GIFs will include an ```extended_entities``` JSON object. Note that a Tweet can only include one type of media. For photos, up to four photos can be attached, 
+
+and for videos and GIFs, only one can be attached. 
 
 ```json
 {
