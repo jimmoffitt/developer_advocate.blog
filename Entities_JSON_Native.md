@@ -93,14 +93,13 @@ Example:</p>
 
 <tr class="row-even"><td>urls</td>
 <td>Array of <a class="reference external" href="#url">URL Objects</a></td>
-<td><p class="first">Represents URLs included in the text of a Tweet or within textual fields of a <a class="reference external" href="/overview/api/users">user object</a> .
-Tweet Example:</p>
-<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>&quot;urls&quot;:[{&quot;indices&quot;:[32,52], &quot;url&quot;:&quot;http:\/\/t.co\/IOwBrTZR&quot;, &quot;display_url&quot;:&quot;youtube.com\/watch?v=oHg5SJ\u2026&quot;,
-&quot;expanded_url&quot;:&quot;http:\/\/www.youtube.com\/watch?v=oHg5SJYRHA0&quot;}]
+<td><p class="first">Represents URLs included in the text of a Tweet.
+Tweet Example (without Enhanced URLs enrichment enabled):</p>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>{&#10;  &#34;urls&#34;: [&#10;    {&#10;      &#34;indices&#34;: [&#10;        32,&#10;        52&#10;      ],&#10;      &#34;url&#34;: &#34;http:\/\/t.co\/IOwBrTZR&#34;,&#10;      &#34;display_url&#34;: &#34;youtube.com\/watch?v=oHg5SJ\u2026&#34;,&#10;      &#34;expanded_url&#34;: &#34;http:\/\/www.youtube.com\/watch?v=oHg5SJYRHA0&#34;&#10;    }&#10;  ]&#10;}
 </pre></div>
 </div>
-<p>User Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span> &quot;urls&quot;:[{&quot;indices&quot;:[32,52], &quot;url&quot;:&quot;http:\/\/t.co\/IOwBrTZR&quot;, &quot;display_url&quot;:&quot;youtube.com\/watch?v=oHg5SJ\u2026&quot;, &quot;expanded_url&quot;
+<p>Example (with Enhanced URLs enrichment enabled):</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>{&#34;urls&#34;: [&#10;      {&#10;        &#34;url&#34;: &#34;https:\/\/t.co\/D0n7a53c2l&#34;,&#10;        &#34;expanded_url&#34;: &#34;http:\/\/bit.ly\/18gECvy&#34;,&#10;        &#34;display_url&#34;: &#34;bit.ly\/18gECvy&#34;,&#10;        &#34;unwound&#34;: {&#10;          &#34;url&#34;: &#34;https:\/\/www.youtube.com\/watch?v=oHg5SJYRHA0&#34;,&#10;          &#34;status&#34;: 200,&#10;          &#34;title&#34;: &#34;RickRoll'D&#34;,&#10;          &#34;description&#34;: &#34;http:\/\/www.facebook.com\/rickroll548 As long as trolls are still trolling, the Rick will never stop rolling.&#34;&#10;        },&#10;        &#34;indices&#34;: [&#10;          62,&#10;          85&#10;        ]&#10;      }&#10;    ]&#10;}
 :&quot;http:\/\/www.youtube.com\/watch?v=oHg5SJYRHA0&quot;}]
 </pre></div>
 </div>
@@ -111,7 +110,7 @@ Tweet Example:</p>
 <td>Array of <a class="reference external" href="#user-mention">User Mention Objects</a></td>
 <td><p class="first">Represents other Twitter users mentioned in the text of the Tweet.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;user_mentions&quot;:[{&quot;name&quot;:&quot;Twitter API&quot;, &quot;indices&quot;:[4,15], &quot;screen_name&quot;:&quot;twitterapi&quot;, &quot;id&quot;:6253282, &quot;id_str&quot;:&quot;6253282&quot;}]
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>{&#10;  &#34;user_mentions&#34;: [&#10;    {&#10;      &#34;name&#34;: &#34;Twitter API&#34;,&#10;      &#34;indices&#34;: [&#10;        4,&#10;        15&#10;      ],&#10;      &#34;screen_name&#34;: &#34;twitterapi&#34;,&#10;      &#34;id&#34;: 6253282,&#10;      &#34;id_str&#34;: &#34;6253282&#34;&#10;    }&#10;  ]&#10;}
 </pre></div>
 </div>
 </td>
