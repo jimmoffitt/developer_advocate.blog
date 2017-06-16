@@ -2,7 +2,7 @@
 + [X] Add symbols
 + [X] Add polling metadata
 + [] Add Video extended entities details
-+ [] JSON pretty print encoding: https://opinionatedgeek.com/Codecs/HtmlEncoder
++ [] JSON pretty print encoding: https://opinionatedgeek.com/Codecs/HtmlEncoder (use checkbox!)
 
 ## Sections
 
@@ -17,7 +17,7 @@ Entities provide metadata and additional contextual information about content po
 
 Beyond providing parsing conveniences, the ```entities``` section also provides useful 'value-add' metadata. For example, URL entities include expanded URLs, and if you are using the [Enhanced URLs enrichment](http://support.gnip.com/enrichments/enhanced_urls.html), website titles and description associated with included links. Another example is when there are user mentions, the entities metadata include the numeric user ID. 
 
-Every Tweet JSON payload includes an ```entities``` section, with the minimum set of ```hashtags```, ```urls```. ```user_mentions```, and ```symbols``` attributes, even if none of those entities are part of the Tweet message. For example, if you examine the JSON for a Tweet with a body of "Hello World!" and no attached media, the Tweet's JSON will include the following content with entity arrays with zero items: 
+Every Tweet JSON payload includes an ```entities``` section, with the minimum set of ```hashtags```, ```urls```, ```user_mentions```, and ```symbols``` attributes, even if none of those entities are part of the Tweet message. For example, if you examine the JSON for a Tweet with a body of "Hello World!" and no attached media, the Tweet's JSON will include the following content with entity arrays with zero items: 
 
 ```json
 "entities": {
@@ -30,16 +30,19 @@ Every Tweet JSON payload includes an ```entities``` section, with the minimum se
     "symbols": [
     ]
   }
-
 ```
 
 On the otherhand, the ```media``` and ```polls``` entities will only appear when that type of content is part of the Tweet.  
 
-Consumers of ```entities``` and ```entities_extended``` sections must be tolerant of 'missing' fields, since nto all fields appear in all contexts. Parsers should tolerate the addition of new fields and variance in ordering of fields with ease. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.
-
 ### Native Tweet media
 
 If a Tweet contains native media (shared with the Tweet user-interface as opposed via a link to elsewhere), there will also be a ```extended_entities``` section. When it comes any native media (photo, video, or GIF), the ```extended_entities``` is the preferred metadata source for several reasons. Currently, up to four photos can be attached to a Tweet. The  ```entities``` metadata will only contain the first photo (until 2014, only one photo could be included), while the ```extended_entities``` section will include all attached photos. When it comes to native media, another deficiency with the ```entities.media``` metadata is that the media type will always indicate 'photo', even in cases where the attached media is a video or animated GIF. The actual type of media is specified in the ```extended_entities.media[].type``` attribute and is set to either _photo_, _video_, or _animated_gif_. When it comes to native media, the ```extended_entities``` metadata is the way to go. 
+
+### Parsing Tips
+
+Consumers of ```entities``` and ```entities_extended``` sections must be tolerant of 'missing' fields, since nto all fields appear in all contexts. Parsers should tolerate the addition of new fields and variance in ordering of fields with ease. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.
+
+
 
 The ```entities``` and ```extended_entities``` sections are both made up of arrays of entity _objects_. Below you will find descriptions for each of these entity objects, including data dictionaries that describe the object attribute names, types, and short description. We'll also include some sample JSON payloads. 
 
@@ -47,10 +50,9 @@ The ```entities``` and ```extended_entities``` sections are both made up of arra
 
 A collection of common entities included with Tweets, including hashtags, link, and user mentions. This ```entities``` object does include a ```media``` attribute, but it implementation here is only complete for Tweets with a single photo. For all Tweets with more than one photo, a video, or animated GIF, the reader is directed to the ```extended_entities``` section. 
 
-
 ### Entities object
 
-The entities pbject is a holder of arrays of other entities sub-objects. After illustrating the ```entities``` structure, data dictionaries for these sub-objects will be provided.
+The entities object is a holder of arrays of other entity sub-objects. After illustrating the ```entities``` structure, data dictionaries for these sub-objects will be provided.
 
 <table border="1" class="docutils">
 <colgroup>
@@ -89,7 +91,7 @@ Example:</p>
 <tr class="row-even"><td>urls</td>
 <td>Array of <a class="reference external" href="#url">URL Objects</a></td>
 <td><p class="first">Represents URLs included in the text of a Tweet.</p>
-<p>Tweet Example (without Enhanced URLs enrichment enabled):</p>
+<p>Example (without Enhanced URLs enrichment enabled):</p>
 <div class="code javascript highlight-python"><div class="highlight"><pre><span></span>{&#10;  &#34;urls&#34;: [&#10;    {&#10;      &#34;indices&#34;: [&#10;        32,&#10;        52&#10;      ],&#10;      &#34;url&#34;: &#34;http:\/\/t.co\/IOwBrTZR&#34;,&#10;      &#34;display_url&#34;: &#34;youtube.com\/watch?v=oHg5SJ\u2026&#34;,&#10;      &#34;expanded_url&#34;: &#34;http:\/\/www.youtube.com\/watch?v=oHg5SJYRHA0&#34;&#10;    }&#10;  ]&#10;}
 </pre></div>
 </div>
@@ -153,7 +155,7 @@ Example:</p>
 location of the # character in the Tweet text string. The second integer represents the location of the first character after the
 hashtag. Therefore the difference between the two numbers will be the length of the hashtag name plus one (for the &#8216;#&#8217; character).
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;indices&quot;:[32,36]
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;indices&quot;:[32,38]
 </pre></div>
 </div>
 </td>
@@ -162,7 +164,7 @@ Example:</p>
 <td>String</td>
 <td><p class="first">Name of the hashtag, minus the leading &#8216;#&#8217; character.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;text&quot;:&quot;lol&quot;
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;text&quot;:&quot;nodejs&quot;
 </pre></div>
 </div>
 </td>
@@ -171,7 +173,7 @@ Example:</p>
 </table>
 </div>
 
-### Media <a id="media" class="tall">&nbsp;</a>
+### Media Object <a id="media" class="tall">&nbsp;</a>
 
 <div>
 <table border="1" class="docutils">
@@ -265,8 +267,7 @@ a request with the user&#8217;s access token using OAuth 1.0A. It is not possibl
 <td><a class="reference external" href="#sizes">Size Object</a></td>
 <td><p class="first">An object showing available sizes for the media file.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;sizes&quot;:{&quot;thumb&quot;:{&quot;h&quot;:150, &quot;resize&quot;:&quot;crop&quot;, &quot;w&quot;:150}, &quot;large&quot;:{&quot;h&quot;:238, &quot;resize&quot;:&quot;fit&quot;, &quot;w&quot;:226}, &quot;medium&quot;:{&quot;h&quot;:238, &quot;resize&quot;:
-&quot;fit&quot;, &quot;w&quot;:226}, &quot;small&quot;:{&quot;h&quot;:238, &quot;resize&quot;:&quot;fit&quot;, &quot;w&quot;:226}}
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>{&#10;  &#34;sizes&#34;: {&#10;    &#34;thumb&#34;: {&#10;      &#34;h&#34;: 150,&#10;      &#34;resize&#34;: &#34;crop&#34;,&#10;      &#34;w&#34;: 150&#10;    },&#10;    &#34;large&#34;: {&#10;      &#34;h&#34;: 238,&#10;      &#34;resize&#34;: &#34;fit&#34;,&#10;      &#34;w&#34;: 226&#10;    },&#10;    &#34;medium&#34;: {&#10;      &#34;h&#34;: 238,&#10;      &#34;resize&#34;: &#34;fit&#34;,&#10;      &#34;w&#34;: 226&#10;    },&#10;    &#34;small&#34;: {&#10;      &#34;h&#34;: 238,&#10;      &#34;resize&#34;: &#34;fit&#34;,&#10;      &#34;w&#34;: 226&#10;    }&#10;  }&#10;}
 </pre></div>
 </div>
 </td>
@@ -316,106 +317,8 @@ Example:</p>
 </table>
 </div>
 
-### Size <a id="size" class="tall">&nbsp;</a>
 
-<div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Field</td>
-<td>Type</td>
-<td>Description</td>
-</tr>
-<tr class="row-even"><td>h</td>
-<td>Int</td>
-<td><p class="first">Height in pixels of this size.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;h&quot;:150
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td>resize</td>
-<td>String</td>
-<td><p class="first">Resizing method used to obtain this size. A value of <code class="docutils literal"><span class="pre">fit``means</span> <span class="pre">that</span> <span class="pre">the</span> <span class="pre">media</span> <span class="pre">was</span> <span class="pre">resized</span> <span class="pre">to</span> <span class="pre">fit</span> <span class="pre">one</span> <span class="pre">dimension,</span> <span class="pre">keeping</span>
-<span class="pre">its</span> <span class="pre">native</span> <span class="pre">aspect</span> <span class="pre">ratio.</span> <span class="pre">A</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">``crop</span></code> means that the media was cropped in order to fit a specific resolution.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;resize&quot;:&quot;crop&quot;
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td>w</td>
-<td>Int</td>
-<td><p class="first">Width in pixels of this size.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;w&quot;:150
-</pre></div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-### Sizes <a id="sizes" class="tall">&nbsp;</a>
-<div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Field</td>
-<td>Type</td>
-<td>Description</td>
-</tr>
-<tr class="row-even"><td>thumb</td>
-<td><a class="reference external" href="#obj-size">Object</a></td>
-<td><p class="first">Information for a thumbnail-sized version of the media.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;thumb&quot;:{&quot;h&quot;:150, &quot;resize&quot;:&quot;crop&quot;, &quot;w&quot;:150}
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td>large</td>
-<td><a class="reference external" href="#obj-size">Object</a></td>
-<td><p class="first">Information for a large-sized version of the media.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;large&quot;:{&quot;h&quot;:238, &quot;resize&quot;:&quot;fit&quot;, &quot;w&quot;:226}
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td>medium</td>
-<td><a class="reference external" href="#obj-size">Object</a></td>
-<td><p class="first">Information for a medium-sized version of the media.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;medium&quot;:{&quot;h&quot;:238, &quot;resize&quot;:&quot;fit&quot;, &quot;w&quot;:226}
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td>small</td>
-<td><a class="reference external" href="#obj-size">Object</a></td>
-<td><p class="first">Information for a small-sized version of the media.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;small&quot;:{&quot;h&quot;:238, &quot;resize&quot;:&quot;fit&quot;, &quot;w&quot;:226}
-</pre></div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-### URL <a id="url" class="tall">&nbsp;</a>
+### URL Object <a id="url" class="tall">&nbsp;</a>
 <div>
 <table border="1" class="docutils">
 <colgroup>
@@ -469,7 +372,7 @@ Example:</p>
 </table>
 </div>
 
-### User Mention <a id="user-mention" class="tall">&nbsp;</a>
+### User Mention Object <a id="user-mention" class="tall">&nbsp;</a>
 <div>
 <table border="1" class="docutils">
 <colgroup>
@@ -535,7 +438,7 @@ Example:</p>
 </div>
 </div>
 
-### Symbols <a id="symbol" class="tall">&nbsp;</a>
+### Symbol Object <a id="symbol" class="tall">&nbsp;</a>
 <div>
 <table border="1" class="docutils">
 <colgroup>
@@ -573,7 +476,7 @@ Example:</p>
 </div>
 
 
-### Polls <a id="poll" class="tall">&nbsp;</a>
+### Poll Object <a id="poll" class="tall">&nbsp;</a>
 <div>
 <table border="1" class="docutils">
 <colgroup>
@@ -618,6 +521,107 @@ Example:</p>
 </tbody>
 </table>
 </div>
+
+
+### Size Object <a id="size" class="tall">&nbsp;</a>
+
+<div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Field</td>
+<td>Type</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>h</td>
+<td>Int</td>
+<td><p class="first">Height in pixels of this size.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;h&quot;:150
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>resize</td>
+<td>String</td>
+<td><p class="first">Resizing method used to obtain this size. A value of <code class="docutils literal"><span class="pre">fit``means</span> <span class="pre">that</span> <span class="pre">the</span> <span class="pre">media</span> <span class="pre">was</span> <span class="pre">resized</span> <span class="pre">to</span> <span class="pre">fit</span> <span class="pre">one</span> <span class="pre">dimension,</span> <span class="pre">keeping</span>
+<span class="pre">its</span> <span class="pre">native</span> <span class="pre">aspect</span> <span class="pre">ratio.</span> <span class="pre">A</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">``crop</span></code> means that the media was cropped in order to fit a specific resolution.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;resize&quot;:&quot;crop&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>w</td>
+<td>Int</td>
+<td><p class="first">Width in pixels of this size.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;w&quot;:150
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+### Sizes Object <a id="sizes" class="tall">&nbsp;</a>
+<div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Field</td>
+<td>Type</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>thumb</td>
+<td><a class="reference external" href="#obj-size">Object</a></td>
+<td><p class="first">Information for a thumbnail-sized version of the media.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;thumb&quot;:{&quot;h&quot;:150, &quot;resize&quot;:&quot;crop&quot;, &quot;w&quot;:150}
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>large</td>
+<td><a class="reference external" href="#obj-size">Object</a></td>
+<td><p class="first">Information for a large-sized version of the media.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;large&quot;:{&quot;h&quot;:238, &quot;resize&quot;:&quot;fit&quot;, &quot;w&quot;:226}
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>medium</td>
+<td><a class="reference external" href="#obj-size">Object</a></td>
+<td><p class="first">Information for a medium-sized version of the media.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;medium&quot;:{&quot;h&quot;:238, &quot;resize&quot;:&quot;fit&quot;, &quot;w&quot;:226}
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>small</td>
+<td><a class="reference external" href="#obj-size">Object</a></td>
+<td><p class="first">Information for a small-sized version of the media.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;small&quot;:{&quot;h&quot;:238, &quot;resize&quot;:&quot;fit&quot;, &quot;w&quot;:226}
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
 
 
 
