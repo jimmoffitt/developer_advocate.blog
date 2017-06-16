@@ -121,26 +121,8 @@ Example:</p>
 <td>Array of <a class="reference external" href="#symbol">Symbol Objects</a></td>
 <td><p class="first">Represents symbols, i.e. $cashtags, included in the text of the Tweet.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;symbols&quot;:[{&quot;indices&quot;:[12,17],&quot;text&quot;:&quot;twtr&quot;}]
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>{&#10;  &#34;symbols&#34;: [&#10;    {&#10;      &#34;indices&#34;: [&#10;        12,&#10;        17&#10;      ],&#10;      &#34;text&#34;: &#34;twtr&#34;&#10;    }&#10;  ]&#10;}
 </pre></div>
-{
-  "symbols": [
-    {
-      "indices": [
-        12,
-        17
-      ],
-      "text": "twtr"
-    }
-  ]
-}
-<div class="code javascript last highlight-python"><div class="highlight"><pre><code>
-
-</code></pre></div>
-
-
-
-
 </div>
 </td>
 </tr>
