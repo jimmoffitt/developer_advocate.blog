@@ -1,6 +1,7 @@
 [] TODOS
 + [X] Add symbols
 + [X] Add polling metadata
++ [] Add relevant Operators
 + [] Add Video extended entities details
 + [] JSON pretty print encoding: https://opinionatedgeek.com/Codecs/HtmlEncoder (use checkbox!)
 
@@ -475,7 +476,6 @@ Example:</p>
 </table>
 </div>
 
-
 ### Poll Object <a id="poll" class="tall">&nbsp;</a>
 <div>
 <table border="1" class="docutils">
@@ -522,54 +522,11 @@ Example:</p>
 </table>
 </div>
 
+### Media Size Objects
 
-### Size Object <a id="size" class="tall">&nbsp;</a>
+All Tweets with native media (photos, video, and GIFs) will include a set of 'thumb', 'small', 'medium', and 'large' sizes with height and width pixel sizes.
 
-<div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Field</td>
-<td>Type</td>
-<td>Description</td>
-</tr>
-<tr class="row-even"><td>h</td>
-<td>Int</td>
-<td><p class="first">Height in pixels of this size.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;h&quot;:150
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td>resize</td>
-<td>String</td>
-<td><p class="first">Resizing method used to obtain this size. A value of <code class="docutils literal"><span class="pre">fit``means</span> <span class="pre">that</span> <span class="pre">the</span> <span class="pre">media</span> <span class="pre">was</span> <span class="pre">resized</span> <span class="pre">to</span> <span class="pre">fit</span> <span class="pre">one</span> <span class="pre">dimension,</span> <span class="pre">keeping</span>
-<span class="pre">its</span> <span class="pre">native</span> <span class="pre">aspect</span> <span class="pre">ratio.</span> <span class="pre">A</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">``crop</span></code> means that the media was cropped in order to fit a specific resolution.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;resize&quot;:&quot;crop&quot;
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td>w</td>
-<td>Int</td>
-<td><p class="first">Width in pixels of this size.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;w&quot;:150
-</pre></div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-### Sizes Object <a id="sizes" class="tall">&nbsp;</a>
+#### Sizes Object <a id="sizes" class="tall">&nbsp;</a>
 <div>
 <table border="1" class="docutils">
 <colgroup>
@@ -583,7 +540,7 @@ Example:</p>
 <td>Description</td>
 </tr>
 <tr class="row-even"><td>thumb</td>
-<td><a class="reference external" href="#obj-size">Object</a></td>
+<td><a class="reference external" href="#obj-size">Size Object</a></td>
 <td><p class="first">Information for a thumbnail-sized version of the media.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;thumb&quot;:{&quot;h&quot;:150, &quot;resize&quot;:&quot;crop&quot;, &quot;w&quot;:150}
@@ -592,7 +549,7 @@ Example:</p>
 </td>
 </tr>
 <tr class="row-odd"><td>large</td>
-<td><a class="reference external" href="#obj-size">Object</a></td>
+<td><a class="reference external" href="#obj-size">Size Object</a></td>
 <td><p class="first">Information for a large-sized version of the media.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;large&quot;:{&quot;h&quot;:238, &quot;resize&quot;:&quot;fit&quot;, &quot;w&quot;:226}
@@ -601,7 +558,7 @@ Example:</p>
 </td>
 </tr>
 <tr class="row-even"><td>medium</td>
-<td><a class="reference external" href="#obj-size">Object</a></td>
+<td><a class="reference external" href="#obj-size">Size Object</a></td>
 <td><p class="first">Information for a medium-sized version of the media.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;medium&quot;:{&quot;h&quot;:238, &quot;resize&quot;:&quot;fit&quot;, &quot;w&quot;:226}
@@ -610,7 +567,7 @@ Example:</p>
 </td>
 </tr>
 <tr class="row-odd"><td>small</td>
-<td><a class="reference external" href="#obj-size">Object</a></td>
+<td><a class="reference external" href="#obj-size">Size Object</a></td>
 <td><p class="first">Information for a small-sized version of the media.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;small&quot;:{&quot;h&quot;:238, &quot;resize&quot;:&quot;fit&quot;, &quot;w&quot;:226}
@@ -622,6 +579,55 @@ Example:</p>
 </table>
 </div>
 
+#### Size Object <a id="size" class="tall">&nbsp;</a>
+
+<div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Field</td>
+<td>Type</td>
+<td>Description</td>
+</tr>
+
+<tr class="row-even"><td>w</td>
+<td>Int</td>
+<td><p class="first">Width in pixels of this size.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;w&quot;:150
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>h</td>
+<td>Int</td>
+<td><p class="first">Height in pixels of this size.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;h&quot;:150
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>resize</td>
+<td>String</td>
+<td><p class="first">Resizing method used to obtain this size. A value of <code class="docutils literal"><span class="pre">fit``means</span> <span class="pre">that</span> <span class="pre">the</span> <span class="pre">media</span> <span class="pre">was</span> <span class="pre">resized</span> <span class="pre">to</span> <span class="pre">fit</span> <span class="pre">one</span> <span class="pre">dimension,</span> <span class="pre">keeping</span>
+<span class="pre">its</span> <span class="pre">native</span> <span class="pre">aspect</span> <span class="pre">ratio.</span> <span class="pre">A</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">``crop</span></code> means that the media was cropped in order to fit a specific resolution.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;resize&quot;:&quot;crop&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+</tbody>
+</table>
+</div>
 
 
 
