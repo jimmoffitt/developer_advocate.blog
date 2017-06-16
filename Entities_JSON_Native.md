@@ -17,7 +17,7 @@ Entities provide metadata and additional contextual information about content po
 
 Beyond providing parsing conveniences, the ```entities``` section also provides useful 'value-add' metadata. For example, URL entities include expanded URLs, and if you are using the [Enhanced URLs enrichment](http://support.gnip.com/enrichments/enhanced_urls.html), website titles and description associated with included links. Another example is when there are user mentions, the entities metadata include the numeric user ID. 
 
-Every Tweet JSON payload includes an 'entities' section, with the minimum set of ```hashtags```, ```urls```. ```user_mentions```, and ```symbols``` attributes, even if none of those entities are part of the Tweet message. For example, if you examine the JSON for a Tweet with a body of "Hello World!" and no attached media, the Tweet's JSON will include the following content with entity arrays with zero items: 
+Every Tweet JSON payload includes an ```entities``` section, with the minimum set of ```hashtags```, ```urls```. ```user_mentions```, and ```symbols``` attributes, even if none of those entities are part of the Tweet message. For example, if you examine the JSON for a Tweet with a body of "Hello World!" and no attached media, the Tweet's JSON will include the following content with entity arrays with zero items: 
 
 ```json
 "entities": {
@@ -35,6 +35,8 @@ Every Tweet JSON payload includes an 'entities' section, with the minimum set of
 
 On the otherhand, the ```media``` and ```polls``` entities will only appear when that type of content is part of the Tweet.  
 
+Consumers of ```entities``` and ```entities_extended``` sections must be tolerant of 'missing' fields, since nto all fields appear in all contexts. Parsers should tolerate the addition of new fields and variance in ordering of fields with ease. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.
+
 ### Native Tweet media
 
 If a Tweet contains native media (shared with the Tweet user-interface as opposed via a link to elsewhere), there will also be a ```extended_entities``` section. When it comes any native media (photo, video, or GIF), the ```extended_entities``` is the preferred metadata source for several reasons. Currently, up to four photos can be attached to a Tweet. The  ```entities``` metadata will only contain the first photo (until 2014, only one photo could be included), while the ```extended_entities``` section will include all attached photos. When it comes to native media, another deficiency with the ```entities.media``` metadata is that the media type will always indicate 'photo', even in cases where the attached media is a video or animated GIF. The actual type of media is specified in the ```extended_entities.media[].type``` attribute and is set to either _photo_, _video_, or _animated_gif_. When it comes to native media, the ```extended_entities``` metadata is the way to go. 
@@ -43,7 +45,12 @@ The ```entities``` and ```extended_entities``` sections are both made up of arra
 
 ## Entities Data Dictionary <a id="entities-data-dictionary" class="tall">&nbsp;</a>
 
-Consumers of Entities should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.</p>
+A collection of common entities included with Tweets, including hashtags, link, and user mentions. This ```entities``` object does include a ```media``` attribute, but it implementation here is only complete for Tweets with a single photo. For all Tweets with more than one photo, a video, or animated GIF, the reader is directed to the ```extended_entities``` section. 
+
+
+### Entities object
+
+The entities pbject is a holder of arrays of other entities sub-objects. After illustrating the ```entities``` structure, data dictionaries for these sub-objects will be provided.
 
 <table border="1" class="docutils">
 <colgroup>
@@ -116,6 +123,24 @@ Example:</p>
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;symbols&quot;:[{&quot;indices&quot;:[12,17],&quot;text&quot;:&quot;twtr&quot;}]
 </pre></div>
+{
+  "symbols": [
+    {
+      "indices": [
+        12,
+        17
+      ],
+      "text": "twtr"
+    }
+  ]
+}
+<div class="code javascript last highlight-python"><div class="highlight"><pre><code>
+
+</code></pre></div>
+
+
+
+
 </div>
 </td>
 </tr>
@@ -133,7 +158,7 @@ Example:</p>
 </tbody>
 </table>
 
-### Hashtag <a id="hashtag" class="tall">&nbsp;</a>
+### Hashtag Object<a id="hashtag" class="tall">&nbsp;</a>
 
 <div>
 <table border="1" class="docutils">
