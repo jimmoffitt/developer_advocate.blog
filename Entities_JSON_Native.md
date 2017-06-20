@@ -138,9 +138,9 @@ Example:</p>
 
 ### Hashtag Object<a id="hashtag" class="tall">&nbsp;</a>
 
-The ```entities``` section will contain a ```hashtags``` array containing hashtags included in the Tweet body, and include an empty array if no hashtags are present. 
+The ```entities``` section will contain a ```hashtags``` array containing an object for every hashtag included in the Tweet body, and include an empty array if no hashtags are present. 
 
-The PowerTrack ```#``` Operator is used to match on the ```text``` attribute. The ```has:hashtags``` Operator if there is at least one item in the array. 
+The PowerTrack ```#``` Operator is used to match on the ```text``` attribute. The ```has:hashtags``` Operator will match if there is at least one item in the array. 
 
 <div>
 <table border="1" class="docutils">
@@ -180,10 +180,11 @@ Example:</p>
 
 ### Media Object <a id="media" class="tall">&nbsp;</a>
 
-The ```entities``` section will contain a ```media``` array containing native mediaed in the Tweet body, and include an empty array if no hashtags are present. 
+The ```entities``` section will contain a ```media``` array containing a single media object if any media object has been 'attached' to the Tweet. If no native media has been attached, there will be no ```media``` array in the ```entities```. For the following reasons the ```extended_entities``` section should be used to process Tweet native media:
++ Media ```type``` will always indicate 'photo` even in cases of a video and GIF being attached to Tweet.
++ Even though up to four photos can be attached, only the first one will be listed in the ```entities``` section.
 
-The PowerTrack ```#``` Operator is used to match on the ```text``` attribute. The ```has:hashtags``` Operator if there is at least one item in the array. 
-
+The ```has:media``` Operator will match if this array is populated. 
 
 <div>
 <table border="1" class="docutils">
