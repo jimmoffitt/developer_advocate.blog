@@ -3,7 +3,7 @@
 + [X] Add polling metadata
 + [] Add relevant Operators
 + [] Add Video extended entities details
-+ [] JSON pretty print encoding: https://opinionatedgeek.com/Codecs/HtmlEncoder (use checkbox!)
++ [X] JSON pretty print encoding: https://opinionatedgeek.com/Codecs/HtmlEncoder (use checkbox!)
 
 ## Sections
 
@@ -138,7 +138,7 @@ Example:</p>
 
 ### Hashtag Object<a id="hashtag" class="tall">&nbsp;</a>
 
-The ```entities``` section will contain an array of hashtags included in the Tweet body, and include an empty array if no hashtags are present. 
+The ```entities``` section will contain a ```hashtags``` array containing hashtags included in the Tweet body, and include an empty array if no hashtags are present. 
 
 The PowerTrack ```#``` Operator is used to match on the ```text``` attribute. The ```has:hashtags``` Operator if there is at least one item in the array. 
 
@@ -179,6 +179,11 @@ Example:</p>
 </div>
 
 ### Media Object <a id="media" class="tall">&nbsp;</a>
+
+The ```entities``` section will contain a ```media``` array containing native mediaed in the Tweet body, and include an empty array if no hashtags are present. 
+
+The PowerTrack ```#``` Operator is used to match on the ```text``` attribute. The ```has:hashtags``` Operator if there is at least one item in the array. 
+
 
 <div>
 <table border="1" class="docutils">
