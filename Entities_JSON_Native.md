@@ -727,9 +727,13 @@ All Tweets with attached photos, videos and animated GIFs will include an ```ext
 
 
 Tweet with hashtag, user mention, cashtag, URL, and four native photos: https://twitter.com/FloodSocial/status/861627479294746624
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Test Tweet with <a href="https://twitter.com/MentionThis">@mentionThis</a> <a href="https://twitter.com/search?q=%24twtr&amp;src=ctag">$twtr</a> <a href="https://t.co/RzmrQ6wAzD">https://t.co/RzmrQ6wAzD</a> <a href="https://twitter.com/hashtag/hashtag?src=hash">#hashtag</a> <a href="https://t.co/9r69akA484">pic.twitter.com/9r69akA484</a></p>&mdash; @FloodSocial (@FloodSocial) <a href="https://twitter.com/FloodSocial/status/861627479294746624">May 8, 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
 Quoted Tweet of that one containing new text, hashtag, user mention, and cashtag: https://twitter.com/FloodSocial/status/865604154676432896
 
-https://publish.twitter.com/oembed?url=https://twitter.com/Interior/status/463440424141459456
 
 
 ## Native JSON Examples <a id="example-json" class="tall">&nbsp;</a>
