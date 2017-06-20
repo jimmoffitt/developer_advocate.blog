@@ -8,11 +8,12 @@
 ## Sections
 
 + [Twitter Entities](#entities)
++ [Twitter Extended Entities](#extended-entities)
 + [Entities Data Dictionary](#entities-data-dictionary)
 + [Extended Entities Data Dictionary](#extended-entities-data-dictionary)
 + [Example Native JSON](#example-json)
 
-## Twitter Entities and Extended Entities<a id="entities" class="tall">&nbsp;</a>
+## Twitter Entities <a id="entities" class="tall">&nbsp;</a>
 
 Entities provide metadata and additional contextual information about content posted on Twitter. The ```entities``` section provides  arrays of common things included in Tweets: hashtags, user mentions, links, stock tickers (symbols), Twitter polls, and attached media. These arrays are convenient for developers when ingesting Tweets, since Twitter has essentially pre-processed, or pre-parsed, the text body. Instead of needing to explicitly search and find these entities in the Tweet body, your parser can go straight to this JSON section and there they are.
 
@@ -35,7 +36,7 @@ Every Tweet JSON payload includes an ```entities``` section, with the minimum se
 
 Note that the ```media``` and ```polls``` entities will only appear when that type of content is part of the Tweet.  
 
-### Native Tweet media
+## Twitter Extended Entities <a id="extended-entities" class="tall">&nbsp;</a>
 
 If a Tweet contains native media (shared with the Tweet user-interface as opposed via a link to elsewhere), there will also be a ```extended_entities``` section. When it comes to any native media (photo, video, or GIF), the ```extended_entities``` is the preferred metadata source for several reasons. Currently, up to four photos can be attached to a Tweet. The  ```entities``` metadata will only contain the first photo (until 2014, only one photo could be included), while the ```extended_entities``` section will include all attached photos. With native media, another deficiency of the ```entities.media``` metadata is that the media type will always indicate 'photo', even in cases where the attached media is a video or animated GIF. The actual type of media is specified in the ```extended_entities.media[].type``` attribute and is set to either _photo_, _video_, or _animated_gif_. For these reasons, if you are working with native media, the ```extended_entities``` metadata is the way to go. 
 
@@ -422,9 +423,8 @@ Example:</p>
 </tr>
 <tr class="row-even"><td>title</td>
 <td>String</td>
-<td><p class="first">HTML Title for the link.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;indices&quot;:[32,52]
+<td><p class="first">HTML title for the link.  Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;title&quot;:&quot;Using Twitter as a \u2018go-to\u2019 communication channel during severe weather&quot;
 </pre></div>
 </div>
 </td>
@@ -432,7 +432,7 @@ Example:</p>
 <tr class="row-odd"><td>description</td>
 <td>String</td>
 <td><p class="first">HTML description for the link.  Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;url&quot;:&quot;http:\/\/t.co\/IOwBrTZR&quot;
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;description&quot;:&quot;Using Twitter as a \u2018go-to\u2019 communication channel during severe weather&quot;
 </pre></div>
 </div>
 </td>
