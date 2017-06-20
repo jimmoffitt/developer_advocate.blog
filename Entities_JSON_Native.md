@@ -181,7 +181,7 @@ Example:</p>
 ### Media Object <a id="media" class="tall">&nbsp;</a>
 
 The ```entities``` section will contain a ```media``` array containing a single media object if any media object has been 'attached' to the Tweet. If no native media has been attached, there will be no ```media``` array in the ```entities```. For the following reasons the ```extended_entities``` section should be used to process Tweet native media:
-+ Media ```type``` will always indicate 'photo` even in cases of a video and GIF being attached to Tweet.
++ Media ```type``` will always indicate 'photo' even in cases of a video and GIF being attached to Tweet.
 + Even though up to four photos can be attached, only the first one will be listed in the ```entities``` section.
 
 The ```has:media``` Operator will match if this array is populated. 
@@ -330,6 +330,11 @@ Example:</p>
 
 
 ### URL Object <a id="url" class="tall">&nbsp;</a>
+
+The ```entities``` section will contain a ```urls``` array containing an object for every link included in the Tweet body, and include an empty array if no links are present. 
+
+The ```has:links``` Operator will match if there is at least one item in the array. The ```url:``` Operator is used to match on the ```expanded_url``` attribute. If you are using the [Expanded URL enrichment](http://support.gnip.com/enrichments/expanded_urls.html), the ```url:``` Operator is used to match on the ```unwound.url``` (fully unwound URL) attribute. If you are using the [Exhanced URL enrichment](http://support.gnip.com/enrichments/enhanced_urls.html), the ```url_title:``` and ```url_decription:``` Operators are used to match on the ```unwound.title``` and ```unwound.description``` attributes.        
+
 <div>
 <table border="1" class="docutils">
 <colgroup>
@@ -374,6 +379,59 @@ Example:</p>
 <tr class="row-odd"><td>url</td>
 <td>String</td>
 <td><p class="first">Wrapped URL, corresponding to the value embedded directly into the raw Tweet text, and the values for the indices  parameter. Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;url&quot;:&quot;http:\/\/t.co\/IOwBrTZR&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+If you are using the Expanded and/or Enhanced URL enrichments, the following metadata is available under the ```unwound``` attribute:
+
+<div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Field</td>
+<td>Type</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>url</td>
+<td>String</td>
+<td><p class="first">The fully unwound version of the link included in the Tweet.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;display_url&quot;:&quot;youtube.com\/watch?v=oHg5SJ\u2026&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>status</td>
+<td>Int</td>
+<td><p class="first">Final HTTP status of the unwinding process, a '200' indicating success.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>200
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>title</td>
+<td>String</td>
+<td><p class="first">HTML Title for the link.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;indices&quot;:[32,52]
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>String</td>
+<td><p class="first">HTML description for the link.  Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;url&quot;:&quot;http:\/\/t.co\/IOwBrTZR&quot;
 </pre></div>
 </div>
