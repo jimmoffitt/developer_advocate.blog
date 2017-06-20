@@ -350,9 +350,9 @@ The ```has:links``` Operator will match if there is at least one item in the arr
 </tr>
 <tr class="row-even"><td>display_url</td>
 <td>String</td>
-<td><p class="first">Version of the URL to display to clients.
+<td><p class="first">URL pasted/typed into Tweet.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;display_url&quot;:&quot;youtube.com\/watch?v=oHg5SJ\u2026&quot;
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;display_url&quot;:&quot;bit.ly\/2so49n2&quot;
 </pre></div>
 </div>
 </td>
@@ -361,7 +361,7 @@ Example:</p>
 <td>String</td>
 <td><p class="first">Expanded version of ``     display_url``     .
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;expanded_url&quot;:&quot;http:\/\/www.youtube.com\/watch?v=oHg5SJYRHA0&quot;
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;expanded_url&quot;:&quot;http:\/\/bit.ly\/2so49n2&quot;
 </pre></div>
 </div>
 </td>
@@ -372,7 +372,7 @@ Example:</p>
 location of the first character of the URL in the Tweet text. The second integer represents the location of the first non-URL
 character after the end of the URL.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;indices&quot;:[32,52]
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;indices&quot;:[30,53]
 </pre></div>
 </div>
 </td>
@@ -380,7 +380,7 @@ Example:</p>
 <tr class="row-odd"><td>url</td>
 <td>String</td>
 <td><p class="first">Wrapped URL, corresponding to the value embedded directly into the raw Tweet text, and the values for the indices  parameter. Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;url&quot;:&quot;http:\/\/t.co\/IOwBrTZR&quot;
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;url&quot;:&quot;https:\/\/t.co\/yzocNFvJuL&quot;
 </pre></div>
 </div>
 </td>
@@ -407,7 +407,7 @@ If you are using the Expanded and/or Enhanced URL enrichments, the following met
 <td>String</td>
 <td><p class="first">The fully unwound version of the link included in the Tweet.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;display_url&quot;:&quot;youtube.com\/watch?v=oHg5SJ\u2026&quot;
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;url&quot;:&quot;https:\/\/blog.twitter.com\/en_us\/topics\/insights\/2016\/using-twitter-as-a-go-to-communication-channel-during-severe-weather-events.html&quot;
 </pre></div>
 </div>
 </td>
@@ -442,6 +442,11 @@ Example:</p>
 </div>
 
 ### User Mention Object <a id="user-mention" class="tall">&nbsp;</a>
+
+The ```entities``` section will contain a ```user_mentions``` array containing an object for every user mention included in the Tweet body, and include an empty array if no user mention is present. 
+
+The PowerTrack ```@``` Operator is used to match on the ```screen_name``` attribute. The ```has:mentions``` Operator will match if there is at least one item in the array. 
+
 <div>
 <table border="1" class="docutils">
 <colgroup>
@@ -508,6 +513,11 @@ Example:</p>
 </div>
 
 ### Symbol Object <a id="symbol" class="tall">&nbsp;</a>
+
+The ```entities``` section will contain a ```symbols``` array containing an object for every $cashtag included in the Tweet body, and include an empty array if no symbol is present. 
+
+The PowerTrack ```$``` Operator is used to match on the ```text``` attribute. The ```has:symbols``` Operator will match if there is at least one item in the array. 
+
 <div>
 <table border="1" class="docutils">
 <colgroup>
@@ -545,6 +555,9 @@ Example:</p>
 </div>
 
 ### Poll Object <a id="poll" class="tall">&nbsp;</a>
+
+The ```entities``` section will contain a ```polls``` array containing a single ```poll``` object if the Tweet contains a poll.  If no poll is included, there will be no ```polls``` array in the ```entities``` section. 
+
 <div>
 <table border="1" class="docutils">
 <colgroup>
@@ -560,7 +573,7 @@ Example:</p>
 <tr class="row-even"><td>options</td>
 <td>Array of Option Object</td>
 <td><p class="first">An array of options, each having a poll position, and the text for that position. Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>{&#34;options&#34;: [&#10;          {&#10;            &#34;position&#34;: 1,&#10;            &#34;text&#34;: &#34;Testing is important&#34;&#10;          }&#10;      ]&#10;}
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>{&#34;options&#34;: [&#10;          {&#10;            &#34;position&#34;: 1,&#10;            &#34;text&#34;: &#34;I read documentation once.&#34;&#10;          }&#10;      ]&#10;}
 </pre></div>
 </div>
 </td>
@@ -700,9 +713,7 @@ Example:</p>
 
 ## Extended Entities Data Dictionary <a id="extended-entities-data-dictionary" class="tall">&nbsp;</a>
 
-All Tweets with attached photos, videos and animated GIFs will include an ```extended_entities``` JSON object. Note that a Tweet can only include one type of media. For photos, up to four photos can be attached, 
-
-and for videos and GIFs, only one can be attached. 
+All Tweets with attached photos, videos and animated GIFs will include an ```extended_entities``` JSON object. Note that a Tweet can only include one type of media. For photos, up to four photos can be attached. For videos and GIFs, one can be attached. 
 
 ```json
 {
@@ -717,6 +728,8 @@ and for videos and GIFs, only one can be attached.
 
 Tweet with hashtag, user mention, cashtag, URL, and four native photos: https://twitter.com/FloodSocial/status/861627479294746624
 Quoted Tweet of that one containing new text, hashtag, user mention, and cashtag: https://twitter.com/FloodSocial/status/865604154676432896
+
+https://publish.twitter.com/oembed?url=https://twitter.com/Interior/status/463440424141459456
 
 
 ## Native JSON Examples <a id="example-json" class="tall">&nbsp;</a>
