@@ -1066,6 +1066,67 @@ Below is the extended entities metadata for this Tweet with a video: https://twi
 }
 ```
 
+As discussed above, here is the ```entities``` section that incorrectly has the ```type``` set to 'photo'. Again, the ```extended_entities``` section is preferred for all native media types, including 'video' and 'animated_gif'.
+
+```json
+{
+"entities": {
+    "hashtags": [
+      
+    ],
+    "urls": [
+      
+    ],
+    "user_mentions": [
+      
+    ],
+    "symbols": [
+      
+    ],
+    "media": [
+      {
+        "id": 8.6931798030742e+17,
+        "id_str": "869317980307415040",
+        "indices": [
+          31,
+          54
+        ],
+        "media_url": "http:\/\/pbs.twimg.com\/ext_tw_video_thumb\/869317980307415040\/pu\/img\/t_E6wyADk_PvxuzF.jpg",
+        "media_url_https": "https:\/\/pbs.twimg.com\/ext_tw_video_thumb\/869317980307415040\/pu\/img\/t_E6wyADk_PvxuzF.jpg",
+        "url": "https:\/\/t.co\/TLSTTOvvmP",
+        "display_url": "pic.twitter.com\/TLSTTOvvmP",
+        "expanded_url": "https:\/\/twitter.com\/FloodSocial\/status\/869318041078820864\/video\/1",
+        "type": "photo",
+        "sizes": {
+          "small": {
+            "w": 340,
+            "h": 604,
+            "resize": "fit"
+          },
+          "large": {
+            "w": 720,
+            "h": 1280,
+            "resize": "fit"
+          },
+          "thumb": {
+            "w": 150,
+            "h": 150,
+            "resize": "crop"
+          },
+          "medium": {
+            "w": 600,
+            "h": 1067,
+            "resize": "fit"
+          }
+        }
+      }
+    ]
+  }
+
+}
+```
+
+
 #### Tweet with an animated GIF
 
 Below is the extended entities metadata for this Tweet with an animated GIF: https://twitter.com/FloodSocial/status/870042717589340160
