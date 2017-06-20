@@ -14,11 +14,11 @@
 
 ## Twitter Entities and Extended Entities<a id="entities" class="tall">&nbsp;</a>
 
-Entities provide metadata and additional contextual information about content posted on Twitter. The ```entities``` section provides  arrays of common things included in Tweets: hashtags, mentions of other Twitter accounts, links, stock ticker symbols, Twitter polls, and attached media. These arrays are convenient for developers when ingesting Tweets, since Twitter has essentially pre-processed, or pre-parsed, the text body. Instead of needing to explicitly search and find these entities in the Tweet body, your parser can go straight to this JSON section and there they are.
+Entities provide metadata and additional contextual information about content posted on Twitter. The ```entities``` section provides  arrays of common things included in Tweets: hashtags, user mentions, links, stock tickers (symbols), Twitter polls, and attached media. These arrays are convenient for developers when ingesting Tweets, since Twitter has essentially pre-processed, or pre-parsed, the text body. Instead of needing to explicitly search and find these entities in the Tweet body, your parser can go straight to this JSON section and there they are.
 
-Beyond providing parsing conveniences, the ```entities``` section also provides useful 'value-add' metadata. For example, URL entities include expanded URLs, and if you are using the [Enhanced URLs enrichment](http://support.gnip.com/enrichments/enhanced_urls.html), website titles and description associated with included links. Another example is when there are user mentions, the entities metadata include the numeric user ID. 
+Beyond providing parsing conveniences, the ```entities``` section also provides useful 'value-add' metadata. For example, if you are using the [Enhanced URLs enrichment](http://support.gnip.com/enrichments/enhanced_urls.html), URL metadata include fully-expanded URLs, as well as associated website titles and descriptions. Another example is when there are user mentions, the entities metadata include the numeric user ID, which are useful when making requests to many Twitter APIs. 
 
-Every Tweet JSON payload includes an ```entities``` section, with the minimum set of ```hashtags```, ```urls```, ```user_mentions```, and ```symbols``` attributes, even if none of those entities are part of the Tweet message. For example, if you examine the JSON for a Tweet with a body of "Hello World!" and no attached media, the Tweet's JSON will include the following content with entity arrays with zero items: 
+Every Tweet JSON payload includes an ```entities``` section, with the minimum set of ```hashtags```, ```urls```, ```user_mentions```, and ```symbols``` attributes, even if none of those entities are part of the Tweet message. For example, if you examine the JSON for a Tweet with a body of "Hello World!" and no attached media, the Tweet's JSON will include the following content with entity arrays containing  zero items: 
 
 ```json
 "entities": {
@@ -33,27 +33,27 @@ Every Tweet JSON payload includes an ```entities``` section, with the minimum se
   }
 ```
 
-On the otherhand, the ```media``` and ```polls``` entities will only appear when that type of content is part of the Tweet.  
+Note that the ```media``` and ```polls``` entities will only appear when that type of content is part of the Tweet.  
 
 ### Native Tweet media
 
-If a Tweet contains native media (shared with the Tweet user-interface as opposed via a link to elsewhere), there will also be a ```extended_entities``` section. When it comes any native media (photo, video, or GIF), the ```extended_entities``` is the preferred metadata source for several reasons. Currently, up to four photos can be attached to a Tweet. The  ```entities``` metadata will only contain the first photo (until 2014, only one photo could be included), while the ```extended_entities``` section will include all attached photos. When it comes to native media, another deficiency with the ```entities.media``` metadata is that the media type will always indicate 'photo', even in cases where the attached media is a video or animated GIF. The actual type of media is specified in the ```extended_entities.media[].type``` attribute and is set to either _photo_, _video_, or _animated_gif_. When it comes to native media, the ```extended_entities``` metadata is the way to go. 
+If a Tweet contains native media (shared with the Tweet user-interface as opposed via a link to elsewhere), there will also be a ```extended_entities``` section. When it comes to any native media (photo, video, or GIF), the ```extended_entities``` is the preferred metadata source for several reasons. Currently, up to four photos can be attached to a Tweet. The  ```entities``` metadata will only contain the first photo (until 2014, only one photo could be included), while the ```extended_entities``` section will include all attached photos. With native media, another deficiency of the ```entities.media``` metadata is that the media type will always indicate 'photo', even in cases where the attached media is a video or animated GIF. The actual type of media is specified in the ```extended_entities.media[].type``` attribute and is set to either _photo_, _video_, or _animated_gif_. For these reasons, if you are working with native media, the ```extended_entities``` metadata is the way to go. 
 
 ### Parsing Tips
 
-Consumers of ```entities``` and ```entities_extended``` sections must be tolerant of 'missing' fields, since nto all fields appear in all contexts. Parsers should tolerate the addition of new fields and variance in ordering of fields with ease. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.
+Consumers of ```entities``` and ```entities_extended``` sections must be tolerant of 'missing' fields, since not all fields appear in all contexts. Parsers should tolerate the addition of new fields and variance in ordering of fields with ease. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.
 
+[OTHER TIPS? MOVE TO GLOBAL introductory section]
 
-
-The ```entities``` and ```extended_entities``` sections are both made up of arrays of entity _objects_. Below you will find descriptions for each of these entity objects, including data dictionaries that describe the object attribute names, types, and short description. We'll also include some sample JSON payloads. 
+The ```entities``` and ```extended_entities``` sections are both made up of arrays of entity _objects_. Below you will find descriptions for each of these entity objects, including data dictionaries that describe the object attribute names, types, and short description. We'll also indicate which PowerTrack Operators match these attributes, and include some sample JSON payloads. 
 
 ## Entities Data Dictionary <a id="entities-data-dictionary" class="tall">&nbsp;</a>
 
-A collection of common entities included with Tweets, including hashtags, link, and user mentions. This ```entities``` object does include a ```media``` attribute, but it implementation here is only complete for Tweets with a single photo. For all Tweets with more than one photo, a video, or animated GIF, the reader is directed to the ```extended_entities``` section. 
+A collection of common entities found in Tweets, including hashtags, links, and user mentions. This ```entities``` object does include a ```media``` attribute, but its implementation in the ```entiites``` section is only completely accurate for Tweets with a single photo. For all Tweets with more than one photo, a video, or animated GIF, the reader is directed to the ```extended_entities``` section. 
 
 ### Entities object
 
-The entities object is a holder of arrays of other entity sub-objects. After illustrating the ```entities``` structure, data dictionaries for these sub-objects will be provided.
+The entities object is a holder of arrays of other entity sub-objects. After illustrating the ```entities``` structure, data dictionaries for these sub-objects, and the Operators that match them, will be provided.
 
 <table border="1" class="docutils">
 <colgroup>
@@ -125,7 +125,7 @@ Example:</p>
 
 <tr class="row-odd"><td>polls</td>
 <td>Array of <a class="reference external" href="#poll">Poll Objects</a></td>
-<td><p class="first">Represents Twitter Pools included in the Tweet.
+<td><p class="first">Represents Twitter Polls included in the Tweet.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>{&#34;polls&#34;: [&#10;      {&#10;        &#34;options&#34;: [&#10;          {&#10;            &#34;position&#34;: 1,&#10;            &#34;text&#34;: &#34;I read documentation once.&#34;&#10;          },&#10;          {&#10;            &#34;position&#34;: 2,&#10;            &#34;text&#34;: &#34;I read documentation twice.&#34;&#10;          },&#10;          {&#10;            &#34;position&#34;: 3,&#10;            &#34;text&#34;: &#34;I read documentation over and over again.&#34;&#10;          }&#10;        ],&#10;        &#34;end_datetime&#34;: &#34;Thu May 25 22:20:27 +0000 2017&#34;,&#10;        &#34;duration_minutes&#34;: 60&#10;      }&#10;    ]&#10;  }
 </pre></div>
@@ -137,6 +137,10 @@ Example:</p>
 </table>
 
 ### Hashtag Object<a id="hashtag" class="tall">&nbsp;</a>
+
+The ```entities``` section will contain an array of hashtags included in the Tweet body, and include an empty array if no hashtags are present. 
+
+The PowerTrack ```#``` Operator is used to match on the ```text``` attribute. The ```has:hashtags``` Operator if there is at least one item in the array. 
 
 <div>
 <table border="1" class="docutils">
