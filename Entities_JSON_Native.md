@@ -713,7 +713,9 @@ Example:</p>
 
 ## Extended Entities Data Dictionary <a id="extended-entities-data-dictionary" class="tall">&nbsp;</a>
 
-All Tweets with attached photos, videos and animated GIFs will include an ```extended_entities``` JSON object. Note that a Tweet can only include one type of media. For photos, up to four photos can be attached. For videos and GIFs, one can be attached. 
+All Tweets with attached photos, videos and animated GIFs will include an ```extended_entities``` JSON object. The ```extended_entities``` object contains a single ```media``` array of ```media``` objects (see the ```entities``` section for its data dictionary). No other entity types, such as hashtags and links, are included in the ```extended_entities``` section. The ```media``` object in the ```extended_entities``` section is identical in structure to the one included in the ```entities``` section. 
+
+Tweets can only have one type of media attached to it. For photos, up to four photos can be attached. For videos and GIFs, one can be attached. Since the media ```type``` metadata in the ```extended_entities``` section correctly indicates the media type ('photo', 'video' or 'animated_gif'), and supports up to 4 photos, it is the preferred metadata source for native media.  
 
 ```json
 {
@@ -725,21 +727,18 @@ All Tweets with attached photos, videos and animated GIFs will include an ```ext
 }
 ```
 
+## Native JSON Examples <a id="example-json" class="tall">&nbsp;</a>
 
-Tweet with hashtag, user mention, cashtag, URL, and four native photos: https://twitter.com/FloodSocial/status/861627479294746624
+Below are some example Tweets and their associated entities metadata.
+
+### Tweet with four native photos
+
+Tweet with hashtag, user mention, cashtag, URL, and four native photos: 
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Test Tweet with <a href="https://twitter.com/MentionThis">@mentionThis</a> <a href="https://twitter.com/search?q=%24twtr&amp;src=ctag">$twtr</a> <a href="https://t.co/RzmrQ6wAzD">https://t.co/RzmrQ6wAzD</a> <a href="https://twitter.com/hashtag/hashtag?src=hash">#hashtag</a> <a href="https://t.co/9r69akA484">pic.twitter.com/9r69akA484</a></p>&mdash; @FloodSocial (@FloodSocial) <a href="https://twitter.com/FloodSocial/status/861627479294746624">May 8, 2017</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-
-Quoted Tweet of that one containing new text, hashtag, user mention, and cashtag: https://twitter.com/FloodSocial/status/865604154676432896
-
-
-
-## Native JSON Examples <a id="example-json" class="tall">&nbsp;</a>
-
-
-### Twitter _entities_
+Here is the ```entities``` section for this Tweet:
 
 ```json
 {
@@ -833,19 +832,13 @@ Quoted Tweet of that one containing new text, hashtag, user mention, and cashtag
 }
 ```
 
+Only in this 'extended' payload below will you find the four (maximum) native photos. Notice that the first photo in the array is the same as the single photo included in the non-extended Twitter _entities_ section. The _media_ metadata structure for photos is the same for both _entities_ and _extended_entities_ sections. 
 
-### Twitter _extended_entities_
-
-
-#### Tweet with four photos
-
-Below is the extended entities metadata for this Tweet with four photos: https://twitter.com/FloodSocial/status/861627479294746624
-
-Only in this 'extended' payload will you find the four (maximum) native photos. Notice that the first photo in the array is the same as the single photo included in the non-extended Twitter _entities_ section. The _media_ metadata structure for photos is the same for both _entities_ and _extended_entities_ sections. 
+Here is the ```extented_entities``` section for this Tweet:
 
 ```json
 {
-  "extended_entities": {
+"extended_entities": {
     "media": [
       {
         "id": 8.6162747224416e+17,
@@ -996,7 +989,7 @@ Only in this 'extended' payload will you find the four (maximum) native photos. 
 }
 ```
 
-#### Tweet with native video
+### Tweet with native video
 
 Below is the extended entities metadata for this Tweet with a video: https://twitter.com/FloodSocial/status/869318041078820864
 
