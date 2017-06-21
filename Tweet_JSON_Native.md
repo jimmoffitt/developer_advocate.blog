@@ -470,70 +470,11 @@ Example:</p>
 </table>
 
 
-## Other Tweet Child Objects
+## Tweet Child Objects
 
-User objects are described HERE.
-Entities and Extended Entitites objects are described HERE.
-
-
-
-<div class="section" id="places">
-<h3>Places<a class="headerlink" href="#places" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<tbody valign="top">
-
-</tbody>
-</table>
-</div>
-</div>
-</div>
-
-
-
-
-
-<div class="section" id="coordinates">
-<h3>Coordinates<a class="headerlink" href="#coordinates" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Field</td>
-<td>Type</td>
-<td>Description</td>
-</tr>
-<tr class="row-even"><td>coordinates</td>
-<td>Collection of Float</td>
-<td><p class="first">The longitude and latitude of the Tweet&#8217;s location, as a collection in the form <strong>[longitude, latitude]</strong>.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;coordinates&quot;:[-97.51087576,35.46500176]
-</pre></div>
-</div>
-</td>
-</tr>
-
-<tr class="row-odd"><td>type</td>
-<td>String</td>
-<td><p class="first">The type of data encoded in the coordinates property. This will be &#8220;Point&#8221; for Tweet coordinates fields.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;type&quot;: &quot;Point&quot;
-</pre></div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
++ User objects are described HERE.
++ Entities and Extended Entitites objects are described HERE.
++ Tweet geo objects are described HERE.
 
 ## Next Steps
 
