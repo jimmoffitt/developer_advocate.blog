@@ -165,11 +165,6 @@ Example:</p>
 </td>
 </tr>
 
-<tr class="row-even"><td>geo</td>
-<td>Object</td>
-<td><strong>Deprecated.</strong> <em>Nullable.</em> Use the <code class="docutils literal"><span class="pre">coordinates</span></code> field instead. This deprecated attribute has its coordinates formatted as <em>[lat, long]</em>, while all other Tweet geo is formatted as <em>[long, lat]</em>. </td>
-</tr>
-
 <tr class="row-odd"><td>coordinates</td>
 <td><a class="reference external" href="#obj-coordinates">Coordinates</a></td>
 <td><p class="first"><em>Nullable.</em> Represents the geographic location of this Tweet as reported by the user or client application. The inner coordinates
@@ -406,6 +401,31 @@ Example:</p>
 </pre></div>
 </div>
 </td>
+</tr>
+
+</tbody>
+</table>
+
+
+## Deprecated Attributes
+
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+
+<tr class="row-even"><td>geo</td>
+<td>Object</td>
+<td><strong>Deprecated.</strong> <em>Nullable.</em> Use the <code class="docutils literal"><span class="pre">coordinates</span></code> field instead. This deprecated attribute has its coordinates formatted as <em>[lat, long]</em>, while all other Tweet geo is formatted as <em>[long, lat]</em>. </td>
 </tr>
 
 </tbody>
