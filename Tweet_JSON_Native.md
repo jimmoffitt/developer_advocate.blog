@@ -36,12 +36,30 @@ Please note that Tweets sourced elsewhere may vary somewhat in structure from th
 
 Consumers of Tweets should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing. 
   
-Next Steps:  
+### Next Steps:  
++ Tweet Data Dictionary
++ User Data Dictionary
++ Entities and Extended Entities Data Dictionaries
 + For information on what PowerTrack Operators match on what JSON metadata, and what Operators are available in what Twitter products, see [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/operatorJSON.md).
-
 
   
 ## Tweet Data Dictionary <a id="tweet" class="tall">&nbsp;</a>
+
+Tweets are the basic atomic building block of all things Twitter. Tweets are also known as “status updates.” 
+
+Tweet object:
+
+```json
+{
+ "id":
+ "created_at":
+ "user":
+ "entities":
+ "extended_entities":
+}
+```
+
+
 
 <table border="1" class="docutils">
 <colgroup>
@@ -71,7 +89,7 @@ Example:</p>
 <td>Int64</td>
 <td><p class="first">The integer representation of the unique identifier for this Tweet. This number is greater than 53 bits and some programming
 languages may have difficulty/silent defects in interpreting it. Using a signed 64 bit integer for storing this identifier is safe.
-Use      <code class="docutils literal"><span class="pre">id_str</span></code>     for fetching the identifier to stay on the safe side. See <a class="reference external" href="/overview/api/twitter-ids-json-and-snowflake">Twitter IDs, JSON and
+Use      <code class="docutils literal"><span class="pre">id_str</span></code>     for fetching the identifier to stay on the safe side. See <a class="reference external" href="https://dev.twitter.com/overview/api/twitter-ids-json-and-snowflake">Twitter IDs, JSON and
 Snowflake</a> .
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;id&quot;:114749583439036416
@@ -94,8 +112,7 @@ Example:</p>
 <tr class="row-odd"><td>text</td>
 <td>String</td>
 <td><p class="first">The actual UTF-8 text of the status update. See
-<a class="reference external" href="https://github.com/twitter/twitter-text/blob/master/rb/lib/twitter-text/regex.rb">twitter-text</a> for details on what is currently
-considered valid characters.
+<a class="reference external" href="https://github.com/twitter/twitter-text/blob/master/rb/lib/twitter-text/regex.rb">twitter-text</a> for details on what is currently considered valid characters.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;text&quot;:&quot;Tweet Button, Follow Button, and Web Intents javascript now support SSL http:\/\/t.co\/9fbA0oYy ^TS&quot;
 </pre></div>
@@ -131,7 +148,7 @@ Example:</p>
 
 <tr class="row-even"><td>in_reply_to_status_id</td>
 <td>Int64</td>
-<td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the integer representation of the original Tweet&#8217;s ID.
+<td><p class="first"><em>Nullable.</em> If the represented Tweet is a reply, this field will contain the integer representation of the original Tweet&#8217;s ID.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;in_reply_to_status_id&quot;:114749583439036416
 </pre></div>
@@ -141,7 +158,7 @@ Example:</p>
 
 <tr class="row-odd"><td>in_reply_to_status_id_str</td>
 <td>String</td>
-<td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the string representation of the original Tweet&#8217;s ID.
+<td><p class="first"><em>Nullable.</em> If the represented Tweet is a reply, this field will contain the string representation of the original Tweet&#8217;s ID.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;in_reply_to_status_id_str&quot;:&quot;114749583439036416&quot;
 </pre></div>
@@ -151,7 +168,7 @@ Example:</p>
 
 <tr class="row-even"><td>in_reply_to_user_id</td>
 <td>Int64</td>
-<td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the integer representation of the original Tweet&#8217;s author
+<td><p class="first"><em>Nullable.</em> If the represented Tweet is a reply, this field will contain the integer representation of the original Tweet&#8217;s author
 ID. This will not necessarily always be the user directly mentioned in the Tweet.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;in_reply_to_user_id&quot;:819797
@@ -162,7 +179,7 @@ Example:</p>
 
 <tr class="row-odd"><td>in_reply_to_user_id_str</td>
 <td>String</td>
-<td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the string representation of the original Tweet&#8217;s author ID.
+<td><p class="first"><em>Nullable.</em> If the represented Tweet is a reply, this field will contain the string representation of the original Tweet&#8217;s author ID.
 This will not necessarily always be the user directly mentioned in the Tweet.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;in_reply_to_user_id_str&quot;:&quot;819797&quot;
@@ -173,7 +190,7 @@ Example:</p>
 
 <tr class="row-odd"><td>in_reply_to_screen_name</td>
 <td>String</td>
-<td><p class="first"><em>Nullable</em> If the represented Tweet is a reply, this field will contain the screen name of the original Tweet&#8217;s author.
+<td><p class="first"><em>Nullable.</em> If the represented Tweet is a reply, this field will contain the screen name of the original Tweet&#8217;s author.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;in_reply_to_screen_name&quot;:&quot;twitterapi&quot;
 </pre></div>
@@ -208,7 +225,7 @@ Example:</p>
 
 <tr class="row-odd"><td>coordinates</td>
 <td><a class="reference external" href="#obj-coordinates">Coordinates</a></td>
-<td><p class="first"><em>Nullable</em> Represents the geographic location of this Tweet as reported by the user or client application. The inner coordinates
+<td><p class="first"><em>Nullable.</em> Represents the geographic location of this Tweet as reported by the user or client application. The inner coordinates
 array is formatted as <a class="reference external" href="http://www.geojson.org/">geoJSON</a> (longitude first, then latitude).
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;coordinates&quot;:
@@ -304,7 +321,7 @@ retweet they created by deleting their retweet.)</td>
 
 <tr class="row-odd"><td>quote_count</td>
 <td>Integer</td>
-<td><p class="first"><em>Nullable</em> Indicates approximately how many times this Tweet has been quoted by Twitter users.
+<td><p class="first"><em>Nullable.</em> Indicates approximately how many times this Tweet has been quoted by Twitter users.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;quote_count&quot;:1138
 </pre></div>
@@ -377,7 +394,7 @@ Example:</p>
 
 <tr class="row-even"><td>favorited</td>
 <td>Boolean</td>
-<td><p class="first"><em>Nullable</em> <em>Perspectival</em> Indicates whether this Tweet has been liked by the authenticating user.
+<td><p class="first"><em>Nullable.</em> <em>Perspectival</em> Indicates whether this Tweet has been liked by the authenticating user.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;favorited&quot;:true
 </pre></div>
@@ -387,7 +404,7 @@ Example:</p>
 
 <tr class="row-even"><td>retweeted</td>
 <td>Boolean</td>
-<td><p class="first"><em>Perspectival</em> Indicates whether this Tweet has been Retweeted by the authenticating user.
+<td><p class="first">Indicates whether this Tweet has been Retweeted by the authenticating user.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;retweeted&quot;:false
 </pre></div>
@@ -397,9 +414,7 @@ Example:</p>
 
 <tr class="row-even"><td>possibly_sensitive</td>
 <td>Boolean</td>
-<td><p class="first"><em>Nullable</em> This field only surfaces when a Tweet contains a link. The meaning of the field doesn&#8217;t pertain to the Tweet content
-itself, but instead it is an indicator that the URL contained in the Tweet may contain content or media identified as sensitive
-content.
+<td><p class="first"><em>Nullable.</em> This field only surfaces when a Tweet contains a link. The meaning of the field doesn&#8217;t pertain to the Tweet content itself, but instead it is an indicator that the URL contained in the Tweet may contain content or media identified as sensitive content.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;possibly_sensitive&quot;:true
 </pre></div>
