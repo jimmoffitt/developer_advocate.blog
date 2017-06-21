@@ -6,9 +6,21 @@
 
 # Twitter User Object Data Dictionary
 
+
+<INTRO>
+
 Consumers of User objects should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.</p>
 
 ## User Object
+
+The 'user' object contains public Twitter account metadata and describes the *author* of the Tweet. 
+
+In general the metadata values are relatively constant. 
+Some fields never change
+Some commonly change
+Some frequently change
+
+
 
 <table border="1" class="docutils">
 <colgroup>
