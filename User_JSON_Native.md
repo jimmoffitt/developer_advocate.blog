@@ -1,6 +1,6 @@
 [] TODOS
 + [x] profile attributes not in order
-+ [] Keep Public API only attributes?
++ [x] Keep Public API only attributes? All of these data dictionaries are focused on DES APIs (PowerTrack, Search APIs)
 + [] Narratives: ignoring deprecated fields. Any others static/constant/useless? 
 
 ## User Object
