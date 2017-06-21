@@ -424,7 +424,7 @@ Example:</p>
 
 <tr class="row-even"><td>is_translator</td>
 <td>Boolean</td>
-<td><p class="first">When true, indicates that the user is a participant in Twitter&#8217;s <a class="reference external" href="http://translate.twitter.com">translator community</a> .
+<td><p class="first"><strong>Deprecated.</strong> When true, indicates that the user is a participant in Twitter&#8217;s <a class="reference external" href="http://translate.twitter.com">translator community</a> .
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;is_translator&quot;: false
 </pre></div>
@@ -434,7 +434,7 @@ Example:</p>
 
 <tr class="row-even"><td>following</td>
 <td>Type</td>
-<td><p class="first"><em>Nullable</em> . <em>Perspectival</em> . <em>Deprecated.</em> When true, indicates that the authenticating user is following this user. Some false
+<td><p class="first"><strong>Deprecated.</strong> <em>Nullable</em> . <em>Perspectival</em> . <em>Deprecated.</em> When true, indicates that the authenticating user is following this user. Some false
 negatives are possible when set to &#8220;false,&#8221; but these false negatives are increasingly being represented as &#8220;null&#8221; instead. See
 <a class="reference external" href="http://groups.google.com/group/twitter-development-talk/browse_thread/thread/42ba883b9f8e3c6e?tvc=2">Discussion</a> .
 Example:</p>
@@ -446,7 +446,7 @@ Example:</p>
 
 <tr class="row-odd"><td>notifications</td>
 <td>Boolean</td>
-<td><em>Nullable</em> . <em>Deprecated.</em> May incorrectly report &#8220;false&#8221; at times. Indicates whether the authenticated user has chosen to receive
+<td> <strong>Deprecated.</strong> <em>Nullable</em> .May incorrectly report &#8220;false&#8221; at times. Indicates whether the authenticated user has chosen to receive
 this user&#8217;s Tweets by SMS.
 <a class="reference external" href="http://groups.google.com/group/twitter-development-talk/browse_thread/thread/42ba883b9f8e3c6e?tvc=2">Discussion</a></td>
 </tr>
