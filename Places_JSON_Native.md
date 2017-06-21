@@ -12,18 +12,9 @@
 
 ## Place Object Data Dictionary
 
-
-<div class="section" id="places">
-<h1>Places<a class="headerlink" href="#places" title="Permalink to this headline"></a></h1>
-<div class="toctree-wrapper compound" id="id1">
-</div>
-<p>Places are specific, named locations with corresponding geo coordinates. They can be attached to <a class="reference external" href="/overview/api/tweets">Tweets</a> by specifying a <code class="docutils literal"><span class="pre">place_id</span></code> when <a class="reference external" href="/rest/reference/post/statuses/update">tweeting</a>. Tweets associated with places are not necessarily issued from that location but could also potentially be <em>about</em> that location.&nbsp;Places can be <a class="reference external" href="/rest/reference/get/geo/search">searched
+Places are specific, named locations with corresponding geo coordinates. They can be attached to <a class="reference external" href="/overview/api/tweets">Tweets</a> by specifying a <code class="docutils literal"><span class="pre">place_id</span></code> when <a class="reference external" href="/rest/reference/post/statuses/update">tweeting</a>. Tweets associated with places are not necessarily issued from that location but could also potentially be <em>about</em> that location.&nbsp;Places can be <a class="reference external" href="/rest/reference/get/geo/search">searched
 for</a>. Tweets can also be <a class="reference external" href="/rest/public/finding-tweets-about-places">found</a> by place_id.</p>
 <p>Places also have an attributes field that further describes a Place. These attributes are more convention rather than standard practice, and reflect information captured in the Twitter places database.&nbsp;See <a class="reference external" href="#place_attributes">Place Attributes</a> for more information.</p>
-<ul class="simple">
-<li><a class="reference external" href="#field_guide">Places Field Guide</a></li>
-<li><a class="reference external" href="#attributes">Places Attributes</a></li>
-</ul>
 
 <div class="section" id="field-guide">
 <h2>Field Guide<a class="headerlink" href="#field-guide" title="Permalink to this headline"></a></h2>
