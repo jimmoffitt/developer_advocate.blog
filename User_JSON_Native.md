@@ -4,7 +4,7 @@
 + [] Narratives: ignoring deprecated fields. Any others static/constant/useless? 
 
 
-# Twitter User Object Data Dictionary
+# User Object Data Dictionary
 
 
 <INTRO>
