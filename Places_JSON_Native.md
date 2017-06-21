@@ -43,7 +43,7 @@ Example:</p>
 <td><a class="reference external" href="#obj-boundingbox">Object</a></td>
 <td><p class="first">A bounding box of coordinates which encloses this place.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;bounding_box&quot;:{&quot;coordinates&quot;:[ [ [2.2241006,48.8155414], [2.4699099,48.8155414], [2.4699099,48.9021461], [2.2241006,48.9021461] ] ], &quot;type&quot;:&quot;Polygon&quot;}
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;bounding_box&quot;:{&quot;coordinates&quot;:[ [ [-74.026675,40.683935],[-74.026675,40.877483],[-73.910408,40.877483],[-73.910408,40.3935] ] ], &quot;type&quot;:&quot;Polygon&quot;}
 </pre></div>
 </div>
 </td>
