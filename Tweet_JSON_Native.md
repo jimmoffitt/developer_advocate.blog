@@ -385,7 +385,7 @@ Example:</p>
 </tr>
 
 <tr class="row-even"><td>extended_entities</td>
-<td><a class="reference external" href="/overview/api/entities">Entities</a></td>
+<td><a class="reference external" href="/overview/api/entities">Extended Entities</a></td>
 <td><p class="first">When between one and four native photos or one video or one animated GIF are in Tweet, contains an array 'media' metadata. Additionally see <a class="reference external" href="/overview/api/entities-in-twitter-objects">Entities in Twitter
 Objects</a> .
 Example:</p>
@@ -452,7 +452,7 @@ Example:</p>
 
 <tr class="row-even"><td>matching_rules</td>
 <td>Array of Rule Objects</td>
-<td><p class="first">Present in <em>filtered</em> products such as Twitter Search and PowerTrack. Provides the <em>ID</em> and <em>tag</em> associated with the filter that matched the Tweet. See more documentation <a class="reference external" href="http://support.gnip.com/enrichments/matching_rules.html">HERE</a>.
+<td><p class="first">Present in <em>filtered</em> products such as Twitter Search and PowerTrack. Provides the <em>id</em> and <em>tag</em> associated with the rule that matched the Tweet. With PowerTrack, more than one rule can match a Tweet. See more documentation <a class="reference external" href="http://support.gnip.com/enrichments/matching_rules.html">HERE</a>.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;matching_rules&quot;: &quot; [{
 		&quot;tag&quot;: &quot;rain Tweets&quot;,
@@ -472,6 +472,11 @@ Example:</p>
 
 ## Other Tweet Child Objects
 
+User objects are described HERE.
+Entities and Extended Entitites objects are described HERE.
+
+
+
 <div class="section" id="places">
 <h3>Places<a class="headerlink" href="#places" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
@@ -490,6 +495,8 @@ Example:</p>
 
 
 
+
+
 <div class="section" id="coordinates">
 <h3>Coordinates<a class="headerlink" href="#coordinates" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
@@ -505,7 +512,7 @@ Example:</p>
 </tr>
 <tr class="row-even"><td>coordinates</td>
 <td>Collection of Float</td>
-<td><p class="first">The longitude and latitude of the Tweet&#8217;s location, as a collection in the form [longitude, latitude].
+<td><p class="first">The longitude and latitude of the Tweet&#8217;s location, as a collection in the form <strong>[longitude, latitude]</strong>.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;coordinates&quot;:[-97.51087576,35.46500176]
 </pre></div>
@@ -528,5 +535,9 @@ Example:</p>
 </div>
 </div>
 
+## Next Steps
+
++ User Data Dictionary
++ Entities and Extended Entities Data Dictionaries
 
   
