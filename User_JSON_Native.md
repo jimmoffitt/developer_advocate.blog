@@ -3,24 +3,13 @@
 + [] Keep Public API only attributes?
 + [] Narratives: ignoring deprecated fields. Any others static/constant/useless? 
 
-
-# User Object Data Dictionary
-
-
-<INTRO>
-
-Consumers of User objects should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.</p>
-
 ## User Object
 
-The 'user' object contains public Twitter account metadata and describes the *author* of the Tweet. 
+The ```user``` object contains public Twitter account metadata and describes the *author* of the Tweet. In case of Retweets and Quoted Tweets, the top-level ```user``` object represents what account took that action, and the JSON payload will include a second ```user``` for the account that created the original Tweet.
 
-In general the metadata values are relatively constant. 
-Some fields never change
-Some commonly change
-Some frequently change
+In general these ```user``` metadata values are relatively constant. Some fields never change, such as the account ID (provided as both a number and a string) and when the account was created. Other metadata can occasionally change, such as the account (display) ```name```, ```description```, ```location```, and other profile details. Some metadata frequently changes, such as the number of Tweets the account has posted (```statuses_count```) and its number of followers (```followers_count```).
 
-
+## User Data Dictionary
 
 <table border="1" class="docutils">
 <colgroup>
@@ -116,7 +105,7 @@ Example:</p>
 
 <tr class="row-even"><td>derived</td>
 <td>Arrays of Enrichment Objects</td>
-<td><p class="first">Collection of Enrichment metadata derived for user. Provides the <em>Profile Geo</em> and <em>Klout</em> Enrichment metadata. See more documentation <a class="reference external" href="http://support.gnip.com/enrichments/">HERE</a>.
+<td><p class="first">Collection of Enrichment metadata derived for user. Provides the <a class="reference external" href="http://support.gnip.com/enrichments/profile_geo.html"><em>Profile Geo</em></a> and <a class="reference external" href="http://support.gnip.com/enrichments/klout.html"><em>Klout</em></a> Enrichment metadata. See referenced documentation for more information, including JSON data dictionaries.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;derived&quot;: {
 		&quot;locations&quot;: [{}],
@@ -593,5 +582,13 @@ this user&#8217;s Tweets by SMS.
 
 </tbody>
 </table>
+
+## Next Steps
+
+Explore the other sub-objects that a Tweet contains:
+
++ Entities and Extended Entitites objects are described HERE.
++ Tweet geo objects are described HERE.
+
 
 
