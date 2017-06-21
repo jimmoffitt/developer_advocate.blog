@@ -4,8 +4,8 @@
 
 ```json
 {
-"geo": {}
-"coordinates": {} 
+"geo": {},
+"coordinates": {}, 
 "place": {}
 
 ```
@@ -163,7 +163,7 @@ Example:</p>
 </div>
 
 
-## Places JSON Examples
+## JSON Examples for Geo-tagged Tweets
 
 ### Tweet with Twitter Place
 
