@@ -4,10 +4,9 @@
 
 ```json
 {
-"geo": {},
-"coordinates": {}, 
-"place": {}
-
+   "coordinates": {}, 
+   "place": {}
+}
 ```
 
 ## Place Object Data Dictionary
