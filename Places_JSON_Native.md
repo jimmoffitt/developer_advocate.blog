@@ -1,4 +1,11 @@
- <div class="section" id="places">
+## Tweet Location Metadata
+
+
+
+
+
+
+<div class="section" id="places">
 <h1>Places<a class="headerlink" href="#places" title="Permalink to this headline"></a></h1>
 <div class="toctree-wrapper compound" id="id1">
 </div>
