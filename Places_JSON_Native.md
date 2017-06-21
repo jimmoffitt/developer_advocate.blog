@@ -1,8 +1,16 @@
-## Tweet Location Metadata
+# Tweet Location Metadata
 
+## Introduction
 
+```json
+{
+"geo": {}
+"coordinates": {} 
+"place": {}
 
+```
 
+## Place Object Data Dictionary
 
 
 <div class="section" id="places">
@@ -260,6 +268,10 @@ Example:</p>
 ```
 
 
+## Next Steps
+
+http://support.gnip.com/articles/geo-intro.html
+http://support.gnip.com/articles/filtering-twitter-data-by-location.html
 
 
 
