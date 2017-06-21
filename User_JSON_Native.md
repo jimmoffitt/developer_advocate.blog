@@ -1,5 +1,5 @@
 [] TODOS
-+ [] profile attributes not in order
++ [x] profile attributes not in order
 + [] Keep Public API only attributes?
 + [] Narratives: ignoring deprecated fields. Any others static/constant/useless? 
 
