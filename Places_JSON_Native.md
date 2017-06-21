@@ -129,7 +129,7 @@ Example:</p>
 </table>
 
 <div class="section" id="bounding-box">
-<h3>Bounding box<a class="headerlink" href="#bounding-box" title="Permalink to this headline">¶</a></h3>
+<h3>Bounding box<a class="headerlink" href="#bounding-box" title="Permalink to this headline"></a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="4%" />
