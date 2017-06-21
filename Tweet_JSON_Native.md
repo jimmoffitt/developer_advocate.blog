@@ -205,19 +205,10 @@ Example:</p>
 
 <tr class="row-odd"><td>user</td>
 <td><a class="reference external" href="https://github.com/jimmoffitt/developer_advocate.blog/blob/master/User_JSON_Native.md">Users</a></td>
-<td><p class="first">The user who posted this Tweet. Perspectival attributes embedded within this object are unreliable.</p>
-<p>Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;user&quot;:{&quot;statuses_count&quot;:3080, &quot;favourites_count&quot;:22, &quot;protected&quot;:false, &quot;profile_text_color&quot;:&quot;437792&quot;, &quot;profile_image_url&quot;:&quot;...&quot;
-&quot;profile_image_url&quot;:&quot;...&quot;, &quot;name&quot;:&quot;Twitter API&quot;, &quot;profile_sidebar_fill_color&quot;:&quot;a9d9f1&quot;, &quot;listed_count&quot;:9252, &quot;following&quot;:true,
-&quot;profile_background_tile&quot;:false, &quot;utc_offset&quot;:-28800,
-&quot;description&quot;:&quot;The Real Twitter API. I tweet about API changes. Don&#39;t get an answer? It&#39;s on my website.&quot;,
-&quot;location&quot;:&quot;San Francisco, CA&quot;, &quot;contributors_enabled&quot;:true, &quot;verified&quot;:true, &quot;profile_link_color&quot;:&quot;0094C2&quot;,
-&quot;followers_count&quot;:665829, &quot;url&quot;:&quot;http:\/\/dev.twitter.com&quot;, &quot;default_profile&quot;:false, &quot;profile_sidebar_border_color&quot;:&quot;0094C2&quot;,
-&quot;screen_name&quot;:&quot;twitterapi&quot;, &quot;default_profile_image&quot;:false, &quot;notifications&quot;:false, &quot;display_url&quot;:null,
-&quot;show_all_inline_media&quot;:false, &quot;geo_enabled&quot;:true, &quot;profile_use_background_image&quot;:true, &quot;friends_count&quot;:32, &quot;id_str&quot;:&quot;6253282&quot;,
-&quot;entities&quot;:{&quot;hashtags&quot;:[], &quot;urls&quot;:[], &quot;user_mentions&quot;:[]}, &quot;expanded_url&quot;:null, &quot;is_translator&quot;:false, &quot;lang&quot;:&quot;en&quot;,
-&quot;time_zone&quot;:&quot;Pacific Time (US &amp; Canada)&quot;, &quot;created_at&quot;:&quot;Wed May 23 06:01:13 +0000 2007&quot;, &quot;profile_background_color&quot;:&quot;e8f2f7&quot;,
-&quot;id&quot;:6253282, &quot;follow_request_sent&quot;:false, &quot;profile_background_image_url_https&quot;:&quot;...&quot;, &quot;profile_background_image_url&quot;:&quot;...&quot;,}
+<td><p class="first">The user who posted this Tweet. See User data dictionary for complete list of attributes.</p>
+<p>Example highlighting select attributes:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>
+{&#10;  &#34;user&#34;: {&#10;    &#34;id&#34;: 2244994945,&#10;    &#34;id_str&#34;: &#34;2244994945&#34;,&#10;    &#34;name&#34;: &#34;TwitterDev&#34;,&#10;    &#34;screen_name&#34;: &#34;TwitterDev&#34;,&#10;    &#34;location&#34;: &#34;Internet&#34;,&#10;    &#34;url&#34;: &#34;https:\/\/dev.twitter.com\/&#34;,&#10;    &#34;description&#34;: &#34;Your official source for Twitter Platform news, updates &amp; events. Need technical help? Visit https:\/\/twittercommunity.com\/ \u2328\ufe0f #TapIntoTwitter&#34;,&#10;    &#34;verified&#34;: true,&#10;    &#34;followers_count&#34;: 477684,&#10;    &#34;friends_count&#34;: 1524,&#10;    &#34;listed_count&#34;: 1184,&#10;    &#34;favourites_count&#34;: 2151,&#10;    &#34;statuses_count&#34;: 3121,&#10;    &#34;created_at&#34;: &#34;Sat Dec 14 04:35:55 +0000 2013&#34;,&#10;    &#34;utc_offset&#34;: -25200,&#10;    &#34;time_zone&#34;: &#34;Pacific Time (US &amp; Canada)&#34;,&#10;    &#34;geo_enabled&#34;: true,&#10;    &#34;lang&#34;: &#34;en&#34;,&#10;    &#34;profile_image_url_https&#34;: &#34;https:\/\/pbs.twimg.com\/profile_images\/530814764687949824\/npQQVkq8_normal.png&#34;&#10;  }&#10;}
 </pre></div>
 </div>
 </td>
