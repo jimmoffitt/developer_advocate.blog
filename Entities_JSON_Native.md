@@ -1,8 +1,8 @@
 [] TODOS
 + [X] Add symbols
 + [X] Add polling metadata
-+ [] Add relevant Operators
-+ [] Add Video extended entities details
++ [] Add relevant Operators? 
++ [X] Add Video extended entities details
 + [X] JSON pretty print encoding: https://opinionatedgeek.com/Codecs/HtmlEncoder (use checkbox!)
 
 ## Sections
