@@ -204,7 +204,7 @@ Example:</p>
 </tr>
 
 <tr class="row-odd"><td>user</td>
-<td><a class="reference external" href="https://github.com/jimmoffitt/developer_advocate.blog/blob/master/User_JSON_Native.md">Users</a></td>
+<td><a class="reference external" href="https://github.com/jimmoffitt/developer_advocate.blog/blob/master/User_JSON_Native.md">User object</a></td>
 <td><p class="first">The user who posted this Tweet. See User data dictionary for complete list of attributes.</p>
 <p>Example highlighting select attributes:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>
