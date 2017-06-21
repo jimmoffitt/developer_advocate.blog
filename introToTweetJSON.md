@@ -80,17 +80,16 @@ Please note that Tweets sourced elsewhere may vary somewhat in structure from th
 
 Consumers of Tweets should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing. 
   
+### Parsing Tips
+
+Consumers of ```entities``` and ```entities_extended``` sections must be tolerant of 'missing' fields, since not all fields appear in all contexts. Parsers should tolerate the addition of new fields and variance in ordering of fields with ease. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.
+ 
+  
 ### Next Steps:  
-+ Tweet Data Dictionary
-+ User Data Dictionary
-+ Entities and Extended Entities Data Dictionaries
++ Tweet object and data dictionary
++ User object and data dictionary
++ Entities and Extended Entities objects and data dictionaries
++ Tweet location objects and data dictionaries
 + For information on what PowerTrack Operators match on what JSON metadata, and what Operators are available in what Twitter products, see [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/metadataEvolution/operatorJSON.md).
-
-
-  
-  
-## Next Steps
-
-+ Data Dictionaries
 + Learn more about what JSON attribute filters are available in Twitter Products.
   
