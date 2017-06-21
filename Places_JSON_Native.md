@@ -22,10 +22,94 @@ for</a>. Tweets can also be <a class="reference external" href="/rest/public/fin
 <col width="76%" />
 </colgroup>
 <tbody valign="top">
+
+
 <tr class="row-odd"><td>Field</td>
 <td>Type</td>
 <td>Description</td>
 </tr>
+
+<tr class="row-odd"><td>id</td>
+<td>String</td>
+<td><p class="first">ID representing this place. Note that this is represented as a string, not an integer.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;id&quot;:&quot;01a9a39529b27f36&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>url</td>
+<td>String</td>
+<td><p class="first">URL representing the location of additional place metadata for this place.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;url&quot;:&quot;https:\/\/api.twitter.com\/1.1\/geo\/id\/01a9a39529b27f36.json&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>place_type</td>
+<td>String</td>
+<td><p class="first">The type of location represented by this place.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;place_type&quot;:&quot;city&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>name</td>
+<td>String</td>
+<td><p class="first">Short human-readable representation of the place&#8217;s name.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;name&quot;:&quot;"Manhattan&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>full_name</td>
+<td>String</td>
+<td><p class="first">Full human-readable representation of the place&#8217;s name.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;full_name&quot;:&quot;Manhattan, NY&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>country_code</td>
+<td>String</td>
+<td><p class="first">Shortened country code representing the country containing this place.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;country_code&quot;:&quot;US&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-even"><td>country</td>
+<td>String</td>
+<td><p class="first">Name of the country containing this place.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;country&quot;:&quot;United States&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+
+<tr class="row-odd"><td>bounding_box</td>
+<td><a class="reference external" href="#obj-boundingbox">Object</a></td>
+<td><p class="first">A bounding box of coordinates which encloses this place.
+Example:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;bounding_box&quot;:{&quot;coordinates&quot;:[ [ [-74.026675,40.683935],[-74.026675,40.877483],[-73.910408,40.877483],[-73.910408,40.3935] ] ], &quot;type&quot;:&quot;Polygon&quot;}
+</pre></div>
+</div>
+</td>
+</tr>
+
+
 <tr class="row-even"><td>attributes</td>
 <td>Object</td>
 <td><p class="first">Contains a hash of variant information about the place. See <a class="reference external" href="#place_attributes">Place Attributes</a> &nbsp;for more detail.
@@ -39,80 +123,11 @@ Example:</p>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td>bounding_box</td>
-<td><a class="reference external" href="#obj-boundingbox">Object</a></td>
-<td><p class="first">A bounding box of coordinates which encloses this place.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;bounding_box&quot;:{&quot;coordinates&quot;:[ [ [-74.026675,40.683935],[-74.026675,40.877483],[-73.910408,40.877483],[-73.910408,40.3935] ] ], &quot;type&quot;:&quot;Polygon&quot;}
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td>country</td>
-<td>String</td>
-<td><p class="first">Name of the country containing this place.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;country&quot;:&quot;United States&quot;
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td>country_code</td>
-<td>String</td>
-<td><p class="first">Shortened country code representing the country containing this place.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;country_code&quot;:&quot;US&quot;
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td>full_name</td>
-<td>String</td>
-<td><p class="first">Full human-readable representation of the place&#8217;s name.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;full_name&quot;:&quot;Manhattan, NY&quot;
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td>id</td>
-<td>String</td>
-<td><p class="first">ID representing this place. Note that this is represented as a string, not an integer.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;id&quot;:&quot;01a9a39529b27f36&quot;
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td>name</td>
-<td>String</td>
-<td><p class="first">Short human-readable representation of the place&#8217;s name.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;name&quot;:&quot;"Manhattan&quot;
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td>place_type</td>
-<td>String</td>
-<td><p class="first">The type of location represented by this place.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;place_type&quot;:&quot;city&quot;
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td>url</td>
-<td>String</td>
-<td><p class="first">URL representing the location of additional place metadata for this place.
-Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;url&quot;:&quot;https:\/\/api.twitter.com\/1.1\/geo\/id\/01a9a39529b27f36.json&quot;
-</pre></div>
-</div>
-</td>
-</tr>
+
+
 </tbody>
 </table>
+
 <div class="section" id="bounding-box">
 <h3>Bounding box<a class="headerlink" href="#bounding-box" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
@@ -126,6 +141,7 @@ Example:</p>
 <td>Type</td>
 <td>Description</td>
 </tr>
+
 <tr class="row-even"><td>coordinates</td>
 <td>Array of Array of Array of Float</td>
 <td><p class="first">A series of longitude and latitude points, defining a box which will contain the Place entity this bounding box is related to. Each point is an array in the form of [longitude, latitude]. Points are grouped into an array per bounding box. Bounding box arrays are wrapped in one additional array to be compatible with the polygon notation.
@@ -135,6 +151,7 @@ Example:</p>
 </div>
 </td>
 </tr>
+
 <tr class="row-odd"><td>type</td>
 <td>String</td>
 <td><p class="first">The type of data encoded in the coordinates property. This will be &#8220;Polygon&#8221; for bounding boxes and &#8220;Pointn&#8221; for Tweets with exact coordinates.
@@ -144,6 +161,7 @@ Example:</p>
 </div>
 </td>
 </tr>
+
 </tbody>
 </table>
 </div>
