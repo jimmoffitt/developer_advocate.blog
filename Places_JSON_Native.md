@@ -1,5 +1,5 @@
  <div class="section" id="places">
-<h1>Places<a class="headerlink" href="#places" title="Permalink to this headline">¶</a></h1>
+<h1>Places<a class="headerlink" href="#places" title="Permalink to this headline"></a></h1>
 <div class="toctree-wrapper compound" id="id1">
 </div>
 <p>Places are specific, named locations with corresponding geo coordinates. They can be attached to <a class="reference external" href="/overview/api/tweets">Tweets</a> by specifying a <code class="docutils literal"><span class="pre">place_id</span></code> when <a class="reference external" href="/rest/reference/post/statuses/update">tweeting</a>. Tweets associated with places are not necessarily issued from that location but could also potentially be <em>about</em> that location.&nbsp;Places can be <a class="reference external" href="/rest/reference/get/geo/search">searched
@@ -9,8 +9,9 @@ for</a>. Tweets can also be <a class="reference external" href="/rest/public/fin
 <li><a class="reference external" href="#field_guide">Places Field Guide</a></li>
 <li><a class="reference external" href="#attributes">Places Attributes</a></li>
 </ul>
+
 <div class="section" id="field-guide">
-<h2>Field Guide<a class="headerlink" href="#field-guide" title="Permalink to this headline">¶</a></h2>
+<h2>Field Guide<a class="headerlink" href="#field-guide" title="Permalink to this headline"></a></h2>
 <p>Consumers of Places should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -134,7 +135,7 @@ Example:</p>
 </tr>
 <tr class="row-odd"><td>type</td>
 <td>String</td>
-<td><p class="first">The type of data encoded in the coordinates property. This will be &#8220;Polygon&#8221; for bounding boxes.
+<td><p class="first">The type of data encoded in the coordinates property. This will be &#8220;Polygon&#8221; for bounding boxes and &#8220;Pointn&#8221; for Tweets with exact coordinates.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;type&quot;:&quot;Polygon&quot;
 </pre></div>
@@ -146,49 +147,113 @@ Example:</p>
 </div>
 </div>
 
-<div class="section" id="place-attributes">
-<h2>Place Attributes<a class="headerlink" href="#place-attributes" title="Permalink to this headline">¶</a></h2>
-<p>Place Attributes are metadata about places. An attribute is a key-value pair of arbitrary strings, but with some conventions.</p>
-<p>Below are a number of well-known place attributes which may, or may not exist in the returned data. These attributes are provided when the place was created in the Twitter places database.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Key</td>
-<td>Description</td>
-</tr>
-<tr class="row-even"><td>street_address</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>locality</td>
-<td>the city the place is in</td>
-</tr>
-<tr class="row-even"><td>region</td>
-<td>the administrative region the place is in</td>
-</tr>
-<tr class="row-odd"><td>iso3</td>
-<td>the country code</td>
-</tr>
-<tr class="row-even"><td>postal_code</td>
-<td>in the preferred local format for the place</td>
-</tr>
-<tr class="row-odd"><td>phone</td>
-<td>in the preferred local format for the place, include long distance code</td>
-</tr>
-<tr class="row-even"><td>twitter</td>
-<td>twitter screen-name, without &#64;</td>
-</tr>
-<tr class="row-odd"><td>url</td>
-<td>official/canonical URL for place</td>
-</tr>
-<tr class="row-even"><td>app:id</td>
-<td>An ID or comma separated list of IDs representing the place in the applications place database.</td>
-</tr>
-</tbody>
-</table>
-
 
 ## Places JSON Examples
+
+### Tweet with Twitter Place
+
+```json
+{
+  "geo": null,
+  "coordinates": null,
+  "place": {
+    "id": "07d9db48bc083000",
+    "url": "https:\/\/api.twitter.com\/1.1\/geo\/id\/07d9db48bc083000.json",
+    "place_type": "poi",
+    "name": "McIntosh Lake",
+    "full_name": "McIntosh Lake",
+    "country_code": "US",
+    "country": "United States",
+    "bounding_box": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -105.14544,
+            40.192138
+          ],
+          [
+            -105.14544,
+            40.192138
+          ],
+          [
+            -105.14544,
+            40.192138
+          ],
+          [
+            -105.14544,
+            40.192138
+          ]
+        ]
+      ]
+    },
+    "attributes": {
+      
+    }
+  }
+}
+
+```
+
+### Tweet with exact location.
+
+```json
+{
+  "geo": {
+    "type": "Point",
+    "coordinates": [
+      40.74118764,
+      -73.9998279
+    ]
+  },
+  "coordinates": {
+    "type": "Point",
+    "coordinates": [
+      -73.9998279,
+      40.74118764
+    ]
+  },
+  "place": {
+    "id": "01a9a39529b27f36",
+    "url": "https:\/\/api.twitter.com\/1.1\/geo\/id\/01a9a39529b27f36.json",
+    "place_type": "city",
+    "name": "Manhattan",
+    "full_name": "Manhattan, NY",
+    "country_code": "US",
+    "country": "United States",
+    "bounding_box": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -74.026675,
+            40.683935
+          ],
+          [
+            -74.026675,
+            40.877483
+          ],
+          [
+            -73.910408,
+            40.877483
+          ],
+          [
+            -73.910408,
+            40.683935
+          ]
+        ]
+      ]
+    },
+    "attributes": {
+      
+    }
+  }
+}
+
+```
+
+
+
+
+
 
