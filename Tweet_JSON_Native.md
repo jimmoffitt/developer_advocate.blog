@@ -1,3 +1,8 @@
++ [] Host where initially?
++ [] Update links to sub objects.
++ [] User playload link (remove from here?)
++ [] Would be good to have direct link to language Operator docs.
+
 # Native Format Data Dictionaries
 
 ## Introduction to Tweet JSON
@@ -49,17 +54,17 @@ Tweets are the basic atomic building block of all things Twitter. Tweets are als
 
 Tweet object:
 
-```json
+
+```
 {
  "id":
  "created_at":
- "user":
+ "text":
+ "user": 
  "entities":
  "extended_entities":
 }
 ```
-
-
 
 <table border="1" class="docutils">
 <colgroup>
@@ -220,7 +225,7 @@ Example:</p>
 
 <tr class="row-even"><td>geo</td>
 <td>Object</td>
-<td><strong>Deprecated</strong> <em>Nullable</em> Use the <code class="docutils literal"><span class="pre">coordinates</span></code> field instead.</td>
+<td><strong>Deprecated.</strong> <em>Nullable.</em> Use the <code class="docutils literal"><span class="pre">coordinates</span></code> field instead. This deprecated attribute has its coordinates formatted as <em>[lat, long]</em>, while all other Tweet geo is formatted as <em>[long, lat]</em>. </td>
 </tr>
 
 <tr class="row-odd"><td>coordinates</td>
@@ -351,7 +356,7 @@ Example:</p>
 
 <tr class="row-odd"><td>favorite_count</td>
 <td>Integer</td>
-<td><p class="first"><em>Nullable</em> Indicates approximately how many times this Tweet has been  <a class="reference external" href="/rest/reference/post/favorites/create">liked</a>  by
+<td><p class="first"><em>Nullable.</em> Indicates approximately how many times this Tweet has been  <a class="reference external" href="/rest/reference/post/favorites/create">liked</a>  by
 Twitter users.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;favorite_count&quot;:1138
@@ -372,6 +377,7 @@ Example:</p>
     &quot;user_mentions&quot;:[],
     &quot;media&quot;:[],
     &quot;symbols&quot;:[]
+    &quot;polls&quot;:[]
 }
 </pre></div>
 </div>
@@ -380,7 +386,7 @@ Example:</p>
 
 <tr class="row-even"><td>extended_entities</td>
 <td><a class="reference external" href="/overview/api/entities">Entities</a></td>
-<td><p class="first">When between one and four native photos are in Tweet, contains an array 'media' metadata. Additionally see <a class="reference external" href="/overview/api/entities-in-twitter-objects">Entities in Twitter
+<td><p class="first">When between one and four native photos or one video or one animated GIF are in Tweet, contains an array 'media' metadata. Additionally see <a class="reference external" href="/overview/api/entities-in-twitter-objects">Entities in Twitter
 Objects</a> .
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;entities&quot;:
@@ -394,7 +400,7 @@ Example:</p>
 
 <tr class="row-even"><td>favorited</td>
 <td>Boolean</td>
-<td><p class="first"><em>Nullable.</em> <em>Perspectival</em> Indicates whether this Tweet has been liked by the authenticating user.
+<td><p class="first"><em>Nullable.</em> Indicates whether this Tweet has been liked by the authenticating user.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;favorited&quot;:true
 </pre></div>
@@ -436,7 +442,7 @@ and <code class="docutils literal"><span class="pre">medium</span></code> stream
 
 <tr class="row-even"><td>lang</td>
 <td>String</td>
-<td><p class="first"><em>Nullable</em> When present, indicates a <a class="reference external" href="http://tools.ietf.org/html/bcp47">BCP 47</a> language identifier corresponding to the machine-detected language of the Tweet text, or <code class="docutils literal"><span class="pre">und</span></code> if no language could be detected. See more documentation <a class="reference external" href="http://support.gnip.com/apis/powertrack2.0/rules.html#Operators">HERE</a>.
+<td><p class="first"><em>Nullable.</em> When present, indicates a <a class="reference external" href="http://tools.ietf.org/html/bcp47">BCP 47</a> language identifier corresponding to the machine-detected language of the Tweet text, or <code class="docutils literal"><span class="pre">und</span></code> if no language could be detected. See more documentation <a class="reference external" href="http://support.gnip.com/apis/powertrack2.0/rules.html#Operators">HERE</a>.
 Example:</p>
 <div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;lang&quot;: &quot;en&quot;
 </pre></div>
@@ -522,6 +528,5 @@ Example:</p>
 </div>
 </div>
 
-### Notes
-+ Would be good to have direct link to language Operator docs.
+
   
