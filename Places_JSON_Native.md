@@ -52,7 +52,7 @@ Example:</p>
 <td>String</td>
 <td><p class="first">Name of the country containing this place.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;country&quot;:&quot;France&quot;
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;country&quot;:&quot;United States&quot;
 </pre></div>
 </div>
 </td>
@@ -61,7 +61,7 @@ Example:</p>
 <td>String</td>
 <td><p class="first">Shortened country code representing the country containing this place.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;country_code&quot;:&quot;FR&quot;
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;country_code&quot;:&quot;US&quot;
 </pre></div>
 </div>
 </td>
@@ -70,7 +70,7 @@ Example:</p>
 <td>String</td>
 <td><p class="first">Full human-readable representation of the place&#8217;s name.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;full_name&quot;:&quot;San Francisco, CA&quot;
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;full_name&quot;:&quot;Manhattan, NY&quot;
 </pre></div>
 </div>
 </td>
@@ -79,7 +79,7 @@ Example:</p>
 <td>String</td>
 <td><p class="first">ID representing this place. Note that this is represented as a string, not an integer.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;id&quot;:&quot;7238f93a3e899af6&quot;
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;id&quot;:&quot;01a9a39529b27f36&quot;
 </pre></div>
 </div>
 </td>
@@ -88,7 +88,7 @@ Example:</p>
 <td>String</td>
 <td><p class="first">Short human-readable representation of the place&#8217;s name.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;name&quot;:&quot;Paris&quot;
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;name&quot;:&quot;"Manhattan&quot;
 </pre></div>
 </div>
 </td>
