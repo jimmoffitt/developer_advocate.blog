@@ -15,9 +15,6 @@ Places are specific, named locations with corresponding geo coordinates. They ca
 for</a>. Tweets can also be <a class="reference external" href="/rest/public/finding-tweets-about-places">found</a> by place_id.</p>
 <p>Places also have an attributes field that further describes a Place. These attributes are more convention rather than standard practice, and reflect information captured in the Twitter places database.&nbsp;See <a class="reference external" href="#place_attributes">Place Attributes</a> for more information.</p>
 
-<div class="section" id="field-guide">
-<h2>Field Guide<a class="headerlink" href="#field-guide" title="Permalink to this headline"></a></h2>
-<p>Consumers of Places should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="8%" />
@@ -154,10 +151,6 @@ Example:</p>
 
 ## Coordinates Object Data Dictionary
 
-
-
-<div class="section" id="coordinates">
-<h3>Coordinates<a class="headerlink" href="#coordinates" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
