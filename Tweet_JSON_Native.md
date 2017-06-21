@@ -461,15 +461,13 @@ Example:</p>
 </table>
 
 
-## Tweet Child Objects
+## Next Steps
+
+Explore the other sub-objects that a Tweet contains:
 
 + User objects are described HERE.
 + Entities and Extended Entitites objects are described HERE.
 + Tweet geo objects are described HERE.
 
-## Next Steps
-
-+ User Data Dictionary
-+ Entities and Extended Entities Data Dictionaries
 
   
