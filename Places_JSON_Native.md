@@ -106,7 +106,7 @@ Example:</p>
 <td>String</td>
 <td><p class="first">URL representing the location of additional place metadata for this place.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;url&quot;:&quot;https://api.twitter.com/1.1/geo/id/7238f93a3e899af6.json&quot;
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;url&quot;:&quot;https:\/\/api.twitter.com\/1.1\/geo\/id\/01a9a39529b27f36.json&quot;
 </pre></div>
 </div>
 </td>
@@ -130,7 +130,7 @@ Example:</p>
 <td>Array of Array of Array of Float</td>
 <td><p class="first">A series of longitude and latitude points, defining a box which will contain the Place entity this bounding box is related to. Each point is an array in the form of [longitude, latitude]. Points are grouped into an array per bounding box. Bounding box arrays are wrapped in one additional array to be compatible with the polygon notation.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;coordinates&quot;:[ [ [2.2241006,48.8155414], [2.4699099,48.8155414], [2.4699099,48.9021461], [2.2241006,48.9021461] ] ]
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;coordinates&quot;:[ [ [-74.026675,40.683935],[-74.026675,40.877483],[-73.910408,40.877483],[-73.910408,40.3935] ] ]
 </pre></div>
 </div>
 </td>
