@@ -304,8 +304,10 @@ Example:</p>
 
 ## Next Steps
 
-http://support.gnip.com/articles/geo-intro.html
-http://support.gnip.com/articles/filtering-twitter-data-by-location.html
+Read more about Tweets and their location metadata:
+
++ [Introduction to Tweet Geo Metadata](http://support.gnip.com/articles/geo-intro.html)
++ [Filtering Twitter Data by Location](http://support.gnip.com/articles/filtering-twitter-data-by-location.html)
 
 
 
