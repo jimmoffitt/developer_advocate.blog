@@ -317,7 +317,7 @@ Example:</p>
 
 ## Next Steps
 
-Explore the other sub-objects that a Tweet contains:
+Explore other Tweet JSON objects and data dictionaries:
 
 + [Tweet object and data dictionary](http://support.gnip.com/sources/twitter/dictionaries/tweet_json.md)
 + [User object and data dictionary](http://support.gnip.com/sources/twitter/dictionaries/user_json.md)
