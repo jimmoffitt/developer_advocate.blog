@@ -1,5 +1,5 @@
   
-## Tweet Data Dictionary <a id="tweet" class="tall">&nbsp;</a>
+## Tweet Object
 
 Tweets are the basic atomic building block of all things Twitter. Tweets are also known as “status updates.” The Tweet object has a long list of 'root-level' attributes, including fundamental attributes such as ```id```, ```created_at```, and ```text```. Tweet objects are also the 'parent' object to several child objects. Tweet child objects include ```user```, ```entities```, and ```extended_entities```. Tweets that are geo-tagged will have a ```place``` child object. 
 
@@ -19,6 +19,7 @@ The JSON will be a mix of 'root-level' attributes (here we are highlighting some
  "entities": {}
 }
 ```
+## Tweet Data Dictionary
 
 Below you will find the data dictionary for these 'root-level' attributes, as well as links to child object data dictionaries.
 
