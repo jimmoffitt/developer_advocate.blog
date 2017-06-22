@@ -1,21 +1,26 @@
   
 ## Tweet Data Dictionary <a id="tweet" class="tall">&nbsp;</a>
 
-Tweets are the basic atomic building block of all things Twitter. Tweets are also known as “status updates.” 
+Tweets are the basic atomic building block of all things Twitter. Tweets are also known as “status updates.” The Tweet object has a long list of 'root-level' attributes, including fundamental attributes such as ```id```, ```created_at```, and ```text```. Tweet objects are also the 'parent' object to several child objects. Tweet child objects include ```user```, ```entities```, and ```extended_entities```. Tweets that are geo-tagged will have a ```place``` child object. 
 
-Tweet object:
+When the following Tweet is rendered in JSON:
 
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">1/ Today we’re sharing our vision for the future of the Twitter API platform!<a href="https://t.co/XweGngmxlP">https://t.co/XweGngmxlP</a></p>&mdash; TwitterDev (@TwitterDev) <a href="https://twitter.com/TwitterDev/status/850006245121695744">April 6, 2017</a></blockquote>
 
-```
+The JSON will be a mix of 'root-level' attributes (here we are highlighting some of the most fundamental attributes), and child objects (which are represented here with the ```{}``` notation):
+
+```json
 {
- "id":
- "created_at":
- "text":
- "user": 
- "entities":
- "extended_entities":
+ "created_at":"Thu Apr 06 15:24:15 +0000 2017",
+ "id": 850006245121695744,
+ "id_str": "850006245121695744",
+ "text": "1\/ Today we\u2019re sharing our vision for the future of the Twitter API platform!\nhttps:\/\/t.co\/XweGngmxlP",
+ "user": {},  
+ "entities": {}
 }
 ```
+
+Below you will find the data dictionary for these 'root-level' attributes, as well as links to child object data dictionaries.
 
 <table border="1" class="docutils">
 <colgroup>
@@ -436,9 +441,9 @@ Example:</p>
 
 Explore the other sub-objects that a Tweet contains:
 
-+ User objects are described HERE.
-+ Entities and Extended Entitites objects are described HERE.
-+ Tweet geo objects are described HERE.
++ [User object and data dictionary](http://support.gnip.com/sources/twitter/dictionaries/user_json.md)
++ [Entities and Extended Entitites objects and data dictionaries](http://support.gnip.com/sources/twitter/dictionaries/entities_json.md)
++ [Tweet geo objects and data dictionaries](http://support.gnip.com/sources/twitter/dictionaries/tweet_geo_json.md)
 
 
   
