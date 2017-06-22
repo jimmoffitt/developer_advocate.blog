@@ -1,8 +1,3 @@
-[] TODOS
-+ [x] profile attributes not in order
-+ [x] Keep Public API only attributes? All of these data dictionaries are focused on DES APIs (PowerTrack, Search APIs)
-+ [] Narratives: ignoring deprecated fields. Any others static/constant/useless? 
-
 ## User Object
 
 The ```user``` object contains public Twitter account metadata and describes the *author* of the Tweet. In case of Retweets and Quoted Tweets, the top-level ```user``` object represents what account took that action, and the JSON payload will include a second ```user``` for the account that created the original Tweet.
@@ -459,8 +454,9 @@ this user&#8217;s Tweets by SMS.
 
 Explore the other sub-objects that a Tweet contains:
 
-+ Entities and Extended Entitites objects are described HERE.
-+ Tweet geo objects are described HERE.
++ [Tweet object and data dictionary](http://support.gnip.com/sources/twitter/dictionaries/tweet_json.md)
++ [Entities and Extended Entitites objects and data dictionaries](http://support.gnip.com/sources/twitter/dictionaries/entities_json.md)
++ [Tweet geo objects and data dictionaries](http://support.gnip.com/sources/twitter/dictionaries/tweet_geo_json.md)
 
 
 
