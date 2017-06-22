@@ -2,6 +2,10 @@
 
 ## Introduction
 
+Tweets can be associated with a location, generating a Tweet that has been 'geo-tagged.' Tweet locations can be assigned by using the Twitter user-interface or when posting a Tweet using the API. Tweet locations can be an exact 'point' location, or a Twitter Place that provides a 'bounding box' that describes a larger area ranging from a venue to an entire region. 
+
+There are two 'root-level' JSON objects used to describe the location associated with a Tweet: ```coordinates``` and ```place```. 
+
 ```json
 {
    "coordinates": {}, 
@@ -9,11 +13,13 @@
 }
 ```
 
-## Place Object Data Dictionary
+The ```place``` object is always present when a Tweet is geo-tagged, while the ```coordinates``` object is only present (non-null) when the Tweet is assigned an *exact location*.  If an exact location is provided, the ```coordinates``` object will provide a [long, lat] array with the geographical coordinates, and a Twitter Place that corresponds to that location will be assigned. 
 
-Places are specific, named locations with corresponding geo coordinates. They can be attached to <a class="reference external" href="/overview/api/tweets">Tweets</a> by specifying a <code class="docutils literal"><span class="pre">place_id</span></code> when <a class="reference external" href="/rest/reference/post/statuses/update">tweeting</a>. Tweets associated with places are not necessarily issued from that location but could also potentially be <em>about</em> that location.&nbsp;Places can be <a class="reference external" href="/rest/reference/get/geo/search">searched
-for</a>. Tweets can also be <a class="reference external" href="/rest/public/finding-tweets-about-places">found</a> by place_id.</p>
-<p>Places also have an attributes field that further describes a Place. These attributes are more convention rather than standard practice, and reflect information captured in the Twitter places database.&nbsp;See <a class="reference external" href="#place_attributes">Place Attributes</a> for more information.</p>
+## Place Object
+
+Places are specific, named locations with corresponding geo coordinates. When users decide to assign a location to their Tweet, they are presented with a list of candidate Twitter Places. When using the API to post a Tweet, a Twitter Place can be attached by specifying a **place_id** when posting the Tweet. Tweets associated with Places are not necessarily issued from that location but could also potentially be <em>about</em> that location. 
+
+## Place Data Dictionary
 
 <table border="1" class="docutils">
 <colgroup>
@@ -112,13 +118,9 @@ Example:</p>
 
 <tr class="row-even"><td>attributes</td>
 <td>Object</td>
-<td><p class="first">Contains a hash of variant information about the place. See <a class="reference external" href="#place_attributes">Place Attributes</a> &nbsp;for more detail.
+<td><p class="first">When using PowerTrack, 30-Day and Full-Archive Search APIs, and Volume Streams this hash is null. 
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;attributes&quot;: {
-    &quot;street_address&quot;: &quot;795 Folsom St&quot;,
-    &quot;623:id&quot;: &quot;210176&quot;,
-    &quot;twitter&quot;: &quot;twitter&quot;
-},
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;attributes&quot;: {}
 </pre></div>
 </div>
 </td>
@@ -314,6 +316,12 @@ Example:</p>
 
 
 ## Next Steps
+
+Explore the other sub-objects that a Tweet contains:
+
++ [Tweet object and data dictionary](http://support.gnip.com/sources/twitter/dictionaries/tweet_json.md)
++ [User object and data dictionary](http://support.gnip.com/sources/twitter/dictionaries/user_json.md)
++ [Entities and Extended Entitites objects and data dictionaries](http://support.gnip.com/sources/twitter/dictionaries/entities_json.md)
 
 Read more about Tweets and their location metadata:
 
