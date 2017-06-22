@@ -109,7 +109,7 @@ Example:</p>
 <td><a class="reference external" href="#obj-boundingbox">Object</a></td>
 <td><p class="first">A bounding box of coordinates which encloses this place.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;bounding_box&quot;:{&quot;coordinates&quot;:[ [ [-74.026675,40.683935],[-74.026675,40.877483],[-73.910408,40.877483],[-73.910408,40.3935] ] ], &quot;type&quot;:&quot;Polygon&quot;}
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>{&#10;  &#34;bounding_box&#34;: {&#10;    &#34;coordinates&#34;: [&#10;      [&#10;        [&#10;          -74.026675,&#10;          40.683935&#10;        ],&#10;        [&#10;          -74.026675,&#10;          40.877483&#10;        ],&#10;        [&#10;          -73.910408,&#10;          40.877483&#10;        ],&#10;        [&#10;          -73.910408,&#10;          40.3935&#10;        ]&#10;      ]&#10;    ],&#10;    &#34;type&#34;: &#34;Polygon&#34;&#10;  }&#10;}
 </pre></div>
 </div>
 </td>
@@ -148,7 +148,7 @@ Example:</p>
 <td>Array of Array of Array of Float</td>
 <td><p class="first">A series of longitude and latitude points, defining a box which will contain the Place entity this bounding box is related to. Each point is an array in the form of [longitude, latitude]. Points are grouped into an array per bounding box. Bounding box arrays are wrapped in one additional array to be compatible with the polygon notation.
 Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;coordinates&quot;:[ [ [-74.026675,40.683935],[-74.026675,40.877483],[-73.910408,40.877483],[-73.910408,40.3935] ] ]
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>{&#10;  &#34;coordinates&#34;: [&#10;    [&#10;      [&#10;        -74.026675,&#10;        40.683935&#10;      ],&#10;      [&#10;        -74.026675,&#10;        40.877483&#10;      ],&#10;      [&#10;        -73.910408,&#10;        40.877483&#10;      ],&#10;      [&#10;        -73.910408,&#10;        40.3935&#10;      ]&#10;    ]&#10;  ]&#10;}
 </pre></div>
 </div>
 </td>
