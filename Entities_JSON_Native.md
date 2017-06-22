@@ -15,6 +15,10 @@
 
 ## Twitter Entities and Extended Entities <a id="entities" class="tall">&nbsp;</a>
 
+### Introduction
+
+### Twitter Entities
+
 Entities provide metadata and additional contextual information about content posted on Twitter. The ```entities``` section provides  arrays of common things included in Tweets: hashtags, user mentions, links, stock tickers (symbols), Twitter polls, and attached media. These arrays are convenient for developers when ingesting Tweets, since Twitter has essentially pre-processed, or pre-parsed, the text body. Instead of needing to explicitly search and find these entities in the Tweet body, your parser can go straight to this JSON section and there they are.
 
 Beyond providing parsing conveniences, the ```entities``` section also provides useful 'value-add' metadata. For example, if you are using the [Enhanced URLs enrichment](http://support.gnip.com/enrichments/enhanced_urls.html), URL metadata include fully-expanded URLs, as well as associated website titles and descriptions. Another example is when there are user mentions, the entities metadata include the numeric user ID, which are useful when making requests to many Twitter APIs. 
@@ -36,7 +40,7 @@ Every Tweet JSON payload includes an ```entities``` section, with the minimum se
 
 Note that the ```media``` and ```polls``` entities will only appear when that type of content is part of the Tweet.  
 
-## Twitter Extended Entities <a id="extended-entities" class="tall">&nbsp;</a>
+### Twitter Extended Entities <a id="extended-entities" class="tall">&nbsp;</a>
 
 If a Tweet contains native media (shared with the Tweet user-interface as opposed via a link to elsewhere), there will also be a ```extended_entities``` section. When it comes to any native media (photo, video, or GIF), the ```extended_entities``` is the preferred metadata source for several reasons. Currently, up to four photos can be attached to a Tweet. The  ```entities``` metadata will only contain the first photo (until 2014, only one photo could be included), while the ```extended_entities``` section will include all attached photos. With native media, another deficiency of the ```entities.media``` metadata is that the media type will always indicate 'photo', even in cases where the attached media is a video or animated GIF. The actual type of media is specified in the ```extended_entities.media[].type``` attribute and is set to either _photo_, _video_, or _animated_gif_. For these reasons, if you are working with native media, the ```extended_entities``` metadata is the way to go. 
 
@@ -985,7 +989,10 @@ Here is the ```extented_entities``` section for this Tweet:
 
 ### Tweet with native video
 
-Below is the extended entities metadata for this Tweet with a video: https://twitter.com/FloodSocial/status/869318041078820864
+Below is the extended entities metadata for this Tweet with a video:
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="fr" dir="ltr">St. Vrain River @ Crane Hollow <a href="https://t.co/TLSTTOvvmP">pic.twitter.com/TLSTTOvvmP</a></p>&mdash; @FloodSocial demo (@FloodSocial) <a href="https://twitter.com/FloodSocial/status/869318041078820864">May 29, 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ```json
 {
@@ -1123,7 +1130,10 @@ As discussed above, here is the ```entities``` section that incorrectly has the 
 
 #### Tweet with an animated GIF
 
-Below is the extended entities metadata for this Tweet with an animated GIF: https://twitter.com/FloodSocial/status/870042717589340160
+Below is the extended entities metadata for this Tweet with an animated GIF: 
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Test Tweet with animated GIF <a href="https://t.co/nD6G4bWSKb">pic.twitter.com/nD6G4bWSKb</a></p>&mdash; @FloodSocial demo (@FloodSocial) <a href="https://twitter.com/FloodSocial/status/870042717589340160">May 31, 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ```json
 {
@@ -1185,7 +1195,7 @@ Below is the extended entities metadata for this Tweet with an animated GIF: htt
 
 ## Next Steps
 
-Explore the Tweet JSON objects and data dictionaries:
+Explore other Tweet JSON objects and data dictionaries:
 
 + [Tweet object and data dictionary](http://support.gnip.com/sources/twitter/dictionaries/tweet_json.md)
 + [User object and data dictionary](http://support.gnip.com/sources/twitter/dictionaries/user_json.md)
