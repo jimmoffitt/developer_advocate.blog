@@ -13,7 +13,7 @@
 + [Extended Entities Data Dictionary](#extended-entities-data-dictionary)
 + [Example Native JSON](#example-json)
 
-## Twitter Entities <a id="entities" class="tall">&nbsp;</a>
+## Twitter Entities and Extended Entities <a id="entities" class="tall">&nbsp;</a>
 
 Entities provide metadata and additional contextual information about content posted on Twitter. The ```entities``` section provides  arrays of common things included in Tweets: hashtags, user mentions, links, stock tickers (symbols), Twitter polls, and attached media. These arrays are convenient for developers when ingesting Tweets, since Twitter has essentially pre-processed, or pre-parsed, the text body. Instead of needing to explicitly search and find these entities in the Tweet body, your parser can go straight to this JSON section and there they are.
 
@@ -40,15 +40,13 @@ Note that the ```media``` and ```polls``` entities will only appear when that ty
 
 If a Tweet contains native media (shared with the Tweet user-interface as opposed via a link to elsewhere), there will also be a ```extended_entities``` section. When it comes to any native media (photo, video, or GIF), the ```extended_entities``` is the preferred metadata source for several reasons. Currently, up to four photos can be attached to a Tweet. The  ```entities``` metadata will only contain the first photo (until 2014, only one photo could be included), while the ```extended_entities``` section will include all attached photos. With native media, another deficiency of the ```entities.media``` metadata is that the media type will always indicate 'photo', even in cases where the attached media is a video or animated GIF. The actual type of media is specified in the ```extended_entities.media[].type``` attribute and is set to either _photo_, _video_, or _animated_gif_. For these reasons, if you are working with native media, the ```extended_entities``` metadata is the way to go. 
 
-
-
-## Entities Data Dictionary <a id="entities-data-dictionary" class="tall">&nbsp;</a>
+## Entities Object <a id="entities-data-dictionary" class="tall">&nbsp;</a>
 
 The ```entities``` and ```extended_entities``` sections are both made up of arrays of entity _objects_. Below you will find descriptions for each of these entity objects, including data dictionaries that describe the object attribute names, types, and short description. We'll also indicate which PowerTrack Operators match these attributes, and include some sample JSON payloads. 
 
 A collection of common entities found in Tweets, including hashtags, links, and user mentions. This ```entities``` object does include a ```media``` attribute, but its implementation in the ```entiites``` section is only completely accurate for Tweets with a single photo. For all Tweets with more than one photo, a video, or animated GIF, the reader is directed to the ```extended_entities``` section. 
 
-### Entities object
+### Entities Data Dictionary
 
 The entities object is a holder of arrays of other entity sub-objects. After illustrating the ```entities``` structure, data dictionaries for these sub-objects, and the Operators that match them, will be provided.
 
@@ -133,7 +131,7 @@ Example:</p>
 </tbody>
 </table>
 
-### Hashtag Object<a id="hashtag" class="tall">&nbsp;</a>
+### Hashtag Object <a id="hashtag" class="tall">&nbsp;</a>
 
 The ```entities``` section will contain a ```hashtags``` array containing an object for every hashtag included in the Tweet body, and include an empty array if no hashtags are present. 
 
@@ -707,7 +705,7 @@ Example:</p>
 </div>
 
 
-## Extended Entities Data Dictionary <a id="extended-entities-data-dictionary" class="tall">&nbsp;</a>
+## Extended Entities Object <a id="extended-entities-data-dictionary" class="tall">&nbsp;</a>
 
 All Tweets with attached photos, videos and animated GIFs will include an ```extended_entities``` JSON object. The ```extended_entities``` object contains a single ```media``` array of ```media``` objects (see the ```entities``` section for its data dictionary). No other entity types, such as hashtags and links, are included in the ```extended_entities``` section. The ```media``` object in the ```extended_entities``` section is identical in structure to the one included in the ```entities``` section. 
 
@@ -1184,3 +1182,13 @@ Below is the extended entities metadata for this Tweet with an animated GIF: htt
   }
 }
 ```
+
+## Next Steps
+
+Explore the Tweet JSON objects and data dictionaries:
+
++ [Tweet object and data dictionary](http://support.gnip.com/sources/twitter/dictionaries/tweet_json.md)
++ [User object and data dictionary](http://support.gnip.com/sources/twitter/dictionaries/user_json.md)
++ [Tweet geo objects and data dictionaries](http://support.gnip.com/sources/twitter/dictionaries/tweet_geo_json.md)
+
+
