@@ -1,11 +1,11 @@
 + [] Host where initially?
 + [] Update links to sub objects.
-+ [] User playload link (remove from here?)
++ [] User payload link (remove from here?)
 + [] Would be good to have direct link to language Operator docs.
 
 ## Introduction to Tweet JSON
 
-All Twitter APIs that return Tweets provide that data encoded using JavaScript Object Notation (JSON). This notation is based on key-value pairs, with named attributes and associated values. These attributes are used to describe objects, and Tweets are made up of several fundamental objects. For a detailed introduction to how Tweets are encoded in JSON, see [HERE](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/introToTweetJSON.md).  <-- arriving soon?
+All Twitter APIs that return Tweets provide that data encoded using JavaScript Object Notation (JSON). This notation is based on key-value pairs, with named attributes and associated values. These attributes are used to describe objects, Tweets as objects, Twitter users as objects, etc. Tweets are made up of several fundamental objects. 
 
 When ingesting Tweet data the main object is the Tweet Object, which is a parent object to many child objects. For example, all Tweets include a User object that describe who authored the Tweet. If you are working with an object is a Retweet or Quoted Tweet, then that object will contain two Tweet objects, complete with two User objects. If the Tweet is geo-tagged, there will be location and place objects included. Every Tweet includes a entities object that encapsulates arrays of hashtags, user mentions, URLs, cashtags, and native media. If the Tweet has at lease one native photo, then there is an extended_entities object with metadata for up to four photos.
 
