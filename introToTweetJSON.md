@@ -64,19 +64,20 @@ If you are working with an object is a Retweet or Quoted Tweet, then that object
 
 ```json
 {
-  "tweet": {
-    "user": {},
-    "retweeted_status": {
-      "tweet": {
-        "user": {},
-        "place": {},
-        "entities": {},
-        "extended_entities": {}
-      },
-      "entities": {},
-      "extended_entities": {}
-    }
-  }
+	"tweet": {
+		"user": {},
+		"retweeted_status": {
+			"tweet": {
+				"user": {},
+				"place": {},
+				"entities": {},
+				"extended_entities": {}
+			},
+			"place": {},
+			"entities": {},
+			"extended_entities": {}
+		}
+	}
 }
 ```
 
