@@ -3,6 +3,8 @@
 + [X] User payload link (remove from here?) 
 + [] Would be good to have direct link to language Operator docs. Are there other Operators that need their own link? Group classes of Operators too -- Profile Geo, Geo, Entities.
 
+# Tweet JSON and Data Dictionaries
+
 ## Introduction to Tweet JSON
 
 All Twitter APIs that return Tweets provide that data encoded using JavaScript Object Notation (JSON). JSON is based on key-value pairs, with named attributes and associated values. These attributes are used to describe objects. At Twitter we serve many objects as JSON, including Tweets, Users, and Location Metadata. These objects all encapsulate core attributes that describe the object. Each Tweet has an author, a message, a unique ID, a timestamp of when it was posted, and sometimes geo metdata shared by the user. Each User has a Twitter name, an ID, a number of followers, and most often an account bio. With each Tweet we also package up an 'entities' object, which is an array of common Tweet contents such as hashtags, mmentions, media, and links. If there are links, the JSON payload can also provide metadata such as the fully unwound URL and the webpage's title.
@@ -104,11 +106,12 @@ These JSON attribute dictionaries are specifically for the Tweets delivered by t
 
 Please note that Tweets sourced elsewhere may vary somewhat in structure from this document.
 
-Consumers of Tweets should tolerate the addition of new fields and variance in ordering of fields with ease. Not all fields appear in all contexts. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing. 
-  
 ## Parsing Best-practices
 
-JSON parsers must be tolerant of 'missing' fields, since not all fields appear in all contexts. Parsers should tolerate the addition of new fields and variance in ordering of fields with ease. It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.
++ Twitter JSON is encoded using UTF-8 characters.
++ Parsers should tolerate variance in ordering of fields with ease. It should be assumed that Tweet JSON is served as an unordered hash of data. 
++ Parsers should tolerate the addition of new fields  JSON parsers must be tolerant of 'missing' fields, since not all fields appear in all contexts. 
++ It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.
  
 ## Tweet JSON Formats 
  
