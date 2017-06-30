@@ -5,7 +5,7 @@
 
 ## Introduction to Tweet JSON
 
-All Twitter APIs that return Tweets provide that data encoded using JavaScript Object Notation (JSON). This notation is based on key-value pairs, with named attributes and associated values. These attributes are used to describe objects. At Twitter we serve many objects as JSON, including Tweets, Users, and Location Metadata. These objects all encapsulate core attributes that describe the object. Each Tweet has an author, a message, a unique ID, a timestamp of when it was posted, and sometimes geo metdata shared by the user. Each User has a Twitter name, an ID, a number of followers, and most often an account bio. With each Tweet we also package up an 'entities' object, which is an array of common Tweet contents such as hashtags, mmentions, media, and links. If there are links, the JSON payload can also provide metadata such as the fully unwound URL and the webpage's title.
+All Twitter APIs that return Tweets provide that data encoded using JavaScript Object Notation (JSON). JSON is based on key-value pairs, with named attributes and associated values. These attributes are used to describe objects. At Twitter we serve many objects as JSON, including Tweets, Users, and Location Metadata. These objects all encapsulate core attributes that describe the object. Each Tweet has an author, a message, a unique ID, a timestamp of when it was posted, and sometimes geo metdata shared by the user. Each User has a Twitter name, an ID, a number of followers, and most often an account bio. With each Tweet we also package up an 'entities' object, which is an array of common Tweet contents such as hashtags, mmentions, media, and links. If there are links, the JSON payload can also provide metadata such as the fully unwound URL and the webpage's title.
 
 https://twitter.com/TwitterDev/status/850006245121695744
 
@@ -59,71 +59,43 @@ When ingesting Tweet data the main object is the Tweet Object, which is a parent
 }
 ```
 
-If you are working with an object is a Retweet or Quoted Tweet, then that object will contain two Tweet objects, complete with two User objects. 
+If you are working with an object is a Retweet, then that object will contain two Tweet objects, complete with two User objects. 
 
 
 ```json
 {
-	"tweet": {
+   "tweet": {
+	"user": {},
+	"retweeted_status": {
+  	   "tweet": {
 		"user": {},
-		"retweeted_status": {
-			"tweet": {
-				"user": {},
-				"place": {},
-				"entities": {},
-				"extended_entities": {}
-			},
-			"place": {},
-			"entities": {},
-			"extended_entities": {}
-		}
-	}
+		"place": {},
+		"entities": {},
+		"extended_entities": {}
+	   },
+	}   
+        "place": {},
+	"entities": {},
+	"extended_entities": {}
+   }
 }
 ```
 
+Notice that Retweets are really made up of two Tweet objects (and two sets of child objects), with the 'top level' (Re) Tweet containing the original Tweet under the  "retweeted_status" attribute. The same is true of Quoted Tweets, where the original Tweet being Quoted is contained under a "quoted_status" attribute. (Check out [this article on identifying Retweets and Quote Tweets](http://support.gnip.com/articles/identifying-and-understanding-retweets.html).)
+
 What is a data dictionary, how are they helpful?  What information do they give me?
 
+The following documentation provides *Data Dictionaries* for fundamental Twitter objects that make up a Tweet. These fundamental objects include the Tweet (*parent*) object itself, along with several *child* objects, such as user, entities, and extended entities objects.
+
+
 These objects have a hierachry which informs the layout of these Data Dictionaries: 
-+ [Tweet](#tweet) - Also referred to as a 'Status' object, 'root-level' attributes, _parent_ of other objects.
-  + [User](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/User_JSON_Native.md) - Twitter Account level metadata.
-  + [Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains arrays of #hashtags, @mentions, $symbols, URLs, and media.
-  + [Extended Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains up to four native photos.  
-  + [Places]()
-    + [Coordinates]() 
++ [Tweet](http://support.gnip.com/sources/twitter/dictionaries/tweet_json.html) - Also referred to as a 'Status' object, has many 'root-level' attributes, _parent_ of other objects.
+  + [User](http://support.gnip.com/sources/twitter/dictionaries/user_json.html) - Twitter Account level metadata.
+  + [Entities](http://support.gnip.com/sources/twitter/dictionaries/entities_json.html) - Contains arrays of #hashtags, @mentions, $symbols, URLs, and media.
+  + [Extended Entities](http://support.gnip.com/sources/twitter/dictionaries/entities_json.html) - Contains up to four native photos.  
+  + [Places](http://support.gnip.com/sources/twitter/dictionaries/tweet_geo_json.html)
+
     
-
-
-
-
-
-
-
-### Tweet Object 
-+ [Tweet](#tweet) - Also referred to as a 'Status' object, 'root-level' attributes, _parent_ of other objects.
-  
-### Tweet child objects.
- 
-  + [User](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/User_JSON_Native.md) - Twitter Account level metadata.
-  + [Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains arrays of #hashtags, @mentions, $symbols, URLs, and media.
-  + [Extended Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains up to four native photos.
-  
-When a Tweet has been geo-tagged with either an exact location or a Twitter Place, these objects are of interest:
-  + Places
-  + Coordinates
-
-### Retweet and Quoted Tweet Objects
-
-When a JSON payload represents a Retweet or Quoted Tweet, then there are Tweet objects included, complete with two User objects, with this addtional Tweet metadata provided:
-
-  + Retweeted Status - Contains the original Tweet, the one that was Retweeted.
-  + Quoted Status - Contains the original Tweet, the one that was Quoted.
- 
-Also, check out [this article on identifying Retweets and Quote Tweets](http://support.gnip.com/articles/identifying-and-understanding-retweets.html).
-
-The following documentation provides *Data Dictionaries* for fundamental Twitter objects that make up a Tweet. These fundamental objects include the Tweet (*parent*) object itself, along with several *child* objects, such as user, entities, and extended entities objects. 
-
-
-
 ## Product Details
 
 These JSON attribute dictionaries are specifically for the Tweets delivered by the following Twitter products:
