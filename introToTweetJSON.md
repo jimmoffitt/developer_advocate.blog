@@ -46,7 +46,7 @@ The following JSON illustrates the structure for these objects and some of their
 
 ## Twitter Objects and Data Dictionaries
 
-When ingesting Tweet data the main object is the Tweet Object, which is a parent object to several child objects. For example, all Tweets include a User object that describe who authored the Tweet. If you are working with an object is a Retweet or Quoted Tweet, then that object will contain two Tweet objects, complete with two User objects. If the Tweet is geo-tagged, there will be location and place objects included. Every Tweet includes a entities object that encapsulates arrays of hashtags, user mentions, URLs, cashtags, and native media. If the Tweet has at lease one native photo, then there is an extended_entities object with metadata for up to four photos.
+When ingesting Tweet data the main object is the Tweet Object, which is a parent object to several child objects. For example, all Tweets include a User object that describe who authored the Tweet. If the Tweet is geo-tagged, there will be location and place objects included. Every Tweet includes a entities object that encapsulates arrays of hashtags, user mentions, URLs, cashtags, and native media. If the Tweet has any 'attached' or 'native' media (photos, video, animated GIF), there will be an extended_entities object.
 
 ```json
 {
@@ -56,6 +56,27 @@ When ingesting Tweet data the main object is the Tweet Object, which is a parent
 	"entities": {},
 	"extended_entities": {}
    }
+}
+```
+
+If you are working with an object is a Retweet or Quoted Tweet, then that object will contain two Tweet objects, complete with two User objects. 
+
+
+```json
+{
+  "tweet": {
+    "user": {},
+    "retweeted_status": {
+      "tweet": {
+        "user": {},
+        "place": {},
+        "entities": {},
+        "extended_entities": {}
+      },
+      "entities": {},
+      "extended_entities": {}
+    }
+  }
 }
 ```
 
