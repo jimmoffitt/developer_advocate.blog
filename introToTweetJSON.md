@@ -44,19 +44,43 @@ The following JSON illustrates the structure for these objects and some of their
 }
 ```
 
-## Twitter Objects
+## Twitter Objects and Data Dictionaries
 
 When ingesting Tweet data the main object is the Tweet Object, which is a parent object to several child objects. For example, all Tweets include a User object that describe who authored the Tweet. If you are working with an object is a Retweet or Quoted Tweet, then that object will contain two Tweet objects, complete with two User objects. If the Tweet is geo-tagged, there will be location and place objects included. Every Tweet includes a entities object that encapsulates arrays of hashtags, user mentions, URLs, cashtags, and native media. If the Tweet has at lease one native photo, then there is an extended_entities object with metadata for up to four photos.
 
+```json
+{
+   "tweet": {
+	"user": {},
+	"place": {},
+	"entities": {},
+	"extended_entities": {}
+   }
+}
+```
+
+What is a data dictionary, how are they helpful?  What information do they give me?
+
+These objects have a hierachry which informs the layout of these Data Dictionaries: 
++ [Tweet](#tweet) - Also referred to as a 'Status' object, 'root-level' attributes, _parent_ of other objects.
+  + [User](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/User_JSON_Native.md) - Twitter Account level metadata.
+  + [Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains arrays of #hashtags, @mentions, $symbols, URLs, and media.
+  + [Extended Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains up to four native photos.  
+  + [Places]()
+    + [Coordinates]() 
+    
+
+
+
+
+
+
 
 ### Tweet Object 
-
 + [Tweet](#tweet) - Also referred to as a 'Status' object, 'root-level' attributes, _parent_ of other objects.
-
-
   
 ### Tweet child objects.
-  
+ 
   + [User](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/User_JSON_Native.md) - Twitter Account level metadata.
   + [Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains arrays of #hashtags, @mentions, $symbols, URLs, and media.
   + [Extended Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains up to four native photos.
@@ -64,7 +88,6 @@ When ingesting Tweet data the main object is the Tweet Object, which is a parent
 When a Tweet has been geo-tagged with either an exact location or a Twitter Place, these objects are of interest:
   + Places
   + Coordinates
-
 
 ### Retweet and Quoted Tweet Objects
 
@@ -75,22 +98,9 @@ When a JSON payload represents a Retweet or Quoted Tweet, then there are Tweet o
  
 Also, check out [this article on identifying Retweets and Quote Tweets](http://support.gnip.com/articles/identifying-and-understanding-retweets.html).
 
-
-
-## Data Dictionaries
-
-<Map out the documentation>
-
 The following documentation provides *Data Dictionaries* for fundamental Twitter objects that make up a Tweet. These fundamental objects include the Tweet (*parent*) object itself, along with several *child* objects, such as user, entities, and extended entities objects. 
 
-These objects have a hierachry which informs the layout of these Data Dictionaries: 
-+ [Tweet](#tweet) - Also referred to as a 'Status' object, 'root-level' attributes, _parent_ of other objects.
-  + [User](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/User_JSON_Native.md) - Twitter Account level metadata.
-  + [Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains arrays of #hashtags, @mentions, $symbols, URLs, and media.
-  + [Extended Entities](https://github.com/jimmoffitt/developer_advocate.blog/blob/master/Entities_JSON_Native.md) - Contains up to four native photos.  
-  + [Places]()
-    + [Coordinates]() 
-    
+
 
 ## Product Details
 
