@@ -7,6 +7,10 @@
 
 All Twitter APIs that return Tweets provide that data encoded using JavaScript Object Notation (JSON). JSON is based on key-value pairs, with named attributes and associated values. These attributes are used to describe objects. At Twitter we serve many objects as JSON, including Tweets, Users, and Location Metadata. These objects all encapsulate core attributes that describe the object. Each Tweet has an author, a message, a unique ID, a timestamp of when it was posted, and sometimes geo metdata shared by the user. Each User has a Twitter name, an ID, a number of followers, and most often an account bio. With each Tweet we also package up an 'entities' object, which is an array of common Tweet contents such as hashtags, mmentions, media, and links. If there are links, the JSON payload can also provide metadata such as the fully unwound URL and the webpage's title.
 
+<there are over 160 ? metadata items>. 
+
+<Let's start with an example...>
+
 https://twitter.com/TwitterDev/status/850006245121695744
 
 The following JSON illustrates the structure for these objects and _some_ of their attributes:
@@ -80,12 +84,7 @@ Notice that Retweets are really made up of two Tweet objects (and two sets of ch
 
 ## Tweet Data Dictionaries
 
-
-
-What is a data dictionary, how are they helpful?  What information do they give me?
-
-The following documentation provides *Data Dictionaries* for fundamental Twitter objects that make up a Tweet. These fundamental objects include the Tweet (*parent*) object itself, along with several *child* objects, such as user, entities, and extended entities objects.
-
+Whatever your Twitter use case, understanding what these JSON-encoded Tweet objects and attributes _represent_ is critical to successfully finding your data signals of interest. To help in that effort, there are a set of *Data Dictionaries* for fundamental Twitter objects that make up a Tweet. These fundamental objects include the Tweet (*parent*) object itself, along with several *child* objects, such as user, entities, and extended entities objects.
 
 These objects have a hierachry which informs the layout of these Data Dictionaries: 
 + [Tweet](http://support.gnip.com/sources/twitter/dictionaries/tweet_json.html) - Also referred to as a 'Status' object, has many 'root-level' attributes, _parent_ of other objects.
