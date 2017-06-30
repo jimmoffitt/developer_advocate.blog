@@ -86,15 +86,15 @@ Notice that Retweets are really made up of two Tweet objects (and two sets of ch
 
 ## Tweet Data Dictionaries
 
-Whatever your Twitter use case, understanding what these JSON-encoded Tweet objects and attributes _represent_ is critical to successfully finding your data signals of interest. To help in that effort, there are a set of *Data Dictionaries* for fundamental Twitter objects that make up a Tweet. These fundamental objects include the Tweet (*parent*) object itself, along with several *child* objects, such as user, entities, and extended entities objects.
+Whatever your Twitter use case, understanding what these JSON-encoded Tweet objects and attributes _represent_ is critical to successfully finding your data signals of interest. To help in that effort, there are a set of *Data Dictionaries* for these fundamental Twitter objects.
 
-These objects have a hierachry which informs the layout of these Data Dictionaries: 
+Reflecting the JSON hierachy above, here are links and further descriptions of these Objects: 
+
 + [Tweet](http://support.gnip.com/sources/twitter/dictionaries/tweet_json.html) - Also referred to as a 'Status' object, has many 'root-level' attributes, _parent_ of other objects.
-  + [User](http://support.gnip.com/sources/twitter/dictionaries/user_json.html) - Twitter Account level metadata.
-  + [Entities](http://support.gnip.com/sources/twitter/dictionaries/entities_json.html) - Contains arrays of #hashtags, @mentions, $symbols, URLs, and media.
-  + [Extended Entities](http://support.gnip.com/sources/twitter/dictionaries/entities_json.html) - Contains up to four native photos.  
-  + [Places](http://support.gnip.com/sources/twitter/dictionaries/tweet_geo_json.html)
-
+  + [User](http://support.gnip.com/sources/twitter/dictionaries/user_json.html) - Twitter Account level metadata. Will include any available account-level enrichments, such as [Profile geo](http://support.gnip.com/enrichments/profile_geo.html) and [Klout](http://support.gnip.com/enrichments/klout.html).
+  + [Entities](http://support.gnip.com/sources/twitter/dictionaries/entities_json.html) - Contains object arrays of #hashtags, @mentions, $symbols, URLs, and media. 
+  + [Extended Entities](http://support.gnip.com/sources/twitter/dictionaries/entities_json.html) - Contains up to four native photos, or one video or animated GIF. 
+  + [Places](http://support.gnip.com/sources/twitter/dictionaries/tweet_geo_json.html) - Parent to 'coordinates' object. 
     
 ## Product Details
 
@@ -112,11 +112,7 @@ Please note that Tweets sourced elsewhere may vary somewhat in structure from th
 + Parsers should tolerate variance in ordering of fields with ease. It should be assumed that Tweet JSON is served as an unordered hash of data. 
 + Parsers should tolerate the addition of new fields  JSON parsers must be tolerant of 'missing' fields, since not all fields appear in all contexts. 
 + It is generally safe to consider a nulled field, an empty set, and the absence of a field as the same thing.
- 
-## Tweet JSON Formats 
- 
-< Note about Tweet JSON Formats: Native and Activity Stream> 
-  
+
 ## Next Steps:  
 + Tweet object and data dictionary
 + User object and data dictionary
