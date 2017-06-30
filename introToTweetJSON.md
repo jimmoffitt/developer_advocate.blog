@@ -1,6 +1,6 @@
 + [X] Host where initially? http://support.gnip.com/sources/twitter/dictionaries/tweet_json_intro.html
-+ [] Update links to sub objects.
-+ [] User payload link (remove from here?) 
++ [X] Update links to sub objects.
++ [X] User payload link (remove from here?) 
 + [] Would be good to have direct link to language Operator docs. Are there other Operators that need their own link? Group classes of Operators too -- Profile Geo, Geo, Entities.
 
 ## Introduction to Tweet JSON
@@ -9,42 +9,39 @@ All Twitter APIs that return Tweets provide that data encoded using JavaScript O
 
 https://twitter.com/TwitterDev/status/850006245121695744
 
-The following JSON illustrates the structure for these objects and some of their attributes:
+The following JSON illustrates the structure for these objects and _some_ of their attributes:
 
 ```json
 {
-	"tweet": {
-		"created_at": "Thu Apr 06 15:24:15 +0000 2017",
-		"id_str": "850006245121695744",
-		"text": "1\/ Today we\u2019re sharing our vision for the future of the Twitter API platform!\nhttps:\/\/t.co\/XweGngmxlP",
-
-		"user": {
-			"id": 2244994945,
-			"name": "Twitter Dev",
-			"screen_name": "TwitterDev",
-			"location": "Internet",
-			"url": "https:\/\/dev.twitter.com\/",
-			"description": "Your official source for Twitter Platform news, updates & events. Need technical help? Visit https:\/\/twittercommunity.com\/ \u2328\ufe0f #TapIntoTwitter"   
-		},
-		"place": {
-
-		},
-		"entities": {
-			"hashtags": [],
-			"urls": [{
-				"url": "https:\/\/t.co\/XweGngmxlP",
-				"unwound": {
-					"url": "https:\/\/cards.twitter.com\/cards\/18ce53wgo4h\/3xo1c",
-					"title": "Building the Future of the Twitter API Platform"
-				}
-			}],
-			"user_mentions": []
-		}
+   "tweet": {
+	"created_at": "Thu Apr 06 15:24:15 +0000 2017",
+	"id_str": "850006245121695744",
+	"text": "1\/ Today we\u2019re sharing our vision for the future of the Twitter API platform!\nhttps:\/\/t.co\/XweGngmxlP",
+	"user": {
+		"id": 2244994945,
+		"name": "Twitter Dev",
+		"screen_name": "TwitterDev",
+		"location": "Internet",
+		"url": "https:\/\/dev.twitter.com\/",
+		"description": "Your official source for Twitter Platform news, updates & events. Need technical help? Visit https:\/\/twittercommunity.com\/ \u2328\ufe0f #TapIntoTwitter"   
+	},
+	"place": {},
+	"entities": {
+		"hashtags": [],
+		"urls": [{
+			"url": "https:\/\/t.co\/XweGngmxlP",
+			"unwound": {
+				"url": "https:\/\/cards.twitter.com\/cards\/18ce53wgo4h\/3xo1c",
+				"title": "Building the Future of the Twitter API Platform"
+			}
+		}],
+		"user_mentions": []
 	}
+   }
 }
 ```
 
-## Twitter Objects and Data Dictionaries
+## Fundamental Twitter Objects
 
 When ingesting Tweet data the main object is the Tweet Object, which is a parent object to several child objects. For example, all Tweets include a User object that describe who authored the Tweet. If the Tweet is geo-tagged, there will be location and place objects included. Every Tweet includes a entities object that encapsulates arrays of hashtags, user mentions, URLs, cashtags, and native media. If the Tweet has any 'attached' or 'native' media (photos, video, animated GIF), there will be an extended_entities object.
 
@@ -61,7 +58,6 @@ When ingesting Tweet data the main object is the Tweet Object, which is a parent
 
 If you are working with an object is a Retweet, then that object will contain two Tweet objects, complete with two User objects. 
 
-
 ```json
 {
    "tweet": {
@@ -73,15 +69,18 @@ If you are working with an object is a Retweet, then that object will contain tw
 		"entities": {},
 		"extended_entities": {}
 	   },
-	}   
+	},   
         "place": {},
 	"entities": {},
 	"extended_entities": {}
    }
 }
 ```
-
 Notice that Retweets are really made up of two Tweet objects (and two sets of child objects), with the 'top level' (Re) Tweet containing the original Tweet under the  "retweeted_status" attribute. The same is true of Quoted Tweets, where the original Tweet being Quoted is contained under a "quoted_status" attribute. (Check out [this article on identifying Retweets and Quote Tweets](http://support.gnip.com/articles/identifying-and-understanding-retweets.html).)
+
+## Tweet Data Dictionaries
+
+
 
 What is a data dictionary, how are they helpful?  What information do they give me?
 
