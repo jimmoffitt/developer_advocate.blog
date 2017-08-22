@@ -201,7 +201,7 @@ Example:</p>
 </td>
 </tr>
 
-<tr class="row-even"><td>withheld_in_countries</td>
+<tr class="row-even"><td>withheld_in_countries ADDED BACK</td>
 <td>String</td>
 <td><p class="first">When present, indicates a textual representation of the two-letter country codes this user is withheld from.
 Example:</p>
@@ -211,7 +211,7 @@ Example:</p>
 </td>
 </tr>
 
-<tr class="row-odd"><td>withheld_scope</td>
+<tr class="row-odd"><td>withheld_scope ADDED BACK</td>
 <td>String</td>
 <td><p class="first">When present, indicates whether the content being withheld is the &#8220;status&#8221; or a &#8220;user.&#8221;
 Example:</p>
