@@ -1,6 +1,6 @@
 __Developer Advocate blog__ ...from the client-side perspective.
 
-**A somewhat random collection of posts written with Twitter developers in mind... ** 
+A somewhat random collection of posts written with Twitter developers in mind...  
 
 ### Twitter/Gnip Blog Posts - Data stories 
 + Tweeting in the Rain series:
