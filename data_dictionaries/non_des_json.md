@@ -28,24 +28,6 @@ Example:</p>
 </td>
 </tr>
 
-<tr class="row-odd"><td>contributors</td>
-<td>Collection of Contributors</td>
-<td><p class="first"><strong>Deprecated</strong> <em>Nullable</em> A collection of brief user objects (usually only one) indicating users who contributed to the
-authorship of the tweet, on behalf of the official tweet author. This is a legacy value and is not actively used.</p>
-<p>Example:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span></span>&quot;contributors&quot;:
-[
-    {
-        &quot;id&quot;:819797,
-        &quot;id_str&quot;:&quot;819797&quot;,
-        &quot;screen_name&quot;:&quot;episod&quot;
-    }
-]
-</pre></div>
-</div>
-</td>
-</tr>
-
 <tr class="row-even"><td>scopes</td>
 <td>Object</td>
 <td><p class="first">A set of key-value pairs indicating the intended contextual delivery of the containing Tweet. Currently used by Twitter&#8217;s Promoted
