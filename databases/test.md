@@ -96,7 +96,7 @@ All requests to the enterprise search APIs must use HTTP *Basic Authentication*,
 
 ## Request/response behavior<a id="RequestResponseBehavior" class="tall">&nbsp;</a>
 
-Using the fromDate and toDate parameters, you can request any time period that the API supports. The 30-Day search API provides Tweets from the most recent 31 days. The Full-Archive search API provides Tweets back to the very first tweet (March 21, 2006).  However, a single response will be limited to the lesser of your specified 'maxResults' or 31 days. If matching data or your time range exceeds your specified maxResults or 31 days, you will receive a 'next' token which you should use to paginate through remainder of your specified time range.
+Using the ```fromDate``` and ```toDate``` parameters, you can request any time period that the API supports. The 30-Day search API provides Tweets from the most recent 31 days. The Full-Archive search API provides Tweets back to the very first tweet (March 21, 2006).  However, a single response will be limited to the lesser of your specified 'maxResults' or 31 days. If matching data or your time range exceeds your specified maxResults or 31 days, you will receive a 'next' token which you should use to paginate through remainder of your specified time range.
 
 [TODO - rewrite]
 For example, if you want all of the data/counts from Jan 1, 2012 to June 30, 2012... You can specify that full six-month time period in your request, but the API will respond with the data for May only and provide a 'next' token to pull the data for the next 31 days and so on until you've received all of the data through Jan 1st, 2012.
