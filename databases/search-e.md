@@ -85,7 +85,7 @@ For example, if the TwitterDev account has the 30-Day search product with a labe
 
 Your complete enterprise search API endpoint is displayed at https://console.gnip.com.
 
-The example endpoints below will be based on the 30-Day search API, using a ```:product``` set to '30day'. If you are using Full-Archive search, simply use the 'fullarchive' product name.
+Below there are several example requests using a simple HTTP utility called curl. These examples use URLs with ```:product```, ```:account_name```, and ```:label```. To use these example, be sure to update the URLs with your details.
 
 ## Authentication<a id="Authentication" class="tall">&nbsp;</a>
 
@@ -128,8 +128,8 @@ Beyond requesting more than 31 days of counts, there is another scenario when a 
 ### POST /search/:label
 
 #### Endpoint pattern: 
-+ 30-Day search API: /30day/accounts/:account_name/:label.json
-+ Full-Archive search API: /fullarchive/accounts/:account_name/:label.json
++ 30-Day search API: /search/30day/accounts/:account_name/:label.json
++ Full-Archive search API: /search/fullarchive/accounts/:account_name/:label.json
 
 This endpoint returns data for the specified query and time period. If a time period is not specified the time parameters will default to the last 30 days. 
 Note: This functionality can also be accomplished using a GET request, instead of a POST, by encoding the parameters described below into the URL.
@@ -205,7 +205,7 @@ Note: This functionality can also be accomplished using a GET request, instead o
     </tr>
     <tr>
         <th>next</th>
-        <td>This parameter is used to get the next "page" of results as described <a href="#Pagination">HERE</a>. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.</td>
+        <td>This parameter is used to get the next 'page' of results as described <a href="#Pagination">HERE</a>. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.</td>
         <td>No</td>
         <td>NTcxODIyMDMyODMwMjU1MTA0</td>
     </tr>
@@ -221,11 +221,11 @@ Note: This functionality can also be accomplished using a GET request, instead o
     </tr>
     <tr>
         <td><strong>Query Format</strong></td>
-        <td>The equivalent of one PowerTrack rule, with up to 2048 characters (and no limits on the number of positive and negative clauses). <br />
+        <td>The equivalent of one PowerTrack rule, with up to 2,048 characters (and no limits on the number of positive and negative clauses). <br />
             <br />
             <strong>Items to Note:</strong>
             <ul>
-              <li>Not all PowerTrack operators are supported. Supported Operators are listed <a href='/en/docs/tweets/search/overview/full-archive-search#AvailableOperators'>HERE</a>.</li> 
+              <li>Not all PowerTrack operators are supported. Supported Operators are listed <a href='/en/docs/tweets/search/overview/enterprise#AvailableOperators'>HERE</a>.</li> 
             </ul>
      </td>
     </tr>
@@ -332,7 +332,7 @@ You can continue to pass in the 'next' element from your previous query until yo
 ### /search/:stream/counts<a class='tall' id='CountRequests'>&nbsp;</a>
 
 #### Endpoint pattern: 
-/fullarchive/accounts/:account_name/:label/counts.json
+/search/fullarchive/accounts/:account_name/:label/counts.json
 
 This endpoint returns counts (data volumes) data for the specified query. If a time period is not specified the time parameters will default to the last 30 days. Data volumes are returned as a timestamped array on either daily, hourly (default), or by the minute.  
 
@@ -416,11 +416,11 @@ This endpoint returns counts (data volumes) data for the specified query. If a t
     </tr>
     <tr>
         <td><strong>Query Format</strong></td>
-        <td>The equivalent of one PowerTrack rule, with up to 2048 characters (and no limits on the number of positive and negative clauses). <br />
+        <td>The equivalent of one PowerTrack rule, with up to 2,048 characters. <br />
             <br />
             <strong>Items to Note:</strong>
             <ul>
-              <li>Not all PowerTrack operators are supported. Supported Operators are listed <a href='/en/docs/tweets/search/overview/full-archive-search#AvailableOperators'>HERE</a>.</li> 
+              <li>Not all PowerTrack operators are supported. Supported Operators are listed <a href='/en/docs/tweets/search/overview/enterprise#AvailableOperators'>HERE</a>.</li> 
             </ul>
         </td>
     </tr>
@@ -445,13 +445,13 @@ This endpoint returns counts (data volumes) data for the specified query. If a t
 Here is an example POST (using cURL) command for making an initial counts request:
 
 <pre>
-curl -X POST -u&lt;username&gt; "https://gnip-api.twitter.com/search/fullarchive/accounts/:account_name/:label/counts.json" -d '{"query":"TwitterDev","fromDate":"&lt;yyyymmddhhmm&gt;","toDate":"&lt;yyyymmddhhmm&gt;","bucket":"day"}'
+curl -X POST -u&lt;username&gt; "https://gnip-api.twitter.com/search/:product/accounts/:account_name/:label/counts.json" -d '{"query":"TwitterDev","fromDate":"&lt;yyyymmddhhmm&gt;","toDate":"&lt;yyyymmddhhmm&gt;","bucket":"day"}'
 </pre>
 
 If the API counts response includes a 'next' token, below is a subsequent request that consists of the original request, with the 'next' parameter set to the provided token:
 
 <pre>
-curl -X POST -u&lt;username&gt; "https://gnip-api.twitter.com/search/fullarchive/accounts/:account_name/:label/counts.json" -d '{"query":"TwitterDev","fromDate":"&lt;yyyymmddhhmm&gt;","toDate":"&lt;yyyymmddhhmm&gt;","bucket":"day",
+curl -X POST -u&lt;username&gt; "https://gnip-api.twitter.com/search/:product/accounts/:account_name/:label/counts.json" -d '{"query":"TwitterDev","fromDate":"&lt;yyyymmddhhmm&gt;","toDate":"&lt;yyyymmddhhmm&gt;","bucket":"day",
 "next":"YUcxO87yMDMyODMwMjU1MTA0"}'
 </pre>
 
