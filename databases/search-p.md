@@ -37,9 +37,9 @@ nav:
 Below you will find important details needed when integrating with the Search Tweets: 30-Day API:
 
 + Methods for requesting Tweet data and counts
++ Pagination
 + API request parameters and example requests
 + API response JSON payloads and example responses
-+ Pagination
 + HTTP response codes
 
 The Search Tweets: 30-Day API provides low-latency, full-fidelity, query-based access to the previous 30 days of Tweets with minute granularity. Tweet data is served in reverse chronological order, starting with the most recent Tweet that matches your query. Tweets are available from the search API approximately 30 seconds after being published.
@@ -94,11 +94,11 @@ If you are new to OAuth, be sure to check out [our documentation](https://develo
 
 ### OAuth 2 with Bearer token
 
-If you are completely new to Twitter search APIs and/or OAuth, Bearer authentication is a good place to start. Authentication is performed by passing a Bearer token as a HTTP request header. While this application-only authentication requires you to first generate a token, after that it is easy to start making search requests with tools like curl. When using this type of HTTP tool you can exercise the API with a single terminal command.
+If you are completely new to Twitter search APIs and/or OAuth, Bearer authentication is a good place to start. Authentication is performed by passing a Bearer token as a HTTP request header. While this application-only authentication requires you to first generate a token, after that it is easy to start making search requests with tools like curl and HTTPie. When using these types of HTTP tools you can exercise the API with a single terminal command.
 
 Bearer tokens are based on Twitter app consumer tokens. For a curl-based recipe for generating Bearer tokens, see [HERE](https://developer.twitter.com/en/docs/basics/authentication/overview/application-only). Generating bearer tokens is equally straightforward using the language of your choice. [HERE](http://www.rubyexample.com/code/twitter%20application%20bearer%20token/) is an example in Ruby.
 
-Request examples below use Beared tokens.
+Request examples below use Bearer tokens.
 
 ### OAuth consumer key and secret
 
@@ -114,27 +114,27 @@ For example, say your query matches 6,000 Tweets over the past 30 days (if you d
 
 ## Pagination<a id="Pagination" class="tall">&nbsp;</a>
 
-When making both data and count requests it is likely that there is more data than can be returned in a single response. When that is the case the response will include a ‘next’ token. The ‘next’ token is provided as a root-level JSON attribute. Whenever a ‘next’ token is provided, there is additional data to retrieve so you will need to keep making API requests.
+When making both data and count requests it is likely that there are more data than can be returned in a single response. When that is the case the response will include a 'next' token. The 'next' token is provided as a root-level JSON attribute. Whenever a 'next' token is provided, there is additional data to retrieve so you will need to keep making API requests.
 
-<b>Note:</b> The ‘next’ token behavior differs slightly for data and counts requests, and both are described below with example responses provided in the API Reference section.
+<b>Note:</b> The 'next' token behavior differs slightly for data and counts requests, and both are described below with example responses provided in the API Reference section.
 
 ### Data pagination
 
-Requests for data will likely generate more data than can be returned in a single response. Each data request includes a parameter that sets the maximum number of activities to return per request. The ‘maxResults’ parameter defaults to 100, and can be set to a range of 10-500 (or a maximum of 100 with Sandbox environments). If your query matches more Tweets than the 'maxResults' parameter used in the request, the response will include a 'next' token (as a root-level JSON attribute). This 'next' token can be used in a subsequent request to retrieve the next portion of the matching Tweets for that query (i.e. the next 'page'). Next tokens will continue to be provided until you have reached the last “page” of results for that query, when no 'next' token is provided.
+Requests for data will likely generate more data than can be returned in a single response. Each data request includes a parameter that sets the maximum number of Tweets to return per request. The 'maxResults' parameter defaults to 100, and can be set to a range of 10-500 (or a maximum of 100 with Sandbox environments). If your query matches more Tweets than the 'maxResults' parameter used in the request, the response will include a 'next' token (as a root-level JSON attribute). This 'next' token can be used in a subsequent request to retrieve the next portion of the matching Tweets for that query (i.e. the next 'page'). Next tokens will continue to be provided until you have reached the last “page” of results for that query, when no 'next' token is provided.
 
-To request the next 'page' of data, you must make the exact same query as the original, including toDate and fromDate, if used, and also include a 'next' request parameter set to the value from the previous response. This can be utilized with either a GET or POST request. However, the 'next' parameter must be URL encoded in the case of a GET request. You can continue to pass in the 'next' element from your previous query until you have received all Tweets from the time period covered by your query. When you receive a response that does not include a 'next' element, it means that you have reached the last page and no additional data is available for the specified query and time range.
+To request the next 'page' of data, you must make the exact same query as the original, including ```query```, ```toDate```, and ```fromDate```, if used, and also include a 'next' request parameter set to the value from the previous response. This can be utilized with either a GET or POST request. However, the 'next' parameter must be URL encoded in the case of a GET request. You can continue to pass in the 'next' element from your previous query until you have received all Tweets from the time period covered by your query. When you receive a response that does not include a 'next' element, it means that you have reached the last page and no additional data are available for the specified query and time range.
 
 ### Counts pagination
 
-The counts API provides Tweet volumes associated with a query on either a daily, hourly, or per-minute basis. The 'counts' API endpoint will return a timestamped array of counts for a maximum of 31-day payload of counts. 
+The 'counts' endpoint provides Tweet volumes associated with a query on either a daily, hourly, or per-minute basis. The 'counts' API endpoint will return a timestamped array of counts for a maximum of 31-day payload of counts. 
 
 For higher volume queries, there is the potential that the generation of counts will take long enough to potentially trigger a response timeout. When this occurs you will receive less than 31 days of counts, but will be provided a 'next' token in order to continue making requests for the entire payload of counts. 
 
 As with the data 'next' tokens, you must make the exact same query as the original and also include a 'next' request parameter set to the value from the previous response.
 
 ### Additional notes
-+ When using a 'fromDate' or 'toDate' in a search request, you will only get results from within your time range. When you reach the last group of results within your time range, you will not receive a 'next' token.
-+ The 'next' element can be used with any maxResults value between 10-500 (with a default value of 100. Sandbox dev environments have a maximum of 100). The 'maxResults' parameter determines how many Tweets are returned in each response, but does not prevent you from eventually getting all results.
++ When using a ```fromDate``` or ```toDate``` in a search request, you will only get results from within your time range. When you reach the last group of results within your time range, you will not receive a 'next' token.
++ The 'next' element can be used with any ```maxResults``` value between 10-500 (with a default value of 100. Sandbox dev environments have a maximum of 100). The ```maxResults``` parameter determines how many Tweets are returned in each response, but does not prevent you from eventually getting all results.
 + The 'next' token does not expire. Multiple requests using a the same 'next' query will receive the same results, regardless of when the request is made. Be sure to always update the 'next' token as you paginate through the results. 
 + When paging through results using the 'next' parameter, you may encounter duplicates at the edges of the query. Your application should be tolerant of these.
 
