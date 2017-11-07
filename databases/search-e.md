@@ -48,8 +48,6 @@ Below you will find important details needed when integrating with the enterpris
 + Pagination
 + HTTP response codes
 
-The enterprise search APIs provide low-latency, full-fidelity, query-based access to the Tweet archive with minute granularity. Tweet data is served in reverse chronological order, starting with the most recent Tweet that matches your query. Tweets are available from the search API approximately 30 seconds after being published.
-
 ## Methods<a id="Methods" class="extra-tall">&nbsp;</a>
 
 The base URI for enterprise search is ```https://gnip-api.twitter.com/search/```.
