@@ -43,9 +43,9 @@ These search APIs share a common design and the documentation below applies to b
 Below you will find important details needed when integrating with the enterprise search APIs:
 
 + Methods for requesting Tweet data and counts
++ Pagination
 + API request parameters and example requests
 + API response JSON payloads and example responses
-+ Pagination
 + HTTP response codes
 
 ## Methods<a id="Methods" class="extra-tall">&nbsp;</a>
@@ -76,16 +76,16 @@ The base URI for enterprise search is ```https://gnip-api.twitter.com/search/```
 Where:
  - ```:product``` indicates the search endpoint you are making requests to, either ```30day``` or ```fullarchive```.
  - ```:account_name``` is the (case-sensitive) name associated with your account, as displayed at console.gnip.com
- - ```:label``` is the (case-sensitive) label associated with your Search endpoint, as displayed at console.gnip.com
+ - ```:label``` is the (case-sensitive) label associated with your search endpoint, as displayed at console.gnip.com
 
-For example, if the TwitterDev account has the 30-Day search product with a label of 'prod' (short for production), the search endpoint would be:
+For example, if the TwitterDev account has the 30-Day search product with a label of 'prod' (short for production), the search endpoints would be:
 
 + Data endpoint: https://gnip-api.twitter.com/search/30day/accounts/TwitterDev/prod.json
 + Counts endpoint: https://gnip-api.twitter.com/search/30day/accounts/TwitterDev/prod/counts.json
 
 Your complete enterprise search API endpoint is displayed at https://console.gnip.com.
 
-The example endpoints below will be based on the 30-Day search API, using a ```:product``` set to '30day'. If you are using Full-Archive search, simple use the 'fullarchive' product name.
+The example endpoints below will be based on the 30-Day search API, using a ```:product``` set to '30day'. If you are using Full-Archive search, simply use the 'fullarchive' product name.
 
 ## Authentication<a id="Authentication" class="tall">&nbsp;</a>
 
@@ -93,7 +93,7 @@ All requests to the enterprise search APIs must use HTTP *Basic Authentication*,
 
 ## Request/response behavior<a id="RequestResponseBehavior" class="tall">&nbsp;</a>
 
-Using the ```fromDate``` and ```toDate``` parameters, you can request any time period that the API supports. The 30-Day search API provides Tweets from the most recent 31 days (even though referred to as the '30-Day' API, it makes 31 days avaialble to enable users to make complete month requests). The Full-Archive search API provides Tweets back to the very first tweet (March 21, 2006).  However, a single response will be limited to the lesser of your specified 'maxResults' or 31 days. If matching data or your time range exceeds your specified maxResults or 31 days, you will receive a 'next' token which you should use to paginate through remainder of your specified time range (see below for pagination details).
+Using the ```fromDate``` and ```toDate``` parameters, you can request any time period that the API supports. The 30-Day search API provides Tweets from the most recent 31 days (even though referred to as the '30-Day' API, it makes 31 days available to enable users to make complete-month requests). The Full-Archive search API provides Tweets back to the very first tweet (March 21, 2006).  However, a single response will be limited to the lesser of your specified 'maxResults' or 31 days. If matching data or your time range exceeds your specified maxResults or 31 days, you will receive a 'next' token which you should use to paginate through remainder of your specified time range.
 
 For example, say you are using Full-Archive search and want all Tweets matching your query from January 1, 2017 to June 30, 2017. You will specify that full six-month time period in your request using the ```fromDate``` and ```toDate``` parameters.  The search API will respond with the first 'page' of Tweets, with the number of Tweets matching your ```maxResults``` parameter (which defaults to 100). Assuming there are more Tweets (and there most likely will be more), the API will also provide a 'next' token that enables you to make a request for the next 'page' of data. This process is repeated until the API does not return a 'next' token. See the next section for more details.
 
@@ -105,22 +105,22 @@ When making both data and count requests it is likely that there is more data th
 
 ### Data pagination
 
-Requests for data will likely generate more data than can be returned in a single response. Each data request includes a parameter that sets the maximum number of Tweets to return per request. The ```maxResults``` parameter defaults to 100, and can be set to a range of 10-500. If your query matches more Tweets than the 'maxResults' parameter used in the request, the response will include a 'next' token (as a root-level JSON attribute). This 'next' token can be used in a subsequent request to retrieve the next portion of the matching Tweets for that query (i.e. the next 'page”). Next tokens will continue to be provided until you have reached the last 'page' of results for that query, when no 'next' token is provided.
+Requests for data will likely generate more data than can be returned in a single response. Each data request includes a parameter that sets the maximum number of Tweets to return per request. This ```maxResults``` parameter defaults to 100, and can be set to a range of 10-500. If your query matches more Tweets than the 'maxResults' parameter used in the request, the response will include a 'next' token (as a root-level JSON attribute). This 'next' token is used in the subsequent request to retrieve the next portion of the matching Tweets for that query (i.e. the next 'page”). Next tokens will continue to be provided until you have reached the last 'page' of results for that query, when no 'next' token is provided.
 
-To request the next 'page' of data, you must make the exact same query as the original, including ```toDate``` and ```fromDate``` parameters, if used, and also include a 'next' request parameter set to the value from the previous response. This can be utilized with either a GET or POST request. However, the 'next' parameter must be URL encoded in the case of a GET request.
+To request the next 'page' of data, you must make the exact same query as the original, including ```query```, ```toDate```, and ```fromDate``` parameters, if used, and also include a 'next' request parameter set to the value from the previous response. This can be utilized with either a GET or POST request. However, the 'next' parameter must be URL encoded in the case of a GET request.
 
 You can continue to pass in the 'next' element from your previous query until you have received all Tweets from the time period covered by your query. When you receive a response that does not include a 'next' element, it means that you have reached the last page and no additional data is available for the specified query and time range.
 
 ### Counts pagination
 
-The counts API provides Tweet volumes associated with a query on either a daily, hourly, or per-minute basis. The ‘counts’ API endpoint will return a timestamped array of counts for a maximum of 31-day payload of counts. If you request more than 31 days of counts, you will be provided a 'next' token. As with the data 'next' tokens, you must make the exact same query as the original and also include a 'next' request parameter set to the value from the previous response.
+The 'counts' endpoint provides Tweet volumes associated with a query on either a daily, hourly, or per-minute basis. The 'counts' API endpoint will return a timestamped array of counts for a maximum of 31-day payload of counts. If you request more than 31 days of counts, you will be provided a 'next' token. As with the data 'next' tokens, you must make the exact same query as the original and also include a 'next' request parameter set to the value from the previous response.
 
 Beyond requesting more than 31 days of counts, there is another scenario when a 'next' token is provided. For higher volume queries, there is the potential that the generation of counts will take long enough to trigger a response timeout. When this occurs you will receive less than 31 days of counts, but will be provided a 'next' token in order to continue making requests for the entire payload of counts. <b>*Important:*</b> Timeouts will only issue full "buckets" - so 2.5 days would result in 2 full day "buckets".
 
 ### Additional notes
 + When using a fromDate or toDate in a search request, you will only get results from within your time range. When you reach the last group of results within your time range, you will not receive a next element.
 + The 'next' element can be used with any maxResults value between 10-500 (with a default value of 100). The maxResults determines how many Tweets are returned in each response, but does not prevent you from eventually getting all results.
-+ The next element does not expire. Multiple requests using a the same 'next' query will receive the same results, regardless of when the request is made.
++ The 'next' element does not expire. Multiple requests using the same 'next' query will receive the same results, regardless of when the request is made.
 + When paging through results using the 'next' parameter, you may encounter duplicates at the edges of the query. Your application should be tolerant of these.
 
 ## Data endpoint <a class='tall' id='DataEndpoint'>&nbsp;</a>
