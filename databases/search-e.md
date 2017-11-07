@@ -63,13 +63,13 @@ The base URI for enterprise search is ```https://gnip-api.twitter.com/search/```
         <td>
             <a href="#SearchRequests">POST /search/:product/accounts/:account_name/:label</a></td>
         <td>
-            Retrieve recent Tweets matching the specified PowerTrack rule.</td>
+            Retrieve Tweets from the past 30 days that match the specified PowerTrack rule.</td>
     </tr>
     <tr>
         <td>
             <a href="#CountRequests">POST /search/:product/accounts/:account_name/:label/counts</a></td>
         <td>
-            Retrieve the number of recent Tweets matching the specified PowerTrack rule.</td>
+            Retrieve the number of Tweets from the past 30 days that match the specified PowerTrack rule.</td>
     </tr>
 </table>
 
