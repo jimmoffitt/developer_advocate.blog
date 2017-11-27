@@ -1,15 +1,14 @@
-[THIS CONTENT is being updated to reflect PT 2.0, and is UNPUBLISHED]
-[Concepts: native media, media = photos, videos, gifs, native != vine and periscope]
-Add: has:images, has:videos
-* Discussion of url_contains needs: differences between url: and url_contains: (product, token matching)
-* Intro to enhanced URL unwinding/filtering, or reference to new page (next steps)?
+
+* [] Add: has:images, has:videos
+* [] Discussion of url_contains needs: differences between url: and url_contains: (product, token matching)
+* [] Intro to enhanced URL unwinding/filtering, or reference to new page (next steps)?
 --------------------------
 
 # Introduction
 
-More and more frequently, Twitter users are including photos, videos and GIFs in their Tweets. On Twitter there are two ways to share these types of media. You can include a link to a media hosting platform, or you can 'attach' media with the Twitter user-interface.
+More and more frequently, Twitter users are including photos, videos and GIFs in their Tweets. On Twitter there are two ways to share these types of media. You can 'attach' media with the Twitter user-interface, or you can include a link to a media hosting platform such as YouTube, Instagram or Vimeo.
 
-In the early days of Twitter the most common way was to include a link to content hosted on other sites. Today, the most common way is to share media content natively on Twitter.  ( To learn more about the evolution of sharing media on Twitter, see [HERE]. )
+In the early days of Twitter the most common way was to include a link to content hosted on other sites. Today, the most common way is to share media content natively on Twitter. (To learn more about the evolution of sharing media on Twitter, see [HERE](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline).)
 
 When media is attached to a Tweet using the Twitter user-interface, is said to be "native" media, hosted on the Twitter platform.  
 
@@ -18,6 +17,13 @@ Twitter’s Premium filtering language gives you the ability to filter the Twitt
  (snow OR rain OR flood) has:videos
  
 # Premium Operators for matching on media
+
+
+has:links
+has:media
+has:images
+has:videos
+
 
 When filtering on Tweets with media, there are two classes of Operators that relate to links and native media 'attached' to a Tweet:
 
@@ -29,7 +35,9 @@ Both classes are useful in matching Tweets that contain links to media.
 The has:media and has:links operators are two options in PowerTrack that can be useful in matching Tweets that contain links to media. However, there are some significant differences in how they function, and what they’ll return. The has:media has a far narrower scope than has:links.
  
 ## Native media
+
 The other class focuses on native media (made up of photos and videos) and includes has:media, has:videos, and has:images.  Note that the has:videos Operators matches on GIFs, and the metadata included with a Tweet indicates whether it was a video or GIF. Also, the rule clause of has:media is the same as (has:images OR has:videos).
+
 has:media
 [UPDATE: Specifically, has:media only looks for Tweets with content in the twitter_entities.media field, which only ever includes pic.twitter.com links for images uploaded directly through Twitter, as of the time of writing. This could change in the future, if Twitter begins including more types of content in the “media” entity, but since photos are the only media that Twitter allows to be directly uploaded by the user today, there are no references to other types or sources of media.]
 has:media
