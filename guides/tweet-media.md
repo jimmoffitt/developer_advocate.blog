@@ -8,8 +8,9 @@ Any differences between Search/PT?
 Mention of extended_entities as place to go for any media parsing. 
 
 --------------------------
+# Matching on Tweets with photos and videos
 
-# Introduction
+## Introduction
 
 More and more frequently, Twitter users are including photos, videos and GIFs in their Tweets. On Twitter there are two ways to share these types of media. You can 'attach' media with the Twitter user-interface, or you can include a link to a media hosting platform such as YouTube, Instagram or Vimeo.
 
@@ -18,7 +19,7 @@ In the early days of Twitter the most common way was to include a link to conten
 Twitter’s Premium filtering language gives you the ability to filter the Twitter Firehose for data that is relevant to you, your research or your brand. PowerTrack provides Operators that enable you to match on the Tweet attributes of interest. PowerTrack provides a firehose filtering syntax that enables users who want Tweets with photos, videos that contain the keyword 'snow' or 'rain' or 'flood' to write PowerTrack filters such as:
  (snow OR rain OR flood) has:videos
  
-# Premium Operators for matching on media
+## Premium Operators for matching on media
 
 The following for premium operators are available when wanting to match on Tweets that include media, whether attached natively, or linking to an external media resource:
 
@@ -62,7 +63,7 @@ Going back to the scenario presented above, if you wanted to track Tweets where 
 
 You could then add additional ‘url_contains’ terms to the second group for other image hosting services you wanted to capture. This also applies to video-hosting services – you would simply need to identify the structure used by links from that service and incorporate it into an additional url_contains term.
  
-# Next steps
+## Next steps
 
 + Learn more about PowerTrack Operators
 + Learn more about identifying and matching on Retweeted and Quoted Tweets.     
