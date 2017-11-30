@@ -31,7 +31,7 @@ The following premium and enterprise operators are available when wanting to mat
 Note that the has:videos Operators also matches on GIFs, and the metadata included with a Tweet indicates whether it was a video or GIF. Also, the rule clause of has:media is the same as (has:images OR has:videos).
 
 ### Parsing Tweet JSON for native media metadata
-{Always parse the extended_entities object. 
+{Always parse the extended_entities object.}
 https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/extended-entities-object
 
 
@@ -39,22 +39,38 @@ https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/extended-e
 
 ### Matching Tweets with linked media
 
-One class focuses on URLs in Tweets, and includes has:links, url: and url_contains: Operators.
-has:links
-The has:links operator, on the other hand, will return any activity that has a link in the Tweet body, regardless of what it is linking to. This includes any media uploaded to Twitter, because a pic.twitter.com URL is generated when a Twitter user uploads a photo, but it is certainly not limited to photos. Used by itself, has:links simply returns any activity that includes a URL, which can be a large volume of poorly-targeted data if you only care about Tweets with images or videos. For that reason, the has:links should only be used in combination with keywords or other operators that more specifically target the content you want.
-But what if you and your brand is interested in knowing every time a customer Tweets a photo about your company or product, regardless of whether it was uploaded directly to Twitter or another popular social platform? For example, what if a Twitter user uploaded a photo to Flickr, and then shared the link on Twitter? A rule simply using the has:media operator would miss this Tweet, and the has:links operator would deliver it, but would also flood you with large volumes of irrelevant content. This is where the url_contains: operator is helpful.
-url_contains
++ ```url:```
+
+The url_contains: operator is the most useful way to filter for media that is not covered by has:media. The url_contains: operator matches on URL substrings. It can be enclosed in quotes to allow for the top level domain to be included in the query. For example, you could filter on:
+
+
+
+
+Note about ```has:links``` operator:
+
+The has:links operator, on the other hand, will return any Tweet that has a link in the Tweet body, regardless of what it is linking to.
+This includes any media uploaded to Twitter, because a pic.twitter.com URL is generated when a Twitter user uploads a photo, but it is certainly not limited to photos. Used by itself, the has:links operator returns a very large volume of Tweets. If you want to target Tweets with photos and videos, using this too general operator will generate a lot of noise. For that reason, the has:links should only be used in combination with keywords or other operators that more specifically target the content you want.
+
+
 
 
 ### Parsing Tweet JSON for linked media metadata
 
+{Always parse the entities object.}
+
+https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object
 
 
 
-
-The url_contains: operator is the most useful way to filter for media that is not covered by has:media. The url_contains: operator matches on URL substrings. It can be enclosed in quotes to allow for the top level domain to be included in the query. For example, you could filter on:
  
-url:"flickr.com"
+
+ 
+## Examples 
+
+ 
+If you and your brand are interested in knowing every time a customer Tweets a photo about your company or product, regardless of whether it was uploaded directly to Twitter or another popular social platform? 
+ 
+ url:"flickr.com"
 This particular search would return activities where there is a link from flickr.com. On the other hand, if you’re merely interested in any time your product or company appears in a URL in a Tweet, you could do this:
 url:PiedPiper
 This take on the url: operator would return any activity where “PiedPiper” token appears anywhere in the URL - whether it is from PiedPiper.com or even someting like this:
@@ -64,9 +80,6 @@ Going back to the scenario presented above, if you wanted to track Tweets where 
 (PiedPiper OR url:PiedPiper) (url_contains:"flickr.com" OR has:media)
 
 You could then add additional ```url:``` terms to the second group for other image hosting services you wanted to capture. This also applies to video-hosting services – you would simply need to identify the structure used by links from that service and incorporate it into an additional url_contains term.
- 
-## Examples 
-
  
  
 ## Next steps
