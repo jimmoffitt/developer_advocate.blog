@@ -16,7 +16,8 @@ More and more frequently, Tweets include including photos, videos and animated G
 
 In the early days of Twitter the only way to share media was to include a URL link to content hosted on other sites. Starting in August 2011, Twitter users could start 'attaching' photos to Tweets with the user interface. In March 2014, up to four photos could be included in a Tweet. In June 2016 videos and animated GIFs became supported. (To learn more about the evolution of sharing media on Twitter, see [HERE](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline).) When media is attached to a Tweet using the Twitter user-interface, is said to be "native" media, hosted on the Twitter platform.  
 
-Twitter’s premium and enterprise search APIs provide operators for matching on Tweets with media. First we discuss operators that match on native media, then we'll discuss operators and strategies for matching on Tweet containing links to media hosted off the Twitter platform.
+Twitter’s premium and enterprise search APIs provide operators for matching on Tweets with media. First, we will discuss three operators (```has:media```, ```has:photos```, and ```has:videos```) that match on native media. Then we'll discuss the ```url:``` operator and strategies for matching on Tweets with links to media hosted somewhere other than the Twitter platform. We'll wrap up our discussion with some examples rules using these operators.
+
  
 ## Matching Tweets with native media
 
@@ -42,11 +43,22 @@ has:images (returns all tweets that contain native images (e.g. pic.twitter.com)
 has:videos (returns all tweets that contain native videos (does not include vine, periscope))
  
 ## Media hosted elsewhere
+
+
+
 One class focuses on URLs in Tweets, and includes has:links, url: and url_contains: Operators.
 has:links
 The has:links operator, on the other hand, will return any activity that has a link in the Tweet body, regardless of what it is linking to. This includes any media uploaded to Twitter, because a pic.twitter.com URL is generated when a Twitter user uploads a photo, but it is certainly not limited to photos. Used by itself, has:links simply returns any activity that includes a URL, which can be a large volume of poorly-targeted data if you only care about Tweets with images or videos. For that reason, the has:links should only be used in combination with keywords or other operators that more specifically target the content you want.
 But what if you and your brand is interested in knowing every time a customer Tweets a photo about your company or product, regardless of whether it was uploaded directly to Twitter or another popular social platform? For example, what if a Twitter user uploaded a photo to Flickr, and then shared the link on Twitter? A rule simply using the has:media operator would miss this Tweet, and the has:links operator would deliver it, but would also flood you with large volumes of irrelevant content. This is where the url_contains: operator is helpful.
 url_contains
+
+
+
+
+
+
+
+
 The url_contains: operator is the most useful way to filter for media that is not covered by has:media. The url_contains: operator matches on URL substrings. It can be enclosed in quotes to allow for the top level domain to be included in the query. For example, you could filter on:
  
 url:"flickr.com"
