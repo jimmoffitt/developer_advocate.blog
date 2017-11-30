@@ -14,29 +14,17 @@ Mention of extended_entities as place to go for any media parsing.
 
 More and more frequently, Tweets include including photos, videos and animated GIFs. On Twitter there are two ways to share these types of media. You can 'attach' media with the Twitter user-interface, or you can include a link to a media hosting platform such as YouTube, Instagram, Flickr, or Vimeo.
 
-In the early days of Twitter the only way was to include a URL link to content hosted on other sites. Starting in 
+In the early days of Twitter the only way to share media was to include a URL link to content hosted on other sites. Starting in August 2011, Twitter users could start 'attaching' photos to Tweets with the user interface. In March 2014, up to four photos could be included in a Tweet. In June 2016 videos and animated GIFs became supported. (To learn more about the evolution of sharing media on Twitter, see [HERE](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline).) When media is attached to a Tweet using the Twitter user-interface, is said to be "native" media, hosted on the Twitter platform.  
 
-Today, the most common method is to 'attach' media content while composing a Tweet. Photos in August 2011 (up to four photos in March 2014), and videos in June 2016.
-
-
-(To learn more about the evolution of sharing media on Twitter, see [HERE](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline).) 
-
-When media is attached to a Tweet using the Twitter user-interface, is said to be "native" media, hosted on the Twitter platform.  
-
-Twitter’s Premium filtering language gives you the ability to filter the Twitter Firehose for data that is relevant to you, your research or your brand. PowerTrack provides Operators that enable you to match on the Tweet attributes of interest. PowerTrack provides a firehose filtering syntax that enables users who want Tweets with photos, videos that contain the keyword 'snow' or 'rain' or 'flood' to write PowerTrack filters such as:
- (snow OR rain OR flood) has:videos
+Twitter’s premium and enterprise search APIs provide operators for matching on Tweets with media. First we discuss operators that match on native media, then we'll discuss operators and strategies for matching on Tweet containing links to media hosted off the Twitter platform.
  
-## Premium Operators for matching on media
+## Matching Tweets with native media
 
-The following for premium operators are available when wanting to match on Tweets that include media, whether attached natively, or linking to an external media resource:
-
+The following premium and enterprise operators are available when wanting to match on Tweets with native media:
 
 + has:media
 + has:images
 + has:videos
-
-
-+ has:links
 
 
 
