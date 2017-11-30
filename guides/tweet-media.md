@@ -1,18 +1,17 @@
 
-* [] Add: has:images, has:videos
+* [X] Add: has:images, has:videos
 * [] Discussion of url needs: differences between url: and url_contains: (product, token matching)
 * [] Intro to enhanced URL unwinding/filtering, or reference to new page (next steps)?
-
-Does has:links match on a photo attachment? yes
-Any differences between Search/PT?
-Mention of extended_entities as place to go for any media parsing. 
++ [X] Does has:links match on a photo attachment? yes
++ [X] Any differences between Search/PT?
++ [] Mention of extended_entities as place to go for any native media parsing. 
 
 --------------------------
 # Matching on Tweets with photos and videos
 
 ## Introduction
 
-More and more frequently, Tweets include including photos, videos and animated GIFs. On Twitter there are two ways to share these types of media. You can 'attach' media with the Twitter user-interface, or you can include a link to a media hosting platform such as YouTube, Instagram, Flickr, or Vimeo.
+More and more frequently, Tweets include photos, videos and animated GIFs. On Twitter there are two ways to share these types of media. You can 'attach' media with the Twitter user-interface, or you can include a link to a media hosting platform such as YouTube, Instagram, Flickr, or Vimeo.
 
 In the early days of Twitter the only way to share media was to include a URL link to content hosted on other sites. Starting in August 2011, Twitter users could start 'attaching' photos to Tweets with the user interface. In March 2014, up to four photos could be included in a Tweet. In June 2016 videos and animated GIFs became supported. (To learn more about the evolution of sharing media on Twitter, see [HERE](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline).) When media is attached to a Tweet using the Twitter user-interface, is said to be "native" media, hosted on the Twitter platform.  
 
@@ -41,10 +40,11 @@ https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/extended-e
 
 + ```url:```
 
-The url_contains: operator is the most useful way to filter for media that is not covered by has:media. The url_contains: operator matches on URL substrings. It can be enclosed in quotes to allow for the top level domain to be included in the query. For example, you could filter on:
+The url: operator is the most useful way to filter for media that is hosted elsewhere. The url: operator matches on URL *tokens*. It can be enclosed in quotes to allow for the top level domain to be included in the query. For example, you could filter on:
 
+Note about the ```url_contains:``` operator:
 
-
+Enterprise real-time and batched historical APIs support the ```url_contains:``` operator, which can match on URL *substrings*.
 
 Note about ```has:links``` operator:
 
@@ -77,14 +77,14 @@ This take on the url: operator would return any activity where “PiedPiper” t
 http://www.networkworld.com/community/blog/valley-startup-spotlight-piedpiper-makes-social-media-fire-hose-seem-small
 
 Going back to the scenario presented above, if you wanted to track Tweets where a photo was posted to Twitter in a Tweet that mentioned your company or product, you could use the following syntax.
-(PiedPiper OR url:PiedPiper) (url_contains:"flickr.com" OR has:media)
+(PiedPiper OR url:PiedPiper) (url:"flickr.com" OR has:media)
 
 You could then add additional ```url:``` terms to the second group for other image hosting services you wanted to capture. This also applies to video-hosting services – you would simply need to identify the structure used by links from that service and incorporate it into an additional url_contains term.
  
  
 ## Next steps
 
-+ Learn more about Tweet JSON.
-+ Learn more about PowerTrack Operators.
++ Learn more about Tweet JSON. See our data dictionaries for the [```entities```] and [```extended entities```] JSON objects.
++ Learn more about [premium operators].
 + Learn more about identifying and matching on Retweeted and Quoted Tweets.     
-+ Learn more about Twitter's evolution and how that affects historical research.
++ Learn more about Twitter's evolution and how that affects historical research with Tweet data.
