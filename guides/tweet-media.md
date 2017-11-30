@@ -18,33 +18,26 @@ In the early days of Twitter the only way to share media was to include a URL li
 
 Twitter’s premium and enterprise search APIs provide operators for matching on Tweets with media. First, we will discuss three operators (```has:media```, ```has:photos```, and ```has:videos```) that match on native media. Then we'll discuss the ```url:``` operator and strategies for matching on Tweets with links to media hosted somewhere other than the Twitter platform. We'll wrap up our discussion with some examples rules using these operators.
 
+## Native media
  
-## Matching Tweets with native media
+### Matching Tweets with native media
 
 The following premium and enterprise operators are available when wanting to match on Tweets with native media:
 
-+ has:media
-+ has:images
-+ has:videos
++ ```has:media```: Matches all Tweets that contain any native media (photos, video, or animated GIF).
++ ```has:images```: Matches all Tweets that contain native photos (up to four).
++ ```has:videos```: Matches all Tweets that contain native videos (does not include videos from Vine or Periscope).
+
+Note that the has:videos Operators also matches on GIFs, and the metadata included with a Tweet indicates whether it was a video or GIF. Also, the rule clause of has:media is the same as (has:images OR has:videos).
+
+### Parsing Tweet JSON for native media metadata
+{Always parse the extended_entities object. 
+https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/extended-entities-object
 
 
-
- 
-The has:media and has:links operators are two options in PowerTrack that can be useful in matching Tweets that contain links to media. However, there are some significant differences in how they function, and what they’ll return. The has:media has a far narrower scope than has:links.
- 
-## Native media
-
-The other class focuses on native media (made up of photos and videos) and includes has:media, has:videos, and has:images.  Note that the has:videos Operators matches on GIFs, and the metadata included with a Tweet indicates whether it was a video or GIF. Also, the rule clause of has:media is the same as (has:images OR has:videos).
-
-has:media
-[UPDATE: Specifically, has:media only looks for Tweets with content in the twitter_entities.media field, which only ever includes pic.twitter.com links for images uploaded directly through Twitter, as of the time of writing. This could change in the future, if Twitter begins including more types of content in the “media” entity, but since photos are the only media that Twitter allows to be directly uploaded by the user today, there are no references to other types or sources of media.]
-has:media
-has:images (returns all tweets that contain native images (e.g. pic.twitter.com))
-has:videos (returns all tweets that contain native videos (does not include vine, periscope))
- 
 ## Media hosted elsewhere
 
-
+### Matching Tweets with linked media
 
 One class focuses on URLs in Tweets, and includes has:links, url: and url_contains: Operators.
 has:links
@@ -53,7 +46,7 @@ But what if you and your brand is interested in knowing every time a customer Tw
 url_contains
 
 
-
+### Parsing Tweet JSON for linked media metadata
 
 
 
@@ -72,8 +65,13 @@ Going back to the scenario presented above, if you wanted to track Tweets where 
 
 You could then add additional ```url:``` terms to the second group for other image hosting services you wanted to capture. This also applies to video-hosting services – you would simply need to identify the structure used by links from that service and incorporate it into an additional url_contains term.
  
+## Examples 
+
+ 
+ 
 ## Next steps
 
-+ Learn more about PowerTrack Operators
++ Learn more about Tweet JSON.
++ Learn more about PowerTrack Operators.
 + Learn more about identifying and matching on Retweeted and Quoted Tweets.     
 + Learn more about Twitter's evolution and how that affects historical research.
