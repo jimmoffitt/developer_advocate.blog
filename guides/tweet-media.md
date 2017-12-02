@@ -16,10 +16,8 @@ More and more frequently, Tweets include photos, videos and animated GIFs. On Tw
 In the early days of Twitter the only way to share media was to include a URL link to content hosted on other sites. Starting in August 2011, Twitter users could start 'attaching' photos to Tweets with the user interface. In March 2014, up to four photos could be included in a Tweet. In June 2016 videos and animated GIFs became supported. (To learn more about the evolution of sharing media on Twitter, see [HERE](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline).) When media is attached to a Tweet using the Twitter user-interface, is said to be "native" media, hosted on the Twitter platform.  
 
 Twitter’s premium and enterprise search APIs provide operators for matching on Tweets with media. First, we will discuss three operators (```has:media```, ```has:photos```, and ```has:videos```) that match on native media. Then we'll discuss the ```url:``` operator and strategies for matching on Tweets with links to media hosted somewhere other than the Twitter platform. We'll wrap up our discussion with some examples rules using these operators.
-
-## Native media
  
-### Matching Tweets with native media
+## Matching Tweets with native media
 
 The following premium and enterprise operators are available when wanting to match on Tweets with native media:
 
@@ -27,16 +25,20 @@ The following premium and enterprise operators are available when wanting to mat
 + ```has:images```: Matches all Tweets that contain native photos (up to four).
 + ```has:videos```: Matches all Tweets that contain native videos (does not include videos from Vine or Periscope).
 
-Note that the has:videos Operators also matches on GIFs, and the metadata included with a Tweet indicates whether it was a video or GIF. Also, the rule clause of has:media is the same as (has:images OR has:videos).
-
-### Parsing Tweet JSON for native media metadata
-{Always parse the extended_entities object.}
-https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/extended-entities-object
+Note that the has:videos Operators also matches on GIFs, and the metadata included with a Tweet indicates whether it was a video or GIF. Also, the rule clause of ```snow has:media``` is the same as ```snow (has:images OR has:videos)```.
 
 
-## Media hosted elsewhere
 
-### Matching Tweets with linked media
+Once you have collected your Tweets with native media, it is time to start working with the available media metadata. 
+
+When parsing *native media* JSON, ```extended_entities``` is the go-to JSON object.  
+
+
++ [Twitter entities object] (https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object)
++ [Twitter extended entities object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/extended-entities-object)
+
+
+## Matching Tweets with linked media
 
 + ```url:```
 
@@ -52,15 +54,9 @@ The has:links operator, on the other hand, will return any Tweet that has a link
 This includes any media uploaded to Twitter, because a pic.twitter.com URL is generated when a Twitter user uploads a photo, but it is certainly not limited to photos. Used by itself, the has:links operator returns a very large volume of Tweets. If you want to target Tweets with photos and videos, using this too general operator will generate a lot of noise. For that reason, the has:links should only be used in combination with keywords or other operators that more specifically target the content you want.
 
 
-
-
-### Parsing Tweet JSON for linked media metadata
-
 {Always parse the entities object.}
 
 https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object
-
-
 
  
 
