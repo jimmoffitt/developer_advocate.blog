@@ -1,17 +1,20 @@
 
 [NOT PUBLISHED - getting major overhaul, to have narrative/examples change from AS to original format. Correcting/updating Quote Tweet content. Adding in relevant b140 details]
 
-# Introduction
+https://twitter.com/FloodSocial/status/928950635860545537
+
+
+## Introduction
 
 Twitter customers often want to know the specifics around identifying and integrating Retweets and Quote Tweets into their products, but can run into a few common roadblocks. If you’re looking for the best way to incorporate Retweets and Quote Tweets into your product, this guide will provide everything you need to know about identifying them, and best practices for extracting the information you need from them. 
 Let's start off with some fundamental descriptions.
 
-What is a Retweet?
+### What is a Retweet?
 
 A Retweet is an action taken by a Twitter user to share another user’s Tweet without alteration, using Twitter’s explicit Retweet functionality. A Retweet retains information about the user who posted the original Tweet, as well as the user who Retweeted them. Retweets are an important part of Twitter’s platform – they permit content to be shared rapidly and with attribution, and are the most easily measured form of content engagement on the platform. Many social analytics tools use the number of Retweets a particular Tweet receives in calculating its impact or reach (i.e. its importance). However, to do so, your app must be able to accurately identify Retweets.
 
 
-What is a Quoted Tweet?
+### What is a Quoted Tweet?
 
 A Quote Tweet 
 
@@ -22,7 +25,7 @@ A Quote Tweet
 
 
 
-How to identify in JSON
+## How to identify in JSON
 Two forms of Tweet JSON are available. This content will focus on the Twitter "native" (or "original") format. See HERE for the first version of this content, written for the Activity Streams format.
 For example, below is an excerpt from the root-level of a Retweet. In native data format, Retweets can be identified by the presence of data in the ‘retweeted_status’ field.
 
