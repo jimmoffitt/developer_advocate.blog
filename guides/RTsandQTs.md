@@ -6,7 +6,10 @@ https://twitter.com/FloodSocial/status/928950635860545537
 
 ## Introduction
 
-Twitter customers often want to know the specifics around identifying and integrating Retweets and Quote Tweets into their products, but can run into a few common roadblocks. If you’re looking for the best way to incorporate Retweets and Quote Tweets into your product, this guide will provide everything you need to know about identifying them, and best practices for extracting the information you need from them. 
+Twitter customers often want to know the specifics around identifying and integrating Retweets and Quote Tweets into their products, but can run into a few common roadblocks. If you’re looking for the best way to incorporate Retweets and Quote Tweets into your product, this guide will provide everything you need to know about identifying them, and best practices for extracting the information you need from them.
+
+{This discussion is based on the *native* Tweet JSON format.}
+
 Let's start off with some fundamental descriptions.
 
 ### What is a Retweet?
@@ -27,6 +30,27 @@ A Quote Tweet
 
 ## How to identify in JSON
 Two forms of Tweet JSON are available. This content will focus on the Twitter "native" (or "original") format. See HERE for the first version of this content, written for the Activity Streams format.
+
+2 cases:
+Retweet - Original Tweet 
+Retweet - Original *extended* Tweet
+
+Many cases: 
+Quote - Original Tweet
+*Extended* Quote - Original Tweet
+
+Quote - Original *extended* Tweet
+*Extended* Quote - Original *extended* Tweet
+
+TEST:
+Quote - Quote 
+*Extended* Quote - Quote 
+
+Quote - *extended* Quote 
+*Extended* Quote - *extended* Quote
+
+
+
 For example, below is an excerpt from the root-level of a Retweet. In native data format, Retweets can be identified by the presence of data in the ‘retweeted_status’ field.
 
 
