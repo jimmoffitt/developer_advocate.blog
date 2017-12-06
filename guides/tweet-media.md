@@ -11,6 +11,44 @@
 
 ## Introduction
 
+Millions of Tweets with photos and videos are posted every day. We often have developers and customers ask how to find Tweets with media of interest.  
+
+When working with premium and enterprise APIs that return Tweets, a first step is developing rules, or filters, for finding Tweets of interest. These filters are built using a simple boolean syntax and a set of [premium operators](). When needing to match on media, there are two small sets of operators to work with. 
+
+The first set is used to match Tweets that include photos, videos, and animated GIFs “attached” to the Tweet with the Twitter user-interface. These media are referred to as native media. 
+
+https://twitter.com/SnowBotDev/status/936075836607705089
+
+
+The second set is used to match media that is included as a link to some resource hosted off the Twitter platform.   
+
+https://twitter.com/SnowBotDev/status/938444746686480384
+
+
+The purpose of this guide is to help you build effective filters that match on Tweets. First we will dive into building filters for native media, then we’ll discuss matching on media of interest hosted off Twitter. We’ll wrap things up with some examples that describe several user stories. 
+
+
+
+** An important note before we jump in. ** 
+
+If you are doing historical research with Tweets, there are several key dates and details to understand before making requests with our historical Tweet APIs. As detailed HERE, the Twitter platform has evolved continually since 2006. When it comes to matching Tweets with media, the following dates are fundamental to designing effective filters:
+
+
+
+
+
+## Next steps
+
++ Learn more about Tweet JSON. See our data dictionaries for the [```entities```] and [```extended entities```] JSON objects.
++ Learn more about [premium operators].
++ Learn more about identifying and matching on Retweeted and Quoted Tweets.     
++ Learn more about Twitter's evolution and how that affects historical research with Tweet data.
+
+
+
+
+
+### Drafts
 More and more frequently, Tweets include photos, videos and animated GIFs. On Twitter there are two ways to share these types of media. You can 'attach' media with the Twitter user-interface, or you can include a link to a media hosting platform such as YouTube, Instagram, Flickr, or Vimeo.
 
 In the early days of Twitter the only way to share media was to include a URL link to content hosted on other sites. Starting in August 2011, Twitter users could start 'attaching' photos to Tweets with the user interface. In March 2014, up to four photos could be included in a Tweet. In June 2016 videos and animated GIFs became supported. (To learn more about the evolution of sharing media on Twitter, see [HERE](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline).) When media is attached to a Tweet using the Twitter user-interface, is said to be "native" media, hosted on the Twitter platform.  
@@ -78,9 +116,4 @@ Going back to the scenario presented above, if you wanted to track Tweets where 
 You could then add additional ```url:``` terms to the second group for other image hosting services you wanted to capture. This also applies to video-hosting services – you would simply need to identify the structure used by links from that service and incorporate it into an additional url_contains term.
  
  
-## Next steps
 
-+ Learn more about Tweet JSON. See our data dictionaries for the [```entities```] and [```extended entities```] JSON objects.
-+ Learn more about [premium operators].
-+ Learn more about identifying and matching on Retweeted and Quoted Tweets.     
-+ Learn more about Twitter's evolution and how that affects historical research with Tweet data.
