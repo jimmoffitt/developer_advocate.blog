@@ -49,12 +49,24 @@ In some ways Quote Tweets can be thought of as a special kind of Retweet. They r
 + ```retweets_of_status_id:```
 
 
+```json
+(simple retweet)
+
+```
+
+
 ## Matching Quote Tweets
 
 + ```is:quote```:
 
 {what other keywords match on quote text}
 
+
+```json
+
+(simple quote)
+
+```
 
 
 # Parsing Retweet and Quote Tweet JSON <a id="parse" class="tall">&nbsp;</a>
