@@ -9,32 +9,82 @@
 --------------------------
 # Matching on Tweets with photos and videos
 
-## Introduction
+[Introduction](#intro)
+[Important notes](#historical)
+[Matching Tweets with native media]()
+[Matching Tweets with linked media]()
+[Parsing media metadata]()
+   [Native media]()
+   [Linked media]()
 
-Millions of Tweets with photos and videos are posted every day. We often have developers and customers ask how to find Tweets with media of interest.  
+## Introduction
+Millions of Tweets with photos and videos are posted every day. We often hear from customers and developers with questions on how to find Tweets with media of interest. The purpose of this guide is to help you build effective filters that match on Tweets  . 
 
 When working with premium and enterprise APIs that return Tweets, a first step is developing rules, or filters, for finding Tweets of interest. These filters are built using a simple boolean syntax and a set of [premium operators](). When needing to match on media, there are two small sets of operators to work with. 
 
-The first set is used to match Tweets that include photos, videos, and animated GIFs “attached” to the Tweet with the Twitter user-interface. These media are referred to as native media. 
-
+The first set is used to match Tweets that include photos, videos, and animated GIFs “attached” to the Tweet when composing it with the Twitter user-interface. These media are referred to as *native* media. Here's an example of a Tweet with native media:
 https://twitter.com/SnowBotDev/status/936075836607705089
 
-
-The second set is used to match media that is included as a link to some resource hosted off the Twitter platform.   
-
+The second set is used to match media that is included as a link to some resource hosted off the Twitter platform. Here is an example of a Tweet including a link to a photo hosted elsewhere (in this case github.com):  
 https://twitter.com/SnowBotDev/status/938444746686480384
 
+After the following important notes, we will dive into building filters for native media, then we’ll discuss matching on media of interest hosted off Twitter. We’ll wrap things up with some examples that describe several user stories. 
 
-The purpose of this guide is to help you build effective filters that match on Tweets. First we will dive into building filters for native media, then we’ll discuss matching on media of interest hosted off Twitter. We’ll wrap things up with some examples that describe several user stories. 
-
-
-
-** An important note before we jump in. ** 
+## Important notes
 
 If you are doing historical research with Tweets, there are several key dates and details to understand before making requests with our historical Tweet APIs. As detailed HERE, the Twitter platform has evolved continually since 2006. When it comes to matching Tweets with media, the following dates are fundamental to designing effective filters:
 
+### Native media
+August 2011 - Native photos introduced.
+March 2014 - Support for up to four photos, and the introduction of the extended entities JSON metadata.
+February 2016 - GIFs natively hosted in Tweet compose.
+June 2016 - native video begins
+
+Note that there are also product-specific related details to consider. See the “Matching native media” section for more information. 
+
+### Linked media
+March 2012 -url: and url_contains: operators will still function prior to 3/26/2012, but will only match against URLs as they are entered by a user into a Tweet and not the fully resolved URL (i.e. if a bit.ly URL is entered in the Tweet it can only match against the bit.ly and not the URL that has been shortened by bit.ly)
+
+Note that there are also product-specific related details to consider. See the “Matching linked media” section for more information. 
+
+## Matching Tweets with native media
+
+The following premium and enterprise operators are available when wanting to match on Tweets with native media:
+
++ ```has:images```: Matches all Tweets that contain native photos (up to four).
++ ```has:videos```: Matches all Tweets that contain native videos (does not include videos from Vine or Periscope).
++ ```has:media```: Matches all Tweets that contain any native media (photos, video, or animated GIF). Note that the rule clause ```has:media``` is equivalent to ```has:images OR has:videos```.
 
 
+
+Notes 
++ The ```has:videos``` operator also matches on GIFs, and the ```extended entities``` metadata included with a Tweet indicates whether it was a video or GIF. 
+
+
+## Matching Tweets with linked media
+
++ ```url:```
+
+The url: operator is the most useful way to filter for media that is hosted elsewhere. The url: operator matches on URL *tokens*. It can be enclosed in quotes to allow for the top level domain to be included in the query. For example, you could filter on:
+
+Note about the ```url_contains:``` operator:
+
+Enterprise real-time and batched historical APIs support the ```url_contains:``` operator, which can match on URL *substrings*.
+
+Note about ```has:links``` operator:
+
+The has:links operator, on the other hand, will return any Tweet that has a link in the Tweet body, regardless of what it is linking to.
+This includes any media uploaded to Twitter, because a pic.twitter.com URL is generated when a Twitter user uploads a photo, but it is certainly not limited to photos. Used by itself, the has:links operator returns a very large volume of Tweets. If you want to target Tweets with photos and videos, using this too general operator will generate a lot of noise. For that reason, the has:links should only be used in combination with keywords or other operators that more specifically target the content you want.
+
+
+{Always parse the entities object.}
+
+https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object
+
+
+
+
+## Identifying and parsing media metadata
 
 
 ## Next steps
@@ -46,7 +96,7 @@ If you are doing historical research with Tweets, there are several key dates an
 
 
 
-
+======================
 
 ### Drafts
 More and more frequently, Tweets include photos, videos and animated GIFs. On Twitter there are two ways to share these types of media. You can 'attach' media with the Twitter user-interface, or you can include a link to a media hosting platform such as YouTube, Instagram, Flickr, or Vimeo.
