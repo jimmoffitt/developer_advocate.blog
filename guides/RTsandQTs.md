@@ -21,7 +21,7 @@ Twitter customers often want to know the specifics around identifying and integr
 
 Let's start off with some fundamental descriptions.
 
-## What is a Retweet?
+### What is a Retweet?
 
 A Retweet is an action taken by a Twitter user to share another user’s Tweet without alteration, using Twitter’s explicit Retweet functionality. 
 
@@ -29,7 +29,7 @@ https://twitter.com/Arapahoe_Basin/status/928290029436248064
 
 A Retweet retains information about the user who posted the original Tweet, as well as the user who Retweeted them. Retweets are an important part of Twitter’s platform – they permit content to be shared rapidly and with attribution, and are the most easily measured form of content engagement on the platform. Many social analytics tools use the number of Retweets a particular Tweet receives in calculating its impact or reach (i.e. its importance). However, to do so, your app must be able to accurately identify Retweets.
 
-## What is a Quoted Tweet?
+### What is a Quoted Tweet?
 
 Quote Tweets are another way of sharing Tweets that includes adding your own new content as a comment. Quote Tweets can be selected after using Twitter’s Retweet option. 
 
@@ -39,6 +39,10 @@ In some ways Quote Tweets can be thought of as a special kind of Retweet. They r
 
 {Need to discuss retweet and quote counts and describe which ones include both...}
 
+### Extended Tweets
+
+### Tweets up to 280 characters
+ 
 
 # How to match on Retweets and Quote Tweets <a id="match" class="tall">&nbsp;</a>
 
@@ -103,23 +107,6 @@ Quote - *extended* Quote
 ### Retweets
 
 
-### Quote Tweets
-
-Here is an example of an extended Quote of a extended Tweet:
-https://twitter.com/SnowBotDev/status/938444746686480384
-
-
-# Next Steps <a id="next" class="tall">&nbsp;</a>
-
-
-
-=================
-
-# Previous drafts
-
-
-
-
 For example, below is an excerpt from the root-level of a Retweet. In native data format, Retweets can be identified by the presence of data in the ‘retweeted_status’ field.
 
 ```
@@ -150,7 +137,23 @@ For example, below is an excerpt from the root-level of a Retweet. In native dat
  }
 ```
 
-And here is an original Tweet:
+
+
+### Quote Tweets
+
+Here is an example of an extended Quote of a extended Tweet:
+https://twitter.com/SnowBotDev/status/938444746686480384
+
+
+# Next Steps <a id="next" class="tall">&nbsp;</a>
+
+
+
+=================
+
+# Previous drafts
+
+
  
  
 Integrating Retweets
