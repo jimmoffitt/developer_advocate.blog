@@ -1,23 +1,32 @@
 
-[NOT PUBLISHED - getting major overhaul, to have narrative/examples change from AS to original format. Correcting/updating Quote Tweet content. Adding in relevant b140 details]
+[Getting major overhaul, to have narrative/examples change from AS to original format. Correcting/updating Quote Tweet content. Adding in relevant b140 details]
 
+Example Tweets:
 https://twitter.com/FloodSocial/status/928950635860545537
 
+Simple quote Tweet
+https://twitter.com/SnowBotDev/status/925390480744923136
 
-## Introduction
+Extended quote Tweet x 2
+https://twitter.com/FloodSocial/status/936771032077107200
+
++ [Introduction](#intro)
++ [How to match on Retweets and Quote Tweets](#match)
++ [Parsing Retweets and Quote Tweets JSON](#parse)
++ [Next Steps](#next)
+
+# Introduction <a id="intro" class="tall">&nbsp;</a>
 
 Twitter customers often want to know the specifics around identifying and integrating Retweets and Quote Tweets into their products, but can run into a few common roadblocks. If you’re looking for the best way to incorporate Retweets and Quote Tweets into your product, this guide will provide everything you need to know about identifying them, and best practices for extracting the information you need from them.
 
-{This discussion is based on the *native* Tweet JSON format.}
-
 Let's start off with some fundamental descriptions.
 
-### What is a Retweet?
+## What is a Retweet?
 
 A Retweet is an action taken by a Twitter user to share another user’s Tweet without alteration, using Twitter’s explicit Retweet functionality. A Retweet retains information about the user who posted the original Tweet, as well as the user who Retweeted them. Retweets are an important part of Twitter’s platform – they permit content to be shared rapidly and with attribution, and are the most easily measured form of content engagement on the platform. Many social analytics tools use the number of Retweets a particular Tweet receives in calculating its impact or reach (i.e. its importance). However, to do so, your app must be able to accurately identify Retweets.
 
 
-### What is a Quoted Tweet?
+## What is a Quoted Tweet?
 
 A Quote Tweet 
 
@@ -26,10 +35,24 @@ A Quote Tweet
 
 
 
+{This discussion is based on the *native* Tweet JSON format.}
 
 
-## How to identify in JSON
+# How to match on Retweets and Quote Tweets <a id="match" class="tall">&nbsp;</a>
+
+## Matching on Retweets
+
+## Matching Quote Tweets
+
+
+
+# Parsing Retweet and Quote Tweet JSON <a id="parse" class="tall">&nbsp;</a>
+
+Three types of Tweets are involved: original, Retweet and Quote Tweet.
+
 Two forms of Tweet JSON are available. This content will focus on the Twitter "native" (or "original") format. See HERE for the first version of this content, written for the Activity Streams format.
+
+### 
 
 2 cases:
 Retweet - Original Tweet 
@@ -118,11 +141,18 @@ Additional Considerations
 Note, however, that the Retweet and Favorite counts for these will not be instructive – they only relate to this ‘new’ Tweet, and will almost always be zero.
 For any other questions related to identifying and integrating ReTweets or Quote Tweets, contact the Gnip support team.
  
-# Next Steps
+# Next Steps <a id="next" class="tall">&nbsp;</a>
 
 
 
 =================
+
+# Previous drafts
+
+
+
+
+
 
 
 Quote Tweets
