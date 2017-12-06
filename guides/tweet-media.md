@@ -138,7 +138,7 @@ Now we'll walk through some examples. These will include a user-story and exampl
 
 + *"I am interested in any Tweet with native video or photos that mentions my brand or product."*
 
-```(@MyProduct OR #MyProduct OR MyProduct OR "my product nickname") has:media  
+```(@MyProduct OR #MyProduct OR MyProduct OR "my product nickname") has:media ``` 
 
 + *I want to collect Tweets mentioning 'snow' with videos added when composing the Tweet, or with links to a curator list of photo-hosting sites."
 
