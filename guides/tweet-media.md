@@ -29,7 +29,12 @@ The second set is used to match media that is included as a link to some resourc
 https://twitter.com/SnowBotDev/status/938444746686480384
 
 [SUMMARIZE OUTLINE]
-After the following important notes, we will dive into building filters for native media, then we’ll discuss matching on media of interest hosted off Twitter. Once you have collected your Tweets with native media, it is time to start working with the available media metadata. 
+First we will dive into building filters for native media, then we’ll discuss matching on media of interest hosted off Twitter. 
+
+Once you have collected your Tweets with native media, it is time to start working with the available media metadata. 
+
+If you are working with Tweets from before 2014 you'll want to review the details provided in the 'Media metadata timeline' section.
+
 We’ll wrap things up with some examples that describe several user stories. 
 
 ## Matching Tweets with native media <a id="native" class="tall">&nbsp;</a>
@@ -80,7 +85,6 @@ https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-o
 
 In the early days of Twitter the only way to share media was to include a URL link to content hosted on other sites. Starting in August 2011, Twitter users could start 'attaching' photos to Tweets with the user interface. In March 2014, up to four photos could be included in a Tweet. In June 2016 videos and animated GIFs became supported. (To learn more about the evolution of sharing media on Twitter, see [HERE](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline).) When media is attached to a Tweet using the Twitter user-interface, is said to be "native" media, hosted on the Twitter platform.  
 
-
 If you are doing historical research with Tweets, there are several key dates and details to understand before making requests with our historical Tweet APIs. As detailed HERE, the Twitter platform has evolved continually since 2006. When it comes to matching Tweets with media, the following dates are fundamental to designing effective filters:
 
 ### Native media timeline
@@ -99,7 +103,10 @@ If you are doing historical research with Tweets, there are several key dates an
 
 ### Product-specific operator notes and metadata ‘born-on-dates’:
 
-There are two historical Tweet APIs that enable searching the entire archive of publicly available Tweets. One is a job-based, batched process that can provide Tweets at scale. The others are APIs that enable instant searching from that archive.  
+There are two historical Tweet APIs that enable searching the entire archive of publicly available Tweets:
++ Search Tweet APIs: enable instant searching from that archive. 
++ Batched historical API: job-based, batched process that can provide Tweets at scale. 
+See [this guide] for help with deciding which historical API is right for you.  
 
 #### Native media
 
@@ -121,19 +128,31 @@ February 2008 - HPT: has:links and url: begin matching.
 + July 2011 - has:media and has:images begin matching. Native photos officially announced August 9, 2010. 
 February 2015 has:videos 
 
-
-
 ## Examples <a id="examples" class="tall">&nbsp;</a>
-
 
 Now we'll walk through some examples. These will include a user-story and example filters. 
 
-+ I wanted to collect all Tweets that my brand has posted with native photos. Using the [enterprise engagement API], we want to measure which Tweets received the most engagement. In order to collect all of these Tweets, the following filter could be applied with either historical APIs:
++ *"I want to collect all Tweets that my brand has posted with native photos. Using the [enterprise engagement API], we want to measure which Tweets received the most engagement."* In order to collect all of these Tweets for analysis, the following filter could be applied with either historical API:
 
 ```from:MyBrandAccount has:photos```
 
++ *"I am interested in any Tweet with native video or photos that mentions my brand or product."*
+
++ *I want to collect Tweets mentioning 'snow' with videos added when composing the Tweet, or with links to a curator list of photo-hosting sites."
 
 
+
+## Next steps <a id="next" class="tall">&nbsp;</a>
+
++ Learn more about Tweet JSON. See our data dictionaries for the [```entities```] and [```extended entities```] JSON objects.
++ Learn more about [premium operators].
++ Learn more about identifying and matching on Retweeted and Quoted Tweets.     
++ Learn more about Twitter's evolution and how that affects historical research with Tweet data.
+
+======================================================================================
+
+
+Previous drafts:
 
 If you and your brand are interested in knowing every time a customer Tweets a photo about your company or product, regardless of whether it was uploaded directly to Twitter or another popular social platform? 
  
@@ -148,15 +167,5 @@ Going back to the scenario presented above, if you wanted to track Tweets where 
 
 You could then add additional ```url:``` terms to the second group for other image hosting services you wanted to capture. This also applies to video-hosting services – you would simply need to identify the structure used by links from that service and incorporate it into an additional url_contains term.
  
-
-## Next steps <a id="next" class="tall">&nbsp;</a>
-
-+ Learn more about Tweet JSON. See our data dictionaries for the [```entities```] and [```extended entities```] JSON objects.
-+ Learn more about [premium operators].
-+ Learn more about identifying and matching on Retweeted and Quoted Tweets.     
-+ Learn more about Twitter's evolution and how that affects historical research with Tweet data.
-
-======================================================================================
-
 
 
