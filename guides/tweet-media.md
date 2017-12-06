@@ -63,7 +63,7 @@ This includes any media uploaded to Twitter, because a pic.twitter.com URL is ge
 
 ## Parsing media metadata <a id="parsing" class="tall">&nbsp;</a>
 
-### Native media
+### Native media 
 
 When parsing *native media* JSON, ```extended_entities``` is the go-to JSON object.  
 
@@ -83,7 +83,7 @@ In the early days of Twitter the only way to share media was to include a URL li
 
 If you are doing historical research with Tweets, there are several key dates and details to understand before making requests with our historical Tweet APIs. As detailed HERE, the Twitter platform has evolved continually since 2006. When it comes to matching Tweets with media, the following dates are fundamental to designing effective filters:
 
-### Native media
+### Native media timeline
 + August 2011 - Native photos introduced.
 + March 2014 - Support for up to four photos, and the introduction of the extended entities JSON metadata.
 + February 2016 - GIFs natively hosted in Tweet compose.
@@ -91,34 +91,34 @@ If you are doing historical research with Tweets, there are several key dates an
 
 **Note** that there are also product-specific related details to consider. See the “Matching native media” section for more information. 
 
-### Linked media
+### Linked media timeline
++ Since the start of Twitter URLs have been included in Tweets. 
 + March 2012 -url: and url_contains: operators will still function prior to 3/26/2012, but will only match against URLs as they are entered by a user into a Tweet and not the fully resolved URL (i.e. if a bit.ly URL is entered in the Tweet it can only match against the bit.ly and not the URL that has been shortened by bit.ly)
 
 **Note** that there are also product-specific related details to consider. See the “Matching linked media” section for more information. 
 
+### Product-specific operator notes and metadata ‘born-on-dates’:
 
+There are two historical Tweet APIs that enable searching the entire archive of publicly available Tweets. One is a job-based, batched process that can provide Tweets at scale. The others are APIs that enable instant searching from that archive.  
 
+#### Native media
 
+##### Batched historical: 
++ February 2015 has:videos starts matching
 
-Operator notes and metadata ‘born-on-dates’:
+##### Search APis
++ August 2010 has:videos (Until February 2015, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com).
++ 2011 July 20 - has:media and has:images begin matching. Native photos officially announced August 9, 2010.
 
-HPT
-February 2015 has:videos starts matching
-
-Search APis
-August 2010 has:videos (Until February 2015, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com).
-2011 July 20 - has:media and has:images begin matching. Native photos officially announced August 9, 2010.
-
-
-Operator notes and metadata ‘born-on-dates’:
-HPT: 
+#### Linked media
+##### Batched historical: 
 February 2008 - HPT: has:links and url: begin matching. 
 
-Search APIs:
+##### Search APis
 
-October 2006 - Search: has:links
-August 2010 has:videos (Until February 2015, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com).
-July 2011 - has:media and has:images begin matching. Native photos officially announced August 9, 2010. 
++ October 2006 - Search: has:links
++ August 2010 has:videos (Until February 2015, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com).
++ July 2011 - has:media and has:images begin matching. Native photos officially announced August 9, 2010. 
 February 2015 has:videos 
 
 
