@@ -53,8 +53,34 @@ In some ways Quote Tweets can be thought of as a special kind of Retweet. They r
 + ```retweets_of_status_id:```
 
 
+https://twitter.com/Arapahoe_Basin/status/928290029436248064
+
+https://twitter.com/Arapahoe_Basin/status/928290029436248064
+
 ```json
-(simple retweet)
+{
+	"created_at": "Thu Nov 09 19:36:34 +0000 2017",
+	"id_str": "928707908354891781",
+	"text": "RT @Arapahoe_Basin: The morning views never disappoint. https://t.co/BWfhLHW8qV",
+	"user": {
+		"id_str": "906948460078698496"
+	},
+	"retweeted_status": {
+		"created_at": "Wed Nov 08 15:56:04 +0000 2017",
+		"id_str": "928290029436248064",
+		"text": "The morning views never disappoint. https://t.co/BWfhLHW8qV",
+		"user": {
+			"id_str": "15537164"
+		},
+		"retweet_count": 75,
+		"retweeted": false
+	},
+	"retweet_count": 0,
+	"retweeted": false
+}
+
+
+
 
 ```
 
@@ -66,9 +92,36 @@ In some ways Quote Tweets can be thought of as a special kind of Retweet. They r
 {what other keywords match on quote text}
 
 
+
+https://twitter.com/SnowBotDev/status/912103941030141952
+
 ```json
 
-(simple quote)
+{
+	"created_at": "Sun Sep 24 23:58:20 +0000 2017",
+	"id_str": "912103941030141952",
+	"text": "news that warms my heart https://t.co/HhnVdflF7k",
+	"user": {
+		"id_str": "906948460078698496"
+	},
+	"quoted_status_id_str": "911742658460057600",
+	"quoted_status": {
+		"created_at": "Sun Sep 24 00:02:43 +0000 2017",
+		"id_str": "911742658460057600",
+		"text": "#Snow!!! Here's the scene from Peak 7! #Breck #CoWx https://t.co/v0eNkbCYor",
+		"user": {
+			"id_str": "19746495"
+		},
+		"is_quote_status": false,
+		"quote_count": 0,
+		"retweet_count": 105,
+		"retweeted": false
+	},
+	"is_quote_status": true,
+	"quote_count": 0,
+	"retweet_count": 0,
+	"retweeted": false
+}
 
 ```
 
