@@ -9,15 +9,15 @@
 --------------------------
 # Matching on Tweets with photos and videos
 
-[Introduction](#intro)
-[Important notes](#historical)
-[Matching Tweets with native media]()
-[Matching Tweets with linked media]()
-[Parsing media metadata]()
-   [Native media]()
-   [Linked media]()
++ [Introduction](#intro)
++ [Matching Tweets with native media](#native)
++ [Matching Tweets with linked media](#linked)
++ [Parsing media metadata](#parsing)
++ [Media metadata timeline](#history)  
++ [Examples](#examples)
++ [Next steps](#next)
 
-## Introduction
+## Introduction <a id="intro" class="tall">&nbsp;</a>
 Millions of Tweets with photos and videos are posted every day. We often hear from customers and developers with questions on how to find Tweets with media of interest. The purpose of this guide is to help you build effective filters that match on Tweets  . 
 
 When working with premium and enterprise APIs that return Tweets, a first step is developing rules, or filters, for finding Tweets of interest. These filters are built using a simple boolean syntax and a set of [premium operators](). When needing to match on media, there are two small sets of operators to work with. 
@@ -28,130 +28,113 @@ https://twitter.com/SnowBotDev/status/936075836607705089
 The second set is used to match media that is included as a link to some resource hosted off the Twitter platform. Here is an example of a Tweet including a link to a photo hosted elsewhere (in this case github.com):  
 https://twitter.com/SnowBotDev/status/938444746686480384
 
-After the following important notes, we will dive into building filters for native media, then we’ll discuss matching on media of interest hosted off Twitter. We’ll wrap things up with some examples that describe several user stories. 
+[SUMMARIZE OUTLINE]
+After the following important notes, we will dive into building filters for native media, then we’ll discuss matching on media of interest hosted off Twitter. Once you have collected your Tweets with native media, it is time to start working with the available media metadata. 
+We’ll wrap things up with some examples that describe several user stories. 
 
-## Important notes
-
-If you are doing historical research with Tweets, there are several key dates and details to understand before making requests with our historical Tweet APIs. As detailed HERE, the Twitter platform has evolved continually since 2006. When it comes to matching Tweets with media, the following dates are fundamental to designing effective filters:
-
-### Native media
-August 2011 - Native photos introduced.
-March 2014 - Support for up to four photos, and the introduction of the extended entities JSON metadata.
-February 2016 - GIFs natively hosted in Tweet compose.
-June 2016 - native video begins
-
-Note that there are also product-specific related details to consider. See the “Matching native media” section for more information. 
-
-### Linked media
-March 2012 -url: and url_contains: operators will still function prior to 3/26/2012, but will only match against URLs as they are entered by a user into a Tweet and not the fully resolved URL (i.e. if a bit.ly URL is entered in the Tweet it can only match against the bit.ly and not the URL that has been shortened by bit.ly)
-
-Note that there are also product-specific related details to consider. See the “Matching linked media” section for more information. 
-
-## Matching Tweets with native media
-
+## Matching Tweets with native media <a id="native" class="tall">&nbsp;</a>
+ 
 The following premium and enterprise operators are available when wanting to match on Tweets with native media:
 
 + ```has:images```: Matches all Tweets that contain native photos (up to four).
 + ```has:videos```: Matches all Tweets that contain native videos (does not include videos from Vine or Periscope).
 + ```has:media```: Matches all Tweets that contain any native media (photos, video, or animated GIF). Note that the rule clause ```has:media``` is equivalent to ```has:images OR has:videos```.
 
-
-
 Notes 
 + The ```has:videos``` operator also matches on GIFs, and the ```extended entities``` metadata included with a Tweet indicates whether it was a video or GIF. 
 
 
-## Matching Tweets with linked media
+## Matching Tweets with linked media <a id="linked" class="tall">&nbsp;</a>
 
-+ ```url:```
+The second set is used to match media that is included as a link to some resource hosted off the Twitter platform.   
+
+
++ ```url:``` - Most common operator for matching on URL tokens and phrases. Supported in all premium and enterprise historical and real-time APIs. 
++ ```url_contains:``` - Matches on URL *substrings* and available in non-search *batched* historical products and real-time streams.   
++ ```has:links``` - Not generally recommended for matching on Tweets with photos and videos. Instead the ```url:``` operator can be used to match tokens from media hosting services of interest.  
 
 The url: operator is the most useful way to filter for media that is hosted elsewhere. The url: operator matches on URL *tokens*. It can be enclosed in quotes to allow for the top level domain to be included in the query. For example, you could filter on:
 
-Note about the ```url_contains:``` operator:
-
 Enterprise real-time and batched historical APIs support the ```url_contains:``` operator, which can match on URL *substrings*.
 
-Note about ```has:links``` operator:
+Lastly, as indicated above, the ```has:links``` operator is not generally recommended for matching on Tweets with photos and videos. The ```has:links``` operator return all Tweets that has a link in the Tweet body, regardless of what it is linking to. This includes links to non-media resources such as news articles, product pages, and other web link
 
-The has:links operator, on the other hand, will return any Tweet that has a link in the Tweet body, regardless of what it is linking to.
 This includes any media uploaded to Twitter, because a pic.twitter.com URL is generated when a Twitter user uploads a photo, but it is certainly not limited to photos. Used by itself, the has:links operator returns a very large volume of Tweets. If you want to target Tweets with photos and videos, using this too general operator will generate a lot of noise. For that reason, the has:links should only be used in combination with keywords or other operators that more specifically target the content you want.
 
+## Parsing media metadata <a id="parsing" class="tall">&nbsp;</a>
 
-{Always parse the entities object.}
-
-https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object
-
-
-
-
-## Identifying and parsing media metadata
-
-
-## Next steps
-
-+ Learn more about Tweet JSON. See our data dictionaries for the [```entities```] and [```extended entities```] JSON objects.
-+ Learn more about [premium operators].
-+ Learn more about identifying and matching on Retweeted and Quoted Tweets.     
-+ Learn more about Twitter's evolution and how that affects historical research with Tweet data.
-
-
-
-======================
-
-### Drafts
-More and more frequently, Tweets include photos, videos and animated GIFs. On Twitter there are two ways to share these types of media. You can 'attach' media with the Twitter user-interface, or you can include a link to a media hosting platform such as YouTube, Instagram, Flickr, or Vimeo.
-
-In the early days of Twitter the only way to share media was to include a URL link to content hosted on other sites. Starting in August 2011, Twitter users could start 'attaching' photos to Tweets with the user interface. In March 2014, up to four photos could be included in a Tweet. In June 2016 videos and animated GIFs became supported. (To learn more about the evolution of sharing media on Twitter, see [HERE](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline).) When media is attached to a Tweet using the Twitter user-interface, is said to be "native" media, hosted on the Twitter platform.  
-
-Twitter’s premium and enterprise search APIs provide operators for matching on Tweets with media. First, we will discuss three operators (```has:media```, ```has:photos```, and ```has:videos```) that match on native media. Then we'll discuss the ```url:``` operator and strategies for matching on Tweets with links to media hosted somewhere other than the Twitter platform. We'll wrap up our discussion with some examples rules using these operators.
- 
-## Matching Tweets with native media
-
-The following premium and enterprise operators are available when wanting to match on Tweets with native media:
-
-+ ```has:media```: Matches all Tweets that contain any native media (photos, video, or animated GIF).
-+ ```has:images```: Matches all Tweets that contain native photos (up to four).
-+ ```has:videos```: Matches all Tweets that contain native videos (does not include videos from Vine or Periscope).
-
-Note that the has:videos Operators also matches on GIFs, and the metadata included with a Tweet indicates whether it was a video or GIF. Also, the rule clause of ```snow has:media``` is the same as ```snow (has:images OR has:videos)```.
-
-
-
-Once you have collected your Tweets with native media, it is time to start working with the available media metadata. 
+### Native media
 
 When parsing *native media* JSON, ```extended_entities``` is the go-to JSON object.  
-
 
 + [Twitter entities object] (https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object)
 + [Twitter extended entities object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/extended-entities-object)
 
-
-## Matching Tweets with linked media
-
-+ ```url:```
-
-The url: operator is the most useful way to filter for media that is hosted elsewhere. The url: operator matches on URL *tokens*. It can be enclosed in quotes to allow for the top level domain to be included in the query. For example, you could filter on:
-
-Note about the ```url_contains:``` operator:
-
-Enterprise real-time and batched historical APIs support the ```url_contains:``` operator, which can match on URL *substrings*.
-
-Note about ```has:links``` operator:
-
-The has:links operator, on the other hand, will return any Tweet that has a link in the Tweet body, regardless of what it is linking to.
-This includes any media uploaded to Twitter, because a pic.twitter.com URL is generated when a Twitter user uploads a photo, but it is certainly not limited to photos. Used by itself, the has:links operator returns a very large volume of Tweets. If you want to target Tweets with photos and videos, using this too general operator will generate a lot of noise. For that reason, the has:links should only be used in combination with keywords or other operators that more specifically target the content you want.
-
+### Linked media
 
 {Always parse the entities object.}
 
 https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object
 
- 
+## Media metadata timeline <a id="history" class="tall">&nbsp;</a>
 
- 
-## Examples 
+In the early days of Twitter the only way to share media was to include a URL link to content hosted on other sites. Starting in August 2011, Twitter users could start 'attaching' photos to Tweets with the user interface. In March 2014, up to four photos could be included in a Tweet. In June 2016 videos and animated GIFs became supported. (To learn more about the evolution of sharing media on Twitter, see [HERE](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline).) When media is attached to a Tweet using the Twitter user-interface, is said to be "native" media, hosted on the Twitter platform.  
 
- 
+
+If you are doing historical research with Tweets, there are several key dates and details to understand before making requests with our historical Tweet APIs. As detailed HERE, the Twitter platform has evolved continually since 2006. When it comes to matching Tweets with media, the following dates are fundamental to designing effective filters:
+
+### Native media
++ August 2011 - Native photos introduced.
++ March 2014 - Support for up to four photos, and the introduction of the extended entities JSON metadata.
++ February 2016 - GIFs natively hosted in Tweet compose.
++ June 2016 - native video begins
+
+**Note** that there are also product-specific related details to consider. See the “Matching native media” section for more information. 
+
+### Linked media
++ March 2012 -url: and url_contains: operators will still function prior to 3/26/2012, but will only match against URLs as they are entered by a user into a Tweet and not the fully resolved URL (i.e. if a bit.ly URL is entered in the Tweet it can only match against the bit.ly and not the URL that has been shortened by bit.ly)
+
+**Note** that there are also product-specific related details to consider. See the “Matching linked media” section for more information. 
+
+
+
+
+
+Operator notes and metadata ‘born-on-dates’:
+
+HPT
+February 2015 has:videos starts matching
+
+Search APis
+August 2010 has:videos (Until February 2015, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com).
+2011 July 20 - has:media and has:images begin matching. Native photos officially announced August 9, 2010.
+
+
+Operator notes and metadata ‘born-on-dates’:
+HPT: 
+February 2008 - HPT: has:links and url: begin matching. 
+
+Search APIs:
+
+October 2006 - Search: has:links
+August 2010 has:videos (Until February 2015, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com).
+July 2011 - has:media and has:images begin matching. Native photos officially announced August 9, 2010. 
+February 2015 has:videos 
+
+
+
+## Examples <a id="examples" class="tall">&nbsp;</a>
+
+
+Now we'll walk through some examples. These will include a user-story and example filters. 
+
++ I wanted to collect all Tweets that my brand has posted with native photos. Using the [enterprise engagement API], we want to measure which Tweets received the most engagement. In order to collect all of these Tweets, the following filter could be applied with either historical APIs:
+
+```from:MyBrandAccount has:photos```
+
+
+
+
 If you and your brand are interested in knowing every time a customer Tweets a photo about your company or product, regardless of whether it was uploaded directly to Twitter or another popular social platform? 
  
  url:"flickr.com"
@@ -165,5 +148,15 @@ Going back to the scenario presented above, if you wanted to track Tweets where 
 
 You could then add additional ```url:``` terms to the second group for other image hosting services you wanted to capture. This also applies to video-hosting services – you would simply need to identify the structure used by links from that service and incorporate it into an additional url_contains term.
  
- 
+
+## Next steps <a id="next" class="tall">&nbsp;</a>
+
++ Learn more about Tweet JSON. See our data dictionaries for the [```entities```] and [```extended entities```] JSON objects.
++ Learn more about [premium operators].
++ Learn more about identifying and matching on Retweeted and Quoted Tweets.     
++ Learn more about Twitter's evolution and how that affects historical research with Tweet data.
+
+======================================================================================
+
+
 
