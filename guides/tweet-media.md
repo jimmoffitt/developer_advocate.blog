@@ -28,14 +28,7 @@ https://twitter.com/SnowBotDev/status/936075836607705089
 The second set is used to match media that is included as a link to some resource hosted off the Twitter platform. Here is an example of a Tweet including a link to a photo hosted elsewhere (in this case github.com):  
 https://twitter.com/SnowBotDev/status/938444746686480384
 
-[SUMMARIZE OUTLINE]
-First we will dive into building filters for native media, then we’ll discuss matching on media of interest hosted off Twitter. 
-
-Once you have collected your Tweets with native media, it is time to start working with the available media metadata. 
-
-If you are working with Tweets from before 2014 you'll want to review the details provided in the 'Media metadata timeline' section.
-
-We’ll wrap things up with some examples that describe several user stories. 
+First we will dive into building filters for matching on native media, then we’ll discuss matching on media of interest hosted off of the  Twitter platform. After discussing matching on Tweets of interet, we move on to the next step which is parsing the media metadata what is delivered with the Tweet JSON. Next, if you are working with Tweets from before 2014 you'll want to review the details provided in the 'Media metadata timeline' section. Then we'll wrap things up with some examples that describe several user stories. 
 
 ## Matching Tweets with native media <a id="native" class="tall">&nbsp;</a>
  
@@ -67,6 +60,8 @@ Lastly, as indicated above, the ```has:links``` operator is not generally recomm
 This includes any media uploaded to Twitter, because a pic.twitter.com URL is generated when a Twitter user uploads a photo, but it is certainly not limited to photos. Used by itself, the has:links operator returns a very large volume of Tweets. If you want to target Tweets with photos and videos, using this too general operator will generate a lot of noise. For that reason, the has:links should only be used in combination with keywords or other operators that more specifically target the content you want.
 
 ## Parsing media metadata <a id="parsing" class="tall">&nbsp;</a>
+
+When it comes to parsing Tweet media metadata there are two JSON objects to work with, one for native media, and another for linked media. 
 
 ### Native media 
 
