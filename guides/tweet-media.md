@@ -42,7 +42,7 @@ We’ll wrap things up with some examples that describe several user stories.
 The following premium and enterprise operators are available when wanting to match on Tweets with native media:
 
 + ```has:images```: Matches all Tweets that contain native photos (up to four).
-+ ```has:videos```: Matches all Tweets that contain native videos (does not include videos from Vine or Periscope).
++ ```has:videos```: Matches all Tweets that contain native videos and animated GIFs (does not include videos from Vine or Periscope).
 + ```has:media```: Matches all Tweets that contain any native media (photos, video, or animated GIF). Note that the rule clause ```has:media``` is equivalent to ```has:images OR has:videos```.
 
 Notes 
