@@ -35,22 +35,44 @@ Then we'll turn our attention to Tweets that contain *linked media*. Sharing pho
 Finally, if you are collecting Tweets with media from before June 2016 using one of our historical APIs, be sure to review the "Media metadata timeline" section below. It provides a summary of important "born-on-dates" for Tweet media metadata, and provides links to key documentation for building effective, timeline-aware filters. 
 
 
-## Matching Tweets with native media <a id="native" class="tall">&nbsp;</a>
+## Matching Tweets with *native media* <a id="native" class="tall">&nbsp;</a>
  
-The following premium and enterprise operators are available when wanting to match on Tweets with native media:
+The following premium operators are available when matching on Tweets with native media:
 
 + ```has:images```: Matches all Tweets that contain native photos (up to four).
-+ ```has:videos```: Matches all Tweets that contain native videos and animated GIFs (does not include videos from Vine or Periscope).
++ ```has:videos```: Matches all Tweets that contain native videos and animated GIFs. *Note that these do not match on videos from Vine or Periscope*.
 + ```has:media```: Matches all Tweets that contain any native media (photos, video, or animated GIF). Note that the rule clause ```has:media``` is equivalent to ```has:images OR has:videos```.
 
-Notes 
-+ The ```has:videos``` operator also matches on GIFs, and the ```extended entities``` metadata included with a Tweet indicates whether it was a video or GIF. 
+### Example filters
+
+To illustrate how these native media operators can be used, here are some example Tweet matching 'use cases' and corresponding filters:
 
 
-## Matching Tweets with linked media <a id="linked" class="tall">&nbsp;</a>
++ *"I want to collect all Tweets that my brand has posted with native photos. Using the [enterprise engagement API], we want to measure which Tweets received the most engagement."* In order to collect all of these Tweets for analysis, the following filter could be applied with either historical API:
 
-The second set is used to match media that is included as a link to some resource hosted off the Twitter platform.   
+```from:MyBrandAccount has:photos```
 
++ *"I am interested in any Tweet with native video or photos that mentions my brand or product."*
+
+```(@MyProduct OR #MyProduct OR MyProduct OR "my product nickname") has:media ``` 
+
++ *"I am interested in Tweets about winter weather and include native videos."
+
+```(snow OR snowing OR blizzard OR (winter (watch or weather))) has:videos```
+
+
+### Tweet JSON attributes
+
+For Tweets with native media, media metadata is provided in the ```extended entities``` JSON object. The ```extended entities``` object is the go-to resource for *all* native media. See our [```extended entities``` documentation](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/extended-entities-object) for example JSON payloads for Tweets with photos, videos and animated GIFs. 
+
+As described, the ```extended entities``` object provides a ```media[]``` array. In the case of photos, this array can have up to four items, while with native videos and animated GIFs there can only be a single item. Note that when composing a Tweet, only one type of media can be attached (photo or video or GIF). In turn each media item has a top-level ```type``` attribute that indicates what kind of media is attached. The ```type``` attributes will be set to either ```photo```, ```video```, or ```animated_gif```. A quick reminder that the ```has:video``` operator will match on both videos and animated GIFs. If you have a use case that focuses only on videos, you need to inspect this ```type``` attribute to segregate the two types of media.
+
+You may notice a ```media``` entry in the ```entities``` object, but that object should be *avoided and ignored when parsing native media metadata*. A ```media``` section was added to the standard ```entities``` object in August 2011 when Twitter enabled the attachment of a single photo. When Twitter began supporting up to four photos in March 2014, and when native GIFs and videos were introduced in 2016, the ```entities.media``` object was *not* updated, and instead these new metadata were provided in the ```extended_entities``` JSON object. The old ```entities.media``` will always indicate the native media as a single 'photo', even though the native media may consist of multiple photos or a video or an animated GIF. 
+
+
+## Matching Tweets with *linked media* <a id="linked" class="tall">&nbsp;</a>
+
+The following premium operators are available when matching on Tweets with links: 
 
 + ```url:``` - Most common operator for matching on URL tokens and phrases. Supported in all premium and enterprise historical and real-time APIs. 
 + ```url_contains:``` - Matches on URL *substrings* and available in non-search *batched* historical products and real-time streams.   
@@ -64,22 +86,11 @@ Lastly, as indicated above, the ```has:links``` operator is not generally recomm
 
 This includes any media uploaded to Twitter, because a pic.twitter.com URL is generated when a Twitter user uploads a photo, but it is certainly not limited to photos. Used by itself, the has:links operator returns a very large volume of Tweets. If you want to target Tweets with photos and videos, using this too general operator will generate a lot of noise. For that reason, the has:links should only be used in combination with keywords or other operators that more specifically target the content you want.
 
-## Parsing media metadata <a id="parsing" class="tall">&nbsp;</a>
-
-When it comes to parsing Tweet media metadata there are two JSON objects to work with, one for native media, and another for linked media. 
-
-### Native media 
-
-When parsing *native media* JSON, ```extended_entities``` is the go-to JSON object.  
-
-+ [Twitter entities object] (https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object)
-+ [Twitter extended entities object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/extended-entities-object)
-
-### Linked media
 
 {Always parse the entities object.}
 
 https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object
+
 
 ## Media metadata timeline <a id="history" class="tall">&nbsp;</a>
 
@@ -131,14 +142,6 @@ February 2015 has:videos
 ## Examples <a id="examples" class="tall">&nbsp;</a>
 
 Now we'll walk through some examples. These will include a user-story and example filters. 
-
-+ *"I want to collect all Tweets that my brand has posted with native photos. Using the [enterprise engagement API], we want to measure which Tweets received the most engagement."* In order to collect all of these Tweets for analysis, the following filter could be applied with either historical API:
-
-```from:MyBrandAccount has:photos```
-
-+ *"I am interested in any Tweet with native video or photos that mentions my brand or product."*
-
-```(@MyProduct OR #MyProduct OR MyProduct OR "my product nickname") has:media ``` 
 
 + *I want to collect Tweets mentioning 'snow' with videos added when composing the Tweet, or with links to a curator list of photo-hosting sites."
 
