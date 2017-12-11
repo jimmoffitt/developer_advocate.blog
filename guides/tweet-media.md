@@ -41,7 +41,7 @@ The following premium operators are available for matching on Tweets with native
 + ```has:videos```: Matches all Tweets that contain native videos and animated GIFs. *Note that these do not match on videos from Vine or Periscope*.
 + ```has:media```: Matches all Tweets that contain any native media (photos, video, or animated GIF). Note that the rule clause ```has:media``` is equivalent to ```has:images OR has:videos```.
 
-### Example filters
+### Example native media filters
 
 To illustrate how these native media operators can be used, here are some example Tweet matching 'use cases' and corresponding filters:
 
@@ -58,8 +58,7 @@ To illustrate how these native media operators can be used, here are some exampl
 
 ```(snow OR snowing OR blizzard OR (winter (watch or weather))) has:videos```
 
-
-### Tweet JSON attributes
+### Parsing Tweet JSON with native media
 
 For Tweets with native media, media metadata is provided in the ```extended entities``` JSON object. The ```extended entities``` object is the go-to resource for *all* native media. See our [```extended entities``` documentation](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/extended-entities-object) for example JSON payloads for Tweets with photos, videos and animated GIFs. 
 
@@ -77,6 +76,8 @@ The following premium operators are available for matching on Tweets with links:
 
 The ```url:``` operator is the most useful way to match on linked media. In this context the most common usage is to curate a list of URL token that reference media hosting platforms of interest. Common tokens include ```flickr```, ```youtube```, ```photobucket```, ```photos.google```, and ```instagram```.
 
+### Example linked media filters
+
 of interest URLs that It can be enclosed in quotes to allow for the top level domain to be included in the query. For example, you could filter on:
 
 Enterprise real-time and batched historical APIs support the ```url_contains:``` operator, which can match on URL *substrings*.
@@ -85,11 +86,11 @@ Lastly, as indicated above, the ```has:links``` operator is not generally recomm
 
 This includes any media uploaded to Twitter, because a pic.twitter.com URL is generated when a Twitter user uploads a photo, but it is certainly not limited to photos. Used by itself, the has:links operator returns a very large volume of Tweets. If you want to target Tweets with photos and videos, using this too general operator will generate a lot of noise. For that reason, the has:links should only be used in combination with keywords or other operators that more specifically target the content you want.
 
+### Parsing Tweet JSON with linked media
 
 {Always parse the entities object.}
 
 https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object
-
 
 ## Media metadata timeline <a id="history" class="tall">&nbsp;</a>
 
@@ -145,7 +146,6 @@ Now we'll walk through some examples. These will include a user-story and exampl
 + *I want to collect Tweets mentioning 'snow' with videos added when composing the Tweet, or with links to a curator list of photo-hosting sites."
 
 ```snow (has:videos OR url:youtube OR url:vimeo) ```  
-
 
 
 ## Next steps <a id="next" class="tall">&nbsp;</a>
