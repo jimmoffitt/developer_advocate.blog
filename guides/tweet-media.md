@@ -18,9 +18,9 @@
 + [Next steps](#next)
 
 ## Introduction <a id="intro" class="tall">&nbsp;</a>
-Millions of Tweets with photos and videos are posted every day. We often hear from customers and developers with questions on how to find Tweets with media of interest. The purpose of this guide is to help you build effective filters that match on Tweets  . 
+Millions of Tweets with photos, videos and animated GIFs are posted every day. We often hear from customers and developers with questions on how to find and process Tweets with media of interest. The purpose of this guide is to help you do just that.
 
-When working with premium and enterprise APIs that return Tweets, a first step is developing rules, or filters, for finding Tweets of interest. These filters are built using a simple boolean syntax and a set of [premium operators](). When needing to match on media, there are two small sets of operators to work with. 
+When working with premium and enterprise APIs that return Tweets, a first step is developing rules, or filters, for finding Tweets of interest. These filters are built using a simple querying language, based on boolean syntax and a set of [premium operators](https://developer.twitter.com/en/docs/tweets/search/guides/premium-operators). When needing to match on media, there are two small sets of operators to work with. Picking the appropriate set of operators depends on how the media is shared.
 
 The first set is used to match Tweets that include photos, videos, and animated GIFs “attached” to the Tweet when composing it with the Twitter user-interface. These media are referred to as *native* media. Here's an example of a Tweet with native media:
 https://twitter.com/SnowBotDev/status/936075836607705089
@@ -28,7 +28,12 @@ https://twitter.com/SnowBotDev/status/936075836607705089
 The second set is used to match media that is included as a link to some resource hosted off the Twitter platform. Here is an example of a Tweet including a link to a photo hosted elsewhere (in this case github.com):  
 https://twitter.com/SnowBotDev/status/938444746686480384
 
-First we will dive into building filters for matching on native media, then we’ll discuss matching on media of interest hosted off of the  Twitter platform. After discussing matching on Tweets of interet, we move on to the next step which is parsing the media metadata what is delivered with the Tweet JSON. Next, if you are working with Tweets from before 2014 you'll want to review the details provided in the 'Media metadata timeline' section. Then we'll wrap things up with some examples that describe several user stories. 
+We will start off with Tweets with *native media*. As the Twitter platform has evolved, native media has become the most common source of Tweets with media. We will introduce the Premium operators provided for matching on that content, walk through some example filters, and point you to the Tweet JSON attributes that contain native media metadata.  
+
+Then we'll turn our attention to Tweets that contain *linked media*. Sharing photos and videos hosted on other networks and platforms is still a common use of Twitter. Also, if you are working with historical Tweets, being familiar with linked media is critical since native Twitter videos were launched in 2016 (and native photos in 2011). We will discuss the Premium operators available for surfacing these Tweets of interest, discuss a few example filters, and introduce the Tweet JSON attributes available for shared links.
+
+Finally, if you are collecting Tweets with media from before June 2016 using one of our historical APIs, be sure to review the "Media metadata timeline" section below. It provides a summary of important "born-on-dates" for Tweet media metadata, and provides links to key documentation for building effective, timeline-aware filters. 
+
 
 ## Matching Tweets with native media <a id="native" class="tall">&nbsp;</a>
  
