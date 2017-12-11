@@ -10,11 +10,9 @@
 # Matching on Tweets with photos and videos
 
 + [Introduction](#intro)
-+ [Matching Tweets with native media](#native)
-+ [Matching Tweets with linked media](#linked)
-+ [Parsing media metadata](#parsing)
++ [Matching and parsing Tweets with native media](#native)
++ [Matching and parsing Tweets with linked media](#linked)
 + [Media metadata timeline](#history)  
-+ [Examples](#examples)
 + [Next steps](#next)
 
 ## Introduction <a id="intro" class="tall">&nbsp;</a>
@@ -35,9 +33,9 @@ Then we'll turn our attention to Tweets that contain *linked media*. Sharing pho
 Finally, if you are collecting Tweets with media from before June 2016 using one of our historical APIs, be sure to review the "Media metadata timeline" section below. It provides a summary of important "born-on-dates" for Tweet media metadata, and provides links to key documentation for building effective, timeline-aware filters. 
 
 
-## Matching Tweets with *native media* <a id="native" class="tall">&nbsp;</a>
+## Matching and parsing Tweets with *native media* <a id="native" class="tall">&nbsp;</a>
  
-The following premium operators are available when matching on Tweets with native media:
+The following premium operators are available for matching on Tweets with native media:
 
 + ```has:images```: Matches all Tweets that contain native photos (up to four).
 + ```has:videos```: Matches all Tweets that contain native videos and animated GIFs. *Note that these do not match on videos from Vine or Periscope*.
@@ -69,16 +67,17 @@ As described, the ```extended entities``` object provides a ```media[]``` array.
 
 You may notice a ```media``` entry in the ```entities``` object, but that object should be *avoided and ignored when parsing native media metadata*. A ```media``` section was added to the standard ```entities``` object in August 2011 when Twitter enabled the attachment of a single photo. When Twitter began supporting up to four photos in March 2014, and when native GIFs and videos were introduced in 2016, the ```entities.media``` object was *not* updated, and instead these new metadata were provided in the ```extended_entities``` JSON object. The old ```entities.media``` will always indicate the native media as a single 'photo', even though the native media may consist of multiple photos or a video or an animated GIF. 
 
+## Matching and parsing Tweets with *linked media* <a id="linked" class="tall">&nbsp;</a>
 
-## Matching Tweets with *linked media* <a id="linked" class="tall">&nbsp;</a>
+The following premium operators are available for matching on Tweets with links: 
 
-The following premium operators are available when matching on Tweets with links: 
++ ```url:``` - Most common operator for matching on Tweets with linked media. This operator matches on specified URL tokens and phrases. Supported in all premium and enterprise historical and real-time APIs. 
++ ```url_contains:``` - Matches on URL *substrings* and available in non-search APIs: only available with *batched* historical and real-time APIs.   
++ ```has:links``` - Not recommended for matching on Tweets with linked photos and videos, as it is too general. Instead the ```url:``` operator can be used to match tokens from media hosting services of interest.  
 
-+ ```url:``` - Most common operator for matching on URL tokens and phrases. Supported in all premium and enterprise historical and real-time APIs. 
-+ ```url_contains:``` - Matches on URL *substrings* and available in non-search *batched* historical products and real-time streams.   
-+ ```has:links``` - Not generally recommended for matching on Tweets with photos and videos. Instead the ```url:``` operator can be used to match tokens from media hosting services of interest.  
+The ```url:``` operator is the most useful way to match on linked media. In this context the most common usage is to curate a list of URL token that reference media hosting platforms of interest. Common tokens include ```flickr```, ```youtube```, ```photobucket```, ```photos.google```, and ```instagram```.
 
-The url: operator is the most useful way to filter for media that is hosted elsewhere. The url: operator matches on URL *tokens*. It can be enclosed in quotes to allow for the top level domain to be included in the query. For example, you could filter on:
+of interest URLs that It can be enclosed in quotes to allow for the top level domain to be included in the query. For example, you could filter on:
 
 Enterprise real-time and batched historical APIs support the ```url_contains:``` operator, which can match on URL *substrings*.
 
