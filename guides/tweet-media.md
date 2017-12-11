@@ -7,7 +7,7 @@
 + [] Mention of extended_entities as place to go for any native media parsing. 
 
 --------------------------
-# Matching on Tweets with photos and videos
+# Matching on and parsing Tweets with photos and videos
 
 + [Introduction](#intro)
 + [Matching and parsing Tweets with native media](#native)
@@ -33,7 +33,7 @@ Then we'll turn our attention to Tweets that contain *linked media*. Sharing pho
 Finally, if you are collecting Tweets with media from before June 2016 using one of our historical APIs, be sure to review the "Media metadata timeline" section below. It provides a summary of important "born-on-dates" for Tweet media metadata, and provides links to key documentation for building effective, timeline-aware filters. 
 
 
-## Matching and parsing Tweets with *native media* <a id="native" class="tall">&nbsp;</a>
+## Matching on and parsing Tweets with *native media* <a id="native" class="tall">&nbsp;</a>
  
 The following premium operators are available for matching on Tweets with native media:
 
@@ -67,7 +67,7 @@ As described, the ```extended entities``` object provides a ```media[]``` array.
 
 You may notice a ```media``` entry in the ```entities``` object, but that object should be *avoided and ignored when parsing native media metadata*. A ```media``` section was added to the standard ```entities``` object in August 2011 when Twitter enabled the attachment of a single photo. When Twitter began supporting up to four photos in March 2014, and when native GIFs and videos were introduced in 2016, the ```entities.media``` object was *not* updated, and instead these new metadata were provided in the ```extended_entities``` JSON object. The old ```entities.media``` will always indicate the native media as a single 'photo', even though the native media may consist of multiple photos or a video or an animated GIF. 
 
-## Matching and parsing Tweets with *linked media* <a id="linked" class="tall">&nbsp;</a>
+## Matching on and parsing Tweets with *linked media* <a id="linked" class="tall">&nbsp;</a>
 
 The following premium operators are available for matching on Tweets with links: 
 
