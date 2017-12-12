@@ -1,3 +1,5 @@
++ [] Add in tips for using URL enhanced metadata.
+
 # Matching on and parsing Tweets with photos and videos
 
 + [Introduction](#intro)
@@ -106,7 +108,7 @@ You may notice a ```media``` entry in the ```entities``` object, but that object
 
 ## Media metadata timeline <a id="history" class="tall">&nbsp;</a>
 
-In the early days of Twitter the only way to share media was to include a URL link to content hosted on other sites. Starting in August 2011, Twitter users could start 'attaching' photos to Tweets with the user interface. In March 2014, up to four photos could be included in a Tweet. In June 2016 videos and animated GIFs became supported. (To learn more about the evolution of sharing media on Twitter, see [HERE](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline).) When media is attached to a Tweet using the Twitter user-interface, is said to be "native" media, hosted on the Twitter platform.  
+In the early days of Twitter the only way to share media was to include a link to content hosted on other sites. Starting in August 2011, Twitter users could start 'attaching' photos to Tweets with the user interface. In March 2014, up to four photos could be included in a Tweet. In June 2016 videos and animated GIFs became supported. (To learn more about the evolution of sharing media on Twitter, see [HERE](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline).) When media is 'attached' to a Tweet using the Twitter user-interface, it is said to be *"native"* media, hosted on the Twitter platform.  
 
 If you are doing historical research with Tweets, there are several key dates and details to understand before making requests with our historical Tweet APIs. As detailed HERE, the Twitter platform has evolved continually since 2006. When it comes to matching Tweets with media, the following dates are fundamental to designing effective filters:
 
@@ -124,38 +126,9 @@ If you are doing historical research with Tweets, there are several key dates an
 
 **Note** that there are also product-specific related details to consider. See the “Matching linked media” section for more information. 
 
-### Product-specific operator notes and metadata ‘born-on-dates’:
-
-There are two historical Tweet APIs that enable searching the entire archive of publicly available Tweets:
-+ Search Tweet APIs: enable instant searching from that archive. 
-+ Batched historical API: job-based, batched process that can provide Tweets at scale. 
 See [this guide] for help with deciding which historical API is right for you.  
 
-#### Native media
-
-##### Batched historical: 
-+ February 2015 has:videos starts matching
-
-##### Search APis
-+ August 2010 has:videos (Until February 2015, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com).
-+ 2011 July 20 - has:media and has:images begin matching. Native photos officially announced August 9, 2010.
-
-#### Linked media
-##### Batched historical: 
-February 2008 - HPT: has:links and url: begin matching. 
-
-##### Search APis
-
-+ October 2006 - Search: has:links
-+ August 2010 has:videos (Until February 2015, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com).
-+ July 2011 - has:media and has:images begin matching. Native photos officially announced August 9, 2010. 
-February 2015 has:videos 
-
-## Examples <a id="examples" class="tall">&nbsp;</a>
-
-Now we'll walk through some examples. These will include a user-story and example filters. 
-
-
+{add the missing links and be done}
 
 
 ## Next steps <a id="next" class="tall">&nbsp;</a>
@@ -180,6 +153,37 @@ Going back to the scenario presented above, if you wanted to track Tweets where 
 (PiedPiper OR url:PiedPiper) (url:"flickr.com" OR has:media)
 
 You could then add additional ```url:``` terms to the second group for other image hosting services you wanted to capture. This also applies to video-hosting services – you would simply need to identify the structure used by links from that service and incorporate it into an additional url_contains term.
+
+
+
+
+### Product-specific operator notes and metadata ‘born-on-dates’:
+
+There are two historical Tweet APIs that enable searching the entire archive of publicly available Tweets:
++ Search Tweet APIs: enable instant searching from that archive. 
++ Batched historical API: job-based, batched process that can provide Tweets at scale. 
+
+#### Native media
+
+##### Batched historical: 
++ February 2015 has:videos starts matching
+
+##### Search APis
++ August 2010 has:videos (Until February 2015, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com).
++ 2011 July 20 - has:media and has:images begin matching. Native photos officially announced August 9, 2010.
+
+#### Linked media
+##### Batched historical: 
+February 2008 - HPT: has:links and url: begin matching. 
+
+##### Search APis
+
++ October 2006 - Search: has:links
++ August 2010 has:videos (Until February 2015, this Operator matches on Tweets with links to select video hosting sites such as youtube.com, vimeo.com, and vivo.com).
++ July 2011 - has:media and has:images begin matching. Native photos officially announced August 9, 2010. 
+February 2015 has:videos 
+
+
  
 
 
