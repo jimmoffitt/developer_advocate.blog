@@ -96,14 +96,9 @@ As indicated above, the ```has:links``` operator is not generally recommended fo
 
 For Tweets with linked media, always parse the [entities object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object). The entities.url array is the go-to resource for *all* Tweet links, including links to videos and photos. The ```extended entities``` section will not provide any additional media metadata for these links. 
 
-See our [```extended entities``` documentation](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/extended-object) for example JSON payloads for Tweets with links. 
+See our Twitter [```entities``` documentation](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object) for example JSON payloads for Tweets with links. 
 
-As described, the ```extended entities``` object provides a ```media[]``` array. In the case of photos, this array can have up to four items, while with native videos and animated GIFs there can only be a single item. Note that when composing a Tweet, only one type of media can be attached (photo or video or GIF). In turn each media item has a top-level ```type``` attribute that indicates what kind of media is attached. The ```type``` attributes will be set to either ```photo```, ```video```, or ```animated_gif```. A quick reminder that the ```has:video``` operator will match on both videos and animated GIFs. If you have a use case that focuses only on videos, you need to inspect this ```type``` attribute to segregate the two types of media.
-
-You may notice a ```media``` entry in the ```entities``` object, but that object should be *avoided and ignored when parsing native media metadata*. A ```media``` section was added to the standard ```entities``` object in August 2011 when Twitter enabled the attachment of a single photo. When Twitter began supporting up to four photos in March 2014, and when native GIFs and videos were introduced in 2016, the ```entities.media``` object was *not* updated, and instead these new metadata were provided in the ```extended_entities``` JSON object. The old ```entities.media``` will always indicate the native media as a single 'photo', even though the native media may consist of multiple photos or a video or an animated GIF. 
-
-
-
+{Walk through the metadata at a high level, fully unwound URLs, and HTTP site titles and descriptions.}
 
 
 ## Media metadata timeline <a id="history" class="tall">&nbsp;</a>
