@@ -1,8 +1,8 @@
 # Matching on and parsing Tweets with photos and videos
 
 + [Introduction](#intro)
-+ [Matching and parsing Tweets with native media](#native)
-+ [Matching and parsing Tweets with linked media](#linked)
++ [Matching on and parsing Tweets with native media](#native)
++ [Matching on and parsing Tweets with linked media](#linked)
 + [Media metadata timeline](#history)  
 + [Next steps](#next)
 
