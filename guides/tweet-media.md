@@ -34,7 +34,9 @@ Finally, if you are collecting Tweets with media from before June 2016 using one
 
 
 ## Matching on and parsing Tweets with *native media* <a id="native" class="tall">&nbsp;</a>
- 
+
+### Matching on native media
+
 The following premium operators are available for matching on Tweets with native media:
 
 + ```has:images```: Matches all Tweets that contain native photos (up to four).
@@ -68,6 +70,8 @@ You may notice a ```media``` entry in the ```entities``` object, but that object
 
 ## Matching on and parsing Tweets with *linked media* <a id="linked" class="tall">&nbsp;</a>
 
+### Matching on linked media
+
 The following premium operators are available for matching on Tweets with links: 
 
 + ```url:``` - Most common operator for matching on Tweets with linked media. This operator matches on specified URL tokens and phrases. Supported in all premium and enterprise historical and real-time APIs. 
@@ -77,6 +81,17 @@ The following premium operators are available for matching on Tweets with links:
 The ```url:``` operator is the most useful way to match on linked media. In this context the most common usage is to curate a list of URL token that reference media hosting platforms of interest. Common tokens include ```flickr```, ```youtube```, ```photobucket```, ```photos.google```, and ```instagram```.
 
 ### Example linked media filters
+
++ *"I am interested in any Tweet with linked video or photos that mentions my brand or product."*
+
+```(@MyProduct OR #MyProduct OR MyProduct OR "my product nickname") (url:flickr OR url:youtube OR url:photobucket OR url:"photos.google" OR url:instagram)```
+
++ *"I am interested in Tweets about winter weather and include native videos."
+
+```(snow OR snowing OR blizzard OR (winter (watch or weather))) has:videos```
+
+
+
 
 of interest URLs that It can be enclosed in quotes to allow for the top level domain to be included in the query. For example, you could filter on:
 
@@ -143,9 +158,7 @@ February 2015 has:videos
 
 Now we'll walk through some examples. These will include a user-story and example filters. 
 
-+ *I want to collect Tweets mentioning 'snow' with videos added when composing the Tweet, or with links to a curator list of photo-hosting sites."
 
-```snow (has:videos OR url:youtube OR url:vimeo) ```  
 
 
 ## Next steps <a id="next" class="tall">&nbsp;</a>
