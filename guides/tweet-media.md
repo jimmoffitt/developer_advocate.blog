@@ -1,12 +1,3 @@
-
-* [X] Add: has:images, has:videos
-* [] Discussion of url needs: differences between url: and url_contains: (product, token matching)
-* [] Intro to enhanced URL unwinding/filtering, or reference to new page (next steps)?
-+ [X] Does has:links match on a photo attachment? yes
-+ [X] Any differences between Search/PT?
-+ [] Mention of extended_entities as place to go for any native media parsing. 
-
---------------------------
 # Matching on and parsing Tweets with photos and videos
 
 + [Introduction](#intro)
