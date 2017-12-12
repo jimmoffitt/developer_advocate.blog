@@ -23,8 +23,11 @@ Then we'll turn our attention to Tweets that contain *linked media*. Sharing pho
 
 Finally, if you are collecting Tweets with media from before June 2016 using one of our historical APIs, be sure to review the "Media metadata timeline" section below. It provides a summary of important "born-on-dates" for Tweet media metadata, and provides links to key documentation for building effective, timeline-aware filters. 
 
-
 ## Matching on and parsing Tweets with *native media* <a id="native" class="tall">&nbsp;</a>
+
+
+
+
 
 ### Matching on native media
 
@@ -37,7 +40,6 @@ The following premium operators are available for matching on Tweets with native
 ### Example native media filters
 
 To illustrate how these native media operators can be used, here are some example Tweet matching 'use cases' and corresponding filters:
-
 
 + *"I want to collect all Tweets that my brand has posted with native photos. Using the [enterprise engagement API], we want to measure which Tweets received the most engagement."* In order to collect all of these Tweets for analysis, the following filter could be applied with either historical API:
 
@@ -69,34 +71,30 @@ The following premium operators are available for matching on Tweets with links:
 + ```url_contains:``` - Matches on URL *substrings* and available in non-search APIs: only available with *batched* historical and real-time APIs.   
 + ```has:links``` - Not recommended for matching on Tweets with linked photos and videos, as it is too general. Instead the ```url:``` operator can be used to match tokens from media hosting services of interest.  
 
-The ```url:``` operator is the most useful way to match on linked media. In this context the most common usage is to curate a list of URL token that reference media hosting platforms of interest. Common tokens include ```flickr```, ```youtube```, ```photobucket```, ```photos.google```, and ```instagram```.
+The ```url:``` operator is the most useful way to match on linked media. When using this operator, any operand that contains punctuation should be double-quoted. In this context the most common usage is to curate a list of URL token that reference media hosting platforms of interest. Common tokens include ```flickr```, ```youtube```, ```photobucket```, ```photos.google```, and ```instagram```. Note that the 
+
+As indicated above, the ```has:links``` operator is not generally recommended for matching on Tweets with photos and videos. The ```has:links``` operator return all Tweets that has a link in the Tweet body, regardless of what it is linking to. This includes links to non-media resources such as news articles, product pages, and other web link. This includes any media uploaded to Twitter, because a pic.twitter.com URL is generated when a Twitter user uploads a photo, but it is certainly not limited to photos. Used by itself, the has:links operator returns a very large volume of Tweets. If you want to target Tweets with photos and videos, using this too general operator will generate a lot of noise. For that reason, the has:links should only be used in combination with keywords or other operators that more specifically target the content you want.
 
 ### Example linked media filters
 
-+ *"I am interested in any Tweet with linked video or photos that mentions my brand or product."*
++ *"I am interested in any Tweet with linked video that mentions my brand or product."*
 
-```(@MyProduct OR #MyProduct OR MyProduct OR "my product nickname") (url:flickr OR url:youtube OR url:photobucket OR url:"photos.google" OR url:instagram)```
-
-+ *"I am interested in Tweets about winter weather and include native videos."
-
-```(snow OR snowing OR blizzard OR (winter (watch or weather))) has:videos```
+```(@MyProduct OR #MyProduct OR MyProduct OR "my product nickname") (url:youtube OR url:vimeo)
 
 
++ *"I am interested in Tweets about winter weather and include linked photos."
 
+```(snow OR snowing OR blizzard OR (winter (watch or weather))) (url:flickr OR url:"photos.google" OR url:instagram OR url:photbucket)```
 
-of interest URLs that It can be enclosed in quotes to allow for the top level domain to be included in the query. For example, you could filter on:
-
-Enterprise real-time and batched historical APIs support the ```url_contains:``` operator, which can match on URL *substrings*.
-
-Lastly, as indicated above, the ```has:links``` operator is not generally recommended for matching on Tweets with photos and videos. The ```has:links``` operator return all Tweets that has a link in the Tweet body, regardless of what it is linking to. This includes links to non-media resources such as news articles, product pages, and other web link
-
-This includes any media uploaded to Twitter, because a pic.twitter.com URL is generated when a Twitter user uploads a photo, but it is certainly not limited to photos. Used by itself, the has:links operator returns a very large volume of Tweets. If you want to target Tweets with photos and videos, using this too general operator will generate a lot of noise. For that reason, the has:links should only be used in combination with keywords or other operators that more specifically target the content you want.
 
 ### Parsing Tweet JSON with linked media
 
 {Always parse the entities object.}
 
 https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object
+
+
+
 
 ## Media metadata timeline <a id="history" class="tall">&nbsp;</a>
 
@@ -164,11 +162,9 @@ Now we'll walk through some examples. These will include a user-story and exampl
 
 Previous drafts:
 
-If you and your brand are interested in knowing every time a customer Tweets a photo about your company or product, regardless of whether it was uploaded directly to Twitter or another popular social platform? 
- 
- url:"flickr.com"
 This particular search would return activities where there is a link from flickr.com. On the other hand, if you’re merely interested in any time your product or company appears in a URL in a Tweet, you could do this:
 url:PiedPiper
+
 This take on the url: operator would return any activity where “PiedPiper” token appears anywhere in the URL - whether it is from PiedPiper.com or even someting like this:
 http://www.networkworld.com/community/blog/valley-startup-spotlight-piedpiper-makes-social-media-fire-hose-seem-small
 
