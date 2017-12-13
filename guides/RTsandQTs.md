@@ -152,22 +152,30 @@ Two forms of Tweet JSON are available. This content will focus on the Twitter "n
 ### Retweets
 
 Retweet of a non-extended Tweet
+
 ```
 {
 "retweeted_status":"text"
 "retweeted_status":"entities"
 }
+```
 
 Retweet of an extended Tweet
+
 ```
 {
 "retweeted_status":"extended_tweet":"full_text"
 "retweeted_status":"extended_tweet":"full_text"
 }
-
+```
 
 
 ### Quote Tweets
+
+Extended Quote of an extended Tweet:
+https://twitter.com/SnowBotDev/status/938444746686480384
+
+
 
 Quote - Quote 
 
@@ -251,10 +259,7 @@ For example, below is an excerpt from the root-level of a Retweet. In native dat
 
 
 
-### Quote Tweets
 
-Here is an example of an extended Quote of a extended Tweet:
-https://twitter.com/SnowBotDev/status/938444746686480384
 
 
 # Next Steps <a id="next" class="tall">&nbsp;</a>
