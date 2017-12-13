@@ -1,5 +1,5 @@
 
-[Getting major overhaul, to have narrative/examples change from AS to original format. Correcting/updating Quote Tweet content. Adding in relevant b140 details]
+[Getting major overhaul, to have narrative/examples change from AS to original format. Correcting/updating Quote Tweet content. Adding in relevant b140 and #280 details]
 
 Example Tweets:
 https://twitter.com/FloodSocial/status/928950635860545537
@@ -10,6 +10,12 @@ https://twitter.com/SnowBotDev/status/925390480744923136
 Extended quote Tweet x 2
 https://twitter.com/FloodSocial/status/936771032077107200
 
+
+To-dos/Tests
+{Need to discuss retweet and quote counts and describe which ones include both...}
+
+
+
 + [Introduction](#intro)
 + [How to match on Retweets and Quote Tweets](#match)
 + [Parsing Retweets and Quote Tweets JSON](#parse)
@@ -19,7 +25,15 @@ https://twitter.com/FloodSocial/status/936771032077107200
 
 Twitter customers often want to know the specifics around identifying and integrating Retweets and Quote Tweets into their products, but can run into a few common roadblocks. If you’re looking for the best way to incorporate Retweets and Quote Tweets into your product, this guide will provide everything you need to know about identifying them, and best practices for extracting the information you need from them. 
 
-Let's start off with some fundamental descriptions.
+While matching on Retweets and Quote Tweets is relatively straight-forward, parsing the corresponding JSON objects has some challenges. First, there are really two Tweets, and two authors, encapsulated in the JSON. Keeping these straight is critical. 
+
+Second, the introduction of #280 characters, and 'extended' Tweets before that, created more complexity. When these payload changes were made, they were made in a backward compatiable fashion, preserving all the attributes used to represent Tweets of 140 or less characters, while adding new attributes that encapsulate #280 Tweets. As a result, the Tweet root-level ```text``` attribute remains and it only handles 140 characters. To support #280, a root-level ```extended_tweet``` object was added. This new field appears when the Tweet it describes has more than 140 characters. 
+
+The introduction of #280 also means that there are up to four entities objects in a Quote Tweet, and up to three in a Retweet.
+
+{huh? expand}
+
+Let's start off with some fundamental descriptions. Then we'll discuss how to match Retweets and Quote Tweets of interest. Then we'll dive into the many details involved when designing a Retweet and Quote Tweet parser.
 
 ### What is a Retweet?
 
@@ -35,14 +49,8 @@ Quote Tweets are another way of sharing Tweets that includes adding your own new
 
 https://twitter.com/SnowBotDev/status/925390480744923136
 
-In some ways Quote Tweets can be thought of as a special kind of Retweet. They retain information about the user who posted the Tweet being quoted, as well as the user who Quoted them. 
+In some ways Quote Tweets can be thought of as a special kind of Retweet. They retain information about the user who posted the Tweet being quoted, as well as the user who Quoted them and added new content. 
 
-{Need to discuss retweet and quote counts and describe which ones include both...}
-
-### Extended Tweets
-
-### Tweets up to 280 characters
- 
 
 # How to match on Retweets and Quote Tweets <a id="match" class="tall">&nbsp;</a>
 
@@ -78,8 +86,6 @@ https://twitter.com/Arapahoe_Basin/status/928290029436248064
 	"retweet_count": 0,
 	"retweeted": false
 }
-
-
 
 
 ```
@@ -134,28 +140,81 @@ Three types of Tweets are involved: original, Retweet and Quote Tweet.
 
 {This discussion is based on the *native* Tweet JSON format.}
 
+
+
+
+
+
 Two forms of Tweet JSON are available. This content will focus on the Twitter "native" (or "original") format. See HERE for the first version of this content, written for the Activity Streams format.
 
-### Many possible combinations
+## Many possible combinations
 
-2 cases:
-Retweet - Original Tweet 
-Retweet - Original *extended* Tweet
+### Retweets
 
-Many cases: 
-Quote - Original Tweet
-*Extended* Quote - Original Tweet
+Retweet of a non-extended Tweet
+```
+{
+"retweeted_status":"text"
+"retweeted_status":"entities"
+}
 
-Quote - Original *extended* Tweet
-*Extended* Quote - Original *extended* Tweet
+Retweet of an extended Tweet
+```
+{
+"retweeted_status":"extended_tweet":"full_text"
+"retweeted_status":"extended_tweet":"full_text"
+}
 
-TEST:
+
+
+### Quote Tweets
+
 Quote - Quote 
+
+```
+{
+"text"
+"entities"
+"quoted_status":"text"
+"quoted_status":"entities"
+}
+```
+
+
+
 *Extended* Quote - Quote 
 
+```
+{
+"extended_tweet":"full_text"
+"extended_tweet":"entities"
+"quoted_status":"text"
+"quoted_status":"entities"
+}
+```
+
 Quote - *extended* Quote 
+
+```
+{
+"text"
+"entities"
+"quoted_status":"extended_tweet":"full_text"
+"quoted_status":"extended_tweet":"entities"
+}
+```
+
+
 *Extended* Quote - *extended* Quote
 
+```
+{
+"extended_tweet":"full_text"
+"extended_tweet":"entities"
+"quoted_status":"extended_tweet":"full_text"
+"quoted_status":"extended_tweet":"entities"
+}
+```
 
 ### Retweets
 
