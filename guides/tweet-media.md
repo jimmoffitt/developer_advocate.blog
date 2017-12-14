@@ -1,5 +1,3 @@
-+ [] Add in tips for using URL enhanced metadata.
-
 # Matching on and parsing Tweets with photos and videos
 
 + [Introduction](#intro)
