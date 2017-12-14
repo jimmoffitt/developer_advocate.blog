@@ -23,15 +23,15 @@ To-dos/Tests
 
 # Introduction <a id="intro" class="tall">&nbsp;</a>
 
-Twitter customers often want to know the specifics around identifying and integrating Retweets and Quote Tweets into their products, but can run into a few common roadblocks. If you’re looking for the best way to incorporate Retweets and Quote Tweets into your product, this guide will provide everything you need to know about identifying them, and best practices for extracting the information you need from them. 
+Twitter API customers often want to know the specifics around identifying and integrating Retweets and Quote Tweets into their products, but can run into a few common roadblocks. If you’re looking for the best way to incorporate Retweets and Quote Tweets into your product or analysis, this guide will provide everything you need to know about identifying them, and best practices for extracting the information you need from them. 
 
-While matching on Retweets and Quote Tweets is relatively straight-forward, parsing the corresponding JSON objects has some challenges. First, there are really two Tweets, and two authors, encapsulated in the JSON. Keeping these straight is critical. 
+Retweets are an important part of Twitter’s platform – they permit content to be shared rapidly and with attribution, and are the most easily measured form of content engagement on the platform. Quote Tweets, which are like Retweets except they included added content,  were introduced in 2015, and have become a widely used method for sharing, and commenting on, Tweets. Many social analytics tools use the number of Retweets and Quote Tweets a particular Tweet receives in calculating its impact or reach (i.e. its importance). However, to do so, your app must be able to accurately identify these.
 
-Second, the introduction of #280 characters, and 'extended' Tweets before that, created more complexity. When these payload changes were made, they were made in a backward compatiable fashion, preserving all the attributes used to represent Tweets of 140 or less characters, while adding new attributes that encapsulate #280 Tweets. As a result, the Tweet root-level ```text``` attribute remains and it only handles 140 characters. To support #280, a root-level ```extended_tweet``` object was added. This new field appears when the Tweet it describes has more than 140 characters. 
+While *matching* on Retweets and Quote Tweets is straight-forward, *parsing* the corresponding JSON objects has some challenges. First, Every Retweet and Quote Tweet JSON payload contains two Tweet objects, complete with two user objects. Keeping these straight is critical. Second, the introduction of #280 characters, and 'extended' Tweets before that, created more complexity. When these #280 payload changes were made, they were made in a backwards-compatible fashion, preserving all the JSON fields long used to represent Tweets with 140 or fewer characters, while adding new attributes that completely encapsulate #280 Tweets. For example, the Tweet JSON root-level ```text``` attribute remains and still only handles 140 characters. To support #280, a root-level ```extended_tweet``` object was added. This new object appears when the Tweet it describes has more than 140 characters, and the full message is provided in the ```extended_tweet.full_text``` field.   
 
-The introduction of #280 also means that there are up to four entities objects in a Quote Tweet, and up to three in a Retweet.
+What this means is that if you have a parser that has not been updated for #280 Tweets, it will still correctly handle Tweets with 140 or less characters, but will absolutely fail to capture complete metadata for Tweets with more than 140 characters. First, the text of the Tweet message will be truncated and will not contain the entire message. 
 
-{huh? expand}
+Second, the introduction of #280 also means that there are up to four ```entities``` objects in a Quote Tweet, and up to three in a Retweet. The  ```entities``` object contains fundamental Tweet details, such as hashtags, cashtags, mentions, and links. With #280 Tweets, the root-level ```entities``` object will most likely be incomplete. For example, if a Tweet contains hashtags or links beyond the 140-character mark (and most probably do), the ```entities``` metadata will not include them. Instead, you'll need to access the ```extended_tweet.entities``` object to guarantee complete data. Knowing the correct ```entities``` object to parse is critical for completely surfacing hashtags, links, and other fundamental Tweet attributes of interest. 
 
 Let's start off with some fundamental descriptions. Then we'll discuss how to match Retweets and Quote Tweets of interest. Then we'll dive into the many details involved when designing a Retweet and Quote Tweet parser.
 
@@ -39,31 +39,65 @@ Let's start off with some fundamental descriptions. Then we'll discuss how to ma
 
 A Retweet is an action taken by a Twitter user to share another user’s Tweet without alteration, using Twitter’s explicit Retweet functionality. 
 
-https://twitter.com/Arapahoe_Basin/status/928290029436248064
+https://twitter.com/SnowBotDev/status/928707908354891781 
+Redirects to: https://twitter.com/Arapahoe_Basin/status/928290029436248064
 
-A Retweet retains information about the user who posted the original Tweet, as well as the user who Retweeted them. Retweets are an important part of Twitter’s platform – they permit content to be shared rapidly and with attribution, and are the most easily measured form of content engagement on the platform. Many social analytics tools use the number of Retweets a particular Tweet receives in calculating its impact or reach (i.e. its importance). However, to do so, your app must be able to accurately identify Retweets.
+A Retweet retains information about the user who posted the original Tweet, as well as the user who Retweeted them. 
 
 ### What is a Quoted Tweet?
 
-Quote Tweets are another way of sharing Tweets that includes adding your own new content as a comment. Quote Tweets can be selected after using Twitter’s Retweet option. 
+Quote Tweets are another way of sharing Tweets that includes *adding* your own new content as a comment. Quote Tweets can be selected after using Twitter’s Retweet option. 
 
 https://twitter.com/SnowBotDev/status/925390480744923136
 
 In some ways Quote Tweets can be thought of as a special kind of Retweet. They retain information about the user who posted the Tweet being quoted, as well as the user who Quoted them and added new content. 
 
+```
+-r "from:SnowBotDev is:retweet" -s 100d
+-r "retweets_of:SnowBotDev" -s 100d
+-r "retweets_of:FloodSocial" -s 100d
+```
 
 # How to match on Retweets and Quote Tweets <a id="match" class="tall">&nbsp;</a>
 
-## Matching on Retweets
+If you are using a Twitter premium or enterprise search API, there are two operators for matching Retweets:
 
 + ```is:retweet```:
 + ```retweets_of:```
+
+If you are using our enterprise real-time or batched historical APIs, there is this additional Retweet-targetting operator:
+
 + ```retweets_of_status_id:```
 
 
-https://twitter.com/Arapahoe_Basin/status/928290029436248064
+
+
+
+
+
+
+
+
 
 https://twitter.com/Arapahoe_Basin/status/928290029436248064
+
+If you want to match on Quote Tweets:
+
++ ```is:quote```:
+
+{what other keywords match on quote text}
+
+
+https://twitter.com/SnowBotDev/status/912103941030141952
+
+
+
+# Parsing Retweet and Quote Tweet JSON <a id="parse" class="tall">&nbsp;</a>
+
+Three types of Tweets are involved: original, Retweet and Quote Tweet.
+
+{This discussion is based on the *native* Tweet JSON format.}
+
 
 ```json
 {
@@ -91,15 +125,6 @@ https://twitter.com/Arapahoe_Basin/status/928290029436248064
 ```
 
 
-## Matching Quote Tweets
-
-+ ```is:quote```:
-
-{what other keywords match on quote text}
-
-
-
-https://twitter.com/SnowBotDev/status/912103941030141952
 
 ```json
 
@@ -130,19 +155,6 @@ https://twitter.com/SnowBotDev/status/912103941030141952
 }
 
 ```
-
-
-# Parsing Retweet and Quote Tweet JSON <a id="parse" class="tall">&nbsp;</a>
-
-Three types of Tweets are involved: original, Retweet and Quote Tweet.
-
-
-
-{This discussion is based on the *native* Tweet JSON format.}
-
-
-
-
 
 
 Two forms of Tweet JSON are available. This content will focus on the Twitter "native" (or "original") format. See HERE for the first version of this content, written for the Activity Streams format.
@@ -223,6 +235,11 @@ Quote - *extended* Quote
 "quoted_status":"extended_tweet":"entities"
 }
 ```
+
+Extreme example: https://twitter.com/SnowBotDev/status/941414422920097797
+
+
+
 
 ### Retweets
 
