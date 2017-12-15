@@ -7,8 +7,11 @@ https://twitter.com/FloodSocial/status/928950635860545537
 Simple quote Tweet
 https://twitter.com/SnowBotDev/status/925390480744923136
 
+
 Extended quote Tweet x 2
 https://twitter.com/FloodSocial/status/936771032077107200
+
+Extreme example: https://twitter.com/SnowBotDev/status/941414422920097797
 
 
 To-dos/Tests
@@ -18,7 +21,10 @@ To-dos/Tests
 
 + [Introduction](#intro)
 + [How to match on Retweets and Quote Tweets](#match)
-+ [Parsing Retweets and Quote Tweets JSON](#parse)
++ [Parsing Retweets and Quote Tweets](#parse)
+  + [Parsing extended Tweets](#parse-extended)
+  + [Parsing Retweets](#parse-retweet)
+  + [Parsing Quote Tweets](#parse-quote)
 + [Next Steps](#next)
 
 # Introduction <a id="intro" class="tall">&nbsp;</a>
@@ -37,7 +43,7 @@ Let's start off with some fundamental descriptions. Then we'll discuss how to ma
 
 ### What is a Retweet?
 
-A Retweet is an action taken by a Twitter user to share another user’s Tweet without alteration, using Twitter’s explicit Retweet functionality. 
+A Retweet is an action taken by a Twitter user to share another user’s Tweet without alteration, using Twitter’s explicit Retweet functionality. When you Retweet, there are no options to add any comments, hashtags, links, or any other details. 
 
 https://twitter.com/SnowBotDev/status/928707908354891781 
 Redirects to: https://twitter.com/Arapahoe_Basin/status/928290029436248064
@@ -52,77 +58,137 @@ https://twitter.com/SnowBotDev/status/925390480744923136
 
 In some ways Quote Tweets can be thought of as a special kind of Retweet. They retain information about the user who posted the Tweet being quoted, as well as the user who Quoted them and added new content. 
 
-```
--r "from:SnowBotDev is:retweet" -s 100d
--r "retweets_of:SnowBotDev" -s 100d
--r "retweets_of:FloodSocial" -s 100d
-```
 
 # How to match on Retweets and Quote Tweets <a id="match" class="tall">&nbsp;</a>
 
 If you are using a Twitter premium or enterprise search API, there are two operators for matching Retweets:
 
-+ ```is:retweet```:
-+ ```retweets_of:```
++ ```is:retweet```: {define}
++ ```retweets_of:```: {define}
 
 If you are using our enterprise real-time or batched historical APIs, there is this additional Retweet-targetting operator:
 
-+ ```retweets_of_status_id:```
++ ```retweets_of_status_id:```: {define}
 
+The ability to match on whether the Tweet is a Quote Tweet depends on what API you are using. Again, if you using the enterprise real-time or batched-historical APIs, then this operator is available:
 
++ ```is:quote```: {define)
 
+If you are using the search APIs, this operator is not available. So, with search you can not build a rule that matches only on Quote Tweets. 
 
+There are other fundamental Quote Tweet matching differences between the search APIs and the real-time/batched-historical APIs. With the enterprise real-time and batched-historical APIs, the both additive Quote and Quoted contents are tested to match your rules. With the search APIs only the additive Quote contents are tested to match your rules. Take the following Quote Tweet as an example:
 
+https://twitter.com/SnowBotDev/status/941448912954462208
 
+With the real-time and batched-historical APIs, this Quote Tweet would match the rule ```from:SnowBotDev #COwx```. That same rule would not match with the search APIs since the Quoted Tweet (with the hashtag #COwx) is not referenced with applying the rule. 
 
+Regardless if you are explicitedly matching on Retweets or Quote Tweets or not, you will certainly have Retweets and Quote Tweets to parse, analyze, or display. In the next section, we'll discuss how to correctly parse these Tweets to ensure your are extracting complete metadata.
 
-
-
-
-https://twitter.com/Arapahoe_Basin/status/928290029436248064
-
-If you want to match on Quote Tweets:
-
-+ ```is:quote```:
-
-{what other keywords match on quote text}
-
-
-https://twitter.com/SnowBotDev/status/912103941030141952
-
-
-
-# Parsing Retweet and Quote Tweet JSON <a id="parse" class="tall">&nbsp;</a>
-
-Three types of Tweets are involved: original, Retweet and Quote Tweet.
+# Parsing Retweets and Quote Tweets <a id="parse" class="tall">&nbsp;</a>
 
 {This discussion is based on the *native* Tweet JSON format.}
+
+As stated above, there are challenges when parsing Retweets and Quote Tweets. The complications mainly stem from the introduction of #280 Tweets and the ```extended_tweet``` objects. A first step in correctly handling Retweets and Quote Tweets is ensuring your parser is correctly handling extended Tweets. With extended Tweets there are legacy fields that will contain truncated, thus incomplete, information. These truncated fields include fundamental Tweet attributes such as the message itself and hashtags, mentions, and links included in that message.  
+
+## Parsing extended Tweets <a id="parse-extended" class="tall">&nbsp;</a>   
+
+Building a parser to handle extended Tweets is straightforward. Every Tweet object has a root-level ```truncated``` boolean field. When this field is set to 'false', the Tweet message has 140 or less characters and only the legacy fields are provided since they completely describe the Tweets. However, when ```truncated``` is set to 'true', there will be a root-level ```extended_tweet``` object, and the root-level ```text``` field and ```entities``` object should be ignored. Instead, the ```extended_tweet.full_text``` value will provide the full Tweet message, and the ```extended_tweet.entities``` will provide complete arrays of hashtags, mention, links, and other ```entities``` contents.      
+
+## Parsing Retweets <a id="parse-retweet" class="tall">&nbsp;</a>   
+
+When the Tweet JSON you are parsing has a root-level ```retweeted_status```, you are working with a Retweet. This ```retweeted_status``` object is a complete Tweet object that represents the original Tweet being Retweeted. The ```retweeted_status``` object in turn will reflect whether the original Tweet was an extended Tweet or not. 
+
+Since Retweets encapsulate two Tweet objects, there are three possible scenarios that can affect successful parsing of Retweet contents:
+
++ Retweet of a non-extended Tweet that does not result in a truncated RT message. 
 
 
 ```json
 {
-	"created_at": "Thu Nov 09 19:36:34 +0000 2017",
-	"id_str": "928707908354891781",
-	"text": "RT @Arapahoe_Basin: The morning views never disappoint. https://t.co/BWfhLHW8qV",
-	"user": {
-		"id_str": "906948460078698496"
-	},
-	"retweeted_status": {
-		"created_at": "Wed Nov 08 15:56:04 +0000 2017",
-		"id_str": "928290029436248064",
-		"text": "The morning views never disappoint. https://t.co/BWfhLHW8qV",
-		"user": {
-			"id_str": "15537164"
-		},
-		"retweet_count": 75,
-		"retweeted": false
-	},
-	"retweet_count": 0,
-	"retweeted": false
+  "id_str": "928707908354891781",
+  "text": "RT @Arapahoe_Basin: The morning views never disappoint. https:\/\/t.co\/BWfhLHW8qV",
+  "truncated": false,
+  "user": {
+    "id_str": "906948460078698496"
+  },
+  "retweeted_status": {
+    "id_str": "928290029436248064",
+    "text": "The morning views never disappoint. https:\/\/t.co\/BWfhLHW8qV",
+    "user": {
+      "id_str": "15537164"
+    },
+    "entities": {}
+  },
+  "entities": {}
 }
+
+```
+
++ Retweet of a non-extended Tweet that does result in a truncated RT message. Retweets have the "RT @screen_name " pattern prepended to the original Tweet message. That extra text added to the original message often results in a message longer than 140 characters, causing the root-level ```text``` field to truncate the original message. 
+
+```
+{
+  "id_str": "941455716254064640",
+  "text": "RT @FloodSocial: Nothing 2 see here. Just a test Tweet that is exactly 140 characters. This will be Retweeted in the #280 world to see what\u2026",
+  "truncated": false,
+  "user": {
+    "id_str": "906948460078698496"
+  },
+  "retweeted_status": {
+    "id_str": "941455227248455680",
+    "text": "Nothing 2 see here. Just a test Tweet that is exactly 140 characters. This will be Retweeted in the #280 world to see what happens #entities",
+    "truncated": false,
+    "user": {
+      "id": 944480690
+    },
+    "entities": {
+      "hashtags": [
+        {
+          "text": "entities"
+        }
+      ]
+    }
+  },
+  "entities": {
+    "hashtags": [
+      
+    ],
+    "user_mentions": [
+      {
+        "id_str": "944480690"
+      }
+    ]
+  }
+}
+
+```
+
+
++ Retweet of a extended Tweet
 
 
 ```
+
+
+```
+
+
+Since new content can not be added to a Retweet, the root-level ```entities``` object should always be ignored. Instead Twitter entities should be parsed from the ```retweeted_status``` object, and which ```entities```depends on whether it is an extended Tweet that was Retweeted. If ```retweeted_status.truncated``` is 'true' the ```retweeted_status.extended_tweet.entities``` should be parsed, and the root-level ```retweeted_status.entities``` object ignored.  If ```retweeted_status.truncated``` is 'false', the ```retweeted_status.entities``` object should be parsed (and is the only one provided).
+    
+## Parsing Quote Tweets <a id="parse-quote" class="tall">&nbsp;</a>    
+    
+Since Quote Tweets encapsulate two Tweet objects, there are four possible combinations of non-extended and extended Tweets object in a Quote Tweet JSON payload:
+    
++ Non-extended Quote of non-extended Tweet
++ Extended Quote of non-extended Tweet
++ Non-extended Quote of extended Tweet
++ Extended Quote of extended Tweet
+
+
+
+
+
+
 
 
 
@@ -236,7 +302,7 @@ Quote - *extended* Quote
 }
 ```
 
-Extreme example: https://twitter.com/SnowBotDev/status/941414422920097797
+
 
 
 
