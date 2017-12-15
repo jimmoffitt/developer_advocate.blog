@@ -86,7 +86,7 @@ Regardless if you are explicitedly matching on Retweets or Quote Tweets or not, 
 
 # Parsing Retweets and Quote Tweets <a id="parse" class="tall">&nbsp;</a>
 
-{This discussion is based on the *native* Tweet JSON format.}
+{This discussion is based on the *native* Tweet JSON format. Two forms of Tweet JSON are available. This content will focus on the Twitter "native" (or "original") format. See HERE for the first version of this content, written for the Activity Streams format.}
 
 As stated above, there are challenges when parsing Retweets and Quote Tweets. The complications mainly stem from the introduction of #280 Tweets and the ```extended_tweet``` objects. A first step in correctly handling Retweets and Quote Tweets is ensuring your parser is correctly handling extended Tweets. With extended Tweets there are legacy fields that will contain truncated, thus incomplete, information. These truncated fields include fundamental Tweet attributes such as the message itself and hashtags, mentions, and links included in that message.  
 
@@ -177,17 +177,14 @@ Since new content can not be added to a Retweet, the root-level ```entities``` o
     
 ## Parsing Quote Tweets <a id="parse-quote" class="tall">&nbsp;</a>    
     
+When the Tweet JSON you are parsing has a root-level ```quoted_status```, you are working with a Quote Tweet. This ```quoted_status``` object is a complete Tweet object that represents the original Tweet being Quoted. The ```quoted_tweet``` object in turn will reflect whether the original Tweet was an extended Tweet or not.     
+    
 Since Quote Tweets encapsulate two Tweet objects, there are four possible combinations of non-extended and extended Tweets object in a Quote Tweet JSON payload:
     
 + Non-extended Quote of non-extended Tweet
 + Extended Quote of non-extended Tweet
 + Non-extended Quote of extended Tweet
 + Extended Quote of extended Tweet
-
-
-
-
-
 
 
 
@@ -223,32 +220,8 @@ Since Quote Tweets encapsulate two Tweet objects, there are four possible combin
 ```
 
 
-Two forms of Tweet JSON are available. This content will focus on the Twitter "native" (or "original") format. See HERE for the first version of this content, written for the Activity Streams format.
-
-## Many possible combinations
-
-### Retweets
-
-Retweet of a non-extended Tweet
-
-```
-{
-"retweeted_status":"text"
-"retweeted_status":"entities"
-}
-```
-
-Retweet of an extended Tweet
-
-```
-{
-"retweeted_status":"extended_tweet":"full_text"
-"retweeted_status":"extended_tweet":"full_text"
-}
-```
 
 
-### Quote Tweets
 
 Extended Quote of an extended Tweet:
 https://twitter.com/SnowBotDev/status/938444746686480384
