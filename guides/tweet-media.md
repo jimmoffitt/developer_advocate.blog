@@ -116,10 +116,10 @@ Note that there are many other product-specific related details to consider when
 
 ## Next steps <a id="next" class="tall">&nbsp;</a>
 
-+ Learn more about Tweet JSON. See our data dictionaries for the [```entities```] and [```extended entities```] JSON objects.
-+ Learn more about [premium operators].
-+ Learn more about identifying and matching on Retweeted and Quoted Tweets.     
-+ Learn more about Twitter's evolution and how that affects historical research with Tweet data.
++ Learn more about Tweet JSON. See our data dictionaries for the [```entities```](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object) and [```extended entities```](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/extended-entities-object) JSON objects.
++ Learn more about [premium operators](https://developer.twitter.com/en/docs/tweets/rules-and-filtering/overview/premium-operators).
++ Learn more about identifying and matching on Retweeted and Quoted Tweets. (coming soon!)     
++ Learn more about [Twitter's evolution and how that affects historical research with Tweet data](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline).
 
  
 
